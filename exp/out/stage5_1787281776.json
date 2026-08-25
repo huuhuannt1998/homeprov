@@ -1,0 +1,133 @@
+{
+  "stage": 5,
+  "arms": [
+    {
+      "be": "BE-2",
+      "applied": {
+        "be": "BE-2",
+        "purged_rows": 0,
+        "cutoff": 1787281658.8152554
+      },
+      "HOMEPROV_false_alarm": false,
+      "HOMEPROV_violations": 0,
+      "B2_false_alarm": false
+    },
+    {
+      "be": "BE-3",
+      "applied": {
+        "be": "BE-3",
+        "applied": true
+      },
+      "HOMEPROV_false_alarm": false,
+      "HOMEPROV_violations": 0,
+      "B2_false_alarm": false
+    },
+    {
+      "be": "BE-4",
+      "applied": {
+        "be": "BE-4",
+        "restored_from": "/Users/huanbui/Research/HOMEPROV-P13/testbed/ha-config/homeprov_out/snapshot_B.db"
+      },
+      "HOMEPROV_false_alarm": false,
+      "HOMEPROV_violations": 0,
+      "B2_false_alarm": false
+    },
+    {
+      "be": "BE-5",
+      "applied": {
+        "be": "BE-5",
+        "shifted_rows": 145,
+        "delta_s": 3600.0
+      },
+      "HOMEPROV_false_alarm": true,
+      "HOMEPROV_violations": 16,
+      "B2_false_alarm": true
+    },
+    {
+      "be": "BE-7",
+      "applied": {
+        "be": "BE-7",
+        "applied": true
+      },
+      "HOMEPROV_false_alarm": false,
+      "HOMEPROV_violations": 0,
+      "B2_false_alarm": false
+    },
+    {
+      "be": "BE-11",
+      "applied": {
+        "be": "BE-11",
+        "applied": true,
+        "note": "derived row with NULL parent, as measured in M1"
+      },
+      "HOMEPROV_false_alarm": false,
+      "HOMEPROV_violations": 0,
+      "B2_false_alarm": false
+    }
+  ],
+  "n_benign": 6,
+  "BFP_homeprov": 0.16666666666666666,
+  "BFP_b2": 0.16666666666666666,
+  "GATES": [
+    {
+      "metric": "BFP",
+      "value": 0.16666666666666666,
+      "op": "<=",
+      "threshold": 0.01,
+      "pass": false,
+      "hard": false
+    }
+  ],
+  "GATE_PASS": false,
+  "note": "container-level BE-1/6/9/10 require a live hub; run in the live-hub arm, not the snapshot arm",
+  "capability": {
+    "capability_record": {
+      "schema_version": 1,
+      "actor_id": "none",
+      "actor_position": "in_process_integration",
+      "powers": {
+        "db_read": true,
+        "db_write": true,
+        "fs_read_as_ha_uid": true,
+        "fs_write_as_ha_uid": true,
+        "python_exec_in_core": true,
+        "event_bus_listen": true,
+        "event_bus_emit": true,
+        "service_call": true,
+        "network_egress": false
+      },
+      "knowledge": {
+        "deployment_topology": "full",
+        "automation_configs": "full",
+        "anchor_schedule_known": false,
+        "anchor_key_known": false,
+        "victim_routine_model": "coarse"
+      },
+      "budget": {
+        "db_writes_max": 0,
+        "wallclock_window_s": 5,
+        "cpu_seconds_max": null
+      },
+      "constraints": {
+        "host_root": false,
+        "cross_uid_write": false,
+        "anchor_key_access": false,
+        "external_anchor_retraction": false,
+        "clock_control": false,
+        "cap_linux_immutable": false,
+        "cap_bpf": false
+      },
+      "substrate": {
+        "kind": "native_aarch64_container",
+        "envelope": "Pi-shaped cgroup (cpus/memory/blkio)",
+        "note": "NOT a Raspberry Pi; absolute latency is not claimed as Pi latency"
+      },
+      "provenance": {
+        "rka_mission": null,
+        "seed": 0
+      }
+    }
+  },
+  "_elapsed_s": 0.0,
+  "_digest": "477551c74400e54236ef6f453ce693d692a2f101e135753172e0750037c66bc9"
+}

@@ -1,0 +1,684 @@
+{
+ "data": {
+  "E2_live_measurement": {
+   "experiment": "E2 in-process defender subversion (mock review R1 3.1)",
+   "hook": {
+    "graph_name": "_censored",
+    "mechanism": "rebind homeprov._graph from a second community integration",
+    "module_is_same_object": true,
+    "patched_flag": true,
+    "privilege_used": "import"
+   },
+   "measurement": {
+    "anchor_segments_for_adversary_second": 0,
+    "db_rows_in_that_second": 2,
+    "defender_view_rows": 475,
+    "rows_matching_censored_context": 2,
+    "true_graph_rows": 477
+   },
+   "not_shown": "end-to-end zero-violation verification after deletion; hiding a node without its transitive closure perturbs children",
+   "ordering_finding": "censoring after acting leaves a window up to one anchoring period wide in which the true rows are sealed; an append-only anchor then keeps them forever. An integration runs at load time and mints the context it acts under, so it need not leave that window.",
+   "testbed_note": "HA crashes with SIGBUS (exit 135) when an external process deletes recorder rows"
+  },
+  "exp/out/stage20_final.json": {
+   "GATE_PASS": true,
+   "HARD_GATE_LR": true,
+   "capability": {
+    "capability_record": {
+     "actor_id": "mal_integration_v1",
+     "actor_position": "in_process_integration",
+     "budget": {
+      "cpu_seconds_max": null,
+      "db_writes_max": 7,
+      "wallclock_window_s": 5
+     },
+     "constraints": {
+      "anchor_key_access": false,
+      "cap_bpf": false,
+      "cap_linux_immutable": false,
+      "clock_control": false,
+      "cross_uid_write": false,
+      "external_anchor_retraction": false,
+      "host_root": false
+     },
+     "knowledge": {
+      "anchor_key_known": false,
+      "anchor_schedule_known": false,
+      "automation_configs": "full",
+      "deployment_topology": "full",
+      "victim_routine_model": "coarse"
+     },
+     "powers": {
+      "db_read": true,
+      "db_write": true,
+      "event_bus_emit": true,
+      "event_bus_listen": true,
+      "fs_read_as_ha_uid": true,
+      "fs_write_as_ha_uid": true,
+      "network_egress": false,
+      "python_exec_in_core": true,
+      "service_call": true
+     },
+     "provenance": {
+      "rka_mission": null,
+      "seed": 0
+     },
+     "schema_version": 1,
+     "substrate": {
+      "envelope": "Pi-shaped cgroup (cpus/memory/blkio)",
+      "kind": "native_aarch64_container",
+      "note": "NOT a Raspberry Pi; absolute latency is not claimed as Pi latency"
+     }
+    }
+   },
+   "n_rows": 144,
+   "per_ft": {
+    "FT-1": {
+     "b2": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "b2b": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "b4": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "hp": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "mean_OQ": 0.0013219954246095832,
+     "mean_b": 2.0,
+     "min_LR": 1.0,
+     "n": 12
+    },
+    "FT-10": {
+     "b2": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "b2b": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "b4": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "hp": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "mean_OQ": 0.0015852074935371753,
+     "mean_b": 8.0,
+     "min_LR": 1.0,
+     "n": 12
+    },
+    "FT-11": {
+     "b2": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "b2b": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "b4": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "hp": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "mean_OQ": 0.001321642857995071,
+     "mean_b": 2.0,
+     "min_LR": 1.0,
+     "n": 12
+    },
+    "FT-12": {
+     "b2": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "b2b": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "b4": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "hp": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "mean_OQ": 0.0001418762846375728,
+     "mean_b": 13.0,
+     "min_LR": 1.0,
+     "n": 12
+    },
+    "FT-2": {
+     "b2": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "b2b": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "b4": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "hp": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "mean_OQ": 0.0014879957817067002,
+     "mean_b": 1.0,
+     "min_LR": 1.0,
+     "n": 12
+    },
+    "FT-3": {
+     "b2": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "b2b": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "b4": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "hp": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "mean_OQ": 4.9654899557598735e-05,
+     "mean_b": 8.333333333333334,
+     "min_LR": 1.0,
+     "n": 12
+    },
+    "FT-4": {
+     "b2": {
+      "ci_hi": 0.2646484693970512,
+      "ci_lo": 0.0,
+      "k": 0,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 0.0
+     },
+     "b2b": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "b4": {
+      "ci_hi": 0.2646484693970512,
+      "ci_lo": 0.0,
+      "k": 0,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 0.0
+     },
+     "hp": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "mean_OQ": 0.0014520740224065031,
+     "mean_b": 2.0,
+     "min_LR": 1.0,
+     "n": 12
+    },
+    "FT-5": {
+     "b2": {
+      "ci_hi": 0.2646484693970512,
+      "ci_lo": 0.0,
+      "k": 0,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 0.0
+     },
+     "b2b": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "b4": {
+      "ci_hi": 0.2646484693970512,
+      "ci_lo": 0.0,
+      "k": 0,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 0.0
+     },
+     "hp": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "mean_OQ": 0.0013212904836945758,
+     "mean_b": 2.0,
+     "min_LR": 1.0,
+     "n": 12
+    },
+    "FT-6": {
+     "b2": {
+      "ci_hi": 0.9978924067681397,
+      "ci_lo": 0.6152038348490559,
+      "k": 11,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 0.9166666666666666
+     },
+     "b2b": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "b4": {
+      "ci_hi": 0.9978924067681397,
+      "ci_lo": 0.6152038348490559,
+      "k": 11,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 0.9166666666666666
+     },
+     "hp": {
+      "ci_hi": 0.9978924067681397,
+      "ci_lo": 0.6152038348490559,
+      "k": 11,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 0.9166666666666666
+     },
+     "mean_OQ": 0.0004424035753959028,
+     "mean_b": 2.0,
+     "min_LR": 0.0,
+     "n": 12
+    },
+    "FT-7": {
+     "b2": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "b2b": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "b4": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "hp": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "mean_OQ": 0.00029000721521497144,
+     "mean_b": 1.0,
+     "min_LR": 1.0,
+     "n": 12
+    },
+    "FT-8": {
+     "b2": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "b2b": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "b4": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "hp": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "mean_OQ": 0.00029000721521497144,
+     "mean_b": 1.0,
+     "min_LR": 1.0,
+     "n": 12
+    },
+    "FT-9": {
+     "b2": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "b2b": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "b4": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "hp": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.7353515306029488,
+      "k": 12,
+      "method": "Clopper-Pearson exact",
+      "n": 12,
+      "prop": 1.0
+     },
+     "mean_OQ": 0.000572855679712414,
+     "mean_b": 2.0,
+     "min_LR": 1.0,
+     "n": 12
+    }
+   },
+   "stage": 20
+  },
+  "exp/out/stage21_final.json": {
+   "note": "A delta requires the parent to have NO surviving commitment at any granularity while the child does, i.e. a causal edge spanning the 90-day hour horizon.",
+   "recursion_delta_exists": true,
+   "retention_policy": {
+    "hour": 7776000.0,
+    "minute": 86400.0,
+    "second": 3600.0
+   },
+   "rows": [
+    {
+     "b2b": true,
+     "delta": false,
+     "gap": "same-minute (1s)",
+     "gap_s": 1.0,
+     "homeprov": true,
+     "levels_surviving": [
+      "hour",
+      "minute",
+      "second"
+     ],
+     "tamper": "content"
+    },
+    {
+     "b2b": true,
+     "delta": false,
+     "gap": "same-minute (1s)",
+     "gap_s": 1.0,
+     "homeprov": true,
+     "levels_surviving": [
+      "hour",
+      "minute",
+      "second"
+     ],
+     "tamper": "delete"
+    },
+    {
+     "b2b": true,
+     "delta": false,
+     "gap": "same-hour (10min)",
+     "gap_s": 600.0,
+     "homeprov": true,
+     "levels_surviving": [
+      "hour",
+      "minute",
+      "second"
+     ],
+     "tamper": "content"
+    },
+    {
+     "b2b": true,
+     "delta": false,
+     "gap": "same-hour (10min)",
+     "gap_s": 600.0,
+     "homeprov": true,
+     "levels_surviving": [
+      "hour",
+      "minute",
+      "second"
+     ],
+     "tamper": "delete"
+    },
+    {
+     "b2b": true,
+     "delta": false,
+     "gap": "1 day",
+     "gap_s": 86400.0,
+     "homeprov": true,
+     "levels_surviving": [
+      "hour",
+      "minute",
+      "second"
+     ],
+     "tamper": "content"
+    },
+    {
+     "b2b": true,
+     "delta": false,
+     "gap": "1 day",
+     "gap_s": 86400.0,
+     "homeprov": true,
+     "levels_surviving": [
+      "hour",
+      "minute",
+      "second"
+     ],
+     "tamper": "delete"
+    },
+    {
+     "b2b": true,
+     "delta": false,
+     "gap": "30 days",
+     "gap_s": 2592000.0,
+     "homeprov": true,
+     "levels_surviving": [
+      "hour",
+      "minute",
+      "second"
+     ],
+     "tamper": "content"
+    },
+    {
+     "b2b": true,
+     "delta": false,
+     "gap": "30 days",
+     "gap_s": 2592000.0,
+     "homeprov": true,
+     "levels_surviving": [
+      "hour",
+      "minute",
+      "second"
+     ],
+     "tamper": "delete"
+    },
+    {
+     "b2b": true,
+     "delta": false,
+     "gap": "100 days (beyond hour retention)",
+     "gap_s": 8640000.0,
+     "homeprov": true,
+     "levels_surviving": [
+      "hour",
+      "minute",
+      "second"
+     ],
+     "tamper": "content"
+    },
+    {
+     "b2b": false,
+     "delta": true,
+     "gap": "100 days (beyond hour retention)",
+     "gap_s": 8640000.0,
+     "homeprov": true,
+     "levels_surviving": [
+      "hour",
+      "minute",
+      "second"
+     ],
+     "tamper": "delete"
+    }
+   ],
+   "stage": 21
+  }
+ },
+ "schema": "homeprov.result-bundle/v1",
+ "sources": {
+  "exp/out/stage20_final.json": "f251ea3222116343dbe6a22f472509b4ef6776c2f0776f138cf95c3e23b8b325",
+  "exp/out/stage21_final.json": "b61e4b23fcd817feb4a7a736836c12cacdcaf815cb3d94415671dcf21f97673d"
+ },
+ "unit": "u_res_e2"
+}
