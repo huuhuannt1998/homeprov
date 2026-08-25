@@ -23,6 +23,9 @@ This repository holds the defensive implementation and the evaluation harness.
 | `testbed/ha-config/custom_components/homeprov/` | The defender integration. |
 | `testbed/ha-config/custom_components/homeprov_e4/` | Renderer dependency-closure measurement harness. |
 | `testbed/ha-config/custom_components/homeprov_bench/` | Benign-workload driver for false-alarm measurement. |
+| `testbed/ha-config/custom_components/homeprov_e5/` | Renderer-backed attack evaluation harness. |
+| `testbed/ha-config/configuration.example.yaml` | Testbed config for the released components. |
+| `exp/e6_static_closure.py` | Cross-version closure comparison, run inside each release's image. |
 | `analysis/`, `results/` | Result processing and bundled result units. |
 | `EXPERIMENTS.md` | What each experiment asks and how to run it. |
 
@@ -43,7 +46,9 @@ evaluation.
 
 **No manuscript.** The paper is maintained separately.
 
-**No credentials, no recorder databases, no third-party paper text.**
+**No credentials, no recorder databases, no third-party paper text.** The
+working `configuration.yaml` is also excluded because it enables the adversary
+integrations; `configuration.example.yaml` is the released equivalent.
 
 ## Reproducing
 

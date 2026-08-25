@@ -17,14 +17,176 @@ from __future__ import annotations
 import json, os, sqlite3
 
 
+class _CountingConnection:
+    """A sqlite3 connection that accounts for what the adversary actually spent.
+
+    E8 (mock review) makes the point that ``a database write`` is ambiguous: one
+    SQL statement can modify many rows, and neither number tells you how much was
+    written to disk. A budget stated in one unit therefore bounds a different
+    thing than a budget stated in another, and a composed forgery can be cheap in
+    one while expensive in another. So all three are counted here rather than
+    reconstructed afterwards, because rowcount is only available at the moment of
+    execution and bytes are only visible as a delta across the whole operation.
+    """
+
+    __slots__ = ("_c", "_owner")
+
+    def __init__(self, con, owner):
+        self._c = con
+        self._owner = owner
+
+    def execute(self, sql, args=()):
+        cur = self._c.execute(sql, args)
+        o = self._owner
+        o.sql_statements += 1
+        # rowcount is -1 for SELECT and for statements sqlite cannot count;
+        # treating that as zero is correct, since a read spends no row budget.
+        if cur.rowcount and cur.rowcount > 0:
+            o.rows_touched += cur.rowcount
+        return cur
+
+    def executemany(self, sql, seq):
+        seq = list(seq)
+        cur = self._c.executemany(sql, seq)
+        o = self._owner
+        o.sql_statements += 1
+        o.rows_touched += len(seq)
+        return cur
+
+    def cursor(self):
+        # Several forgeries take a cursor and execute through it. Without
+        # wrapping it, those statements and the rows they touch are invisible to
+        # the budget, which silently under-reports exactly the injection classes.
+        return _CountingCursor(self._c.cursor(), self._owner)
+
+    def commit(self):
+        """Sample the write-ahead log at commit, which is the only moment it is
+        observable. SQLite grows the WAL when a transaction commits and truncates
+        it when the writing connection closes, so a size read after close reports
+        zero for every forgery regardless of what it wrote. Sampling here and
+        accumulating the peak gives the bytes the adversary actually pushed
+        through the log."""
+        self._c.commit()
+        import os as _os
+        try:
+            n = _os.path.getsize(self._owner.db + "-wal")
+        except OSError:
+            n = 0
+        o = self._owner
+        if n > o._wal_peak:
+            o.wal_bytes += n - o._wal_peak
+            o._wal_peak = n
+        else:
+            # The log was checkpointed between commits; everything written since
+            # the last sample is gone from the file but was still written.
+            o.wal_bytes += n
+            o._wal_peak = n
+
+    def __getattr__(self, k):
+        return getattr(self._c, k)
+
+
+class _CountingCursor:
+    __slots__ = ("_cur", "_owner")
+
+    def __init__(self, cur, owner):
+        self._cur = cur
+        self._owner = owner
+
+    def execute(self, sql, args=()):
+        self._cur.execute(sql, args)
+        o = self._owner
+        o.sql_statements += 1
+        if self._cur.rowcount and self._cur.rowcount > 0:
+            o.rows_touched += self._cur.rowcount
+        return self._cur
+
+    def executemany(self, sql, seq):
+        seq = list(seq)
+        self._cur.executemany(sql, seq)
+        self._owner.sql_statements += 1
+        self._owner.rows_touched += len(seq)
+        return self._cur
+
+    def __getattr__(self, k):
+        return getattr(self._cur, k)
+
+
 class Forger:
     def __init__(self, db: str):
         self.db = db
         self.writes = 0
         self.log = []
+        # E8 budget accounting.
+        self.rows_touched = 0
+        self.sql_statements = 0
+        self.wal_bytes = 0
+        self._wal_peak = 0
+        # WAL is switched on before the baseline is taken, deliberately. In the
+        # default rollback-journal mode a DELETE leaves the main file the same
+        # size and truncates the journal at commit, so the byte delta reads as
+        # zero and a wholesale purge would be reported as costing nothing. In WAL
+        # mode every modified page is appended to the log, which is the quantity
+        # the budget is supposed to bound. The recorder runs in WAL mode anyway,
+        # so this matches the deployment rather than distorting it.
+        # A connection is PINNED open for the Forger's lifetime. Closing the last
+        # connection to a WAL database checkpoints the log and deletes it, so
+        # every per-operation connection would erase the evidence of its own cost
+        # on the way out and the byte budget would read zero. Holding one
+        # connection open keeps the WAL on disk to be measured. Autocheckpoint is
+        # also disabled, so a long forgery is not silently folded back into the
+        # main file partway through.
+        self._pin = None
+        self.wal = False
+        try:
+            # isolation_level=None matters: Python's sqlite3 opens an implicit
+            # transaction before statements, and PRAGMA journal_mode cannot run
+            # inside one -- it fails silently and leaves the database in rollback
+            # mode, which is how the first version of this accounting reported
+            # every attack as costing zero bytes. The pragma's return value is
+            # checked rather than assumed for the same reason.
+            self._pin = sqlite3.connect(self.db, timeout=30, isolation_level=None)
+            mode = self._pin.execute("PRAGMA journal_mode=WAL").fetchone()
+            self.wal = bool(mode) and str(mode[0]).lower() == "wal"
+            self._pin.execute("PRAGMA wal_autocheckpoint=0")
+        except Exception:                                     # noqa: BLE001
+            self._pin = None
+        self._bytes_before = self._db_bytes()
+
+    def close(self):
+        if getattr(self, "_pin", None) is not None:
+            try:
+                self._pin.close()
+            except Exception:                                 # noqa: BLE001
+                pass
+            self._pin = None
+
+    def _db_bytes(self) -> int:
+        """Bytes across the database and its write-ahead log.
+
+        The WAL has to be included. A forgery that only rewrites existing rows
+        may leave the main file's size unchanged while writing every one of those
+        pages to the WAL, so measuring the database file alone would report a
+        substantial attack as free.
+        """
+        import os as _os
+        n = 0
+        for suf in ("", "-wal", "-shm"):
+            try:
+                n += _os.path.getsize(self.db + suf)
+            except OSError:
+                pass
+        return n
+
+    def budget(self) -> dict:
+        """The three budget models E8 requires, as spent so far."""
+        return {"rows": self.rows_touched,
+                "sql_statements": self.sql_statements,
+                "bytes": self.wal_bytes,
+                "wal": self.wal}
 
     def _con(self):
-        return sqlite3.connect(self.db, timeout=30)
+        return _CountingConnection(sqlite3.connect(self.db, timeout=30), self)
 
     def _mid(self, con, entity):
         r = con.execute("SELECT metadata_id FROM states_meta WHERE entity_id=?",

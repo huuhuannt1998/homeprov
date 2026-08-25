@@ -296,9 +296,48 @@ async def _cmd_closure(hass) -> dict:
     ents = _entities(con, lo, hi)
     picked = _pick(con, ents, lo, hi)
     con.close()
+    # Say WHICH prerequisite is missing. "No row to mutate" is not diagnosable
+    # across releases, and E6 needs to distinguish "this release renders
+    # differently" from "this deployment had not run long enough".
+    relaxed = None
+    if not picked["event"]:
+        # Fall back to any event of the right type rather than one that opens its
+        # own context. Recorded, because a relaxed pick reaches a different code
+        # path in the augmenter and the two must never be compared silently.
+        con = _connect()
+        ev = con.execute(
+            """SELECT event_id FROM events e
+                 JOIN event_types et ON et.event_type_id=e.event_type_id
+                WHERE et.event_type IN ('automation_triggered','call_service')
+                  AND e.context_id_bin IS NOT NULL
+             ORDER BY e.time_fired_ts DESC LIMIT 1""").fetchone()
+        if ev:
+            picked["event"] = con.execute(
+                """SELECT event_id, event_type_id, data_id, time_fired_ts,
+                          context_id_bin, context_parent_id_bin, context_user_id_bin
+                     FROM events WHERE event_id=?""", (ev[0],)).fetchone()
+            relaxed = "event: any of type, not context-origin"
+        con.close()
     if not ents or not picked["state"] or not picked["event"]:
-        return {"ok": False, "err": "window has no contexted state row and origin "
-                                    "event row to mutate (entities=%d)" % len(ents)}
+        con = _connect()
+        diag = {
+            "entities": len(ents),
+            "state_rows_total": con.execute("SELECT COUNT(*) FROM states").fetchone()[0],
+            "state_rows_contexted": con.execute(
+                "SELECT COUNT(*) FROM states WHERE context_id_bin IS NOT NULL").fetchone()[0],
+            "state_rows_with_old": con.execute(
+                "SELECT COUNT(*) FROM states WHERE old_state_id IS NOT NULL "
+                "AND context_id_bin IS NOT NULL").fetchone()[0],
+            "events_total": con.execute("SELECT COUNT(*) FROM events").fetchone()[0],
+            "events_of_type": con.execute(
+                "SELECT COUNT(*) FROM events e JOIN event_types et "
+                "ON et.event_type_id=e.event_type_id WHERE et.event_type IN "
+                "('automation_triggered','call_service')").fetchone()[0],
+            "picked_state": picked["state"] is not None,
+            "picked_event": picked["event"] is not None,
+        }
+        con.close()
+        return {"ok": False, "err": "prerequisites not met", "diagnostic": diag}
 
     base_rows = await _render(hass, start, end, ents)
     base = _fingerprint(base_rows)
@@ -340,6 +379,7 @@ async def _cmd_closure(hass) -> dict:
 
     os.makedirs(OUT, exist_ok=True)
     rep = {"ha_version": _ha_version(), "window_hours": 6,
+           "relaxed_pick": relaxed,
            "processor_form": getattr(_render, "last_form", None),
            "entities_scoped": ents, "baseline_rows": len(base),
            "picked": {"state_id": picked["state"][0], "event_id": picked["event"][0]},
