@@ -19,11 +19,9 @@ a limitation; Q9 and Q15 map to E7 and E21, which the PI excluded.
 **The session's most consequential finding.** E4 measured the renderer dependency
 closure and it exposed three consumed fields that the paper's own recommended
 commitment scheme omits, plus two attack classes it misses 0/12 that the closure
-scheme catches 12/12. Recorded as `dec_01M0W9661FWX0GE20T3VD98S6W`, **awaiting PI
-ratification**: it revises the concrete scheme attached to contribution C3. The
-design and evaluation sections have been written to the proposed option so they
-are mutually consistent; reverting is a localized edit if the PI decides
-otherwise.
+scheme catches 12/12. **Ratified 2026-08-26** (`dec_01M0W9661FWX0GE20T3VD98S6W`,
+PI delegated): claim C3 rebound to version 3, the manuscript-versus-spine conflict
+resolved, and readiness now PASS for `submitted`.
 
 **A tension worth the PI's attention.** E5 (renderer-backed, 440 instances) finds
 that two single-primitive attacks reach misattribution at 0.50 against the
@@ -233,7 +231,7 @@ Done this pass: E10, E4 (P0), E3-B2c (P0), §8.14, §5.5, §3.3, §3.4, §8.1,
 appendix, four limitation paragraphs consolidated).
 
 Remaining, in order:
-7. **PI ratification of `dec_01M0W9661FWX0GE20T3VD98S6W`** (B2c as the
+7. ~~PI ratification of `dec_01M0W9661FWX0GE20T3VD98S6W`~~ **DONE 2026-08-26** (B2c as the
    recommended scheme). Blocks binding the revised C3 claim version.
 8. §12 RQ reorganisation · §11 contribution restructure · §9 related-work
    restructure by security assumption · §10 trusted/untrusted lists
