@@ -1,0 +1,216 @@
+{
+  "ha_version": "2026.7.4",
+  "target_diagnostic": [
+    {
+      "entity": "sun.sun",
+      "n_when_keys": 1,
+      "n_tts": 1,
+      "clean": "unknown",
+      "sample_when": [
+        "2026-08-25T21:41:41.358120+00:00"
+      ],
+      "sample_tts": [
+        1787694101.358
+      ]
+    },
+    {
+      "entity": "sun.sun",
+      "n_when_keys": 1,
+      "n_tts": 1,
+      "clean": "unknown",
+      "sample_when": [
+        "2026-08-25T23:29:21.920700+00:00"
+      ],
+      "sample_tts": [
+        1787700561.921
+      ]
+    },
+    {
+      "entity": "lock.kitchen_door",
+      "n_when_keys": 2,
+      "n_tts": 2,
+      "clean": "bare_service_call",
+      "sample_when": [
+        "2026-08-25T23:29:29.943409+00:00",
+        "2026-08-25T23:29:31.952316+00:00"
+      ],
+      "sample_tts": [
+        1787700569.943,
+        1787700571.952
+      ]
+    },
+    {
+      "entity": "input_boolean.owner_present",
+      "n_when_keys": 1,
+      "n_tts": 1,
+      "clean": "bare_service_call",
+      "sample_when": [
+        "2026-08-25T23:29:34.965590+00:00"
+      ],
+      "sample_tts": [
+        1787700574.966
+      ]
+    },
+    {
+      "entity": "automation.arrive_home",
+      "n_when_keys": 1,
+      "n_tts": 4,
+      "clean": "bare_service_call",
+      "sample_when": [
+        "2026-08-25T23:29:34.967929+00:00"
+      ],
+      "sample_tts": [
+        1787700574.968,
+        1787700574.97
+      ]
+    },
+    {
+      "entity": "input_boolean.owner_present",
+      "n_when_keys": 1,
+      "n_tts": 1,
+      "clean": "bare_service_call",
+      "sample_when": [
+        "2026-08-25T23:29:39.002263+00:00"
+      ],
+      "sample_tts": [
+        1787700579.002
+      ]
+    }
+  ],
+  "n_targets": 40,
+  "n_instances": 440,
+  "aborted": null,
+  "categories": {
+    "unknown": 123,
+    "innocent_automation": 70,
+    "innocent_user": 20,
+    "unrenderable": 60,
+    "bare_service_call": 130,
+    "conflicting_narrative": 37
+  },
+  "per_variant": {
+    "reparent_only": {
+      "n": 40,
+      "misattributed": 0,
+      "changed": 0,
+      "categories": {
+        "unknown": 10,
+        "bare_service_call": 26,
+        "innocent_automation": 4
+      }
+    },
+    "inject_only": {
+      "n": 40,
+      "misattributed": 0,
+      "changed": 0,
+      "categories": {
+        "unknown": 10,
+        "bare_service_call": 26,
+        "innocent_automation": 4
+      }
+    },
+    "inject_reparent": {
+      "n": 40,
+      "misattributed": 10,
+      "changed": 10,
+      "categories": {
+        "innocent_automation": 14,
+        "bare_service_call": 26
+      }
+    },
+    "principal_swap": {
+      "n": 40,
+      "misattributed": 20,
+      "changed": 35,
+      "categories": {
+        "innocent_user": 20,
+        "conflicting_narrative": 15,
+        "bare_service_call": 5
+      }
+    },
+    "dangling_parent": {
+      "n": 40,
+      "misattributed": 0,
+      "changed": 0,
+      "categories": {
+        "unknown": 10,
+        "bare_service_call": 26,
+        "innocent_automation": 4
+      }
+    },
+    "duplicate_context": {
+      "n": 40,
+      "misattributed": 20,
+      "changed": 31,
+      "categories": {
+        "innocent_automation": 24,
+        "conflicting_narrative": 11,
+        "bare_service_call": 5
+      }
+    },
+    "timestamp_shift": {
+      "n": 40,
+      "misattributed": 5,
+      "changed": 40,
+      "categories": {
+        "unrenderable": 20,
+        "unknown": 15,
+        "innocent_automation": 5
+      }
+    },
+    "retention_edge": {
+      "n": 40,
+      "misattributed": 5,
+      "changed": 40,
+      "categories": {
+        "unrenderable": 20,
+        "unknown": 15,
+        "innocent_automation": 5
+      }
+    },
+    "delete_only": {
+      "n": 30,
+      "misattributed": 0,
+      "changed": 30,
+      "categories": {
+        "unknown": 21,
+        "unrenderable": 5,
+        "bare_service_call": 4
+      }
+    },
+    "delete_reparent": {
+      "n": 30,
+      "misattributed": 0,
+      "changed": 30,
+      "categories": {
+        "unknown": 21,
+        "unrenderable": 5,
+        "bare_service_call": 4
+      }
+    },
+    "delete_inject": {
+      "n": 30,
+      "misattributed": 0,
+      "changed": 30,
+      "categories": {
+        "unknown": 21,
+        "unrenderable": 5,
+        "bare_service_call": 4
+      }
+    },
+    "full_laundering": {
+      "n": 30,
+      "misattributed": 10,
+      "changed": 30,
+      "categories": {
+        "conflicting_narrative": 11,
+        "innocent_automation": 10,
+        "unrenderable": 5,
+        "bare_service_call": 4
+      }
+    }
+  },
+  "renderer_confirmed_misattribution_rate": 0.1590909090909091,
+  "scope": "one home configuration; twelve variants across every eligible target actuation. The review asked for ten configurations; generalisation across configurations still rests on the generated sweep and its proxy.",
+  "ts": 1787701393.3910651
+}
