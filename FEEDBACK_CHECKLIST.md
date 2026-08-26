@@ -117,7 +117,7 @@ experiments E4/E5/E6.
 | E17 | Independent workload family | `[-]` | excluded by PI scope |
 | E18 | Scale to 10^7 | `[x]` | 10M nodes, 141k nodes/s, 285MB RSS |
 | E19 | Macro performance under load | `[-]` | excluded by PI scope |
-| E20 | Resource-envelope sensitivity | `[-]` | excluded (but 5.5 wording fix still owed) |
+| E20 | Resource-envelope sensitivity | `[-]` | excluded by PI scope; the §5.5 wording fix it owed is done (`Pi-class` appears nowhere) |
 | E21 | Crash consistency / anchor durability | `[-]` | excluded by PI scope |
 | E22 | Anchor protocol attack matrix | `[x]` | append-only holds; 4 weaknesses found |
 | E23 | Detection-window cost curve | `[x]` | 9 periods; W = P/2; duty flat ≥1s |
