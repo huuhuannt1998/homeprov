@@ -1,0 +1,78 @@
+{
+  "experiment": "E24 part 2 -- community install path executed end to end",
+  "mechanism_source": "HACS repositories/base.py download_repository_zip, read at commit c462d30",
+  "what_this_shows": "the install mechanism, replicated faithfully from the source, carries arbitrary Python into the hub process with no control in the way",
+  "what_this_does_not_show": "it does not drive the HACS client UI. HACS resolves repositories through the GitHub API, which needs a token and egress the testbed deliberately lacks.",
+  "origin": "local HTTP on loopback; nothing published anywhere",
+  "payload": "a benign probe that writes one marker file and reads a row count; the paper's offensive component is not delivered here and does not need to be",
+  "steps": [
+    {
+      "n": 1,
+      "step": "origin up",
+      "detail": "local archive endpoint on 127.0.0.1:57742, 1745 byte archive",
+      "t_s": 0.05
+    },
+    {
+      "n": 2,
+      "step": "fetch archive",
+      "detail": "1745 bytes over HTTP",
+      "t_s": 0.08,
+      "verified_signature": false,
+      "verified_hash": false,
+      "note": "HACS performs no signature or hash check at this point; measured in part 1 as five-for-five absent"
+    },
+    {
+      "n": 3,
+      "step": "extractall",
+      "detail": "2 files into the integration directory",
+      "t_s": 0.08,
+      "files": [
+        "manifest.json",
+        "__init__.py"
+      ]
+    },
+    {
+      "n": 4,
+      "step": "install",
+      "detail": "/config/custom_components/community_weather_pro/ populated",
+      "t_s": 0.22,
+      "note": "this is the point at which HACS's work is finished"
+    },
+    {
+      "n": 5,
+      "step": "enable",
+      "detail": "one line added to configuration.yaml",
+      "t_s": 0.35
+    },
+    {
+      "n": 6,
+      "step": "restart",
+      "detail": "hub restarting",
+      "t_s": 1.6
+    },
+    {
+      "n": 7,
+      "step": "EXECUTING IN HUB PROCESS",
+      "detail": "pid 78, recorder rows readable 137, recorder writable True",
+      "t_s": 6.76,
+      "proof": {
+        "executed_in_hub_process": true,
+        "pid": 78,
+        "ts": 1788161946.403424,
+        "recorder_rows_readable": 137,
+        "recorder_writable": true,
+        "can_read_config": true
+      }
+    }
+  ],
+  "elapsed_s": 7.1,
+  "in_process_execution_achieved": true,
+  "probe": {
+    "executed_in_hub_process": true,
+    "pid": 78,
+    "ts": 1788161946.403424,
+    "recorder_rows_readable": 137,
+    "recorder_writable": true,
+    "can_read_config": true
+  }
+}

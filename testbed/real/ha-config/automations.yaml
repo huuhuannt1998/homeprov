@@ -1,0 +1,39 @@
+# Automations instantiated from the blueprint Home Assistant SHIPS
+# (homeassistant/components/automation/blueprints/motion_light.yaml, authored by
+# Home Assistant, source_url on the core repository). These are not automations
+# we invented for the experiment: they are the canonical motion-activated-light
+# automation that real deployments run, pointed at the MQTT devices.
+#
+# The causal chain each one produces is exactly the structure this paper is
+# about: a motion sensor state change triggers the automation, the automation
+# calls light.turn_on, the device echoes the commanded state, and the recorder
+# writes rows whose context links them.
+- id: motion_light_hall
+  alias: Hallway motion light
+  use_blueprint:
+    path: homeassistant/motion_light.yaml
+    input:
+      motion_entity: binary_sensor.hallway_motion
+      light_target:
+        entity_id: light.hallway_light
+      no_motion_wait: 8
+
+- id: motion_light_kitchen
+  alias: Kitchen motion light
+  use_blueprint:
+    path: homeassistant/motion_light.yaml
+    input:
+      motion_entity: binary_sensor.kitchen_motion
+      light_target:
+        entity_id: light.kitchen_light
+      no_motion_wait: 6
+
+- id: motion_light_porch
+  alias: Porch motion light
+  use_blueprint:
+    path: homeassistant/motion_light.yaml
+    input:
+      motion_entity: binary_sensor.porch_motion
+      light_target:
+        entity_id: light.porch_light
+      no_motion_wait: 10
