@@ -1,0 +1,63 @@
+{
+ "what": "Reconciliation of the principal-swap oracles (coordinator step 1, 2026-10-02)",
+ "oracles": {
+  "e5_classify": {
+   "file": "testbed/real/ha-config/custom_components/homeprov_e5/__init__.py",
+   "lines": "93-131 (_classify), 497-508 (scoring)",
+   "rule": "a rendered row with ANY context_user_id is classed innocent_user (checked first); misattributed = named and principal != clean_principal",
+   "result": "principal_swap 88/88 (exp/out/e5_real_multiconfig.json)",
+   "stored_rows": "none (per_instance keeps only classifications), so e5 cannot be re-scored under another oracle"
+  },
+  "ec_principal": {
+   "file": "testbed/real/ha-config/custom_components/homeprov_ec/__init__.py",
+   "lines": "134-143 (_principal)",
+   "rule": "automation (context_entity_id) > service (context_domain+context_service) > user (context_user_id)",
+   "result": "principal moved 3/90 (exp/out/e_ps_auth_detection.json)"
+  },
+  "frontend_display": {
+   "package": "home-assistant-frontend 20260624.6 (in the hpr-hass image)",
+   "bundle": "hass_frontend/frontend_latest/13793.766a9ded7b508ab0.js (context resolution) and 43365.09c065b8dedf3b75.js (_updateUsers)",
+   "rule": "show a user only if context_user_id is a key of _userIdToName, built from person entities with a user_id plus (admins) the auth user list; else automation/script; else call_service -> integration; else no cause",
+   "basis": "code reading of the shipped bundle, transcribed into this file's display(); not a rendered screenshot"
+  }
+ },
+ "accounts_on_hub": {
+  "177db62efb414fbdb5af6e480c34a0b5": "Home Assistant Content",
+  "90b6f1f5983443c2b47f563e8f652752": "Alex Rivera (household)"
+ },
+ "person_entities": "none (/config/.storage/person absent)",
+ "e_ps_rows": {
+  "n": 90,
+  "api_row_gained_context_user_id": 90,
+  "written_id_matches_an_account": 0,
+  "displayed_cause_before": {
+   "None": 3,
+   "('integration', 'lock')": 87
+  },
+  "displayed_cause_after": {
+   "None": 3,
+   "('integration', 'lock')": 87
+  },
+  "displayed_cause_changed": 0,
+  "sample_clean": {
+   "when": "2026-10-02T13:49:12.253804+00:00",
+   "name": "Front Door",
+   "entity_id": "lock.front_door",
+   "state": "unlocked",
+   "context_event_type": "call_service",
+   "context_domain": "lock",
+   "context_service": "unlock"
+  },
+  "sample_after": {
+   "when": "2026-10-02T13:49:12.253804+00:00",
+   "name": "Front Door",
+   "entity_id": "lock.front_door",
+   "state": "unlocked",
+   "context_event_type": "call_service",
+   "context_domain": "lock",
+   "context_service": "unlock",
+   "context_user_id": "7a890266bec1a8b805d574cdb2472dce"
+  }
+ },
+ "statement": "After the swap the logbook API entry carries the random id as context_user_id (90/90), but the id matches no account or person (0/90), so the Activity view resolves the same cause as before: the lock integration's unlock call in 87/90 and no cause in 3/90. Displayed cause changed: 0/90."
+}

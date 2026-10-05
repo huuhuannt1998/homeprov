@@ -1,0 +1,150 @@
+{
+ "stage": 33,
+ "by_oracle": {
+  "attribution_only": {
+   "n": 3,
+   "n_found": 3,
+   "min_depth": 1,
+   "min_cost_rows": 1,
+   "min_cost_fields": 1,
+   "min_cost_bytes": 4152,
+   "all_detected": true,
+   "classes": [
+    "ctx_state"
+   ]
+  },
+  "plausible": {
+   "n": 3,
+   "n_found": 0,
+   "min_depth": null,
+   "min_cost_rows": null,
+   "min_cost_fields": null,
+   "min_cost_bytes": null,
+   "all_detected": null,
+   "classes": []
+  }
+ },
+ "n_deployments": 6,
+ "n_found": 3,
+ "max_depth_searched": 4,
+ "frontier_per_depth": 3000,
+ "results": [
+  {
+   "depth": 1,
+   "cost": {
+    "rows": 1,
+    "fields": 1,
+    "bytes": 4152
+   },
+   "classes": [
+    "ctx_state"
+   ],
+   "detected": true,
+   "sequences_examined": 16,
+   "seed": 81,
+   "oracle": "attribution_only"
+  },
+  {
+   "depth": null,
+   "sequences_examined": 6741,
+   "seed": 81,
+   "oracle": "plausible"
+  },
+  {
+   "depth": 1,
+   "cost": {
+    "rows": 1,
+    "fields": 1,
+    "bytes": 4152
+   },
+   "classes": [
+    "ctx_state"
+   ],
+   "detected": true,
+   "sequences_examined": 16,
+   "seed": 82,
+   "oracle": "attribution_only"
+  },
+  {
+   "depth": null,
+   "sequences_examined": 6741,
+   "seed": 82,
+   "oracle": "plausible"
+  },
+  {
+   "depth": 1,
+   "cost": {
+    "rows": 1,
+    "fields": 1,
+    "bytes": 4152
+   },
+   "classes": [
+    "ctx_state"
+   ],
+   "detected": true,
+   "sequences_examined": 16,
+   "seed": 83,
+   "oracle": "attribution_only"
+  },
+  {
+   "depth": null,
+   "sequences_examined": 6741,
+   "seed": 83,
+   "oracle": "plausible"
+  }
+ ],
+ "min_depth": 1,
+ "all_detected": true,
+ "primitive_classes_required": [
+  "ctx_state"
+ ],
+ "optimality": "upper bound; parameter space restricted to rows and contexts derived from the target, and the frontier is bounded, so a cheaper attack outside that set would not be found",
+ "capability": {
+  "capability_record": {
+   "schema_version": 1,
+   "actor_id": "mal_integration_v1",
+   "actor_position": "in_process_integration",
+   "powers": {
+    "db_read": true,
+    "db_write": true,
+    "fs_read_as_ha_uid": true,
+    "fs_write_as_ha_uid": true,
+    "python_exec_in_core": true,
+    "event_bus_listen": true,
+    "event_bus_emit": true,
+    "service_call": true,
+    "network_egress": false
+   },
+   "knowledge": {
+    "deployment_topology": "full",
+    "automation_configs": "full",
+    "anchor_schedule_known": false,
+    "anchor_key_known": false,
+    "victim_routine_model": "coarse"
+   },
+   "budget": {
+    "db_writes_max": 7,
+    "wallclock_window_s": 5,
+    "cpu_seconds_max": null
+   },
+   "constraints": {
+    "host_root": false,
+    "cross_uid_write": false,
+    "anchor_key_access": false,
+    "external_anchor_retraction": false,
+    "clock_control": false,
+    "cap_linux_immutable": false,
+    "cap_bpf": false
+   },
+   "substrate": {
+    "kind": "native_aarch64_container",
+    "envelope": "Pi-shaped cgroup (cpus/memory/blkio)",
+    "note": "NOT a Raspberry Pi; absolute latency is not claimed as Pi latency"
+   },
+   "provenance": {
+    "rka_mission": null,
+    "seed": 0
+   }
+  }
+ }
+}

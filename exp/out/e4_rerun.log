@@ -1,0 +1,33 @@
+== preflight ==
+[32m  ok    docker daemon[0m
+[32m  ok    no competing container workloads[0m
+[32m  ok    disk headroom (90GB free)[0m
+[32m  ok    compose file parses[0m
+[32m  ok    harness files present[0m
+== bringing the substrate up ==
+  waiting for the hub to bind its entities
+[32m  ok    scenario bound[0m
+  settling for 90s so the blueprint fires and MQTT retains settle
+
+==============================================================
+== E4ROLES  (~2 min)  conditional-role retests, and which roles this substrate exhibits
+==============================================================
+== E4 conditional-role retests, on the real substrate ==
+{"ok": true, "retested": 2, "now_relevant": 0, "out": "e4_roles.json"}
+  -> exp/out/e4_real_roles.json
+[32m-- E4ROLES ok in 16s[0m
+
+==============================================================
+== E4PARENT  (~2 min)  constructive test for states.context_parent_id_bin
+==============================================================
+== E4 constructive test for states.context_parent_id_bin ==
+   No natural row here both opens its own context and carries a
+   resolvable parent, so the role is constructed and rolled back.
+{"ok": true, "attribution_relevant": false, "effect": {"rows_before": 597, "rows_after": 597, "vanished": 0, "appeared": 0, "attribution_changed": 0, "examples": []}}
+  -> exp/out/e4_real_parentrole.json
+[32m-- E4PARENT ok in 15s[0m
+
+==============================================================
+[32mall stages completed[0m
+Manifest: <artifact-root>/exp/out/run_all_manifest.json
+Logs:     <artifact-root>/exp/out/run_all_logs/

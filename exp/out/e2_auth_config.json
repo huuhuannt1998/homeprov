@@ -1,0 +1,78 @@
+{
+ "experiment": "E2 in-process defender blinding, re-run under the AUTHENTICATED anchor (coordinator follow-up, 2026-10-02)",
+ "what": "testbed/real/run_experiments.sh E2 with the new output-path parameters HPR_E2_EXTERNAL / HPR_E2_RESULT (defaults unchanged, published files untouched), under hpr-anchord:sig / hpr-monitor:sig with a fresh key on fresh volumes; then a read-only seal check (e2_seal_check.py, text below) answering the question exp/out/e2_real_boundary.json answers.",
+ "runner_stdout": [
+  "== E2 in-process defender subversion, on the real substrate ==",
+  "   the monitor now runs in its OWN CONTAINER with /config read-only,",
+  "   which is stricter than the original testbed's separate process.",
+  "-- 1. install the censoring hook (rebinds one module-level name)",
+  "{\"ok\": true, \"installed\": true, \"hook\": \"homeprov._graph\"}",
+  "-- 2. adversary actuates WHILE censoring its own context",
+  "{\"ok\": true, \"ctx\": \"01a0fcf5febbc142193344cd63aa35a4\", \"ulid\": \"01M3YFBZNVR511JCT4SNHTMDD4\", \"echoed_ctx\": null, \"echo_was_separate_context\": false, \"censored_contexts\": 1, \"note\": \"on a real MQTT transport the command and the resulting state row carry different contexts; both are censored\"}",
+  "-- 3. what the IN-PROCESS defender can see",
+  "{\"ok\": true, \"module_is_same_object\": true, \"patched_flag\": true, \"graph_name\": \"_censored\", \"n_rows_via_patched_graph\": 972853, \"drop_ctx\": [\"01a0fcf5febbc142193344cd63aa35a4\"], \"n_rows_matching_drop\": 1, \"cursor\": 1790950383.6756918}",
+  "-- 4. what the EXTERNAL monitor saw (own container, /config read-only)",
+  "   adversary context: 01a0fcf5febbc142193344cd63aa35a4",
+  "   anchor records: 21",
+  "   anchor holds 21 sealed records",
+  "   -> ../../exp/out/e2_auth_real_external.json",
+  "  (no e2_result.json produced)"
+ ],
+ "runner_outputs": {
+  "exp/out/e2_auth_real_external.json": "7796d3e5d9c524f5b8c3825c56d21ab6d8b7ada44a811d6a217fd4240e1dfb75",
+  "e2_auth_real_result.json": "not produced: the component writes no e2_result.json (the published run has no e2_real_result.json either); the component's acks are in runner_stdout"
+ },
+ "seal_check": {
+  "file": "exp/out/e2_auth_seal_check.json",
+  "sha256": "786ed2005163be650af4bb19457297b8b17eae5dc2ad42ad66f06947d93b7552",
+  "adversary_second_sealed": true,
+  "sealed_root_includes_adversary_row": true,
+  "per_second": [
+   {
+    "second": 1790950375,
+    "anchored": true,
+    "anchored_n": 2,
+    "anchor_seq": 18,
+    "recomputed_n": 2,
+    "root_matches_recorder": true
+   }
+  ],
+  "script": "\"\"\"Read-only check for the E2 authenticated run: did the external monitor seal\nthe second that contains the adversary's censored actuation?\n\nSame question the published exp/out/e2_real_boundary.json answers with\n'adversary_second_sealed'. Nothing here writes to the recorder or the anchor:\n  1. snapshot the live recorder with SQLite's backup API (e_c_write_time's own\n     snapshot_recorder), find every row carrying the adversary's context;\n  2. take the FIRST anchored root for each such second from the saved chain of the\n     authenticated anchor;\n  3. recompute that second's segment from the snapshot with the SHIPPED monitor's\n     load()/commit() and compare n and acc.\n\"\"\"\nimport json\nimport os\nimport sqlite3\nimport sys\n\nROOT = \"<artifact-root>\"\nsys.path.insert(0, os.path.join(ROOT, \"exp\"))\nfrom stages.e_c_write_time import _load_monitor, snapshot_recorder  # noqa: E402\n\nctx_hex, chain_path, out_path = sys.argv[1], sys.argv[2], sys.argv[3]\nmonitor = _load_monitor()\ndb, t_snap = snapshot_recorder()\nok, why, _ = monitor.validate_copy(db)\n\ncon = sqlite3.connect(db)\nctx = bytes.fromhex(ctx_hex)\nev = con.execute(\"SELECT e.event_id, et.event_type, e.time_fired_ts FROM events e \"\n                 \"JOIN event_types et ON et.event_type_id=e.event_type_id \"\n                 \"WHERE e.context_id_bin=?\", (ctx,)).fetchall()\nst = con.execute(\"SELECT s.state_id, sm.entity_id, s.last_updated_ts FROM states s \"\n                 \"JOIN states_meta sm ON sm.metadata_id=s.metadata_id \"\n                 \"WHERE s.context_id_bin=?\", (ctx,)).fetchall()\ncon.close()\nrows = ([{\"kind\": \"event\", \"id\": e, \"type\": t, \"ts\": ts} for e, t, ts in ev]\n        + [{\"kind\": \"state\", \"id\": s, \"entity\": n, \"ts\": ts} for s, n, ts in st])\nseconds = sorted({int(r[\"ts\"]) for r in rows})\n\nfirst = {}\nfor line in open(chain_path):\n    line = line.strip()\n    if not line:\n        continue\n    rec = json.loads(line)\n    p = rec.get(\"payload\") or {}\n    for g, segs in (p.get(\"sealed\") or {}).items():\n        if isinstance(segs, dict):\n            for s, v in segs.items():\n                first.setdefault((g, str(s)), {**v, \"seq\": rec.get(\"seq\"),\n                                               \"anchored_at\": p.get(\"ts\")})\n\nphi = monitor.commit(monitor.load(db))\nchecks = []\nfor sec in seconds:\n    a = first.get((\"second\", str(sec)))\n    r = (phi.get(\"second\") or {}).get(str(sec))\n    checks.append({\"second\": sec, \"anchored\": a is not None,\n                   \"anchored_n\": a and a.get(\"n\"), \"anchor_seq\": a and a.get(\"seq\"),\n                   \"recomputed_n\": r and r.get(\"n\"),\n                   \"root_matches_recorder\": bool(a and r and a.get(\"acc\") == r.get(\"acc\")\n                                                 and a.get(\"n\") == r.get(\"n\"))})\nout = {\"adversary_context\": ctx_hex, \"recorder_snapshot_valid\": ok, \"reason\": why,\n       \"recorder_snapshot_at\": t_snap, \"adversary_rows\": rows,\n       \"adversary_seconds\": seconds, \"per_second\": checks,\n       \"adversary_second_sealed\": bool(checks) and all(c[\"anchored\"] for c in checks),\n       \"sealed_root_includes_adversary_row\": bool(checks)\n       and all(c[\"root_matches_recorder\"] for c in checks),\n       \"chain_records\": sum(1 for l in open(chain_path) if l.strip()),\n       \"how\": __doc__}\njson.dump(out, open(out_path, \"w\"), indent=1)\nprint(json.dumps({k: out[k] for k in (\"adversary_seconds\", \"adversary_second_sealed\",\n                                      \"sealed_root_includes_adversary_row\",\n                                      \"chain_records\")}),\n      json.dumps(checks))\n",
+  "script_sha256": "1e22785ae13f2693722976e2a73b37e0812639c5263f9aa0ff8361f1b9b0bfd4"
+ },
+ "configuration_log": [
+  "2026-10-02T14:10:57Z load_before: 10:10  up 31 days, 14:08, 2 users, load averages: 10.92 10.65 9.23",
+  "2026-10-02T14:10:57Z git_head: 8952cc10546abe50eee53ce48488dd78e90b0cc3",
+  "2026-10-02T14:10:57Z key_fingerprint_sha256_16: e8a0ae73a99abb11 (key itself not recorded)",
+  "2026-10-02T14:10:57Z stopping and renaming original anchor/monitor",
+  "2026-10-02T14:11:02Z anchor image: hpr-anchord:sig sha256:196961946d8bf9f70830065c17f1e0f84f27d4c69ac28a6ada5079f9ad59776d",
+  "2026-10-02T14:11:02Z monitor image: hpr-monitor:sig sha256:e934d45097323e422cebfa0dd680c1f5d5389e93d04078042e94bfeaf69802f7",
+  "2026-10-02T14:11:22Z probe_from_hub: {\"untagged\": 401, \"forged_tag\": 401}",
+  "2026-10-02T14:12:02Z monitor_log_head: {\"tick\": 1, \"n_nodes\": 4897, \"copy_ms\": 49.899, \"load_ms\": 390.678, \"commit_ms\": 20.306, \"sealed_new\": {\"second\": 994, \"minute\": 71, \"hour\": 1}, \"anchor\": {\"ok\": true, \"seq\": 1}} {\"tick\": 2, \"n_nodes\": 4903, \"copy_ms\": 74.085, \"load_ms\": 301.062, \"commit_ms\": 22.211, \"sealed_new\": {\"second\": 2}, \"anchor\": {\"ok\": true, \"seq\": 2}} {\"tick\": 3, \"n_nodes\": 4903, \"copy_ms\": 77.579, \"load_ms\": 379.595, \"commit_ms\": 20.555, \"sealed_new\": {}} ",
+  "2026-10-02T14:12:02Z chain_lines_before_run: 10",
+  "2026-10-02T14:12:02Z starting runner E2 (authenticated), new output names",
+  "2026-10-02T14:14:16Z runner exit: 0",
+  "2026-10-02T14:14:16Z chain_lines_after_run: 28",
+  "2026-10-02T14:14:16Z done",
+  "2026-10-02T14:14:16Z teardown: removing auth containers, restoring originals",
+  "2026-10-02T14:14:18Z restored: hpr-monitor hpr-monitor:1 Up Less than a second;hpr-anchord hpr-anchord:1 Up 1 second;"
+ ],
+ "anchor_chain": {
+  "file": "exp/out/e2_auth_anchor_chain.jsonl.gz",
+  "records": 28,
+  "sha256_uncompressed": "40eeb79e13c9e0bfb08ff4dbf8ac79b7444cd96e3a64489174ac16debf09b134"
+ },
+ "refusal_log": {
+  "file": "exp/out/e2_auth_anchor_refusals.jsonl",
+  "records": 2,
+  "by_reason": {
+   "missing_signature": 1,
+   "bad_signature": 1
+  }
+ },
+ "wrapper_script": "#!/bin/bash\n# E2 in-process-defender blinding demonstration, re-run under the SHIPPED\n# authenticated anchor and monitor. Same container-swap recipe as the E-D/E-C/E-PS\n# authenticated runs. The runner writes to NEW file names via the HPR_E2_EXTERNAL /\n# HPR_E2_RESULT parameters, so the published e2_real_external.json / e2_real_result.json\n# are never overwritten. Originals stopped+renamed, never removed, restored on EXIT.\nset -u\nREPO=<artifact-root>\nOUT=$REPO/exp/out\nSP=<scratch>/hp-e2-auth\nNET=homeprov-real_hp-real\nVCHAIN=hpr-auth-e2-chain; VPUB=hpr-auth-e2-pub; VSCR=hpr-auth-e2-scratch\nMETA=$SP/auth_meta.log\n: > \"$META\"\nnote() { echo \"$(date -u +%FT%TZ) $*\" | tee -a \"$META\"; }\n\nfor f in e2_auth_real_external.json e2_auth_real_result.json; do\n  [ -e \"$OUT/$f\" ] && { echo \"REFUSING: $OUT/$f exists\"; exit 3; }\ndone\n\nrestore() {\n  note \"teardown: removing auth containers, restoring originals\"\n  docker rm -f hpr-anchord hpr-monitor >/dev/null 2>&1\n  docker rename hpr-anchord-orig-e2 hpr-anchord >/dev/null 2>&1\n  docker rename hpr-monitor-orig-e2 hpr-monitor >/dev/null 2>&1\n  docker start hpr-anchord hpr-monitor >/dev/null 2>&1\n  note \"restored: $(docker ps --format '{{.Names}} {{.Image}} {{.Status}}' | grep -E '^hpr-(anchord|monitor) ' | tr '\\n' ';')\"\n}\n\nnote \"load_before: $(uptime)\"\nnote \"git_head: $(git -C $REPO rev-parse HEAD)\"\nKEY=$(openssl rand -hex 32)\nnote \"key_fingerprint_sha256_16: $(printf '%s' \"$KEY\" | shasum -a 256 | cut -c1-16) (key itself not recorded)\"\n\nnote \"stopping and renaming original anchor/monitor\"\ndocker stop hpr-monitor hpr-anchord >/dev/null || { echo \"stop failed\"; exit 4; }\ndocker rename hpr-anchord hpr-anchord-orig-e2 || exit 4\ndocker rename hpr-monitor hpr-monitor-orig-e2 || { docker rename hpr-anchord-orig-e2 hpr-anchord; exit 4; }\ntrap restore EXIT\ntrap 'exit 130' INT TERM HUP\n\nfor v in $VCHAIN $VPUB $VSCR; do docker volume create $v >/dev/null; done\ndocker run -d --name hpr-anchord --network $NET --network-alias anchor \\\n  -e HOMEPROV_ANCHOR_KEY=\"$KEY\" -v $VCHAIN:/anchor -v $VPUB:/published \\\n  hpr-anchord:sig >/dev/null || exit 5\ndocker run -d --name hpr-monitor --network $NET --network-alias monitor \\\n  -e HOMEPROV_DB=/cfg/home-assistant_v2.db -e HOMEPROV_ANCHOR=http://hpr-anchord:9900/append \\\n  -e HOMEPROV_PERIOD=5 -e HOMEPROV_SCRATCH=/scratch -e HOMEPROV_ANCHOR_KEY=\"$KEY\" \\\n  -v homeprov-real_hpr-config:/cfg:ro -v $VSCR:/scratch hpr-monitor:sig >/dev/null || exit 5\nnote \"anchor image: $(docker inspect hpr-anchord --format '{{.Config.Image}} {{.Image}}')\"\nnote \"monitor image: $(docker inspect hpr-monitor --format '{{.Config.Image}} {{.Image}}')\"\nsleep 20\n\nPROBE='import urllib.request,json\ndef post(h):\n    r=urllib.request.Request(\"http://hpr-anchord:9900/append\",data=b\"{\\\"sealed\\\": {}}\",method=\"POST\",headers=h)\n    try:\n        with urllib.request.urlopen(r,timeout=5) as x: return x.status\n    except urllib.error.HTTPError as e: return e.code\n    except Exception as e: return repr(e)[:80]\nprint(json.dumps({\"untagged\":post({\"Content-Type\":\"application/json\"}),\"forged_tag\":post({\"Content-Type\":\"application/json\",\"X-HP-Auth\":\"0\"*64})}))'\nnote \"probe_from_hub: $(docker exec hpr-hass python3 -c \"$PROBE\")\"\nsleep 40\nnote \"monitor_log_head: $(docker logs hpr-monitor 2>&1 | head -3 | cut -c1-400 | tr '\\n' ' ')\"\nnote \"chain_lines_before_run: $(docker exec hpr-anchord sh -c 'wc -l < /anchor/chain.jsonl')\"\n\nnote \"starting runner E2 (authenticated), new output names\"\ncd $REPO/testbed/real && \\\n  HPR_E2_EXTERNAL=../../exp/out/e2_auth_real_external.json \\\n  HPR_E2_RESULT=e2_auth_real_result.json \\\n  ./run_experiments.sh E2 > $SP/e2_auth_run.log 2>&1\nnote \"runner exit: $?\"\nnote \"chain_lines_after_run: $(docker exec hpr-anchord sh -c 'wc -l < /anchor/chain.jsonl')\"\ndocker exec hpr-anchord cat /anchor/chain.jsonl > $SP/e2_auth_chain.jsonl 2>/dev/null\ndocker exec hpr-anchord sh -c 'cat /anchor/refusals.jsonl 2>/dev/null' > $SP/e2_auth_refusals.jsonl\ndocker logs hpr-monitor > $SP/e2_auth_monitor.log 2>&1\nnote \"done\"\n",
+ "wrapper_script_sha256": "55830fb46a19019cbd9d9a99a17732d0c9122f6c1738ea9a8f1d7ea68a7478ff",
+ "runner_change": "testbed/real/run_experiments.sh E2 case: output paths parameterised (+9/-3 lines), defaults equal to the published names",
+ "load_note": "host load average about 10.9 at start (other workloads on the machine)",
+ "not_shown": "as in the published run, the deletion step (removing the censored row so the database matches the defender's view) was not performed"
+}

@@ -1,0 +1,278 @@
+{
+ "stage": 26,
+ "rows": [
+  {
+   "attack": "append duplicate segment",
+   "http": 200,
+   "accepted": true,
+   "chain_lines": [
+    0,
+    0
+   ],
+   "chain_bytes": [
+    0,
+    0
+   ],
+   "silent_rewrite": false,
+   "appended": 0,
+   "resp": "{\"ok\": true, \"seq\": 1}",
+   "note": "same segment id appended twice"
+  },
+  {
+   "attack": "append duplicate segment (again)",
+   "http": 200,
+   "accepted": true,
+   "chain_lines": [
+    0,
+    0
+   ],
+   "chain_bytes": [
+    0,
+    0
+   ],
+   "silent_rewrite": false,
+   "appended": 0,
+   "resp": "{\"ok\": true, \"seq\": 2}",
+   "note": ""
+  },
+  {
+   "attack": "conflicting root, same segment",
+   "http": 200,
+   "accepted": true,
+   "chain_lines": [
+    0,
+    0
+   ],
+   "chain_bytes": [
+    0,
+    0
+   ],
+   "silent_rewrite": false,
+   "appended": 0,
+   "resp": "{\"ok\": true, \"seq\": 3}",
+   "note": "different accumulator for an already-anchored segment"
+  },
+  {
+   "attack": "future segment",
+   "http": 200,
+   "accepted": true,
+   "chain_lines": [
+    0,
+    0
+   ],
+   "chain_bytes": [
+    0,
+    0
+   ],
+   "silent_rewrite": false,
+   "appended": 0,
+   "resp": "{\"ok\": true, \"seq\": 4}",
+   "note": ""
+  },
+  {
+   "attack": "stale segment",
+   "http": 200,
+   "accepted": true,
+   "chain_lines": [
+    0,
+    0
+   ],
+   "chain_bytes": [
+    0,
+    0
+   ],
+   "silent_rewrite": false,
+   "appended": 0,
+   "resp": "{\"ok\": true, \"seq\": 5}",
+   "note": ""
+  },
+  {
+   "attack": "root replay (verbatim resend)",
+   "http": 200,
+   "accepted": true,
+   "chain_lines": [
+    0,
+    0
+   ],
+   "chain_bytes": [
+    0,
+    0
+   ],
+   "silent_rewrite": false,
+   "appended": 0,
+   "resp": "{\"ok\": true, \"seq\": 6}",
+   "note": ""
+  },
+  {
+   "attack": "out-of-order sequence",
+   "http": 200,
+   "accepted": true,
+   "chain_lines": [
+    0,
+    0
+   ],
+   "chain_bytes": [
+    0,
+    0
+   ],
+   "silent_rewrite": false,
+   "appended": 0,
+   "resp": "{\"ok\": true, \"seq\": 7}",
+   "note": "client-supplied seq"
+  },
+  {
+   "attack": "fake lifecycle marker",
+   "http": 200,
+   "accepted": true,
+   "chain_lines": [
+    0,
+    0
+   ],
+   "chain_bytes": [
+    0,
+    0
+   ],
+   "silent_rewrite": false,
+   "appended": 0,
+   "resp": "{\"ok\": true, \"seq\": 8}",
+   "note": "declares a purge over all time"
+  },
+  {
+   "attack": "duplicate marker",
+   "http": 200,
+   "accepted": true,
+   "chain_lines": [
+    0,
+    0
+   ],
+   "chain_bytes": [
+    0,
+    0
+   ],
+   "silent_rewrite": false,
+   "appended": 0,
+   "resp": "{\"ok\": true, \"seq\": 9}",
+   "note": ""
+  },
+  {
+   "attack": "PUT rewrite",
+   "http": 405,
+   "accepted": false,
+   "chain_lines": [
+    0,
+    0
+   ],
+   "chain_bytes": [
+    0,
+    0
+   ],
+   "silent_rewrite": false,
+   "appended": 0,
+   "resp": "{\"error\": \"append-only store\"}",
+   "note": ""
+  },
+  {
+   "attack": "DELETE chain",
+   "http": 405,
+   "accepted": false,
+   "chain_lines": [
+    0,
+    0
+   ],
+   "chain_bytes": [
+    0,
+    0
+   ],
+   "silent_rewrite": false,
+   "appended": 0,
+   "resp": "{\"error\": \"append-only store\"}",
+   "note": ""
+  },
+  {
+   "attack": "PATCH chain",
+   "http": 405,
+   "accepted": false,
+   "chain_lines": [
+    0,
+    0
+   ],
+   "chain_bytes": [
+    0,
+    0
+   ],
+   "silent_rewrite": false,
+   "appended": 0,
+   "resp": "{\"error\": \"append-only store\"}",
+   "note": ""
+  },
+  {
+   "attack": "GET head (read)",
+   "http": 200,
+   "accepted": true,
+   "chain_lines": [
+    0,
+    0
+   ],
+   "chain_bytes": [
+    0,
+    0
+   ],
+   "silent_rewrite": false,
+   "appended": 0,
+   "resp": "{\"seq\": 9, \"head\": {\"payload\": {\"marker\": {\"hi\": 9000000000.0, \"kind\": \"PURGE\", ",
+   "note": ""
+  },
+  {
+   "attack": "truncate via path traversal",
+   "http": 405,
+   "accepted": false,
+   "chain_lines": [
+    0,
+    0
+   ],
+   "chain_bytes": [
+    0,
+    0
+   ],
+   "silent_rewrite": false,
+   "appended": 0,
+   "resp": "{\"error\": \"only POST /append exists\"}",
+   "note": ""
+  },
+  {
+   "attack": "anchor flood (300 appends)",
+   "http": null,
+   "accepted": true,
+   "chain_lines": [
+    0,
+    0
+   ],
+   "chain_bytes": [
+    0,
+    0
+   ],
+   "silent_rewrite": false,
+   "appended": 0,
+   "resp": "300/300 accepted in 0.2s (1459/s)",
+   "note": "unauthenticated write amplification"
+  },
+  {
+   "attack": "4 concurrent clients x40",
+   "http": null,
+   "accepted": true,
+   "chain_lines": [
+    0,
+    0
+   ],
+   "chain_bytes": [
+    0,
+    0
+   ],
+   "silent_rewrite": false,
+   "appended": 0,
+   "resp": "expected 160 appended, errors=0",
+   "note": "interleaving / lost update"
+  }
+ ],
+ "any_silent_rewrite": false
+}

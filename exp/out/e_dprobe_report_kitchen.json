@@ -1,0 +1,88 @@
+{
+  "experiment": "E-C",
+  "substrate": "real (mosquitto + MQTT discovery + shipped blueprint)",
+  "room": "kitchen",
+  "target": "lock.front_door",
+  "innocent_party": "automation.kitchen_motion_light",
+  "household_member_user_id": "90b6f1f5983443c2b47f563e8f652752",
+  "household_member_name": "Alex Rivera (household)",
+  "n_trials_requested": 1,
+  "arms": [
+    "PU"
+  ],
+  "t_start": 1789706752.5866601,
+  "trials": [
+    {
+      "arm": "PU",
+      "trial": 0,
+      "strategy": "post-commit laundering of an ANCHORED row authored by user:Alex Rivera (household)",
+      "authored_by": "user:Alex Rivera (household)",
+      "author_context": "01M2SDCQ1RMAZJJMS8FJEAMGZC",
+      "row_before": {
+        "state_id": 377198,
+        "ts": 1789706787.9002764,
+        "context_id_bin": "01a0b2d65c38a2bf2953287c9caa43ec",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 377198,
+        "ts": 1789706787.9002764,
+        "context_id_bin": "01a0b2d65c38a2bf2953287c9caa43ec",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-09-18T04:46:27.900276+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-09-18T04:46:27.900276+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        377198
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a0b2d6331cde42",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-09-18T04:46:27.900276+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Kitchen motion light",
+          "context_message": "triggered by state of binary_sensor.kitchen_motion",
+          "context_entity_id": "automation.kitchen_motion_light",
+          "context_entity_id_name": "Kitchen motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.kitchen_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.kitchen_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    }
+  ],
+  "t_end": 1789706921.1258142
+}

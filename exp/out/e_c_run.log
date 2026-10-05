@@ -1,0 +1,42 @@
+== E-C write-time forgery, rooms: porch hallway kitchen, trials/arm: 10 ==
+  anchor records before: 51857
+-- configuration: porch --
+{"ok": true, "n": 50, "room": "porch", "member": "90b6f1f5983443c2b47f563e8f652752"}
+  -> exp/out/e_c_report_porch.json
+-- configuration: hallway --
+{"ok": true, "n": 50, "room": "hallway", "member": "90b6f1f5983443c2b47f563e8f652752"}
+  -> exp/out/e_c_report_hallway.json
+-- configuration: kitchen --
+{"ok": true, "n": 50, "room": "kitchen", "member": "90b6f1f5983443c2b47f563e8f652752"}
+  -> exp/out/e_c_report_kitchen.json
+  settling 90s so the final segments seal and anchor
+  anchor records after: 52271
+-- aggregate + verify --
+
+== E-C write-time forgery ==
+  window 2224s, 959 anchored second-segments, 39 minute-segments
+  recorder copy valid: True (ok)
+  recorder errors in window: 0 SQLAlchemy, 0 recorder ERROR lines
+  W1   n=30  minted Context(user_id=<household member>)
+        misattribution 30/30 = 1.000  CI [0.884, 1.000]
+        HOMEPROV detection (second) 0/30 = 0.000  CI [0.000, 0.116]
+        HOMEPROV detection (minute) 0/30 = 0.000  CI [0.000, 0.116]
+  W2   n=30  minted parent context + fabricated automation_triggered
+        misattribution 0/30 = 0.000  CI [0.000, 0.116]
+        HOMEPROV detection (second) 0/30 = 0.000  CI [0.000, 0.116]
+        HOMEPROV detection (minute) 0/30 = 0.000  CI [0.000, 0.116]
+  W2b  n=30  minted context id shared with a fabricated automation_triggered
+        misattribution 30/30 = 1.000  CI [0.884, 1.000]
+        HOMEPROV detection (second) 0/30 = 0.000  CI [0.000, 0.116]
+        HOMEPROV detection (minute) 0/30 = 0.000  CI [0.000, 0.116]
+  W3   n=30  recorder write-path hook (module-level symbol rebind)
+        misattribution 30/30 = 1.000  CI [0.884, 1.000]
+        HOMEPROV detection (second) 0/30 = 0.000  CI [0.000, 0.116]
+        HOMEPROV detection (minute) 10/30 = 0.333  CI [0.173, 0.528]
+  P    n=30  POST-COMMIT control: S1 laundering of an already-anchored row
+        HOMEPROV detection (second) 30/30 = 1.000  CI [0.884, 1.000]
+        HOMEPROV detection (minute) 30/30 = 1.000  CI [0.884, 1.000]
+  benign floor (second): 3/810 = 0.004  CI [0.001, 0.011]
+  benign floor (minute): 0/10 = 0.000  CI [0.000, 0.308]
+  -> exp/out/e_c_write_time.json
+  digest 4091b12cc3918f3cd4bbde7dce77ff11f43933a85ac042a92b30b773cac49d6a

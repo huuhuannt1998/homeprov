@@ -1,0 +1,105 @@
+== preflight ==
+[32m  ok    docker daemon[0m
+[32m  ok    no competing container workloads[0m
+[32m  ok    disk headroom (90GB free)[0m
+[32m  ok    compose file parses[0m
+[32m  ok    harness files present[0m
+== bringing the substrate up ==
+  waiting for the hub to bind its entities
+[32m  ok    scenario bound[0m
+  settling for 90s so the blueprint fires and MQTT retains settle
+
+==============================================================
+== binding  (~1 min)  entity binding validates, or every later stage silently measures nothing
+==============================================================
+== scenario binding ==
+{
+  "bound": true,
+  "missing": [],
+  "present": 11
+}  -> exp/out/scenario_binding.json
+[32m-- binding ok in 0s[0m
+[33m-- E25: already done (stage34_realchar.json), skipping. --force to redo.[0m
+[33m-- E4: already done (e4_real_closure.json), skipping. --force to redo.[0m
+
+==============================================================
+== E4ROLES  (~10 min)  conditional-role retests, and which roles this substrate exhibits
+==============================================================
+== E4 conditional-role retests, on the real substrate ==
+{"ok": true, "retested": 0, "now_relevant": 0, "out": "e4_roles.json"}
+  -> exp/out/e4_real_roles.json
+[31m-- E4ROLES exited 0 but its output is missing or invalid:[0m
+[31m   exists but fails: 'roles_exhibited' in d[0m
+[31m   Treat that as a failure: a stage that measures nothing exits cleanly.[0m
+[33m   continuing to the next stage[0m
+
+==============================================================
+== E4PARENT  (~10 min)  constructive test for states.context_parent_id_bin
+==============================================================
+== E4 constructive test for states.context_parent_id_bin ==
+   No natural row here both opens its own context and carries a
+   resolvable parent, so the role is constructed and rolled back.
+{"ok": false, "err": "no render-eligible context-origin state row"}
+  (no e4_parentrole.json produced)
+[31m-- E4PARENT exited 0 but its output is missing or invalid:[0m
+[31m   no e4_real_parentrole.json yet[0m
+[31m   Treat that as a failure: a stage that measures nothing exits cleanly.[0m
+[33m   continuing to the next stage[0m
+
+==============================================================
+== E5  (~45 min)  twelve-variant renderer-backed sweep, three configurations
+==============================================================
+== E5 renderer-backed attack evaluation, rooms: porch hallway kitchen ==
+-- configuration: porch --
+{"ok": true, "n_instances": 360, "aborted": false, "misattribution_rate": 0.14166666666666666}
+  -> exp/out/e5_real_renderer_porch.json
+-- configuration: hallway --
+{"ok": true, "n_instances": 360, "aborted": false, "misattribution_rate": 0.2833333333333333}
+  -> exp/out/e5_real_renderer_hallway.json
+-- configuration: kitchen --
+{"ok": true, "n_instances": 300, "aborted": false, "misattribution_rate": 0.16333333333333333}
+  -> exp/out/e5_real_renderer_kitchen.json
+-- pooled across configurations --
+  porch     innocent=automation.porch_motion_light bound=True targets=30 rate=0.142
+  hallway   innocent=automation.hallway_motion_light bound=True targets=30 rate=0.283
+  kitchen   innocent=automation.kitchen_motion_light bound=True targets=25 rate=0.163
+
+  variant                 n   chg   mis    rate   95% CI
+  principal_swap         85    85    85   1.000   [0.958, 1.000]
+  delete_reparent        85    85    39   0.459   [0.350, 0.570]
+  full_laundering        85    85    39   0.459   [0.350, 0.570]
+  duplicate_context      85    85    39   0.459   [0.350, 0.570]
+  delete_only            85    85     0   0.000   [0.000, 0.042]
+  reparent_only          85     0     0   0.000   [0.000, 0.042]
+  inject_only            85     0     0   0.000   [0.000, 0.042]
+  delete_inject          85    85     0   0.000   [0.000, 0.042]
+  inject_reparent        85     0     0   0.000   [0.000, 0.042]
+  dangling_parent        85     0     0   0.000   [0.000, 0.042]
+  timestamp_shift        85    85     0   0.000   [0.000, 0.042]
+  retention_edge         85    85     0   0.000   [0.000, 0.042]
+  -> exp/out/e5_real_multiconfig.json
+[32m-- E5 ok in 353s[0m
+[33m-- E2: already done (e2_real_external.json), skipping. --force to redo.[0m
+[33m-- S1: already done (s1_real_multiconfig.json), skipping. --force to redo.[0m
+
+==============================================================
+== BENIGN  (~10 min)  false alarms under real device churn
+==============================================================
+== benign catalogue, false alarms on real device churn ==
+   real service calls over the broker, not helper toggles
+{"ok": true, "cmd": "reload", "did": "automation.reload"}
+{"ok": true, "cmd": "interleave", "did": "8 concurrent real service calls across 3 lights and 2 locks"}
+{"ok": true, "cmd": "churn", "did": "repeated real actuation during live automation runs", "before": {"light.hallway_light": "off", "light.kitchen_light": "off", "light.porch_light": "on", "lock.front_door": "locked", "lock.back_door": "unlocked"}, "after": {"light.hallway_light": "on", "light.kitchen_light": "on", "light.porch_light": "off", "lock.front_door": "locked", "lock.back_door": "unlocked"}}
+-- verify the arm actually generated load --
+   last 5 min: 270 state rows, 128 call_service events, 46 with causal parents
+   VERDICT: load generated
+  -> exp/out/benign_load_check.json
+[31m-- BENIGN exited 0 but its output is missing or invalid:[0m
+[31m   exists but fails: d.get('actuations',0)>0[0m
+[31m   Treat that as a failure: a stage that measures nothing exits cleanly.[0m
+[33m   continuing to the next stage[0m
+
+==============================================================
+[31mFAILED: E4ROLES E4PARENT BENIGN[0m
+Re-run just those with: ./testbed/real/run_all.sh --only <stage>
+Manifest: <artifact-root>/exp/out/run_all_manifest.json

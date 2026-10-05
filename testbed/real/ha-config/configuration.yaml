@@ -1,0 +1,50 @@
+# HomeProv realistic testbed. NOT default_config: that pulls in zeroconf, ssdp
+# and cloud, which fail on an internal network and stall startup before custom
+# components load. Only what the measurement needs is declared.
+homeassistant:
+  name: HomeProv Real
+  latitude: 0
+  longitude: 0
+  elevation: 0
+  unit_system: metric
+  time_zone: UTC
+
+http:
+  server_port: 8123
+
+# MQTT is configured by CONFIG ENTRY, not YAML -- modern Home Assistant rejects
+# broker/port/discovery keys here. The entry is created in
+# .storage/core.config_entries (see scripts/add_mqtt_entry.py), which is the
+# same record the UI config flow would write. Devices then announce themselves
+# over real MQTT discovery; nothing is declared by hand.
+
+recorder:
+  db_url: sqlite:////config/home-assistant_v2.db
+  commit_interval: 1
+  purge_keep_days: 30
+
+logbook:
+history:
+
+automation: !include automations.yaml
+
+logger:
+  default: warning
+
+# --- HomeProv experiment harnesses -------------------------------------------
+# Scenario binding is FIRST: it validates at startup that every entity the
+# experiments act on actually exists, because a missing entity produces a clean
+# run that measured nothing rather than an error.
+homeprov_scenario:
+
+# Defender (in-process; E2 shows why this position cannot carry the guarantee).
+homeprov:
+
+# Benign workload driver, for the false-alarm arm.
+homeprov_bench:
+
+# E4 renderer dependency closure. Commands: closure, roles, parentrole.
+homeprov_e4:
+
+# E5 renderer-backed attack evaluation. Commands: run, probe.
+homeprov_e5:

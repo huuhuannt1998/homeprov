@@ -1,0 +1,197 @@
+{
+  "ha_version": "2026.7.4",
+  "target_diagnostic": [
+    {
+      "entity": "lock.front_door",
+      "n_when_keys": 1,
+      "n_tts": 1,
+      "clean": "bare_service_call",
+      "clean_principal": "service:lock.lock",
+      "sample_when": [
+        "2026-08-31T23:48:54.624407+00:00"
+      ],
+      "sample_tts": [
+        1788220134.624
+      ]
+    },
+    {
+      "entity": "lock.back_door",
+      "n_when_keys": 1,
+      "n_tts": 1,
+      "clean": "bare_service_call",
+      "clean_principal": "service:lock.lock",
+      "sample_when": [
+        "2026-08-31T23:48:56.630656+00:00"
+      ],
+      "sample_tts": [
+        1788220136.631
+      ]
+    },
+    {
+      "entity": "lock.front_door",
+      "n_when_keys": 1,
+      "n_tts": 1,
+      "clean": "bare_service_call",
+      "clean_principal": "service:lock.unlock",
+      "sample_when": [
+        "2026-08-31T23:48:58.636685+00:00"
+      ],
+      "sample_tts": [
+        1788220138.637
+      ]
+    },
+    {
+      "entity": "lock.back_door",
+      "n_when_keys": 1,
+      "n_tts": 1,
+      "clean": "bare_service_call",
+      "clean_principal": "service:lock.unlock",
+      "sample_when": [
+        "2026-08-31T23:49:00.640256+00:00"
+      ],
+      "sample_tts": [
+        1788220140.64
+      ]
+    },
+    {
+      "entity": "lock.front_door",
+      "n_when_keys": 1,
+      "n_tts": 1,
+      "clean": "bare_service_call",
+      "clean_principal": "service:lock.lock",
+      "sample_when": [
+        "2026-08-31T23:49:02.646727+00:00"
+      ],
+      "sample_tts": [
+        1788220142.647
+      ]
+    },
+    {
+      "entity": "lock.back_door",
+      "n_when_keys": 1,
+      "n_tts": 1,
+      "clean": "bare_service_call",
+      "clean_principal": "service:lock.lock",
+      "sample_when": [
+        "2026-08-31T23:49:04.652838+00:00"
+      ],
+      "sample_tts": [
+        1788220144.653
+      ]
+    }
+  ],
+  "n_targets": 30,
+  "n_instances": 360,
+  "n_adversary_planted": 30,
+  "n_targets_adversary_owned": 30,
+  "target_provenance": "every target is an actuation this component performed as itself, so its clean attribution is a bare service call. Targets are NOT scavenged from rows the deployment already attributed to an automation; doing that measured nothing.",
+  "aborted": null,
+  "categories": {
+    "unknown": 90,
+    "bare_service_call": 120,
+    "innocent_automation": 60,
+    "innocent_user": 30,
+    "unrenderable": 60
+  },
+  "per_variant": {
+    "delete_only": {
+      "n": 30,
+      "misattributed": 0,
+      "changed": 30,
+      "categories": {
+        "unknown": 30
+      }
+    },
+    "reparent_only": {
+      "n": 30,
+      "misattributed": 0,
+      "changed": 0,
+      "categories": {
+        "bare_service_call": 30
+      }
+    },
+    "inject_only": {
+      "n": 30,
+      "misattributed": 0,
+      "changed": 0,
+      "categories": {
+        "bare_service_call": 30
+      }
+    },
+    "delete_reparent": {
+      "n": 30,
+      "misattributed": 0,
+      "changed": 30,
+      "categories": {
+        "unknown": 30
+      }
+    },
+    "delete_inject": {
+      "n": 30,
+      "misattributed": 0,
+      "changed": 30,
+      "categories": {
+        "unknown": 30
+      }
+    },
+    "full_laundering": {
+      "n": 30,
+      "misattributed": 30,
+      "changed": 30,
+      "categories": {
+        "innocent_automation": 30
+      }
+    },
+    "inject_reparent": {
+      "n": 30,
+      "misattributed": 0,
+      "changed": 0,
+      "categories": {
+        "bare_service_call": 30
+      }
+    },
+    "principal_swap": {
+      "n": 30,
+      "misattributed": 30,
+      "changed": 30,
+      "categories": {
+        "innocent_user": 30
+      }
+    },
+    "dangling_parent": {
+      "n": 30,
+      "misattributed": 0,
+      "changed": 0,
+      "categories": {
+        "bare_service_call": 30
+      }
+    },
+    "duplicate_context": {
+      "n": 30,
+      "misattributed": 30,
+      "changed": 30,
+      "categories": {
+        "innocent_automation": 30
+      }
+    },
+    "timestamp_shift": {
+      "n": 30,
+      "misattributed": 0,
+      "changed": 30,
+      "categories": {
+        "unrenderable": 30
+      }
+    },
+    "retention_edge": {
+      "n": 30,
+      "misattributed": 0,
+      "changed": 30,
+      "categories": {
+        "unrenderable": 30
+      }
+    }
+  },
+  "renderer_confirmed_misattribution_rate": 0.25,
+  "scope": "one home configuration on the REAL substrate (real broker, real discovery, shipped blueprint); twelve variants across every planted adversary actuation that the logbook rendered. Generalisation across configurations still rests on the generated sweep and its proxy.",
+  "ts": 1788220299.2417068
+}

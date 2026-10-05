@@ -1,0 +1,32 @@
+# Home Assistant Supervisor add-on: HomeProv anchor.
+#
+# MEASURED CAVEAT. Supervisor places add-ons and the hub on a shared bridge
+# network, so declaring no ports does not make this unreachable from an
+# integration running inside Home Assistant: we measured 231 appends per second
+# from inside the hub container against exactly this arrangement. Network
+# placement therefore does NOT provide the separation the design needs, and the
+# append path has to be authenticated. `auth_token` below is that obligation
+# made explicit; it is not implemented in the daemon this manifest packages.
+name: HomeProv Anchor
+version: "1.0.0"
+slug: homeprov_anchor
+description: >-
+  Append-only anchor for provenance segment roots. One mutating verb.
+arch: [aarch64, amd64]
+startup: system
+boot: auto
+
+# Its own persistent store, not the hub's configuration directory.
+map:
+  - share:rw
+
+host_network: false
+ports:
+  9900/tcp: null          # null = reachable on the internal add-on network only
+
+options:
+  auth_token: ""          # REQUIRED in deployment; empty means unauthenticated
+  publish_period_seconds: 5
+schema:
+  auth_token: str
+  publish_period_seconds: int(1,60)

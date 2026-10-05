@@ -1,0 +1,108 @@
+{
+  "experiment": "E-A",
+  "what": "authenticated append + pre-emption; unauthenticated (reproduces e7) vs monitor-signed",
+  "n_append_trials": 300,
+  "key_scheme": "HMAC-SHA256 (PyNaCl absent; symmetric key to monitor+anchor only, never the hub)",
+  "unauthenticated": {
+    "append_rate": {
+      "n": 300,
+      "accepted": 300,
+      "seconds": 0.377,
+      "appends_per_s": 795.7,
+      "authenticated": false
+    },
+    "preemption": {
+      "segment": "1788873106",
+      "adversary_http": 200,
+      "monitor_http": 409,
+      "adversary_accepted": true,
+      "monitor_accepted": false,
+      "anchored_root": "adadadadadadadadadadadadadadadadadadadadadadadadadadadadadadadad",
+      "first_write_wins_selects": "adversary"
+    },
+    "refusals_recorded": 1
+  },
+  "authenticated": {
+    "adversary_unsigned": {
+      "n": 300,
+      "accepted": 0,
+      "refused_401": 300
+    },
+    "adversary_forged_signature": {
+      "n": 300,
+      "accepted": 0,
+      "refused_401": 300
+    },
+    "monitor_signed": {
+      "n": 300,
+      "accepted": 300,
+      "seconds": 0.3848,
+      "appends_per_s": 779.7,
+      "authenticated": true
+    },
+    "preemption": {
+      "segment": "1788873109",
+      "adversary_http": 401,
+      "monitor_http": 200,
+      "adversary_accepted": false,
+      "monitor_accepted": true,
+      "anchored_root": "c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0",
+      "first_write_wins_selects": "monitor"
+    },
+    "refusals_recorded": 601
+  },
+  "throughput_cost_of_signing": {
+    "unsigned_appends_per_s": 795.7,
+    "signed_appends_per_s": 779.7,
+    "ratio_signed_over_unsigned": 0.98,
+    "overhead_pct": 2.0
+  },
+  "adversary_accept_rate_authenticated": {
+    "k": 0,
+    "n": 600,
+    "prop": 0.0,
+    "ci_lo": 0.0,
+    "ci_hi": 0.006129271330669258,
+    "method": "Clopper-Pearson exact"
+  },
+  "capability": {
+    "capability_record": {
+      "schema_version": 1,
+      "actor_id": "in_process_integration",
+      "actor_position": "in_process_integration",
+      "powers": {
+        "db_read": true,
+        "db_write": true,
+        "fs_read_as_ha_uid": true,
+        "fs_write_as_ha_uid": true,
+        "python_exec_in_core": true,
+        "event_bus_listen": true,
+        "event_bus_emit": true,
+        "service_call": true,
+        "network_egress": false
+      },
+      "knowledge": {
+        "anchor_key_known": false,
+        "anchor_reachable_on_network": true
+      },
+      "budget": {
+        "db_writes_max": null,
+        "wallclock_window_s": null,
+        "cpu_seconds_max": null
+      },
+      "constraints": {
+        "anchor_key_access": false
+      },
+      "substrate": {
+        "kind": "docker_container_anchor + host_loopback_clients",
+        "anchor_image": "hpr-anchord:sig",
+        "note": "adversary has network reach to the anchor but not the monitor's signing key"
+      },
+      "provenance": {
+        "rka_mission": "E-A signed anchor",
+        "seed": 0
+      }
+    }
+  },
+  "_digest": "a85258c66e56fde0e2cb368e12700d430ca222349dcf4fc6215753fe5ff04f25"
+}

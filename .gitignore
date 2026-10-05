@@ -1,0 +1,47 @@
+# --- Manuscript: excluded at the PI's instruction ---
+manuscripts/
+manuscript/
+
+# --- Offensive components: NOT released ---
+# The paper states that no deployable malicious integration is released; the
+# gap between an attack harness and an installable extension is what makes this
+# work publishable without arming a reader. These two directories are that
+# extension. The forgery taxonomy, the capability records and the recorder
+# mutation primitives in exp/rig/forge.py are sufficient to reimplement them for
+# defensive evaluation.
+testbed/ha-config/custom_components/homeprov_redteam/
+testbed/ha-config/custom_components/homeprov_e2/
+
+# --- Credentials and runtime state ---
+testbed/ha-config/.storage/
+testbed/ha-config/secrets.yaml
+testbed/ha-config/*.db
+testbed/ha-config/*.db-wal
+testbed/ha-config/*.db-shm
+testbed/ha-config/home-assistant.log*
+testbed/ha-config/.HA_VERSION
+testbed/ha-config/.ha_run.lock
+testbed/ha-config/tts/
+testbed/ha-config/deps/
+testbed/ha-config/homeprov_out/
+testbed/ha-config/*.cmd
+testbed/ha-config/*.ack
+
+# --- Third-party PDFs (copyright) ---
+lit/pdf/
+
+# --- Build and scratch ---
+__pycache__/
+*.pyc
+*.log
+!exp/out/*.log
+.DS_Store
+texput.log
+testbed/ha-config/*.db-journal
+testbed/ha-config/e2_*.db*
+
+# Extracted full text of third-party papers (copyright)
+lit/
+
+# The live config enables components that are not released; ship an example.
+testbed/ha-config/configuration.yaml

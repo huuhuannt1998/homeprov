@@ -1,0 +1,120 @@
+{
+  "stage": 12,
+  "ablation": "AB-5 (completed)",
+  "P1_install": {
+    "placement": "P1",
+    "ok": true,
+    "detail": "-----a--------e------- /anchor/chain"
+  },
+  "P1_shared_volume_chattr": [
+    {
+      "APPEND": "ok",
+      "TRUNCATE": "refused",
+      "CLEARA": "refused",
+      "VOLUME": "VISIBLE",
+      "label": "HA default caps",
+      "holds": true
+    },
+    {
+      "APPEND": "ok",
+      "TRUNCATE": "refused",
+      "CLEARA": "DEFEATED",
+      "VOLUME": "VISIBLE",
+      "label": "+ CAP_LINUX_IMMUTABLE",
+      "holds": false
+    },
+    {
+      "APPEND": "ok",
+      "TRUNCATE": "DEFEATED",
+      "CLEARA": "DEFEATED",
+      "VOLUME": "VISIBLE",
+      "label": "--privileged",
+      "holds": false
+    }
+  ],
+  "P2_P3_separate_container": [
+    {
+      "APPEND": "200",
+      "PUT": "405",
+      "DELETE": "405",
+      "PATCH": "405",
+      "TRUNCATE_PATH": "405",
+      "VOLUME": "unreachable",
+      "label": "HA default caps",
+      "holds": true
+    },
+    {
+      "APPEND": "200",
+      "PUT": "405",
+      "DELETE": "405",
+      "PATCH": "405",
+      "TRUNCATE_PATH": "405",
+      "VOLUME": "unreachable",
+      "label": "+ CAP_LINUX_IMMUTABLE",
+      "holds": true
+    },
+    {
+      "APPEND": "200",
+      "PUT": "405",
+      "DELETE": "405",
+      "PATCH": "405",
+      "TRUNCATE_PATH": "405",
+      "VOLUME": "unreachable",
+      "label": "--privileged",
+      "holds": true
+    }
+  ],
+  "P3_published_head": "{\"published_ts\": 1787395629.283845, \"seq\": 4, \"head\": {\"payload\": {}, \"recv_ts\": 1787395601.0901499, \"seq\": 4}}",
+  "P1_survives_capability_grants": false,
+  "P2_survives_capability_grants": true,
+  "finding": "P1 is bounded by a FILESYSTEM FLAG and dies under a capability grant; P2/P3 are bounded by a PROTOCOL and do not",
+  "GATE_PASS": true,
+  "capability": {
+    "capability_record": {
+      "schema_version": 1,
+      "actor_id": "mal_integration_v1",
+      "actor_position": "in_process_integration",
+      "powers": {
+        "db_read": true,
+        "db_write": true,
+        "fs_read_as_ha_uid": true,
+        "fs_write_as_ha_uid": true,
+        "python_exec_in_core": true,
+        "event_bus_listen": true,
+        "event_bus_emit": true,
+        "service_call": true,
+        "network_egress": false
+      },
+      "knowledge": {
+        "deployment_topology": "full",
+        "automation_configs": "full",
+        "anchor_schedule_known": false,
+        "anchor_key_known": false,
+        "victim_routine_model": "coarse"
+      },
+      "budget": {
+        "db_writes_max": 0,
+        "wallclock_window_s": 5,
+        "cpu_seconds_max": null
+      },
+      "constraints": {
+        "host_root": false,
+        "cross_uid_write": false,
+        "anchor_key_access": false,
+        "external_anchor_retraction": false,
+        "clock_control": false,
+        "cap_linux_immutable": false,
+        "cap_bpf": false
+      },
+      "substrate": {
+        "kind": "native_aarch64_container",
+        "envelope": "Pi-shaped cgroup (cpus/memory/blkio)",
+        "note": "NOT a Raspberry Pi; absolute latency is not claimed as Pi latency"
+      },
+      "provenance": {
+        "rka_mission": null,
+        "seed": 0
+      }
+    }
+  }
+}
