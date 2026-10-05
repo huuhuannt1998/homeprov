@@ -23,6 +23,12 @@ from __future__ import annotations
 
 import asyncio, json, logging, os, sqlite3, time
 
+# The locks the adversary actuates. Entity ids come from the shared binding, not
+# from literals, for the reason recorded there: a call against a nonexistent
+# entity does not raise, it silently does nothing.
+from custom_components.homeprov_scenario import (
+    TARGET_LOCK, SECOND_LOCK, INNOCENT_AUTOMATION, _room)
+
 _LOGGER = logging.getLogger(__name__)
 DOMAIN = "homeprov_e5"
 DB = "/config/home-assistant_v2.db"
@@ -161,6 +167,14 @@ def _variants(con, target_ctx, target_entity, innocent_ctx, lo, hi):
     if not sids:
         return []
     sid, eid = sids[0], (eids[0] if eids else None)
+    # RANDOM, and deliberately so: principal_swap measures whether writing the
+    # user column moves the rendered principal AT ALL, not whether a specific
+    # person can be framed. The adversary needs no real account id. The paper
+    # once described this variant as writing "a household member's user
+    # identifier" and as naming that member 88 of 88; it writes neither. A probe
+    # of the clean render in all three configurations also found no
+    # context_name for a user context, so the identifier renders opaque either
+    # way. Do not restate this as naming a person.
     R = os.urandom(16)
     V = []
 
@@ -217,6 +231,68 @@ def _variants(con, target_ctx, target_entity, innocent_ctx, lo, hi):
     return V
 
 
+
+
+async def _plant_adversary(hass, n_wanted: int = 20) -> list:
+    """Create actuations the ADVERSARY owns, and return their contexts.
+
+    THIS IS THE FIX FOR THE PREVIOUS RUN, AND THE BUG IS ONE THIS PROJECT HAS
+    NOW MADE TWICE. Targets used to be drawn from whatever the logbook happened
+    to render in the window. On the synthetic demo platform that was fine. On the
+    real deployment the only rendered actuator rows are the motion-light
+    automations turning their own lights on and off, so every target arrived
+    ALREADY attributed to the innocent automation. Laundering an actuation onto
+    the automation that already owns it is a no-op, which is why seven of twelve
+    variants reported changed=0 and the flagship composition reported 0/40 --
+    while S1, on the same substrate, reached 30/30 with the same two operations.
+
+    Section VII-B of the paper narrates exactly this failure for the composition
+    indicator: the generator produces no adversary, so the victim actuation was
+    already a legitimate automation chain and there was nothing to launder. The
+    fix there was to plant an adversary. Same fix here.
+
+    Each planted actuation is a real service call this component makes as itself,
+    so the timeline attributes it to a bare service call -- the integration --
+    which is the clean state a forgery has to move away from.
+    """
+    planted = []
+    for i in range(n_wanted):
+        lock = TARGET_LOCK if i % 2 == 0 else SECOND_LOCK
+        st = hass.states.get(lock)
+        waited = 0.0
+        while (st is None or st.state in ("unavailable", "unknown")) and waited < 120:
+            await asyncio.sleep(5); waited += 5
+            st = hass.states.get(lock)
+        if st is None or st.state in ("unavailable", "unknown"):
+            _LOGGER.warning("HOMEPROV E5 plant: %s unavailable, skipping", lock)
+            continue
+        before = st.state
+        verb = "unlock" if before != "unlocked" else "lock"
+        await hass.services.async_call("lock", verb, {"entity_id": lock}, blocking=True)
+        # The device echoes the commanded state back over the broker, so the
+        # resulting row is not there immediately.
+        for _ in range(24):
+            await asyncio.sleep(1)
+            now = hass.states.get(lock)
+            if now is not None and now.state != before:
+                break
+        con = _connect()
+        mid = con.execute(
+            "SELECT metadata_id FROM states_meta WHERE entity_id=?", (lock,)).fetchone()
+        row = None
+        if mid:
+            row = con.execute(
+                """SELECT context_id_bin, state, last_updated_ts FROM states
+                    WHERE metadata_id=? AND context_id_bin IS NOT NULL
+                 ORDER BY last_updated_ts DESC LIMIT 1""", (mid[0],)).fetchone()
+        con.close()
+        if row and row[0] is not None:
+            planted.append({"ctx": row[0], "entity": lock,
+                            "state": row[1], "ts": float(row[2])})
+        await asyncio.sleep(1)
+    _LOGGER.warning("HOMEPROV E5 planted %d adversary actuations", len(planted))
+    return planted
+
 async def _cmd_run(hass) -> dict:
     import homeassistant.util.dt as dt_util
     from datetime import timedelta
@@ -232,6 +308,14 @@ async def _cmd_run(hass) -> dict:
     end = dt_util.utcnow() + timedelta(minutes=1)
     start = end - timedelta(hours=6)
     lo, hi = start.timestamp(), end.timestamp()
+
+    # PLANT THE ADVERSARY FIRST. Targets are its actuations, not whatever the
+    # deployment happened to render; see _plant_adversary for why the previous
+    # run measured nothing.
+    planted = await _plant_adversary(hass, 30)
+    if not planted:
+        return {"ok": False, "err": "no adversary actuation could be planted; "
+                                    "locks unavailable or MQTT not settled"}
 
     con = _connect()
     # Rank by ACTUATION DOMAIN first, not by row count. Ordering by count puts
@@ -265,58 +349,84 @@ async def _cmd_run(hass) -> dict:
     # the database and classified all 320 instances as unrenderable, because not
     # one of them was in the rendered set. Deriving targets from rendered rows
     # makes every target renderable by construction.
+    # The planted locks must be in the rendered scope or their rows cannot be
+    # classified, and a target that is not rendered is the OTHER way this
+    # experiment has previously measured nothing.
+    for _pl in planted:
+        if _pl["entity"] not in ents:
+            ents.append(_pl["entity"])
+
     base_rows_pre = await _render(hass, start, end, ents)
     con = _connect()
     targets, spare, seen_ctx = [], [], set()
-    # Targets are ACTUATORS ONLY. "What caused this?" is a question an
-    # investigator asks about a lock or a light, not about an automation's own
-    # state row -- the automation was caused by its trigger, and its clean
-    # attribution is legitimately `unknown`, so including automation entities
-    # measures the wrong thing. It also crowds out the actuators entirely once
-    # event-bearing contexts are preferred, because automation contexts always
-    # own an automation_triggered event: the first attempt at that preference
-    # made all forty targets automations and inverted every per-variant result.
-    ACTUATOR_DOMAINS = ("lock.", "light.", "switch.", "cover.")
+
+    # Adversary-owned actuations come first and are the measurement. Each is
+    # kept only if the logbook actually rendered it, so every target is
+    # renderable by construction and its clean attribution is a bare service
+    # call rather than an automation that already owns it.
+    _rendered_at = {}
     for r in base_rows_pre:
-        ent = r.get("entity_id")
-        wf = _as_epoch(r.get("when"))
-        if not ent or wf is None:
+        _e, _w = r.get("entity_id"), _as_epoch(r.get("when"))
+        if _e and _w is not None:
+            _rendered_at.setdefault(_e, []).append(_w)
+    for _pl in planted:
+        if _pl["ctx"] in seen_ctx:
             continue
-        if not ent.startswith(ACTUATOR_DOMAINS):
+        if not any(abs(_w - _pl["ts"]) < 0.01 for _w in _rendered_at.get(_pl["entity"], [])):
             continue
-        row = con.execute(
-            """SELECT s.context_id_bin FROM states s
-                 JOIN states_meta sm ON sm.metadata_id=s.metadata_id
-                WHERE sm.entity_id=? AND ABS(s.last_updated_ts-?) < 0.01
-                  AND s.context_id_bin IS NOT NULL LIMIT 1""", (ent, wf)).fetchone()
-        if not row or row[0] in seen_ctx:
-            continue
-        # Does this context own an EVENT row? Four of the twelve variants --
-        # every deletion-based one, including the flagship composition -- can
-        # only be built when it does. On the synthetic substrate almost every
-        # context did; on the real one most do not, and the first real run
-        # produced n=2 for those four cells while the other eight got n=40.
-        # An n=2 cell is not a measurement, and reporting 0/2 beside 0/40 would
-        # read as "the composition fails on real deployments" when it simply did
-        # not run. Contexts owning an event are therefore taken FIRST, and the
-        # remainder fill in behind them.
-        has_ev = con.execute(
-            "SELECT 1 FROM events WHERE context_id_bin=? LIMIT 1", (row[0],)).fetchone()
-        seen_ctx.add(row[0])
-        (targets if has_ev else spare).append((row[0], ent))
-        if len(targets) >= 40:
-            break
-    if len(targets) < 40:
-        targets.extend(spare[:40 - len(targets)])
+        seen_ctx.add(_pl["ctx"])
+        targets.append((_pl["ctx"], _pl["entity"]))
+    _n_planted_targets = len(targets)
+
+    # SCAVENGED TARGETS ARE NOT ADDED. Earlier versions topped the target list
+    # up to forty from whatever actuator rows the deployment had rendered. On
+    # this substrate those are the motion-light automations turning their own
+    # lights on and off, so their clean attribution is ALREADY the innocent
+    # automation and there is nothing for a forgery to move. Mixing them in
+    # halves every per-variant rate for a reason that has nothing to do with the
+    # attack, and the one restore failure that aborted the previous run came
+    # from such a row. Every target is now an actuation this component performed
+    # as itself; n is smaller and it means something.
+
+    # THE INNOCENT PARTY IS THE ONE THE SCENARIO BINDS, not an arbitrary
+    # automation context. Picking any automation_triggered context makes the
+    # experiment untethered from the configuration under test: the framed party
+    # varies run to run and cannot be varied deliberately, so "does this depend
+    # on which automation is framed?" is unanswerable. Binding it to
+    # INNOCENT_AUTOMATION makes that the parameter, and the runner sweeps it
+    # across the three shipped-blueprint instantiations exactly as S1 does.
+    # The most RECENT run of that automation is taken, because a run far from the
+    # target in time has no rendered presence in the target's window and the
+    # forgery then resolves to `unknown` rather than to the innocent.
     innocents = [r[0] for r in con.execute(
-        """SELECT DISTINCT e.context_id_bin FROM events e
+        """SELECT e.context_id_bin FROM events e
              JOIN event_types et ON et.event_type_id=e.event_type_id
-            WHERE et.event_type='automation_triggered' AND e.context_id_bin IS NOT NULL
-            LIMIT 5""")]
+             LEFT JOIN event_data ed ON ed.data_id=e.data_id
+            WHERE et.event_type='automation_triggered'
+              AND e.context_id_bin IS NOT NULL
+              AND ed.shared_data LIKE ?
+         ORDER BY e.time_fired_ts DESC LIMIT 5""",
+        ('%' + INNOCENT_AUTOMATION + '%',))]
+    if not innocents:
+        # Fall back rather than abort, and say so in the envelope: a run with an
+        # unbound innocent still measures something, it just is not the
+        # configuration sweep.
+        innocents = [r[0] for r in con.execute(
+            """SELECT e.context_id_bin FROM events e
+                 JOIN event_types et ON et.event_type_id=e.event_type_id
+                WHERE et.event_type='automation_triggered'
+                  AND e.context_id_bin IS NOT NULL
+             ORDER BY e.time_fired_ts DESC LIMIT 5""")]
+        _innocent_bound = False
+    else:
+        _innocent_bound = True
     con.close()
     if not targets or not innocents:
         return {"ok": False, "err": "no targets (%d) or innocent contexts (%d)"
                                     % (len(targets), len(innocents))}
+    if _n_planted_targets == 0:
+        return {"ok": False, "err": "adversary actuations were planted but none "
+                                    "was rendered; nothing to launder"}
 
     base_rows = base_rows_pre
     base = _fingerprint(base_rows)
@@ -444,15 +554,32 @@ async def _cmd_run(hass) -> dict:
         v["categories"][r["category"]] = v["categories"].get(r["category"], 0) + 1
 
     n_scored = sum(1 for r in results if "category" in r)
+    per_instance = [{"variant": r.get("variant"), "entity": r.get("entity"),
+                     "clean_principal": r.get("clean_principal"),
+                     "principal": r.get("principal"),
+                     "changed": r.get("changed"),
+                     "misattributed": r.get("misattributed")}
+                    for r in results if "category" in r]
     rep = {"ha_version": _ha_version(), "target_diagnostic": _diag[:6],
+           "per_instance": per_instance,
            "n_targets": len(targets), "n_instances": n_scored,
+           "n_adversary_planted": len(planted),
+           "innocent_automation": INNOCENT_AUTOMATION,
+           "innocent_bound_to_scenario": _innocent_bound,
+           "n_targets_adversary_owned": _n_planted_targets,
+           "target_provenance": "every target is an actuation this component "
+                                "performed as itself, so its clean attribution "
+                                "is a bare service call. Targets are NOT scavenged "
+                                "from rows the deployment already attributed to an "
+                                "automation; doing that measured nothing.",
            "aborted": aborted, "categories": counts, "per_variant": per_variant,
            "renderer_confirmed_misattribution_rate":
                (sum(1 for r in results if r.get("misattributed")) / n_scored)
                if n_scored else None,
-           "scope": "one home configuration; twelve variants across every eligible "
-                    "target actuation. The review asked for ten configurations; "
-                    "generalisation across configurations still rests on the "
+           "scope": "one home configuration on the REAL substrate (real broker, "
+                    "real discovery, shipped blueprint); twelve variants across "
+                    "every planted adversary actuation that the logbook rendered. "
+                    "Generalisation across configurations still rests on the "
                     "generated sweep and its proxy.",
            "ts": time.time()}
     os.makedirs(OUT, exist_ok=True)
@@ -508,7 +635,356 @@ async def _cmd_probe(hass) -> dict:
     return {"ok": True, "n_rendered": len(rows), "out": "e5_probe.json"}
 
 
-HANDLERS = {"run": _cmd_run, "probe": _cmd_probe}
+
+
+# ------------------------------------------------------------------ E6
+# SIGNED offsets: cover_ts - target_ts. The absolute-distance sweep found no
+# effect anywhere from 30 s to six hours, which rules out "temporal adjacency"
+# as the operative condition. The renderer enforces that a cause precedes its
+# effect (Section II), so the variable under test here is the SIGN: cover that
+# ran BEFORE the target should be usable, cover that ran AFTER it should not.
+DT_BINS = (-21600, -7200, -1800, -300, -60, -15, -5, 0, 5, 15, 60, 300, 1800)
+
+
+async def _cmd_sweep_dt(hass) -> dict:
+    """E6: misattribution rate against Delta-t to the cover run.
+
+    WHY Delta-t IS CONTROLLED BY CHOOSING THE COVER, NOT BY WAITING. The reviewer's
+    objection is that cover adjacency is read off a post-hoc pattern rather than
+    varied deliberately. The obvious design -- schedule the adversary's actuation
+    at Delta-t after a genuine run -- costs sum(DT_BINS) seconds per trial and would
+    run for about a day per configuration. It is also not what the attacker
+    varies: the forgery PICKS which genuine run to re-point onto, so Delta-t is a
+    property of that choice. Selecting the cover context at a controlled distance
+    from the target measures the same variable in minutes rather than hours, and
+    measures the one the adversary actually controls.
+
+    A bin with no genuine run at that distance is reported UNREACHABLE for that
+    target rather than silently filled with the nearest available cover, which
+    would turn a missing measurement into a fabricated point on the curve.
+    """
+    import homeassistant.util.dt as dt_util
+    from datetime import timedelta
+
+    end = dt_util.utcnow() + timedelta(minutes=1)
+    start = end - timedelta(hours=6)
+    lo, hi = start.timestamp(), end.timestamp()
+
+    planted = await _plant_adversary(hass, 20)
+    if not planted:
+        return {"ok": False, "err": "no adversary actuation could be planted"}
+
+    con = _connect()
+    ents = [r[0] for r in con.execute(
+        """SELECT sm.entity_id FROM states s
+             JOIN states_meta sm ON sm.metadata_id=s.metadata_id
+            WHERE s.last_updated_ts BETWEEN ? AND ? AND s.context_id_bin IS NOT NULL
+         GROUP BY sm.entity_id ORDER BY COUNT(*) DESC LIMIT 30""", (lo, hi))]
+    for _pl in planted:
+        if _pl["entity"] not in ents:
+            ents.append(_pl["entity"])
+
+    # Cover pool: genuine runs of the bound innocent automation, WITH timestamps.
+    cover = con.execute(
+        """SELECT e.context_id_bin, e.time_fired_ts FROM events e
+             JOIN event_types et ON et.event_type_id=e.event_type_id
+             LEFT JOIN event_data ed ON ed.data_id=e.data_id
+            WHERE et.event_type='automation_triggered'
+              AND e.context_id_bin IS NOT NULL
+              AND e.time_fired_ts BETWEEN ? AND ?
+              AND ed.shared_data LIKE ?
+         ORDER BY e.time_fired_ts""", (lo, hi, '%' + INNOCENT_AUTOMATION + '%')).fetchall()
+    con.close()
+    if len(cover) < 10:
+        return {"ok": False, "err": "cover pool too small (%d runs of %s)"
+                                    % (len(cover), INNOCENT_AUTOMATION)}
+
+    base_rows = await _render(hass, start, end, ents)
+    # Targets: adversary-owned actuations the logbook actually rendered.
+    targets = []
+    for pl in planted:
+        con = _connect()
+        tts = [r[0] for r in con.execute(
+            "SELECT last_updated_ts FROM states WHERE context_id_bin=?", (pl["ctx"],))]
+        con.close()
+        wk = set()
+        for r in base_rows:
+            if r.get("entity_id") != pl["entity"]:
+                continue
+            wf = _as_epoch(r.get("when"))
+            if wf is None:
+                continue
+            for t in tts:
+                if abs(wf - float(t)) < 0.01:
+                    wk.add(str(r.get("when"))); break
+        if wk:
+            targets.append({"ctx": pl["ctx"], "entity": pl["entity"],
+                            "ts": pl["ts"], "when_keys": wk})
+    if not targets:
+        return {"ok": False, "err": "no planted actuation was rendered"}
+
+    results, unreachable = [], 0
+    for tg in targets:
+        clean_cat, clean_principal = _classify(base_rows, tg["entity"], tg["when_keys"])
+        for want in DT_BINS:
+            # Closest genuine run to the requested distance; a bin is only
+            # measured if a run exists near enough to it.
+            best, best_err, best_d = None, None, None
+            for ctx, cts in cover:
+                d = float(cts) - float(tg["ts"])      # SIGNED
+                err = abs(d - want)
+                if best_err is None or err < best_err:
+                    best, best_err, best_d = ctx, err, d
+            tol = max(3.0, 0.25 * abs(want))
+            if best_err is None or best_err > tol:
+                unreachable += 1
+                results.append({"dt_requested": want, "dt_actual": None,
+                                "entity": tg["entity"], "variant": None,
+                                "reachable": False})
+                continue
+            con = _connect()
+            allv = dict(_variants(con, tg["ctx"], tg["entity"], best, lo, hi))
+            con.close()
+            for name in ("delete_reparent", "principal_swap"):
+                ops = allv.get(name)
+                if not ops:
+                    continue
+                con = _connect()
+                snap_states = con.execute(
+                    "SELECT state_id,state,last_updated_ts,last_changed_ts,context_id_bin,"
+                    "context_parent_id_bin,context_user_id_bin,old_state_id FROM states "
+                    "WHERE context_id_bin=?", (tg["ctx"],)).fetchall()
+                snap_events = con.execute(
+                    "SELECT event_id,event_type_id,data_id,time_fired_ts,context_id_bin,"
+                    "context_parent_id_bin,context_user_id_bin,origin_idx FROM events "
+                    "WHERE context_id_bin=?", (tg["ctx"],)).fetchall()
+                pre_ids = {r[0] for r in con.execute(
+                    "SELECT state_id FROM states WHERE last_updated_ts BETWEEN ? AND ?",
+                    (lo, hi))}
+                try:
+                    for sql, args in ops:
+                        con.execute(sql, args)
+                    con.commit()
+                except Exception as exc:                       # noqa: BLE001
+                    con.close()
+                    results.append({"dt_requested": want, "dt_actual": round(best_d, 2),
+                                    "entity": tg["entity"], "variant": name,
+                                    "reachable": True, "error": repr(exc)[:120]})
+                    continue
+                con.close()
+                rows = await _render(hass, start, end, ents)
+                cat, principal = _classify(rows, tg["entity"], tg["when_keys"])
+                named = cat in ("innocent_automation", "innocent_user")
+                results.append({"dt_requested": want, "dt_actual": round(best_d, 2),
+                                "entity": tg["entity"], "variant": name,
+                                "reachable": True,
+                                "clean_principal": clean_principal, "principal": principal,
+                                "changed": (cat, principal) != (clean_cat, clean_principal),
+                                "misattributed": named and principal != clean_principal})
+                # Restore.
+                con = _connect()
+                post_ids = {r[0] for r in con.execute(
+                    "SELECT state_id FROM states WHERE last_updated_ts BETWEEN ? AND ?",
+                    (lo - 90000, hi))}
+                added = post_ids - pre_ids
+                if added:
+                    con.executemany("DELETE FROM states WHERE state_id=?",
+                                    [(i,) for i in added])
+                for r in snap_states:
+                    con.execute("UPDATE states SET state=?,last_updated_ts=?,"
+                                "last_changed_ts=?,context_id_bin=?,context_parent_id_bin=?,"
+                                "context_user_id_bin=?,old_state_id=? WHERE state_id=?",
+                                (r[1], r[2], r[3], r[4], r[5], r[6], r[7], r[0]))
+                for r in snap_events:
+                    con.execute(
+                        "INSERT OR REPLACE INTO events (event_id,event_type_id,data_id,"
+                        "time_fired_ts,context_id_bin,context_parent_id_bin,"
+                        "context_user_id_bin,origin_idx) VALUES (?,?,?,?,?,?,?,?)", r)
+                con.commit(); con.close()
+
+    measured = [r for r in results if r.get("reachable") and "misattributed" in r]
+    rep = {"ok": True, "room": _room(),
+           "innocent_automation": INNOCENT_AUTOMATION,
+           "n_targets": len(targets), "n_cover_runs": len(cover),
+           "dt_bins": list(DT_BINS), "n_instances": len(measured),
+           "n_unreachable": unreachable, "per_instance": results,
+           "out": "e6_dt_sweep.json"}
+    def _write():
+        os.makedirs(OUT, exist_ok=True)
+        with open(os.path.join(OUT, "e6_dt_sweep.json"), "w") as fh:
+            json.dump(rep, fh, indent=2, default=str)
+    await hass.async_add_executor_job(_write)
+    # Keep the ack small; the per-instance list lives in the file.
+    return {k: v for k, v in rep.items() if k != "per_instance"}
+
+
+
+
+# ------------------------------------------------------------------ E2
+async def _cmd_precommit(hass) -> dict:
+    """Is the forgery reachable BEFORE the monitor can observe it?
+
+    The reviewer's first objection is that an adversary with in-process code
+    execution forges cheaply at write time, so the post-commit tampering this
+    work detects is the more expensive option it would never choose. The paper
+    conceded rows t0-t3 of the timeline table and argued, without measuring,
+    that three situations force post-commit editing. This measures the concession
+    instead.
+
+    Two things are measured. First the WINDOW: the recorder batches writes and
+    commits on an interval, so a row exists in memory before it exists on disk,
+    and nothing outside the process can see it in between. Second REACHABILITY:
+    an integration does not need to hook the recorder queue at all. Home
+    Assistant lets a caller supply the Context a service call runs under, and
+    the recorder derives context_parent_id_bin from it, so the adversary can mint
+    a context whose parent is the innocent automation and the row is written
+    ALREADY laundered. Nothing is edited afterwards; there is nothing for a
+    commitment over committed history to detect.
+    """
+    import homeassistant.util.dt as dt_util
+    from datetime import timedelta
+    from homeassistant.core import Context
+
+    rec = hass.data.get("recorder_instance")
+    interval = getattr(rec, "commit_interval", None)
+
+    # --- 1. event-to-disk latency, measured from outside the session ---
+    lat = []
+    for i in range(12):
+        lock = TARGET_LOCK if i % 2 == 0 else SECOND_LOCK
+        st = hass.states.get(lock)
+        if st is None or st.state in ("unavailable", "unknown"):
+            continue
+        before = st.state
+        verb = "unlock" if before != "unlocked" else "lock"
+        t0 = time.time()
+        await hass.services.async_call("lock", verb, {"entity_id": lock}, blocking=True)
+        seen = None
+        for _ in range(600):                       # up to 60 s
+            await asyncio.sleep(0.1)
+            con = _connect()
+            row = con.execute(
+                """SELECT s.last_updated_ts FROM states s
+                     JOIN states_meta sm ON sm.metadata_id=s.metadata_id
+                    WHERE sm.entity_id=? AND s.last_updated_ts>?
+                 ORDER BY s.last_updated_ts DESC LIMIT 1""", (lock, t0)).fetchone()
+            con.close()
+            if row:
+                seen = time.time(); break
+        if seen:
+            lat.append(round(seen - t0, 3))
+        await asyncio.sleep(0.5)
+
+    # --- 2. mint-a-context: the launder performed at WRITE time ---
+    end = dt_util.utcnow() + timedelta(minutes=1)
+    start = end - timedelta(hours=6)
+    con = _connect()
+    inn = con.execute(
+        """SELECT e.context_id_bin FROM events e
+             JOIN event_types et ON et.event_type_id=e.event_type_id
+             LEFT JOIN event_data ed ON ed.data_id=e.data_id
+            WHERE et.event_type='automation_triggered' AND e.context_id_bin IS NOT NULL
+              AND ed.shared_data LIKE ?
+         ORDER BY e.time_fired_ts DESC LIMIT 1""",
+        ('%' + INNOCENT_AUTOMATION + '%',)).fetchone()
+    con.close()
+    if not inn:
+        return {"ok": False, "err": "no innocent context to mint against"}
+    parent_hex = inn[0].hex()
+
+    lock = TARGET_LOCK
+    st = hass.states.get(lock)
+    if st is None or st.state in ("unavailable", "unknown"):
+        return {"ok": False, "err": "target lock unavailable"}
+    verb = "unlock" if st.state != "unlocked" else "lock"
+    ctx = Context(parent_id=parent_hex)
+    t_mint = time.time()
+    await hass.services.async_call("lock", verb, {"entity_id": lock},
+                                   blocking=True, context=ctx)
+    for _ in range(40):
+        await asyncio.sleep(1)
+        if hass.states.get(lock) is not None and hass.states.get(lock).state != st.state:
+            break
+
+    # What does the platform's own renderer say caused it? No row was edited.
+    rows = await _render(hass, start, end, [lock])
+    con = _connect()
+    tts = [r[0] for r in con.execute(
+        "SELECT last_updated_ts FROM states WHERE last_updated_ts>? AND context_id_bin IS NOT NULL"
+        " AND metadata_id=(SELECT metadata_id FROM states_meta WHERE entity_id=?)",
+        (t_mint, lock))]
+    con.close()
+    wk = set()
+    for r in rows:
+        wf = _as_epoch(r.get("when"))
+        if wf is None:
+            continue
+        for t in tts:
+            if abs(wf - float(t)) < 0.01:
+                wk.add(str(r.get("when"))); break
+    cat, principal = _classify(rows, lock, wk)
+
+    # --- 3. the STRONG pre-commit variant: write the row directly ---
+    # The mint above still goes through the service registry, so a call_service
+    # event is recorded and the logbook names it. An integration need not use the
+    # registry at all: it can set state itself under a context it chose, and then
+    # no attribution event exists to name. If THAT renders as the innocent
+    # automation, the forgery is fully reachable before t4 and the objection
+    # stands; if it does not, pre-commit is not the one-step alternative it looks.
+    direct = {"attempted": False}
+    st2 = hass.states.get(SECOND_LOCK)
+    if st2 is not None and st2.state not in ("unavailable", "unknown"):
+        newstate = "unlocked" if st2.state != "unlocked" else "locked"
+        t_dir = time.time()
+        hass.states.async_set(SECOND_LOCK, newstate,
+                              dict(st2.attributes), context=Context(parent_id=parent_hex))
+        await asyncio.sleep(3)
+        rows2 = await _render(hass, start, end, [SECOND_LOCK])
+        con = _connect()
+        tts2 = [r[0] for r in con.execute(
+            "SELECT last_updated_ts FROM states WHERE last_updated_ts>? AND metadata_id="
+            "(SELECT metadata_id FROM states_meta WHERE entity_id=?)", (t_dir, SECOND_LOCK))]
+        con.close()
+        wk2 = set()
+        for r in rows2:
+            wf = _as_epoch(r.get("when"))
+            if wf is None:
+                continue
+            for t in tts2:
+                if abs(wf - float(t)) < 0.01:
+                    wk2.add(str(r.get("when"))); break
+        c2, p2 = _classify(rows2, SECOND_LOCK, wk2)
+        direct = {"attempted": True, "method": "hass.states.async_set with a minted Context",
+                  "call_service_event_emitted": False,
+                  "rendered_category": c2, "rendered_principal": p2,
+                  "n_when_keys": len(wk2)}
+
+    rep = {"ok": True,
+           "commit_interval_configured_s": interval,
+           "direct_state_write": direct,
+           "commit_interval_default_s": 5,
+           "latency_s": {"n": len(lat), "samples": lat,
+                         "min": min(lat) if lat else None,
+                         "median": sorted(lat)[len(lat)//2] if lat else None,
+                         "max": max(lat) if lat else None},
+           "mint_context": {"method": "Context(parent_id=<innocent>) on the service call",
+                            "rows_edited_after_write": 0,
+                            "rendered_category": cat,
+                            "rendered_principal": principal,
+                            "innocent_automation": INNOCENT_AUTOMATION,
+                            "n_when_keys": len(wk)},
+           "out": "e2_precommit.json"}
+
+    def _write():
+        os.makedirs(OUT, exist_ok=True)
+        with open(os.path.join(OUT, "e2_precommit.json"), "w") as fh:
+            json.dump(rep, fh, indent=2, default=str)
+    await hass.async_add_executor_job(_write)
+    return rep
+
+
+HANDLERS = {"run": _cmd_run, "probe": _cmd_probe,
+            "sweep_dt": _cmd_sweep_dt, "precommit": _cmd_precommit}
 
 
 async def async_setup(hass, config) -> bool:

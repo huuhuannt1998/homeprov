@@ -1,0 +1,143 @@
+{
+ "stage": 19,
+ "n_holdout_deployments": 8,
+ "n_rows": 24,
+ "held_ids": [
+  "dep_100_05_05_01_10_7d",
+  "dep_10_05_10_06_100_1d",
+  "dep_25_40_20_03_1000_90d",
+  "dep_50_05_10_01_100_90d",
+  "dep_50_05_10_06_10_1d",
+  "dep_50_15_10_03_100_7d",
+  "dep_50_40_05_01_100_90d",
+  "dep_50_40_10_06_1000_90d"
+ ],
+ "LR_exact": {
+  "k": 24,
+  "n": 24,
+  "prop": 1.0,
+  "ci_lo": 0.8575264022774743,
+  "ci_hi": 1.0,
+  "method": "Clopper-Pearson exact"
+ },
+ "MissRassert_exact": {
+  "k": 24,
+  "n": 24,
+  "prop": 1.0,
+  "ci_lo": 0.8575264022774743,
+  "ci_hi": 1.0,
+  "method": "Clopper-Pearson exact"
+ },
+ "OQ": {
+  "mean": 0.0008724607010749352,
+  "ci_lo": 0.0005627678047271165,
+  "ci_hi": 0.0012731411503928965,
+  "n": 24
+ },
+ "RA": {
+  "mean": 1.0,
+  "ci_lo": 1.0,
+  "ci_hi": 1.0,
+  "n": 24
+ },
+ "C2_OQ_vs_B3": {
+  "mean_diff": 0.9987588789529057,
+  "ci_lo": 0.9980964450106428,
+  "ci_hi": 0.9992811067570241,
+  "n_pairs": 24,
+  "excludes_zero": true,
+  "degenerate": false,
+  "warning": null
+ },
+ "C1_vs_B2": {
+  "arm_a": {
+   "k": 8,
+   "n": 8,
+   "prop": 1.0,
+   "ci_lo": 0.6305833524471807,
+   "ci_hi": 1.0,
+   "method": "Clopper-Pearson exact"
+  },
+  "arm_b": {
+   "k": 0,
+   "n": 8,
+   "prop": 0.0,
+   "ci_lo": 0.0,
+   "ci_hi": 0.3694166475528192,
+   "method": "Clopper-Pearson exact"
+  },
+  "discordant_pairs": 8,
+  "n_pairs": 8,
+  "note": "outcome is CONSTANT in both arms; a bootstrap CI on the difference would be zero-width by construction"
+ },
+ "C3_vs_B4": {
+  "arm_a": {
+   "k": 8,
+   "n": 8,
+   "prop": 1.0,
+   "ci_lo": 0.6305833524471807,
+   "ci_hi": 1.0,
+   "method": "Clopper-Pearson exact"
+  },
+  "arm_b": {
+   "k": 0,
+   "n": 8,
+   "prop": 0.0,
+   "ci_lo": 0.0,
+   "ci_hi": 0.3694166475528192,
+   "method": "Clopper-Pearson exact"
+  },
+  "discordant_pairs": 8,
+  "n_pairs": 8,
+  "note": "outcome is CONSTANT in both arms; a bootstrap CI on the difference would be zero-width by construction"
+ },
+ "GATE_PASS": true,
+ "capability": {
+  "capability_record": {
+   "schema_version": 1,
+   "actor_id": "mal_integration_v1",
+   "actor_position": "in_process_integration",
+   "powers": {
+    "db_read": true,
+    "db_write": true,
+    "fs_read_as_ha_uid": true,
+    "fs_write_as_ha_uid": true,
+    "python_exec_in_core": true,
+    "event_bus_listen": true,
+    "event_bus_emit": true,
+    "service_call": true,
+    "network_egress": false
+   },
+   "knowledge": {
+    "deployment_topology": "full",
+    "automation_configs": "full",
+    "anchor_schedule_known": false,
+    "anchor_key_known": false,
+    "victim_routine_model": "coarse"
+   },
+   "budget": {
+    "db_writes_max": 7,
+    "wallclock_window_s": 5,
+    "cpu_seconds_max": null
+   },
+   "constraints": {
+    "host_root": false,
+    "cross_uid_write": false,
+    "anchor_key_access": false,
+    "external_anchor_retraction": false,
+    "clock_control": false,
+    "cap_linux_immutable": false,
+    "cap_bpf": false
+   },
+   "substrate": {
+    "kind": "native_aarch64_container",
+    "envelope": "Pi-shaped cgroup (cpus/memory/blkio)",
+    "note": "NOT a Raspberry Pi; absolute latency is not claimed as Pi latency"
+   },
+   "provenance": {
+    "rka_mission": null,
+    "seed": 0
+   }
+  }
+ }
+}

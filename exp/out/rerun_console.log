@@ -1,0 +1,91 @@
+== preflight ==
+[32m  ok    docker daemon[0m
+[32m  ok    no competing container workloads[0m
+[32m  ok    disk headroom (90GB free)[0m
+[32m  ok    compose file parses[0m
+[32m  ok    harness files present[0m
+== bringing the substrate up ==
+  waiting for the hub to bind its entities
+[32m  ok    scenario bound[0m
+  settling for 90s so the blueprint fires and MQTT retains settle
+
+==============================================================
+== E4ROLES  (~10 min)  conditional-role retests, and which roles this substrate exhibits
+==============================================================
+== E4 conditional-role retests, on the real substrate ==
+{"ok": true, "retested": 0, "now_relevant": 0, "out": "e4_roles.json"}
+  -> exp/out/e4_real_roles.json
+[32m-- E4ROLES ok in 16s[0m
+
+==============================================================
+[32mall stages completed[0m
+Manifest: /Users/huanbui/Research/HOMEPROV-P13/exp/out/run_all_manifest.json
+Logs:     /Users/huanbui/Research/HOMEPROV-P13/exp/out/run_all_logs/
+== preflight ==
+[32m  ok    docker daemon[0m
+[32m  ok    no competing container workloads[0m
+[32m  ok    disk headroom (90GB free)[0m
+[32m  ok    compose file parses[0m
+[32m  ok    harness files present[0m
+== bringing the substrate up ==
+  waiting for the hub to bind its entities
+[32m  ok    scenario bound[0m
+  settling for 90s so the blueprint fires and MQTT retains settle
+
+==============================================================
+== E4PARENT  (~10 min)  constructive test for states.context_parent_id_bin
+==============================================================
+== E4 constructive test for states.context_parent_id_bin ==
+   No natural row here both opens its own context and carries a
+   resolvable parent, so the role is constructed and rolled back.
+{"ok": false, "err": "no render-eligible context-origin state row", "planted": 6, "note": "planting ran but produced no row satisfying the eligibility predicate; check the locks were available"}
+  (no e4_parentrole.json produced)
+[31m-- E4PARENT exited 0 but its output is missing or invalid:[0m
+[31m   no e4_real_parentrole.json yet[0m
+[31m   Treat that as a failure: a stage that measures nothing exits cleanly.[0m
+
+==============================================================
+[31mFAILED:E4PARENT[0m
+Re-run just those with: ./testbed/real/run_all.sh --only <stage>
+Manifest: /Users/huanbui/Research/HOMEPROV-P13/exp/out/run_all_manifest.json
+== preflight ==
+[32m  ok    docker daemon[0m
+[32m  ok    no competing container workloads[0m
+[32m  ok    disk headroom (90GB free)[0m
+[32m  ok    compose file parses[0m
+[32m  ok    harness files present[0m
+== bringing the substrate up ==
+  waiting for the hub to bind its entities
+[32m  ok    scenario bound[0m
+  settling for 90s so the blueprint fires and MQTT retains settle
+./testbed/real/run_all.sh: line 251: unexpected EOF while looking for matching `"'
+./testbed/real/run_all.sh: line 252: syntax error: unexpected end of file
+== preflight ==
+[32m  ok    docker daemon[0m
+[32m  ok    no competing container workloads[0m
+[32m  ok    disk headroom (90GB free)[0m
+[32m  ok    compose file parses[0m
+[32m  ok    harness files present[0m
+== bringing the substrate up ==
+  waiting for the hub to bind its entities
+[32m  ok    scenario bound[0m
+  settling for 90s so the blueprint fires and MQTT retains settle
+
+==============================================================
+== BENIGN  (~1 min)  false alarms under real device churn
+==============================================================
+== benign catalogue, false alarms on real device churn ==
+   real service calls over the broker, not helper toggles
+{"ok": true, "cmd": "reload", "did": "automation.reload"}
+{"ok": true, "cmd": "interleave", "did": "8 concurrent real service calls across 3 lights and 2 locks"}
+{"ok": true, "cmd": "churn", "did": "repeated real actuation during live automation runs", "before": {"light.hallway_light": "off", "light.kitchen_light": "off", "light.porch_light": "on", "lock.front_door": "locked", "lock.back_door": "unlocked"}, "after": {"light.hallway_light": "on", "light.kitchen_light": "on", "light.porch_light": "off", "lock.front_door": "locked", "lock.back_door": "unlocked"}}
+-- verify the arm actually generated load --
+   last 5 min: 128 state rows, 61 call_service events, 53 with causal parents
+   VERDICT: load generated
+  -> exp/out/benign_load_check.json
+[32m-- BENIGN ok in 21s[0m
+
+==============================================================
+[32mall stages completed[0m
+Manifest: /Users/huanbui/Research/HOMEPROV-P13/exp/out/run_all_manifest.json
+Logs:     /Users/huanbui/Research/HOMEPROV-P13/exp/out/run_all_logs/

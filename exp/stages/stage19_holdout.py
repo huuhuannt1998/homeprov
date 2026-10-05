@@ -17,7 +17,7 @@ from rig import (gen, graph, forge, verify, localize, reconstruct, metrics,
 from rig.commit import commit_full, context_counts, tainted_contexts
 
 WORK = "/tmp/homeprov_holdout"
-BG = 24.0
+BG = 4.4
 
 
 def run(cfg):

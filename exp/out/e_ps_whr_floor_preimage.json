@@ -1,0 +1,94 @@
+{
+ "untouched_failing": 203,
+ "explained_by_last_reported_null": 186,
+ "count_changed": 0,
+ "unexplained": [
+  {
+   "segment": "1791098829",
+   "rows": 80,
+   "state_rows_with_last_reported": 15
+  },
+  {
+   "segment": "1791098834",
+   "rows": 6,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791098851",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791098889",
+   "rows": 8,
+   "state_rows_with_last_reported": 5
+  },
+  {
+   "segment": "1791098953",
+   "rows": 4,
+   "state_rows_with_last_reported": 2
+  },
+  {
+   "segment": "1791099018",
+   "rows": 7,
+   "state_rows_with_last_reported": 4
+  },
+  {
+   "segment": "1791099199",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791099234",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791099267",
+   "rows": 7,
+   "state_rows_with_last_reported": 4
+  },
+  {
+   "segment": "1791099590",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791099602",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791099621",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791099633",
+   "rows": 4,
+   "state_rows_with_last_reported": 2
+  },
+  {
+   "segment": "1791099878",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791099943",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791099975",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791100007",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  }
+ ],
+ "tag": "e_ps_whr",
+ "how": "Pre-image test for the whole-row benign floor (review D1, F-09). Read-only. For every untouched one-second\nsegment that fails whole-row recomputation in one run, try to reproduce its FIRST ANCHORED whole-row root\nfrom the final snapshot by restoring last_reported_ts to NULL (its value when the recorder inserts a state that\nhas not been reported again) on any subset of the segment's state rows that now carry a non-null value. A match\nshows the failure is an in-place update of last_reported_ts after sealing. Writes exp/out/<TAG>_floor_preimage.json.\nUsage: whr_preimage.py TAG DETECTION_JSON SNAPSHOT CHAIN"
+}

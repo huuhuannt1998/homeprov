@@ -1,0 +1,73 @@
+{
+ "experiment": "E-PS: post-commit principal swap on the AUTHENTICATED anchor (coordinator follow-up, 2026-10-02)",
+ "what": "New homeprov_ec arm PS (30 trials per configuration, three configurations): phase 1 actuates the adversary's own unlock and lets the shipped monitor seal and anchor it; phase 2 writes 16 random bytes into states.context_user_id_bin of the anchored row (the e5 principal_swap primitive, post-commit). Driven by testbed/real/run_experiments.sh EC unmodified except for the arm name, under hpr-anchord:sig / hpr-monitor:sig with a fresh key on fresh volumes. Scored by the NEW aggregator exp/stages/e_ps_detection.py, which reuses the shipped verifier from e_c_write_time.py unchanged.",
+ "result_file": "exp/out/e_ps_auth_detection.json",
+ "byproduct_file": {
+  "file": "exp/out/e_ps_auth_other_principal_real.json",
+  "note": "written by the unmodified E-C aggregator at the end of the EC runner; PS is not in its arm list, so it carries the benign floor and per-trial detection but no PS summary. e_ps_auth_detection.json is authoritative."
+ },
+ "per_room_reports": [
+  "exp/out/e_ps_auth_report_porch.json",
+  "exp/out/e_ps_auth_report_hallway.json",
+  "exp/out/e_ps_auth_report_kitchen.json"
+ ],
+ "window_marks": [
+  "exp/out/e_ps_auth_t_start",
+  "exp/out/e_ps_auth_t_end"
+ ],
+ "code_added": {
+  "testbed/real/ha-config/custom_components/homeprov_ec/__init__.py": "new function _arm_PS (two phases like _arm_P; phase 2 is one UPDATE of context_user_id_bin per row of the actuation) plus a 3-line dispatch for arm 'PS'. The component is gitignored.",
+  "exp/stages/e_ps_detection.py": "new aggregator; imports snapshot_recorder/anchored_roots/verify_window/trial_row_ts from e_c_write_time.py and adds no commitment or verification logic; applies the E-C late-row test to every hit.",
+  "e_c_write_time.py": "not modified"
+ },
+ "commitment_note": "the shipped monitor's node_hash commits key, content {entity, state, ts}, context_id_bin, context_parent_id_bin and label (monitor/monitor.py lines 172-207); it does not commit context_user_id_bin",
+ "configuration_log": [
+  "2026-10-02T13:47:06Z load_before:  9:47  up 31 days, 13:44, 2 users, load averages: 2.74 3.25 3.31",
+  "2026-10-02T13:47:06Z git_head: 8952cc10546abe50eee53ce48488dd78e90b0cc3",
+  "2026-10-02T13:47:06Z key_fingerprint_sha256_16: c24f03a449468648 (key itself not recorded)",
+  "2026-10-02T13:47:06Z stopping and renaming original anchor/monitor",
+  "2026-10-02T13:47:08Z anchor image: hpr-anchord:sig sha256:196961946d8bf9f70830065c17f1e0f84f27d4c69ac28a6ada5079f9ad59776d",
+  "2026-10-02T13:47:08Z monitor image: hpr-monitor:sig sha256:e934d45097323e422cebfa0dd680c1f5d5389e93d04078042e94bfeaf69802f7",
+  "2026-10-02T13:47:28Z probe_from_hub: {\"untagged\": 401, \"forged_tag\": 401}",
+  "2026-10-02T13:48:08Z monitor_log_head: {\"tick\": 1, \"n_nodes\": 3827, \"copy_ms\": 111.29, \"load_ms\": 260.21, \"commit_ms\": 10.952, \"sealed_new\": {\"second\": 1273, \"minute\": 107, \"hour\": 1}, \"anchor\": {\"ok\": true, \"seq\": 1}} {\"tick\": 2, \"n_nodes\": 3831, \"copy_ms\": 75.463, \"load_ms\": 250.021, \"commit_ms\": 11.01, \"sealed_new\": {\"second\": 2}, \"anchor\": {\"ok\": true, \"seq\": 2}} {\"tick\": 3, \"n_nodes\": 3832, \"copy_ms\": 118.326, \"load_ms\": 309.958, \"commit_ms\": 10.525, \"sealed_new\": {\"second\": 1}, \"anchor\": {\"ok\": true, \"seq\": 3}} ",
+  "2026-10-02T13:48:08Z chain_lines_before_run: 10",
+  "2026-10-02T13:48:08Z starting runner EC with arm PS x30, tag e_ps_auth",
+  "2026-10-02T14:09:56Z runner exit: 0",
+  "2026-10-02T14:09:56Z load_after: 10:09  up 31 days, 14:07, 2 users, load averages: 10.09 10.22 8.96",
+  "2026-10-02T14:09:56Z chain_lines_after_run: 206",
+  "2026-10-02T14:09:56Z running e_ps_detection aggregator",
+  "2026-10-02T14:10:10Z aggregator exit: 0",
+  "2026-10-02T14:10:11Z chain_lines final:      208",
+  "2026-10-02T14:10:11Z done",
+  "2026-10-02T14:10:11Z teardown: removing auth containers, restoring originals",
+  "2026-10-02T14:10:13Z restored: hpr-monitor hpr-monitor:1 Up Less than a second;hpr-anchord hpr-anchord:1 Up 1 second;"
+ ],
+ "load_note": "host load average rose to about 10 during the run (other workloads on the machine); the run completed with zero trial errors and zero recorder errors",
+ "anchor_chain": {
+  "file": "exp/out/e_ps_auth_anchor_chain.jsonl.gz",
+  "records": 208,
+  "observers": {
+   "external-monitor": 208
+  },
+  "evidence_unobservable_records": 0,
+  "sha256_uncompressed": "8a8e7fe1773c59e4df61a1196af40d1197b8533b0b3d7c8c737ba660d0faa134"
+ },
+ "refusal_log": {
+  "file": "exp/out/e_ps_auth_anchor_refusals.jsonl",
+  "records": 2
+ },
+ "wrapper_script": "#!/bin/bash\n# Post-commit PRINCIPAL SWAP (homeprov_ec arm PS, 30 trials per configuration,\n# three configurations) under the SHIPPED authenticated anchor and monitor.\n# Same recipe as exp/out/e_d_auth_config.json / e_c_auth: runner\n# testbed/real/run_experiments.sh EC and the component drive the live monitor and\n# anchor; images hpr-anchord:sig / hpr-monitor:sig with a fresh HMAC key provisioned\n# only to those two containers, on fresh volumes. After the run, the NEW aggregator\n# exp/stages/e_ps_detection.py scores detection and misattribution while the\n# authenticated containers are still up. Originals are stopped+renamed, never\n# removed, and restored by the EXIT trap.\nset -u\nREPO=/Users/huanbui/Research/HOMEPROV-P13\nOUT=$REPO/exp/out\nSP=/private/tmp/claude-501/-Users-huanbui-Research/5494168f-5302-46e9-a92f-a9946eea0dc0/scratchpad/hp-ps-auth\nTAG=e_ps_auth\nNET=homeprov-real_hp-real\nVCHAIN=hpr-auth-ps-chain; VPUB=hpr-auth-ps-pub; VSCR=hpr-auth-ps-scratch\nMETA=$SP/auth_meta.log\n: > \"$META\"\nnote() { echo \"$(date -u +%FT%TZ) $*\" | tee -a \"$META\"; }\n\nfor f in \"${TAG}_t_start\" \"${TAG}_t_end\" \"${TAG}_report_porch.json\" \\\n         \"${TAG}_report_hallway.json\" \"${TAG}_report_kitchen.json\" \\\n         \"e_ps_auth_detection.json\"; do\n  [ -e \"$OUT/$f\" ] && { echo \"REFUSING: $OUT/$f exists\"; exit 3; }\ndone\n\nrestore() {\n  note \"teardown: removing auth containers, restoring originals\"\n  docker rm -f hpr-anchord hpr-monitor >/dev/null 2>&1\n  docker rename hpr-anchord-orig-ps hpr-anchord >/dev/null 2>&1\n  docker rename hpr-monitor-orig-ps hpr-monitor >/dev/null 2>&1\n  docker start hpr-anchord hpr-monitor >/dev/null 2>&1\n  note \"restored: $(docker ps --format '{{.Names}} {{.Image}} {{.Status}}' | grep -E '^hpr-(anchord|monitor) ' | tr '\\n' ';')\"\n}\n\nnote \"load_before: $(uptime)\"\nnote \"git_head: $(git -C $REPO rev-parse HEAD)\"\nKEY=$(openssl rand -hex 32)\nnote \"key_fingerprint_sha256_16: $(printf '%s' \"$KEY\" | shasum -a 256 | cut -c1-16) (key itself not recorded)\"\n\nnote \"stopping and renaming original anchor/monitor\"\ndocker stop hpr-monitor hpr-anchord >/dev/null || { echo \"stop failed\"; exit 4; }\ndocker rename hpr-anchord hpr-anchord-orig-ps || exit 4\ndocker rename hpr-monitor hpr-monitor-orig-ps || { docker rename hpr-anchord-orig-ps hpr-anchord; exit 4; }\ntrap restore EXIT\ntrap 'exit 130' INT TERM HUP\n\nfor v in $VCHAIN $VPUB $VSCR; do docker volume create $v >/dev/null; done\ndocker run -d --name hpr-anchord --network $NET --network-alias anchor \\\n  -e HOMEPROV_ANCHOR_KEY=\"$KEY\" -v $VCHAIN:/anchor -v $VPUB:/published \\\n  hpr-anchord:sig >/dev/null || exit 5\ndocker run -d --name hpr-monitor --network $NET --network-alias monitor \\\n  -e HOMEPROV_DB=/cfg/home-assistant_v2.db -e HOMEPROV_ANCHOR=http://hpr-anchord:9900/append \\\n  -e HOMEPROV_PERIOD=5 -e HOMEPROV_SCRATCH=/scratch -e HOMEPROV_ANCHOR_KEY=\"$KEY\" \\\n  -v homeprov-real_hpr-config:/cfg:ro -v $VSCR:/scratch hpr-monitor:sig >/dev/null || exit 5\nnote \"anchor image: $(docker inspect hpr-anchord --format '{{.Config.Image}} {{.Image}}')\"\nnote \"monitor image: $(docker inspect hpr-monitor --format '{{.Config.Image}} {{.Image}}')\"\nsleep 20\n\nPROBE='import urllib.request,json\ndef post(h):\n    r=urllib.request.Request(\"http://hpr-anchord:9900/append\",data=b\"{\\\"sealed\\\": {}}\",method=\"POST\",headers=h)\n    try:\n        with urllib.request.urlopen(r,timeout=5) as x: return x.status\n    except urllib.error.HTTPError as e: return e.code\n    except Exception as e: return repr(e)[:80]\nprint(json.dumps({\"untagged\":post({\"Content-Type\":\"application/json\"}),\"forged_tag\":post({\"Content-Type\":\"application/json\",\"X-HP-Auth\":\"0\"*64})}))'\nnote \"probe_from_hub: $(docker exec hpr-hass python3 -c \"$PROBE\")\"\nsleep 40\nnote \"monitor_log_head: $(docker logs hpr-monitor 2>&1 | head -3 | cut -c1-400 | tr '\\n' ' ')\"\nnote \"chain_lines_before_run: $(docker exec hpr-anchord sh -c 'wc -l < /anchor/chain.jsonl')\"\n\nnote \"starting runner EC with arm PS x30, tag $TAG\"\ncd $REPO/testbed/real && HPR_EC_ARMS='\"PS\"' HPR_EC_TRIALS=30 HPR_EC_TAG=$TAG \\\n  EC_SCRATCH=$SP/ec_verify ./run_experiments.sh EC > $SP/${TAG}_run.log 2>&1\nnote \"runner exit: $?\"\nnote \"load_after: $(uptime)\"\nnote \"chain_lines_after_run: $(docker exec hpr-anchord sh -c 'wc -l < /anchor/chain.jsonl')\"\n\n# The authoritative PS scoring: reuse the SHIPPED verifier via the new aggregator,\n# while the authenticated anchor/monitor are still up.\nnote \"running e_ps_detection aggregator\"\ncd $REPO && EC_SCRATCH=$SP/ps_verify python3 exp/stages/e_ps_detection.py --tag $TAG \\\n  > $SP/${TAG}_detection.log 2>&1\nnote \"aggregator exit: $?\"\n\ndocker exec hpr-anchord cat /anchor/chain.jsonl > $SP/${TAG}_chain.jsonl 2>/dev/null\ndocker exec hpr-anchord sh -c 'cat /anchor/refusals.jsonl 2>/dev/null' > $SP/${TAG}_refusals.jsonl\ndocker logs hpr-monitor > $SP/${TAG}_monitor.log 2>&1\nnote \"chain_lines final: $(wc -l < $SP/${TAG}_chain.jsonl)\"\nnote \"done\"\n",
+ "wrapper_script_sha256": "c8af209f98a79b053bc62a7f5e916bb285037ed79e52cd0217b3a32f3f6da682",
+ "aggregator_sha256": "8ccfd49a6847516ad130075386bb2b77e4f842ac9a9d0f98a4df5711c20ca416",
+ "component_sha256": "4c97c34eee9119fa342adaad1db260725001044aafa6c07ec402cd61212922e9",
+ "output_sha256": {
+  "e_ps_auth_detection.json": "df2e535ffee172615e9d9c7ebd14fee69dfb617a6117e0c1067db9cb46458fac",
+  "e_ps_auth_other_principal_real.json": "8c47931481ce998b350a0db615270b9c0dcd17da3db59294b2d4653f7253466b",
+  "e_ps_auth_report_porch.json": "ff865bb66cb23127dc48652dd2a4ae9dce3e9104819adc327ec971577ecaec84",
+  "e_ps_auth_report_hallway.json": "bcbf6819cc7a90475f4eb6c6308592af7820165137ca179614b04585d35a8b1e",
+  "e_ps_auth_report_kitchen.json": "1d2b1a65ea80b824932dc4d7376f01f627408a412e778cf7e60bcd52a6c7b6c3",
+  "e_ps_auth_t_start": "c5d5dd317e9aa5b53d25dca7205b7f7192a3c7cece5b97eaffc7dec13b09fdbc",
+  "e_ps_auth_t_end": "c923cdb3d7fdc633ff775cdd241f790c9a66c307dd874131293503de4c17c420",
+  "e_ps_auth_anchor_refusals.jsonl": "7c860bc6be2f78a8136e235cc41087d289db802ab07eb3c31a87c94e60bd42ae"
+ }
+}

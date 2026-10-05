@@ -11,7 +11,7 @@ from rig import (gen, graph, forge, verify, localize, reconstruct, metrics,
 from rig.commit import commit_full, context_counts, tainted_contexts, GRAN
 
 WORK = "/tmp/homeprov_s9"
-BG = 24.0
+BG = 4.4
 # spans chosen so minute AND hour segments close, and occupancy varies
 ARMS = [(1800.0, 6000), (7200.0, 9000), (21600.0, 12000)]
 SEEDS = [21, 22, 23]

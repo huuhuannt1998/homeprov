@@ -119,7 +119,7 @@ def run(cfg):
     rows = []
     for seed in SEEDS:
         p = {"n_dev": 25, "n_aut": 15, "n_int": 10, "interlock": 0.3,
-             "rate_hr": 100, "history": "1d", "bg_ratio": 24.0,
+             "rate_hr": 100, "history": "1d", "bg_ratio": 4.4,
              "target_nodes": 4000, "span_s": 1800.0, "max_nodes": 10**9}
         clean = os.path.join(WORK, "c.db")
         gen.generate(clean, p, seed=seed)
@@ -212,6 +212,12 @@ def run(cfg):
                 row[name] = {"Q": len(pol_nodes[name]),
                              "recall": rec,
                              "OQ": metrics.oq(pol_nodes[name], T, U)}
+            # SET-level, not size-level: is the segment policy's quarantine the
+            # SAME node set this work returns, or merely the same size?
+            row["R2_equals_R5_setwise"] = (
+                pol_nodes["R2_segments"] == pol_nodes["R5_homeprov"])
+            row["R4_equals_R5_setwise"] = (
+                pol_nodes["R4_component"] == pol_nodes["R5_homeprov"])
             rows.append(row)
             os.remove(db)
         os.remove(clean)

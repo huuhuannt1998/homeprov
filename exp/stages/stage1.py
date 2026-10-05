@@ -84,7 +84,13 @@ def run(cfg):
         })
 
     det = [a for a in arms if a.get("HOMEPROV_detected")]
+    # ALL arms, not merely one. bool(det) passed on a single detection out of
+    # nine, which would have hidden a regression in the other eight. The
+    # measured result is 9/9, so the gate should say so.
     return {"stage": 1, "n_arms": len(arms), "arms": arms,
-            "GATE_PASS": bool(det),
+            "n_detected": len(det),
+            "undetected_arms": [a.get("ft") for a in arms
+                                if not a.get("HOMEPROV_detected")],
+            "GATE_PASS": bool(arms) and len(det) == len(arms),
             "capability": capability.record("mal_integration_v1", "in_process_integration",
                                             cfg.get("seed", 0), 7, cfg.get("window_s", 5))}

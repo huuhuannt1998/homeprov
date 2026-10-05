@@ -1,0 +1,48 @@
+{
+ "experiment": "E2 -- in-process defender subversion vs an external observer",
+ "substrate": "real deployment (mosquitto broker, MQTT discovery, shipped blueprint)",
+ "ha_version_container": "hpr-hass",
+ "run_date": "2026-09-03",
+ "hook": {
+  "mechanism": "a second community integration rebinds homeprov._graph",
+  "privilege_used": "import",
+  "graph_name": "_censored",
+  "module_is_same_object": true,
+  "patched_flag": true
+ },
+ "adversary_context": "01a06a0aa531367a6092e73ec4b0e6e3",
+ "adversary_ulid": "01M1N0N99H6SX614Q77V2B1SQ3",
+ "in_process_defender": {
+  "rows_via_patched_graph_before": 133078,
+  "rows_via_patched_graph_after": 133087,
+  "rows_matching_censored_context": 1,
+  "true_graph_rows_after": 133088,
+  "note": "the defender sees one row fewer than exists; the missing row is the adversary's own"
+ },
+ "adversary_rows_in_recorder": {
+  "events": [
+   {
+    "event_id": 73827,
+    "time_fired_ts": 1788485477.681552
+   }
+  ],
+  "states": [],
+  "second": 1788485477,
+  "note": "the minted context owned the call_service event; no state row carried it"
+ },
+ "external_monitor": {
+  "placement": "separate container, /config mounted read-only, unreachable by the in-process rebinding",
+  "chain_records": 41834,
+  "sealed_second_segments": 54126,
+  "adversary_second_sealed": true,
+  "anchor_seq": 41830,
+  "sealed_entry": {
+   "second": 1788485477,
+   "n": 1,
+   "acc": "dae8006afe5abaf80543665cf92f8abbbe41b9e943d2ef62d0ca4432e893947a"
+  }
+ },
+ "finding": "The in-process defender was blinded to the adversary's row by a rebinding that cost the adversary nothing but an import. The external monitor sealed the exact second that row fell in, with n=1. A defender sharing the interpreter cannot carry the guarantee; one outside it can.",
+ "not_shown": "the deletion step (removing the censored rows so the database matches the defender's view) was not performed in this run, so this artifact does not evidence an anchor segment surviving a database the rows no longer support; that remains evidenced only by the earlier run in results/bundles/u_res_e2.json",
+ "caveat": "the in-hub homeprov component's own anchoring was erroring throughout (/anchor/chain not present in its container), so this run evidences the EXTERNAL monitor's behaviour and the blinding of the in-process view, not the in-process anchor's silence"
+}

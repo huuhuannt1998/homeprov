@@ -243,7 +243,7 @@ def _mutations(picked) -> list:
              "UPDATE states SET last_updated_ts=last_updated_ts-0.5 WHERE state_id=?",
              (sid,)),
             ("states.last_changed_ts",
-             "UPDATE states SET last_changed_ts=last_changed_ts-900 WHERE state_id=?",
+             "UPDATE states SET last_changed_ts=COALESCE(last_changed_ts,last_updated_ts)-900 WHERE state_id=?",
              (sid,)),
             ("states.state_id(row identity)", None, (sid,)),
         ]
@@ -455,6 +455,14 @@ async def _cmd_roles(hass) -> dict:
     start = end - timedelta(hours=6)
     lo, hi = start.timestamp(), end.timestamp()
 
+    # PLANT FIRST. The roles this pass needs are not exhibited by a settled real
+    # deployment: an actuation's state row arrives back from the device under a
+    # fresh context with no parent, and the automations' own rows are not context
+    # origins. Planting an actuation produces a row that IS a context origin and
+    # IS render-eligible, so the field gets tested rather than reported absent.
+    from custom_components.homeprov_scenario import plant_actuations
+    planted = await plant_actuations(hass, 6)
+
     con = _connect()
     ents = _entities(con, lo, hi)
     qm = ",".join("?" * len(ents))
@@ -468,7 +476,12 @@ async def _cmd_roles(hass) -> dict:
         AND EXISTS (SELECT 1 FROM states o WHERE o.state_id = s.old_state_id
                                              AND o.state <> s.state)
         AND s.state IS NOT NULL
-        AND s.last_updated_ts = s.last_changed_ts
+        -- last_changed_ts is NULL exactly when it EQUALS last_updated_ts: the
+        -- recorder does not store the duplicate. Comparing them directly yields
+        -- NULL rather than true, so this filter matched nothing on this platform
+        -- and all three roles reported unexhibited. E5 already carries this fix;
+        -- it was never propagated here.
+        AND (s.last_changed_ts IS NULL OR s.last_updated_ts = s.last_changed_ts)
         AND sm.entity_id IN (%s)
         AND s.last_updated_ts BETWEEN ? AND ?""" % qm
 
@@ -517,7 +530,7 @@ async def _cmd_roles(hass) -> dict:
                       (os.urandom(16), origin[0])))
     if unchanged:
         tests.append(("states.last_changed_ts@render-eligible",
-                      "UPDATE states SET last_changed_ts=last_changed_ts-900 "
+                      "UPDATE states SET last_changed_ts=COALESCE(last_changed_ts,last_updated_ts)-900 "
                       "WHERE state_id=?", (unchanged[0],)))
     if attrs:
         tests.append(("states.attributes_id@render-eligible+attrs",
@@ -526,11 +539,38 @@ async def _cmd_roles(hass) -> dict:
     for field, sql, args in tests:
         out.append(await _mutate_and_render(hass, start, end, ents, base, field, sql, args))
 
+    # A NULL ROW IS A RESULT, AND IT MUST SAY WHICH RESULT. Reporting
+    # {"context_origin_state": null} is indistinguishable from "the field does
+    # not matter", which is exactly the conflation this whole experiment exists
+    # to avoid. On the real substrate the origin role genuinely is not exhibited:
+    # an actuation's state row arrives back from the device over the broker under
+    # a fresh context with no parent, so no row both opens its own context and
+    # carries a resolvable parent. That is a fact about the substrate, and the
+    # constructive `parentrole` command is the answer to it -- not a gap.
+    def _why(row, role, remedy):
+        if row:
+            return {"state_id": row[0], "role_exhibited": True, "note": None}
+        return {"state_id": None, "role_exhibited": False,
+                "note": "no render-eligible row occupies the %s role in this "
+                        "window on this substrate, so the field is UNTESTED "
+                        "here rather than shown irrelevant. %s" % (role, remedy)}
+
     os.makedirs(OUT, exist_ok=True)
     rep = {"ha_version": _ha_version(), "baseline_rows": len(base),
-           "rows": {"context_origin_state": origin[0] if origin else None,
-                    "updated_eq_changed_state": unchanged[0] if unchanged else None,
-                    "attrs_state": attrs[0] if attrs else None},
+           "rows": {
+               "context_origin_state": _why(
+                   origin, "context-origin-with-resolvable-parent",
+                   "Run the `parentrole` command, which constructs the role."),
+               "updated_eq_changed_state": _why(
+                   unchanged, "render-eligible last_updated == last_changed",
+                   "Requires a settled entity with a differing predecessor."),
+               "attrs_state": _why(
+                   attrs, "render-eligible row carrying attributes",
+                   "Requires an entity whose rows carry an attributes_id."),
+           },
+           "planted_actuations": len(planted),
+           "roles_exhibited": sum(1 for r in (origin, unchanged, attrs) if r),
+           "roles_total": 3,
            "retests": out, "ts": time.time()}
     with open(os.path.join(OUT, "e4_roles.json"), "w") as fh:
         json.dump(rep, fh, indent=2, default=str)
@@ -560,6 +600,12 @@ async def _cmd_parentrole(hass) -> dict:
     start = end - timedelta(hours=6)
     lo, hi = start.timestamp(), end.timestamp()
 
+    # Same reason as the roles pass: construct the role on a row we caused to
+    # exist, rather than fail with "no render-eligible context-origin state row"
+    # on a hub that simply has not produced one yet.
+    from custom_components.homeprov_scenario import plant_actuations
+    planted = await plant_actuations(hass, 6)
+
     con = _connect()
     ents = _entities(con, lo, hi)
     qm = ",".join("?" * len(ents))
@@ -568,7 +614,7 @@ async def _cmd_parentrole(hass) -> dict:
              JOIN states_meta sm ON sm.metadata_id=s.metadata_id
             WHERE sm.entity_id IN (%s) AND s.last_updated_ts BETWEEN ? AND ?
               AND s.old_state_id IS NOT NULL AND s.state IS NOT NULL
-              AND s.last_updated_ts = s.last_changed_ts
+              AND (s.last_changed_ts IS NULL OR s.last_updated_ts = s.last_changed_ts)
               AND EXISTS (SELECT 1 FROM states o WHERE o.state_id=s.old_state_id
                                                    AND o.state <> s.state)
               AND s.context_id_bin IS NOT NULL
@@ -578,7 +624,10 @@ async def _cmd_parentrole(hass) -> dict:
         (*ents, lo, hi)).fetchone()
     if not row:
         con.close()
-        return {"ok": False, "err": "no render-eligible context-origin state row"}
+        return {"ok": False, "err": "no render-eligible context-origin state row",
+                "planted": len(planted),
+                "note": "planting ran but produced no row satisfying the "
+                        "eligibility predicate; check the locks were available"}
     sid, orig_par = row
     # Two DISTINCT contexts that both resolve, drawn from event rows so the
     # augmenter has a real context row to attribute to.

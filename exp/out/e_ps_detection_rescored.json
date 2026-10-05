@@ -1,0 +1,115 @@
+{
+ "what": "PS detection re-scored from the stored per-trial verdicts with the corrected late-row rule (delta_n > 0 is late rows; delta_n <= 0 or a vanished segment is attributable to the swap). The original files are unchanged; their summary fields used a rule that mislabelled in-place changes as late rows.",
+ "runs": {
+  "e_ps_auth_detection.json": {
+   "file": "e_ps_auth_detection.json",
+   "sha256": "df2e535ffee17261",
+   "monitor_scheme": "row",
+   "n": 90,
+   "second": {
+    "raw_hits": 1,
+    "late_row_ambiguous": 1,
+    "attributable_to_swap": 0,
+    "attributable_ci": {
+     "k": 0,
+     "n": 90,
+     "prop": 0.0,
+     "ci_lo": 0.0,
+     "ci_hi": 0.04015891961577464,
+     "method": "Clopper-Pearson exact"
+    },
+    "late_row_detail": [
+     {
+      "room": "hallway",
+      "trial": 19,
+      "segment": "1790949433",
+      "delta_n": 2
+     }
+    ]
+   },
+   "minute": {
+    "raw_hits": 0,
+    "late_row_ambiguous": 0,
+    "attributable_to_swap": 0,
+    "attributable_ci": {
+     "k": 0,
+     "n": 90,
+     "prop": 0.0,
+     "ci_lo": 0.0,
+     "ci_hi": 0.04015891961577464,
+     "method": "Clopper-Pearson exact"
+    },
+    "late_row_detail": []
+   },
+   "benign_floor": {
+    "second": {
+     "k": 1,
+     "n": 309,
+     "ci_lo": 8.193129711877822e-05,
+     "ci_hi": 0.01789838674473135
+    },
+    "minute": {
+     "k": 0,
+     "n": 7,
+     "ci_lo": 0.0,
+     "ci_hi": 0.40961639722500337
+    }
+   }
+  },
+  "e_ps_clo_detection.json": {
+   "file": "e_ps_clo_detection.json",
+   "sha256": "bf8dc6895a33e88a",
+   "monitor_scheme": "closure",
+   "n": 90,
+   "second": {
+    "raw_hits": 90,
+    "late_row_ambiguous": 1,
+    "attributable_to_swap": 89,
+    "attributable_ci": {
+     "k": 89,
+     "n": 90,
+     "prop": 0.9888888888888889,
+     "ci_lo": 0.9396425194252681,
+     "ci_hi": 0.9997187305860573,
+     "method": "Clopper-Pearson exact"
+    },
+    "late_row_detail": [
+     {
+      "room": "porch",
+      "trial": 0,
+      "segment": "1790966779",
+      "delta_n": 8
+     }
+    ]
+   },
+   "minute": {
+    "raw_hits": 90,
+    "late_row_ambiguous": 0,
+    "attributable_to_swap": 90,
+    "attributable_ci": {
+     "k": 90,
+     "n": 90,
+     "prop": 1.0,
+     "ci_lo": 0.9598410803842253,
+     "ci_hi": 1.0,
+     "method": "Clopper-Pearson exact"
+    },
+    "late_row_detail": []
+   },
+   "benign_floor": {
+    "second": {
+     "k": 1,
+     "n": 312,
+     "ci_lo": 8.114352814828618e-05,
+     "ci_hi": 0.017727546421299402
+    },
+    "minute": {
+     "k": 0,
+     "n": 8,
+     "ci_lo": 0.0,
+     "ci_hi": 0.3694166475528192
+    }
+   }
+  }
+ }
+}

@@ -11,8 +11,13 @@ there is an AVAILABILITY impact.
 """
 import json, subprocess, time, urllib.error, urllib.request
 
-BASE = "http://localhost:9900"
-CONT = "hp-anchord"
+import os
+
+# The anchor's port is NOT published to the host by the real compose file
+# (docker inspect hpr-anchord -> {"9900/tcp": null}), so this default reaches
+# nothing from a host-side run. Override it when testing the deployed daemon.
+BASE = os.environ.get("HOMEPROV_ANCHOR", "http://localhost:9900")
+CONT = os.environ.get("HOMEPROV_ANCHOR_CONTAINER", "hp-anchord")
 
 
 def _sh(*a, t=60):
@@ -51,6 +56,27 @@ def _req(method, path, body=None, timeout=10):
 
 
 def run(cfg):
+    # FAIL LOUDLY IF THE TARGET IS NOT THERE.
+    #
+    # A previous run of this stage recorded accepted=false and appended=0 on
+    # all sixteen attacks and reported them as the anchor REFUSING each one.
+    # Every row was actually ConnectionRefused: the daemon was alive in its
+    # container the whole time, but its port is unpublished and this stage
+    # points at localhost. Refusal-of-connection was read as refusal-by-policy,
+    # and the resulting non-result reached the manuscript as a positive claim.
+    #
+    # A stage that cannot reach the system under test has NOT tested it. Raise.
+    try:
+        with urllib.request.urlopen(BASE + "/head", timeout=5) as r:
+            if r.status != 200:
+                raise RuntimeError("anchor /head returned %s" % r.status)
+    except Exception as e:
+        raise RuntimeError(
+            "anchor unreachable at %s (%r). This stage measures the anchor's "
+            "ACCEPTANCE POLICY; with nothing listening every attack returns "
+            "ConnectionRefused and would be misread as a refusal. Set "
+            "HOMEPROV_ANCHOR to a reachable anchor and re-run." % (BASE, e))
+
     rows = []
 
     def attack(name, fn, note=""):

@@ -144,7 +144,7 @@ def e15_sensitivity():
     parent-context fraction (~0.012) is marked."""
     os.makedirs(WORK, exist_ok=True)
     base = {"n_dev": 25, "n_aut": 15, "n_int": 10, "interlock": 0.3,
-            "rate_hr": 100, "history": "1d", "bg_ratio": 24.0,
+            "rate_hr": 100, "history": "1d", "bg_ratio": 4.4,
             "target_nodes": 3000, "span_s": 1800.0, "max_nodes": 10**9}
     sweeps = {
         "bg_ratio": [4.0, 12.0, 24.0, 48.0, 96.0],     # drives parent-context fraction

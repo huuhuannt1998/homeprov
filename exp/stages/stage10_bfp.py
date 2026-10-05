@@ -13,7 +13,7 @@ from rig import (gen, graph, verify, benign, markers, baselines, stats, capabili
 from rig.commit import commit_full, GRAN
 
 WORK = "/tmp/homeprov_bfp"
-BG = 24.0
+BG = 4.4
 ARMS = [(1800.0, 4000), (7200.0, 6000), (21600.0, 8000), (43200.0, 8000)]
 SEEDS = list(range(31, 47))     # n = 4 arms x 16 seeds x 7 events = 448
                                 # rule of three: 0/448 bounds BFP at ~0.0067 <= 0.01

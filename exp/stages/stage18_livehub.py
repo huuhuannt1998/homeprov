@@ -176,11 +176,19 @@ def run(cfg):
 
     os.remove(before)
     ok = [r for r in rows if "error" not in r]
+    failed = [r for r in rows if "error" in r]
     n = len(ok)
     k_hp = int(sum(r["hp_alarm"] for r in ok))
     k_b2 = int(sum(r["b2_alarm"] for r in ok))
+    # AN ARM THAT DID NOT RUN IS NOT AN ARM THAT RAISED NO ALARM.
+    # A prior artifact recorded n=2 with three arms erroring "snapshot failed"
+    # and still reported GATE_PASS true, because the gate counted only the arms
+    # that succeeded. Absence of a measurement was being credited as absence of
+    # a false alarm. The gate now requires every declared arm to have run.
     return {"stage": 18, "rows": rows, "n": n,
+            "n_failed": len(failed),
+            "failed_arms": [r.get("be") for r in failed],
             "BFP_homeprov_livehub": stats.clopper_pearson(k_hp, n) if n else None,
             "BFP_b2_livehub": stats.clopper_pearson(k_b2, n) if n else None,
-            "GATE_PASS": (k_hp == 0) if n else None,
+            "GATE_PASS": (bool(n) and not failed and k_hp == 0),
             "capability": capability.record("none", "in_process_integration", 0, 0, 5)}

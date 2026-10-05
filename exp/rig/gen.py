@@ -39,6 +39,29 @@ CREATE TABLE events (
 """
 
 
+# CALIBRATED AGAINST THE REAL DEPLOYMENT AS THE PAPER CHARACTERIZES IT, 2026-09-03.
+#
+# WHICH REAL DEPLOYMENT. The target is the published characterization -- 3,229
+# nodes, 784 state rows, parent-context fraction 0.3227 -- NOT the live recorder
+# as it stands now. The live recorder has since absorbed the evaluation suite's
+# own traffic and measures 0.478 over 57,354 state rows; calibrating to that
+# would be calibrating the generator to the experiments' footprint. The original
+# database is gone, so the published stage34 artifact is the pinned baseline.
+#
+# The generated arm ran at bg_ratio 24.0, which gives a parent-context fraction
+# of 0.091 against the real deployment's 0.323 -- three and a half times too
+# sparse on the ONE swept structural parameter that moves the quarantine.
+# Every generated-arm result rested on it, so the value is now FITTED: sweeping
+# bg_ratio and measuring the fraction the way stage34 defines it (parents per
+# STATE row, not per node) gives 4.4 -> 0.3221 against a target of 0.3227, and
+# the fraction stays within 0.3204-0.3257 across the six deployment seeds.
+#
+# WHAT THIS DOES NOT FIX. Mean causal run is 1.204 at bg_ratio 4.4 against the
+# real deployment's 1.151: the generator still builds slightly longer causal
+# runs than the real hub. bg_ratio cannot close that -- lowering it raises both
+# quantities together -- so the residual is reported rather than tuned away.
+BG_RATIO = 4.4
+
 def generate(path: str, params: dict, seed: int = 0, t0: float = 1_787_000_000.0) -> dict:
     """Emit a recorder-shaped database for one deployment point."""
     rng = random.Random(seed)
@@ -61,10 +84,10 @@ def generate(path: str, params: dict, seed: int = 0, t0: float = 1_787_000_000.0
     # G-3 without the confound that the max_nodes cap introduced.
     if params.get("target_nodes"):
         tgt = float(params["target_nodes"])
-        n_runs = max(1, int(tgt / (6 * (1 + params.get("bg_ratio", 12.0)))))
+        n_runs = max(1, int(tgt / (6 * (1 + params.get("bg_ratio", BG_RATIO)))))
     else:
         n_runs = max(1, int(rate * hours / 4))      # each run emits ~6 nodes
-    bg_ratio_pre = params.get("bg_ratio", 12.0)
+    bg_ratio_pre = params.get("bg_ratio", BG_RATIO)
     est = n_runs * 6 * (1 + bg_ratio_pre)
     scaled = False
     if est > max_nodes:
@@ -76,7 +99,7 @@ def generate(path: str, params: dict, seed: int = 0, t0: float = 1_787_000_000.0
     # only causal chains produced with_parent = 0.833, which would have made the
     # whole sweep unrepresentative, because OQ depends on SEGMENT OCCUPANCY and
     # occupancy is dominated by that background.
-    bg_ratio = params.get("bg_ratio", 12.0)         # background nodes per causal node
+    bg_ratio = params.get("bg_ratio", BG_RATIO)     # background nodes per causal node
 
     ents = (["input_boolean.trigger_%02d" % i for i in range(max(1, n_dev // 3))] +
             ["lock.dev_%02d" % i for i in range(max(1, n_dev // 3))] +

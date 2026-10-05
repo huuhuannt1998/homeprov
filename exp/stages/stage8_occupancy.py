@@ -20,7 +20,7 @@ from rig.commit import commit_full
 
 WORK = "/tmp/homeprov_occ"
 TARGET_NODES = 12000
-BG = 24.0
+BG = 4.4
 # spans chosen to span ~2 orders of magnitude of occupancy at fixed N
 SPANS = [240.0, 600.0, 2400.0, 12000.0, 60000.0]
 SEEDS = [11, 12, 13]

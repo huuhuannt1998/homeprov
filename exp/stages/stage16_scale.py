@@ -13,7 +13,7 @@ def run(cfg):
     rows = []
     for target in SIZES:
         p = {"n_dev": 25, "n_aut": 15, "n_int": 10, "interlock": 0.3,
-             "rate_hr": 100, "history": "1d", "bg_ratio": 24.0,
+             "rate_hr": 100, "history": "1d", "bg_ratio": 4.4,
              "target_nodes": target, "span_s": target / 20.0, "max_nodes": 10**9}
         db = os.path.join(WORK, "s.db")
         t0 = time.perf_counter(); info = gen.generate(db, p, seed=91)

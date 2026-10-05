@@ -1,0 +1,242 @@
+{
+  "experiment": "E-B / E5b",
+  "what": "monitor robustness over hostile input WITH the anchor running and the fail-closed monitor",
+  "substrate": "copy of a live HA recorder (/private/tmp/claude-501/-Users-huanbui-Research/fcdf91f1-466b-418b-ab46-c45ec6cd7ad9/scratchpad/e5copy); only a copy touched",
+  "baseline_nodes": 33,
+  "conditions": {
+    "baseline": {
+      "monitor_out": {
+        "n_nodes": 33,
+        "copy_ms": 6.025,
+        "load_ms": 6.658,
+        "commit_ms": 0.149,
+        "sealed_new": {
+          "second": 31,
+          "minute": 27,
+          "hour": 1
+        },
+        "anchor": {
+          "ok": true,
+          "seq": 2
+        }
+      },
+      "n_nodes": 33,
+      "nodes_lost_vs_baseline": 0,
+      "fail_closed": false,
+      "evidence_unobservable_record_in_chain": false,
+      "sealed_record_in_chain": true,
+      "anchor_records_added": 1,
+      "detected": null
+    },
+    "db_missing": {
+      "monitor_out": {
+        "n_nodes": null,
+        "copy_ms": 4.767,
+        "evidence_unobservable": true,
+        "reason": "db_missing",
+        "detail": {},
+        "sealed_new": {},
+        "anchor": {
+          "ok": true,
+          "seq": 3
+        },
+        "fail_closed": true
+      },
+      "n_nodes": null,
+      "nodes_lost_vs_baseline": null,
+      "fail_closed": true,
+      "evidence_unobservable_record_in_chain": true,
+      "sealed_record_in_chain": false,
+      "anchor_records_added": 1,
+      "detected": true
+    },
+    "db_empty_schema": {
+      "monitor_out": {
+        "n_nodes": null,
+        "copy_ms": 1.16,
+        "evidence_unobservable": true,
+        "reason": "schema_unreadable",
+        "detail": {
+          "exc": "OperationalError('no such column: s.state')"
+        },
+        "sealed_new": {},
+        "anchor": {
+          "ok": true,
+          "seq": 4
+        },
+        "fail_closed": true
+      },
+      "n_nodes": null,
+      "nodes_lost_vs_baseline": null,
+      "fail_closed": true,
+      "evidence_unobservable_record_in_chain": true,
+      "sealed_record_in_chain": false,
+      "anchor_records_added": 1,
+      "detected": true
+    },
+    "wal_truncated": {
+      "monitor_out": {
+        "n_nodes": null,
+        "copy_ms": 2.685,
+        "evidence_unobservable": true,
+        "reason": "wal_truncated",
+        "detail": {
+          "wal_size": 0,
+          "shm_mxframe": 762
+        },
+        "sealed_new": {},
+        "anchor": {
+          "ok": true,
+          "seq": 5
+        },
+        "fail_closed": true
+      },
+      "n_nodes": null,
+      "nodes_lost_vs_baseline": null,
+      "fail_closed": true,
+      "evidence_unobservable_record_in_chain": true,
+      "sealed_record_in_chain": false,
+      "anchor_records_added": 1,
+      "detected": true
+    },
+    "shm_deleted": {
+      "monitor_out": {
+        "n_nodes": 33,
+        "copy_ms": 5.652,
+        "load_ms": 12.221,
+        "commit_ms": 0.151,
+        "sealed_new": {
+          "second": 31,
+          "minute": 27,
+          "hour": 1
+        },
+        "anchor": {
+          "ok": true,
+          "seq": 6
+        }
+      },
+      "n_nodes": 33,
+      "nodes_lost_vs_baseline": 0,
+      "fail_closed": false,
+      "evidence_unobservable_record_in_chain": false,
+      "sealed_record_in_chain": true,
+      "anchor_records_added": 1,
+      "detected": false
+    },
+    "db_unreadable": {
+      "monitor_out": {
+        "n_nodes": null,
+        "copy_ms": 6.147,
+        "evidence_unobservable": true,
+        "reason": "db_missing",
+        "detail": {},
+        "sealed_new": {},
+        "anchor": {
+          "ok": true,
+          "seq": 7
+        },
+        "fail_closed": true
+      },
+      "n_nodes": null,
+      "nodes_lost_vs_baseline": null,
+      "fail_closed": true,
+      "evidence_unobservable_record_in_chain": true,
+      "sealed_record_in_chain": false,
+      "anchor_records_added": 1,
+      "detected": true
+    },
+    "page_header_corrupt": {
+      "monitor_out": {
+        "n_nodes": 33,
+        "copy_ms": 6.132,
+        "load_ms": 6.946,
+        "commit_ms": 0.192,
+        "sealed_new": {
+          "second": 31,
+          "minute": 27,
+          "hour": 1
+        },
+        "anchor": {
+          "ok": true,
+          "seq": 8
+        }
+      },
+      "n_nodes": 33,
+      "nodes_lost_vs_baseline": 0,
+      "fail_closed": false,
+      "evidence_unobservable_record_in_chain": false,
+      "sealed_record_in_chain": true,
+      "anchor_records_added": 1,
+      "detected": false
+    },
+    "wal_header_corrupt": {
+      "monitor_out": {
+        "n_nodes": null,
+        "copy_ms": 5.227,
+        "evidence_unobservable": true,
+        "reason": "wal_header_corrupt",
+        "detail": {
+          "wal_magic": "0x0",
+          "shm_mxframe": 762
+        },
+        "sealed_new": {},
+        "anchor": {
+          "ok": true,
+          "seq": 9
+        },
+        "fail_closed": true
+      },
+      "n_nodes": null,
+      "nodes_lost_vs_baseline": null,
+      "fail_closed": true,
+      "evidence_unobservable_record_in_chain": true,
+      "sealed_record_in_chain": false,
+      "anchor_records_added": 1,
+      "detected": true
+    }
+  },
+  "silent_loss_conditions_now_detected": [
+    "wal_truncated",
+    "wal_header_corrupt"
+  ],
+  "prior_run_note": "e5_robust.json reported ConnectionRefused throughout and silent_loss on wal_truncated/wal_header_corrupt (6409 of 6857 nodes sealed with no record)",
+  "capability": {
+    "capability_record": {
+      "schema_version": 1,
+      "actor_id": "wal_corruptor",
+      "actor_position": "in_process_integration",
+      "powers": {
+        "db_read": true,
+        "db_write": true,
+        "fs_read_as_ha_uid": true,
+        "fs_write_as_ha_uid": true,
+        "python_exec_in_core": true,
+        "event_bus_listen": true,
+        "event_bus_emit": true,
+        "service_call": true,
+        "network_egress": false
+      },
+      "knowledge": {
+        "can_corrupt_wal_shm": true
+      },
+      "budget": {
+        "db_writes_max": null,
+        "wallclock_window_s": null,
+        "cpu_seconds_max": null
+      },
+      "constraints": {
+        "anchor_key_access": false
+      },
+      "substrate": {
+        "kind": "docker_monitor + docker_signed_anchor",
+        "monitor_image": "hpr-monitor:sig",
+        "anchor_image": "hpr-anchord:sig"
+      },
+      "provenance": {
+        "rka_mission": "E-B fail-closed monitor",
+        "seed": 0
+      }
+    }
+  },
+  "_digest": "c98cb8d01ae692d6eb26d7da8f849edd256603ab90dacc183eb11b9020ce1455"
+}

@@ -1,0 +1,24 @@
+{
+ "tag": "e_d_whr",
+ "scheme": "wholerow",
+ "snapshot": "/private/tmp/claude-501/-Users-huanbui-Research/5494168f-5302-46e9-a92f-a9946eea0dc0/scratchpad/hp-whr/e_d_whr/ec_verify/recorder.db",
+ "chain": "/private/tmp/claude-501/-Users-huanbui-Research/5494168f-5302-46e9-a92f-a9946eea0dc0/scratchpad/hp-whr/e_d_whr/chain.jsonl",
+ "per_arm": {
+  "PU": {
+   "n_valid": 90,
+   "flagged": 90,
+   "late_row": 0,
+   "attributable": 90,
+   "late_detail": []
+  },
+  "PI": {
+   "n_valid": 90,
+   "flagged": 90,
+   "late_row": 0,
+   "attributable": 90,
+   "late_detail": []
+  }
+ },
+ "rule": "delta_n > 0: rows arrived after seal, not attributable; otherwise attributable",
+ "how": "[Whole-row variant, review D1 F-09: identical to scratchpad/hp-clo/late_row_check.py except that the recompute\nuses monitor_wholerow.py.] Per-trial late-row test for an E-C/E-D aggregate (same test as used for E-C auth\nand E-PS). For every trial whose second-segment the aggregator flagged, recompute\nthat segment from the verifier's OWN saved recorder snapshot and the saved anchor\nchain with the shipped monitor (scheme from HOMEPROV_SCHEME), and classify:\ndelta_n > 0 -> rows arrived after the seal (not attributable to the arm);\ndelta_n <= 0 or segment vanished -> attributable. Read-only; writes one new file.\nUsage: late_row_check.py TAG SNAPSHOT_DB CHAIN_JSONL\n"
+}

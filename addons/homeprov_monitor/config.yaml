@@ -1,0 +1,38 @@
+# Home Assistant Supervisor add-on: HomeProv external monitor.
+#
+# The point of this manifest is what it does NOT request. The monitor must be
+# able to read the recorder and reach the anchor, and nothing else; every option
+# below that is absent is absent deliberately, because an adversary integration
+# can request options too and the separation only means something if the monitor
+# needs fewer of them than the hub already has.
+name: HomeProv Monitor
+version: "1.0.0"
+slug: homeprov_monitor
+description: >-
+  Computes provenance commitments outside the Home Assistant process and appends
+  segment roots to an append-only anchor.
+arch: [aarch64, amd64]
+startup: services
+boot: auto
+
+# READ-ONLY access to the configuration directory, which is where the recorder
+# database lives. ':rw' would let a compromised monitor write the evidence it
+# is supposed to attest, which is the whole failure this design exists to avoid.
+map:
+  - config:ro
+
+# NOT REQUESTED, and each omission is load-bearing:
+#   host_network: true   would put the monitor on the host LAN
+#   privileged: [...]    no capability is needed to read a file and POST
+#   full_access: true    would grant the whole device
+#   docker_api: true     would let the monitor control other containers
+#   ports:               the monitor listens on nothing; it only makes outbound
+#                        requests, so it presents no surface to the hub
+host_network: false
+
+options:
+  anchor_url: "http://a0d7b954-homeprov-anchor:9900/append"
+  period_seconds: 1
+schema:
+  anchor_url: url
+  period_seconds: int(1,60)

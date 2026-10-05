@@ -16,7 +16,7 @@ from rig import (gen, graph, forge, verify, localize, reconstruct, metrics,
 from rig.commit import commit_full, context_counts, tainted_contexts
 
 WORK = "/tmp/homeprov_sweep"
-BG = 24.0          # calibrated: structural error 0.066 vs the real deployment
+BG = 4.4          # calibrated: structural error 0.066 vs the real deployment
 
 
 def _adv_ctx(db):

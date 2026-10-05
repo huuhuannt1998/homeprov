@@ -66,7 +66,7 @@ def run(cfg):
     for span, target in ARMS:
         for seed in SEEDS:
             p = {"n_dev": 25, "n_aut": 15, "n_int": 10, "interlock": 0.3,
-                 "rate_hr": 100, "history": "1d", "bg_ratio": 24.0,
+                 "rate_hr": 100, "history": "1d", "bg_ratio": 4.4,
                  "target_nodes": target, "span_s": span, "max_nodes": 10**9}
             clean = os.path.join(WORK, "c.db")
             gen.generate(clean, p, seed=seed)

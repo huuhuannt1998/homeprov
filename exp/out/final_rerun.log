@@ -1,0 +1,65 @@
+== preflight ==
+[32m  ok    docker daemon[0m
+[32m  ok    no competing container workloads[0m
+[32m  ok    disk headroom (90GB free)[0m
+[32m  ok    compose file parses[0m
+[32m  ok    harness files present[0m
+== bringing the substrate up ==
+  waiting for the hub to bind its entities
+[32m  ok    scenario bound[0m
+  settling for 90s so the blueprint fires and MQTT retains settle
+
+==============================================================
+== E4  (~3 min)  renderer dependency closure on the real substrate
+==============================================================
+== E4 renderer dependency closure, on the real substrate ==
+{"ok": true, "fields_tested": 12, "relevant": 8, "control_ok": true, "out": "e4_closure.json"}
+  -> exp/out/e4_real_closure.json
+[32m-- E4 ok in 6s[0m
+
+==============================================================
+== E4ROLES  (~2 min)  conditional-role retests, and which roles this substrate exhibits
+==============================================================
+== E4 conditional-role retests, on the real substrate ==
+{"ok": true, "retested": 2, "now_relevant": 1, "out": "e4_roles.json"}
+  -> exp/out/e4_real_roles.json
+[32m-- E4ROLES ok in 15s[0m
+
+==============================================================
+== E5  (~7 min)  twelve-variant renderer-backed sweep, three configurations
+==============================================================
+== E5 renderer-backed attack evaluation, rooms: porch hallway kitchen ==
+-- configuration: porch --
+{"ok": true, "n_instances": 360, "aborted": false, "misattribution_rate": 0.16666666666666666}
+  -> exp/out/e5_real_renderer_porch.json
+-- configuration: hallway --
+{"ok": true, "n_instances": 360, "aborted": false, "misattribution_rate": 0.2}
+  -> exp/out/e5_real_renderer_hallway.json
+-- configuration: kitchen --
+{"ok": true, "n_instances": 336, "aborted": false, "misattribution_rate": 0.3333333333333333}
+  -> exp/out/e5_real_renderer_kitchen.json
+-- pooled across configurations --
+  porch     innocent=automation.porch_motion_light bound=True targets=30 rate=0.167
+  hallway   innocent=automation.hallway_motion_light bound=True targets=30 rate=0.200
+  kitchen   innocent=automation.kitchen_motion_light bound=True targets=28 rate=0.333
+
+  variant                 n   chg   mis    rate   95% CI
+  principal_swap         88    88    88   1.000   [0.959, 1.000]
+  delete_reparent        88    88    52   0.591   [0.481, 0.695]
+  full_laundering        88    88    52   0.591   [0.481, 0.695]
+  duplicate_context      88    88    52   0.591   [0.481, 0.695]
+  delete_only            88    88     0   0.000   [0.000, 0.041]
+  reparent_only          88     0     0   0.000   [0.000, 0.041]
+  inject_only            88     0     0   0.000   [0.000, 0.041]
+  delete_inject          88    88     0   0.000   [0.000, 0.041]
+  inject_reparent        88     0     0   0.000   [0.000, 0.041]
+  dangling_parent        88     0     0   0.000   [0.000, 0.041]
+  timestamp_shift        88    88     0   0.000   [0.000, 0.041]
+  retention_edge         88    88     0   0.000   [0.000, 0.041]
+  -> exp/out/e5_real_multiconfig.json
+[32m-- E5 ok in 383s[0m
+
+==============================================================
+[32mall stages completed[0m
+Manifest: /Users/huanbui/Research/HOMEPROV-P13/exp/out/run_all_manifest.json
+Logs:     /Users/huanbui/Research/HOMEPROV-P13/exp/out/run_all_logs/

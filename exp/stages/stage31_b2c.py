@@ -46,12 +46,20 @@ SCHEMES = ("homeprov", "b2", "b2b", "b2c", "row")
 
 
 def _ft_user(db) -> int:
-    """FT-U — reassign an action to a household member.
+    """FT-U — reattribute an action to a user account.
 
     The adversary does not touch the causal edge and does not delete anything.
     It writes a user id onto the rows of the actuation's context, and the 2026.7
-    timeline then names a person as the cause. Measured in E4 as
-    attribution-relevant on both tables.
+    timeline then credits that account rather than the true cause. Measured in E4
+    as attribution-relevant on both tables.
+
+    THE ID IS RANDOM (os.urandom below), so it matches no real account. This
+    docstring previously said the attack "reassigns an action to a household
+    member" and that the timeline "names a person" -- neither of which the code
+    does, and both of which reached the manuscript, including its abstract,
+    before being caught. A separate probe also showed the renderer emits no
+    context_name for a user context at all: the identifier renders opaque. Say
+    what the code writes, not what the attack is meant to evoke.
     """
     con = sqlite3.connect(db)
     r = con.execute("""SELECT s.context_id_bin FROM states s
@@ -111,7 +119,7 @@ def run(cfg):
     for span, target in ARMS:
         for seed in SEEDS:
             p = {"n_dev": 25, "n_aut": 15, "n_int": 10, "interlock": 0.3,
-                 "rate_hr": 100, "history": "1d", "bg_ratio": 24.0,
+                 "rate_hr": 100, "history": "1d", "bg_ratio": 4.4,
                  "target_nodes": target, "span_s": span, "max_nodes": 10**9}
             clean = os.path.join(WORK, "c.db")
             gen.generate(clean, p, seed=seed)

@@ -24,7 +24,7 @@ SEEDS = [501, 502, 503, 504]
 
 def _base(seed):
     p = {"n_dev": 25, "n_aut": 15, "n_int": 10, "interlock": 0.3,
-         "rate_hr": 100, "history": "1d", "bg_ratio": 24.0,
+         "rate_hr": 100, "history": "1d", "bg_ratio": 4.4,
          "target_nodes": 3000, "span_s": 1800.0, "max_nodes": 10**9}
     db = os.path.join(WORK, "c_%d.db" % seed)
     if not os.path.exists(db):

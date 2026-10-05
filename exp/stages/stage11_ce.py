@@ -19,7 +19,7 @@ import math, os, shutil, sqlite3
 from rig import gen, graph, forge, truth, stats, capability
 
 WORK = "/tmp/homeprov_ce"
-BG = 24.0
+BG = 4.4
 ARMS = [(1800.0, 5000), (7200.0, 7000), (21600.0, 9000)]
 SEEDS = [51, 52, 53, 54, 55, 56]
 
@@ -98,6 +98,7 @@ def run(cfg):
                                 {"domain": "lock", "service": "unlock"},
                                 adv, None, bts - 0.1, "PLANT")
             fplant.inject_state(ent, "unlocked", adv, None, bts, "PLANT")
+            fplant.close()                      # see the note below on pinning
             base = graph.load(clean)
             # sanity: the planted actuation must attribute to the integration
             _c = [n for n in base if n.entity == ent and n.kind == "state"]
@@ -110,8 +111,9 @@ def run(cfg):
             try:
                 fc.ft10_causal_laundering(adv, ent, auto, trig, bts)
             except Exception:
-                os.remove(dbc); os.remove(clean); continue
+                fc.close(); os.remove(dbc); os.remove(clean); continue
             b = fc.writes
+            fc.close()
             nc = graph.load(dbc)
             vk = _victim_key(nc, bytes.fromhex(
                 [x for x in fc.log if x["ft"] == "FT-10"] and
@@ -158,7 +160,12 @@ def run(cfg):
                                         {"domain": "lock", "service": "unlock"},
                                         A, T, bts - 1.4, "FT-7")
                 except Exception:
-                    os.remove(dbs); continue
+                    fs.close(); os.remove(dbs); continue
+                # CLOSE BEFORE READING AND BEFORE REMOVING. Forger pins a WAL
+                # connection; leaving it open while the file is unlinked and the
+                # same path is re-copied for the next class corrupts the new
+                # database, which is what "disk image is malformed" was.
+                fs.close()
                 ns = graph.load(dbs)
                 cand = [n for n in ns if n.entity == ent and n.kind == "state"]
                 k = cand[-1].key if cand else None

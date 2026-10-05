@@ -40,6 +40,17 @@ CREATE TABLE events(event_id INTEGER PRIMARY KEY, event_type_id INTEGER,
 """
 
 
+def _rss_mb():
+    """Peak RSS in MB. ru_maxrss is BYTES on macOS/BSD and KILOBYTES on Linux;
+    the previous size heuristic (>1e7 -> bytes) silently misconverted anything
+    under ~10 MB by a factor of 1024. Decide on the platform, not the value."""
+    import sys as _s
+    r = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+    return r / (1024.0 * 1024.0) if _s.platform == "darwin" else r / 1024.0
+
+
+_RSS_BASELINE_MB = _rss_mb()
+
 def canon(o):
     return json.dumps(o, sort_keys=True, separators=(",", ":")).encode()
 
@@ -174,8 +185,15 @@ def run(cfg):
         phi, n = stream_commit(db)
         t_commit = time.time() - w0
         cpu_commit = time.process_time() - c0
-        rss = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
-        rss_mb = rss / (1024 * 1024) if rss > 10**7 else rss / 1024
+        # ru_maxrss is a PROCESS-LIFETIME high-water mark, not a per-row figure.
+        # Running this stage after others in the same process reports whatever
+        # the largest earlier stage peaked at -- which shows up as an identical
+        # value on every row regardless of scale, and is not a measurement of
+        # this workload. Record the baseline at entry and report the delta, and
+        # also report the raw mark so a contaminated run is visible rather than
+        # silently plausible.
+        rss_mb = _rss_mb()
+        rss_delta_mb = round(rss_mb - _RSS_BASELINE_MB, 1)
 
         # verification: recompute and compare against the committed roots
         w0 = time.time()
@@ -194,6 +212,9 @@ def run(cfg):
             "verify_s": round(t_verify, 3),
             "verify_mismatches": mismatches,
             "peak_rss_mb": round(rss_mb, 1),
+            "peak_rss_delta_mb": rss_delta_mb,
+            "rss_baseline_mb": round(_RSS_BASELINE_MB, 1),
+            "rss_uncontaminated": _RSS_BASELINE_MB < 200.0,
             "anchor_bytes": phi_bytes(phi),
             "segments": {g: len(phi[g]) for g in phi},
         })

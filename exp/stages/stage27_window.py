@@ -18,7 +18,7 @@ PERIODS = [0.05, 0.1, 0.25, 0.5, 1.0, 2.0, 5.0, 15.0, 60.0]
 def run(cfg):
     os.makedirs(WORK, exist_ok=True)
     p = {"n_dev": 25, "n_aut": 15, "n_int": 10, "interlock": 0.3,
-         "rate_hr": 100, "history": "1d", "bg_ratio": 24.0,
+         "rate_hr": 100, "history": "1d", "bg_ratio": 4.4,
          "target_nodes": 4000, "span_s": 1800.0, "max_nodes": 10**9}
     db = os.path.join(WORK, "w.db")
     gen.generate(db, p, seed=401)

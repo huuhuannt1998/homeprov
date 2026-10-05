@@ -1,0 +1,52 @@
+{
+ "experiment": "e_d_clo under the AUTHENTICATED anchor with the CLOSURE monitor (coordinator option (a), 2026-10-02)",
+ "monitor": {
+  "image": "hpr-monitor:closure",
+  "monitor_py_sha256": "903daa794d027bb97a6954ff1bfe891d5c35a1715856094e34901f097c11ed9a"
+ },
+ "scheme_on_chain": {
+  "closure": 379
+ },
+ "configuration_log": [
+  "2026-10-02T19:08:23Z tag=e_d_clo arms=\"PU\",\"PI\" trials=30 psagg=0 scheme=closure",
+  "2026-10-02T19:08:23Z load_before: 15:08  up 31 days, 19:06, 2 users, load averages: 18.14 18.05 17.52",
+  "2026-10-02T19:08:23Z git_head: 8952cc10546abe50eee53ce48488dd78e90b0cc3 (monitor.py modified in the working tree, closure scheme)",
+  "2026-10-02T19:08:23Z monitor_py_sha256: 903daa794d027bb9",
+  "2026-10-02T19:08:24Z key_fingerprint_sha256_16: a4e40d7ade95c942 (key itself not recorded)",
+  "2026-10-02T19:08:28Z anchor image: hpr-anchord:sig sha256:196961946d8bf9f70830065c17f1e0f84f27d4c69ac28a6ada5079f9ad59776d",
+  "2026-10-02T19:08:28Z monitor image: hpr-monitor:closure sha256:b564df2b739aa9c4b0c2713039a0d99d8b476fcc09ba7cbcaad8caec1f2aada3",
+  "2026-10-02T19:08:48Z probe_from_hub: {\"untagged\": 401, \"forged_tag\": 401}",
+  "2026-10-02T19:09:28Z monitor_log_head: {\"tick\": 1, \"n_nodes\": 4889, \"copy_ms\": 144.181, \"load_ms\": 436.385, \"commit_ms\": 35.065, \"sealed_new\": {\"second\": 979, \"minute\": 68, \"hour\": 1}, \"anchor\": {\"ok\": true, \"seq\": 1}} {\"tick\": 2, \"n_nodes\": 4889, \"copy_ms\": 117.41, \"load_ms\": 350.795, \"commit_ms\": 26.665, \"sealed_new\": {}} {\"tick\": 3, \"n_nodes\": 4894, \"copy_ms\": 122.692, \"load_ms\": 462.701, \"commit_ms\": 20.326, \"sealed_new\": {\"second\": 1}, \"anchor\": {\"ok\": true, \"seq\": 2}} ",
+  "2026-10-02T19:09:28Z chain_lines_before_run: 9",
+  "2026-10-02T19:09:28Z starting runner EC arms=\"PU\",\"PI\" x30 tag=e_d_clo",
+  "2026-10-02T19:47:38Z runner exit: 0",
+  "2026-10-02T19:47:38Z load_after: 15:47  up 31 days, 19:45, 2 users, load averages: 12.38 12.53 14.06",
+  "2026-10-02T19:47:39Z chain_lines final:      379",
+  "2026-10-02T19:47:39Z chain_schemes: {'closure': 379}",
+  "2026-10-02T19:47:39Z done",
+  "2026-10-02T19:47:39Z teardown: removing auth containers, restoring originals",
+  "2026-10-02T19:47:41Z restored: hpr-monitor hpr-monitor:1 Up Less than a second;hpr-anchord hpr-anchord:1 Up 1 second;"
+ ],
+ "anchor_chain": {
+  "file": "exp/out/e_d_clo_anchor_chain.jsonl.gz",
+  "records": 379,
+  "sha256_uncompressed": "f177af7fe874c45e00d13d95893350914c17dd77674a97b083f99a4bb799b3ba"
+ },
+ "refusal_log": {
+  "file": "exp/out/e_d_clo_anchor_refusals.jsonl",
+  "records": 2
+ },
+ "wrapper_script": "#!/bin/bash\n# One real-deployment run under the AUTHENTICATED anchor with the CLOSURE monitor.\n# Usage: run_clo.sh TAG ARMS TRIALS PSAGG   e.g.  run_clo.sh e_ps_clo '\"PS\"' 30 1\n# Recipe identical to the e_d_auth / e_c_auth / e_ps_auth wrappers except: the\n# monitor image is hpr-monitor:closure (monitor/monitor.py with SCHEME=closure),\n# and HOMEPROV_SCHEME=closure is set for the monitor container AND exported for the\n# host-side verifier so both commit the same fields. Originals stopped+renamed,\n# never removed, restored by the EXIT trap. Never overwrites an existing output.\nset -u\nTAG=$1; ARMS=$2; TRIALS=$3; PSAGG=${4:-0}\nREPO=/Users/huanbui/Research/HOMEPROV-P13\nOUT=$REPO/exp/out\nSP=/private/tmp/claude-501/-Users-huanbui-Research/5494168f-5302-46e9-a92f-a9946eea0dc0/scratchpad/hp-clo/$TAG\nmkdir -p \"$SP\"\nNET=homeprov-real_hp-real\nVCHAIN=hpr-clo-$TAG-chain; VPUB=hpr-clo-$TAG-pub; VSCR=hpr-clo-$TAG-scratch\nexport HOMEPROV_SCHEME=closure\nMETA=$SP/auth_meta.log\n: > \"$META\"\nnote() { echo \"$(date -u +%FT%TZ) $*\" | tee -a \"$META\"; }\n\nfor f in \"${TAG}_t_start\" \"${TAG}_t_end\" \"${TAG}_report_porch.json\" \"${TAG}_report_hallway.json\" \\\n         \"${TAG}_report_kitchen.json\" \"${TAG}_other_principal_real.json\" \"${TAG}_detection.json\"; do\n  [ -e \"$OUT/$f\" ] && { echo \"REFUSING: $OUT/$f exists\"; exit 3; }\ndone\n\nrestore() {\n  note \"teardown: removing auth containers, restoring originals\"\n  docker rm -f hpr-anchord hpr-monitor >/dev/null 2>&1\n  docker rename hpr-anchord-orig-clo hpr-anchord >/dev/null 2>&1\n  docker rename hpr-monitor-orig-clo hpr-monitor >/dev/null 2>&1\n  docker start hpr-anchord hpr-monitor >/dev/null 2>&1\n  note \"restored: $(docker ps --format '{{.Names}} {{.Image}} {{.Status}}' | grep -E '^hpr-(anchord|monitor) ' | tr '\\n' ';')\"\n}\n\nnote \"tag=$TAG arms=$ARMS trials=$TRIALS psagg=$PSAGG scheme=$HOMEPROV_SCHEME\"\nnote \"load_before: $(uptime)\"\nnote \"git_head: $(git -C $REPO rev-parse HEAD) (monitor.py modified in the working tree, closure scheme)\"\nnote \"monitor_py_sha256: $(shasum -a 256 $REPO/monitor/monitor.py | cut -c1-16)\"\nKEY=$(openssl rand -hex 32)\nnote \"key_fingerprint_sha256_16: $(printf '%s' \"$KEY\" | shasum -a 256 | cut -c1-16) (key itself not recorded)\"\n\ndocker stop hpr-monitor hpr-anchord >/dev/null || { echo \"stop failed\"; exit 4; }\ndocker rename hpr-anchord hpr-anchord-orig-clo || exit 4\ndocker rename hpr-monitor hpr-monitor-orig-clo || { docker rename hpr-anchord-orig-clo hpr-anchord; exit 4; }\ntrap restore EXIT\ntrap 'exit 130' INT TERM HUP\n\nfor v in $VCHAIN $VPUB $VSCR; do docker volume create $v >/dev/null; done\ndocker run -d --name hpr-anchord --network $NET --network-alias anchor \\\n  -e HOMEPROV_ANCHOR_KEY=\"$KEY\" -v $VCHAIN:/anchor -v $VPUB:/published \\\n  hpr-anchord:sig >/dev/null || exit 5\ndocker run -d --name hpr-monitor --network $NET --network-alias monitor \\\n  -e HOMEPROV_DB=/cfg/home-assistant_v2.db -e HOMEPROV_ANCHOR=http://hpr-anchord:9900/append \\\n  -e HOMEPROV_PERIOD=5 -e HOMEPROV_SCRATCH=/scratch -e HOMEPROV_ANCHOR_KEY=\"$KEY\" \\\n  -e HOMEPROV_SCHEME=closure \\\n  -v homeprov-real_hpr-config:/cfg:ro -v $VSCR:/scratch hpr-monitor:closure >/dev/null || exit 5\nnote \"anchor image: $(docker inspect hpr-anchord --format '{{.Config.Image}} {{.Image}}')\"\nnote \"monitor image: $(docker inspect hpr-monitor --format '{{.Config.Image}} {{.Image}}')\"\nsleep 20\nPROBE='import urllib.request,json\ndef post(h):\n    r=urllib.request.Request(\"http://hpr-anchord:9900/append\",data=b\"{\\\"sealed\\\": {}}\",method=\"POST\",headers=h)\n    try:\n        with urllib.request.urlopen(r,timeout=5) as x: return x.status\n    except urllib.error.HTTPError as e: return e.code\n    except Exception as e: return repr(e)[:80]\nprint(json.dumps({\"untagged\":post({\"Content-Type\":\"application/json\"}),\"forged_tag\":post({\"Content-Type\":\"application/json\",\"X-HP-Auth\":\"0\"*64})}))'\nnote \"probe_from_hub: $(docker exec hpr-hass python3 -c \"$PROBE\")\"\nsleep 40\nnote \"monitor_log_head: $(docker logs hpr-monitor 2>&1 | head -3 | cut -c1-400 | tr '\\n' ' ')\"\nnote \"chain_lines_before_run: $(docker exec hpr-anchord sh -c 'wc -l < /anchor/chain.jsonl')\"\n\nnote \"starting runner EC arms=$ARMS x$TRIALS tag=$TAG\"\ncd $REPO/testbed/real && HPR_EC_ARMS=\"$ARMS\" HPR_EC_TRIALS=$TRIALS HPR_EC_TAG=$TAG \\\n  EC_SCRATCH=$SP/ec_verify ./run_experiments.sh EC > $SP/run.log 2>&1\nnote \"runner exit: $?\"\nnote \"load_after: $(uptime)\"\nif [ \"$PSAGG\" = \"1\" ]; then\n  note \"running e_ps_detection aggregator\"\n  cd $REPO && EC_SCRATCH=$SP/ps_verify python3 exp/stages/e_ps_detection.py --tag $TAG > $SP/detection.log 2>&1\n  note \"aggregator exit: $?\"\nfi\ndocker exec hpr-anchord cat /anchor/chain.jsonl > $SP/chain.jsonl 2>/dev/null\ndocker exec hpr-anchord sh -c 'cat /anchor/refusals.jsonl 2>/dev/null' > $SP/refusals.jsonl\ndocker logs hpr-monitor > $SP/monitor.log 2>&1\nnote \"chain_lines final: $(wc -l < $SP/chain.jsonl)\"\nnote \"chain_schemes: $(python3 -c \"import json,collections,sys;print(dict(collections.Counter((json.loads(l).get('payload') or {}).get('scheme','unrecorded') for l in open(sys.argv[1]) if l.strip())))\" $SP/chain.jsonl)\"\nnote \"done\"\n",
+ "wrapper_script_sha256": "de2ee5fd7595fb7c0188cba91e7efcd33ae01b96118329ae36d8d984207bfc40",
+ "verifier_note": "exp/stages/e_c_write_time.py unmodified, run with HOMEPROV_SCHEME=closure exported so its monitor.load()/commit() use the closure",
+ "output_sha256": {
+  "e_d_clo_anchor_refusals.jsonl": "3887cf0190ec029f98ffec0ffc5afaf3eb5dfbdcc17f7649a3c445cd08ae6e33",
+  "e_d_clo_other_principal_real.json": "5f09fb1900268a067b111d853f5d4163397fcb76302064c2c7863e5d47ebf9c6",
+  "e_d_clo_report_hallway.json": "4fe0911401bf0406ccde5194a466022cf6ad508dd767faea60e9ba367db42474",
+  "e_d_clo_report_kitchen.json": "62c65355c61d5b8e9c8156987fca1cdb5d0e515360acbf3feff317b19675d77e",
+  "e_d_clo_report_porch.json": "01a7f937c55feff9507a20384e801a51c7abbd5d271d80c1e3c0e139d502138c",
+  "e_d_clo_t_end": "80c961b3b7991110b14c9625b344ff1bc61ef9c4c46da5a16357422ab32faa22",
+  "e_d_clo_t_start": "2ba901f43d42bde8ad5d6cbcd4e91376939021c46e76078752cce5a7a2886e2a"
+ },
+ "load_note": "host load average 12-25 during the closure runs (other projects' processes)"
+}

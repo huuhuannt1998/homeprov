@@ -12,6 +12,232 @@ Source of truth for what has run, what is invalid, and what is left.
 Legend: **DONE** generalizable · **n=1** measured on one deployment only, no interval ·
 **INVALID** ran but the result is an artifact · **TODO** not run.
 
+## Review response, round 2 — 2026-09-08
+
+Answers to the independent review's open objections. Each entry names its
+artifact and the denominator behind its headline number. Nothing here is an
+estimate; where a thing was not run, that is said and the reason is given.
+
+### Reference audit — the 14 keys added in round 2  [DONE 2026-09-17]
+
+The citation gate cannot run: `verify_citations.py` reports `manifest_missing`
+against RKA, and 7 of the 14 new keys are Home Assistant documentation and
+source, which a DOI-based validation pipeline cannot verify by construction.
+The entries were therefore audited directly.
+
+Seven scholarly keys, checked field by field against the canonical record:
+
+| key | venue | pages | verdict |
+|---|---|---|---|
+| `wang2018provthings` | NDSS 2018, "Fear and Logging in the IoT" | --- | correct |
+| `paccagnella2020custos` | NDSS 2020 | --- | correct |
+| `bowers2014pillarbox` | RAID 2014, LNCS 8688 | 46--67 | **web-verified** |
+| `ahmad2022hardlog` | IEEE S&P 2022 | 1791--1807 | **web-verified** |
+| `crosby2009efficient` | USENIX Security 2009 | 317--334 | correct |
+| `holt2006logcrypt` | ACSW Frontiers 2006, vol. 54 | 203--211 | **web-verified** |
+| `schneier1999secure` | ACM TISSEC 2(2) | 159--176 | correct |
+
+The three marked web-verified are the ones whose page ranges or venue strings
+were least certain from the record alone; all three matched. `refs.bib` carries
+zero HTML entities and no empty DOI field, closing the review's minor items.
+
+**OPEN, and it is a policy question rather than a run.** The seven Home Assistant
+documentation and source citations (`hacontext`, `harecorder`, `harecordersrc`,
+`haloader`, `hadevintegration`, `haglossary`, `ha2026release`) have no DOI. E-E
+already establishes the project's model for primary sources: pinned version, URL,
+retrieval date and a verbatim quote. Applying that model to these seven would let
+the manifest cover all 38 cited keys. Until it does, the citation gate stays red
+for a reason that is not a defect in the references.
+
+### E-A — authenticated monitor-to-anchor append path  [DONE]
+Artifacts: `exp/out/e7b_anchor_signed.json`, `exp/out/e7b_anchor_matrix.json`.
+HMAC-SHA256, key provisioned to monitor and anchor only, never the hub.
+
+- Unauthenticated baseline reproduces E7: 300/300 adversary appends accepted at
+  795.7/s, and `first_write_wins_selects` = **adversary** (monitor gets 409).
+- Authenticated: `adversary_unsigned` **0/300 accepted** (401),
+  `adversary_forged_signature` **0/300** (401); pooled adversary accept rate
+  0 of 600, exact interval [0.000, 0.0061]. `monitor_signed` 300/300 accepted.
+- Pre-emption flips: adversary 401, monitor 200 — first-write-wins now selects
+  the monitor. **The E7 defeat is closed.**
+- Cost of signing: 795.7 -> 779.7 appends/s, **2.0%**.
+
+### E-B — fail-closed monitor over hostile input  [DONE]
+Artifact: `exp/out/e5b_robust_anchored.json`. Re-runs E5 with the anchor up and
+the fail-closed monitor. Baseline 33 nodes, 0 lost, record sealed in chain.
+Missing / empty-schema / unreadable databases now set `fail_closed` true and
+`evidence_unobservable_recorded` true instead of being printed and swallowed.
+
+### E-C — write-time forgery, measured  [DONE]  **CORRECTS THE PAPER**
+Artifact: `exp/out/e_c_write_time.json`. Thirty trials per arm across the three
+real configurations, scored by the platform's own logbook EventProcessor.
+Detection recomputed over 179,113 nodes from a consistent snapshot.
+
+| arm | strategy | misattributes | det@second | det@minute |
+|---|---|---|---|---|
+| W1 | minted `Context(user_id=<member>)` | 30/30 (person) | 0/30 | 0/30 |
+| W2 | minted parent + fabricated trigger | **0/30** | 0/30 | 0/30 |
+| W2b | the same, sharing its context id | 30/30 (autom.) | 0/30 | 0/30 |
+| W3 | recorder write-path hook | 30/30 (autom.) | 0/30 | 10/30 |
+| P | post-commit control (S1 laundering) | --- | **30/30** | **30/30** |
+
+**VERDICT: §3.4's claim that the two cheapest write-time strategies do not reach
+the flagship outcome is FALSE as written.** W2 (the strategy the section names)
+genuinely fails; W2b and W3 reach it. Zero detection is the guarantee's
+definition, not a defect: a row forged before it existed has no earlier version
+to disagree with, and the post-commit control in the same window is detected
+30/30.
+
+**W3's 10/30 at minute granularity is NOT claimable.** The benign violation floor
+at that granularity is 0/10, exact interval [0.000, 0.309], which overlaps W3's
+[0.173, 0.528]. Ten untouched minute-segments cannot separate signal from the
+false-positive floor. The second-granularity floor is sound (3/810) and that is
+the granularity the paper reports.
+
+### E-D — post-commit laundering of another principal's actuation  [DONE]
+
+Two substrates, and they are not interchangeable.
+
+**Real deployment (primary).** Artifact `exp/out/e_d_other_principal_real.json`,
+digest `9e947eb4...`; per-configuration records
+`exp/out/e_d_report_{porch,hallway,kitchen}.json`. Run 2026-09-18 on the same
+hub, harness and logbook processor as E-C. Two arms at **thirty trials in each of
+three configurations, ninety pooled per arm**: `PU`, the target row carries a
+household member's account identifier; `PI`, the target row is a second
+integration's service call. Both move the rendered cause onto that
+configuration's own innocent motion-light automation in **90/90**, and the edit
+is detected in **90/90** at second granularity. Two database writes per trial
+(one delete, one re-point, no injection). Benign floor 1/558 second,
+`[0.000, 0.010]`; 0/14 minute.
+
+**Generated deployments (retained only for the baseline contrast).** Artifact
+`exp/out/e_d_other_principal.json`, n=12 per arm: misattributes 12/12, HOMEPROV
+detects 12/12, **content-only baseline 0/12**. This contrast exists only here —
+the real run feeds the HOMEPROV anchor alone, so it produced no measured baseline
+verdict, and none may be derived from which columns were edited.
+
+**Check the denominators before comparing.** E-C's write-time arms are ten trials
+per configuration pooled to thirty; E-D's are thirty pooled to ninety. See
+`exp/out/AUTHORITATIVE.md`. Clopper-Pearson: 12/12 `[0.735, 1.000]`, 90/90
+`[0.960, 1.000]`.
+
+**Report second granularity, not minute.** The aggregate's own `detection_metric`
+sets `sound_unit: second`. A minute segment aggregates sixty seconds, so one
+violation inside it marks every trial in that minute. Only 24 of 38 minute
+segments violate against 180 trials, so the minute figure's effective n is 24
+segments, not 90 trials, and printing it with an interval overstates
+independence.
+
+**What this arm does NOT establish.**
+1. *That no write-time route reaches a similar display.* It does not: W2b
+   fabricates an `automation_triggered` event, shares its context id, and
+   misattributes 30/30 undetected. Post-commit is forced only for relabelling an
+   actuation that **already happened**, not for naming an automation in general.
+2. *The install-order premise.* The per-trial `write_time_alternative` field is a
+   constant string — the harness restating the argument. The harness authors the
+   target row itself moments earlier, so the arm instantiates the *state* the
+   argument needs (anchored row, another principal's attribution) and not its
+   *timeline*. Neither misattribution nor detection depends on install order;
+   both depend on `edited_after_anchoring`, which holds 30/30 per configuration,
+   and on the aggregator's independent check
+   (`n_trials_whose_segment_was_anchored` = 90 = `n_valid`).
+3. *That the clean timeline displayed the member as the cause.* It did not. The
+   probe (`exp/out/e_dprobe_report_*.json`) captured the clean rendered row in
+   all three configurations: `context_domain`, `context_event_type`,
+   `context_service`, `context_user_id` — and **no `context_name`**. The renderer
+   never resolves a user identifier to a name. The post-laundering row, by
+   contrast, carries `context_name`, `context_entity_id_name` and a rendered
+   causal message. So the laundering converts an entry whose displayed cause is
+   unresolved into one that positively names an innocent automation.
+
+### Correction — the 88/88 principal swap writes RANDOM bytes, not a member's id  [2026-09-18]  **CORRECTS THE PAPER**
+
+Found while checking what E-D's `PU` arm may claim. Two verified facts.
+
+**What the variant writes.** `homeprov_e5/__init__.py` line 170 sets
+`R = os.urandom(16)`; line 212 does
+`UPDATE states SET context_user_id_bin=?` with `(R, sid)`. Sixteen **random
+bytes**. It is the only definition of `principal_swap` in the tree. The 88 traces
+to it unambiguously: `e5_real_multiconfig.json` `pooled_per_variant.principal_swap`
+is n=88, misattributed=88, and its `n_targets` are 30/30/28 — exactly the paper's
+own parenthetical.
+
+**Whether the renderer names a user at all.** It does not. The clean-render probe
+captured the pre-attack row in all three configurations: `context_domain`,
+`context_event_type`, `context_service`, `context_user_id`, and **no
+`context_name`**. Even a real member's identifier renders unresolved.
+
+**What the paper said, in two places (so not a slip).**
+`introduction.tex`: "a single write of a user identifier *named a household
+member* in 88 of 88". `evaluation.tex`: "Writing *a household member's* user
+identifier ... misattributed 88 of 88" and "It moves the actuation onto *a
+person*". None of that is supported: the value is random, matches no account, and
+renders without a name.
+
+**Fixed to what the data supports, which is stronger.** A single write of *any*
+value into the user column moves the rendered principal off the true cause and
+onto a user account in 88/88, with no cover and no composition — the adversary
+need not know a real user's identifier. The evaluation now also states that the
+renderer does not resolve an identifier to a name, so the variant *removes* a
+correct attribution rather than supplying a named culprit.
+
+**A household-member claim is available but must not be swapped in here.** E-C's
+`W1` does mint `Context(user_id=<real member>)` and `_score()` checks
+`named_user == member_user_id` (30/30). But W1 is a **write-time** forgery and
+therefore undetectable; using it in the introduction's "the forgery is cheap"
+sentence, which is about post-commit editing, would conflate the two sides of the
+commitment boundary.
+
+**Second-order: two instruments, opposite precedence.** E-5's `_classify` tests
+`context_user_id` **first** and labels the row `innocent_user`. E-D's
+`_principal` tests `context_domain`+`context_service` first and labels the same
+row `service:lock.unlock`. Both are internally defensible, but the same rendered
+row classifies differently in the two experiments, and **neither consults
+`context_name`**. Any future claim about what the timeline *displays* must read
+`context_name`, not a helper's principal string.
+
+### E-E — HA OS / Supervisor reach (review 4c)  [DOCUMENTATION FINDING]
+Artifact: `exp/out/e_e_supervisor_reach.json`.
+Script: `exp/stages/e_e_supervisor_reach.py`. No HA OS VM was run; the finding is
+read out of Home Assistant's published developer documentation and out of the
+Supervisor source at pinned release **2026.09.0**, with the Container-install
+testbed measured live as the contrast.
+
+**VERDICT: the paper's Container-only scoping is NOT sufficient as written, and
+the isolation claim must be narrowed explicitly.** On HA OS / Supervised the
+monitor's placement is reachable from inside the hub three independent ways:
+
+- **Supervisor token.** The core container is started with
+  `ENV_TOKEN: self.sys_homeassistant.supervisor_token` in its environment
+  (`supervisor/docker/homeassistant.py`; `ENV_TOKEN = "SUPERVISOR_TOKEN"`), and
+  the docs say so: "The token is available for apps (formerly known as add-ons)
+  and Home Assistant using the SUPERVISOR_TOKEN environment variable."
+- **No role check applies to that token.** `role_access` is consulted only in the
+  add-on branch of `token_validation`; the branch that matches the core token
+  sets `request_from` and falls through to `return await handler(request)`
+  (`supervisor/api/middleware/security.py`). The source's own comment reads
+  "Per-role allowed path patterns for installed apps". `BLACKLIST` covers only
+  the two Supervisor-proxy loops. `POST /addons/{app}/stop` and `/uninstall`
+  exist and their handlers check nothing about the caller
+  (`supervisor/api/apps.py`).
+- **Filesystem, with no API call at all.** The core container bind-mounts
+  `/share` with `read_only=False`, and this repository's own
+  `addons/homeprov_anchor/config.yaml` declares `map: - share:rw`. As
+  manifested, the anchor's append-only chain would sit on a filesystem the hub
+  mounts read-write. This is the cheapest of the three and the only one wholly
+  within the paper's control; the fix is the add-on's own `/data`.
+
+Also measured from source: on HA OS the core container runs
+`privileged=self.sys_homeassistant.version != LANDINGPAGE` with
+`network_mode="host"`. Every anchor-placement result the paper reports as
+surviving `--privileged` was measured against a hub that was **not** privileged.
+
+Container-install contrast, measured live on this testbed: no `SUPERVISOR_TOKEN`
+or `HASSIO_TOKEN` in the hub container environment; `Privileged=false`; hub on a
+private internal bridge; monitor mounts `/cfg` `rw=false`; hub mounts none of the
+anchor's volumes. The paper's claim is true for what it evaluated and only for
+what it evaluated.
+
 ## Stage 0 — Substrate
 - [x] S0.1 HA 2026.7.4 stands up, native aarch64, Pi-shaped cgroup envelope — DONE
 - [x] S0.2 Determinism gate: A1 canonical serialization byte-identical — DONE
@@ -128,8 +354,11 @@ RESULT AFTER CORRECTION — all five arms genuinely exercised, all five silent:
       compromised anchor 0), all 3 seeds. Trust assumption tested, not assumed. — DONE
 
 ## Stage 16 — Scale  [NEW]
-- [x] 680,932 nodes reached; incremental p95 drift 1.08x over a 20x scale increase
-      -> O(new nodes) CONFIRMED, flat in history length — DONE
+- [x] 679,932 nodes reached (`exp/out/stage16_final.json`); incremental p95 drift
+      1.08x over a 20x scale increase -> O(new nodes) CONFIRMED, flat in history
+      length — DONE. The recalibrated re-run reaches 728,390
+      (`exp/out_recal/stage16_scale.json`); the manuscript reports the published
+      arm throughout, with the anchor count and latencies from the same row.
 - [x] Investigator costs at 680k: verify 4.5s, localize 0.36s, |Q| 15-26 — DONE
 - [x] ~~HONEST SHORTFALL: 10^7 not attempted~~ — **CLOSED 2026-08-24 (E18/stage 28)**:
       reached 10^7 nodes, 70.6s commit at 141,620 nodes/s, 285 MB peak RSS,
@@ -370,13 +599,43 @@ everything feasible on this laptop.
       measured 257/480 hindsight gap noted — DONE
 
 ### Not yet run
-- [ ] E4 renderer dependency closure · E5 large renderer-backed evaluation ·
-      E6 cross-version Home Assistant · E8 attack-budget models ·
-      E9 minimum-laundering search
+- [x] **NOTHING. This list was stale and it actively misled a session on
+      2026-09-18**, which read it as a work queue and proposed building an
+      experiment from it. Every item has artifacts and is reported in the
+      manuscript:
+      - **E4** renderer dependency closure — 7 artifacts (`e4_closure`,
+        `e4_real_closure`, `e4_roles`, ...), reported as `tab:closure`.
+      - **E5** large renderer-backed evaluation — 10 artifacts
+        (`e5_real_multiconfig`, `e5_real_renderer_*`, ...), the 1,056 instances
+        over 88 targets in Section VII.
+      - **E6** cross-version Home Assistant — 8 artifacts (`e6_static`,
+        `e6_signed_*`, `e6_dt_sweep_*`), the "four releases spanning twenty
+        months" result.
+      - **E8** attack-budget models — `stage32_final.json`, n=108,
+        `min_budget_severe_composed` 10 against `min_budget_severe_atomic` null,
+        reported at `app:budget` as the matched-write-budget result.
+      - **E9** minimum-laundering search — `stage33_final.json`, 6 deployments,
+        3 found, `min_depth` 1 over `max_depth_searched` 4, reported at
+        `app:search` as the minimum-cost search.
+
+      Note also that **E8 and E9 are NOT** "Postgres backend" and "downstream
+      consumer". A session carried those labels in from a summary and nearly
+      built the wrong experiment on them. The names above are authoritative.
 
 ### Excluded by the PI's scope choice
 E7 multi-database, E17 independent workload family, E19 macro load,
 E20 resource-envelope sensitivity, E21 crash consistency.
+
+**E7 multi-database is the one most likely to be re-proposed**, because
+"does this work on Postgres?" is an obvious reviewer question and the monitor's
+file-copy reader is genuinely SQLite-specific. It is excluded by PI decision,
+and the manuscript already handles it honestly rather than experimentally:
+`background.tex` scopes the paper to the SQLite default, `limitations.tex` has
+the paragraph "The isolation claim covers the Container install with SQLite",
+and the `threat_model.tex` deployment table carries a
+"Container, MariaDB / PostgreSQL" row marked **not built** that names the exact
+consequence — the file-copy reader does not apply and the database server
+becomes a second trusted party. Do not build it without a new PI decision.
 
 ## Baselines
 - [x] B0 stock recorder, no integrity — DONE

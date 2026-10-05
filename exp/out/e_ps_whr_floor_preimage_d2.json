@@ -1,0 +1,103 @@
+{
+ "untouched_failing": 203,
+ "explained_by_last_reported_null": 186,
+ "late_rows": 0,
+ "vanished": 0,
+ "not_reconstructed": [
+  {
+   "segment": "1791098829",
+   "rows": 80,
+   "state_rows_with_last_reported": 15
+  },
+  {
+   "segment": "1791098834",
+   "rows": 6,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791098851",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791098889",
+   "rows": 8,
+   "state_rows_with_last_reported": 5
+  },
+  {
+   "segment": "1791098953",
+   "rows": 4,
+   "state_rows_with_last_reported": 2
+  },
+  {
+   "segment": "1791099018",
+   "rows": 7,
+   "state_rows_with_last_reported": 4
+  },
+  {
+   "segment": "1791099199",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791099234",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791099267",
+   "rows": 7,
+   "state_rows_with_last_reported": 4
+  },
+  {
+   "segment": "1791099590",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791099602",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791099621",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791099633",
+   "rows": 4,
+   "state_rows_with_last_reported": 2
+  },
+  {
+   "segment": "1791099878",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791099943",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791099975",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791100007",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  }
+ ],
+ "stable_columns_bound": {
+  "untouched_segments": 281,
+  "certain_failures": 0,
+  "at_most_failures": 17
+ },
+ "tag": "e_ps_whr",
+ "how": "Whole-row floor pre-image test over the re-scored untouched failures (review D2, N-01/N-02). Read-only.\nIdentical test to scratchpad/hp-whr/whr_preimage.py (restore last_reported_ts to NULL on any subset of up to six of\nthe segment's state rows that carry a non-null value; a match with the FIRST anchored whole-row root shows that the\nonly change since sealing is last_reported_ts), applied to the untouched failures under the new counting rule of\nfloor_rescore.py (exp/out/<TAG>_floor_rescore.json). Also reports the bound for a stable-columns scheme (every\ncolumn except last_reported_ts): a reproduced segment would pass it; a late-row segment would fail it; the rest\ncannot be decided from the final snapshot, because the anchored roots fold in last_reported_ts values that were\noverwritten after sealing. Writes exp/out/<TAG>_floor_preimage_d2.json. Usage: d2_preimage.py TAG SNAPSHOT CHAIN",
+ "script_sha256": "752e2cc974fe6c188fa467fe969092fa44d7a14202aa4813c9f97dec4cb0d24e",
+ "script": "\"\"\"Whole-row floor pre-image test over the re-scored untouched failures (review D2, N-01/N-02). Read-only.\nIdentical test to scratchpad/hp-whr/whr_preimage.py (restore last_reported_ts to NULL on any subset of up to six of\nthe segment's state rows that carry a non-null value; a match with the FIRST anchored whole-row root shows that the\nonly change since sealing is last_reported_ts), applied to the untouched failures under the new counting rule of\nfloor_rescore.py (exp/out/<TAG>_floor_rescore.json). Also reports the bound for a stable-columns scheme (every\ncolumn except last_reported_ts): a reproduced segment would pass it; a late-row segment would fail it; the rest\ncannot be decided from the final snapshot, because the anchored roots fold in last_reported_ts values that were\noverwritten after sealing. Writes exp/out/<TAG>_floor_preimage_d2.json. Usage: d2_preimage.py TAG SNAPSHOT CHAIN\"\"\"\nimport hashlib, itertools, json, os, sys\nTAG, DB, CHAIN = sys.argv[1:4]\nOUT = \"/Users/huanbui/Research/HOMEPROV-P13/exp/out\"\ndst = os.path.join(OUT, f\"{TAG}_floor_preimage_d2.json\")\nif os.path.exists(dst):\n    raise SystemExit(\"refusing to overwrite \" + dst)\nos.environ[\"HOMEPROV_SCRATCH\"] = os.path.dirname(DB)\nsys.path.insert(0, \"/Users/huanbui/Research/HOMEPROV-P13/monitor\")\nimport monitor_wholerow as WR\nM = WR.M\nrs = json.load(open(os.path.join(OUT, f\"{TAG}_floor_rescore.json\")))\nfails = rs[\"new_rule_floor\"][\"second\"][\"failing\"]\nfirst = {}\nfor line in open(CHAIN):\n    if line.strip():\n        p = json.loads(line).get(\"payload\") or {}\n        for s, v in ((p.get(\"sealed\") or {}).get(\"second\") or {}).items():\n            first.setdefault(s, v)\nsince = (int(rs[\"window\"][\"t_start\"] // 3600) - 1) * 3600.0\nby_seg = {}\nfor n in WR.load(DB, since=since):\n    by_seg.setdefault(str(int(n[0] // 1)), []).append(n)\n\n\ndef root(ns):\n    acc = M.ZERO\n    for n in ns:\n        acc = M.H(acc + WR.node_hash_wholerow(n))\n    return acc.hex()\n\n\ndef nulled(n):\n    row = json.loads(n[9]); row[\"row\"][\"last_reported_ts\"] = None\n    return n[:9] + (M._canon(row),)\n\n\nres = {\"untouched_failing\": len(fails), \"explained_by_last_reported_null\": 0, \"late_rows\": 0, \"vanished\": 0,\n       \"not_reconstructed\": []}\nfor f in fails:\n    s = f[\"segment\"]\n    if f[\"mechanism\"] == \"rows_arrived_after_seal\":\n        res[\"late_rows\"] += 1; continue\n    if f[\"mechanism\"] == \"segment_vanished\":\n        res[\"vanished\"] += 1; continue\n    ns = by_seg.get(s, []); v = first[s]\n    cand = [i for i, n in enumerate(ns) if n[1].startswith(\"s:\") and json.loads(n[9])[\"row\"].get(\"last_reported_ts\") is not None]\n    hit = False\n    for k in range(1, min(len(cand), 6) + 1):\n        for sub in itertools.combinations(cand, k):\n            if root([nulled(n) if i in sub else n for i, n in enumerate(ns)]) == v[\"acc\"]:\n                hit = True; break\n        if hit:\n            break\n    if hit:\n        res[\"explained_by_last_reported_null\"] += 1\n    else:\n        res[\"not_reconstructed\"].append({\"segment\": s, \"rows\": len(ns), \"state_rows_with_last_reported\": len(cand)})\nn_untouched = rs[\"new_rule_floor\"][\"second\"][\"n\"]\nres[\"stable_columns_bound\"] = {\"untouched_segments\": n_untouched, \"certain_failures\": res[\"late_rows\"] + res[\"vanished\"],\n                               \"at_most_failures\": res[\"late_rows\"] + res[\"vanished\"] + len(res[\"not_reconstructed\"])}\nsrc = open(__file__).read()\nres.update({\"tag\": TAG, \"how\": __doc__, \"script_sha256\": hashlib.sha256(src.encode()).hexdigest(), \"script\": src,\n            \"rescore_file_sha256\": hashlib.sha256(open(os.path.join(OUT, f\"{TAG}_floor_rescore.json\"), \"rb\").read()).hexdigest()})\njson.dump(res, open(dst, \"w\"), indent=1)\nprint(TAG, {k: (v if k != \"not_reconstructed\" else len(v)) for k, v in res.items() if k not in (\"how\", \"script\")})\n",
+ "rescore_file_sha256": "7a9b3ab13a6e8b466faf22dcf79b03d714cb844e1c55da7bd5a041e3b3a0e2d3"
+}

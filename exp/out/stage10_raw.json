@@ -1,0 +1,154 @@
+{
+  "stage": "10-raw",
+  "what": "stage 10's 448 benign trials, with the verifier's result before markers recorded per trial",
+  "n_trials": 448,
+  "raw_false_alarm_without_markers": {
+    "k": 192,
+    "n": 448,
+    "prop": 0.42857142857142855,
+    "ci_lo": 0.38223447492597584,
+    "ci_hi": 0.47585764806044584,
+    "method": "Clopper-Pearson exact"
+  },
+  "post_marker_false_alarm": {
+    "k": 0,
+    "n": 448,
+    "prop": 0.0,
+    "ci_lo": 0.0,
+    "ci_hi": 0.008200298529035463,
+    "method": "Clopper-Pearson exact"
+  },
+  "b2_false_alarm": {
+    "k": 192,
+    "n": 448,
+    "prop": 0.42857142857142855,
+    "ci_lo": 0.38223447492597584,
+    "ci_hi": 0.47585764806044584,
+    "method": "Clopper-Pearson exact"
+  },
+  "per_benign_event": {
+    "BE-2": {
+      "n": 64,
+      "raw_detected": 64,
+      "raw_violation_kinds": [
+        "ACC",
+        "COUNT",
+        "SEGMENT_GONE"
+      ],
+      "post_marker_alarms": 0,
+      "marker_used_by_stage10": "PURGE"
+    },
+    "BE-3": {
+      "n": 64,
+      "raw_detected": 0,
+      "raw_violation_kinds": [],
+      "post_marker_alarms": 0,
+      "marker_used_by_stage10": null
+    },
+    "BE-4": {
+      "n": 64,
+      "raw_detected": 64,
+      "raw_violation_kinds": [
+        "ACC",
+        "COUNT",
+        "SEGMENT_GONE"
+      ],
+      "post_marker_alarms": 0,
+      "marker_used_by_stage10": "RESTORE"
+    },
+    "BE-5f": {
+      "n": 64,
+      "raw_detected": 0,
+      "raw_violation_kinds": [],
+      "post_marker_alarms": 0,
+      "marker_used_by_stage10": null
+    },
+    "BE-5b": {
+      "n": 64,
+      "raw_detected": 64,
+      "raw_violation_kinds": [
+        "ACC",
+        "COUNT",
+        "UNCOMMITTED_HISTORICAL"
+      ],
+      "post_marker_alarms": 0,
+      "marker_used_by_stage10": "CLOCK_STEP"
+    },
+    "BE-7": {
+      "n": 64,
+      "raw_detected": 0,
+      "raw_violation_kinds": [],
+      "post_marker_alarms": 0,
+      "marker_used_by_stage10": null
+    },
+    "BE-11": {
+      "n": 64,
+      "raw_detected": 0,
+      "raw_violation_kinds": [],
+      "post_marker_alarms": 0,
+      "marker_used_by_stage10": null
+    }
+  },
+  "event_order_assumption": "stage 10 applies its seven events in the fixed order BE-2,BE-3,BE-4,BE-5f,BE-5b,BE-7,BE-11 and skipped none (n = 4 arms x 16 seeds x 7 = 448 verified by assert)",
+  "note": "stages.stage10_bfp.run() unchanged except WORK and a recording wrapper around its verify.verify call; repository HEAD 8952cc10546abe50eee53ce48488dd78e90b0cc3",
+  "wallclock_s": 19.2,
+  "host_loadavg_start": [
+    1.69140625,
+    1.93994140625,
+    2.1318359375
+  ],
+  "host_loadavg_end": [
+    2.13623046875,
+    2.0244140625,
+    2.1572265625
+  ],
+  "capability": {
+    "capability_record": {
+      "schema_version": 1,
+      "actor_id": "none",
+      "actor_position": "in_process_integration",
+      "powers": {
+        "db_read": true,
+        "db_write": true,
+        "fs_read_as_ha_uid": true,
+        "fs_write_as_ha_uid": true,
+        "python_exec_in_core": true,
+        "event_bus_listen": true,
+        "event_bus_emit": true,
+        "service_call": true,
+        "network_egress": false
+      },
+      "knowledge": {
+        "deployment_topology": "full",
+        "automation_configs": "full",
+        "anchor_schedule_known": false,
+        "anchor_key_known": false,
+        "victim_routine_model": "coarse"
+      },
+      "budget": {
+        "db_writes_max": 0,
+        "wallclock_window_s": 5,
+        "cpu_seconds_max": null
+      },
+      "constraints": {
+        "host_root": false,
+        "cross_uid_write": false,
+        "anchor_key_access": false,
+        "external_anchor_retraction": false,
+        "clock_control": false,
+        "cap_linux_immutable": false,
+        "cap_bpf": false
+      },
+      "substrate": {
+        "kind": "native_aarch64_container",
+        "envelope": "Pi-shaped cgroup (cpus/memory/blkio)",
+        "note": "NOT a Raspberry Pi; absolute latency is not claimed as Pi latency"
+      },
+      "provenance": {
+        "rka_mission": null,
+        "seed": 0
+      }
+    }
+  },
+  "_digest": "7c8b7504662376b5e7eefc18b4597fe5cf1c20abf723d89bac7f64543908e53a"
+}

@@ -1,0 +1,59 @@
+{
+ "experiment": "e_psr_clo: arm PSR (post-commit user-column write of an existing account id) under the authenticated anchor and the closure monitor, 2026-10-03",
+ "code": {
+  "component": "homeprov_ec _arm_PS gains arm/user_id_hex parameters; PSR passes the provisioned member account's id",
+  "component_sha256": "266d27e298153ede1cc002d715461ecf96fbc211e96e76ed1d1453e762687918",
+  "aggregator": "exp/stages/e_ps_detection.py accepts arm PS or PSR",
+  "aggregator_sha256": "22d0681dd9a2e68e689d256dcb98cab1e3163f9fc05fd3754cd6b8d141aa2196",
+  "display_check": "\"\"\"Apply the shipped frontend's context-resolution rule (home-assistant-frontend\n20260624.6; same transcription as exp/out/e_ps_render_reconciliation.json) to the\nstored logbook rows of one run, for two viewer types:\n  admin     : name map = person entities + auth user list (admin-only fetch)\n  non-admin : name map = person entities only\nThis hub has no person entities. Writes exp/out/<tag>_display_check.json.\n\"\"\"\nimport json, os, sys\nfrom collections import Counter\nsys.path.insert(0, \"/Users/huanbui/Research/HOMEPROV-P13/exp\")\nfrom rig import stats\n\nTAG = sys.argv[1]\nOUT = \"/Users/huanbui/Research/HOMEPROV-P13/exp/out\"\ndst = os.path.join(OUT, \"%s_display_check.json\" % TAG)\nif os.path.exists(dst):\n    raise SystemExit(\"exists \" + dst)\nACCOUNTS = {\"177db62efb414fbdb5af6e480c34a0b5\": \"Home Assistant Content\",\n            \"90b6f1f5983443c2b47f563e8f652752\": \"Alex Rivera (household)\"}\nPERSONS = {}\n\n\ndef display(row, names):\n    u = row.get(\"context_user_id\")\n    if u and names.get(u):\n        return \"user:\" + names[u]\n    if row.get(\"context_event_type\") in (\"automation_triggered\", \"script_started\"):\n        n = row.get(\"context_entity_id\") or row.get(\"context_name\")\n        if n:\n            return \"automation:\" + n\n    if row.get(\"context_event_type\") == \"call_service\" and row.get(\"context_domain\"):\n        return \"integration:\" + row[\"context_domain\"]\n    return \"none\"\n\n\nd = json.load(open(os.path.join(OUT, \"%s_detection.json\" % TAG)))\nT = [t for t in d[\"trials\"] if not t.get(\"err\")]\nfirst = lambda rows: rows[0] if rows else {}\nres = {\"tag\": TAG, \"n\": len(T), \"method\": \"shipped frontend rule applied to stored rows (no rendered screenshot: the hub is on an internal Docker network with no published port)\",\n       \"accounts\": ACCOUNTS, \"person_entities\": \"none on this hub\",\n       \"api_entry_carries_user_id\": sum(1 for t in T if first(t[\"rendered\"]).get(\"context_user_id\"))}\nfor viewer, names in ((\"admin\", {**PERSONS, **ACCOUNTS}), (\"non_admin\", dict(PERSONS))):\n    before = [display(first(t[\"clean_rendered\"]), names) for t in T]\n    after = [display(first(t[\"rendered\"]), names) for t in T]\n    moved = sum(1 for a, b in zip(before, after) if a != b)\n    res[viewer] = {\"before\": dict(Counter(before)), \"after\": dict(Counter(after)),\n                   \"displayed_cause_changed\": stats.clopper_pearson(moved, len(T))}\njson.dump(res, open(dst, \"w\"), indent=1)\nprint(json.dumps({k: res[k] for k in (\"n\", \"api_entry_carries_user_id\")}),\n      {v: (res[v][\"before\"], res[v][\"after\"], res[v][\"displayed_cause_changed\"][\"k\"]) for v in (\"admin\", \"non_admin\")})\n",
+  "display_check_sha256": "e9dccb19abe2be5ea628d7adfb03b54ba6986abec16288c82f4a1c97f1a528f8"
+ },
+ "monitor": {
+  "image": "hpr-monitor:closure",
+  "monitor_py_sha256": "903daa794d027bb97a6954ff1bfe891d5c35a1715856094e34901f097c11ed9a"
+ },
+ "scheme_on_chain": {
+  "closure": 222
+ },
+ "configuration_log": [
+  "2026-10-03T00:24:20Z tag=e_psr_clo arms=\"PSR\" trials=30 psagg=1 scheme=closure",
+  "2026-10-03T00:24:20Z load_before: 20:24  up 32 days, 21 mins, 2 users, load averages: 4.62 4.31 4.41",
+  "2026-10-03T00:24:20Z git_head: 8952cc10546abe50eee53ce48488dd78e90b0cc3 (monitor.py modified in the working tree, closure scheme)",
+  "2026-10-03T00:24:21Z monitor_py_sha256: 903daa794d027bb9",
+  "2026-10-03T00:24:21Z key_fingerprint_sha256_16: 54d2eda402e88402 (key itself not recorded)",
+  "2026-10-03T00:24:23Z anchor image: hpr-anchord:sig sha256:196961946d8bf9f70830065c17f1e0f84f27d4c69ac28a6ada5079f9ad59776d",
+  "2026-10-03T00:24:23Z monitor image: hpr-monitor:closure sha256:b564df2b739aa9c4b0c2713039a0d99d8b476fcc09ba7cbcaad8caec1f2aada3",
+  "2026-10-03T00:24:43Z probe_from_hub: {\"untagged\": 401, \"forged_tag\": 401}",
+  "2026-10-03T00:25:23Z monitor_log_head: {\"tick\": 1, \"n_nodes\": 2986, \"copy_ms\": 86.548, \"load_ms\": 292.926, \"commit_ms\": 13.109, \"sealed_new\": {\"second\": 984, \"minute\": 84, \"hour\": 1}, \"anchor\": {\"ok\": true, \"seq\": 1}} {\"tick\": 2, \"n_nodes\": 2986, \"copy_ms\": 122.061, \"load_ms\": 353.536, \"commit_ms\": 12.798, \"sealed_new\": {}} {\"tick\": 3, \"n_nodes\": 2991, \"copy_ms\": 84.047, \"load_ms\": 261.123, \"commit_ms\": 12.003, \"sealed_new\": {\"second\": 1}, \"anchor\": {\"ok\": true, \"seq\": 2}} ",
+  "2026-10-03T00:25:23Z chain_lines_before_run: 11",
+  "2026-10-03T00:25:24Z starting runner EC arms=\"PSR\" x30 tag=e_psr_clo",
+  "2026-10-03T00:46:54Z runner exit: 0",
+  "2026-10-03T00:46:54Z load_after: 20:46  up 32 days, 44 mins, 2 users, load averages: 4.06 4.42 4.30",
+  "2026-10-03T00:46:54Z running e_ps_detection aggregator",
+  "2026-10-03T00:47:05Z aggregator exit: 0",
+  "2026-10-03T00:47:06Z chain_lines final:      222",
+  "2026-10-03T00:47:06Z chain_schemes: {'closure': 222}",
+  "2026-10-03T00:47:06Z done",
+  "2026-10-03T00:47:06Z teardown: removing auth containers, restoring originals",
+  "2026-10-03T00:47:07Z restored: hpr-monitor hpr-monitor:1 Up Less than a second;hpr-anchord hpr-anchord:1 Up 1 second;"
+ ],
+ "anchor_chain": {
+  "file": "exp/out/e_psr_clo_anchor_chain.jsonl.gz",
+  "records": 222,
+  "sha256_uncompressed": "49af63ecd4c43ae6b0e4baf7f69a3de4108a3cbdd9f1e53a85ddb1e3551a47b9"
+ },
+ "wrapper_script_sha256": "de2ee5fd7595fb7c0188cba91e7efcd33ae01b96118329ae36d8d984207bfc40",
+ "viewer_method": "no rendered screenshot: playwright and a cached Chromium exist locally, but the hub is on an internal Docker network with no published port and the UI needs a logged-in user; reaching it would mean adding a proxy into the isolated network and an admin login inside the hub. The shipped frontend rule was applied to the stored rows instead (exp/out/e_psr_clo_display_check.json).",
+ "output_sha256": {
+  "e_psr_clo_anchor_refusals.jsonl": "45657a680d44ee3db03a752b9d6c5bc220c830056f8bf7095dc770061dfed1ab",
+  "e_psr_clo_detection.json": "220d8e24248c2ca9fe009ebc17582194c4a6904cf9e8f219c39b3fe9270d4d71",
+  "e_psr_clo_display_check.json": "46301f1295ba4afb68bfe592273679e075198750fe70d74704f50a5891dae18d",
+  "e_psr_clo_other_principal_real.json": "c277c75b6bca859997686764f2782b16bf994b5a1fd09eb0f395ee871c182d56",
+  "e_psr_clo_report_hallway.json": "10492a7b3208d1edb9224ae84280be22a274a971ac41972497a61b8770ded495",
+  "e_psr_clo_report_kitchen.json": "e1be3dc1f60ed091623001f5ccb2553a19bede9cb846d16b5b6cd45aa099657c",
+  "e_psr_clo_report_porch.json": "b7c47944909b1d834a3e3152bcc62faa822c799349733f24d6b21f0b8a05525a",
+  "e_psr_clo_t_end": "467a752c752f2a6e279807cfa0f3b348d6e294fb6d299a8e0f6e616546bb3b41",
+  "e_psr_clo_t_start": "6c592ab720c6f1da256287f4c8653838a129c7723a7afefecab3973dee816c2b"
+ },
+ "load_note": "host load average about 4 during this run"
+}

@@ -1,0 +1,63 @@
+{
+  "tool": "HACS (Home Assistant Community Store)",
+  "source": "https://github.com/hacs/integration",
+  "commit": "c462d30",
+  "commit_date": "2026-08-29",
+  "method": "pattern search over the installed source, excluding tests; patterns recorded with each answer so the classification is checkable",
+  "questions": [
+    {
+      "id": "cryptographic_signature",
+      "question": "Is downloaded content cryptographically signed and verified?",
+      "pattern": "\\b(gpg|pgp|sigstore|cosign|verify_signature|public_key|ed25519|rsa\\.verify)\\b",
+      "matches": 0,
+      "present": false,
+      "examples": []
+    },
+    {
+      "id": "content_integrity_pin",
+      "question": "Is downloaded content pinned to a hash the client verifies?",
+      "pattern": "\\b(sha256|sha1|hashlib|checksum|digest)\\b",
+      "matches": 0,
+      "present": false,
+      "examples": []
+    },
+    {
+      "id": "code_review_gate",
+      "question": "Is there a code-review gate before an integration is installable?",
+      "pattern": "\\b(code_review|security_review|manual_review|audit_required)\\b",
+      "matches": 0,
+      "present": false,
+      "examples": []
+    },
+    {
+      "id": "permission_model",
+      "question": "Does an installed integration declare or receive restricted permissions?",
+      "pattern": "\\b(permission|sandbox|capability|seccomp|apparmor|restrict_import)\\b",
+      "matches": 0,
+      "present": false,
+      "examples": []
+    },
+    {
+      "id": "static_analysis",
+      "question": "Is submitted code statically analysed for dangerous behaviour?",
+      "pattern": "\\b(bandit|semgrep|ast\\.parse|dangerous|blocklist|malware)\\b",
+      "matches": 0,
+      "present": false,
+      "examples": []
+    }
+  ],
+  "validation_rules_present": [
+    "archived",
+    "brands",
+    "description",
+    "hacsjson",
+    "images",
+    "information",
+    "integration_manifest",
+    "issues",
+    "license",
+    "topics"
+  ],
+  "validation_rules_note": "Every rule HACS runs before publishing is a METADATA or QUALITY check -- is the repository archived, does it carry a description, a license, images, a valid hacs.json, correct topics, an integration manifest. None inspects code behaviour.",
+  "install_mechanism": "download_content() fetches a repository archive over HTTPS and zipfile.extractall()s it into the Home Assistant configuration directory (repositories/base.py download_repository_zip). Whatever Python lands in custom_components/ executes in the hub process on the next restart."
+}

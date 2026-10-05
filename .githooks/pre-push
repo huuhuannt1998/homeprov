@@ -1,0 +1,37 @@
+#!/bin/sh
+# Refuse any push carrying the manuscript. Standing PI constraint: the
+# manuscript is not to go on GitHub. Local commits are fine; publication is not.
+#
+# origin/main currently holds ZERO manuscript files, but `main` is ahead by
+# commits that DO contain main.tex, sections/, refs.bib and main.pdf, so a
+# single `git push origin main` would publish the paper. This makes that
+# mistake impossible rather than merely unlikely.
+#
+# Deliberately non-destructive: nothing is untracked, no history is rewritten.
+# To override for a push you have actually thought about:  git push --no-verify
+
+# 2026-10-04: widened from the removed '[READY] (S&P 2027) HOMEPROV - P13/' to every [READY] folder
+# (the manuscript now lives in '[READY] (ACM TIOT) HOMEPROV - P13/'; the old S&P path still matches).
+GUARD='\[READY\] '
+status=0
+
+while read -r _local_ref local_sha _remote_ref remote_sha; do
+  [ "$local_sha" = "0000000000000000000000000000000000000000" ] && continue
+  if [ "$remote_sha" = "0000000000000000000000000000000000000000" ]; then
+    range="$local_sha"          # new branch: inspect the whole reachable set
+    files=$(git ls-tree -r --name-only "$local_sha")
+  else
+    range="$remote_sha..$local_sha"
+    files=$(git diff --name-only "$remote_sha" "$local_sha")
+  fi
+  hits=$(printf '%s\n' "$files" | grep -E "$GUARD" | head -5)
+  if [ -n "$hits" ]; then
+    echo "pre-push BLOCKED: this push carries the manuscript ($range)." >&2
+    echo "$hits" | sed 's/^/    /' >&2
+    echo "  The PI's standing constraint is that the manuscript stays off GitHub." >&2
+    echo "  If this push is genuinely intended: git push --no-verify" >&2
+    status=1
+  fi
+done
+
+exit $status
