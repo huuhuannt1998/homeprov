@@ -1,0 +1,506 @@
+{
+ "experiment": "E10 arm E: per-poll cost under a Raspberry Pi 4-class cap (review r5 Z12)",
+ "profiles": {
+  "ref": {
+   "cpus": "1",
+   "memory": "1g",
+   "device_read_bps": "100mb",
+   "device_write_bps": "50mb",
+   "device": "/dev/vda"
+  },
+  "pi4": {
+   "cpus": "0.25",
+   "memory": "512m",
+   "memory_swap": "512m",
+   "device_read_bps": "40mb",
+   "device_write_bps": "10mb",
+   "device_read_iops": "1500",
+   "device_write_iops": "500",
+   "device": "/dev/vda"
+  },
+  "pi4cpu_half": {
+   "cpus": "0.5",
+   "memory": "512m",
+   "memory_swap": "512m",
+   "device_read_bps": "40mb",
+   "device_write_bps": "10mb",
+   "device_read_iops": "1500",
+   "device_write_iops": "500",
+   "device": "/dev/vda"
+  },
+  "pi4cpu_eighth": {
+   "cpus": "0.125",
+   "memory": "512m",
+   "memory_swap": "512m",
+   "device_read_bps": "40mb",
+   "device_write_bps": "10mb",
+   "device_read_iops": "1500",
+   "device_write_iops": "500",
+   "device": "/dev/vda"
+  }
+ },
+ "assumed_values": {
+  "pi4": [
+   "cpus",
+   "memory",
+   "memory_swap",
+   "device_read_bps",
+   "device_write_bps",
+   "device_read_iops",
+   "device_write_iops"
+  ],
+  "pi4cpu_half": "as pi4",
+  "pi4cpu_eighth": "as pi4"
+ },
+ "matrix": [
+  "e10pi4_ref_k1_direct_qc720",
+  "e10pi4_ref_k5_direct_qc720",
+  "e10pi4_ref_k15_direct_qc720",
+  "e10pi4_pi4_k1_direct_qc720",
+  "e10pi4_pi4_k5_direct_qc720",
+  "e10pi4_pi4_k15_direct_qc720",
+  "e10pi4_ref_k1_copy_qc1",
+  "e10pi4_pi4_k1_copy_qc1",
+  "e10pi4_pi4cpu_half_k1_direct_qc720",
+  "e10pi4_pi4cpu_eighth_k1_direct_qc720"
+ ],
+ "sources": {
+  "ref": "exp/out/e10_pi4_cost_ref.json",
+  "pi4": "exp/out/e10_pi4_cost_pi4.json",
+  "pi4cpu_half": "exp/out/e10_pi4_cost_pi4cpu_half.json",
+  "pi4cpu_eighth": "exp/out/e10_pi4_cost_pi4cpu_eighth.json"
+ },
+ "runs": {
+  "e10pi4_ref_k1_direct_qc720": {
+   "profile": "ref",
+   "mode": "direct",
+   "k": 1,
+   "limits": {
+    "cpus": "1",
+    "memory": "1g",
+    "device_read_bps": "100mb",
+    "device_write_bps": "50mb",
+    "device": "/dev/vda"
+   },
+   "extra_limits": [],
+   "per_poll_total_ms": {
+    "n": 30,
+    "median": 90.003,
+    "p90": 106.951,
+    "max": 181.772,
+    "min": 70.472
+   },
+   "unobservable_polls": 0,
+   "reasons": {},
+   "bytes_written_per_hour_proc": 45662507,
+   "bytes_written_per_hour_cgroup": 45662507,
+   "write_bytes_per_poll": {
+    "n": 30,
+    "median": 65536.0,
+    "p90": 73728,
+    "max": 77824,
+    "min": 49152
+   },
+   "overruns": {
+    "n": 30,
+    "over_period": 0,
+    "over_gap_s": 0,
+    "max_s": 0.181772,
+    "poll_interval_median_s": 5.090279
+   }
+  },
+  "e10pi4_ref_k5_direct_qc720": {
+   "profile": "ref",
+   "mode": "direct",
+   "k": 5,
+   "limits": {
+    "cpus": "1",
+    "memory": "1g",
+    "device_read_bps": "100mb",
+    "device_write_bps": "50mb",
+    "device": "/dev/vda"
+   },
+   "extra_limits": [],
+   "per_poll_total_ms": {
+    "n": 30,
+    "median": 316.664,
+    "p90": 594.362,
+    "max": 670.441,
+    "min": 276.822
+   },
+   "unobservable_polls": 0,
+   "reasons": {},
+   "bytes_written_per_hour_proc": 111276853,
+   "bytes_written_per_hour_cgroup": 111276853,
+   "write_bytes_per_poll": {
+    "n": 30,
+    "median": 159744.0,
+    "p90": 180224,
+    "max": 200704,
+    "min": 135168
+   },
+   "overruns": {
+    "n": 30,
+    "over_period": 0,
+    "over_gap_s": 0,
+    "max_s": 0.6704410000000001,
+    "poll_interval_median_s": 5.316779
+   }
+  },
+  "e10pi4_ref_k15_direct_qc720": {
+   "profile": "ref",
+   "mode": "direct",
+   "k": 15,
+   "limits": {
+    "cpus": "1",
+    "memory": "1g",
+    "device_read_bps": "100mb",
+    "device_write_bps": "50mb",
+    "device": "/dev/vda"
+   },
+   "extra_limits": [],
+   "per_poll_total_ms": {
+    "n": 30,
+    "median": 793.988,
+    "p90": 1008.77,
+    "max": 1930.311,
+    "min": 397.114
+   },
+   "unobservable_polls": 0,
+   "reasons": {},
+   "bytes_written_per_hour_proc": 187021617,
+   "bytes_written_per_hour_cgroup": 187021617,
+   "write_bytes_per_poll": {
+    "n": 30,
+    "median": 270336.0,
+    "p90": 327680,
+    "max": 901120,
+    "min": 176128
+   },
+   "overruns": {
+    "n": 30,
+    "over_period": 0,
+    "over_gap_s": 0,
+    "max_s": 1.9303109999999999,
+    "poll_interval_median_s": 5.798761
+   }
+  },
+  "e10pi4_ref_k1_copy_qc1": {
+   "profile": "ref",
+   "mode": "copy",
+   "k": 1,
+   "limits": {
+    "cpus": "1",
+    "memory": "1g",
+    "device_read_bps": "100mb",
+    "device_write_bps": "50mb",
+    "device": "/dev/vda"
+   },
+   "extra_limits": [],
+   "per_poll_total_ms": {
+    "n": 30,
+    "median": 3988.863,
+    "p90": 4131.154,
+    "max": 4459.241,
+    "min": 3783.181
+   },
+   "unobservable_polls": 0,
+   "reasons": {},
+   "bytes_written_per_hour_proc": 80152715458,
+   "bytes_written_per_hour_cgroup": 80075433622,
+   "write_bytes_per_poll": {
+    "n": 30,
+    "median": 194078720.0,
+    "p90": 195198976,
+    "max": 195489792,
+    "min": 192249856
+   },
+   "overruns": {
+    "n": 30,
+    "over_period": 0,
+    "over_gap_s": 0,
+    "max_s": 4.459241,
+    "poll_interval_median_s": 8.9892
+   }
+  },
+  "e10pi4_pi4_k1_direct_qc720": {
+   "profile": "pi4",
+   "mode": "direct",
+   "k": 1,
+   "limits": {
+    "cpus": "0.25",
+    "memory": "512m",
+    "device_read_bps": "40mb",
+    "device_write_bps": "10mb",
+    "device": "/dev/vda"
+   },
+   "extra_limits": [
+    "--memory-swap",
+    "512m",
+    "--device-read-iops",
+    "/dev/vda:1500",
+    "--device-write-iops",
+    "/dev/vda:500"
+   ],
+   "per_poll_total_ms": {
+    "n": 30,
+    "median": 282.012,
+    "p90": 517.485,
+    "max": 752.886,
+    "min": 174.851
+   },
+   "unobservable_polls": 0,
+   "reasons": {},
+   "bytes_written_per_hour_proc": 44408705,
+   "bytes_written_per_hour_cgroup": 44408705,
+   "write_bytes_per_poll": {
+    "n": 30,
+    "median": 65536.0,
+    "p90": 73728,
+    "max": 77824,
+    "min": 49152
+   },
+   "overruns": {
+    "n": 30,
+    "over_period": 0,
+    "over_gap_s": 0,
+    "max_s": 0.7528859999999999,
+    "poll_interval_median_s": 5.284753
+   }
+  },
+  "e10pi4_pi4_k5_direct_qc720": {
+   "profile": "pi4",
+   "mode": "direct",
+   "k": 5,
+   "limits": {
+    "cpus": "0.25",
+    "memory": "512m",
+    "device_read_bps": "40mb",
+    "device_write_bps": "10mb",
+    "device": "/dev/vda"
+   },
+   "extra_limits": [
+    "--memory-swap",
+    "512m",
+    "--device-read-iops",
+    "/dev/vda:1500",
+    "--device-write-iops",
+    "/dev/vda:500"
+   ],
+   "per_poll_total_ms": {
+    "n": 30,
+    "median": 781.471,
+    "p90": 1898.761,
+    "max": 2033.69,
+    "min": 497.779
+   },
+   "unobservable_polls": 0,
+   "reasons": {},
+   "bytes_written_per_hour_proc": 73342886,
+   "bytes_written_per_hour_cgroup": 73342886,
+   "write_bytes_per_poll": {
+    "n": 30,
+    "median": 110592.0,
+    "p90": 151552,
+    "max": 184320,
+    "min": 77824
+   },
+   "overruns": {
+    "n": 30,
+    "over_period": 0,
+    "over_gap_s": 0,
+    "max_s": 2.03369,
+    "poll_interval_median_s": 5.791352
+   }
+  },
+  "e10pi4_pi4_k15_direct_qc720": {
+   "profile": "pi4",
+   "mode": "direct",
+   "k": 15,
+   "limits": {
+    "cpus": "0.25",
+    "memory": "512m",
+    "device_read_bps": "40mb",
+    "device_write_bps": "10mb",
+    "device": "/dev/vda"
+   },
+   "extra_limits": [
+    "--memory-swap",
+    "512m",
+    "--device-read-iops",
+    "/dev/vda:1500",
+    "--device-write-iops",
+    "/dev/vda:500"
+   ],
+   "per_poll_total_ms": {
+    "n": 30,
+    "median": 2107.651,
+    "p90": 2634.739,
+    "max": 5371.601,
+    "min": 1771.144
+   },
+   "unobservable_polls": 0,
+   "reasons": {},
+   "bytes_written_per_hour_proc": 118844093,
+   "bytes_written_per_hour_cgroup": 118844093,
+   "write_bytes_per_poll": {
+    "n": 30,
+    "median": 210944.0,
+    "p90": 237568,
+    "max": 872448,
+    "min": 176128
+   },
+   "overruns": {
+    "n": 30,
+    "over_period": 1,
+    "over_gap_s": 0,
+    "max_s": 5.371601,
+    "poll_interval_median_s": 7.11956
+   }
+  },
+  "e10pi4_pi4_k1_copy_qc1": {
+   "profile": "pi4",
+   "mode": "copy",
+   "k": 1,
+   "limits": {
+    "cpus": "0.25",
+    "memory": "512m",
+    "device_read_bps": "40mb",
+    "device_write_bps": "10mb",
+    "device": "/dev/vda"
+   },
+   "extra_limits": [
+    "--memory-swap",
+    "512m",
+    "--device-read-iops",
+    "/dev/vda:1500",
+    "--device-write-iops",
+    "/dev/vda:500"
+   ],
+   "per_poll_total_ms": {
+    "n": 30,
+    "median": 20467.936,
+    "p90": 21625.489,
+    "max": 41958.893,
+    "min": 19592.33
+   },
+   "unobservable_polls": 0,
+   "reasons": {},
+   "bytes_written_per_hour_proc": 28691128659,
+   "bytes_written_per_hour_cgroup": 28644049684,
+   "write_bytes_per_poll": {
+    "n": 30,
+    "median": 196237312.0,
+    "p90": 196354048,
+    "max": 391770112,
+    "min": 193171456
+   },
+   "overruns": {
+    "n": 30,
+    "over_period": 30,
+    "over_gap_s": 1,
+    "max_s": 41.958892999999996,
+    "poll_interval_median_s": 25.475424
+   }
+  },
+  "e10pi4_pi4cpu_half_k1_direct_qc720": {
+   "profile": "pi4cpu_half",
+   "mode": "direct",
+   "k": 1,
+   "limits": {
+    "cpus": "0.5",
+    "memory": "512m",
+    "device_read_bps": "40mb",
+    "device_write_bps": "10mb",
+    "device": "/dev/vda"
+   },
+   "extra_limits": [
+    "--memory-swap",
+    "512m",
+    "--device-read-iops",
+    "/dev/vda:1500",
+    "--device-write-iops",
+    "/dev/vda:500"
+   ],
+   "per_poll_total_ms": {
+    "n": 30,
+    "median": 112.978,
+    "p90": 174.182,
+    "max": 380.484,
+    "min": 76.291
+   },
+   "unobservable_polls": 0,
+   "reasons": {},
+   "bytes_written_per_hour_proc": 45454872,
+   "bytes_written_per_hour_cgroup": 45454872,
+   "write_bytes_per_poll": {
+    "n": 30,
+    "median": 65536.0,
+    "p90": 73728,
+    "max": 77824,
+    "min": 49152
+   },
+   "overruns": {
+    "n": 30,
+    "over_period": 0,
+    "over_gap_s": 0,
+    "max_s": 0.380484,
+    "poll_interval_median_s": 5.113551
+   }
+  },
+  "e10pi4_pi4cpu_eighth_k1_direct_qc720": {
+   "profile": "pi4cpu_eighth",
+   "mode": "direct",
+   "k": 1,
+   "limits": {
+    "cpus": "0.125",
+    "memory": "512m",
+    "device_read_bps": "40mb",
+    "device_write_bps": "10mb",
+    "device": "/dev/vda"
+   },
+   "extra_limits": [
+    "--memory-swap",
+    "512m",
+    "--device-read-iops",
+    "/dev/vda:1500",
+    "--device-write-iops",
+    "/dev/vda:500"
+   ],
+   "per_poll_total_ms": {
+    "n": 30,
+    "median": 739.221,
+    "p90": 1507.289,
+    "max": 1787.269,
+    "min": 486.37
+   },
+   "unobservable_polls": 0,
+   "reasons": {},
+   "bytes_written_per_hour_proc": 41114202,
+   "bytes_written_per_hour_cgroup": 41114202,
+   "write_bytes_per_poll": {
+    "n": 30,
+    "median": 65536.0,
+    "p90": 73728,
+    "max": 77824,
+    "min": 49152
+   },
+   "overruns": {
+    "n": 30,
+    "over_period": 0,
+    "over_gap_s": 0,
+    "max_s": 1.787269,
+    "poll_interval_median_s": 5.779058
+   }
+  }
+ },
+ "median_ratio": {
+  "copy_k1_pi4_over_ref": 5.131,
+  "direct_k1_pi4_over_ref": 3.133,
+  "direct_k1_pi4cpu_half_over_ref": 1.255,
+  "direct_k1_pi4cpu_eighth_over_ref": 8.213,
+  "direct_k5_pi4_over_ref": 2.468,
+  "direct_k15_pi4_over_ref": 2.655
+ },
+ "generated_at": "2026-10-21T19:57:38Z"
+}

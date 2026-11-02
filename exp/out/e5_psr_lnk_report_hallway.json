@@ -1,0 +1,1932 @@
+{
+  "experiment": "E-C",
+  "substrate": "real (mosquitto + MQTT discovery + shipped blueprint)",
+  "room": "hallway",
+  "target": "lock.front_door",
+  "innocent_party": "automation.hallway_motion_light",
+  "household_member_user_id": "8d5165f5f39641d191540c1662f8792e",
+  "household_member_name": "Alex Rivera (household)",
+  "n_trials_requested": 30,
+  "arms": [
+    "PSR"
+  ],
+  "t_start": 1791428385.499354,
+  "trials": [
+    {
+      "arm": "PSR",
+      "trial": 0,
+      "strategy": "post-commit principal swap of an ANCHORED row: write a household member account's real user id into context_user_id_bin",
+      "row_before": {
+        "state_id": 4460,
+        "ts": 1791428385.9924972,
+        "context_id_bin": "01a11973dcc852a12a8a64ce5270b7bd",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 4460,
+        "ts": 1791428385.9924972,
+        "context_id_bin": "01a11973dcc852a12a8a64ce5270b7bd",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T02:59:45.992497+00:00",
+      "clean_principal": null,
+      "clean_names_person": false,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T02:59:45.992497+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked"
+        }
+      ],
+      "swapped_state_ids": [
+        4460
+      ],
+      "db_writes": 1,
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swap_user_id_hex": "8d5165f5f39641d191540c1662f8792e",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none measured here: this arm edits a row already on disk and anchored",
+      "rendered": [
+        {
+          "when": "2026-10-08T02:59:45.992497+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_user_id": "8d5165f5f39641d191540c1662f8792e"
+        }
+      ],
+      "principal_rendered": "user:8d5165f5f39641d191540c1662f8792e",
+      "renderer_names_person": true,
+      "renderer_named_user_id": "8d5165f5f39641d191540c1662f8792e",
+      "principal_moved": true,
+      "renderer_confirmed_misattribution": true
+    },
+    {
+      "arm": "PSR",
+      "trial": 1,
+      "strategy": "post-commit principal swap of an ANCHORED row: write a household member account's real user id into context_user_id_bin",
+      "row_before": {
+        "state_id": 4475,
+        "ts": 1791428419.648422,
+        "context_id_bin": "01a11974603d82a8ba324fe923fc9bb8",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 4475,
+        "ts": 1791428419.648422,
+        "context_id_bin": "01a11974603d82a8ba324fe923fc9bb8",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T03:00:19.648422+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T03:00:19.648422+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "swapped_state_ids": [
+        4475
+      ],
+      "db_writes": 1,
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swap_user_id_hex": "8d5165f5f39641d191540c1662f8792e",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none measured here: this arm edits a row already on disk and anchored",
+      "rendered": [
+        {
+          "when": "2026-10-08T03:00:19.648422+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "8d5165f5f39641d191540c1662f8792e"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_person": true,
+      "renderer_named_user_id": "8d5165f5f39641d191540c1662f8792e",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": false
+    },
+    {
+      "arm": "PSR",
+      "trial": 2,
+      "strategy": "post-commit principal swap of an ANCHORED row: write a household member account's real user id into context_user_id_bin",
+      "row_before": {
+        "state_id": 4475,
+        "ts": 1791428419.648422,
+        "context_id_bin": "01a11974603d82a8ba324fe923fc9bb8",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 4481,
+        "ts": 1791428425.6811805,
+        "context_id_bin": "01a1197477cd184bfedd813031f0c3f2",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T03:00:25.681180+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T03:00:25.681180+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "swapped_state_ids": [
+        4475,
+        4481
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+      },
+      "swap_user_id_hex": "8d5165f5f39641d191540c1662f8792e",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none measured here: this arm edits a row already on disk and anchored",
+      "rendered": [
+        {
+          "when": "2026-10-08T03:00:25.681180+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "8d5165f5f39641d191540c1662f8792e"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_person": true,
+      "renderer_named_user_id": "8d5165f5f39641d191540c1662f8792e",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": false
+    },
+    {
+      "arm": "PSR",
+      "trial": 3,
+      "strategy": "post-commit principal swap of an ANCHORED row: write a household member account's real user id into context_user_id_bin",
+      "row_before": {
+        "state_id": 4483,
+        "ts": 1791428431.7007923,
+        "context_id_bin": "01a119748f520d64698139c9a4073bd0",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 4483,
+        "ts": 1791428431.7007923,
+        "context_id_bin": "01a119748f520d64698139c9a4073bd0",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T03:00:31.700792+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T03:00:31.700792+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "swapped_state_ids": [
+        4483
+      ],
+      "db_writes": 1,
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swap_user_id_hex": "8d5165f5f39641d191540c1662f8792e",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none measured here: this arm edits a row already on disk and anchored",
+      "rendered": [
+        {
+          "when": "2026-10-08T03:00:31.700792+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "8d5165f5f39641d191540c1662f8792e"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_person": true,
+      "renderer_named_user_id": "8d5165f5f39641d191540c1662f8792e",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": false
+    },
+    {
+      "arm": "PSR",
+      "trial": 4,
+      "strategy": "post-commit principal swap of an ANCHORED row: write a household member account's real user id into context_user_id_bin",
+      "row_before": {
+        "state_id": 4487,
+        "ts": 1791428437.743077,
+        "context_id_bin": "01a11974a6eabf4c00e227188c0c55c4",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 4487,
+        "ts": 1791428437.743077,
+        "context_id_bin": "01a11974a6eabf4c00e227188c0c55c4",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T03:00:37.743077+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T03:00:37.743077+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "swapped_state_ids": [
+        4487
+      ],
+      "db_writes": 1,
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swap_user_id_hex": "8d5165f5f39641d191540c1662f8792e",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none measured here: this arm edits a row already on disk and anchored",
+      "rendered": [
+        {
+          "when": "2026-10-08T03:00:37.743077+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "8d5165f5f39641d191540c1662f8792e"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_person": true,
+      "renderer_named_user_id": "8d5165f5f39641d191540c1662f8792e",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": false
+    },
+    {
+      "arm": "PSR",
+      "trial": 5,
+      "strategy": "post-commit principal swap of an ANCHORED row: write a household member account's real user id into context_user_id_bin",
+      "row_before": {
+        "state_id": 4489,
+        "ts": 1791428443.7794895,
+        "context_id_bin": "01a11974be7f9b2bf6025c1e55907c4e",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 4489,
+        "ts": 1791428443.7794895,
+        "context_id_bin": "01a11974be7f9b2bf6025c1e55907c4e",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T03:00:43.779490+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T03:00:43.779490+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "swapped_state_ids": [
+        4489
+      ],
+      "db_writes": 1,
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swap_user_id_hex": "8d5165f5f39641d191540c1662f8792e",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none measured here: this arm edits a row already on disk and anchored",
+      "rendered": [
+        {
+          "when": "2026-10-08T03:00:43.779490+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "8d5165f5f39641d191540c1662f8792e"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_person": true,
+      "renderer_named_user_id": "8d5165f5f39641d191540c1662f8792e",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": false
+    },
+    {
+      "arm": "PSR",
+      "trial": 6,
+      "strategy": "post-commit principal swap of an ANCHORED row: write a household member account's real user id into context_user_id_bin",
+      "row_before": {
+        "state_id": 4494,
+        "ts": 1791428449.831617,
+        "context_id_bin": "01a11974d6104dfd3d643b291fd02700",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 4494,
+        "ts": 1791428449.831617,
+        "context_id_bin": "01a11974d6104dfd3d643b291fd02700",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T03:00:49.831617+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T03:00:49.831617+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "swapped_state_ids": [
+        4494
+      ],
+      "db_writes": 1,
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swap_user_id_hex": "8d5165f5f39641d191540c1662f8792e",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none measured here: this arm edits a row already on disk and anchored",
+      "rendered": [
+        {
+          "when": "2026-10-08T03:00:49.831617+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "8d5165f5f39641d191540c1662f8792e"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_person": true,
+      "renderer_named_user_id": "8d5165f5f39641d191540c1662f8792e",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": false
+    },
+    {
+      "arm": "PSR",
+      "trial": 7,
+      "strategy": "post-commit principal swap of an ANCHORED row: write a household member account's real user id into context_user_id_bin",
+      "row_before": {
+        "state_id": 4498,
+        "ts": 1791428455.8536704,
+        "context_id_bin": "01a11974edac5a667e2dac1045e6b0fe",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 4498,
+        "ts": 1791428455.8536704,
+        "context_id_bin": "01a11974edac5a667e2dac1045e6b0fe",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T03:00:55.853670+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T03:00:55.853670+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "swapped_state_ids": [
+        4498
+      ],
+      "db_writes": 1,
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swap_user_id_hex": "8d5165f5f39641d191540c1662f8792e",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none measured here: this arm edits a row already on disk and anchored",
+      "rendered": [
+        {
+          "when": "2026-10-08T03:00:55.853670+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "8d5165f5f39641d191540c1662f8792e"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_person": true,
+      "renderer_named_user_id": "8d5165f5f39641d191540c1662f8792e",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": false
+    },
+    {
+      "arm": "PSR",
+      "trial": 8,
+      "strategy": "post-commit principal swap of an ANCHORED row: write a household member account's real user id into context_user_id_bin",
+      "row_before": {
+        "state_id": 4504,
+        "ts": 1791428461.9085271,
+        "context_id_bin": "01a11975055049a9949fb6055a763f73",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 4504,
+        "ts": 1791428461.9085271,
+        "context_id_bin": "01a11975055049a9949fb6055a763f73",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T03:01:01.908527+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T03:01:01.908527+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "swapped_state_ids": [
+        4504
+      ],
+      "db_writes": 1,
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swap_user_id_hex": "8d5165f5f39641d191540c1662f8792e",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none measured here: this arm edits a row already on disk and anchored",
+      "rendered": [
+        {
+          "when": "2026-10-08T03:01:01.908527+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "8d5165f5f39641d191540c1662f8792e"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_person": true,
+      "renderer_named_user_id": "8d5165f5f39641d191540c1662f8792e",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": false
+    },
+    {
+      "arm": "PSR",
+      "trial": 9,
+      "strategy": "post-commit principal swap of an ANCHORED row: write a household member account's real user id into context_user_id_bin",
+      "row_before": {
+        "state_id": 4508,
+        "ts": 1791428467.9430137,
+        "context_id_bin": "01a119751ce4c407cf8ef9a0f69a6a76",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 4508,
+        "ts": 1791428467.9430137,
+        "context_id_bin": "01a119751ce4c407cf8ef9a0f69a6a76",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T03:01:07.943014+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T03:01:07.943014+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "swapped_state_ids": [
+        4508
+      ],
+      "db_writes": 1,
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swap_user_id_hex": "8d5165f5f39641d191540c1662f8792e",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none measured here: this arm edits a row already on disk and anchored",
+      "rendered": [
+        {
+          "when": "2026-10-08T03:01:07.943014+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "8d5165f5f39641d191540c1662f8792e"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_person": true,
+      "renderer_named_user_id": "8d5165f5f39641d191540c1662f8792e",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": false
+    },
+    {
+      "arm": "PSR",
+      "trial": 10,
+      "strategy": "post-commit principal swap of an ANCHORED row: write a household member account's real user id into context_user_id_bin",
+      "row_before": {
+        "state_id": 4510,
+        "ts": 1791428473.9870553,
+        "context_id_bin": "01a119753481cdbfa903dabee902f4d8",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 4510,
+        "ts": 1791428473.9870553,
+        "context_id_bin": "01a119753481cdbfa903dabee902f4d8",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T03:01:13.987055+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T03:01:13.987055+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "swapped_state_ids": [
+        4510
+      ],
+      "db_writes": 1,
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swap_user_id_hex": "8d5165f5f39641d191540c1662f8792e",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none measured here: this arm edits a row already on disk and anchored",
+      "rendered": [
+        {
+          "when": "2026-10-08T03:01:13.987055+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "8d5165f5f39641d191540c1662f8792e"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_person": true,
+      "renderer_named_user_id": "8d5165f5f39641d191540c1662f8792e",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": false
+    },
+    {
+      "arm": "PSR",
+      "trial": 11,
+      "strategy": "post-commit principal swap of an ANCHORED row: write a household member account's real user id into context_user_id_bin",
+      "row_before": {
+        "state_id": 4516,
+        "ts": 1791428480.0271695,
+        "context_id_bin": "01a119754c16c9d2b61b5e90d5544664",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 4516,
+        "ts": 1791428480.0271695,
+        "context_id_bin": "01a119754c16c9d2b61b5e90d5544664",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T03:01:20.027169+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T03:01:20.027169+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "swapped_state_ids": [
+        4516
+      ],
+      "db_writes": 1,
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swap_user_id_hex": "8d5165f5f39641d191540c1662f8792e",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none measured here: this arm edits a row already on disk and anchored",
+      "rendered": [
+        {
+          "when": "2026-10-08T03:01:20.027169+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "8d5165f5f39641d191540c1662f8792e"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_person": true,
+      "renderer_named_user_id": "8d5165f5f39641d191540c1662f8792e",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": false
+    },
+    {
+      "arm": "PSR",
+      "trial": 12,
+      "strategy": "post-commit principal swap of an ANCHORED row: write a household member account's real user id into context_user_id_bin",
+      "row_before": {
+        "state_id": 4520,
+        "ts": 1791428486.0556386,
+        "context_id_bin": "01a1197563a5af4bd840fdf22bfa4248",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 4520,
+        "ts": 1791428486.0556386,
+        "context_id_bin": "01a1197563a5af4bd840fdf22bfa4248",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T03:01:26.055639+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T03:01:26.055639+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "swapped_state_ids": [
+        4520
+      ],
+      "db_writes": 1,
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swap_user_id_hex": "8d5165f5f39641d191540c1662f8792e",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none measured here: this arm edits a row already on disk and anchored",
+      "rendered": [
+        {
+          "when": "2026-10-08T03:01:26.055639+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "8d5165f5f39641d191540c1662f8792e"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_person": true,
+      "renderer_named_user_id": "8d5165f5f39641d191540c1662f8792e",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": false
+    },
+    {
+      "arm": "PSR",
+      "trial": 13,
+      "strategy": "post-commit principal swap of an ANCHORED row: write a household member account's real user id into context_user_id_bin",
+      "row_before": {
+        "state_id": 4525,
+        "ts": 1791428492.0948834,
+        "context_id_bin": "01a119757b3c89bc291c30992c9e0413",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 4525,
+        "ts": 1791428492.0948834,
+        "context_id_bin": "01a119757b3c89bc291c30992c9e0413",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T03:01:32.094883+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T03:01:32.094883+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "swapped_state_ids": [
+        4525
+      ],
+      "db_writes": 1,
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swap_user_id_hex": "8d5165f5f39641d191540c1662f8792e",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none measured here: this arm edits a row already on disk and anchored",
+      "rendered": [
+        {
+          "when": "2026-10-08T03:01:32.094883+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "8d5165f5f39641d191540c1662f8792e"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_person": true,
+      "renderer_named_user_id": "8d5165f5f39641d191540c1662f8792e",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": false
+    },
+    {
+      "arm": "PSR",
+      "trial": 14,
+      "strategy": "post-commit principal swap of an ANCHORED row: write a household member account's real user id into context_user_id_bin",
+      "row_before": {
+        "state_id": 4528,
+        "ts": 1791428498.1369696,
+        "context_id_bin": "01a1197592d5d349b7b4567ec5864403",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 4528,
+        "ts": 1791428498.1369696,
+        "context_id_bin": "01a1197592d5d349b7b4567ec5864403",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T03:01:38.136970+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T03:01:38.136970+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "swapped_state_ids": [
+        4528
+      ],
+      "db_writes": 1,
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swap_user_id_hex": "8d5165f5f39641d191540c1662f8792e",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none measured here: this arm edits a row already on disk and anchored",
+      "rendered": [
+        {
+          "when": "2026-10-08T03:01:38.136970+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "8d5165f5f39641d191540c1662f8792e"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_person": true,
+      "renderer_named_user_id": "8d5165f5f39641d191540c1662f8792e",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": false
+    },
+    {
+      "arm": "PSR",
+      "trial": 15,
+      "strategy": "post-commit principal swap of an ANCHORED row: write a household member account's real user id into context_user_id_bin",
+      "row_before": {
+        "state_id": 4530,
+        "ts": 1791428504.2036316,
+        "context_id_bin": "01a11975aa88854bf539a95f1a876676",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 4530,
+        "ts": 1791428504.2036316,
+        "context_id_bin": "01a11975aa88854bf539a95f1a876676",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T03:01:44.203632+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T03:01:44.203632+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "swapped_state_ids": [
+        4530
+      ],
+      "db_writes": 1,
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swap_user_id_hex": "8d5165f5f39641d191540c1662f8792e",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none measured here: this arm edits a row already on disk and anchored",
+      "rendered": [
+        {
+          "when": "2026-10-08T03:01:44.203632+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "8d5165f5f39641d191540c1662f8792e"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_person": true,
+      "renderer_named_user_id": "8d5165f5f39641d191540c1662f8792e",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": false
+    },
+    {
+      "arm": "PSR",
+      "trial": 16,
+      "strategy": "post-commit principal swap of an ANCHORED row: write a household member account's real user id into context_user_id_bin",
+      "row_before": {
+        "state_id": 4537,
+        "ts": 1791428510.2330542,
+        "context_id_bin": "01a11975c2168e1711ed38c1b54c08f4",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 4537,
+        "ts": 1791428510.2330542,
+        "context_id_bin": "01a11975c2168e1711ed38c1b54c08f4",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T03:01:50.233054+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T03:01:50.233054+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "swapped_state_ids": [
+        4537
+      ],
+      "db_writes": 1,
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swap_user_id_hex": "8d5165f5f39641d191540c1662f8792e",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none measured here: this arm edits a row already on disk and anchored",
+      "rendered": [
+        {
+          "when": "2026-10-08T03:01:50.233054+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "8d5165f5f39641d191540c1662f8792e"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_person": true,
+      "renderer_named_user_id": "8d5165f5f39641d191540c1662f8792e",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": false
+    },
+    {
+      "arm": "PSR",
+      "trial": 17,
+      "strategy": "post-commit principal swap of an ANCHORED row: write a household member account's real user id into context_user_id_bin",
+      "row_before": {
+        "state_id": 4540,
+        "ts": 1791428516.2664855,
+        "context_id_bin": "01a11975d9a798173cd46224694e916e",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 4540,
+        "ts": 1791428516.2664855,
+        "context_id_bin": "01a11975d9a798173cd46224694e916e",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T03:01:56.266485+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T03:01:56.266485+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "swapped_state_ids": [
+        4540
+      ],
+      "db_writes": 1,
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swap_user_id_hex": "8d5165f5f39641d191540c1662f8792e",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none measured here: this arm edits a row already on disk and anchored",
+      "rendered": [
+        {
+          "when": "2026-10-08T03:01:56.266485+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "8d5165f5f39641d191540c1662f8792e"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_person": true,
+      "renderer_named_user_id": "8d5165f5f39641d191540c1662f8792e",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": false
+    },
+    {
+      "arm": "PSR",
+      "trial": 18,
+      "strategy": "post-commit principal swap of an ANCHORED row: write a household member account's real user id into context_user_id_bin",
+      "row_before": {
+        "state_id": 4548,
+        "ts": 1791428522.3073683,
+        "context_id_bin": "01a11975f14132a09f9dadf10a8728e5",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 4548,
+        "ts": 1791428522.3073683,
+        "context_id_bin": "01a11975f14132a09f9dadf10a8728e5",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T03:02:02.307368+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T03:02:02.307368+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "swapped_state_ids": [
+        4548
+      ],
+      "db_writes": 1,
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swap_user_id_hex": "8d5165f5f39641d191540c1662f8792e",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none measured here: this arm edits a row already on disk and anchored",
+      "rendered": [
+        {
+          "when": "2026-10-08T03:02:02.307368+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "8d5165f5f39641d191540c1662f8792e"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_person": true,
+      "renderer_named_user_id": "8d5165f5f39641d191540c1662f8792e",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": false
+    },
+    {
+      "arm": "PSR",
+      "trial": 19,
+      "strategy": "post-commit principal swap of an ANCHORED row: write a household member account's real user id into context_user_id_bin",
+      "row_before": {
+        "state_id": 4553,
+        "ts": 1791428528.3618252,
+        "context_id_bin": "01a1197608e37146c08f4c2ee65d995b",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 4553,
+        "ts": 1791428528.3618252,
+        "context_id_bin": "01a1197608e37146c08f4c2ee65d995b",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T03:02:08.361825+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T03:02:08.361825+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "swapped_state_ids": [
+        4553
+      ],
+      "db_writes": 1,
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swap_user_id_hex": "8d5165f5f39641d191540c1662f8792e",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none measured here: this arm edits a row already on disk and anchored",
+      "rendered": [
+        {
+          "when": "2026-10-08T03:02:08.361825+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "8d5165f5f39641d191540c1662f8792e"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_person": true,
+      "renderer_named_user_id": "8d5165f5f39641d191540c1662f8792e",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": false
+    },
+    {
+      "arm": "PSR",
+      "trial": 20,
+      "strategy": "post-commit principal swap of an ANCHORED row: write a household member account's real user id into context_user_id_bin",
+      "row_before": {
+        "state_id": 4558,
+        "ts": 1791428534.463508,
+        "context_id_bin": "01a1197620939b84f70326021b5683d8",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 4558,
+        "ts": 1791428534.463508,
+        "context_id_bin": "01a1197620939b84f70326021b5683d8",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T03:02:14.463508+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T03:02:14.463508+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "swapped_state_ids": [
+        4558
+      ],
+      "db_writes": 1,
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swap_user_id_hex": "8d5165f5f39641d191540c1662f8792e",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none measured here: this arm edits a row already on disk and anchored",
+      "rendered": [
+        {
+          "when": "2026-10-08T03:02:14.463508+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "8d5165f5f39641d191540c1662f8792e"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_person": true,
+      "renderer_named_user_id": "8d5165f5f39641d191540c1662f8792e",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": false
+    },
+    {
+      "arm": "PSR",
+      "trial": 21,
+      "strategy": "post-commit principal swap of an ANCHORED row: write a household member account's real user id into context_user_id_bin",
+      "row_before": {
+        "state_id": 4562,
+        "ts": 1791428540.5176048,
+        "context_id_bin": "01a119763862e4eed8a24f9993b163d0",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 4562,
+        "ts": 1791428540.5176048,
+        "context_id_bin": "01a119763862e4eed8a24f9993b163d0",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T03:02:20.517605+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T03:02:20.517605+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "swapped_state_ids": [
+        4562
+      ],
+      "db_writes": 1,
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swap_user_id_hex": "8d5165f5f39641d191540c1662f8792e",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none measured here: this arm edits a row already on disk and anchored",
+      "rendered": [
+        {
+          "when": "2026-10-08T03:02:20.517605+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "8d5165f5f39641d191540c1662f8792e"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_person": true,
+      "renderer_named_user_id": "8d5165f5f39641d191540c1662f8792e",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": false
+    },
+    {
+      "arm": "PSR",
+      "trial": 22,
+      "strategy": "post-commit principal swap of an ANCHORED row: write a household member account's real user id into context_user_id_bin",
+      "row_before": {
+        "state_id": 4567,
+        "ts": 1791428546.59278,
+        "context_id_bin": "01a11976501eba2d585064fcd5454f49",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 4567,
+        "ts": 1791428546.59278,
+        "context_id_bin": "01a11976501eba2d585064fcd5454f49",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T03:02:26.592780+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T03:02:26.592780+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "swapped_state_ids": [
+        4567
+      ],
+      "db_writes": 1,
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swap_user_id_hex": "8d5165f5f39641d191540c1662f8792e",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none measured here: this arm edits a row already on disk and anchored",
+      "rendered": [
+        {
+          "when": "2026-10-08T03:02:26.592780+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "8d5165f5f39641d191540c1662f8792e"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_person": true,
+      "renderer_named_user_id": "8d5165f5f39641d191540c1662f8792e",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": false
+    },
+    {
+      "arm": "PSR",
+      "trial": 23,
+      "strategy": "post-commit principal swap of an ANCHORED row: write a household member account's real user id into context_user_id_bin",
+      "row_before": {
+        "state_id": 4570,
+        "ts": 1791428552.6316972,
+        "context_id_bin": "01a1197667b55256179aab34a100739f",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 4570,
+        "ts": 1791428552.6316972,
+        "context_id_bin": "01a1197667b55256179aab34a100739f",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T03:02:32.631697+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T03:02:32.631697+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "swapped_state_ids": [
+        4570
+      ],
+      "db_writes": 1,
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swap_user_id_hex": "8d5165f5f39641d191540c1662f8792e",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none measured here: this arm edits a row already on disk and anchored",
+      "rendered": [
+        {
+          "when": "2026-10-08T03:02:32.631697+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "8d5165f5f39641d191540c1662f8792e"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_person": true,
+      "renderer_named_user_id": "8d5165f5f39641d191540c1662f8792e",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": false
+    },
+    {
+      "arm": "PSR",
+      "trial": 24,
+      "strategy": "post-commit principal swap of an ANCHORED row: write a household member account's real user id into context_user_id_bin",
+      "row_before": {
+        "state_id": 4575,
+        "ts": 1791428558.693763,
+        "context_id_bin": "01a119767f62453ed2dd1412598c873e",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 4575,
+        "ts": 1791428558.693763,
+        "context_id_bin": "01a119767f62453ed2dd1412598c873e",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T03:02:38.693763+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T03:02:38.693763+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "swapped_state_ids": [
+        4575
+      ],
+      "db_writes": 1,
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swap_user_id_hex": "8d5165f5f39641d191540c1662f8792e",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none measured here: this arm edits a row already on disk and anchored",
+      "rendered": [
+        {
+          "when": "2026-10-08T03:02:38.693763+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "8d5165f5f39641d191540c1662f8792e"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_person": true,
+      "renderer_named_user_id": "8d5165f5f39641d191540c1662f8792e",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": false
+    },
+    {
+      "arm": "PSR",
+      "trial": 25,
+      "strategy": "post-commit principal swap of an ANCHORED row: write a household member account's real user id into context_user_id_bin",
+      "row_before": {
+        "state_id": 4577,
+        "ts": 1791428564.7436347,
+        "context_id_bin": "01a1197696f75717d9954b85f5bc9475",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 4577,
+        "ts": 1791428564.7436347,
+        "context_id_bin": "01a1197696f75717d9954b85f5bc9475",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T03:02:44.743635+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T03:02:44.743635+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "swapped_state_ids": [
+        4577
+      ],
+      "db_writes": 1,
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swap_user_id_hex": "8d5165f5f39641d191540c1662f8792e",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none measured here: this arm edits a row already on disk and anchored",
+      "rendered": [
+        {
+          "when": "2026-10-08T03:02:44.743635+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "8d5165f5f39641d191540c1662f8792e"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_person": true,
+      "renderer_named_user_id": "8d5165f5f39641d191540c1662f8792e",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": false
+    },
+    {
+      "arm": "PSR",
+      "trial": 26,
+      "strategy": "post-commit principal swap of an ANCHORED row: write a household member account's real user id into context_user_id_bin",
+      "row_before": {
+        "state_id": 4584,
+        "ts": 1791428570.7679777,
+        "context_id_bin": "01a11976ae8e5b09f2a029c9e1f5c9be",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 4584,
+        "ts": 1791428570.7679777,
+        "context_id_bin": "01a11976ae8e5b09f2a029c9e1f5c9be",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T03:02:50.767978+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T03:02:50.767978+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "swapped_state_ids": [
+        4584
+      ],
+      "db_writes": 1,
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swap_user_id_hex": "8d5165f5f39641d191540c1662f8792e",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none measured here: this arm edits a row already on disk and anchored",
+      "rendered": [
+        {
+          "when": "2026-10-08T03:02:50.767978+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "8d5165f5f39641d191540c1662f8792e"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_person": true,
+      "renderer_named_user_id": "8d5165f5f39641d191540c1662f8792e",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": false
+    },
+    {
+      "arm": "PSR",
+      "trial": 27,
+      "strategy": "post-commit principal swap of an ANCHORED row: write a household member account's real user id into context_user_id_bin",
+      "row_before": {
+        "state_id": 4587,
+        "ts": 1791428576.7946124,
+        "context_id_bin": "01a11976c616fa9cbd4f0673c727f34f",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 4587,
+        "ts": 1791428576.7946124,
+        "context_id_bin": "01a11976c616fa9cbd4f0673c727f34f",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T03:02:56.794612+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T03:02:56.794612+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "swapped_state_ids": [
+        4587
+      ],
+      "db_writes": 1,
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swap_user_id_hex": "8d5165f5f39641d191540c1662f8792e",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none measured here: this arm edits a row already on disk and anchored",
+      "rendered": [
+        {
+          "when": "2026-10-08T03:02:56.794612+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "8d5165f5f39641d191540c1662f8792e"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_person": true,
+      "renderer_named_user_id": "8d5165f5f39641d191540c1662f8792e",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": false
+    },
+    {
+      "arm": "PSR",
+      "trial": 28,
+      "strategy": "post-commit principal swap of an ANCHORED row: write a household member account's real user id into context_user_id_bin",
+      "row_before": {
+        "state_id": 4594,
+        "ts": 1791428582.8264902,
+        "context_id_bin": "01a11976dda8a1bb1e64e3417d054d4b",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 4594,
+        "ts": 1791428582.8264902,
+        "context_id_bin": "01a11976dda8a1bb1e64e3417d054d4b",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T03:03:02.826490+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T03:03:02.826490+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "swapped_state_ids": [
+        4594
+      ],
+      "db_writes": 1,
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swap_user_id_hex": "8d5165f5f39641d191540c1662f8792e",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none measured here: this arm edits a row already on disk and anchored",
+      "rendered": [
+        {
+          "when": "2026-10-08T03:03:02.826490+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "8d5165f5f39641d191540c1662f8792e"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_person": true,
+      "renderer_named_user_id": "8d5165f5f39641d191540c1662f8792e",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": false
+    },
+    {
+      "arm": "PSR",
+      "trial": 29,
+      "strategy": "post-commit principal swap of an ANCHORED row: write a household member account's real user id into context_user_id_bin",
+      "row_before": {
+        "state_id": 4597,
+        "ts": 1791428588.875346,
+        "context_id_bin": "01a11976f5473da79623b6a459c9ad0c",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 4597,
+        "ts": 1791428588.875346,
+        "context_id_bin": "01a11976f5473da79623b6a459c9ad0c",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T03:03:08.875346+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T03:03:08.875346+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "swapped_state_ids": [
+        4597
+      ],
+      "db_writes": 1,
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swap_user_id_hex": "8d5165f5f39641d191540c1662f8792e",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none measured here: this arm edits a row already on disk and anchored",
+      "rendered": [
+        {
+          "when": "2026-10-08T03:03:08.875346+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "8d5165f5f39641d191540c1662f8792e"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_person": true,
+      "renderer_named_user_id": "8d5165f5f39641d191540c1662f8792e",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": false
+    }
+  ],
+  "t_end": 1791428722.2158554
+}

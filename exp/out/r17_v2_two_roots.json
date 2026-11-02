@@ -1,0 +1,884 @@
+{
+ "T0": 1790280000.0,
+ "cases": {
+  "edit_then_state_loss/accepting/as_appended": {
+   "v1_registered_verifier": {
+    "chain_conflicted_entries": 0,
+    "epochs": 2,
+    "flagged_seconds": [
+     "1790280001"
+    ],
+    "per_second": {
+     "1790280000": "match",
+     "1790280001": "violation",
+     "1790280002": "match",
+     "1790280003": "match",
+     "1790280004": "match"
+    },
+    "second_T0_plus_1": {
+     "attributable": true,
+     "mechanism": "sealed_rows_removed",
+     "v2_reason": null,
+     "violation": true
+    }
+   },
+   "v2": {
+    "chain_conflicted_entries": 0,
+    "epochs": 2,
+    "flagged_seconds": [
+     "1790280001"
+    ],
+    "per_second": {
+     "1790280000": "match",
+     "1790280001": "violation",
+     "1790280002": "match",
+     "1790280003": "match",
+     "1790280004": "match"
+    },
+    "second_T0_plus_1": {
+     "attributable": true,
+     "mechanism": "conflicting_roots",
+     "v2_reason": "conflicting_roots",
+     "violation": true
+    }
+   },
+   "v2_conflicts": [
+    {
+     "gran": "second",
+     "roots": [
+      {
+       "acc": "c1896d917962d3c6edb5be585c86b477b3b74a68f7f9118b26e8bf06a49d1b0f",
+       "carried_by": [
+        {
+         "chain_seq": 1,
+         "column_list": null,
+         "conflicted": false,
+         "encoding": "v2",
+         "instance": null,
+         "record_ts": 1790280005.0,
+         "seal_seq": 1,
+         "sealed_at": 1790280005.0,
+         "wm": {
+          "events": 1,
+          "states": 4
+         }
+        }
+       ],
+       "n": 2,
+       "reproduced_by_current_rows": false
+      },
+      {
+       "acc": "552c25ed855850dc512c5fd613fd4a501096d64675f24ab0c60d7ea0547df0c5",
+       "carried_by": [
+        {
+         "chain_seq": 3,
+         "column_list": null,
+         "conflicted": false,
+         "encoding": "v2",
+         "instance": null,
+         "record_ts": 1790280015.0,
+         "seal_seq": 1,
+         "sealed_at": 1790280015.0,
+         "wm": {
+          "events": null,
+          "states": 4
+         }
+        }
+       ],
+       "n": 1,
+       "reproduced_by_current_rows": true
+      }
+     ],
+     "seg": "1790280001"
+    }
+   ]
+  },
+  "edit_then_state_loss/accepting/first_instance_withheld": {
+   "v1_registered_verifier": {
+    "chain_conflicted_entries": 0,
+    "epochs": 1,
+    "flagged_seconds": [],
+    "per_second": {
+     "1790280000": "match",
+     "1790280001": "match",
+     "1790280002": "match",
+     "1790280003": "match",
+     "1790280004": "match"
+    },
+    "second_T0_plus_1": null
+   },
+   "v2": {
+    "chain_conflicted_entries": 0,
+    "epochs": 1,
+    "flagged_seconds": [],
+    "per_second": {
+     "1790280000": "match",
+     "1790280001": "match",
+     "1790280002": "match",
+     "1790280003": "match",
+     "1790280004": "match"
+    },
+    "second_T0_plus_1": null
+   },
+   "v2_conflicts": []
+  },
+  "edit_then_state_loss/accepting/later_root_first": {
+   "v1_registered_verifier": {
+    "chain_conflicted_entries": 0,
+    "epochs": 1,
+    "flagged_seconds": [],
+    "per_second": {
+     "1790280000": "match",
+     "1790280001": "match",
+     "1790280002": "match",
+     "1790280003": "match",
+     "1790280004": "match"
+    },
+    "second_T0_plus_1": null
+   },
+   "v2": {
+    "chain_conflicted_entries": 0,
+    "epochs": 1,
+    "flagged_seconds": [
+     "1790280001"
+    ],
+    "per_second": {
+     "1790280000": "match",
+     "1790280001": "violation",
+     "1790280002": "match",
+     "1790280003": "match",
+     "1790280004": "match"
+    },
+    "second_T0_plus_1": {
+     "attributable": true,
+     "mechanism": "conflicting_roots",
+     "v2_reason": "conflicting_roots",
+     "violation": true
+    }
+   },
+   "v2_conflicts": [
+    {
+     "gran": "second",
+     "roots": [
+      {
+       "acc": "552c25ed855850dc512c5fd613fd4a501096d64675f24ab0c60d7ea0547df0c5",
+       "carried_by": [
+        {
+         "chain_seq": 3,
+         "column_list": null,
+         "conflicted": false,
+         "encoding": "v2",
+         "instance": null,
+         "record_ts": 1790280015.0,
+         "seal_seq": 1,
+         "sealed_at": 1790280015.0,
+         "wm": {
+          "events": null,
+          "states": 4
+         }
+        }
+       ],
+       "n": 1,
+       "reproduced_by_current_rows": true
+      },
+      {
+       "acc": "c1896d917962d3c6edb5be585c86b477b3b74a68f7f9118b26e8bf06a49d1b0f",
+       "carried_by": [
+        {
+         "chain_seq": 1,
+         "column_list": null,
+         "conflicted": false,
+         "encoding": "v2",
+         "instance": null,
+         "record_ts": 1790280005.0,
+         "seal_seq": 1,
+         "sealed_at": 1790280005.0,
+         "wm": {
+          "events": 1,
+          "states": 4
+         }
+        }
+       ],
+       "n": 2,
+       "reproduced_by_current_rows": false
+      }
+     ],
+     "seg": "1790280001"
+    }
+   ]
+  },
+  "edit_then_state_loss/accepting/later_root_first/no_public_key": {
+   "v1_registered_verifier": {
+    "chain_conflicted_entries": 0,
+    "epochs": 1,
+    "flagged_seconds": [],
+    "per_second": {
+     "1790280000": "match",
+     "1790280001": "match",
+     "1790280002": "match",
+     "1790280003": "match",
+     "1790280004": "match"
+    },
+    "second_T0_plus_1": null
+   },
+   "v2": {
+    "chain_conflicted_entries": 0,
+    "epochs": 1,
+    "flagged_seconds": [],
+    "per_second": {
+     "1790280000": "match",
+     "1790280001": "match",
+     "1790280002": "match",
+     "1790280003": "match",
+     "1790280004": "match"
+    },
+    "second_T0_plus_1": null
+   },
+   "v2_conflicts": [],
+   "v2_unsigned_listed": [
+    {
+     "gran": "second",
+     "roots": [
+      {
+       "acc": "552c25ed855850dc512c5fd613fd4a501096d64675f24ab0c60d7ea0547df0c5",
+       "carried_by": [
+        {
+         "chain_seq": 3,
+         "column_list": null,
+         "conflicted": false,
+         "encoding": "v2",
+         "instance": null,
+         "record_ts": 1790280015.0,
+         "seal_seq": 1,
+         "sealed_at": 1790280015.0,
+         "wm": {
+          "events": null,
+          "states": 4
+         }
+        }
+       ],
+       "n": 1
+      },
+      {
+       "acc": "c1896d917962d3c6edb5be585c86b477b3b74a68f7f9118b26e8bf06a49d1b0f",
+       "carried_by": [
+        {
+         "chain_seq": 1,
+         "column_list": null,
+         "conflicted": false,
+         "encoding": "v2",
+         "instance": null,
+         "record_ts": 1790280005.0,
+         "seal_seq": 1,
+         "sealed_at": 1790280005.0,
+         "wm": {
+          "events": 1,
+          "states": 4
+         }
+        }
+       ],
+       "n": 2
+      }
+     ],
+     "seg": "1790280001"
+    }
+   ]
+  },
+  "edit_then_state_loss/honest_first_write_wins/as_appended": {
+   "v1_registered_verifier": {
+    "chain_conflicted_entries": 1,
+    "epochs": 2,
+    "flagged_seconds": [
+     "1790280001"
+    ],
+    "per_second": {
+     "1790280000": "match",
+     "1790280001": "violation",
+     "1790280002": "match",
+     "1790280003": "match",
+     "1790280004": "match"
+    },
+    "second_T0_plus_1": {
+     "attributable": true,
+     "mechanism": "sealed_rows_removed",
+     "v2_reason": null,
+     "violation": true
+    }
+   },
+   "v2": {
+    "chain_conflicted_entries": 1,
+    "epochs": 2,
+    "flagged_seconds": [
+     "1790280001"
+    ],
+    "per_second": {
+     "1790280000": "match",
+     "1790280001": "violation",
+     "1790280002": "match",
+     "1790280003": "match",
+     "1790280004": "match"
+    },
+    "second_T0_plus_1": {
+     "attributable": true,
+     "mechanism": "conflicting_roots",
+     "v2_reason": "conflicting_roots",
+     "violation": true
+    }
+   },
+   "v2_conflicts": [
+    {
+     "gran": "second",
+     "roots": [
+      {
+       "acc": "c1896d917962d3c6edb5be585c86b477b3b74a68f7f9118b26e8bf06a49d1b0f",
+       "carried_by": [
+        {
+         "chain_seq": 1,
+         "column_list": null,
+         "conflicted": false,
+         "encoding": "v2",
+         "instance": null,
+         "record_ts": 1790280005.0,
+         "seal_seq": 1,
+         "sealed_at": 1790280005.0,
+         "wm": {
+          "events": 1,
+          "states": 4
+         }
+        }
+       ],
+       "n": 2,
+       "reproduced_by_current_rows": false
+      },
+      {
+       "acc": "552c25ed855850dc512c5fd613fd4a501096d64675f24ab0c60d7ea0547df0c5",
+       "carried_by": [
+        {
+         "chain_seq": 3,
+         "column_list": null,
+         "conflicted": true,
+         "encoding": "v2",
+         "instance": null,
+         "record_ts": 1790280015.0,
+         "seal_seq": 1,
+         "sealed_at": 1790280015.0,
+         "wm": {
+          "events": null,
+          "states": 4
+         }
+        }
+       ],
+       "n": 1,
+       "reproduced_by_current_rows": true
+      }
+     ],
+     "seg": "1790280001"
+    }
+   ]
+  },
+  "edit_then_state_loss/honest_first_write_wins/first_instance_withheld": {
+   "v1_registered_verifier": {
+    "chain_conflicted_entries": 1,
+    "epochs": 1,
+    "flagged_seconds": [],
+    "per_second": {
+     "1790280000": "match",
+     "1790280001": "match",
+     "1790280002": "match",
+     "1790280003": "match",
+     "1790280004": "match"
+    },
+    "second_T0_plus_1": null
+   },
+   "v2": {
+    "chain_conflicted_entries": 1,
+    "epochs": 1,
+    "flagged_seconds": [],
+    "per_second": {
+     "1790280000": "match",
+     "1790280001": "match",
+     "1790280002": "match",
+     "1790280003": "match",
+     "1790280004": "match"
+    },
+    "second_T0_plus_1": null
+   },
+   "v2_conflicts": []
+  },
+  "edit_then_state_loss/honest_first_write_wins/later_root_first": {
+   "v1_registered_verifier": {
+    "chain_conflicted_entries": 1,
+    "epochs": 1,
+    "flagged_seconds": [],
+    "per_second": {
+     "1790280000": "match",
+     "1790280001": "match",
+     "1790280002": "match",
+     "1790280003": "match",
+     "1790280004": "match"
+    },
+    "second_T0_plus_1": null
+   },
+   "v2": {
+    "chain_conflicted_entries": 1,
+    "epochs": 1,
+    "flagged_seconds": [
+     "1790280001"
+    ],
+    "per_second": {
+     "1790280000": "match",
+     "1790280001": "violation",
+     "1790280002": "match",
+     "1790280003": "match",
+     "1790280004": "match"
+    },
+    "second_T0_plus_1": {
+     "attributable": true,
+     "mechanism": "conflicting_roots",
+     "v2_reason": "conflicting_roots",
+     "violation": true
+    }
+   },
+   "v2_conflicts": [
+    {
+     "gran": "second",
+     "roots": [
+      {
+       "acc": "552c25ed855850dc512c5fd613fd4a501096d64675f24ab0c60d7ea0547df0c5",
+       "carried_by": [
+        {
+         "chain_seq": 3,
+         "column_list": null,
+         "conflicted": true,
+         "encoding": "v2",
+         "instance": null,
+         "record_ts": 1790280015.0,
+         "seal_seq": 1,
+         "sealed_at": 1790280015.0,
+         "wm": {
+          "events": null,
+          "states": 4
+         }
+        }
+       ],
+       "n": 1,
+       "reproduced_by_current_rows": true
+      },
+      {
+       "acc": "c1896d917962d3c6edb5be585c86b477b3b74a68f7f9118b26e8bf06a49d1b0f",
+       "carried_by": [
+        {
+         "chain_seq": 1,
+         "column_list": null,
+         "conflicted": false,
+         "encoding": "v2",
+         "instance": null,
+         "record_ts": 1790280005.0,
+         "seal_seq": 1,
+         "sealed_at": 1790280005.0,
+         "wm": {
+          "events": 1,
+          "states": 4
+         }
+        }
+       ],
+       "n": 2,
+       "reproduced_by_current_rows": false
+      }
+     ],
+     "seg": "1790280001"
+    }
+   ]
+  },
+  "edit_then_state_loss/honest_first_write_wins/later_root_first/no_public_key": {
+   "v1_registered_verifier": {
+    "chain_conflicted_entries": 1,
+    "epochs": 1,
+    "flagged_seconds": [],
+    "per_second": {
+     "1790280000": "match",
+     "1790280001": "match",
+     "1790280002": "match",
+     "1790280003": "match",
+     "1790280004": "match"
+    },
+    "second_T0_plus_1": null
+   },
+   "v2": {
+    "chain_conflicted_entries": 1,
+    "epochs": 1,
+    "flagged_seconds": [],
+    "per_second": {
+     "1790280000": "match",
+     "1790280001": "match",
+     "1790280002": "match",
+     "1790280003": "match",
+     "1790280004": "match"
+    },
+    "second_T0_plus_1": null
+   },
+   "v2_conflicts": [],
+   "v2_unsigned_listed": [
+    {
+     "gran": "second",
+     "roots": [
+      {
+       "acc": "552c25ed855850dc512c5fd613fd4a501096d64675f24ab0c60d7ea0547df0c5",
+       "carried_by": [
+        {
+         "chain_seq": 3,
+         "column_list": null,
+         "conflicted": true,
+         "encoding": "v2",
+         "instance": null,
+         "record_ts": 1790280015.0,
+         "seal_seq": 1,
+         "sealed_at": 1790280015.0,
+         "wm": {
+          "events": null,
+          "states": 4
+         }
+        }
+       ],
+       "n": 1
+      },
+      {
+       "acc": "c1896d917962d3c6edb5be585c86b477b3b74a68f7f9118b26e8bf06a49d1b0f",
+       "carried_by": [
+        {
+         "chain_seq": 1,
+         "column_list": null,
+         "conflicted": false,
+         "encoding": "v2",
+         "instance": null,
+         "record_ts": 1790280005.0,
+         "seal_seq": 1,
+         "sealed_at": 1790280005.0,
+         "wm": {
+          "events": 1,
+          "states": 4
+         }
+        }
+       ],
+       "n": 2
+      }
+     ],
+     "seg": "1790280001"
+    }
+   ]
+  },
+  "state_loss_benign_late_row/honest_first_write_wins/as_appended": {
+   "v1_registered_verifier": {
+    "chain_conflicted_entries": 1,
+    "epochs": 2,
+    "flagged_seconds": [],
+    "per_second": {
+     "1790280000": "match",
+     "1790280001": "match",
+     "1790280002": "match",
+     "1790280003": "match",
+     "1790280004": "match"
+    },
+    "second_T0_plus_1": null
+   },
+   "v2": {
+    "chain_conflicted_entries": 1,
+    "epochs": 2,
+    "flagged_seconds": [
+     "1790280004"
+    ],
+    "per_second": {
+     "1790280000": "match",
+     "1790280001": "match",
+     "1790280002": "match",
+     "1790280003": "match",
+     "1790280004": "violation"
+    },
+    "second_T0_plus_1": null
+   },
+   "v2_conflicts": [
+    {
+     "gran": "second",
+     "roots": [
+      {
+       "acc": "8ad86cbcbae7410e4880d091c2ea92523eed6f619e786380d7855fa216c2c7ea",
+       "carried_by": [
+        {
+         "chain_seq": 1,
+         "column_list": null,
+         "conflicted": false,
+         "encoding": "v2",
+         "instance": null,
+         "record_ts": 1790280005.0,
+         "seal_seq": 1,
+         "sealed_at": 1790280005.0,
+         "wm": {
+          "events": 1,
+          "states": 4
+         }
+        }
+       ],
+       "n": 1,
+       "reproduced_by_current_rows": true
+      },
+      {
+       "acc": "29147e7cf3fbb0160822af508dcbbdc2f81041e36786ad3ccf916b2d0f241b18",
+       "carried_by": [
+        {
+         "chain_seq": 3,
+         "column_list": null,
+         "conflicted": true,
+         "encoding": "v2",
+         "instance": null,
+         "record_ts": 1790280015.0,
+         "seal_seq": 1,
+         "sealed_at": 1790280015.0,
+         "wm": {
+          "events": 1,
+          "states": 5
+         }
+        }
+       ],
+       "n": 2,
+       "reproduced_by_current_rows": true
+      }
+     ],
+     "seg": "1790280004"
+    }
+   ]
+  },
+  "state_loss_benign_late_row/honest_first_write_wins/later_root_first": {
+   "v1_registered_verifier": {
+    "chain_conflicted_entries": 1,
+    "epochs": 1,
+    "flagged_seconds": [],
+    "per_second": {
+     "1790280000": "match",
+     "1790280001": "match",
+     "1790280002": "match",
+     "1790280003": "match",
+     "1790280004": "match"
+    },
+    "second_T0_plus_1": null
+   },
+   "v2": {
+    "chain_conflicted_entries": 1,
+    "epochs": 1,
+    "flagged_seconds": [
+     "1790280004"
+    ],
+    "per_second": {
+     "1790280000": "match",
+     "1790280001": "match",
+     "1790280002": "match",
+     "1790280003": "match",
+     "1790280004": "violation"
+    },
+    "second_T0_plus_1": null
+   },
+   "v2_conflicts": [
+    {
+     "gran": "second",
+     "roots": [
+      {
+       "acc": "29147e7cf3fbb0160822af508dcbbdc2f81041e36786ad3ccf916b2d0f241b18",
+       "carried_by": [
+        {
+         "chain_seq": 3,
+         "column_list": null,
+         "conflicted": true,
+         "encoding": "v2",
+         "instance": null,
+         "record_ts": 1790280015.0,
+         "seal_seq": 1,
+         "sealed_at": 1790280015.0,
+         "wm": {
+          "events": 1,
+          "states": 5
+         }
+        }
+       ],
+       "n": 2,
+       "reproduced_by_current_rows": true
+      },
+      {
+       "acc": "8ad86cbcbae7410e4880d091c2ea92523eed6f619e786380d7855fa216c2c7ea",
+       "carried_by": [
+        {
+         "chain_seq": 1,
+         "column_list": null,
+         "conflicted": false,
+         "encoding": "v2",
+         "instance": null,
+         "record_ts": 1790280005.0,
+         "seal_seq": 1,
+         "sealed_at": 1790280005.0,
+         "wm": {
+          "events": 1,
+          "states": 4
+         }
+        }
+       ],
+       "n": 1,
+       "reproduced_by_current_rows": true
+      }
+     ],
+     "seg": "1790280004"
+    }
+   ]
+  },
+  "state_loss_no_change/honest_first_write_wins/as_appended": {
+   "v1_registered_verifier": {
+    "chain_conflicted_entries": 0,
+    "epochs": 2,
+    "flagged_seconds": [],
+    "per_second": {
+     "1790280000": "match",
+     "1790280001": "match",
+     "1790280002": "match",
+     "1790280003": "match",
+     "1790280004": "match"
+    },
+    "second_T0_plus_1": null
+   },
+   "v2": {
+    "chain_conflicted_entries": 0,
+    "epochs": 2,
+    "flagged_seconds": [],
+    "per_second": {
+     "1790280000": "match",
+     "1790280001": "match",
+     "1790280002": "match",
+     "1790280003": "match",
+     "1790280004": "match"
+    },
+    "second_T0_plus_1": null
+   },
+   "v2_conflicts": []
+  },
+  "state_loss_no_change/honest_first_write_wins/later_root_first": {
+   "v1_registered_verifier": {
+    "chain_conflicted_entries": 0,
+    "epochs": 1,
+    "flagged_seconds": [],
+    "per_second": {
+     "1790280000": "match",
+     "1790280001": "match",
+     "1790280002": "match",
+     "1790280003": "match",
+     "1790280004": "match"
+    },
+    "second_T0_plus_1": null
+   },
+   "v2": {
+    "chain_conflicted_entries": 0,
+    "epochs": 1,
+    "flagged_seconds": [],
+    "per_second": {
+     "1790280000": "match",
+     "1790280001": "match",
+     "1790280002": "match",
+     "1790280003": "match",
+     "1790280004": "match"
+    },
+    "second_T0_plus_1": null
+   },
+   "v2_conflicts": []
+  }
+ },
+ "check": "r17 v2 two signed roots (Theorem 1, X8), synthetic, exploratory",
+ "code_sha256": {
+  "exp/stages/e7_verify.py": "ae9d9c42bf484cbfda50f2e32f1de26ea19f3a956b659f8ad4abf245e5f03ef7",
+  "exp/stages/verify_v2.py": "dbf1a21143706447efc890b3cf07207b90253fc863f61b20c013a5ef0b7ea6f3",
+  "monitor/monitor.py": "4b9931cb7d1cffae6485fb2b660b68d733da9f73e5c22c22ca7265d49ceaa9b7",
+  "monitor/pinned_columns.py": "3dd4e371fe089fde971348d36e19cf1c55cf890af9d28a1f1c1db795b67c1910",
+  "registered_code_unchanged": true
+ },
+ "edited_second": "1790280001",
+ "gap_s": 15.0,
+ "generated_at": "2026-10-26T16:13:27Z",
+ "harness": {
+  "monitor/test_coverage.py": "5857010438783e6f4378735685ae26615934872075759504e56d34663e2e65db"
+ },
+ "late_bound_s": 5.0,
+ "summary": {
+  "edit_then_state_loss/accepting/as_appended": {
+   "v1": "violation",
+   "v1_T0+4": "match",
+   "v2": "violation",
+   "v2_T0+4": "match"
+  },
+  "edit_then_state_loss/accepting/first_instance_withheld": {
+   "v1": "match",
+   "v1_T0+4": "match",
+   "v2": "match",
+   "v2_T0+4": "match"
+  },
+  "edit_then_state_loss/accepting/later_root_first": {
+   "v1": "match",
+   "v1_T0+4": "match",
+   "v2": "violation",
+   "v2_T0+4": "match"
+  },
+  "edit_then_state_loss/accepting/later_root_first/no_public_key": {
+   "v1": "match",
+   "v1_T0+4": "match",
+   "v2": "match",
+   "v2_T0+4": "match"
+  },
+  "edit_then_state_loss/honest_first_write_wins/as_appended": {
+   "v1": "violation",
+   "v1_T0+4": "match",
+   "v2": "violation",
+   "v2_T0+4": "match"
+  },
+  "edit_then_state_loss/honest_first_write_wins/first_instance_withheld": {
+   "v1": "match",
+   "v1_T0+4": "match",
+   "v2": "match",
+   "v2_T0+4": "match"
+  },
+  "edit_then_state_loss/honest_first_write_wins/later_root_first": {
+   "v1": "match",
+   "v1_T0+4": "match",
+   "v2": "violation",
+   "v2_T0+4": "match"
+  },
+  "edit_then_state_loss/honest_first_write_wins/later_root_first/no_public_key": {
+   "v1": "match",
+   "v1_T0+4": "match",
+   "v2": "match",
+   "v2_T0+4": "match"
+  },
+  "state_loss_benign_late_row/honest_first_write_wins/as_appended": {
+   "v1": "match",
+   "v1_T0+4": "match",
+   "v2": "match",
+   "v2_T0+4": "violation"
+  },
+  "state_loss_benign_late_row/honest_first_write_wins/later_root_first": {
+   "v1": "match",
+   "v1_T0+4": "match",
+   "v2": "match",
+   "v2_T0+4": "violation"
+  },
+  "state_loss_no_change/honest_first_write_wins/as_appended": {
+   "v1": "match",
+   "v1_T0+4": "match",
+   "v2": "match",
+   "v2_T0+4": "match"
+  },
+  "state_loss_no_change/honest_first_write_wins/later_root_first": {
+   "v1": "match",
+   "v1_T0+4": "match",
+   "v2": "match",
+   "v2_T0+4": "match"
+  }
+ },
+ "test_key_fingerprints": [
+  "c153d1d109e15fe71d2b704340f7d77d4ba1f1b3497af5c3688a5cf4bb28b1ee",
+  "aacdeaaf3004ea658a1bdd72c5b99f704e5661a3a26c51225cd68b2bb931dd77",
+  "427560e48818d74784d7d429aee5fecb2529035e8c78181bdcd49be09c2201d4",
+  "754b95cf21e2c361f91d4892b740d7372cca56948e454b45f358f20fd0e28184"
+ ]
+}

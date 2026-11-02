@@ -1,0 +1,669 @@
+{
+  "experiment": "E7",
+  "substrate": "real (mosquitto + MQTT discovery + shipped blueprint)",
+  "room": "porch",
+  "target": "lock.front_door",
+  "innocent_party": "automation.porch_motion_light",
+  "household_member_user_id": "90b6f1f5983443c2b47f563e8f652752",
+  "household_member_name": "Alex Rivera (household)",
+  "K_requested": 9,
+  "stall_connections": 8,
+  "stall_s": 40.0,
+  "stall_seal_wait_s": 25.0,
+  "bd_lookback_s": 1800.0,
+  "bd_min_age_s": 130.0,
+  "bd_move_delay_s": 130.0,
+  "outage_seal_wait_s": 25.0,
+  "outage_trials": 5,
+  "anchor_target": "anchor-direct:9900",
+  "n_trials_requested": 5,
+  "arms": [
+    "INS-L",
+    "BD-S"
+  ],
+  "t_start": 1791828400.5471869,
+  "trials": [
+    {
+      "arm": "INS-L",
+      "trial": 0,
+      "mode": "launder",
+      "K": 9,
+      "authored_by": "user:Alex Rivera (household)",
+      "strategy": "laundering of a household member's unlock (delete attribution, re-point to a genuine run, clear the user column) + K inserted rows in the edited second",
+      "row_before": {
+        "state_id": 1030832,
+        "ts": 1791828366.2904174,
+        "context_id_bin": "01a1314b13d2aac0720fca0df07ded5b",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-12T18:06:40.550029+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "judged_row": {
+        "state_id": 1030850,
+        "ts": 1791828400.5500286,
+        "context_id_bin": "01a1314b99a38321df7f260600959ccf",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-12T18:06:40.550029+00:00",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 2,
+        "inject": 0
+      },
+      "laundered_state_ids": [
+        1030832,
+        1030850
+      ],
+      "deleted_event_ids": [],
+      "deleted_event_seconds": [],
+      "inserted_state_ids": [
+        1030918,
+        1030919,
+        1030920,
+        1030921,
+        1030922,
+        1030923,
+        1030924,
+        1030925,
+        1030926
+      ],
+      "K_inserted": 9,
+      "edited_second": 1791828400,
+      "db_writes": 11,
+      "edited_after_anchoring": true,
+      "rendered": [
+        {
+          "when": "2026-10-12T18:06:40.550029+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Porch motion light",
+          "context_message": "triggered by state of binary_sensor.porch_motion",
+          "context_entity_id": "automation.porch_motion_light",
+          "context_entity_id_name": "Porch motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.porch_motion_light",
+      "renderer_names_automation": true,
+      "renderer_still_names_person": false,
+      "renderer_named_user_id": null,
+      "principal_moved": true,
+      "renderer_confirmed_misattribution": true
+    },
+    {
+      "arm": "INS-L",
+      "trial": 1,
+      "mode": "launder",
+      "K": 9,
+      "authored_by": "user:Alex Rivera (household)",
+      "strategy": "laundering of a household member's unlock (delete attribution, re-point to a genuine run, clear the user column) + K inserted rows in the edited second",
+      "row_before": {
+        "state_id": 1030853,
+        "ts": 1791828406.5733535,
+        "context_id_bin": "01a1314ba5728afbcd0f3fd0a969860b",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-12T18:06:46.573354+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "judged_row": {
+        "state_id": 1030853,
+        "ts": 1791828406.5733535,
+        "context_id_bin": "01a1314ba5728afbcd0f3fd0a969860b",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-12T18:06:46.573354+00:00",
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "laundered_state_ids": [
+        1030853
+      ],
+      "deleted_event_ids": [
+        574108
+      ],
+      "deleted_event_seconds": [
+        1791828406
+      ],
+      "inserted_state_ids": [
+        1030927,
+        1030928,
+        1030929,
+        1030930,
+        1030931,
+        1030932,
+        1030933,
+        1030934,
+        1030935
+      ],
+      "K_inserted": 9,
+      "edited_second": 1791828406,
+      "db_writes": 11,
+      "edited_after_anchoring": true,
+      "rendered": [
+        {
+          "when": "2026-10-12T18:06:46.573354+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Porch motion light",
+          "context_message": "triggered by state of binary_sensor.porch_motion",
+          "context_entity_id": "automation.porch_motion_light",
+          "context_entity_id_name": "Porch motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.porch_motion_light",
+      "renderer_names_automation": true,
+      "renderer_still_names_person": false,
+      "renderer_named_user_id": null,
+      "principal_moved": true,
+      "renderer_confirmed_misattribution": true
+    },
+    {
+      "arm": "INS-L",
+      "trial": 2,
+      "mode": "launder",
+      "K": 9,
+      "authored_by": "user:Alex Rivera (household)",
+      "strategy": "laundering of a household member's unlock (delete attribution, re-point to a genuine run, clear the user column) + K inserted rows in the edited second",
+      "row_before": {
+        "state_id": 1030857,
+        "ts": 1791828412.6042316,
+        "context_id_bin": "01a1314bbcf81982bf822f4961752a82",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-12T18:06:52.604232+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "judged_row": {
+        "state_id": 1030857,
+        "ts": 1791828412.6042316,
+        "context_id_bin": "01a1314bbcf81982bf822f4961752a82",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-12T18:06:52.604232+00:00",
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "laundered_state_ids": [
+        1030857
+      ],
+      "deleted_event_ids": [
+        574111
+      ],
+      "deleted_event_seconds": [
+        1791828412
+      ],
+      "inserted_state_ids": [
+        1030936,
+        1030937,
+        1030938,
+        1030939,
+        1030940,
+        1030941,
+        1030942,
+        1030943,
+        1030944
+      ],
+      "K_inserted": 9,
+      "edited_second": 1791828412,
+      "db_writes": 11,
+      "edited_after_anchoring": true,
+      "rendered": [
+        {
+          "when": "2026-10-12T18:06:52.604232+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Porch motion light",
+          "context_message": "triggered by state of binary_sensor.porch_motion",
+          "context_entity_id": "automation.porch_motion_light",
+          "context_entity_id_name": "Porch motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.porch_motion_light",
+      "renderer_names_automation": true,
+      "renderer_still_names_person": false,
+      "renderer_named_user_id": null,
+      "principal_moved": true,
+      "renderer_confirmed_misattribution": true
+    },
+    {
+      "arm": "INS-L",
+      "trial": 3,
+      "mode": "launder",
+      "K": 9,
+      "authored_by": "user:Alex Rivera (household)",
+      "strategy": "laundering of a household member's unlock (delete attribution, re-point to a genuine run, clear the user column) + K inserted rows in the edited second",
+      "row_before": {
+        "state_id": 1030857,
+        "ts": 1791828412.6042316,
+        "context_id_bin": "01a1314bbcf81982bf822f4961752a82",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-12T18:06:58.629774+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "judged_row": {
+        "state_id": 1030859,
+        "ts": 1791828418.6297743,
+        "context_id_bin": "01a1314bd4891426df69292ade2d74cb",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-12T18:06:58.629774+00:00",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 2,
+        "inject": 0
+      },
+      "laundered_state_ids": [
+        1030857,
+        1030859
+      ],
+      "deleted_event_ids": [],
+      "deleted_event_seconds": [],
+      "inserted_state_ids": [
+        1030945,
+        1030946,
+        1030947,
+        1030948,
+        1030949,
+        1030950,
+        1030951,
+        1030952,
+        1030953
+      ],
+      "K_inserted": 9,
+      "edited_second": 1791828418,
+      "db_writes": 11,
+      "edited_after_anchoring": true,
+      "rendered": [
+        {
+          "when": "2026-10-12T18:06:58.629774+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Porch motion light",
+          "context_message": "triggered by state of binary_sensor.porch_motion",
+          "context_entity_id": "automation.porch_motion_light",
+          "context_entity_id_name": "Porch motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.porch_motion_light",
+      "renderer_names_automation": true,
+      "renderer_still_names_person": false,
+      "renderer_named_user_id": null,
+      "principal_moved": true,
+      "renderer_confirmed_misattribution": true
+    },
+    {
+      "arm": "INS-L",
+      "trial": 4,
+      "mode": "launder",
+      "K": 9,
+      "authored_by": "user:Alex Rivera (household)",
+      "strategy": "laundering of a household member's unlock (delete attribution, re-point to a genuine run, clear the user column) + K inserted rows in the edited second",
+      "row_before": {
+        "state_id": 1030859,
+        "ts": 1791828418.6297743,
+        "context_id_bin": "01a1314bd4891426df69292ade2d74cb",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-12T18:07:04.656215+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "judged_row": {
+        "state_id": 1030864,
+        "ts": 1791828424.6562152,
+        "context_id_bin": "01a1314bec144230ed0f88825c4dd6fa",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-12T18:07:04.656215+00:00",
+      "operations_used": {
+        "delete": 1,
+        "reattach": 2,
+        "inject": 0
+      },
+      "laundered_state_ids": [
+        1030859,
+        1030864
+      ],
+      "deleted_event_ids": [
+        574113
+      ],
+      "deleted_event_seconds": [
+        1791828418
+      ],
+      "inserted_state_ids": [
+        1030954,
+        1030955,
+        1030956,
+        1030957,
+        1030958,
+        1030959,
+        1030960,
+        1030961,
+        1030962
+      ],
+      "K_inserted": 9,
+      "edited_second": 1791828424,
+      "db_writes": 12,
+      "edited_after_anchoring": true,
+      "rendered": [
+        {
+          "when": "2026-10-12T18:07:04.656215+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Porch motion light",
+          "context_message": "triggered by state of binary_sensor.porch_motion",
+          "context_entity_id": "automation.porch_motion_light",
+          "context_entity_id_name": "Porch motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.porch_motion_light",
+      "renderer_names_automation": true,
+      "renderer_still_names_person": false,
+      "renderer_named_user_id": null,
+      "principal_moved": true,
+      "renderer_confirmed_misattribution": true
+    },
+    {
+      "arm": "BD-S",
+      "trial": 0,
+      "strategy": "forged unlocked row backdated into an empty sealed second, attributed to a genuine automation run",
+      "forged_state_id": 1030963,
+      "forged_row_ts": 1791828427.5,
+      "row_age_s": 130.4,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791828427,
+        "start_ts": 1791828427.0,
+        "end_ts": 1791828428.0
+      },
+      "cover_context": "01a1314ac78e69c4",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "empty_seconds_found": 1298,
+      "seconds_scanned": 1671,
+      "usable_windows": 40,
+      "distinct_windows_used_so_far": 1,
+      "judged_when": null,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 1030963,
+        "ts": 1791828427.5,
+        "context_id_bin": "01a1314ac78e69c4e87684d13f121dd9"
+      }
+    },
+    {
+      "arm": "BD-S",
+      "trial": 1,
+      "strategy": "forged unlocked row backdated into an empty sealed second, attributed to a genuine automation run",
+      "forged_state_id": 1030966,
+      "forged_row_ts": 1791828426.5,
+      "row_age_s": 133.5,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791828426,
+        "start_ts": 1791828426.0,
+        "end_ts": 1791828427.0
+      },
+      "cover_context": "01a1314ac78e69c4",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "empty_seconds_found": 1298,
+      "seconds_scanned": 1671,
+      "usable_windows": 40,
+      "distinct_windows_used_so_far": 2,
+      "judged_when": null,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 1030966,
+        "ts": 1791828426.5,
+        "context_id_bin": "01a1314ac78e69c4e87684d13f121dd9"
+      }
+    },
+    {
+      "arm": "BD-S",
+      "trial": 2,
+      "strategy": "forged unlocked row backdated into an empty sealed second, attributed to a genuine automation run",
+      "forged_state_id": 1030967,
+      "forged_row_ts": 1791828423.5,
+      "row_age_s": 138.5,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791828423,
+        "start_ts": 1791828423.0,
+        "end_ts": 1791828424.0
+      },
+      "cover_context": "01a1314ac78e69c4",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "empty_seconds_found": 1298,
+      "seconds_scanned": 1671,
+      "usable_windows": 40,
+      "distinct_windows_used_so_far": 3,
+      "judged_when": "2026-10-12T18:07:03.500000+00:00",
+      "rendered": [
+        {
+          "when": "2026-10-12T18:07:03.500000+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Porch motion light",
+          "context_message": "triggered by state of binary_sensor.porch_motion",
+          "context_entity_id": "automation.porch_motion_light",
+          "context_entity_id_name": "Porch motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.porch_motion_light",
+      "renderer_names_automation": true,
+      "renderer_confirmed_misattribution": true,
+      "forged_row": {
+        "state_id": 1030967,
+        "ts": 1791828423.5,
+        "context_id_bin": "01a1314ac78e69c4e87684d13f121dd9"
+      }
+    },
+    {
+      "arm": "BD-S",
+      "trial": 3,
+      "strategy": "forged unlocked row backdated into an empty sealed second, attributed to a genuine automation run",
+      "forged_state_id": 1030968,
+      "forged_row_ts": 1791828420.5,
+      "row_age_s": 143.5,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791828420,
+        "start_ts": 1791828420.0,
+        "end_ts": 1791828421.0
+      },
+      "cover_context": "01a1314ac78e69c4",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "empty_seconds_found": 1298,
+      "seconds_scanned": 1671,
+      "usable_windows": 40,
+      "distinct_windows_used_so_far": 4,
+      "judged_when": null,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 1030968,
+        "ts": 1791828420.5,
+        "context_id_bin": "01a1314ac78e69c4e87684d13f121dd9"
+      }
+    },
+    {
+      "arm": "BD-S",
+      "trial": 4,
+      "strategy": "forged unlocked row backdated into an empty sealed second, attributed to a genuine automation run",
+      "forged_state_id": 1030969,
+      "forged_row_ts": 1791828419.5,
+      "row_age_s": 146.6,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791828419,
+        "start_ts": 1791828419.0,
+        "end_ts": 1791828420.0
+      },
+      "cover_context": "01a1314ac78e69c4",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "empty_seconds_found": 1298,
+      "seconds_scanned": 1671,
+      "usable_windows": 40,
+      "distinct_windows_used_so_far": 5,
+      "judged_when": "2026-10-12T18:06:58.629774+00:00",
+      "rendered": [
+        {
+          "when": "2026-10-12T18:06:58.629774+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Porch motion light",
+          "context_message": "triggered by state of binary_sensor.porch_motion",
+          "context_entity_id": "automation.porch_motion_light",
+          "context_entity_id_name": "Porch motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.porch_motion_light",
+      "renderer_names_automation": true,
+      "renderer_confirmed_misattribution": true,
+      "forged_row": {
+        "state_id": 1030969,
+        "ts": 1791828419.5,
+        "context_id_bin": "01a1314ac78e69c4e87684d13f121dd9"
+      }
+    }
+  ],
+  "t_end": 1791828568.1049051
+}

@@ -1,0 +1,436 @@
+{
+  "ha_version": "2026.7.4",
+  "window_hours": 6,
+  "relaxed_pick": null,
+  "processor_form": "entity_ids",
+  "entities_scoped": [
+    "binary_sensor.hallway_motion",
+    "binary_sensor.kitchen_motion",
+    "light.hallway_light",
+    "lock.front_door",
+    "light.kitchen_light",
+    "lock.back_door",
+    "binary_sensor.porch_motion",
+    "light.porch_light",
+    "automation.hallway_motion_light",
+    "automation.kitchen_motion_light",
+    "automation.porch_motion_light",
+    "sensor.backup_backup_manager_state",
+    "sun.sun",
+    "zone.home",
+    "sensor.sun_next_setting",
+    "sensor.sun_next_rising",
+    "sensor.sun_next_noon",
+    "sensor.sun_next_midnight",
+    "sensor.sun_next_dusk",
+    "sensor.sun_next_dawn",
+    "sensor.backup_next_scheduled_automatic_backup",
+    "sensor.backup_last_successful_automatic_backup",
+    "sensor.backup_last_attempted_automatic_backup",
+    "event.backup_automatic_backup",
+    "conversation.home_assistant"
+  ],
+  "baseline_rows": 689,
+  "picked": {
+    "state_id": 16386,
+    "event_id": 22245
+  },
+  "positive_control": {
+    "field": "states.state",
+    "method": "mutation",
+    "attribution_relevant": true,
+    "effect": {
+      "rows_before": 689,
+      "rows_after": 689,
+      "vanished": 1,
+      "appeared": 1,
+      "attribution_changed": 0,
+      "examples": []
+    },
+    "restore_verified": true
+  },
+  "static": {
+    "EVENT_COLUMNS": [
+      {
+        "label": "row_id",
+        "columns": [
+          "events.event_id"
+        ]
+      },
+      {
+        "label": "event_type",
+        "columns": [
+          "event_types.event_type"
+        ]
+      },
+      {
+        "label": "event_data",
+        "columns": [
+          "event_data.shared_data",
+          "events.event_data"
+        ]
+      },
+      {
+        "label": "time_fired_ts",
+        "columns": [
+          "events.time_fired_ts"
+        ]
+      },
+      {
+        "label": "context_id_bin",
+        "columns": [
+          "events.context_id_bin"
+        ]
+      },
+      {
+        "label": "context_user_id_bin",
+        "columns": [
+          "events.context_user_id_bin"
+        ]
+      },
+      {
+        "label": "context_parent_id_bin",
+        "columns": [
+          "events.context_parent_id_bin"
+        ]
+      }
+    ],
+    "STATE_COLUMNS": [
+      {
+        "label": "state",
+        "columns": [
+          "states.state"
+        ]
+      },
+      {
+        "label": "entity_id",
+        "columns": [
+          "states_meta.entity_id"
+        ]
+      },
+      {
+        "label": "icon",
+        "columns": [
+          "state_attributes.shared_attrs",
+          "states.attributes"
+        ]
+      },
+      {
+        "label": "attributes",
+        "columns": [
+          "state_attributes.shared_attrs",
+          "states.attributes"
+        ]
+      }
+    ],
+    "EVENT_COLUMNS_FOR_STATE_SELECT": [
+      {
+        "label": "row_id",
+        "columns": [
+          "states.state_id"
+        ]
+      },
+      {
+        "label": "event_type",
+        "columns": []
+      },
+      {
+        "label": "event_data",
+        "columns": []
+      },
+      {
+        "label": "time_fired_ts",
+        "columns": [
+          "states.last_updated_ts"
+        ]
+      },
+      {
+        "label": "context_id_bin",
+        "columns": [
+          "states.context_id_bin"
+        ]
+      },
+      {
+        "label": "context_user_id_bin",
+        "columns": [
+          "states.context_user_id_bin"
+        ]
+      },
+      {
+        "label": "context_parent_id_bin",
+        "columns": [
+          "states.context_parent_id_bin"
+        ]
+      }
+    ],
+    "STATE_CONTEXT_ONLY_COLUMNS": [
+      {
+        "label": "state",
+        "columns": [
+          "states.state"
+        ]
+      },
+      {
+        "label": "entity_id",
+        "columns": [
+          "states_meta.entity_id"
+        ]
+      },
+      {
+        "label": "icon",
+        "columns": []
+      },
+      {
+        "label": "attributes",
+        "columns": []
+      }
+    ]
+  },
+  "mutations": [
+    {
+      "field": "states.context_id_bin",
+      "method": "mutation",
+      "attribution_relevant": true,
+      "effect": {
+        "rows_before": 689,
+        "rows_after": 689,
+        "vanished": 0,
+        "appeared": 0,
+        "attribution_changed": 1,
+        "examples": [
+          {
+            "row": {
+              "entity_id": "light.porch_light",
+              "message": null,
+              "name": "Porch Light",
+              "state": "on",
+              "when": "2026-09-01T07:16:27.498687+00:00"
+            },
+            "was": {
+              "context_name": "Porch motion light",
+              "context_message": "triggered by state of binary_sensor.porch_motion",
+              "context_entity_id": "automation.porch_motion_light",
+              "context_entity_id_name": "Porch motion light",
+              "context_event_type": "automation_triggered",
+              "context_domain": "automation"
+            },
+            "now": {
+              "context_entity_id": "binary_sensor.porch_motion",
+              "context_entity_id_name": "Porch Motion",
+              "context_state": "on"
+            }
+          }
+        ]
+      },
+      "restore_verified": true
+    },
+    {
+      "field": "states.context_parent_id_bin",
+      "method": "mutation",
+      "attribution_relevant": false,
+      "effect": {
+        "rows_before": 689,
+        "rows_after": 689,
+        "vanished": 0,
+        "appeared": 0,
+        "attribution_changed": 0,
+        "examples": []
+      },
+      "restore_verified": true
+    },
+    {
+      "field": "states.context_user_id_bin",
+      "method": "mutation",
+      "attribution_relevant": true,
+      "effect": {
+        "rows_before": 689,
+        "rows_after": 689,
+        "vanished": 0,
+        "appeared": 0,
+        "attribution_changed": 1,
+        "examples": [
+          {
+            "row": {
+              "entity_id": "light.porch_light",
+              "message": null,
+              "name": "Porch Light",
+              "state": "on",
+              "when": "2026-09-01T07:16:27.498687+00:00"
+            },
+            "was": {
+              "context_name": "Porch motion light",
+              "context_message": "triggered by state of binary_sensor.porch_motion",
+              "context_entity_id": "automation.porch_motion_light",
+              "context_entity_id_name": "Porch motion light",
+              "context_event_type": "automation_triggered",
+              "context_domain": "automation"
+            },
+            "now": {
+              "context_name": "Porch motion light",
+              "context_message": "triggered by state of binary_sensor.porch_motion",
+              "context_entity_id": "automation.porch_motion_light",
+              "context_entity_id_name": "Porch motion light",
+              "context_event_type": "automation_triggered",
+              "context_domain": "automation",
+              "context_user_id": "c3a32e8748f2a6126de86b7a59544bfb"
+            }
+          }
+        ]
+      },
+      "restore_verified": true
+    },
+    {
+      "field": "states.state",
+      "method": "mutation",
+      "attribution_relevant": true,
+      "effect": {
+        "rows_before": 689,
+        "rows_after": 689,
+        "vanished": 1,
+        "appeared": 1,
+        "attribution_changed": 0,
+        "examples": []
+      },
+      "restore_verified": true
+    },
+    {
+      "field": "states.metadata_id",
+      "method": "mutation",
+      "attribution_relevant": true,
+      "effect": {
+        "rows_before": 689,
+        "rows_after": 689,
+        "vanished": 1,
+        "appeared": 1,
+        "attribution_changed": 0,
+        "examples": []
+      },
+      "restore_verified": true
+    },
+    {
+      "field": "states.attributes_id",
+      "method": "mutation",
+      "attribution_relevant": false,
+      "effect": {
+        "rows_before": 689,
+        "rows_after": 689,
+        "vanished": 0,
+        "appeared": 0,
+        "attribution_changed": 0,
+        "examples": []
+      },
+      "restore_verified": true
+    },
+    {
+      "field": "states.old_state_id",
+      "method": "mutation",
+      "attribution_relevant": true,
+      "effect": {
+        "rows_before": 689,
+        "rows_after": 688,
+        "vanished": 1,
+        "appeared": 0,
+        "attribution_changed": 0,
+        "examples": []
+      },
+      "restore_verified": true
+    },
+    {
+      "field": "states.last_updated_ts",
+      "method": "mutation",
+      "attribution_relevant": true,
+      "effect": {
+        "rows_before": 689,
+        "rows_after": 689,
+        "vanished": 1,
+        "appeared": 1,
+        "attribution_changed": 1,
+        "examples": [
+          {
+            "row": {
+              "entity_id": "automation.porch_motion_light",
+              "message": "triggered by state of binary_sensor.porch_motion",
+              "name": "Porch motion light",
+              "state": null,
+              "when": "2026-09-01T07:16:27.497394+00:00"
+            },
+            "was": {
+              "context_entity_id": "binary_sensor.porch_motion",
+              "context_entity_id_name": "Porch Motion",
+              "context_state": "on",
+              "source": "state of binary_sensor.porch_motion"
+            },
+            "now": {
+              "context_entity_id": "light.porch_light",
+              "context_entity_id_name": "Porch Light",
+              "context_state": "on",
+              "source": "state of binary_sensor.porch_motion"
+            }
+          }
+        ]
+      },
+      "restore_verified": true
+    },
+    {
+      "field": "states.last_changed_ts",
+      "method": "mutation",
+      "attribution_relevant": true,
+      "effect": {
+        "rows_before": 689,
+        "rows_after": 688,
+        "vanished": 1,
+        "appeared": 0,
+        "attribution_changed": 0,
+        "examples": []
+      },
+      "restore_verified": true
+    },
+    {
+      "field": "states.state_id(row identity)",
+      "method": "static-only",
+      "attribution_relevant": null
+    },
+    {
+      "field": "events.context_id_bin",
+      "method": "mutation",
+      "attribution_relevant": true,
+      "effect": {
+        "rows_before": 689,
+        "rows_after": 689,
+        "vanished": 0,
+        "appeared": 0,
+        "attribution_changed": 1,
+        "examples": [
+          {
+            "row": {
+              "entity_id": "light.porch_light",
+              "message": null,
+              "name": "Porch Light",
+              "state": "on",
+              "when": "2026-09-01T07:16:27.498687+00:00"
+            },
+            "was": {
+              "context_name": "Porch motion light",
+              "context_message": "triggered by state of binary_sensor.porch_motion",
+              "context_entity_id": "automation.porch_motion_light",
+              "context_entity_id_name": "Porch motion light",
+              "context_event_type": "automation_triggered",
+              "context_domain": "automation"
+            },
+            "now": {
+              "context_entity_id": "automation.porch_motion_light",
+              "context_entity_id_name": "Porch motion light",
+              "context_state": "on"
+            }
+          }
+        ]
+      },
+      "restore_verified": false
+    },
+    {
+      "field": "ABORT",
+      "err": "restore did not reproduce the baseline render"
+    }
+  ],
+  "ts": 1788246989.6633732
+}

@@ -1,0 +1,225 @@
+{
+  "accessed": "2026-10-06",
+  "platforms": [
+    {
+      "name": "openHAB",
+      "version_or_doc_revision": "openhab.org/docs as served 2026-10-06; version selector shows Stable (5.2.1), Latest (5.3.0)",
+      "cells": {
+        "Q1": {
+          "answer": "On the openHAB host: bindings, including community-marketplace ones, are OSGi bundles (.jar) installed into openHAB's Java runtime (Apache Karaf container, Equinox OSGi), the same runtime the core runs in; the fetched docs describe no sandbox.",
+          "status": "documented",
+          "sources": [
+            {"url": "https://www.openhab.org/docs/", "quote": "openHAB is developed in Java and uses OSGi for modularity. Apache Karaf serves as a container with Eclipse Equinox as the OSGi runtime environment.", "section": "A Deeper Dive: openHAB Structure for Advanced Users"},
+            {"url": "https://www.openhab.org/docs/", "quote": "openHAB is highly modular software that can be extended through \"Add-ons\".", "section": "A Deeper Dive: openHAB Structure for Advanced Users"},
+            {"url": "https://www.openhab.org/docs/mainui/addons.html", "quote": "This section provides both official bindings from the openHAB Distribution, which have been thoroughly reviewed by the maintainers of openHAB, as well as bindings independently released by the community on the Community Marketplace.", "section": "Bindings"},
+            {"url": "https://www.openhab.org/docs/configuration/addons.html", "quote": "For this installation option you need a bundle .jar file.", "section": "Through manually provided add-ons"},
+            {"url": "https://www.openhab.org/docs/configuration/addons.html", "quote": "Place the .jar file in the addons folder on the machine you are running openHAB on.", "section": "Through manually provided add-ons"}
+          ]
+        },
+        "Q2": {
+          "answer": "No cause-annotated activity feed is documented; event entries go to events.log on the host, and Item-state history goes to the persistence service's database (the suggested rrd4j service keeps one file per Item under userdata/persistence/rrd4j), which the UI's Analyze charts read.",
+          "status": "documented",
+          "sources": [
+            {"url": "https://www.openhab.org/docs/administration/logging.html", "quote": "By default, all log entries are saved in the file openhab.log and event-specific entries are saved in events.log.", "section": "Log4j configuration and logging into separate files"},
+            {"url": "https://www.openhab.org/docs/administration/logging.html", "quote": "Log files are written to either userdata/log (manual setup) or /var/log/openhab (package based setup) and can be accessed using standard OS tools for text files.", "section": "Filesystem"},
+            {"url": "https://www.openhab.org/docs/configuration/persistence.html", "quote": "openHAB persists Item states in a database, and most popular databases are supported.", "section": "Persistence"},
+            {"url": "https://www.openhab.org/addons/persistence/rrd4j/", "quote": "For every persisted Item, a separate database file is created in the userdata/persistence/rrd4j folder.", "section": "Datasources"},
+            {"url": "https://www.openhab.org/docs/tutorial/persistence.html", "quote": "there will be an \"Analyze\" button that will generate a chart based on the data saved in persistence.", "section": "Getting Started tutorial: Persistence (closing paragraph)"}
+          ]
+        },
+        "Q3": {
+          "answer": "Yes, through documented in-runtime APIs: rules and scripts can persist back-dated states and delete persisted states with persistence extensions (where the service supports it), and OSGi components can post Item events through the EventPublisher service; a Java persistence API for bindings and direct file access are not documented.",
+          "status": "documented",
+          "sources": [
+            {"url": "https://www.openhab.org/docs/configuration/persistence.html", "quote": "<item>.persist(ZonedDateTime, State) Persists a past or future state for the Item", "section": "Persistence Extensions in Scripts and Rules"},
+            {"url": "https://www.openhab.org/docs/configuration/persistence.html", "quote": "<item>.removeAllStatesBetween(ZonedDateTime, ZonedDateTime) Removes all persisted States for an Item between certain points in time", "section": "Persistence Extensions in Scripts and Rules"},
+            {"url": "https://www.openhab.org/docs/configuration/persistence.html", "quote": "Some persistence services may not support persisting to other points in time than the current time and removing persisted States, therefore not all actions may be supported for all persistence services.", "section": "Persistence Extensions in Scripts and Rules"},
+            {"url": "https://www.openhab.org/docs/developer/utils/events.html", "quote": "The EventPublisher and the EventSubscribers are registered as OSGi services.", "section": "The Interfaces"},
+            {"url": "https://www.openhab.org/docs/developer/utils/events.html", "quote": "However, it is possible to sent events explicitly, e.g. ItemCommandEvents and ItemStateEvents.", "section": "Send Events"}
+          ]
+        },
+        "Q4": {
+          "answer": "The only documented cause field is the optional event 'source' string that the sending component sets (e.g. a binding's bundle$thing:channel); the docs say it may be user-provided and is informational only, and no UI component that derives a displayed cause is documented.",
+          "status": "documented",
+          "sources": [
+            {"url": "https://www.openhab.org/docs/developer/utils/events.html", "quote": "An event consists of a topic, a type, a payload and a source.", "section": "The Core Events"},
+            {"url": "https://www.openhab.org/docs/developer/utils/events.html", "quote": "The event source identifies the sender. Not all senders will set the source.", "section": "Event Source"},
+            {"url": "https://www.openhab.org/docs/developer/utils/events.html", "quote": "org.openhab.binding.mqtt$mqtt:thing:mything:mychannel would mean the event was sent by the mychannel channel of the mything thing from the MQTT binding (updating a state).", "section": "Event Source"},
+            {"url": "https://www.openhab.org/docs/developer/utils/events.html", "quote": "Sources can be provided by the user (either as parameters to REST API calls, or as arguments in rule actions), and thus no assumptions should be made about what values might be seen", "section": "Event Source (Note)"},
+            {"url": "https://www.openhab.org/docs/developer/utils/events.html", "quote": "In general, event sources are informational only, and helpful for end users to debug their installations, and should not be used internally by openHAB core code.", "section": "Event Source (Note)"}
+          ]
+        },
+        "Q5": {
+          "answer": "Partly: a separate process can subscribe to the event bus over the Event WebSocket or the REST event subscription, and events.log is a host file readable with OS tools; none of these is documented as read-only by construction (the WebSocket also accepts Item events from clients).",
+          "status": "documented",
+          "sources": [
+            {"url": "https://www.openhab.org/docs/configuration/websocket.html", "quote": "openHAB provides direct access to the Event Bus through WebSockets.", "section": "Event WebSocket API (ADAPTER_ID = events)"},
+            {"url": "https://www.openhab.org/docs/configuration/websocket.html", "quote": "The JSON representation of the event always contains the type, topic and payload of the event. Optionally, a source is present.", "section": "Receiving events (openHAB -> client)"},
+            {"url": "https://www.openhab.org/docs/configuration/websocket.html", "quote": "Only ItemStateEvent and ItemCommandEvent are supported for sending to openHAB.", "section": "Sending events (client -> openHAB)"},
+            {"url": "https://www.openhab.org/docs/configuration/restdocs.html", "quote": "Retrieve openHAB data from external applications", "section": "REST API Examples"},
+            {"url": "https://www.openhab.org/docs/administration/logging.html", "quote": "can be accessed using standard OS tools for text files.", "section": "Filesystem"}
+          ]
+        }
+      },
+      "in_threat_model": "yes",
+      "in_threat_model_basis": "Q1 (community bindings are OSGi bundles in the same Karaf/OSGi runtime as the core on the host), Q2 (events.log and the persistence database live on that host) and Q3 (in-runtime APIs can back-date or delete persisted states and post events whose source Q4 says is unverified) place third-party code in the record's trust domain."
+    },
+    {
+      "name": "Hubitat Elevation",
+      "version_or_doc_revision": "docs2.hubitat.com; page updatedAt stamps 2024-05-30 (Developer Overview) to 2026-09-30 (Driver Object, Device Object)",
+      "cells": {
+        "Q1": {
+          "answer": "On the hub: community Groovy apps and drivers are pasted or imported into the hub and run in Hubitat's app and driver execution environment, which the docs call a sandbox; whether it shares a process with the platform core is not documented.",
+          "status": "documented",
+          "sources": [
+            {"url": "https://docs2.hubitat.com/en/how-to/install-custom-apps", "quote": "Once you have the code, you can add the code to your hub on the Apps Code page and then install an instance of the app itself from the Apps page.", "section": "How to Install Custom Apps"},
+            {"url": "https://docs2.hubitat.com/en/user-interface/developer/apps-code", "quote": "NOTE: Third-party code is not officially supported by Hubitat.", "section": "Apps Code"},
+            {"url": "https://docs2.hubitat.com/en/developer/overview", "quote": "Hubitat apps and drivers are written in Groovy and run inside the Hubitat Elevation app and driver execution environment. This environment is a sandbox that provides Hubitat-specific methods for convenience", "section": "Development Environment"},
+            {"url": "https://docs2.hubitat.com/en/developer/driver/overview", "quote": "The hub will load driver data (including state), run the called method, and save the data (including state) completely before moving on to any additional calls that may have been queued in the meantime.", "section": "Definition: Optional Parameters (singleThreaded)"}
+          ]
+        },
+        "Q2": {
+          "answer": "The per-device Events page (event history plus command history) is stored on the hub; the docs refer to a hub database but do not name its engine or file.",
+          "status": "documented",
+          "sources": [
+            {"url": "https://docs2.hubitat.com/en/user-interface/devices/device-events", "quote": "The device events page is accessible from the Events tab at the top of the device detail page page and shows a history of recent events generated by the device and commands sent to the device", "section": "Device Events"},
+            {"url": "https://docs2.hubitat.com/en/user-interface/devices/device-detail", "quote": "The Event history size, State history size, and Too many alerts threshold allow you to configure non-default options related to how the hub stores device history for this device", "section": "Device Detail"},
+            {"url": "https://docs2.hubitat.com/en/developer/device-object", "quote": "instead force the system to read the latest from the database.", "section": "currentValue"}
+          ]
+        },
+        "Q3": {
+          "answer": "Append only, as documented: drivers, and apps given access to a device, create events with sendEvent and choose the event's descriptionText and physical/digital type; no documented API edits or deletes past events (deleteCurrentState is documented only as deleting an attribute's current value).",
+          "status": "documented",
+          "sources": [
+            {"url": "https://docs2.hubitat.com/en/developer/driver/driver-object", "quote": "Fires an event, i.e., sets the value of an attribute based on the values in the provided map.", "section": "sendEvent"},
+            {"url": "https://docs2.hubitat.com/en/developer/driver/driver-object", "quote": "String type - the type of event, normally \"physical\" (generated by a physical action on the device itself) or \"digital\" (generated as a result of a command sent from the hub); optional", "section": "sendEvent (parameters)"},
+            {"url": "https://docs2.hubitat.com/en/developer/device-object", "quote": "This object is available to apps that have been given access via a device selection input, as well as child devices of apps and parent devices.", "section": "Device Object"},
+            {"url": "https://docs2.hubitat.com/en/developer/device-object", "quote": "Create and process an event for this device, i.e., set the value of an attribute based on the values in the provided map.", "section": "sendEvent"},
+            {"url": "https://docs2.hubitat.com/en/developer/device-object", "quote": "Deletes the value of an attribute.", "section": "deleteCurrentState"}
+          ]
+        },
+        "Q4": {
+          "answer": "On the hub, the Events page's 'Produced by' column is inferred by tracing back to the app or driver that likely caused the change (documented as possibly inaccurate); 'Type' (physical/digital) is whatever the driver sends, and 'Source' normally shows DEVICE.",
+          "status": "documented",
+          "sources": [
+            {"url": "https://docs2.hubitat.com/en/user-interface/devices/device-events", "quote": "Produced by (G) will show the app or driver that called the command or that likely generated the event.", "section": "Device Events"},
+            {"url": "https://docs2.hubitat.com/en/user-interface/devices/device-events", "quote": "For events, steps will be traced backwards to determine an app or driver that likely created the change. This may not always be accurate", "section": "Device Events"},
+            {"url": "https://docs2.hubitat.com/en/user-interface/devices/device-events", "quote": "Type (F) shows the type of event that has occurred if the driver sends this information with the event.", "section": "Device Events"},
+            {"url": "https://docs2.hubitat.com/en/user-interface/devices/device-events", "quote": "Source (E) will normally show \"DEVICE\" and does not currently have a documented use for end users", "section": "Device Events"}
+          ]
+        },
+        "Q5": {
+          "answer": "Partly: the built-in Maker API app lets an off-hub client read recent device events over HTTP or receive every device event by POST, but Maker API runs on the hub and also accepts commands, so it is not documented as an isolated or read-only channel.",
+          "status": "documented",
+          "sources": [
+            {"url": "https://docs2.hubitat.com/en/apps/maker-api", "quote": "Maker API is a simple HTTP API that allows you to retrieve the status of your authorized devices and send commands to them.", "section": "Maker API"},
+            {"url": "https://docs2.hubitat.com/en/apps/maker-api", "quote": "Returns a JSON object of recent events for the specified device ID.", "section": "/devices/[device id]/events"},
+            {"url": "https://docs2.hubitat.com/en/apps/maker-api", "quote": "Maker API will start sending every device event for the selected devices.", "section": "postURL"}
+          ]
+        }
+      },
+      "in_threat_model": "undetermined",
+      "in_threat_model_basis": "Q1 and Q2 put third-party code on the same hub that stores the record, but inside a documented sandbox; Q3 documents only appends (sendEvent with driver-chosen type and description, which Q4's heuristic 'Produced by' may misattribute) and no rewrite or delete path, so the docs neither include nor exclude Hubitat."
+    },
+    {
+      "name": "Samsung SmartThings (Edge drivers; SmartApps / API Access Apps; Schema cloud connectors)",
+      "version_or_doc_revision": "developer.smartthings.com (no revision stamp on pages); public OpenAPI spec st-api.yml, info.version 1.0-PREVIEW",
+      "cells": {
+        "Q1": {
+          "answer": "Edge drivers (Lua) are uploaded to the SmartThings cloud and run on the hub in a sandboxed Lua environment; SmartApps/API Access Apps and Schema connectors run on the developer's own server or cloud and reach the platform through the SmartThings REST API and webhooks.",
+          "status": "documented",
+          "sources": [
+            {"url": "https://developer.smartthings.com/docs/devices/hub-connected/edge-architecture", "quote": "The CLI enables you to easily build packages and upload them to the SmartThings cloud to download and run on your Hub.", "section": "Development Tools"},
+            {"url": "https://developer.smartthings.com/docs/devices/hub-connected/get-started", "quote": "Edge drivers enable Hub Connected Devices to run locally on the Hub", "section": "Backed by SmartThings Edge Drivers"},
+            {"url": "https://developer.smartthings.com/docs/edge-device-drivers/global_environment.html", "quote": "Some functions have been removed where they are impossible to use from within the sandbox, such as those dealing with filesystem access.", "section": "Global Environment"},
+            {"url": "https://developer.smartthings.com/docs/service-integrations/architecture-and-auth-flow", "quote": "Your app calls SmartThings -- REST API calls to discover devices, read status, send commands, and manage subscriptions. SmartThings calls your app -- Webhook callbacks delivering device events and lifecycle notifications.", "section": "Architecture and Authorization Flow"},
+            {"url": "https://developer.smartthings.com/docs/getting-started/architecture-of-smartthings", "quote": "Cloud Connected Device - Devices that communicate with the SmartThings Cloud through a third-party cloud using SmartThings Schema.", "section": "Devices and Hubs"}
+          ]
+        },
+        "Q2": {
+          "answer": "The device history tab of the SmartThings mobile app, built from device events that SmartThings stores (a 7-day recent history plus long-term storage); the docs place event tracking in the SmartThings Cloud but do not name the store.",
+          "status": "documented",
+          "sources": [
+            {"url": "https://developer.smartthings.com/docs/devices/cloud-connected/interaction-types", "quote": "displayed: Show device events in the device history tab of the mobile app.", "section": "deviceState / visibility"},
+            {"url": "https://developer.smartthings.com/docs/edge-device-drivers/capabilities.html", "quote": "The visibility field allows some control over how the event is displayed and stored by SmartThings.", "section": "visibility"},
+            {"url": "https://developer.smartthings.com/docs/edge-device-drivers/capabilities.html", "quote": "non_archivable If true this event will not be stored for longer than the standard 7 day recent history", "section": "visibility"},
+            {"url": "https://developer.smartthings.com/docs/getting-started/architecture-of-smartthings", "quote": "The SmartThings Cloud is built using standard data entities and subscriptions for the home, car, and life. Devices and Connected Services use these data entities to display data, track events, trigger automations, and more.", "section": "The SmartThings Cloud"}
+          ]
+        },
+        "Q3": {
+          "answer": "Append only and scoped: an Edge driver emits events for the device they occurred on (and may mark its own events hidden, non-archived or ephemeral), and a SmartApp may create events only for devices it created; no documented API edits or deletes stored history.",
+          "status": "documented",
+          "sources": [
+            {"url": "https://developer.smartthings.com/docs/devices/hub-connected/edge-architecture", "quote": "To emit events, call emit_event on the device the event occurred on.", "section": "Capability Library"},
+            {"url": "https://developer.smartthings.com/docs/edge-device-drivers/capabilities.html", "quote": "displayed If false this event will not show up in the history of the device on the mobile app", "section": "visibility"},
+            {"url": "https://swagger.api.smartthings.com/public/st-api.yml", "quote": "When a Device is managed by a SmartApp, the Device is responsible for creating events to update the Device attributes on the SmartThings Platform.", "section": "POST /devices/{deviceId}/events (Create Device Events), rendered at https://developer.smartthings.com/docs/api/public"},
+            {"url": "https://swagger.api.smartthings.com/public/st-api.yml", "quote": "The OAuth token used must be for the SmartApp that created the Device.", "section": "POST /devices/{deviceId}/events (Create Device Events), rendered at https://developer.smartthings.com/docs/api/public"}
+          ]
+        },
+        "Q4": {
+          "answer": "Not documented: the developer docs do not say where or how the app's history computes the displayed cause; the only related event field found is an optional commandId used to correlate commands to events.",
+          "status": "not documented",
+          "sources": [
+            {"url": "https://swagger.api.smartthings.com/public/st-api.yml", "quote": "The id on the command that triggered this event, if applicable. Used for correlation of commands to events.", "section": "definitions.DeviceStateEvent.commandId (context only; not a display rule)"}
+          ]
+        },
+        "Q5": {
+          "answer": "Yes, cloud-side and outside the hub and driver: an external service holding read scopes (e.g. r:devices) can subscribe and receive signed webhook copies of device events, and Enterprise Eventing streams account-wide events to HTTPS sinks; no public read API for the stored history itself was found.",
+          "status": "documented",
+          "sources": [
+            {"url": "https://developer.smartthings.com/docs/service-integrations/subscribe-to-events", "quote": "Event subscriptions tell the SmartThings platform to send your app webhook notifications when device attributes change.", "section": "Subscribe to Events"},
+            {"url": "https://developer.smartthings.com/docs/service-integrations/subscribe-to-events", "quote": "DEVICE r:devices:$deviceId CAPABILITY r:devices:*", "section": "Subscription Type / Scope required table"},
+            {"url": "https://developer.smartthings.com/docs/service-integrations/webhook-events", "quote": "SmartThings signs every webhook request so your app can verify that it genuinely originated from the SmartThings platform.", "section": "Request Verification"},
+            {"url": "https://developer.smartthings.com/docs/enterprise/enterprise-api-overview/eventing/overview", "quote": "Service accounts can configure webhook receivers for all devices and locations across an entire enterprise account, enabling real-time monitoring and integration at scale.", "section": "Overview"}
+          ]
+        }
+      },
+      "in_threat_model": "no",
+      "in_threat_model_basis": "Q2 puts the history in SmartThings' own store (events 'stored by SmartThings', tracked by the SmartThings Cloud), Q1 runs third-party code in a hub Lua sandbox or on the developer's server, and Q3 documents only appending events for the code's own devices, with no edit or delete path."
+    }
+  ],
+  "notes": [
+    "Fourth platform skipped. Homey (Athom) was checked: https://apps.developer.homey.app/readme.md says apps 'run local on Homey', and https://apps.developer.homey.app/the-basics/app/permissions.md says the homey:manager:api permission gives an app 'complete control over the Homey it is installed on'. But no page in the SDK guide (sitemap https://apps.developer.homey.app/sitemap-pages.xml, index https://apps.developer.homey.app/llms.txt) documents an activity record that shows what caused a device change (Q2) or how a cause is displayed (Q4), so fewer than half the cells could be filled. Homebridge was not evaluated.",
+    "openHAB: the developer page for persistence services (https://www.openhab.org/docs/developer/persistence/) contains only 'TODO', so a Java API through which a binding could write persistence is not documented. The Q3 write and delete paths are the documented persistence extensions for scripts and rules, plus the EventPublisher OSGi service.",
+    "openHAB: the OSGi overview (https://www.openhab.org/docs/developer/osgi/osgi.html) lists an optional OSGi 'Security Layer' as part of the OSGi specification. The fetched docs do not say that openHAB enables it, and Q1 does not claim a sandbox either way.",
+    "openHAB: rrd4j is the persistence add-on the tutorial recommends ('openHAB has a rrd4j persistence addon that comes with a suggested persistence strategy'), not a mandatory default. Users may configure other databases, including external ones such as InfluxDB or JDBC.",
+    "openHAB: the docs do not say whether events.log lines include the event source field.",
+    "Hubitat: the docs name a hub database but not its engine or file location. The sandbox restrictions listed in the Developer Overview (no custom classes or JARs, restricted imports, no threads) do not mention database access either way.",
+    "SmartThings: no fetched developer page states in so many words that 'device history is stored in the SmartThings Cloud'. Q2 rests on 'displayed and stored by SmartThings' together with the architecture page's statement that the SmartThings Cloud uses data entities to 'track events'. The SmartThings help center pages that describe the app's History view (https://support.smartthings.com/hc/en-us/articles/360051930512-Using-the-SmartThings-App, https://support.smartthings.com/hc/en-us/articles/360052390111-Devices-in-SmartThings) returned HTTP 403.",
+    "SmartThings: the API reference page https://developer.smartthings.com/docs/api/public is rendered client-side. Its quotes come from the OpenAPI spec that the page loads, https://swagger.api.smartthings.com/public/st-api.yml, whose URL appears in the docs site's JavaScript bundle. The spec's 86 paths include no history-read endpoint and no endpoint that edits or deletes device events.",
+    "SmartThings: legacy SmartApp hosting pages (https://developer.smartthings.com/docs/connected-services/hosting/choose-a-solution, https://developer.smartthings.com/docs/connected-services/smartapp-basics) now redirect to the docs 404 page. The current Service Integrations pages were used instead.",
+    "Quotes were checked against the fetched page text after whitespace normalization and after removing the screen-reader-only '(opens new window)' link suffix on openhab.org."
+  ],
+  "bibtex": [
+    "@misc{openhab_intro,\n  author = {{openHAB Community}},\n  title = {Introduction},\n  howpublished = {openHAB Documentation},\n  url = {https://www.openhab.org/docs/},\n  note = {Accessed 2026-10-06}\n}",
+    "@misc{openhab_addon_store,\n  author = {{openHAB Community}},\n  title = {Add-on Store},\n  howpublished = {openHAB Documentation, Main UI},\n  url = {https://www.openhab.org/docs/mainui/addons.html},\n  note = {Accessed 2026-10-06}\n}",
+    "@misc{openhab_addons_install,\n  author = {{openHAB Community}},\n  title = {Installation of Add-ons},\n  howpublished = {openHAB Documentation, Configuration Guide},\n  url = {https://www.openhab.org/docs/configuration/addons.html},\n  note = {Accessed 2026-10-06}\n}",
+    "@misc{openhab_logging,\n  author = {{openHAB Community}},\n  title = {Logging},\n  howpublished = {openHAB Documentation, Administration Guide},\n  url = {https://www.openhab.org/docs/administration/logging.html},\n  note = {Accessed 2026-10-06}\n}",
+    "@misc{openhab_persistence,\n  author = {{openHAB Community}},\n  title = {Persistence},\n  howpublished = {openHAB Documentation, Configuration Guide},\n  url = {https://www.openhab.org/docs/configuration/persistence.html},\n  note = {Accessed 2026-10-06}\n}",
+    "@misc{openhab_rrd4j,\n  author = {{openHAB Community}},\n  title = {{RRD4J} - Persistence Services},\n  howpublished = {openHAB Add-on Documentation},\n  url = {https://www.openhab.org/addons/persistence/rrd4j/},\n  note = {Accessed 2026-10-06}\n}",
+    "@misc{openhab_tutorial_persistence,\n  author = {{openHAB Community}},\n  title = {Getting Started Tutorial: Persistence},\n  howpublished = {openHAB Documentation},\n  url = {https://www.openhab.org/docs/tutorial/persistence.html},\n  note = {Accessed 2026-10-06}\n}",
+    "@misc{openhab_eventbus,\n  author = {{openHAB Community}},\n  title = {Event Bus},\n  howpublished = {openHAB Documentation, Developer Guide},\n  url = {https://www.openhab.org/docs/developer/utils/events.html},\n  note = {Accessed 2026-10-06}\n}",
+    "@misc{openhab_websocket,\n  author = {{openHAB Community}},\n  title = {{openHAB} {WebSocket} {API}},\n  howpublished = {openHAB Documentation, Configuration Guide},\n  url = {https://www.openhab.org/docs/configuration/websocket.html},\n  note = {Accessed 2026-10-06}\n}",
+    "@misc{openhab_rest,\n  author = {{openHAB Community}},\n  title = {{openHAB} {REST} {API}},\n  howpublished = {openHAB Documentation, Configuration Guide},\n  url = {https://www.openhab.org/docs/configuration/restdocs.html},\n  note = {Accessed 2026-10-06}\n}",
+    "@misc{hubitat_dev_overview,\n  author = {{Hubitat, Inc.}},\n  title = {Developer Overview},\n  howpublished = {Hubitat Documentation},\n  url = {https://docs2.hubitat.com/en/developer/overview},\n  note = {Accessed 2026-10-06}\n}",
+    "@misc{hubitat_install_custom_apps,\n  author = {{Hubitat, Inc.}},\n  title = {How to Install Custom Apps},\n  howpublished = {Hubitat Documentation},\n  url = {https://docs2.hubitat.com/en/how-to/install-custom-apps},\n  note = {Accessed 2026-10-06}\n}",
+    "@misc{hubitat_apps_code,\n  author = {{Hubitat, Inc.}},\n  title = {Apps Code},\n  howpublished = {Hubitat Documentation},\n  url = {https://docs2.hubitat.com/en/user-interface/developer/apps-code},\n  note = {Accessed 2026-10-06}\n}",
+    "@misc{hubitat_driver_overview,\n  author = {{Hubitat, Inc.}},\n  title = {Driver Overview},\n  howpublished = {Hubitat Documentation},\n  url = {https://docs2.hubitat.com/en/developer/driver/overview},\n  note = {Accessed 2026-10-06}\n}",
+    "@misc{hubitat_device_events,\n  author = {{Hubitat, Inc.}},\n  title = {Device Events},\n  howpublished = {Hubitat Documentation},\n  url = {https://docs2.hubitat.com/en/user-interface/devices/device-events},\n  note = {Accessed 2026-10-06}\n}",
+    "@misc{hubitat_device_detail,\n  author = {{Hubitat, Inc.}},\n  title = {Device Detail},\n  howpublished = {Hubitat Documentation},\n  url = {https://docs2.hubitat.com/en/user-interface/devices/device-detail},\n  note = {Accessed 2026-10-06}\n}",
+    "@misc{hubitat_device_object,\n  author = {{Hubitat, Inc.}},\n  title = {Device Object},\n  howpublished = {Hubitat Documentation},\n  url = {https://docs2.hubitat.com/en/developer/device-object},\n  note = {Accessed 2026-10-06}\n}",
+    "@misc{hubitat_driver_object,\n  author = {{Hubitat, Inc.}},\n  title = {Driver Object},\n  howpublished = {Hubitat Documentation},\n  url = {https://docs2.hubitat.com/en/developer/driver/driver-object},\n  note = {Accessed 2026-10-06}\n}",
+    "@misc{hubitat_maker_api,\n  author = {{Hubitat, Inc.}},\n  title = {Maker {API}},\n  howpublished = {Hubitat Documentation},\n  url = {https://docs2.hubitat.com/en/apps/maker-api},\n  note = {Accessed 2026-10-06}\n}",
+    "@misc{smartthings_edge,\n  author = {{Samsung SmartThings}},\n  title = {{SmartThings} Edge Architecture},\n  howpublished = {SmartThings Developer Documentation},\n  url = {https://developer.smartthings.com/docs/devices/hub-connected/edge-architecture},\n  note = {Accessed 2026-10-06}\n}",
+    "@misc{smartthings_hub_connected,\n  author = {{Samsung SmartThings}},\n  title = {Get Started With Hub Connected Devices},\n  howpublished = {SmartThings Developer Documentation},\n  url = {https://developer.smartthings.com/docs/devices/hub-connected/get-started},\n  note = {Accessed 2026-10-06}\n}",
+    "@misc{smartthings_edge_global_env,\n  author = {{Samsung SmartThings}},\n  title = {Global Environment},\n  howpublished = {SmartThings Edge Device Driver Reference},\n  url = {https://developer.smartthings.com/docs/edge-device-drivers/global_environment.html},\n  note = {Accessed 2026-10-06}\n}",
+    "@misc{smartthings_edge_capabilities,\n  author = {{Samsung SmartThings}},\n  title = {Capabilities},\n  howpublished = {SmartThings Edge Device Driver Reference},\n  url = {https://developer.smartthings.com/docs/edge-device-drivers/capabilities.html},\n  note = {Accessed 2026-10-06}\n}",
+    "@misc{smartthings_architecture,\n  author = {{Samsung SmartThings}},\n  title = {The Architecture of {SmartThings}},\n  howpublished = {SmartThings Developer Documentation},\n  url = {https://developer.smartthings.com/docs/getting-started/architecture-of-smartthings},\n  note = {Accessed 2026-10-06}\n}",
+    "@misc{smartthings_service_arch,\n  author = {{Samsung SmartThings}},\n  title = {Architecture and Authorization Flow},\n  howpublished = {SmartThings Developer Documentation, Service Integrations},\n  url = {https://developer.smartthings.com/docs/service-integrations/architecture-and-auth-flow},\n  note = {Accessed 2026-10-06}\n}",
+    "@misc{smartthings_interaction_types,\n  author = {{Samsung SmartThings}},\n  title = {Interaction Types},\n  howpublished = {SmartThings Developer Documentation, Cloud Connected Devices},\n  url = {https://developer.smartthings.com/docs/devices/cloud-connected/interaction-types},\n  note = {Accessed 2026-10-06}\n}",
+    "@misc{smartthings_api,\n  author = {{Samsung SmartThings}},\n  title = {{SmartThings} {API} (OpenAPI specification, version 1.0-PREVIEW)},\n  howpublished = {SmartThings Developer Documentation, API reference at https://developer.smartthings.com/docs/api/public},\n  url = {https://swagger.api.smartthings.com/public/st-api.yml},\n  note = {Accessed 2026-10-06}\n}",
+    "@misc{smartthings_subscriptions,\n  author = {{Samsung SmartThings}},\n  title = {Subscribe to Events},\n  howpublished = {SmartThings Developer Documentation, Service Integrations},\n  url = {https://developer.smartthings.com/docs/service-integrations/subscribe-to-events},\n  note = {Accessed 2026-10-06}\n}",
+    "@misc{smartthings_webhook_events,\n  author = {{Samsung SmartThings}},\n  title = {Receive Events},\n  howpublished = {SmartThings Developer Documentation, Service Integrations},\n  url = {https://developer.smartthings.com/docs/service-integrations/webhook-events},\n  note = {Accessed 2026-10-06}\n}",
+    "@misc{smartthings_enterprise_eventing,\n  author = {{Samsung SmartThings}},\n  title = {Enterprise Eventing Overview},\n  howpublished = {SmartThings Developer Documentation, Enterprise API},\n  url = {https://developer.smartthings.com/docs/enterprise/enterprise-api-overview/eventing/overview},\n  note = {Accessed 2026-10-06}\n}"
+  ]
+}

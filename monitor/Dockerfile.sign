@@ -1,0 +1,8 @@
+# E8 monitor image with record signatures (E8 design A2). Build a NEW tag from it (for example hpr-monitor:e8);
+# monitor/Dockerfile and every image built from it so far stay as they are.
+FROM python:3.12-slim
+WORKDIR /app
+COPY requirements-sign.txt /app/requirements-sign.txt
+RUN pip install --no-cache-dir -r /app/requirements-sign.txt
+COPY monitor.py /app/monitor.py
+CMD ["python", "-u", "/app/monitor.py"]

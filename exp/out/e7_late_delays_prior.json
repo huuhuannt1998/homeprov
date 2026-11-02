@@ -1,0 +1,813 @@
+{
+ "item": "E7 prior evidence for LATE_BOUND: benign late-row delays of nine earlier real-deployment runs",
+ "generated": "2026-10-08T15:22:20.720946+00:00",
+ "method": "exp/stages/e7_verify.py late-delays. In every anchored one-second segment whose root fails with more rows now than anchored, the late-row hypothesis (drop the j newest state rows and k-j newest event rows by key) is tried; when a candidate reproduces the anchored root, the dropped rows arrived after the seal. Each such row's delay is bracketed: lower = sealing record ts - row ts (that copy lacked the row; the record ts is taken just after the copy); upper = ts of the last record before the first record that provably held the row (it sealed an intact segment holding a row of the same table with a key at or above it) - row ts.",
+ "late_bound": "not chosen here; fixed separately in the E7 pre-registration",
+ "runs": {
+  "e_d_clo": {
+   "inputs": {
+    "recorder": "reproduce/snapshots/e_d_clo.db",
+    "recorder_sha256": "289d1b8e889f83767cbb8739acab827de1f2c307b6ba6a2c3240ee72aea428cf",
+    "chain": "reproduce/snapshots/e_d_clo.chain.jsonl",
+    "chain_sha256": "f177af7fe874c45e00d13d95893350914c17dd77674a97b083f99a4bb799b3ba",
+    "window_from": "exp/out/e_d_clo_other_principal_real.json",
+    "window_file_sha256": "5f09fb1900268a067b111d853f5d4163397fcb76302064c2c7863e5d47ebf9c6",
+    "window": [
+     1790968169.0,
+     1790970350.0,
+     1790970444.5623932
+    ]
+   },
+   "scheme": "closure",
+   "n_late_rows": 9,
+   "max_delay_lower_s": 0.933694,
+   "max_delay_upper_s": 0.933694,
+   "rows_without_upper": 0,
+   "segments_not_explained_by_late_rows": [],
+   "late_rows": [
+    {
+     "delay_lower_s": 0.933694,
+     "delay_upper_s": 0.933694,
+     "key": "s:693316",
+     "sealing_record_ts": 1790968175.8164797,
+     "seg": "1790968174",
+     "ts": 1790968174.882786
+    },
+    {
+     "delay_lower_s": 0.933356,
+     "delay_upper_s": 0.933356,
+     "key": "s:693317",
+     "sealing_record_ts": 1790968175.8164797,
+     "seg": "1790968174",
+     "ts": 1790968174.8831234
+    },
+    {
+     "delay_lower_s": 0.933124,
+     "delay_upper_s": 0.933124,
+     "key": "s:693318",
+     "sealing_record_ts": 1790968175.8164797,
+     "seg": "1790968174",
+     "ts": 1790968174.883356
+    },
+    {
+     "delay_lower_s": 0.928477,
+     "delay_upper_s": 0.928477,
+     "key": "s:693319",
+     "sealing_record_ts": 1790968175.8164797,
+     "seg": "1790968174",
+     "ts": 1790968174.8880024
+    },
+    {
+     "delay_lower_s": 0.927952,
+     "delay_upper_s": 0.927952,
+     "key": "s:693320",
+     "sealing_record_ts": 1790968175.8164797,
+     "seg": "1790968174",
+     "ts": 1790968174.8885274
+    },
+    {
+     "delay_lower_s": 0.927675,
+     "delay_upper_s": 0.927675,
+     "key": "s:693321",
+     "sealing_record_ts": 1790968175.8164797,
+     "seg": "1790968174",
+     "ts": 1790968174.8888047
+    },
+    {
+     "delay_lower_s": 0.927429,
+     "delay_upper_s": 0.927429,
+     "key": "s:693322",
+     "sealing_record_ts": 1790968175.8164797,
+     "seg": "1790968174",
+     "ts": 1790968174.8890505
+    },
+    {
+     "delay_lower_s": 0.9272,
+     "delay_upper_s": 0.9272,
+     "key": "s:693323",
+     "sealing_record_ts": 1790968175.8164797,
+     "seg": "1790968174",
+     "ts": 1790968174.88928
+    },
+    {
+     "delay_lower_s": 0.339654,
+     "delay_upper_s": 0.339654,
+     "key": "s:693608",
+     "sealing_record_ts": 1790968651.2567701,
+     "seg": "1790968650",
+     "ts": 1790968650.9171162
+    }
+   ],
+   "tool_output_sha256": "946d02831d75250489b3dfa448fab35055d2845f0b108ffef1450d029bd1e96b",
+   "command": "python3 exp/stages/e7_verify.py late-delays --chain reproduce/snapshots/e_d_clo.chain.jsonl --db reproduce/snapshots/e_d_clo.db --window 1790968169.0 1790970350.0 --snapshot-at 1790970444.5623932 --out FILE"
+  },
+  "e_c_clo": {
+   "inputs": {
+    "recorder": "reproduce/snapshots/e_c_clo.db",
+    "recorder_sha256": "88ae4d925e686a3bd91341568d8846c77fe0b451f293592477c91a51faf59ff3",
+    "chain": "reproduce/snapshots/e_c_clo.chain.jsonl",
+    "chain_sha256": "17b5b3cece50b3c2f06c3981ac6138b8a102eda1b8011111ac44ec5ffb01fd75",
+    "window_from": "exp/out/e_c_clo_other_principal_real.json",
+    "window_file_sha256": "8239953b65a9268f516422de37bc76b6b1923375833b9209d829b9056e4bc86a",
+    "window": [
+     1790970526.0,
+     1790972744.0,
+     1790972837.367859
+    ]
+   },
+   "scheme": "closure",
+   "n_late_rows": 2,
+   "max_delay_lower_s": 0.456225,
+   "max_delay_upper_s": 0.456225,
+   "rows_without_upper": 0,
+   "segments_not_explained_by_late_rows": [],
+   "late_rows": [
+    {
+     "delay_lower_s": 0.456225,
+     "delay_upper_s": 0.456225,
+     "key": "e:395980",
+     "sealing_record_ts": 1790971504.4148586,
+     "seg": "1790971503",
+     "ts": 1790971503.9586337
+    },
+    {
+     "delay_lower_s": 0.45412,
+     "delay_upper_s": 0.45412,
+     "key": "s:695570",
+     "sealing_record_ts": 1790971504.4148586,
+     "seg": "1790971503",
+     "ts": 1790971503.9607387
+    }
+   ],
+   "tool_output_sha256": "d4b526e98dc50bbf1b24dc22ed9a47c2083e07c65c1a0673fa6485a686f52415",
+   "command": "python3 exp/stages/e7_verify.py late-delays --chain reproduce/snapshots/e_c_clo.chain.jsonl --db reproduce/snapshots/e_c_clo.db --window 1790970526.0 1790972744.0 --snapshot-at 1790972837.367859 --out FILE"
+  },
+  "e_ps_clo": {
+   "inputs": {
+    "recorder": "reproduce/snapshots/e_ps_clo.db",
+    "recorder_sha256": "e90e060365effba1dd5915a4908ff2c45ae29b0ca76dcc072fa31718870d0402",
+    "chain": "reproduce/snapshots/e_ps_clo.chain.jsonl",
+    "chain_sha256": "779aa39e020d51d9e65015da65768dae56848fd2c0170440d568d0be45239cc4",
+    "window_from": "exp/out/e_ps_clo_detection.json",
+    "window_file_sha256": "bf8dc6895a33e88a82e27e4175c0b01bef796f2d69026beff6534c219173bbf9",
+    "window": [
+     1790966773.0,
+     1790967973.0,
+     1790968086.368844
+    ]
+   },
+   "scheme": "closure",
+   "n_late_rows": 9,
+   "max_delay_lower_s": 0.257726,
+   "max_delay_upper_s": 5.780569,
+   "rows_without_upper": 0,
+   "segments_not_explained_by_late_rows": [],
+   "late_rows": [
+    {
+     "delay_lower_s": 0.257726,
+     "delay_upper_s": 5.780569,
+     "key": "s:692352",
+     "sealing_record_ts": 1790966780.1964839,
+     "seg": "1790966779",
+     "ts": 1790966779.9387577
+    },
+    {
+     "delay_lower_s": 0.257003,
+     "delay_upper_s": 5.779846,
+     "key": "s:692353",
+     "sealing_record_ts": 1790966780.1964839,
+     "seg": "1790966779",
+     "ts": 1790966779.9394808
+    },
+    {
+     "delay_lower_s": 0.25645,
+     "delay_upper_s": 5.779293,
+     "key": "s:692354",
+     "sealing_record_ts": 1790966780.1964839,
+     "seg": "1790966779",
+     "ts": 1790966779.9400334
+    },
+    {
+     "delay_lower_s": 0.25515,
+     "delay_upper_s": 5.777992,
+     "key": "s:692355",
+     "sealing_record_ts": 1790966780.1964839,
+     "seg": "1790966779",
+     "ts": 1790966779.941334
+    },
+    {
+     "delay_lower_s": 0.254851,
+     "delay_upper_s": 5.777693,
+     "key": "s:692356",
+     "sealing_record_ts": 1790966780.1964839,
+     "seg": "1790966779",
+     "ts": 1790966779.9416332
+    },
+    {
+     "delay_lower_s": 0.254546,
+     "delay_upper_s": 5.777389,
+     "key": "s:692357",
+     "sealing_record_ts": 1790966780.1964839,
+     "seg": "1790966779",
+     "ts": 1790966779.9419374
+    },
+    {
+     "delay_lower_s": 0.254124,
+     "delay_upper_s": 5.776967,
+     "key": "s:692358",
+     "sealing_record_ts": 1790966780.1964839,
+     "seg": "1790966779",
+     "ts": 1790966779.9423594
+    },
+    {
+     "delay_lower_s": 0.253781,
+     "delay_upper_s": 5.776623,
+     "key": "s:692359",
+     "sealing_record_ts": 1790966780.1964839,
+     "seg": "1790966779",
+     "ts": 1790966779.9427032
+    },
+    {
+     "delay_lower_s": 0.207057,
+     "delay_upper_s": 5.698257,
+     "key": "s:692728",
+     "sealing_record_ts": 1790967290.00288,
+     "seg": "1790967289",
+     "ts": 1790967289.795823
+    }
+   ],
+   "tool_output_sha256": "85cebc1df28265d7086dc3b6ce404cdaf5cbd7287e364e7ab854af6342ce9e99",
+   "command": "python3 exp/stages/e7_verify.py late-delays --chain reproduce/snapshots/e_ps_clo.chain.jsonl --db reproduce/snapshots/e_ps_clo.db --window 1790966773.0 1790967973.0 --snapshot-at 1790968086.368844 --out FILE"
+  },
+  "e_psr_clo": {
+   "inputs": {
+    "recorder": "reproduce/snapshots/e_psr_clo.db",
+    "recorder_sha256": "18256b52fc5a86dca3e8f5af8fad62e29426c3ea49b6ee7f27112070edcb15c4",
+    "chain": "reproduce/snapshots/e_psr_clo.chain.jsonl",
+    "chain_sha256": "49af63ecd4c43ae6b0e4baf7f69a3de4108a3cbdd9f1e53a85ddb1e3551a47b9",
+    "window_from": "exp/out/e_psr_clo_detection.json",
+    "window_file_sha256": "220d8e24248c2ca9fe009ebc17582194c4a6904cf9e8f219c39b3fe9270d4d71",
+    "window": [
+     1790987124.0,
+     1790988313.0,
+     1790988416.464202
+    ]
+   },
+   "scheme": "closure",
+   "n_late_rows": 2,
+   "max_delay_lower_s": 0.599004,
+   "max_delay_upper_s": 5.99123,
+   "rows_without_upper": 0,
+   "segments_not_explained_by_late_rows": [],
+   "late_rows": [
+    {
+     "delay_lower_s": 0.599004,
+     "delay_upper_s": 5.99123,
+     "key": "e:400723",
+     "sealing_record_ts": 1790987280.0456004,
+     "seg": "1790987279",
+     "ts": 1790987279.4465966
+    },
+    {
+     "delay_lower_s": 0.596196,
+     "delay_upper_s": 0.596196,
+     "key": "s:702204",
+     "sealing_record_ts": 1790987280.0456004,
+     "seg": "1790987279",
+     "ts": 1790987279.449404
+    }
+   ],
+   "tool_output_sha256": "9b7ae25a2611202989bde94044a7be171ea032e68174d151a8d31cc791e9beb9",
+   "command": "python3 exp/stages/e7_verify.py late-delays --chain reproduce/snapshots/e_psr_clo.chain.jsonl --db reproduce/snapshots/e_psr_clo.db --window 1790987124.0 1790988313.0 --snapshot-at 1790988416.464202 --out FILE"
+  },
+  "e_c_auth": {
+   "inputs": {
+    "recorder": "reproduce/snapshots/e_c_auth.db",
+    "recorder_sha256": "3da100cd285d347a8c90a9138dd4feda73bb0ef94cf86e5a2a5637d29ac4c8f8",
+    "chain": "reproduce/snapshots/e_c_auth.chain.jsonl",
+    "chain_sha256": "a0a7e7038b476b9c2bda48cb589aa84b7c5355de7e6bad1f71a7623e8dc3a7f7",
+    "window_from": "exp/out/e_c_auth_other_principal_real.json",
+    "window_file_sha256": "7c8bf5df715c8e1aad7408048ef7b1e8530caf409276ac31930111ecae0fa3f5",
+    "window": [
+     1790933227.0,
+     1790935444.0,
+     1790935535.411951
+    ]
+   },
+   "scheme": "row",
+   "n_late_rows": 14,
+   "max_delay_lower_s": 0.788475,
+   "max_delay_upper_s": 0.788475,
+   "rows_without_upper": 0,
+   "segments_not_explained_by_late_rows": [],
+   "late_rows": [
+    {
+     "delay_lower_s": 0.110559,
+     "delay_upper_s": 0.110559,
+     "key": "e:378390",
+     "sealing_record_ts": 1790933666.0279815,
+     "seg": "1790933665",
+     "ts": 1790933665.917423
+    },
+    {
+     "delay_lower_s": 0.108729,
+     "delay_upper_s": 0.108729,
+     "key": "s:678197",
+     "sealing_record_ts": 1790933666.0279815,
+     "seg": "1790933665",
+     "ts": 1790933665.9192524
+    },
+    {
+     "delay_lower_s": 0.556945,
+     "delay_upper_s": 0.556945,
+     "key": "s:678232",
+     "sealing_record_ts": 1790933714.0510619,
+     "seg": "1790933713",
+     "ts": 1790933713.4941173
+    },
+    {
+     "delay_lower_s": 0.505729,
+     "delay_upper_s": 0.505729,
+     "key": "e:379168",
+     "sealing_record_ts": 1790934082.1832504,
+     "seg": "1790934081",
+     "ts": 1790934081.6775217
+    },
+    {
+     "delay_lower_s": 0.503224,
+     "delay_upper_s": 0.503224,
+     "key": "s:678530",
+     "sealing_record_ts": 1790934082.1832504,
+     "seg": "1790934081",
+     "ts": 1790934081.6800265
+    },
+    {
+     "delay_lower_s": 0.326173,
+     "delay_upper_s": 0.326173,
+     "key": "e:380170",
+     "sealing_record_ts": 1790934890.2915761,
+     "seg": "1790934889",
+     "ts": 1790934889.9654028
+    },
+    {
+     "delay_lower_s": 0.325554,
+     "delay_upper_s": 0.325554,
+     "key": "s:679140",
+     "sealing_record_ts": 1790934890.2915761,
+     "seg": "1790934889",
+     "ts": 1790934889.9660218
+    },
+    {
+     "delay_lower_s": 0.788475,
+     "delay_upper_s": 0.788475,
+     "key": "s:679266",
+     "sealing_record_ts": 1790935083.1686997,
+     "seg": "1790935082",
+     "ts": 1790935082.380225
+    },
+    {
+     "delay_lower_s": 0.788351,
+     "delay_upper_s": 0.788351,
+     "key": "e:380278",
+     "sealing_record_ts": 1790935083.1686997,
+     "seg": "1790935082",
+     "ts": 1790935082.3803484
+    },
+    {
+     "delay_lower_s": 0.788342,
+     "delay_upper_s": 0.788342,
+     "key": "s:679267",
+     "sealing_record_ts": 1790935083.1686997,
+     "seg": "1790935082",
+     "ts": 1790935082.3803582
+    },
+    {
+     "delay_lower_s": 0.788233,
+     "delay_upper_s": 0.788233,
+     "key": "e:380279",
+     "sealing_record_ts": 1790935083.1686997,
+     "seg": "1790935082",
+     "ts": 1790935082.3804667
+    },
+    {
+     "delay_lower_s": 0.787648,
+     "delay_upper_s": 0.787648,
+     "key": "s:679268",
+     "sealing_record_ts": 1790935083.1686997,
+     "seg": "1790935082",
+     "ts": 1790935082.3810515
+    },
+    {
+     "delay_lower_s": 0.54257,
+     "delay_upper_s": 0.54257,
+     "key": "e:380280",
+     "sealing_record_ts": 1790935083.1686997,
+     "seg": "1790935082",
+     "ts": 1790935082.6261294
+    },
+    {
+     "delay_lower_s": 0.541987,
+     "delay_upper_s": 0.541987,
+     "key": "s:679269",
+     "sealing_record_ts": 1790935083.1686997,
+     "seg": "1790935082",
+     "ts": 1790935082.6267128
+    }
+   ],
+   "tool_output_sha256": "fd814f4e8090eb9a5a7844e8b46b58c2e898ea2a079263c53f315d875e85e3df",
+   "command": "python3 exp/stages/e7_verify.py late-delays --chain reproduce/snapshots/e_c_auth.chain.jsonl --db reproduce/snapshots/e_c_auth.db --window 1790933227.0 1790935444.0 --snapshot-at 1790935535.411951 --out FILE"
+  },
+  "e_ps_auth": {
+   "inputs": {
+    "recorder": "reproduce/snapshots/e_ps_auth.db",
+    "recorder_sha256": "e3fdc0f531b69fd1d23ed11dcd1cd291b790c597e7630fbc56cf5851d69e583f",
+    "chain": "reproduce/snapshots/e_ps_auth.chain.jsonl",
+    "chain_sha256": "8a8e7fe1773c59e4df61a1196af40d1197b8533b0b3d7c8c737ba660d0faa134",
+    "window_from": "exp/out/e_ps_auth_detection.json",
+    "window_file_sha256": "df2e535ffee172615e9d9c7ebd14fee69dfb617a6117e0c1067db9cb46458fac",
+    "window": [
+     1790948889.0,
+     1790950091.0,
+     1790950199.520383
+    ]
+   },
+   "scheme": "row",
+   "n_late_rows": 4,
+   "max_delay_lower_s": 0.809458,
+   "max_delay_upper_s": 0.809458,
+   "rows_without_upper": 0,
+   "segments_not_explained_by_late_rows": [],
+   "late_rows": [
+    {
+     "delay_lower_s": 0.398473,
+     "delay_upper_s": 0.398473,
+     "key": "e:384538",
+     "sealing_record_ts": 1790949434.2490869,
+     "seg": "1790949433",
+     "ts": 1790949433.8506136
+    },
+    {
+     "delay_lower_s": 0.396504,
+     "delay_upper_s": 0.396504,
+     "key": "s:685225",
+     "sealing_record_ts": 1790949434.2490869,
+     "seg": "1790949433",
+     "ts": 1790949433.8525825
+    },
+    {
+     "delay_lower_s": 0.809458,
+     "delay_upper_s": 0.809458,
+     "key": "e:385313",
+     "sealing_record_ts": 1790949889.592284,
+     "seg": "1790949888",
+     "ts": 1790949888.782826
+    },
+    {
+     "delay_lower_s": 0.807096,
+     "delay_upper_s": 0.807096,
+     "key": "s:685554",
+     "sealing_record_ts": 1790949889.592284,
+     "seg": "1790949888",
+     "ts": 1790949888.7851875
+    }
+   ],
+   "tool_output_sha256": "4163e5ca0935e901ffde455fad28ab06a390b0bfa25afada3d3f3cb5dc74b88d",
+   "command": "python3 exp/stages/e7_verify.py late-delays --chain reproduce/snapshots/e_ps_auth.chain.jsonl --db reproduce/snapshots/e_ps_auth.db --window 1790948889.0 1790950091.0 --snapshot-at 1790950199.520383 --out FILE"
+  },
+  "e3_g0_clo": {
+   "inputs": {
+    "recorder": "HOMEPROV-P13-exp/e3/e3_g0_clo/ec_verify/recorder.db",
+    "recorder_sha256": "6206b95cdce1c6a6f3cdc7306fd19c73ad9336f8eec2b0d6c5c3d2b3fdaf01f5",
+    "chain": "HOMEPROV-P13-exp/e3/e3_g0_clo/chain.jsonl",
+    "chain_sha256": "65a1debaf5bd43fedb78aa25fe36868e2ee5e9c8c8add7cf435b6e5fe058c996",
+    "window_from": "exp/out/e3_g0_clo_other_principal_real.json",
+    "window_file_sha256": "c021b12c7a41a90d150cdb3edab4d25817ea5898bc60d5f6fdb700f213c11adc",
+    "window": [
+     1791410164.0,
+     1791412625.0,
+     1791412777.141026
+    ]
+   },
+   "scheme": "closure",
+   "n_late_rows": 9,
+   "max_delay_lower_s": 3.926356,
+   "max_delay_upper_s": 3.926356,
+   "rows_without_upper": 0,
+   "segments_not_explained_by_late_rows": [],
+   "late_rows": [
+    {
+     "delay_lower_s": 0.461864,
+     "delay_upper_s": 0.461864,
+     "key": "e:483970",
+     "sealing_record_ts": 1791410546.1053524,
+     "seg": "1791410545",
+     "ts": 1791410545.643489
+    },
+    {
+     "delay_lower_s": 0.430817,
+     "delay_upper_s": 0.430817,
+     "key": "s:849744",
+     "sealing_record_ts": 1791410546.1053524,
+     "seg": "1791410545",
+     "ts": 1791410545.6745353
+    },
+    {
+     "delay_lower_s": 0.427517,
+     "delay_upper_s": 0.427517,
+     "key": "s:849745",
+     "sealing_record_ts": 1791410546.1053524,
+     "seg": "1791410545",
+     "ts": 1791410545.677835
+    },
+    {
+     "delay_lower_s": 3.926356,
+     "delay_upper_s": 3.926356,
+     "key": "s:850068",
+     "sealing_record_ts": 1791411033.7095184,
+     "seg": "1791411029",
+     "ts": 1791411029.783162
+    },
+    {
+     "delay_lower_s": 3.909575,
+     "delay_upper_s": 3.909575,
+     "key": "e:484739",
+     "sealing_record_ts": 1791411033.7095184,
+     "seg": "1791411029",
+     "ts": 1791411029.799943
+    },
+    {
+     "delay_lower_s": 3.909393,
+     "delay_upper_s": 3.909393,
+     "key": "s:850069",
+     "sealing_record_ts": 1791411033.7095184,
+     "seg": "1791411029",
+     "ts": 1791411029.8001258
+    },
+    {
+     "delay_lower_s": 3.895467,
+     "delay_upper_s": 3.895467,
+     "key": "e:484740",
+     "sealing_record_ts": 1791411033.7095184,
+     "seg": "1791411029",
+     "ts": 1791411029.8140516
+    },
+    {
+     "delay_lower_s": 3.86733,
+     "delay_upper_s": 3.86733,
+     "key": "s:850070",
+     "sealing_record_ts": 1791411033.7095184,
+     "seg": "1791411029",
+     "ts": 1791411029.8421884
+    },
+    {
+     "delay_lower_s": 2.811203,
+     "delay_upper_s": 2.811203,
+     "key": "s:850899",
+     "sealing_record_ts": 1791412404.6168246,
+     "seg": "1791412401",
+     "ts": 1791412401.8056214
+    }
+   ],
+   "tool_output_sha256": "211bc446319083edb42c9a0b1cc421a088ee041273b01f846ecfda90936a4a95",
+   "command": "python3 exp/stages/e7_verify.py late-delays --chain HOMEPROV-P13-exp/e3/e3_g0_clo/chain.jsonl --db HOMEPROV-P13-exp/e3/e3_g0_clo/ec_verify/recorder.db --window 1791410164.0 1791412625.0 --snapshot-at 1791412777.141026 --out FILE"
+  },
+  "e3_g2_clo": {
+   "inputs": {
+    "recorder": "HOMEPROV-P13-exp/e3/e3_g2_clo/ec_verify/recorder.db",
+    "recorder_sha256": "8bc33524ea5e3f7bca9cd05a3307800bb2dd8dc1002119393c513f55b60b6c57",
+    "chain": "HOMEPROV-P13-exp/e3/e3_g2_clo/chain.jsonl",
+    "chain_sha256": "28cacfb4b07a8cd51bb2689252a2fbd62a5dd996f740cd9bb747fea9ddf3d8e3",
+    "window_from": "exp/out/e3_g2_clo_other_principal_real.json",
+    "window_file_sha256": "82f255fdeaba8f5eb62ef3099b81c98f63043e3d2c61d5fc96dcdfeec19b77cf",
+    "window": [
+     1791412909.0,
+     1791415065.0,
+     1791415156.699142
+    ]
+   },
+   "scheme": "closure",
+   "n_late_rows": 0,
+   "max_delay_lower_s": null,
+   "max_delay_upper_s": null,
+   "rows_without_upper": 0,
+   "segments_not_explained_by_late_rows": [],
+   "late_rows": [],
+   "tool_output_sha256": "0d047cb32ab066612f89f4e824ab82a56f8e4a5b118827cc94616dc798cb2aa6",
+   "command": "python3 exp/stages/e7_verify.py late-delays --chain HOMEPROV-P13-exp/e3/e3_g2_clo/chain.jsonl --db HOMEPROV-P13-exp/e3/e3_g2_clo/ec_verify/recorder.db --window 1791412909.0 1791415065.0 --snapshot-at 1791415156.699142 --out FILE"
+  },
+  "e1_psr_clo": {
+   "inputs": {
+    "recorder": "HOMEPROV-P13-exp/e1/e1_psr_clo/ps_verify/recorder.db",
+    "recorder_sha256": "fe1150ed0d84d549a5b550b91ddfa9dfb1cbd1ed0c28cb7a1ce4f3c862b92604",
+    "chain": "HOMEPROV-P13-exp/e1/e1_psr_clo/chain.jsonl",
+    "chain_sha256": "f98a4d1cb3160333b088ee349e13a76d7332c955f5792ad6841109d5af4f0925",
+    "window_from": "exp/out/e1_psr_clo_detection.json",
+    "window_file_sha256": "d822a788f0a3cd54179f97f6c6c478dc7368e0730c2b2a47ded50f10810abed7",
+    "window": [
+     1791421223.0,
+     1791423561.0,
+     1791423651.7787368
+    ]
+   },
+   "scheme": "closure",
+   "n_late_rows": 4,
+   "max_delay_lower_s": 0.583778,
+   "max_delay_upper_s": 0.583778,
+   "rows_without_upper": 0,
+   "segments_not_explained_by_late_rows": [],
+   "late_rows": [
+    {
+     "delay_lower_s": 0.353451,
+     "delay_upper_s": 0.353451,
+     "key": "e:4428",
+     "sealing_record_ts": 1791421614.202073,
+     "seg": "1791421613",
+     "ts": 1791421613.8486218
+    },
+    {
+     "delay_lower_s": 0.326344,
+     "delay_upper_s": 0.326344,
+     "key": "s:1139",
+     "sealing_record_ts": 1791421614.202073,
+     "seg": "1791421613",
+     "ts": 1791421613.8757296
+    },
+    {
+     "delay_lower_s": 0.583778,
+     "delay_upper_s": 0.583778,
+     "key": "e:6266",
+     "sealing_record_ts": 1791423315.128431,
+     "seg": "1791423314",
+     "ts": 1791423314.544653
+    },
+    {
+     "delay_lower_s": 0.580303,
+     "delay_upper_s": 0.580303,
+     "key": "s:1979",
+     "sealing_record_ts": 1791423315.128431,
+     "seg": "1791423314",
+     "ts": 1791423314.5481277
+    }
+   ],
+   "tool_output_sha256": "78ac70f9f56facf2ab765263328b1ef297439025122b80b8bc29d8e2e57ba0ec",
+   "command": "python3 exp/stages/e7_verify.py late-delays --chain HOMEPROV-P13-exp/e1/e1_psr_clo/chain.jsonl --db HOMEPROV-P13-exp/e1/e1_psr_clo/ps_verify/recorder.db --window 1791421223.0 1791423561.0 --snapshot-at 1791423651.7787368 --out FILE"
+  }
+ },
+ "overall": {
+  "n_runs": 9,
+  "n_late_rows": 53,
+  "max_delay_lower_s": 3.926356,
+  "max_delay_lower_run": [
+   "e3_g0_clo"
+  ],
+  "max_delay_upper_s": 5.99123,
+  "max_delay_upper_run": [
+   "e_psr_clo"
+  ],
+  "rows_without_upper": 0,
+  "segments_not_explained_by_late_rows": 0
+ },
+ "commit_order_check": {
+  "what": "rows whose timestamp is older than that of an earlier-keyed row of the same table, over the ten shipped window extracts (reproduce/snapshots)",
+  "extracts": {
+   "reproduce/snapshots/e_c_auth.db": {
+    "sha256": "3da100cd285d347a8c90a9138dd4feda73bb0ef94cf86e5a2a5637d29ac4c8f8",
+    "states": {
+     "rows": 3440,
+     "rows_older_than_an_earlier_keyed_row": 0,
+     "max_lag_s": 0.0
+    },
+    "events": {
+     "rows": 3766,
+     "rows_older_than_an_earlier_keyed_row": 0,
+     "max_lag_s": 0.0
+    }
+   },
+   "reproduce/snapshots/e_c_clo.db": {
+    "sha256": "88ae4d925e686a3bd91341568d8846c77fe0b451f293592477c91a51faf59ff3",
+    "states": {
+     "rows": 5237,
+     "rows_older_than_an_earlier_keyed_row": 0,
+     "max_lag_s": 0.0
+    },
+    "events": {
+     "rows": 8191,
+     "rows_older_than_an_earlier_keyed_row": 0,
+     "max_lag_s": 0.0
+    }
+   },
+   "reproduce/snapshots/e_d_auth.db": {
+    "sha256": "7ae99036a555d476381beb1fd93a4785c57bd4ae016eec09c5e23ce045b62ba1",
+    "states": {
+     "rows": 5894,
+     "rows_older_than_an_earlier_keyed_row": 0,
+     "max_lag_s": 0.0
+    },
+    "events": {
+     "rows": 4720,
+     "rows_older_than_an_earlier_keyed_row": 0,
+     "max_lag_s": 0.0
+    }
+   },
+   "reproduce/snapshots/e_d_clo.db": {
+    "sha256": "289d1b8e889f83767cbb8739acab827de1f2c307b6ba6a2c3240ee72aea428cf",
+    "states": {
+     "rows": 3556,
+     "rows_older_than_an_earlier_keyed_row": 0,
+     "max_lag_s": 0.0
+    },
+    "events": {
+     "rows": 5324,
+     "rows_older_than_an_earlier_keyed_row": 0,
+     "max_lag_s": 0.0
+    }
+   },
+   "reproduce/snapshots/e_d_whr.db": {
+    "sha256": "ea6de513751e4af4e0ed418a13fa533b6f2f0319c9bcac933a8ba531a3fb4be4",
+    "states": {
+     "rows": 4404,
+     "rows_older_than_an_earlier_keyed_row": 0,
+     "max_lag_s": 0.0
+    },
+    "events": {
+     "rows": 5755,
+     "rows_older_than_an_earlier_keyed_row": 0,
+     "max_lag_s": 0.0
+    }
+   },
+   "reproduce/snapshots/e_ps_auth.db": {
+    "sha256": "e3fdc0f531b69fd1d23ed11dcd1cd291b790c597e7630fbc56cf5851d69e583f",
+    "states": {
+     "rows": 3464,
+     "rows_older_than_an_earlier_keyed_row": 0,
+     "max_lag_s": 0.0
+    },
+    "events": {
+     "rows": 3567,
+     "rows_older_than_an_earlier_keyed_row": 0,
+     "max_lag_s": 0.0
+    }
+   },
+   "reproduce/snapshots/e_ps_clo.db": {
+    "sha256": "e90e060365effba1dd5915a4908ff2c45ae29b0ca76dcc072fa31718870d0402",
+    "states": {
+     "rows": 3452,
+     "rows_older_than_an_earlier_keyed_row": 0,
+     "max_lag_s": 0.0
+    },
+    "events": {
+     "rows": 3552,
+     "rows_older_than_an_earlier_keyed_row": 0,
+     "max_lag_s": 0.0
+    }
+   },
+   "reproduce/snapshots/e_ps_whr.db": {
+    "sha256": "8db8d7a2c6b857d03e861dd146f6ae2d7484ee6162d1285303bd20ea4670d09d",
+    "states": {
+     "rows": 2930,
+     "rows_older_than_an_earlier_keyed_row": 0,
+     "max_lag_s": 0.0
+    },
+    "events": {
+     "rows": 3292,
+     "rows_older_than_an_earlier_keyed_row": 0,
+     "max_lag_s": 0.0
+    }
+   },
+   "reproduce/snapshots/e_psr_clo.db": {
+    "sha256": "18256b52fc5a86dca3e8f5af8fad62e29426c3ea49b6ee7f27112070edcb15c4",
+    "states": {
+     "rows": 2918,
+     "rows_older_than_an_earlier_keyed_row": 0,
+     "max_lag_s": 0.0
+    },
+    "events": {
+     "rows": 3292,
+     "rows_older_than_an_earlier_keyed_row": 0,
+     "max_lag_s": 0.0
+    }
+   },
+   "reproduce/snapshots/e_psr_whr.db": {
+    "sha256": "1d9076ad1e49d130d4c7b85fbb806746dcad118f69e05c0140b113c1c22327f3",
+    "states": {
+     "rows": 3963,
+     "rows_older_than_an_earlier_keyed_row": 0,
+     "max_lag_s": 0.0
+    },
+    "events": {
+     "rows": 7324,
+     "rows_older_than_an_earlier_keyed_row": 0,
+     "max_lag_s": 0.0
+    }
+   }
+  },
+  "total_rows_older_than_an_earlier_keyed_row": 0
+ },
+ "code": {
+  "e7_verify_py_sha256": "fa6da9eee06ea47b0d68975d55ad9520f6bf60ab56075848788df03f18a87156",
+  "monitor_py_sha256": "1863ae9df90efb8985dd8a4bccbe79eeab9fe224f880f3e07726d1e960b80410",
+  "combiner_sha256": "e469102a6221df7463ee5fe9b3cf1dac8cd12291524601f39e1204e3c7f9104d",
+  "combiner_source": "\"\"\"Combine `exp/stages/e7_verify.py late-delays` over nine earlier real-deployment runs into one result file, plus the\ncommit-order check over the ten shipped extracts. Numbers come from the tool's output; no LATE_BOUND is chosen here.\nusage: e7_late_delays_prior.py OUTDIR_FOR_PER_RUN_FILES   (writes exp/out/e7_late_delays_prior.json, never overwrites)\"\"\"\nimport datetime, glob, hashlib, json, os, sqlite3, subprocess, sys\nREPO = \"<artifact-root>\"\nEXP = os.path.join(os.path.dirname(REPO), \"HOMEPROV-P13-exp\")\nOUT = os.path.join(REPO, \"exp\", \"out\", \"e7_late_delays_prior.json\")\nTOOL = os.path.join(REPO, \"exp\", \"stages\", \"e7_verify.py\")\nper_dir = sys.argv[1]\nif os.path.exists(OUT):\n    raise SystemExit(\"refusing to overwrite \" + OUT)\nsha = lambda p: hashlib.sha256(open(p, \"rb\").read()).hexdigest()\nS = os.path.join(REPO, \"reproduce\", \"snapshots\")\nRUNS = [  # run, recorder copy, chain, result file holding the window\n    (\"e_d_clo\", os.path.join(S, \"e_d_clo.db\"), os.path.join(S, \"e_d_clo.chain.jsonl\"), \"e_d_clo_other_principal_real.json\"),\n    (\"e_c_clo\", os.path.join(S, \"e_c_clo.db\"), os.path.join(S, \"e_c_clo.chain.jsonl\"), \"e_c_clo_other_principal_real.json\"),\n    (\"e_ps_clo\", os.path.join(S, \"e_ps_clo.db\"), os.path.join(S, \"e_ps_clo.chain.jsonl\"), \"e_ps_clo_detection.json\"),\n    (\"e_psr_clo\", os.path.join(S, \"e_psr_clo.db\"), os.path.join(S, \"e_psr_clo.chain.jsonl\"), \"e_psr_clo_detection.json\"),\n    (\"e_c_auth\", os.path.join(S, \"e_c_auth.db\"), os.path.join(S, \"e_c_auth.chain.jsonl\"), \"e_c_auth_other_principal_real.json\"),\n    (\"e_ps_auth\", os.path.join(S, \"e_ps_auth.db\"), os.path.join(S, \"e_ps_auth.chain.jsonl\"), \"e_ps_auth_detection.json\"),\n    (\"e3_g0_clo\", os.path.join(EXP, \"e3\", \"e3_g0_clo\", \"ec_verify\", \"recorder.db\"), os.path.join(EXP, \"e3\", \"e3_g0_clo\", \"chain.jsonl\"),\n     \"e3_g0_clo_other_principal_real.json\"),\n    (\"e3_g2_clo\", os.path.join(EXP, \"e3\", \"e3_g2_clo\", \"ec_verify\", \"recorder.db\"), os.path.join(EXP, \"e3\", \"e3_g2_clo\", \"chain.jsonl\"),\n     \"e3_g2_clo_other_principal_real.json\"),\n    (\"e1_psr_clo\", os.path.join(EXP, \"e1\", \"e1_psr_clo\", \"ps_verify\", \"recorder.db\"), os.path.join(EXP, \"e1\", \"e1_psr_clo\", \"chain.jsonl\"),\n     \"e1_psr_clo_detection.json\"),\n]\n\n\ndef rel(p):\n    return (os.path.relpath(p, REPO) if p.startswith(REPO + os.sep)\n            else \"HOMEPROV-P13-exp/\" + os.path.relpath(p, EXP))\n\n\nruns = {}\nfor run, db, chain, res in RUNS:\n    w = json.load(open(os.path.join(REPO, \"exp\", \"out\", res)))[\"window\"]\n    t0, t1, tsnap = w[\"t_start\"], w[\"t_end\"], w[\"recorder_snapshot_at\"]\n    out = os.path.join(per_dir, \"late_delays_%s.json\" % run)\n    cmd = [sys.executable, TOOL, \"late-delays\", \"--chain\", chain, \"--db\", db, \"--window\", repr(t0), repr(t1),\n           \"--snapshot-at\", repr(tsnap), \"--out\", out]\n    subprocess.run(cmd, check=True)\n    d = json.load(open(out))\n    runs[run] = {\"inputs\": {\"recorder\": rel(db), \"recorder_sha256\": sha(db), \"chain\": rel(chain), \"chain_sha256\": sha(chain),\n                            \"window_from\": \"exp/out/\" + res, \"window_file_sha256\": sha(os.path.join(REPO, \"exp\", \"out\", res)),\n                            \"window\": [t0, t1, tsnap]},\n                 \"scheme\": d[\"params\"][\"scheme\"],\n                 \"n_late_rows\": d[\"n_late_rows\"], \"max_delay_lower_s\": d[\"max_delay_lower_s\"],\n                 \"max_delay_upper_s\": d[\"max_delay_upper_s\"], \"rows_without_upper\": d[\"rows_without_upper\"],\n                 \"segments_not_explained_by_late_rows\": d[\"segments_not_explained_by_late_rows\"],\n                 \"late_rows\": d[\"late_rows\"],\n                 \"tool_output_sha256\": sha(out),\n                 \"command\": \"python3 exp/stages/e7_verify.py late-delays --chain %s --db %s --window %r %r --snapshot-at %r --out FILE\"\n                            % (rel(chain), rel(db), t0, t1, tsnap)}\n\n# Commit-order check over the ten shipped extracts: a row whose timestamp is older than that of an earlier-keyed row of\n# the same table (keys are assigned in commit order, so such a row would have been committed after a newer one).\norder = {}\nfor db in sorted(glob.glob(os.path.join(S, \"*.db\"))):\n    con = sqlite3.connect(\"file:%s?mode=ro&immutable=1\" % db, uri=True)\n    r = {\"sha256\": sha(db)}\n    for t, k, c in ((\"states\", \"state_id\", \"last_updated_ts\"), (\"events\", \"event_id\", \"time_fired_ts\")):\n        mx, lags, n = None, [], 0\n        for key, ts in con.execute(\"SELECT %s, %s FROM %s ORDER BY %s\" % (k, c, t, k)):\n            n += 1\n            if ts is None:\n                continue\n            if mx is not None and mx - ts > 0:\n                lags.append(mx - ts)\n            mx = ts if mx is None else max(mx, ts)\n        r[t] = {\"rows\": n, \"rows_older_than_an_earlier_keyed_row\": len(lags), \"max_lag_s\": max(lags) if lags else 0.0}\n    con.close()\n    order[rel(db)] = r\n\nlo = [v[\"max_delay_lower_s\"] for v in runs.values() if v[\"max_delay_lower_s\"] is not None]\nup = [v[\"max_delay_upper_s\"] for v in runs.values() if v[\"max_delay_upper_s\"] is not None]\narg = lambda key, m: sorted(k for k, v in runs.items() if v[key] == m)\nresult = {\n    \"item\": \"E7 prior evidence for LATE_BOUND: benign late-row delays of nine earlier real-deployment runs\",\n    \"generated\": datetime.datetime.now(datetime.timezone.utc).isoformat(),\n    \"method\": (\"exp/stages/e7_verify.py late-delays. In every anchored one-second segment whose root fails with more rows \"\n               \"now than anchored, the late-row hypothesis (drop the j newest state rows and k-j newest event rows by key) \"\n               \"is tried; when a candidate reproduces the anchored root, the dropped rows arrived after the seal. Each such \"\n               \"row's delay is bracketed: lower = sealing record ts - row ts (that copy lacked the row; the record ts is \"\n               \"taken just after the copy); upper = ts of the last record before the first record that provably held the \"\n               \"row (it sealed an intact segment holding a row of the same table with a key at or above it) - row ts.\"),\n    \"late_bound\": \"not chosen here; fixed separately in the E7 pre-registration\",\n    \"runs\": runs,\n    \"overall\": {\"n_runs\": len(runs), \"n_late_rows\": sum(v[\"n_late_rows\"] for v in runs.values()),\n                \"max_delay_lower_s\": max(lo) if lo else None, \"max_delay_lower_run\": arg(\"max_delay_lower_s\", max(lo)) if lo else None,\n                \"max_delay_upper_s\": max(up) if up else None, \"max_delay_upper_run\": arg(\"max_delay_upper_s\", max(up)) if up else None,\n                \"rows_without_upper\": sum(v[\"rows_without_upper\"] for v in runs.values()),\n                \"segments_not_explained_by_late_rows\": sum(len(v[\"segments_not_explained_by_late_rows\"]) for v in runs.values())},\n    \"commit_order_check\": {\"what\": \"rows whose timestamp is older than that of an earlier-keyed row of the same table, \"\n                                   \"over the ten shipped window extracts (reproduce/snapshots)\",\n                           \"extracts\": order,\n                           \"total_rows_older_than_an_earlier_keyed_row\": sum(\n                               v[t][\"rows_older_than_an_earlier_keyed_row\"] for v in order.values() for t in (\"states\", \"events\"))},\n    \"code\": {\"e7_verify_py_sha256\": sha(TOOL), \"monitor_py_sha256\": sha(os.path.join(REPO, \"monitor\", \"monitor.py\")),\n             \"combiner_sha256\": sha(os.path.abspath(__file__)), \"combiner_source\": open(os.path.abspath(__file__)).read()},\n    \"python\": sys.version.split()[0],\n}\nwith open(OUT, \"x\") as fh:\n    json.dump(result, fh, indent=1)\nprint(json.dumps(result[\"overall\"]))\nprint(\"sha256\", sha(OUT))\n"
+ },
+ "python": "3.13.11"
+}

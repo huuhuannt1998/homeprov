@@ -1,0 +1,2902 @@
+{
+ "experiment": "E10 arm D: pairwise closure mutation with branch coverage of the logbook (Home Assistant 2026.7.4, a copy of the lab recorder)",
+ "plan": {
+  "seed": 20261021,
+  "n_v": 1000,
+  "n_x": 1000,
+  "cap_s": 10800.0,
+  "cross_window_s": 300.0,
+  "population": {
+   "W": 10513,
+   "V": 26293,
+   "X": 28230
+  },
+  "units_per_stratum": {
+   "W": 10513,
+   "V": 1000,
+   "X": 1000
+  }
+ },
+ "source": {
+  "file": "exp/out/e8_closure_real.json",
+  "sha256": "8b4899b8881b530dc07c6c03e6fe876f331da8c48de5579b56072a521f755ae5"
+ },
+ "pristine_sha256": "bff6d538792abec49d57aec5a6612c266faa2863c07b37553b8d2a3865d9055e",
+ "run": {
+  "run": {
+   "units_run": 12513,
+   "stopped": "all units done",
+   "seconds": 2342.4
+  },
+  "pre_equal": true,
+  "post_equal": {
+   "states": true,
+   "events": true,
+   "states_meta": true,
+   "state_attributes": true,
+   "event_types": true,
+   "event_data": true
+  }
+ },
+ "per_stratum": {
+  "W": {
+   "units_planned": 10513,
+   "population": 10513,
+   "done": 10513,
+   "render_changed": 5687,
+   "stable_commit_changed": 10487,
+   "closure_commit_changed": 7594,
+   "row_commit_changed": 6218,
+   "conditional_on_target": 114,
+   "joint_only": 5
+  },
+  "V": {
+   "units_planned": 1000,
+   "population": 26293,
+   "done": 1000,
+   "render_changed": 622,
+   "stable_commit_changed": 999,
+   "closure_commit_changed": 788,
+   "row_commit_changed": 644,
+   "conditional_on_target": 20,
+   "joint_only": 1
+  },
+  "X": {
+   "units_planned": 1000,
+   "population": 28230,
+   "done": 1000,
+   "render_changed": 562,
+   "stable_commit_changed": 995,
+   "closure_commit_changed": 686,
+   "row_commit_changed": 550,
+   "conditional_on_target": 1
+  }
+ },
+ "one_sided_95_upper_bound_undetected_rate_if_zero": {
+  "W": 0.000285,
+  "V": 0.002991,
+  "X": 0.002991
+ },
+ "examples": {
+  "joint_only": [
+   {
+    "id": "U03506",
+    "fields": [
+     "states.last_changed_ts",
+     "states.old_state_id"
+    ],
+    "target": "T15"
+   },
+   {
+    "id": "U05986",
+    "fields": [
+     "states.last_changed_ts",
+     "states.state"
+    ],
+    "target": "T39"
+   },
+   {
+    "id": "U07280",
+    "fields": [
+     "states.last_changed_ts",
+     "states.state"
+    ],
+    "target": "T11"
+   },
+   {
+    "id": "U08062",
+    "fields": [
+     "states.last_changed_ts",
+     "states.state"
+    ],
+    "target": "T12"
+   },
+   {
+    "id": "U10008",
+    "fields": [
+     "states.old_state_id",
+     "states.state"
+    ],
+    "target": "T28"
+   },
+   {
+    "id": "U10967",
+    "fields": [
+     "state_attributes.attributes_id",
+     "states.attributes"
+    ],
+    "target": "T38"
+   }
+  ]
+ },
+ "restore_failures": [],
+ "apply_errors": [],
+ "display_rule_outcomes_seen": {
+  "none": 9386,
+  "automation": 7374,
+  "integration": 2802,
+  "user": 1943
+ },
+ "predictions": {
+  "undetected_render_change": 0,
+  "joint_only": 0,
+  "conditional_noncl": 0
+ },
+ "coverage": {
+  "marks": [
+   {
+    "label": "start",
+    "t": 1792606191.7100198,
+    "files": {
+     "/usr/local/lib/python3.14/collections/__init__.py": {
+      "lines": [
+       0,
+       11
+      ],
+      "branch_outcomes": [
+       0,
+       4
+      ]
+     },
+     "/usr/local/lib/python3.14/dataclasses.py": {
+      "lines": [
+       0,
+       12
+      ],
+      "branch_outcomes": [
+       0,
+       14
+      ]
+     },
+     "/usr/local/lib/python3.14/reprlib.py": {
+      "lines": [
+       0,
+       8
+      ],
+      "branch_outcomes": [
+       0,
+       2
+      ]
+     },
+     "/usr/local/lib/python3.14/typing.py": {
+      "lines": [
+       0,
+       6
+      ],
+      "branch_outcomes": [
+       0,
+       4
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/__init__.py": {
+      "lines": [
+       0,
+       47
+      ],
+      "branch_outcomes": [
+       0,
+       14
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/helpers.py": {
+      "lines": [
+       0,
+       116
+      ],
+      "branch_outcomes": [
+       0,
+       136
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/models.py": {
+      "lines": [
+       0,
+       66
+      ],
+      "branch_outcomes": [
+       0,
+       42
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/processor.py": {
+      "lines": [
+       0,
+       266
+      ],
+      "branch_outcomes": [
+       0,
+       168
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/__init__.py": {
+      "lines": [
+       0,
+       31
+      ],
+      "branch_outcomes": [
+       0,
+       24
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/all.py": {
+      "lines": [
+       0,
+       21
+      ],
+      "branch_outcomes": [
+       0,
+       6
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/common.py": {
+      "lines": [
+       0,
+       72
+      ],
+      "branch_outcomes": [
+       0,
+       8
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/devices.py": {
+      "lines": [
+       0,
+       35
+      ],
+      "branch_outcomes": [
+       0,
+       0
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/entities.py": {
+      "lines": [
+       0,
+       57
+      ],
+      "branch_outcomes": [
+       0,
+       0
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/entities_and_devices.py": {
+      "lines": [
+       0,
+       48
+      ],
+      "branch_outcomes": [
+       0,
+       0
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/rest_api.py": {
+      "lines": [
+       0,
+       43
+      ],
+      "branch_outcomes": [
+       0,
+       20
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/websocket_api.py": {
+      "lines": [
+       0,
+       246
+      ],
+      "branch_outcomes": [
+       0,
+       100
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/websocket_api/decorators.py": {
+      "lines": [
+       0,
+       4
+      ],
+      "branch_outcomes": [
+       0,
+       0
+      ]
+     },
+     "<string>": {
+      "lines": [
+       0,
+       18
+      ],
+      "branch_outcomes": [
+       0,
+       42
+      ]
+     }
+    },
+    "total": {
+     "lines": [
+      0,
+      1107
+     ],
+     "branch_outcomes": [
+      0,
+      584
+     ]
+    }
+   },
+   {
+    "label": "after_baselines",
+    "t": 1792606195.2935083,
+    "files": {
+     "/usr/local/lib/python3.14/collections/__init__.py": {
+      "lines": [
+       0,
+       11
+      ],
+      "branch_outcomes": [
+       0,
+       4
+      ]
+     },
+     "/usr/local/lib/python3.14/dataclasses.py": {
+      "lines": [
+       0,
+       12
+      ],
+      "branch_outcomes": [
+       0,
+       14
+      ]
+     },
+     "/usr/local/lib/python3.14/reprlib.py": {
+      "lines": [
+       0,
+       8
+      ],
+      "branch_outcomes": [
+       0,
+       2
+      ]
+     },
+     "/usr/local/lib/python3.14/typing.py": {
+      "lines": [
+       0,
+       6
+      ],
+      "branch_outcomes": [
+       0,
+       4
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/__init__.py": {
+      "lines": [
+       0,
+       47
+      ],
+      "branch_outcomes": [
+       0,
+       14
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/helpers.py": {
+      "lines": [
+       38,
+       116
+      ],
+      "branch_outcomes": [
+       31,
+       136
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/models.py": {
+      "lines": [
+       10,
+       66
+      ],
+      "branch_outcomes": [
+       6,
+       42
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/processor.py": {
+      "lines": [
+       209,
+       266
+      ],
+      "branch_outcomes": [
+       98,
+       168
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/__init__.py": {
+      "lines": [
+       18,
+       31
+      ],
+      "branch_outcomes": [
+       9,
+       24
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/all.py": {
+      "lines": [
+       12,
+       21
+      ],
+      "branch_outcomes": [
+       2,
+       6
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/common.py": {
+      "lines": [
+       71,
+       72
+      ],
+      "branch_outcomes": [
+       4,
+       8
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/devices.py": {
+      "lines": [
+       0,
+       35
+      ],
+      "branch_outcomes": [
+       0,
+       0
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/entities.py": {
+      "lines": [
+       57,
+       57
+      ],
+      "branch_outcomes": [
+       0,
+       0
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/entities_and_devices.py": {
+      "lines": [
+       0,
+       48
+      ],
+      "branch_outcomes": [
+       0,
+       0
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/rest_api.py": {
+      "lines": [
+       0,
+       43
+      ],
+      "branch_outcomes": [
+       0,
+       20
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/websocket_api.py": {
+      "lines": [
+       0,
+       246
+      ],
+      "branch_outcomes": [
+       0,
+       100
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/websocket_api/decorators.py": {
+      "lines": [
+       0,
+       4
+      ],
+      "branch_outcomes": [
+       0,
+       0
+      ]
+     },
+     "<string>": {
+      "lines": [
+       9,
+       18
+      ],
+      "branch_outcomes": [
+       1,
+       42
+      ]
+     }
+    },
+    "total": {
+     "lines": [
+      424,
+      1107
+     ],
+     "branch_outcomes": [
+      151,
+      584
+     ]
+    }
+   },
+   {
+    "label": "after_singles",
+    "t": 1792606522.4450762,
+    "files": {
+     "/usr/local/lib/python3.14/collections/__init__.py": {
+      "lines": [
+       3,
+       11
+      ],
+      "branch_outcomes": [
+       1,
+       4
+      ]
+     },
+     "/usr/local/lib/python3.14/dataclasses.py": {
+      "lines": [
+       0,
+       12
+      ],
+      "branch_outcomes": [
+       0,
+       14
+      ]
+     },
+     "/usr/local/lib/python3.14/reprlib.py": {
+      "lines": [
+       0,
+       8
+      ],
+      "branch_outcomes": [
+       0,
+       2
+      ]
+     },
+     "/usr/local/lib/python3.14/typing.py": {
+      "lines": [
+       0,
+       6
+      ],
+      "branch_outcomes": [
+       0,
+       4
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/__init__.py": {
+      "lines": [
+       0,
+       47
+      ],
+      "branch_outcomes": [
+       0,
+       14
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/helpers.py": {
+      "lines": [
+       38,
+       116
+      ],
+      "branch_outcomes": [
+       31,
+       136
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/models.py": {
+      "lines": [
+       10,
+       66
+      ],
+      "branch_outcomes": [
+       6,
+       42
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/processor.py": {
+      "lines": [
+       218,
+       266
+      ],
+      "branch_outcomes": [
+       116,
+       168
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/__init__.py": {
+      "lines": [
+       18,
+       31
+      ],
+      "branch_outcomes": [
+       10,
+       24
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/all.py": {
+      "lines": [
+       12,
+       21
+      ],
+      "branch_outcomes": [
+       2,
+       6
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/common.py": {
+      "lines": [
+       71,
+       72
+      ],
+      "branch_outcomes": [
+       4,
+       8
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/devices.py": {
+      "lines": [
+       0,
+       35
+      ],
+      "branch_outcomes": [
+       0,
+       0
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/entities.py": {
+      "lines": [
+       57,
+       57
+      ],
+      "branch_outcomes": [
+       0,
+       0
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/entities_and_devices.py": {
+      "lines": [
+       0,
+       48
+      ],
+      "branch_outcomes": [
+       0,
+       0
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/rest_api.py": {
+      "lines": [
+       0,
+       43
+      ],
+      "branch_outcomes": [
+       0,
+       20
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/websocket_api.py": {
+      "lines": [
+       0,
+       246
+      ],
+      "branch_outcomes": [
+       0,
+       100
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/websocket_api/decorators.py": {
+      "lines": [
+       0,
+       4
+      ],
+      "branch_outcomes": [
+       0,
+       0
+      ]
+     },
+     "<string>": {
+      "lines": [
+       9,
+       18
+      ],
+      "branch_outcomes": [
+       1,
+       42
+      ]
+     }
+    },
+    "total": {
+     "lines": [
+      436,
+      1107
+     ],
+     "branch_outcomes": [
+      171,
+      584
+     ]
+    }
+   },
+   {
+    "label": "after_W",
+    "t": 1792608207.3668118,
+    "files": {
+     "/usr/local/lib/python3.14/collections/__init__.py": {
+      "lines": [
+       3,
+       11
+      ],
+      "branch_outcomes": [
+       1,
+       4
+      ]
+     },
+     "/usr/local/lib/python3.14/dataclasses.py": {
+      "lines": [
+       0,
+       12
+      ],
+      "branch_outcomes": [
+       0,
+       14
+      ]
+     },
+     "/usr/local/lib/python3.14/reprlib.py": {
+      "lines": [
+       0,
+       8
+      ],
+      "branch_outcomes": [
+       0,
+       2
+      ]
+     },
+     "/usr/local/lib/python3.14/typing.py": {
+      "lines": [
+       0,
+       6
+      ],
+      "branch_outcomes": [
+       0,
+       4
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/__init__.py": {
+      "lines": [
+       0,
+       47
+      ],
+      "branch_outcomes": [
+       0,
+       14
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/helpers.py": {
+      "lines": [
+       38,
+       116
+      ],
+      "branch_outcomes": [
+       31,
+       136
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/models.py": {
+      "lines": [
+       10,
+       66
+      ],
+      "branch_outcomes": [
+       6,
+       42
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/processor.py": {
+      "lines": [
+       218,
+       266
+      ],
+      "branch_outcomes": [
+       116,
+       168
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/__init__.py": {
+      "lines": [
+       18,
+       31
+      ],
+      "branch_outcomes": [
+       10,
+       24
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/all.py": {
+      "lines": [
+       12,
+       21
+      ],
+      "branch_outcomes": [
+       2,
+       6
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/common.py": {
+      "lines": [
+       71,
+       72
+      ],
+      "branch_outcomes": [
+       4,
+       8
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/devices.py": {
+      "lines": [
+       0,
+       35
+      ],
+      "branch_outcomes": [
+       0,
+       0
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/entities.py": {
+      "lines": [
+       57,
+       57
+      ],
+      "branch_outcomes": [
+       0,
+       0
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/entities_and_devices.py": {
+      "lines": [
+       0,
+       48
+      ],
+      "branch_outcomes": [
+       0,
+       0
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/rest_api.py": {
+      "lines": [
+       0,
+       43
+      ],
+      "branch_outcomes": [
+       0,
+       20
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/websocket_api.py": {
+      "lines": [
+       0,
+       246
+      ],
+      "branch_outcomes": [
+       0,
+       100
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/websocket_api/decorators.py": {
+      "lines": [
+       0,
+       4
+      ],
+      "branch_outcomes": [
+       0,
+       0
+      ]
+     },
+     "<string>": {
+      "lines": [
+       9,
+       18
+      ],
+      "branch_outcomes": [
+       1,
+       42
+      ]
+     }
+    },
+    "total": {
+     "lines": [
+      436,
+      1107
+     ],
+     "branch_outcomes": [
+      171,
+      584
+     ]
+    }
+   },
+   {
+    "label": "after_V",
+    "t": 1792608377.5924833,
+    "files": {
+     "/usr/local/lib/python3.14/collections/__init__.py": {
+      "lines": [
+       3,
+       11
+      ],
+      "branch_outcomes": [
+       1,
+       4
+      ]
+     },
+     "/usr/local/lib/python3.14/dataclasses.py": {
+      "lines": [
+       0,
+       12
+      ],
+      "branch_outcomes": [
+       0,
+       14
+      ]
+     },
+     "/usr/local/lib/python3.14/reprlib.py": {
+      "lines": [
+       0,
+       8
+      ],
+      "branch_outcomes": [
+       0,
+       2
+      ]
+     },
+     "/usr/local/lib/python3.14/typing.py": {
+      "lines": [
+       0,
+       6
+      ],
+      "branch_outcomes": [
+       0,
+       4
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/__init__.py": {
+      "lines": [
+       0,
+       47
+      ],
+      "branch_outcomes": [
+       0,
+       14
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/helpers.py": {
+      "lines": [
+       38,
+       116
+      ],
+      "branch_outcomes": [
+       31,
+       136
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/models.py": {
+      "lines": [
+       10,
+       66
+      ],
+      "branch_outcomes": [
+       6,
+       42
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/processor.py": {
+      "lines": [
+       218,
+       266
+      ],
+      "branch_outcomes": [
+       116,
+       168
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/__init__.py": {
+      "lines": [
+       18,
+       31
+      ],
+      "branch_outcomes": [
+       10,
+       24
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/all.py": {
+      "lines": [
+       12,
+       21
+      ],
+      "branch_outcomes": [
+       2,
+       6
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/common.py": {
+      "lines": [
+       71,
+       72
+      ],
+      "branch_outcomes": [
+       4,
+       8
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/devices.py": {
+      "lines": [
+       0,
+       35
+      ],
+      "branch_outcomes": [
+       0,
+       0
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/entities.py": {
+      "lines": [
+       57,
+       57
+      ],
+      "branch_outcomes": [
+       0,
+       0
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/entities_and_devices.py": {
+      "lines": [
+       0,
+       48
+      ],
+      "branch_outcomes": [
+       0,
+       0
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/rest_api.py": {
+      "lines": [
+       0,
+       43
+      ],
+      "branch_outcomes": [
+       0,
+       20
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/websocket_api.py": {
+      "lines": [
+       0,
+       246
+      ],
+      "branch_outcomes": [
+       0,
+       100
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/websocket_api/decorators.py": {
+      "lines": [
+       0,
+       4
+      ],
+      "branch_outcomes": [
+       0,
+       0
+      ]
+     },
+     "<string>": {
+      "lines": [
+       9,
+       18
+      ],
+      "branch_outcomes": [
+       1,
+       42
+      ]
+     }
+    },
+    "total": {
+     "lines": [
+      436,
+      1107
+     ],
+     "branch_outcomes": [
+      171,
+      584
+     ]
+    }
+   },
+   {
+    "label": "after_X",
+    "t": 1792608534.0768049,
+    "files": {
+     "/usr/local/lib/python3.14/collections/__init__.py": {
+      "lines": [
+       3,
+       11
+      ],
+      "branch_outcomes": [
+       1,
+       4
+      ]
+     },
+     "/usr/local/lib/python3.14/dataclasses.py": {
+      "lines": [
+       0,
+       12
+      ],
+      "branch_outcomes": [
+       0,
+       14
+      ]
+     },
+     "/usr/local/lib/python3.14/reprlib.py": {
+      "lines": [
+       0,
+       8
+      ],
+      "branch_outcomes": [
+       0,
+       2
+      ]
+     },
+     "/usr/local/lib/python3.14/typing.py": {
+      "lines": [
+       0,
+       6
+      ],
+      "branch_outcomes": [
+       0,
+       4
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/__init__.py": {
+      "lines": [
+       0,
+       47
+      ],
+      "branch_outcomes": [
+       0,
+       14
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/helpers.py": {
+      "lines": [
+       38,
+       116
+      ],
+      "branch_outcomes": [
+       31,
+       136
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/models.py": {
+      "lines": [
+       10,
+       66
+      ],
+      "branch_outcomes": [
+       6,
+       42
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/processor.py": {
+      "lines": [
+       218,
+       266
+      ],
+      "branch_outcomes": [
+       116,
+       168
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/__init__.py": {
+      "lines": [
+       18,
+       31
+      ],
+      "branch_outcomes": [
+       10,
+       24
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/all.py": {
+      "lines": [
+       12,
+       21
+      ],
+      "branch_outcomes": [
+       2,
+       6
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/common.py": {
+      "lines": [
+       71,
+       72
+      ],
+      "branch_outcomes": [
+       4,
+       8
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/devices.py": {
+      "lines": [
+       0,
+       35
+      ],
+      "branch_outcomes": [
+       0,
+       0
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/entities.py": {
+      "lines": [
+       57,
+       57
+      ],
+      "branch_outcomes": [
+       0,
+       0
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/entities_and_devices.py": {
+      "lines": [
+       0,
+       48
+      ],
+      "branch_outcomes": [
+       0,
+       0
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/rest_api.py": {
+      "lines": [
+       0,
+       43
+      ],
+      "branch_outcomes": [
+       0,
+       20
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/websocket_api.py": {
+      "lines": [
+       0,
+       246
+      ],
+      "branch_outcomes": [
+       0,
+       100
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/websocket_api/decorators.py": {
+      "lines": [
+       0,
+       4
+      ],
+      "branch_outcomes": [
+       0,
+       0
+      ]
+     },
+     "<string>": {
+      "lines": [
+       9,
+       18
+      ],
+      "branch_outcomes": [
+       1,
+       42
+      ]
+     }
+    },
+    "total": {
+     "lines": [
+      436,
+      1107
+     ],
+     "branch_outcomes": [
+      171,
+      584
+     ]
+    }
+   },
+   {
+    "label": "end",
+    "t": 1792608534.09531,
+    "files": {
+     "/usr/local/lib/python3.14/collections/__init__.py": {
+      "lines": [
+       3,
+       11
+      ],
+      "branch_outcomes": [
+       1,
+       4
+      ]
+     },
+     "/usr/local/lib/python3.14/dataclasses.py": {
+      "lines": [
+       0,
+       12
+      ],
+      "branch_outcomes": [
+       0,
+       14
+      ]
+     },
+     "/usr/local/lib/python3.14/reprlib.py": {
+      "lines": [
+       0,
+       8
+      ],
+      "branch_outcomes": [
+       0,
+       2
+      ]
+     },
+     "/usr/local/lib/python3.14/typing.py": {
+      "lines": [
+       0,
+       6
+      ],
+      "branch_outcomes": [
+       0,
+       4
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/__init__.py": {
+      "lines": [
+       0,
+       47
+      ],
+      "branch_outcomes": [
+       0,
+       14
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/helpers.py": {
+      "lines": [
+       38,
+       116
+      ],
+      "branch_outcomes": [
+       31,
+       136
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/models.py": {
+      "lines": [
+       10,
+       66
+      ],
+      "branch_outcomes": [
+       6,
+       42
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/processor.py": {
+      "lines": [
+       218,
+       266
+      ],
+      "branch_outcomes": [
+       116,
+       168
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/__init__.py": {
+      "lines": [
+       18,
+       31
+      ],
+      "branch_outcomes": [
+       10,
+       24
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/all.py": {
+      "lines": [
+       12,
+       21
+      ],
+      "branch_outcomes": [
+       2,
+       6
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/common.py": {
+      "lines": [
+       71,
+       72
+      ],
+      "branch_outcomes": [
+       4,
+       8
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/devices.py": {
+      "lines": [
+       0,
+       35
+      ],
+      "branch_outcomes": [
+       0,
+       0
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/entities.py": {
+      "lines": [
+       57,
+       57
+      ],
+      "branch_outcomes": [
+       0,
+       0
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/queries/entities_and_devices.py": {
+      "lines": [
+       0,
+       48
+      ],
+      "branch_outcomes": [
+       0,
+       0
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/rest_api.py": {
+      "lines": [
+       0,
+       43
+      ],
+      "branch_outcomes": [
+       0,
+       20
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/logbook/websocket_api.py": {
+      "lines": [
+       0,
+       246
+      ],
+      "branch_outcomes": [
+       0,
+       100
+      ]
+     },
+     "/usr/src/homeassistant/homeassistant/components/websocket_api/decorators.py": {
+      "lines": [
+       0,
+       4
+      ],
+      "branch_outcomes": [
+       0,
+       0
+      ]
+     },
+     "<string>": {
+      "lines": [
+       9,
+       18
+      ],
+      "branch_outcomes": [
+       1,
+       42
+      ]
+     }
+    },
+    "total": {
+     "lines": [
+      436,
+      1107
+     ],
+     "branch_outcomes": [
+      171,
+      584
+     ]
+    }
+   }
+  ],
+  "never_taken_branch_sites": [
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "LogbookLiveStream.__annotate__",
+    "line": 41,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "_async_events_consumer",
+    "line": 223,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "_async_events_consumer",
+    "line": 230,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "_async_events_consumer",
+    "line": 233,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "_async_events_consumer.<locals>.<genexpr>",
+    "line": 234,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "_async_send_empty_response",
+    "line": 70,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "_async_send_historical_events",
+    "line": 98,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "_async_send_historical_events",
+    "line": 98,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "_async_send_historical_events",
+    "line": 103,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "_async_send_historical_events",
+    "line": 117,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "_async_send_historical_events",
+    "line": 117,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "_async_send_historical_events",
+    "line": 117,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "_async_send_historical_events",
+    "line": 133,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "_async_send_historical_events",
+    "line": 149,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "_async_send_historical_events",
+    "line": 149,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "_async_send_historical_events",
+    "line": 149,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "_async_send_historical_events",
+    "line": 153,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "_ws_stream_get_events",
+    "line": 196,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "_ws_stream_get_events",
+    "line": 199,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "ws_event_stream",
+    "line": 264,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "ws_event_stream",
+    "line": 267,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "ws_event_stream",
+    "line": 267,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "ws_event_stream",
+    "line": 273,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "ws_event_stream",
+    "line": 274,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "ws_event_stream",
+    "line": 278,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "ws_event_stream",
+    "line": 284,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "ws_event_stream",
+    "line": 286,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "ws_event_stream",
+    "line": 286,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "ws_event_stream",
+    "line": 292,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "ws_event_stream",
+    "line": 304,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "ws_event_stream",
+    "line": 304,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "ws_event_stream",
+    "line": 340,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "ws_event_stream",
+    "line": 358,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "ws_event_stream",
+    "line": 394,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "ws_event_stream",
+    "line": 408,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "ws_event_stream",
+    "line": 430,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "ws_event_stream.<locals>.__annotate__",
+    "line": 327,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "ws_event_stream.<locals>.__annotate__",
+    "line": 346,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "ws_event_stream.<locals>._queue_or_cancel",
+    "line": 350,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "ws_event_stream.<locals>._unsub",
+    "line": 329,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "ws_event_stream.<locals>._unsub",
+    "line": 332,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "ws_event_stream.<locals>._unsub",
+    "line": 334,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "ws_event_stream.<locals>._unsub",
+    "line": 336,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "ws_get_events",
+    "line": 471,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "ws_get_events",
+    "line": 477,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "ws_get_events",
+    "line": 479,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "ws_get_events",
+    "line": 485,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "ws_get_events",
+    "line": 492,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "ws_get_events",
+    "line": 494,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/websocket_api.py",
+    "function": "ws_get_events",
+    "line": 494,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "<string>",
+    "function": "__create_fn__.<locals>.__eq__",
+    "line": 10,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "<string>",
+    "function": "__create_fn__.<locals>.__eq__",
+    "line": 16,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "<string>",
+    "function": "__create_fn__.<locals>.__eq__",
+    "line": 12,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "<string>",
+    "function": "__create_fn__.<locals>.__eq__",
+    "line": 12,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "<string>",
+    "function": "__create_fn__.<locals>.__eq__",
+    "line": 14,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "<string>",
+    "function": "__create_fn__.<locals>.__eq__",
+    "line": 18,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "<string>",
+    "function": "__create_fn__.<locals>.__eq__",
+    "line": 13,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "<string>",
+    "function": "__create_fn__.<locals>.__eq__",
+    "line": 15,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "<string>",
+    "function": "__create_fn__.<locals>.__eq__",
+    "line": 19,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "<string>",
+    "function": "__create_fn__.<locals>.__eq__",
+    "line": 13,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "<string>",
+    "function": "__create_fn__.<locals>.__eq__",
+    "line": 15,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "<string>",
+    "function": "__create_fn__.<locals>.__eq__",
+    "line": 19,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "<string>",
+    "function": "__create_fn__.<locals>.__eq__",
+    "line": 15,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "<string>",
+    "function": "__create_fn__.<locals>.__eq__",
+    "line": 19,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "<string>",
+    "function": "__create_fn__.<locals>.__eq__",
+    "line": 15,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "<string>",
+    "function": "__create_fn__.<locals>.__eq__",
+    "line": 19,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "<string>",
+    "function": "__create_fn__.<locals>.__eq__",
+    "line": 19,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "<string>",
+    "function": "__create_fn__.<locals>.__eq__",
+    "line": 19,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "<string>",
+    "function": "__create_fn__.<locals>.__eq__",
+    "line": 19,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "<string>",
+    "function": "__create_fn__.<locals>.__eq__",
+    "line": 19,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "<string>",
+    "function": "__create_fn__.<locals>.__init__",
+    "line": 11,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "/usr/local/lib/python3.14/reprlib.py",
+    "function": "recursive_repr.<locals>.decorating_function.<locals>.wrapper",
+    "line": 17,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "/usr/local/lib/python3.14/dataclasses.py",
+    "function": "_replace",
+    "line": 1788,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "/usr/local/lib/python3.14/dataclasses.py",
+    "function": "_replace",
+    "line": 1790,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "/usr/local/lib/python3.14/dataclasses.py",
+    "function": "_replace",
+    "line": 1793,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "/usr/local/lib/python3.14/dataclasses.py",
+    "function": "_replace",
+    "line": 1795,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "/usr/local/lib/python3.14/dataclasses.py",
+    "function": "_replace",
+    "line": 1801,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "/usr/local/lib/python3.14/dataclasses.py",
+    "function": "_replace",
+    "line": 1802,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "/usr/local/lib/python3.14/dataclasses.py",
+    "function": "_replace",
+    "line": 1802,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "ContextAugmenter.augment",
+    "line": 513,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "ContextAugmenter.augment",
+    "line": 508,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "ContextAugmenter.get_context",
+    "line": 470,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "ContextAugmenter.get_context",
+    "line": 471,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "ContextAugmenter.get_context",
+    "line": 472,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "EntityNameCache.get",
+    "line": 547,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "EventCache.get",
+    "line": 566,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "EventProcessor.__init__",
+    "line": 140,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "EventProcessor.__init__",
+    "line": 140,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "EventProcessor.__init__",
+    "line": 140,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "EventProcessor._fetch_parent_user_ids",
+    "line": 234,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "EventProcessor._fetch_parent_user_ids",
+    "line": 249,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "EventProcessor._fetch_parent_user_ids",
+    "line": 249,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "EventProcessor._fetch_parent_user_ids",
+    "line": 258,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "EventProcessor.get_events",
+    "line": 208,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "EventProcessor.get_events",
+    "line": 182,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "EventProcessor.limited_select",
+    "line": 165,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "EventProcessor.limited_select",
+    "line": 165,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "LogbookRun.__annotate__",
+    "line": 101,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "_exposed_state_attributes",
+    "line": 285,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "_humanify",
+    "line": 329,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "_humanify",
+    "line": 332,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "_humanify",
+    "line": 333,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "_humanify",
+    "line": 334,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "_humanify",
+    "line": 345,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "_humanify",
+    "line": 346,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "_humanify",
+    "line": 353,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "_humanify",
+    "line": 378,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "_humanify",
+    "line": 380,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "_humanify",
+    "line": 384,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "_humanify",
+    "line": 384,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "_humanify",
+    "line": 399,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "_humanify",
+    "line": 415,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "_humanify",
+    "line": 420,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "_humanify",
+    "line": 436,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "_humanify",
+    "line": 371,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/processor.py",
+    "function": "_rows_ids_match",
+    "line": 527,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/models.py",
+    "function": "LazyEventPartialState.__init__",
+    "line": 48,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/models.py",
+    "function": "LazyEventPartialState.__init__",
+    "line": 53,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/models.py",
+    "function": "LogbookConfig.__annotate__",
+    "line": 24,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/models.py",
+    "function": "__annotate__",
+    "line": 1,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/models.py",
+    "function": "__annotate__",
+    "line": 99,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/models.py",
+    "function": "__annotate__",
+    "line": 100,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/models.py",
+    "function": "__annotate__",
+    "line": 101,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/models.py",
+    "function": "__annotate__",
+    "line": 102,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/models.py",
+    "function": "__annotate__",
+    "line": 103,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/models.py",
+    "function": "__annotate__",
+    "line": 104,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/models.py",
+    "function": "__annotate__",
+    "line": 105,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/models.py",
+    "function": "__annotate__",
+    "line": 106,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/models.py",
+    "function": "__annotate__",
+    "line": 107,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/models.py",
+    "function": "__annotate__",
+    "line": 108,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/models.py",
+    "function": "__annotate__",
+    "line": 109,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/models.py",
+    "function": "__annotate__",
+    "line": 110,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/models.py",
+    "function": "__annotate__",
+    "line": 112,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/models.py",
+    "function": "__annotate__",
+    "line": 113,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/models.py",
+    "function": "async_event_to_row",
+    "line": 144,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "_async_config_entries_for_ids",
+    "line": 61,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "_async_config_entries_for_ids",
+    "line": 66,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "_async_config_entries_for_ids",
+    "line": 68,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "_async_config_entries_for_ids",
+    "line": 69,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "_async_config_entries_for_ids",
+    "line": 69,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "_device_class_is_numeric",
+    "line": 242,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "_is_state_filtered",
+    "line": 292,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "_is_state_filtered",
+    "line": 292,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "_is_state_filtered",
+    "line": 292,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "_is_state_filtered",
+    "line": 296,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "_is_state_filtered",
+    "line": 298,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "_is_state_filtered",
+    "line": 298,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "async_determine_event_types",
+    "line": 80,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "async_determine_event_types",
+    "line": 85,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "async_determine_event_types",
+    "line": 95,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "async_determine_event_types",
+    "line": 99,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "async_filter_entities",
+    "line": 46,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "async_filter_entities",
+    "line": 46,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "async_subscribe_events",
+    "line": 198,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "async_subscribe_events",
+    "line": 206,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "async_subscribe_events",
+    "line": 206,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "async_subscribe_events",
+    "line": 224,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "async_subscribe_events.<locals>.<genexpr>",
+    "line": 203,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "async_subscribe_events.<locals>.__annotate__",
+    "line": 213,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "async_subscribe_events.<locals>._forward_state_events_filtered",
+    "line": 214,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "async_subscribe_events.<locals>._forward_state_events_filtered",
+    "line": 214,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "async_subscribe_events.<locals>._forward_state_events_filtered",
+    "line": 218,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "async_subscribe_events.<locals>._forward_state_events_filtered",
+    "line": 219,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "async_subscribe_events.<locals>._forward_state_events_filtered",
+    "line": 219,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "event_forwarder_filtered",
+    "line": 136,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "event_forwarder_filtered",
+    "line": 136,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "event_forwarder_filtered",
+    "line": 136,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "event_forwarder_filtered",
+    "line": 142,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "event_forwarder_filtered",
+    "line": 166,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "event_forwarder_filtered",
+    "line": 167,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "event_forwarder_filtered.<locals>.__annotate__",
+    "line": 147,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "event_forwarder_filtered.<locals>.__annotate__",
+    "line": 170,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "event_forwarder_filtered.<locals>._forward_events_filtered_by_device_entity_ids",
+    "line": 173,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "event_forwarder_filtered.<locals>._forward_events_filtered_by_device_entity_ids",
+    "line": 175,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "event_forwarder_filtered.<locals>._forward_events_filtered_by_entities_filter",
+    "line": 148,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "event_forwarder_filtered.<locals>._forward_events_filtered_by_entities_filter",
+    "line": 151,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "event_forwarder_filtered.<locals>._forward_events_filtered_by_entities_filter",
+    "line": 151,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "event_forwarder_filtered.<locals>._forward_events_filtered_by_entities_filter",
+    "line": 151,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "event_forwarder_filtered.<locals>._forward_events_filtered_by_entities_filter",
+    "line": 151,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "event_forwarder_filtered.<locals>._forward_events_filtered_by_entities_filter",
+    "line": 151,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "event_forwarder_filtered.<locals>._forward_events_filtered_by_entities_filter",
+    "line": 156,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "event_forwarder_filtered.<locals>._forward_events_filtered_by_entities_filter",
+    "line": 156,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "event_forwarder_filtered.<locals>._forward_events_filtered_by_entities_filter.<locals>.<genexpr>",
+    "line": 152,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "extract_attr",
+    "line": 115,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "extract_attr",
+    "line": 117,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "extract_attr",
+    "line": 119,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "extract_attr",
+    "line": 121,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "extract_attr",
+    "line": 123,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "is_sensor_continuous",
+    "line": 263,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "is_sensor_continuous",
+    "line": 265,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "is_sensor_continuous",
+    "line": 265,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "is_sensor_continuous",
+    "line": 277,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "is_sensor_continuous",
+    "line": 279,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/helpers.py",
+    "function": "is_sensor_continuous",
+    "line": 279,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/rest_api.py",
+    "function": "LogbookView.get",
+    "line": 57,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/rest_api.py",
+    "function": "LogbookView.get",
+    "line": 58,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/rest_api.py",
+    "function": "LogbookView.get",
+    "line": 63,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/rest_api.py",
+    "function": "LogbookView.get",
+    "line": 68,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/rest_api.py",
+    "function": "LogbookView.get",
+    "line": 79,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/rest_api.py",
+    "function": "LogbookView.get",
+    "line": 84,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/rest_api.py",
+    "function": "LogbookView.get",
+    "line": 92,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/rest_api.py",
+    "function": "LogbookView.get",
+    "line": 92,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/rest_api.py",
+    "function": "LogbookView.get",
+    "line": 71,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/rest_api.py",
+    "function": "LogbookView.get.<locals>.__annotate__",
+    "line": 108,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/queries/common.py",
+    "function": "__annotate__",
+    "line": 1,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/queries/common.py",
+    "function": "__annotate__",
+    "line": 47,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/queries/all.py",
+    "function": "all_stmt",
+    "line": 28,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/queries/all.py",
+    "function": "all_stmt",
+    "line": 32,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/queries/all.py",
+    "function": "all_stmt",
+    "line": 32,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/queries/__init__.py",
+    "function": "statement_for_request",
+    "line": 33,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/queries/__init__.py",
+    "function": "statement_for_request",
+    "line": 50,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/queries/__init__.py",
+    "function": "statement_for_request",
+    "line": 50,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/queries/__init__.py",
+    "function": "statement_for_request",
+    "line": 55,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/queries/__init__.py",
+    "function": "statement_for_request",
+    "line": 56,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/queries/__init__.py",
+    "function": "statement_for_request",
+    "line": 57,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/queries/__init__.py",
+    "function": "statement_for_request",
+    "line": 61,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "homeassistant/components/logbook/queries/__init__.py",
+    "function": "statement_for_request",
+    "line": 71,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/queries/__init__.py",
+    "function": "statement_for_request",
+    "line": 76,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "/usr/local/lib/python3.14/typing.py",
+    "function": "NamedTupleMeta.__new__.<locals>.annotate",
+    "line": 2994,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "/usr/local/lib/python3.14/typing.py",
+    "function": "NamedTupleMeta.__new__.<locals>.annotate",
+    "line": 2996,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "/usr/local/lib/python3.14/collections/__init__.py",
+    "function": "namedtuple.<locals>._make",
+    "line": 456,
+    "outcomes_seen": 1
+   },
+   {
+    "file": "/usr/local/lib/python3.14/collections/__init__.py",
+    "function": "namedtuple.<locals>._replace",
+    "line": 465,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/__init__.py",
+    "function": "_process_logbook_platform.<locals>.__annotate__",
+    "line": 151,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/__init__.py",
+    "function": "async_log_entry",
+    "line": 86,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/__init__.py",
+    "function": "async_log_entry",
+    "line": 88,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/__init__.py",
+    "function": "async_setup",
+    "line": 123,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/__init__.py",
+    "function": "async_setup.<locals>.__annotate__",
+    "line": 97,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/__init__.py",
+    "function": "async_setup.<locals>.log_message",
+    "line": 104,
+    "outcomes_seen": 0
+   },
+   {
+    "file": "homeassistant/components/logbook/__init__.py",
+    "function": "async_setup.<locals>.log_message",
+    "line": 104,
+    "outcomes_seen": 0
+   }
+  ],
+  "n_never_taken": 229,
+  "python": "3.14.6"
+ },
+ "script_sha256": "f44353dbbd872bbb7bd63dab830e1e2d1e80cb4100a7533ca4e510c26aedf4d5",
+ "smoke": false,
+ "generated_at": "2026-10-21T18:49:06Z"
+}

@@ -1,0 +1,3396 @@
+{
+ "what": "R14c: Section 4's 11-of-90 'previous trial's row' writes traced to their file and to a capture race in the attack harness, and the same race counted in every saved run",
+ "answers": [
+  "R3 minor (r4): 'in 11 of them also into the previous trial's row' ... please explain"
+ ],
+ "printed": {
+  "file": "sections/04_sp_atk.tex",
+  "text": [
+   "Each of the 90 member-account swap trials wrote the household member account's id into the user column of its own committed unlock row once, and in 11 of them also into the previous trial's row."
+  ]
+ },
+ "source": {
+  "file": "exp/out/e_psr_clo_detection.json",
+  "fields": "trials[*].db_writes, swapped_state_ids",
+  "evidence_use": "authoring/writer/03-evidence/P-003@v1.yaml (79 / 11: trials issuing one UPDATE / two UPDATEs)",
+  "distribution_db_writes_and_ids": {
+   "1 writes, 1 ids": 79,
+   "2 writes, 2 ids": 11
+  },
+  "per_room": {
+   "porch": 8,
+   "hallway": 1,
+   "kitchen": 2
+  },
+  "trials": [
+   {
+    "room": "porch",
+    "trial": 1,
+    "swapped_state_ids": [
+     702103,
+     702114
+    ],
+    "db_writes": 2,
+    "judged_row_own": 702114,
+    "row_before_captured": 702103,
+    "row_before_is_previous_trials_judged_row": true,
+    "extra_row": [
+     702103
+    ],
+    "extra_row_is_previous_trials_row": true,
+    "own_row_ts": 1790987161.4293306,
+    "captured_row_ts": 1790987128.343684,
+    "captured_row_older_by_s": 33.086,
+    "same_member_id_as_previous_trial": true,
+    "previous_trial_valid_and_written_first": true
+   },
+   {
+    "room": "porch",
+    "trial": 3,
+    "swapped_state_ids": [
+     702117,
+     702121
+    ],
+    "db_writes": 2,
+    "judged_row_own": 702121,
+    "row_before_captured": 702117,
+    "row_before_is_previous_trials_judged_row": true,
+    "extra_row": [
+     702117
+    ],
+    "extra_row_is_previous_trials_row": true,
+    "own_row_ts": 1790987173.511325,
+    "captured_row_ts": 1790987167.4635096,
+    "captured_row_older_by_s": 6.048,
+    "same_member_id_as_previous_trial": true,
+    "previous_trial_valid_and_written_first": true
+   },
+   {
+    "room": "porch",
+    "trial": 12,
+    "swapped_state_ids": [
+     702161,
+     702163
+    ],
+    "db_writes": 2,
+    "judged_row_own": 702163,
+    "row_before_captured": 702161,
+    "row_before_is_previous_trials_judged_row": true,
+    "extra_row": [
+     702161
+    ],
+    "extra_row_is_previous_trials_row": true,
+    "own_row_ts": 1790987228.0483196,
+    "captured_row_ts": 1790987222.0218806,
+    "captured_row_older_by_s": 6.026,
+    "same_member_id_as_previous_trial": true,
+    "previous_trial_valid_and_written_first": true
+   },
+   {
+    "room": "porch",
+    "trial": 13,
+    "swapped_state_ids": [
+     702163,
+     702168
+    ],
+    "db_writes": 2,
+    "judged_row_own": 702168,
+    "row_before_captured": 702163,
+    "row_before_is_previous_trials_judged_row": true,
+    "extra_row": [
+     702163
+    ],
+    "extra_row_is_previous_trials_row": true,
+    "own_row_ts": 1790987234.0869915,
+    "captured_row_ts": 1790987228.0483196,
+    "captured_row_older_by_s": 6.039,
+    "same_member_id_as_previous_trial": true,
+    "previous_trial_valid_and_written_first": true
+   },
+   {
+    "room": "porch",
+    "trial": 18,
+    "swapped_state_ids": [
+     702185,
+     702188
+    ],
+    "db_writes": 2,
+    "judged_row_own": 702188,
+    "row_before_captured": 702185,
+    "row_before_is_previous_trials_judged_row": true,
+    "extra_row": [
+     702185
+    ],
+    "extra_row_is_previous_trials_row": true,
+    "own_row_ts": 1790987264.2628071,
+    "captured_row_ts": 1790987258.2198784,
+    "captured_row_older_by_s": 6.043,
+    "same_member_id_as_previous_trial": true,
+    "previous_trial_valid_and_written_first": true
+   },
+   {
+    "room": "porch",
+    "trial": 20,
+    "swapped_state_ids": [
+     702195,
+     702198
+    ],
+    "db_writes": 2,
+    "judged_row_own": 702198,
+    "row_before_captured": 702195,
+    "row_before_is_previous_trials_judged_row": true,
+    "extra_row": [
+     702195
+    ],
+    "extra_row_is_previous_trials_row": true,
+    "own_row_ts": 1790987276.410675,
+    "captured_row_ts": 1790987270.299711,
+    "captured_row_older_by_s": 6.111,
+    "same_member_id_as_previous_trial": true,
+    "previous_trial_valid_and_written_first": true
+   },
+   {
+    "room": "porch",
+    "trial": 22,
+    "swapped_state_ids": [
+     702206,
+     702211
+    ],
+    "db_writes": 2,
+    "judged_row_own": 702211,
+    "row_before_captured": 702206,
+    "row_before_is_previous_trials_judged_row": true,
+    "extra_row": [
+     702206
+    ],
+    "extra_row_is_previous_trials_row": true,
+    "own_row_ts": 1790987288.4745657,
+    "captured_row_ts": 1790987282.451385,
+    "captured_row_older_by_s": 6.023,
+    "same_member_id_as_previous_trial": true,
+    "previous_trial_valid_and_written_first": true
+   },
+   {
+    "room": "porch",
+    "trial": 23,
+    "swapped_state_ids": [
+     702211,
+     702216
+    ],
+    "db_writes": 2,
+    "judged_row_own": 702216,
+    "row_before_captured": 702211,
+    "row_before_is_previous_trials_judged_row": true,
+    "extra_row": [
+     702211
+    ],
+    "extra_row_is_previous_trials_row": true,
+    "own_row_ts": 1790987294.5050144,
+    "captured_row_ts": 1790987288.4745657,
+    "captured_row_older_by_s": 6.03,
+    "same_member_id_as_previous_trial": true,
+    "previous_trial_valid_and_written_first": true
+   },
+   {
+    "room": "hallway",
+    "trial": 2,
+    "swapped_state_ids": [
+     702424,
+     702429
+    ],
+    "db_writes": 2,
+    "judged_row_own": 702429,
+    "row_before_captured": 702424,
+    "row_before_is_previous_trials_judged_row": true,
+    "extra_row": [
+     702424
+    ],
+    "extra_row_is_previous_trials_row": true,
+    "own_row_ts": 1790987563.3559752,
+    "captured_row_ts": 1790987557.3173163,
+    "captured_row_older_by_s": 6.039,
+    "same_member_id_as_previous_trial": true,
+    "previous_trial_valid_and_written_first": true
+   },
+   {
+    "room": "kitchen",
+    "trial": 20,
+    "swapped_state_ids": [
+     702798,
+     702804
+    ],
+    "db_writes": 2,
+    "judged_row_own": 702804,
+    "row_before_captured": 702798,
+    "row_before_is_previous_trials_judged_row": true,
+    "extra_row": [
+     702798
+    ],
+    "extra_row_is_previous_trials_row": true,
+    "own_row_ts": 1790988070.0856504,
+    "captured_row_ts": 1790988064.0542202,
+    "captured_row_older_by_s": 6.031,
+    "same_member_id_as_previous_trial": true,
+    "previous_trial_valid_and_written_first": true
+   },
+   {
+    "room": "kitchen",
+    "trial": 29,
+    "swapped_state_ids": [
+     702834,
+     702840
+    ],
+    "db_writes": 2,
+    "judged_row_own": 702840,
+    "row_before_captured": 702834,
+    "row_before_is_previous_trials_judged_row": true,
+    "extra_row": [
+     702834
+    ],
+    "extra_row_is_previous_trials_row": true,
+    "own_row_ts": 1790988124.4010172,
+    "captured_row_ts": 1790988118.36632,
+    "captured_row_older_by_s": 6.035,
+    "same_member_id_as_previous_trial": true,
+    "previous_trial_valid_and_written_first": true
+   }
+  ]
+ },
+ "mechanism": {
+  "code": {
+   "capture_waits_on_state_machine": {
+    "file": "testbed/real/ha-config/custom_components/homeprov_ec/__init__.py",
+    "line": 325,
+    "text": "[withheld from the artifact: a source line of an attack integration]"
+   },
+   "capture_reads_newest_unlocked_row": {
+    "file": "testbed/real/ha-config/custom_components/homeprov_ec/__init__.py",
+    "line": 333,
+    "text": "[withheld from the artifact: a source line of an attack integration]"
+   },
+   "judged_row_by_rendered_when": {
+    "file": "testbed/real/ha-config/custom_components/homeprov_ec/__init__.py",
+    "line": 177,
+    "text": "[withheld from the artifact: a source line of an attack integration]"
+   },
+   "psr_value_constant": {
+    "file": "testbed/real/ha-config/custom_components/homeprov_ec/__init__.py",
+    "line": 888,
+    "text": "[withheld from the artifact: a source line of an attack integration]"
+   },
+   "psr_row_set": {
+    "file": "testbed/real/ha-config/custom_components/homeprov_ec/__init__.py",
+    "line": 890,
+    "text": "[withheld from the artifact: a source line of an attack integration]"
+   },
+   "psr_row_set_context": {
+    "file": "testbed/real/ha-config/custom_components/homeprov_ec/__init__.py",
+    "line": 893,
+    "text": "[withheld from the artifact: a source line of an attack integration]"
+   },
+   "psr_update": {
+    "file": "testbed/real/ha-config/custom_components/homeprov_ec/__init__.py",
+    "line": 898,
+    "text": "[withheld from the artifact: a source line of an attack integration]"
+   },
+   "pupi_row_set": {
+    "file": "testbed/real/ha-config/custom_components/homeprov_ec/__init__.py",
+    "line": 771,
+    "text": "[withheld from the artifact: a source line of an attack integration]"
+   },
+   "p_row_is_captured_row_only": {
+    "file": "testbed/real/ha-config/custom_components/homeprov_ec/__init__.py",
+    "line": 620,
+    "text": "[withheld from the artifact: a source line of an attack integration]"
+   },
+   "p_cover_most_recent_run": {
+    "file": "testbed/real/ha-config/custom_components/homeprov_ec/__init__.py",
+    "line": 622,
+    "text": "[withheld from the artifact: a source line of an attack integration]"
+   },
+   "e7_stall_captured_row_context_events_deleted": {
+    "file": "testbed/real/ha-config/custom_components/homeprov_e7/__init__.py",
+    "line": 855,
+    "text": "[withheld from the artifact: a source line of an attack integration]"
+   },
+   "recorder_commit_interval_1s_used_by_harness": {
+    "file": "testbed/real/ha-config/custom_components/homeprov_ec/__init__.py",
+    "line": 502,
+    "text": "[withheld from the artifact: a source line of an attack integration]"
+   }
+  },
+  "statement": "the trial's captured row (row_before) was the previous trial's unlocked row in 11 of 90 trials: _unlock_and_capture waits for the state machine, then reads the newest unlocked row from the recorder, which commits once per second; phase 2 writes the member id into row_before, the judged row and every row of row_before's context, so these trials wrote their own (judged) row and the previous trial's row, each once",
+  "consequence_for_PSR": "the second write puts the same member id into a row that already holds it (the previous trial's phase-2 write ran first in the same loop): no content change, and the row is the previous trial's own touched row; detection and the floor are unaffected (both rows are touched under the counting rule)",
+  "not_cross_trial_harness_state": "no state crosses trials except the recorder itself: the captured row is simply the newest unlocked row at capture time",
+  "display_check_uses_the_judged_row": "the 90/90 admin display result (exp/out/e_psr_clo_display_check.json) is computed from each trial's rendered rows at its own `when`, so it is about the trial's own row",
+  "display_check_n": 90
+ },
+ "census_all_runs": {
+  "per_file": {
+   "e1_psr_clo_report_hallway.json": {
+    "PSR": {
+     "trials": 30,
+     "raced": 1,
+     "multi_row_edits": 1,
+     "raced_trials": [
+      {
+       "trial": 7,
+       "row_before": 1639,
+       "judged_row": 1639,
+       "previous_trial": 6,
+       "previous_trial_arm": "PSR",
+       "previous_row_before": 1639,
+       "previous_judged_row": 1639,
+       "edited_ids": [
+        1639
+       ],
+       "db_writes": 1,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": true
+      }
+     ]
+    }
+   },
+   "e1_psr_clo_report_kitchen.json": {
+    "PSR": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    }
+   },
+   "e1_psr_clo_report_porch.json": {
+    "PSR": {
+     "trials": 30,
+     "raced": 5,
+     "multi_row_edits": 4,
+     "raced_trials": [
+      {
+       "trial": 11,
+       "row_before": 1062,
+       "judged_row": 1073,
+       "previous_trial": 10,
+       "previous_trial_arm": "PSR",
+       "previous_row_before": 1062,
+       "previous_judged_row": 1062,
+       "edited_ids": [
+        1062,
+        1073
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": true
+      },
+      {
+       "trial": 15,
+       "row_before": 1085,
+       "judged_row": 1090,
+       "previous_trial": 14,
+       "previous_trial_arm": "PSR",
+       "previous_row_before": 1085,
+       "previous_judged_row": 1085,
+       "edited_ids": [
+        1085,
+        1090
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": true
+      },
+      {
+       "trial": 18,
+       "row_before": 1100,
+       "judged_row": 1103,
+       "previous_trial": 17,
+       "previous_trial_arm": "PSR",
+       "previous_row_before": 1100,
+       "previous_judged_row": 1100,
+       "edited_ids": [
+        1100,
+        1103
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": true
+      },
+      {
+       "trial": 25,
+       "row_before": 1126,
+       "judged_row": 1126,
+       "previous_trial": 24,
+       "previous_trial_arm": "PSR",
+       "previous_row_before": 1126,
+       "previous_judged_row": 1126,
+       "edited_ids": [
+        1126
+       ],
+       "db_writes": 1,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": true
+      },
+      {
+       "trial": 27,
+       "row_before": 1136,
+       "judged_row": 1140,
+       "previous_trial": 26,
+       "previous_trial_arm": "PSR",
+       "previous_row_before": 1136,
+       "previous_judged_row": 1136,
+       "edited_ids": [
+        1136,
+        1140
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": true
+      }
+     ]
+    }
+   },
+   "e3_g0_clo_report_hallway.json": {
+    "PU": {
+     "trials": 30,
+     "raced": 1,
+     "multi_row_edits": 1,
+     "raced_trials": [
+      {
+       "trial": 1,
+       "row_before": 850073,
+       "judged_row": 850083,
+       "previous_trial": 0,
+       "previous_trial_arm": "PU",
+       "previous_row_before": 850073,
+       "previous_judged_row": 850073,
+       "edited_ids": [
+        850073,
+        850083
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 2,
+        "inject": 0
+       },
+       "own_row_edited": true
+      }
+     ]
+    },
+    "PI": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    }
+   },
+   "e3_g0_clo_report_kitchen.json": {
+    "PU": {
+     "trials": 30,
+     "raced": 2,
+     "multi_row_edits": 2,
+     "raced_trials": [
+      {
+       "trial": 18,
+       "row_before": 850631,
+       "judged_row": 850637,
+       "previous_trial": 17,
+       "previous_trial_arm": "PU",
+       "previous_row_before": 850631,
+       "previous_judged_row": 850631,
+       "edited_ids": [
+        850631,
+        850637
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 2,
+        "inject": 0
+       },
+       "own_row_edited": true
+      },
+      {
+       "trial": 21,
+       "row_before": 850647,
+       "judged_row": 850652,
+       "previous_trial": 20,
+       "previous_trial_arm": "PU",
+       "previous_row_before": 850647,
+       "previous_judged_row": 850647,
+       "edited_ids": [
+        850647,
+        850652
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 2,
+        "inject": 0
+       },
+       "own_row_edited": true
+      }
+     ]
+    },
+    "PI": {
+     "trials": 30,
+     "raced": 4,
+     "multi_row_edits": 4,
+     "raced_trials": [
+      {
+       "trial": 3,
+       "row_before": 850751,
+       "judged_row": 850759,
+       "previous_trial": 2,
+       "previous_trial_arm": "PI",
+       "previous_row_before": 850751,
+       "previous_judged_row": 850751,
+       "edited_ids": [
+        850751,
+        850759
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 2,
+        "inject": 0
+       },
+       "own_row_edited": true
+      },
+      {
+       "trial": 9,
+       "row_before": 850781,
+       "judged_row": 850785,
+       "previous_trial": 8,
+       "previous_trial_arm": "PI",
+       "previous_row_before": 850781,
+       "previous_judged_row": 850781,
+       "edited_ids": [
+        850781,
+        850785
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 2,
+        "inject": 0
+       },
+       "own_row_edited": true
+      },
+      {
+       "trial": 10,
+       "row_before": 850785,
+       "judged_row": 850791,
+       "previous_trial": 9,
+       "previous_trial_arm": "PI",
+       "previous_row_before": 850781,
+       "previous_judged_row": 850785,
+       "edited_ids": [
+        850785,
+        850791
+       ],
+       "db_writes": 3,
+       "operations_used": {
+        "delete": 1,
+        "reattach": 2,
+        "inject": 0
+       },
+       "own_row_edited": true
+      },
+      {
+       "trial": 27,
+       "row_before": 850893,
+       "judged_row": 850901,
+       "previous_trial": 26,
+       "previous_trial_arm": "PI",
+       "previous_row_before": 850893,
+       "previous_judged_row": 850893,
+       "edited_ids": [
+        850893,
+        850901
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 2,
+        "inject": 0
+       },
+       "own_row_edited": true
+      }
+     ]
+    }
+   },
+   "e3_g0_clo_report_porch.json": {
+    "PU": {
+     "trials": 30,
+     "raced": 4,
+     "multi_row_edits": 5,
+     "raced_trials": [
+      {
+       "trial": 5,
+       "row_before": 849596,
+       "judged_row": 849598,
+       "previous_trial": 4,
+       "previous_trial_arm": "PU",
+       "previous_row_before": 849596,
+       "previous_judged_row": 849596,
+       "edited_ids": [
+        849596,
+        849598
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 2,
+        "inject": 0
+       },
+       "own_row_edited": true
+      },
+      {
+       "trial": 11,
+       "row_before": 849620,
+       "judged_row": 849630,
+       "previous_trial": 10,
+       "previous_trial_arm": "PU",
+       "previous_row_before": 849620,
+       "previous_judged_row": 849620,
+       "edited_ids": [
+        849620,
+        849630
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 2,
+        "inject": 0
+       },
+       "own_row_edited": true
+      },
+      {
+       "trial": 21,
+       "row_before": 849663,
+       "judged_row": 849669,
+       "previous_trial": 20,
+       "previous_trial_arm": "PU",
+       "previous_row_before": 849663,
+       "previous_judged_row": 849663,
+       "edited_ids": [
+        849663,
+        849669
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 2,
+        "inject": 0
+       },
+       "own_row_edited": true
+      },
+      {
+       "trial": 22,
+       "row_before": 849669,
+       "judged_row": 849673,
+       "previous_trial": 21,
+       "previous_trial_arm": "PU",
+       "previous_row_before": 849663,
+       "previous_judged_row": 849669,
+       "edited_ids": [
+        849669,
+        849673
+       ],
+       "db_writes": 3,
+       "operations_used": {
+        "delete": 1,
+        "reattach": 2,
+        "inject": 0
+       },
+       "own_row_edited": true
+      }
+     ]
+    },
+    "PI": {
+     "trials": 30,
+     "raced": 2,
+     "multi_row_edits": 2,
+     "raced_trials": [
+      {
+       "trial": 3,
+       "row_before": 849767,
+       "judged_row": 849769,
+       "previous_trial": 2,
+       "previous_trial_arm": "PI",
+       "previous_row_before": 849767,
+       "previous_judged_row": 849767,
+       "edited_ids": [
+        849767,
+        849769
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 2,
+        "inject": 0
+       },
+       "own_row_edited": true
+      },
+      {
+       "trial": 5,
+       "row_before": 849775,
+       "judged_row": 849779,
+       "previous_trial": 4,
+       "previous_trial_arm": "PI",
+       "previous_row_before": 849775,
+       "previous_judged_row": 849775,
+       "edited_ids": [
+        849775,
+        849779
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 2,
+        "inject": 0
+       },
+       "own_row_edited": true
+      }
+     ]
+    }
+   },
+   "e3_g2_clo_report_hallway.json": {
+    "PU": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    },
+    "PI": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    }
+   },
+   "e3_g2_clo_report_kitchen.json": {
+    "PU": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    },
+    "PI": {
+     "trials": 30,
+     "raced": 1,
+     "multi_row_edits": 1,
+     "raced_trials": [
+      {
+       "trial": 25,
+       "row_before": 852462,
+       "judged_row": 852470,
+       "previous_trial": 24,
+       "previous_trial_arm": "PI",
+       "previous_row_before": 852462,
+       "previous_judged_row": 852462,
+       "edited_ids": [
+        852462,
+        852470
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 2,
+        "inject": 0
+       },
+       "own_row_edited": true
+      }
+     ]
+    }
+   },
+   "e3_g2_clo_report_porch.json": {
+    "PU": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    },
+    "PI": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    }
+   },
+   "e5_psr_lnk_report_hallway.json": {
+    "PSR": {
+     "trials": 30,
+     "raced": 1,
+     "multi_row_edits": 1,
+     "raced_trials": [
+      {
+       "trial": 2,
+       "row_before": 4475,
+       "judged_row": 4481,
+       "previous_trial": 1,
+       "previous_trial_arm": "PSR",
+       "previous_row_before": 4475,
+       "previous_judged_row": 4475,
+       "edited_ids": [
+        4475,
+        4481
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": true
+      }
+     ]
+    }
+   },
+   "e5_psr_lnk_report_kitchen.json": {
+    "PSR": {
+     "trials": 30,
+     "raced": 2,
+     "multi_row_edits": 2,
+     "raced_trials": [
+      {
+       "trial": 2,
+       "row_before": 4770,
+       "judged_row": 4775,
+       "previous_trial": 1,
+       "previous_trial_arm": "PSR",
+       "previous_row_before": 4770,
+       "previous_judged_row": 4770,
+       "edited_ids": [
+        4770,
+        4775
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": true
+      },
+      {
+       "trial": 3,
+       "row_before": 4775,
+       "judged_row": 4779,
+       "previous_trial": 2,
+       "previous_trial_arm": "PSR",
+       "previous_row_before": 4770,
+       "previous_judged_row": 4775,
+       "edited_ids": [
+        4775,
+        4779
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": true
+      }
+     ]
+    }
+   },
+   "e5_psr_lnk_report_porch.json": {
+    "PSR": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    }
+   },
+   "e7_main_report_hallway.json": {
+    "INS-L": {
+     "trials": 10,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    },
+    "INS-M": {
+     "trials": 10,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    },
+    "STALL": {
+     "trials": 10,
+     "raced": 1,
+     "multi_row_edits": 1,
+     "raced_trials": [
+      {
+       "trial": 2,
+       "row_before": 900649,
+       "judged_row": 900667,
+       "previous_trial": 1,
+       "previous_trial_arm": "STALL",
+       "previous_row_before": 900649,
+       "previous_judged_row": 900649,
+       "edited_ids": [
+        900637,
+        900638,
+        900641,
+        900649,
+        900667
+       ],
+       "db_writes": 8,
+       "operations_used": {
+        "delete": 3,
+        "reattach": 5,
+        "inject": 0
+       },
+       "own_row_edited": true,
+       "captured_context_is_previous_cover": true,
+       "events_deleted": 3
+      }
+     ]
+    },
+    "OUTAGE": {
+     "trials": 10,
+     "raced": 1,
+     "multi_row_edits": 1,
+     "raced_trials": [
+      {
+       "trial": 0,
+       "row_before": 900775,
+       "judged_row": 900791,
+       "previous_trial": 9,
+       "previous_trial_arm": "STALL",
+       "previous_row_before": 900775,
+       "previous_judged_row": 900775,
+       "edited_ids": [
+        900766,
+        900772,
+        900775,
+        900791
+       ],
+       "db_writes": 7,
+       "operations_used": {
+        "delete": 3,
+        "reattach": 4,
+        "inject": 0
+       },
+       "own_row_edited": true,
+       "captured_context_is_previous_cover": true,
+       "events_deleted": 3
+      }
+     ]
+    }
+   },
+   "e7_main_report_kitchen.json": {
+    "INS-L": {
+     "trials": 10,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    },
+    "INS-M": {
+     "trials": 10,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    },
+    "STALL": {
+     "trials": 10,
+     "raced": 2,
+     "multi_row_edits": 2,
+     "raced_trials": [
+      {
+       "trial": 2,
+       "row_before": 911886,
+       "judged_row": 911903,
+       "previous_trial": 1,
+       "previous_trial_arm": "STALL",
+       "previous_row_before": 911886,
+       "previous_judged_row": 911886,
+       "edited_ids": [
+        911857,
+        911858,
+        911861,
+        911870,
+        911886,
+        911903
+       ],
+       "db_writes": 9,
+       "operations_used": {
+        "delete": 3,
+        "reattach": 6,
+        "inject": 0
+       },
+       "own_row_edited": true,
+       "captured_context_is_previous_cover": true,
+       "events_deleted": 3
+      },
+      {
+       "trial": 9,
+       "row_before": 911991,
+       "judged_row": 912011,
+       "previous_trial": 8,
+       "previous_trial_arm": "STALL",
+       "previous_row_before": 911991,
+       "previous_judged_row": 911991,
+       "edited_ids": [
+        911973,
+        911974,
+        911977,
+        911979,
+        911991,
+        912011
+       ],
+       "db_writes": 9,
+       "operations_used": {
+        "delete": 3,
+        "reattach": 6,
+        "inject": 0
+       },
+       "own_row_edited": true,
+       "captured_context_is_previous_cover": true,
+       "events_deleted": 3
+      }
+     ]
+    },
+    "OUTAGE": {
+     "trials": 10,
+     "raced": 1,
+     "multi_row_edits": 1,
+     "raced_trials": [
+      {
+       "trial": 0,
+       "row_before": 912011,
+       "judged_row": 912034,
+       "previous_trial": 9,
+       "previous_trial_arm": "STALL",
+       "previous_row_before": 911991,
+       "previous_judged_row": 912011,
+       "edited_ids": [
+        911973,
+        911974,
+        911977,
+        911979,
+        911991,
+        912009,
+        912010,
+        912011,
+        912017,
+        912034
+       ],
+       "db_writes": 13,
+       "operations_used": {
+        "delete": 3,
+        "reattach": 10,
+        "inject": 0
+       },
+       "own_row_edited": true,
+       "captured_context_is_previous_cover": true,
+       "events_deleted": 3
+      }
+     ]
+    }
+   },
+   "e7_main_report_porch.json": {
+    "INS-L": {
+     "trials": 10,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    },
+    "INS-M": {
+     "trials": 10,
+     "raced": 2,
+     "multi_row_edits": 2,
+     "raced_trials": [
+      {
+       "trial": 5,
+       "row_before": 878989,
+       "judged_row": 878995,
+       "previous_trial": 4,
+       "previous_trial_arm": "INS-M",
+       "previous_row_before": 878989,
+       "previous_judged_row": 878989,
+       "edited_ids": [
+        878989,
+        878995
+       ],
+       "db_writes": 11,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true
+      },
+      {
+       "trial": 8,
+       "row_before": 879005,
+       "judged_row": 879013,
+       "previous_trial": 7,
+       "previous_trial_arm": "INS-M",
+       "previous_row_before": 879005,
+       "previous_judged_row": 879005,
+       "edited_ids": [
+        879005,
+        879013
+       ],
+       "db_writes": 11,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true
+      }
+     ]
+    },
+    "STALL": {
+     "trials": 10,
+     "raced": 1,
+     "multi_row_edits": 1,
+     "raced_trials": [
+      {
+       "trial": 9,
+       "row_before": 889504,
+       "judged_row": 889516,
+       "previous_trial": 8,
+       "previous_trial_arm": "STALL",
+       "previous_row_before": 889504,
+       "previous_judged_row": 889504,
+       "edited_ids": [
+        889401,
+        889402,
+        889405,
+        889411,
+        889425,
+        889439,
+        889459,
+        889474,
+        889490,
+        889504,
+        889516
+       ],
+       "db_writes": 14,
+       "operations_used": {
+        "delete": 3,
+        "reattach": 11,
+        "inject": 0
+       },
+       "own_row_edited": true,
+       "captured_context_is_previous_cover": true,
+       "events_deleted": 3
+      }
+     ]
+    },
+    "OUTAGE": {
+     "trials": 10,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    }
+   },
+   "e8_main_report_e7_hallway.json": {
+    "INS-L": {
+     "trials": 30,
+     "raced": 1,
+     "multi_row_edits": 1,
+     "raced_trials": [
+      {
+       "trial": 1,
+       "row_before": 927069,
+       "judged_row": 927073,
+       "previous_trial": 0,
+       "previous_trial_arm": "INS-L",
+       "previous_row_before": 927069,
+       "previous_judged_row": 927069,
+       "edited_ids": [
+        927069,
+        927073
+       ],
+       "db_writes": 11,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 2,
+        "inject": 0
+       },
+       "own_row_edited": true
+      }
+     ]
+    },
+    "INS-M": {
+     "trials": 30,
+     "raced": 2,
+     "multi_row_edits": 2,
+     "raced_trials": [
+      {
+       "trial": 7,
+       "row_before": 927546,
+       "judged_row": 927549,
+       "previous_trial": 6,
+       "previous_trial_arm": "INS-M",
+       "previous_row_before": 927546,
+       "previous_judged_row": 927546,
+       "edited_ids": [
+        927546,
+        927549
+       ],
+       "db_writes": 11,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true
+      },
+      {
+       "trial": 25,
+       "row_before": 927625,
+       "judged_row": 927631,
+       "previous_trial": 24,
+       "previous_trial_arm": "INS-M",
+       "previous_row_before": 927625,
+       "previous_judged_row": 927625,
+       "edited_ids": [
+        927625,
+        927631
+       ],
+       "db_writes": 11,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true
+      }
+     ]
+    }
+   },
+   "e8_main_report_e7_kitchen.json": {
+    "INS-L": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    },
+    "INS-M": {
+     "trials": 30,
+     "raced": 1,
+     "multi_row_edits": 1,
+     "raced_trials": [
+      {
+       "trial": 28,
+       "row_before": 929473,
+       "judged_row": 929479,
+       "previous_trial": 27,
+       "previous_trial_arm": "INS-M",
+       "previous_row_before": 929473,
+       "previous_judged_row": 929473,
+       "edited_ids": [
+        929473,
+        929479
+       ],
+       "db_writes": 11,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true
+      }
+     ]
+    }
+   },
+   "e8_main_report_e7_porch.json": {
+    "INS-L": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    },
+    "INS-M": {
+     "trials": 30,
+     "raced": 1,
+     "multi_row_edits": 1,
+     "raced_trials": [
+      {
+       "trial": 27,
+       "row_before": 925826,
+       "judged_row": 925829,
+       "previous_trial": 26,
+       "previous_trial_arm": "INS-M",
+       "previous_row_before": 925826,
+       "previous_judged_row": 925826,
+       "edited_ids": [
+        925826,
+        925829
+       ],
+       "db_writes": 11,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true
+      }
+     ]
+    }
+   },
+   "e8_main_report_ec_hallway.json": {
+    "PU": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    },
+    "PI": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    },
+    "PSR": {
+     "trials": 30,
+     "raced": 1,
+     "multi_row_edits": 1,
+     "raced_trials": [
+      {
+       "trial": 14,
+       "row_before": 926723,
+       "judged_row": 926727,
+       "previous_trial": 13,
+       "previous_trial_arm": "PSR",
+       "previous_row_before": 926723,
+       "previous_judged_row": 926723,
+       "edited_ids": [
+        926723,
+        926727
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": true
+      }
+     ]
+    },
+    "P": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    }
+   },
+   "e8_main_report_ec_kitchen.json": {
+    "PU": {
+     "trials": 30,
+     "raced": 1,
+     "multi_row_edits": 1,
+     "raced_trials": [
+      {
+       "trial": 12,
+       "row_before": 928142,
+       "judged_row": 928146,
+       "previous_trial": 11,
+       "previous_trial_arm": "PU",
+       "previous_row_before": 928142,
+       "previous_judged_row": 928142,
+       "edited_ids": [
+        928142,
+        928146
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 2,
+        "inject": 0
+       },
+       "own_row_edited": true
+      }
+     ]
+    },
+    "PI": {
+     "trials": 30,
+     "raced": 1,
+     "multi_row_edits": 1,
+     "raced_trials": [
+      {
+       "trial": 7,
+       "row_before": 928314,
+       "judged_row": 928319,
+       "previous_trial": 6,
+       "previous_trial_arm": "PI",
+       "previous_row_before": 928314,
+       "previous_judged_row": 928314,
+       "edited_ids": [
+        928314,
+        928319
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 2,
+        "inject": 0
+       },
+       "own_row_edited": true
+      }
+     ]
+    },
+    "PSR": {
+     "trials": 30,
+     "raced": 2,
+     "multi_row_edits": 2,
+     "raced_trials": [
+      {
+       "trial": 15,
+       "row_before": 928546,
+       "judged_row": 928550,
+       "previous_trial": 14,
+       "previous_trial_arm": "PSR",
+       "previous_row_before": 928546,
+       "previous_judged_row": 928546,
+       "edited_ids": [
+        928546,
+        928550
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": true
+      },
+      {
+       "trial": 24,
+       "row_before": 928582,
+       "judged_row": 928586,
+       "previous_trial": 23,
+       "previous_trial_arm": "PSR",
+       "previous_row_before": 928582,
+       "previous_judged_row": 928582,
+       "edited_ids": [
+        928582,
+        928586
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": true
+      }
+     ]
+    },
+    "P": {
+     "trials": 30,
+     "raced": 1,
+     "multi_row_edits": 0,
+     "raced_trials": [
+      {
+       "trial": 2,
+       "row_before": 928671,
+       "judged_row": null,
+       "previous_trial": 1,
+       "previous_trial_arm": "P",
+       "previous_row_before": 928671,
+       "previous_judged_row": null,
+       "edited_ids": [],
+       "db_writes": 1,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 1,
+        "inject": 0
+       },
+       "own_row_edited": null,
+       "same_cover_as_previous_trial": true,
+       "no_change_to_the_recorder": true
+      }
+     ]
+    }
+   },
+   "e8_main_report_ec_porch.json": {
+    "PU": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    },
+    "PI": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    },
+    "PSR": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    },
+    "P": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    }
+   },
+   "e8_main_stress_report_porch.json": {
+    "PU": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    }
+   },
+   "e_c_auth_report_hallway.json": {
+    "P": {
+     "trials": 10,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    }
+   },
+   "e_c_auth_report_kitchen.json": {
+    "P": {
+     "trials": 10,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    }
+   },
+   "e_c_auth_report_porch.json": {
+    "P": {
+     "trials": 10,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    }
+   },
+   "e_c_clo_report_hallway.json": {
+    "P": {
+     "trials": 10,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    }
+   },
+   "e_c_clo_report_kitchen.json": {
+    "P": {
+     "trials": 10,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    }
+   },
+   "e_c_clo_report_porch.json": {
+    "P": {
+     "trials": 10,
+     "raced": 3,
+     "multi_row_edits": 0,
+     "raced_trials": [
+      {
+       "trial": 1,
+       "row_before": 695198,
+       "judged_row": null,
+       "previous_trial": 0,
+       "previous_trial_arm": "P",
+       "previous_row_before": 695198,
+       "previous_judged_row": null,
+       "edited_ids": [],
+       "db_writes": 1,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 1,
+        "inject": 0
+       },
+       "own_row_edited": null,
+       "same_cover_as_previous_trial": true,
+       "no_change_to_the_recorder": true
+      },
+      {
+       "trial": 4,
+       "row_before": 695214,
+       "judged_row": null,
+       "previous_trial": 3,
+       "previous_trial_arm": "P",
+       "previous_row_before": 695214,
+       "previous_judged_row": null,
+       "edited_ids": [],
+       "db_writes": 1,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 1,
+        "inject": 0
+       },
+       "own_row_edited": null,
+       "same_cover_as_previous_trial": true,
+       "no_change_to_the_recorder": true
+      },
+      {
+       "trial": 7,
+       "row_before": 695226,
+       "judged_row": null,
+       "previous_trial": 6,
+       "previous_trial_arm": "P",
+       "previous_row_before": 695226,
+       "previous_judged_row": null,
+       "edited_ids": [],
+       "db_writes": 1,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 1,
+        "inject": 0
+       },
+       "own_row_edited": null,
+       "same_cover_as_previous_trial": true,
+       "no_change_to_the_recorder": true
+      }
+     ]
+    }
+   },
+   "e_c_report_hallway.json": {
+    "P": {
+     "trials": 10,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    }
+   },
+   "e_c_report_kitchen.json": {
+    "P": {
+     "trials": 10,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    }
+   },
+   "e_c_report_porch.json": {
+    "P": {
+     "trials": 10,
+     "raced": 1,
+     "multi_row_edits": 0,
+     "raced_trials": [
+      {
+       "trial": 5,
+       "row_before": 136505,
+       "judged_row": null,
+       "previous_trial": 4,
+       "previous_trial_arm": "P",
+       "previous_row_before": 136505,
+       "previous_judged_row": null,
+       "edited_ids": [],
+       "db_writes": 1,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 1,
+        "inject": 0
+       },
+       "own_row_edited": null,
+       "same_cover_as_previous_trial": true,
+       "no_change_to_the_recorder": true
+      }
+     ]
+    }
+   },
+   "e_d_auth_report_hallway.json": {
+    "PU": {
+     "trials": 30,
+     "raced": 3,
+     "multi_row_edits": 3,
+     "raced_trials": [
+      {
+       "trial": 1,
+       "row_before": 578847,
+       "judged_row": 578851,
+       "previous_trial": 0,
+       "previous_trial_arm": "PU",
+       "previous_row_before": 578847,
+       "previous_judged_row": 578847,
+       "edited_ids": [
+        578847,
+        578851
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 2,
+        "inject": 0
+       },
+       "own_row_edited": true
+      },
+      {
+       "trial": 3,
+       "row_before": 578854,
+       "judged_row": 578858,
+       "previous_trial": 2,
+       "previous_trial_arm": "PU",
+       "previous_row_before": 578854,
+       "previous_judged_row": 578854,
+       "edited_ids": [
+        578854,
+        578858
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 2,
+        "inject": 0
+       },
+       "own_row_edited": true
+      },
+      {
+       "trial": 6,
+       "row_before": 578868,
+       "judged_row": 578873,
+       "previous_trial": 5,
+       "previous_trial_arm": "PU",
+       "previous_row_before": 578868,
+       "previous_judged_row": 578868,
+       "edited_ids": [
+        578868,
+        578873
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 2,
+        "inject": 0
+       },
+       "own_row_edited": true
+      }
+     ]
+    },
+    "PI": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    }
+   },
+   "e_d_auth_report_kitchen.json": {
+    "PU": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    },
+    "PI": {
+     "trials": 30,
+     "raced": 2,
+     "multi_row_edits": 2,
+     "raced_trials": [
+      {
+       "trial": 14,
+       "row_before": 579577,
+       "judged_row": 579580,
+       "previous_trial": 13,
+       "previous_trial_arm": "PI",
+       "previous_row_before": 579577,
+       "previous_judged_row": 579577,
+       "edited_ids": [
+        579577,
+        579580
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 2,
+        "inject": 0
+       },
+       "own_row_edited": true
+      },
+      {
+       "trial": 15,
+       "row_before": 579580,
+       "judged_row": 579584,
+       "previous_trial": 14,
+       "previous_trial_arm": "PI",
+       "previous_row_before": 579577,
+       "previous_judged_row": 579580,
+       "edited_ids": [
+        579580,
+        579584
+       ],
+       "db_writes": 3,
+       "operations_used": {
+        "delete": 1,
+        "reattach": 2,
+        "inject": 0
+       },
+       "own_row_edited": true
+      }
+     ]
+    }
+   },
+   "e_d_auth_report_porch.json": {
+    "PU": {
+     "trials": 30,
+     "raced": 4,
+     "multi_row_edits": 4,
+     "raced_trials": [
+      {
+       "trial": 16,
+       "row_before": 578424,
+       "judged_row": 578429,
+       "previous_trial": 15,
+       "previous_trial_arm": "PU",
+       "previous_row_before": 578424,
+       "previous_judged_row": 578424,
+       "edited_ids": [
+        578424,
+        578429
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 2,
+        "inject": 0
+       },
+       "own_row_edited": true
+      },
+      {
+       "trial": 18,
+       "row_before": 578434,
+       "judged_row": 578441,
+       "previous_trial": 17,
+       "previous_trial_arm": "PU",
+       "previous_row_before": 578434,
+       "previous_judged_row": 578434,
+       "edited_ids": [
+        578434,
+        578441
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 2,
+        "inject": 0
+       },
+       "own_row_edited": true
+      },
+      {
+       "trial": 21,
+       "row_before": 578448,
+       "judged_row": 578450,
+       "previous_trial": 20,
+       "previous_trial_arm": "PU",
+       "previous_row_before": 578448,
+       "previous_judged_row": 578448,
+       "edited_ids": [
+        578448,
+        578450
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 2,
+        "inject": 0
+       },
+       "own_row_edited": true
+      },
+      {
+       "trial": 23,
+       "row_before": 578459,
+       "judged_row": 578464,
+       "previous_trial": 22,
+       "previous_trial_arm": "PU",
+       "previous_row_before": 578459,
+       "previous_judged_row": 578459,
+       "edited_ids": [
+        578459,
+        578464
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 2,
+        "inject": 0
+       },
+       "own_row_edited": true
+      }
+     ]
+    },
+    "PI": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    }
+   },
+   "e_d_clo_report_hallway.json": {
+    "PU": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    },
+    "PI": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    }
+   },
+   "e_d_clo_report_kitchen.json": {
+    "PU": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    },
+    "PI": {
+     "trials": 30,
+     "raced": 1,
+     "multi_row_edits": 1,
+     "raced_trials": [
+      {
+       "trial": 27,
+       "row_before": 694608,
+       "judged_row": 694616,
+       "previous_trial": 26,
+       "previous_trial_arm": "PI",
+       "previous_row_before": 694608,
+       "previous_judged_row": 694608,
+       "edited_ids": [
+        694608,
+        694616
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 2,
+        "inject": 0
+       },
+       "own_row_edited": true
+      }
+     ]
+    }
+   },
+   "e_d_clo_report_porch.json": {
+    "PU": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    },
+    "PI": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    }
+   },
+   "e_d_report_hallway.json": {
+    "PU": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    },
+    "PI": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    }
+   },
+   "e_d_report_kitchen.json": {
+    "PU": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    },
+    "PI": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    }
+   },
+   "e_d_report_porch.json": {
+    "PU": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    },
+    "PI": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    }
+   },
+   "e_d_whr_report_hallway.json": {
+    "PU": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    },
+    "PI": {
+     "trials": 30,
+     "raced": 2,
+     "multi_row_edits": 2,
+     "raced_trials": [
+      {
+       "trial": 2,
+       "row_before": 748089,
+       "judged_row": 748091,
+       "previous_trial": 1,
+       "previous_trial_arm": "PI",
+       "previous_row_before": 748089,
+       "previous_judged_row": 748089,
+       "edited_ids": [
+        748089,
+        748091
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 2,
+        "inject": 0
+       },
+       "own_row_edited": true
+      },
+      {
+       "trial": 4,
+       "row_before": 748095,
+       "judged_row": 748101,
+       "previous_trial": 3,
+       "previous_trial_arm": "PI",
+       "previous_row_before": 748095,
+       "previous_judged_row": 748095,
+       "edited_ids": [
+        748095,
+        748101
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 2,
+        "inject": 0
+       },
+       "own_row_edited": true
+      }
+     ]
+    }
+   },
+   "e_d_whr_report_kitchen.json": {
+    "PU": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    },
+    "PI": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    }
+   },
+   "e_d_whr_report_porch.json": {
+    "PU": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    },
+    "PI": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    }
+   },
+   "e_dprobe_report_hallway.json": {
+    "PU": {
+     "trials": 1,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    }
+   },
+   "e_dprobe_report_kitchen.json": {
+    "PU": {
+     "trials": 1,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    }
+   },
+   "e_dprobe_report_porch.json": {
+    "PU": {
+     "trials": 1,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    }
+   },
+   "e_ps_auth_report_hallway.json": {
+    "PS": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    }
+   },
+   "e_ps_auth_report_kitchen.json": {
+    "PS": {
+     "trials": 30,
+     "raced": 2,
+     "multi_row_edits": 2,
+     "raced_trials": [
+      {
+       "trial": 24,
+       "row_before": 685535,
+       "judged_row": 685539,
+       "previous_trial": 23,
+       "previous_trial_arm": "PS",
+       "previous_row_before": 685535,
+       "previous_judged_row": 685535,
+       "edited_ids": [
+        685535,
+        685539
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": false
+      },
+      {
+       "trial": 28,
+       "row_before": 685555,
+       "judged_row": 685557,
+       "previous_trial": 27,
+       "previous_trial_arm": "PS",
+       "previous_row_before": 685555,
+       "previous_judged_row": 685555,
+       "edited_ids": [
+        685555,
+        685557
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": false
+      }
+     ]
+    }
+   },
+   "e_ps_auth_report_porch.json": {
+    "PS": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    }
+   },
+   "e_ps_clo_report_hallway.json": {
+    "PS": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    }
+   },
+   "e_ps_clo_report_kitchen.json": {
+    "PS": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    }
+   },
+   "e_ps_clo_report_porch.json": {
+    "PS": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    }
+   },
+   "e_ps_whr_report_hallway.json": {
+    "PS": {
+     "trials": 30,
+     "raced": 8,
+     "multi_row_edits": 8,
+     "raced_trials": [
+      {
+       "trial": 2,
+       "row_before": 746795,
+       "judged_row": 746799,
+       "previous_trial": 1,
+       "previous_trial_arm": "PS",
+       "previous_row_before": 746795,
+       "previous_judged_row": 746795,
+       "edited_ids": [
+        746795,
+        746799
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": false
+      },
+      {
+       "trial": 3,
+       "row_before": 746799,
+       "judged_row": 746804,
+       "previous_trial": 2,
+       "previous_trial_arm": "PS",
+       "previous_row_before": 746795,
+       "previous_judged_row": 746799,
+       "edited_ids": [
+        746799,
+        746804
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": false
+      },
+      {
+       "trial": 8,
+       "row_before": 746821,
+       "judged_row": 746823,
+       "previous_trial": 7,
+       "previous_trial_arm": "PS",
+       "previous_row_before": 746821,
+       "previous_judged_row": 746821,
+       "edited_ids": [
+        746821,
+        746823
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": false
+      },
+      {
+       "trial": 10,
+       "row_before": 746829,
+       "judged_row": 746831,
+       "previous_trial": 9,
+       "previous_trial_arm": "PS",
+       "previous_row_before": 746829,
+       "previous_judged_row": 746829,
+       "edited_ids": [
+        746829,
+        746831
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": false
+      },
+      {
+       "trial": 12,
+       "row_before": 746839,
+       "judged_row": 746843,
+       "previous_trial": 11,
+       "previous_trial_arm": "PS",
+       "previous_row_before": 746839,
+       "previous_judged_row": 746839,
+       "edited_ids": [
+        746839,
+        746843
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": false
+      },
+      {
+       "trial": 17,
+       "row_before": 746861,
+       "judged_row": 746866,
+       "previous_trial": 16,
+       "previous_trial_arm": "PS",
+       "previous_row_before": 746861,
+       "previous_judged_row": 746861,
+       "edited_ids": [
+        746861,
+        746866
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": false
+      },
+      {
+       "trial": 19,
+       "row_before": 746871,
+       "judged_row": 746878,
+       "previous_trial": 18,
+       "previous_trial_arm": "PS",
+       "previous_row_before": 746871,
+       "previous_judged_row": 746871,
+       "edited_ids": [
+        746871,
+        746878
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": false
+      },
+      {
+       "trial": 29,
+       "row_before": 746915,
+       "judged_row": 746919,
+       "previous_trial": 28,
+       "previous_trial_arm": "PS",
+       "previous_row_before": 746915,
+       "previous_judged_row": 746915,
+       "edited_ids": [
+        746915,
+        746919
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": false
+      }
+     ]
+    }
+   },
+   "e_ps_whr_report_kitchen.json": {
+    "PS": {
+     "trials": 30,
+     "raced": 1,
+     "multi_row_edits": 1,
+     "raced_trials": [
+      {
+       "trial": 23,
+       "row_before": 747173,
+       "judged_row": 747177,
+       "previous_trial": 22,
+       "previous_trial_arm": "PS",
+       "previous_row_before": 747173,
+       "previous_judged_row": 747173,
+       "edited_ids": [
+        747173,
+        747177
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": false
+      }
+     ]
+    }
+   },
+   "e_ps_whr_report_porch.json": {
+    "PS": {
+     "trials": 30,
+     "raced": 4,
+     "multi_row_edits": 3,
+     "raced_trials": [
+      {
+       "trial": 2,
+       "row_before": 746526,
+       "judged_row": 746528,
+       "previous_trial": 1,
+       "previous_trial_arm": "PS",
+       "previous_row_before": 746526,
+       "previous_judged_row": 746526,
+       "edited_ids": [
+        746526,
+        746528
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": false
+      },
+      {
+       "trial": 4,
+       "row_before": 746532,
+       "judged_row": 746538,
+       "previous_trial": 3,
+       "previous_trial_arm": "PS",
+       "previous_row_before": 746532,
+       "previous_judged_row": 746532,
+       "edited_ids": [
+        746532,
+        746538
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": false
+      },
+      {
+       "trial": 8,
+       "row_before": 746550,
+       "judged_row": 746554,
+       "previous_trial": 7,
+       "previous_trial_arm": "PS",
+       "previous_row_before": 746550,
+       "previous_judged_row": 746550,
+       "edited_ids": [
+        746550,
+        746554
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": false
+      },
+      {
+       "trial": 12,
+       "row_before": 746566,
+       "judged_row": 746566,
+       "previous_trial": 11,
+       "previous_trial_arm": "PS",
+       "previous_row_before": 746566,
+       "previous_judged_row": 746566,
+       "edited_ids": [
+        746566
+       ],
+       "db_writes": 1,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": false
+      }
+     ]
+    }
+   },
+   "e_psr_clo_report_hallway.json": {
+    "PSR": {
+     "trials": 30,
+     "raced": 1,
+     "multi_row_edits": 1,
+     "raced_trials": [
+      {
+       "trial": 2,
+       "row_before": 702424,
+       "judged_row": 702429,
+       "previous_trial": 1,
+       "previous_trial_arm": "PSR",
+       "previous_row_before": 702424,
+       "previous_judged_row": 702424,
+       "edited_ids": [
+        702424,
+        702429
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": true
+      }
+     ]
+    }
+   },
+   "e_psr_clo_report_kitchen.json": {
+    "PSR": {
+     "trials": 30,
+     "raced": 2,
+     "multi_row_edits": 2,
+     "raced_trials": [
+      {
+       "trial": 20,
+       "row_before": 702798,
+       "judged_row": 702804,
+       "previous_trial": 19,
+       "previous_trial_arm": "PSR",
+       "previous_row_before": 702798,
+       "previous_judged_row": 702798,
+       "edited_ids": [
+        702798,
+        702804
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": true
+      },
+      {
+       "trial": 29,
+       "row_before": 702834,
+       "judged_row": 702840,
+       "previous_trial": 28,
+       "previous_trial_arm": "PSR",
+       "previous_row_before": 702834,
+       "previous_judged_row": 702834,
+       "edited_ids": [
+        702834,
+        702840
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": true
+      }
+     ]
+    }
+   },
+   "e_psr_clo_report_porch.json": {
+    "PSR": {
+     "trials": 30,
+     "raced": 8,
+     "multi_row_edits": 8,
+     "raced_trials": [
+      {
+       "trial": 1,
+       "row_before": 702103,
+       "judged_row": 702114,
+       "previous_trial": 0,
+       "previous_trial_arm": "PSR",
+       "previous_row_before": 702103,
+       "previous_judged_row": 702103,
+       "edited_ids": [
+        702103,
+        702114
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": true
+      },
+      {
+       "trial": 3,
+       "row_before": 702117,
+       "judged_row": 702121,
+       "previous_trial": 2,
+       "previous_trial_arm": "PSR",
+       "previous_row_before": 702117,
+       "previous_judged_row": 702117,
+       "edited_ids": [
+        702117,
+        702121
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": true
+      },
+      {
+       "trial": 12,
+       "row_before": 702161,
+       "judged_row": 702163,
+       "previous_trial": 11,
+       "previous_trial_arm": "PSR",
+       "previous_row_before": 702161,
+       "previous_judged_row": 702161,
+       "edited_ids": [
+        702161,
+        702163
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": true
+      },
+      {
+       "trial": 13,
+       "row_before": 702163,
+       "judged_row": 702168,
+       "previous_trial": 12,
+       "previous_trial_arm": "PSR",
+       "previous_row_before": 702161,
+       "previous_judged_row": 702163,
+       "edited_ids": [
+        702163,
+        702168
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": true
+      },
+      {
+       "trial": 18,
+       "row_before": 702185,
+       "judged_row": 702188,
+       "previous_trial": 17,
+       "previous_trial_arm": "PSR",
+       "previous_row_before": 702185,
+       "previous_judged_row": 702185,
+       "edited_ids": [
+        702185,
+        702188
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": true
+      },
+      {
+       "trial": 20,
+       "row_before": 702195,
+       "judged_row": 702198,
+       "previous_trial": 19,
+       "previous_trial_arm": "PSR",
+       "previous_row_before": 702195,
+       "previous_judged_row": 702195,
+       "edited_ids": [
+        702195,
+        702198
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": true
+      },
+      {
+       "trial": 22,
+       "row_before": 702206,
+       "judged_row": 702211,
+       "previous_trial": 21,
+       "previous_trial_arm": "PSR",
+       "previous_row_before": 702206,
+       "previous_judged_row": 702206,
+       "edited_ids": [
+        702206,
+        702211
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": true
+      },
+      {
+       "trial": 23,
+       "row_before": 702211,
+       "judged_row": 702216,
+       "previous_trial": 22,
+       "previous_trial_arm": "PSR",
+       "previous_row_before": 702206,
+       "previous_judged_row": 702211,
+       "edited_ids": [
+        702211,
+        702216
+       ],
+       "db_writes": 2,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 2
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": true
+      }
+     ]
+    }
+   },
+   "e_psr_whr_report_hallway.json": {
+    "PSR": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    }
+   },
+   "e_psr_whr_report_kitchen.json": {
+    "PSR": {
+     "trials": 30,
+     "raced": 1,
+     "multi_row_edits": 1,
+     "raced_trials": [
+      {
+       "trial": 5,
+       "row_before": 749500,
+       "judged_row": 749500,
+       "previous_trial": 4,
+       "previous_trial_arm": "PSR",
+       "previous_row_before": 749500,
+       "previous_judged_row": 749500,
+       "edited_ids": [
+        749500
+       ],
+       "db_writes": 1,
+       "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+       },
+       "own_row_edited": true,
+       "same_value_as_previous_trial": true
+      }
+     ]
+    }
+   },
+   "e_psr_whr_report_porch.json": {
+    "PSR": {
+     "trials": 30,
+     "raced": 0,
+     "multi_row_edits": 0,
+     "raced_trials": []
+    }
+   }
+  },
+  "total_by_arm": {
+   "INS-L": {
+    "raced": 1,
+    "trials": 120
+   },
+   "INS-M": {
+    "raced": 6,
+    "trials": 120
+   },
+   "OUTAGE": {
+    "raced": 2,
+    "trials": 30
+   },
+   "P": {
+    "raced": 5,
+    "trials": 180
+   },
+   "PI": {
+    "raced": 13,
+    "trials": 630
+   },
+   "PS": {
+    "raced": 15,
+    "trials": 270
+   },
+   "PSR": {
+    "raced": 24,
+    "trials": 450
+   },
+   "PU": {
+    "raced": 15,
+    "trials": 663
+   },
+   "STALL": {
+    "raced": 4,
+    "trials": 30
+   }
+  },
+  "rule": "raced = the captured row (row_before) is the previous valid trial's row_before or judged row, same report file and arm"
+ },
+ "consequences_in_other_arms": {
+  "PS, PSR, INS-M (swap)": "own row and the previous row both written with the swap value; PSR/INS-M write the same member id (a same-value rewrite); PS writes fresh random bytes, so the previous row's value changes",
+  "PU, PI, INS-L (laundering, two phases)": "the context query matches no row and the event query no event (the previous trial already re-pointed its row and deleted its events), so the raced trial deletes 0 events, leaves its own author's call_service event in place, and re-points its own row and the previous row to its cover",
+  "P (control, edits the captured row only)": [
+   {
+    "file": "e8_main_report_ec_kitchen.json",
+    "trial": 2,
+    "row_before": 928671,
+    "judged_row": null,
+    "previous_trial": 1,
+    "previous_trial_arm": "P",
+    "previous_row_before": 928671,
+    "previous_judged_row": null,
+    "edited_ids": [],
+    "db_writes": 1,
+    "operations_used": {
+     "delete": 0,
+     "reattach": 1,
+     "inject": 0
+    },
+    "own_row_edited": null,
+    "same_cover_as_previous_trial": true,
+    "no_change_to_the_recorder": true
+   },
+   {
+    "file": "e_c_clo_report_porch.json",
+    "trial": 1,
+    "row_before": 695198,
+    "judged_row": null,
+    "previous_trial": 0,
+    "previous_trial_arm": "P",
+    "previous_row_before": 695198,
+    "previous_judged_row": null,
+    "edited_ids": [],
+    "db_writes": 1,
+    "operations_used": {
+     "delete": 0,
+     "reattach": 1,
+     "inject": 0
+    },
+    "own_row_edited": null,
+    "same_cover_as_previous_trial": true,
+    "no_change_to_the_recorder": true
+   },
+   {
+    "file": "e_c_clo_report_porch.json",
+    "trial": 4,
+    "row_before": 695214,
+    "judged_row": null,
+    "previous_trial": 3,
+    "previous_trial_arm": "P",
+    "previous_row_before": 695214,
+    "previous_judged_row": null,
+    "edited_ids": [],
+    "db_writes": 1,
+    "operations_used": {
+     "delete": 0,
+     "reattach": 1,
+     "inject": 0
+    },
+    "own_row_edited": null,
+    "same_cover_as_previous_trial": true,
+    "no_change_to_the_recorder": true
+   },
+   {
+    "file": "e_c_clo_report_porch.json",
+    "trial": 7,
+    "row_before": 695226,
+    "judged_row": null,
+    "previous_trial": 6,
+    "previous_trial_arm": "P",
+    "previous_row_before": 695226,
+    "previous_judged_row": null,
+    "edited_ids": [],
+    "db_writes": 1,
+    "operations_used": {
+     "delete": 0,
+     "reattach": 1,
+     "inject": 0
+    },
+    "own_row_edited": null,
+    "same_cover_as_previous_trial": true,
+    "no_change_to_the_recorder": true
+   },
+   {
+    "file": "e_c_report_porch.json",
+    "trial": 5,
+    "row_before": 136505,
+    "judged_row": null,
+    "previous_trial": 4,
+    "previous_trial_arm": "P",
+    "previous_row_before": 136505,
+    "previous_judged_row": null,
+    "edited_ids": [],
+    "db_writes": 1,
+    "operations_used": {
+     "delete": 0,
+     "reattach": 1,
+     "inject": 0
+    },
+    "own_row_edited": null,
+    "same_cover_as_previous_trial": true,
+    "no_change_to_the_recorder": true
+   }
+  ],
+  "P reading": "a raced P trial edits only the captured row, i.e. the previous trial's row, never its own; _find_genuine_automation_run() without a bound picks the most recent run, the same cover as the previous trial, so the UPDATE writes the values already there and the DELETE finds nothing: the trial changed nothing in the recorder, and its detection is the previous trial's segment scored again",
+  "P scoring (detection files)": {
+   "e_c_write_time.json": {
+    "run": "row scheme, unauthenticated anchor (2026-09-09)",
+    "trials": 30,
+    "detected_second": 30,
+    "distinct_scored_segments": 29,
+    "segments_scored_twice": [
+     {
+      "room": "porch",
+      "segment": "1788918204",
+      "trials": 2
+     }
+    ]
+   },
+   "e_c_auth_other_principal_real.json": {
+    "run": "row scheme, authenticated anchor",
+    "trials": 30,
+    "detected_second": 30,
+    "distinct_scored_segments": 30,
+    "segments_scored_twice": []
+   },
+   "e_c_clo_other_principal_real.json": {
+    "run": "closure scheme, authenticated anchor",
+    "trials": 30,
+    "detected_second": 30,
+    "distinct_scored_segments": 27,
+    "segments_scored_twice": [
+     {
+      "room": "porch",
+      "segment": "1790971027",
+      "trials": 2
+     },
+     {
+      "room": "porch",
+      "segment": "1790971045",
+      "trials": 2
+     },
+     {
+      "room": "porch",
+      "segment": "1790971063",
+      "trials": 2
+     }
+    ]
+   },
+   "e8_main_stable_verify_main.json": {
+    "run": "E8 main window, stable monitor",
+    "trials": 90,
+    "detected_second": 90,
+    "distinct_scored_segments": 89,
+    "segments_scored_twice": [
+     {
+      "segment": "1791529030",
+      "trials": 2
+     }
+    ]
+   },
+   "e8_main_closure_verify_main.json": {
+    "run": "E8 main window, closure monitor",
+    "trials": 90,
+    "detected_second": 90,
+    "distinct_scored_segments": 89,
+    "segments_scored_twice": [
+     {
+      "segment": "1791529030",
+      "trials": 2
+     }
+    ]
+   }
+  },
+  "STALL, OUTAGE (E7, edit inside the trial)": [
+   {
+    "file": "e7_main_report_hallway.json",
+    "arm": "STALL",
+    "trial": 2,
+    "row_before": 900649,
+    "judged_row": 900667,
+    "previous_trial": 1,
+    "previous_trial_arm": "STALL",
+    "previous_row_before": 900649,
+    "previous_judged_row": 900649,
+    "edited_ids": [
+     900637,
+     900638,
+     900641,
+     900649,
+     900667
+    ],
+    "db_writes": 8,
+    "operations_used": {
+     "delete": 3,
+     "reattach": 5,
+     "inject": 0
+    },
+    "own_row_edited": true,
+    "captured_context_is_previous_cover": true,
+    "events_deleted": 3
+   },
+   {
+    "file": "e7_main_report_hallway.json",
+    "arm": "OUTAGE",
+    "trial": 0,
+    "row_before": 900775,
+    "judged_row": 900791,
+    "previous_trial": 9,
+    "previous_trial_arm": "STALL",
+    "previous_row_before": 900775,
+    "previous_judged_row": 900775,
+    "edited_ids": [
+     900766,
+     900772,
+     900775,
+     900791
+    ],
+    "db_writes": 7,
+    "operations_used": {
+     "delete": 3,
+     "reattach": 4,
+     "inject": 0
+    },
+    "own_row_edited": true,
+    "captured_context_is_previous_cover": true,
+    "events_deleted": 3
+   },
+   {
+    "file": "e7_main_report_kitchen.json",
+    "arm": "STALL",
+    "trial": 2,
+    "row_before": 911886,
+    "judged_row": 911903,
+    "previous_trial": 1,
+    "previous_trial_arm": "STALL",
+    "previous_row_before": 911886,
+    "previous_judged_row": 911886,
+    "edited_ids": [
+     911857,
+     911858,
+     911861,
+     911870,
+     911886,
+     911903
+    ],
+    "db_writes": 9,
+    "operations_used": {
+     "delete": 3,
+     "reattach": 6,
+     "inject": 0
+    },
+    "own_row_edited": true,
+    "captured_context_is_previous_cover": true,
+    "events_deleted": 3
+   },
+   {
+    "file": "e7_main_report_kitchen.json",
+    "arm": "STALL",
+    "trial": 9,
+    "row_before": 911991,
+    "judged_row": 912011,
+    "previous_trial": 8,
+    "previous_trial_arm": "STALL",
+    "previous_row_before": 911991,
+    "previous_judged_row": 911991,
+    "edited_ids": [
+     911973,
+     911974,
+     911977,
+     911979,
+     911991,
+     912011
+    ],
+    "db_writes": 9,
+    "operations_used": {
+     "delete": 3,
+     "reattach": 6,
+     "inject": 0
+    },
+    "own_row_edited": true,
+    "captured_context_is_previous_cover": true,
+    "events_deleted": 3
+   },
+   {
+    "file": "e7_main_report_kitchen.json",
+    "arm": "OUTAGE",
+    "trial": 0,
+    "row_before": 912011,
+    "judged_row": 912034,
+    "previous_trial": 9,
+    "previous_trial_arm": "STALL",
+    "previous_row_before": 911991,
+    "previous_judged_row": 912011,
+    "edited_ids": [
+     911973,
+     911974,
+     911977,
+     911979,
+     911991,
+     912009,
+     912010,
+     912011,
+     912017,
+     912034
+    ],
+    "db_writes": 13,
+    "operations_used": {
+     "delete": 3,
+     "reattach": 10,
+     "inject": 0
+    },
+    "own_row_edited": true,
+    "captured_context_is_previous_cover": true,
+    "events_deleted": 3
+   },
+   {
+    "file": "e7_main_report_porch.json",
+    "arm": "STALL",
+    "trial": 9,
+    "row_before": 889504,
+    "judged_row": 889516,
+    "previous_trial": 8,
+    "previous_trial_arm": "STALL",
+    "previous_row_before": 889504,
+    "previous_judged_row": 889504,
+    "edited_ids": [
+     889401,
+     889402,
+     889405,
+     889411,
+     889425,
+     889439,
+     889459,
+     889474,
+     889490,
+     889504,
+     889516
+    ],
+    "db_writes": 14,
+    "operations_used": {
+     "delete": 3,
+     "reattach": 11,
+     "inject": 0
+    },
+    "own_row_edited": true,
+    "captured_context_is_previous_cover": true,
+    "events_deleted": 3
+   }
+  ],
+  "STALL/OUTAGE reading": "the previous trial's row had already been laundered, so the captured context is the previous trial's COVER: the trial deleted that genuine automation run's events ([3] events) and re-pointed every state row carrying that context (4 to 11 rows) to a new cover"
+ },
+ "printed_post_commit_control": {
+  "file": "sections/07_sp_eval.tex",
+  "text": [
+   "After the late-row test neither monitor detected a strategy at one-second granularity, while the post-commit control, an own-actuation laundering, was detected in 30 of 30 per run, so the detector was live."
+  ]
+ },
+ "inputs_sha256": {
+  "testbed/real/ha-config/custom_components/homeprov_ec/__init__.py": "266d27e298153ede1cc002d715461ecf96fbc211e96e76ed1d1453e762687918",
+  "testbed/real/ha-config/custom_components/homeprov_e7/__init__.py": "26d1d472e8331909cee0f69a16c4eee96ddaf383954d5bd79eba914fa847e707",
+  "exp/out/e_psr_clo_config.json": "1ecd2df3aefca71a8246db98f7d3be5af907c94d681e15d3e69a12fbc761fa6a",
+  "exp/out/e_psr_clo_detection.json": "220d8e24248c2ca9fe009ebc17582194c4a6904cf9e8f219c39b3fe9270d4d71",
+  "exp/out/e_psr_clo_display_check.json": "46301f1295ba4afb68bfe592273679e075198750fe70d74704f50a5891dae18d",
+  "exp/out/dz_report_hallway.json": "a02656cac433c61e4f60428a7b5681314611d2e5fa5fce2b5e3c9b99161d6a57",
+  "exp/out/dz_report_kitchen.json": "d883733b51b8fd9212254316d1bcb952d17e86f0c5d6d74d510c24640a859923",
+  "exp/out/dz_report_porch.json": "b38a5fa5eaffb0ad949dc9fe7b757286c190dec3060e451992cc6d7e4f53021a",
+  "exp/out/e1_psr_clo_report_hallway.json": "a9816ccd5d20d24ad3431af821e607b1ec211e76727a3a608eca199edab4d91e",
+  "exp/out/e1_psr_clo_report_kitchen.json": "c927125259fcc64d6b503e84a0f859b4d66276b7fbe781344b0889cb9bfd66f6",
+  "exp/out/e1_psr_clo_report_porch.json": "99fb145bf2adc4439b5c236174a1859253f941c4d33f1bc5848440fe829d16e7",
+  "exp/out/e3_g0_clo_report_hallway.json": "4c3122951da80c5691162ccddaf001c6db4d5ad7b2f675965608bbab4924916f",
+  "exp/out/e3_g0_clo_report_kitchen.json": "0af1640bdb2615fe7509d607a5eb962b75672bd6c0c28da8ee89d5f460d6459b",
+  "exp/out/e3_g0_clo_report_porch.json": "2fbd606ff90e28b3ca6084dbc87e5e600b0c7f9e795277170ebd7e5f264de035",
+  "exp/out/e3_g2_clo_report_hallway.json": "25d5f74815b7ff45c9cfe3c8c8f89fb155f91ff1b7a3e403508ee9628499c03a",
+  "exp/out/e3_g2_clo_report_kitchen.json": "22e3b8600dc41364e7e9f819762ffe82673b37d6421d5168f54746f596997733",
+  "exp/out/e3_g2_clo_report_porch.json": "4928dbb62fcbf93d7fac443907ea29b8b367f35b799734a7ca7f57f524d25496",
+  "exp/out/e5_psr_lnk_report_hallway.json": "dc9493cf635c13074abbf382d764d5b30e27bff55a193ce89fa57d3fd07ba25f",
+  "exp/out/e5_psr_lnk_report_kitchen.json": "16835e096251bd30df51110739010ac0da1292f2712994200dcf9c3a3c5bc563",
+  "exp/out/e5_psr_lnk_report_porch.json": "cf68bed77c1b1b3b5a655fd3f61b019bd49e46e15724396d088ed2c5a353bc6e",
+  "exp/out/e7_main_report_hallway.json": "c42466b9f673b7660073ab3a5baf4a6a8cfaba6f58b1197bedb48d30668061d8",
+  "exp/out/e7_main_report_kitchen.json": "3de61958aa445caf93f306f260dd1b4b854269a329fb0f5e39ad704937268227",
+  "exp/out/e7_main_report_porch.json": "4ad367918dabc029dc42478e0ff2efe96f805751aa4a180de4c55df6c2707815",
+  "exp/out/e8_main_report_e7_hallway.json": "74d951f2fe1d1f03d79ac3f8e6043e21471f2b0a6e27fd0dc51a9cbd89ed45b5",
+  "exp/out/e8_main_report_e7_kitchen.json": "18bbc6a197d41be00d3b70fd2e429fac7541424d0e815d64f24ef00a18fcde53",
+  "exp/out/e8_main_report_e7_porch.json": "92af675d6e7c843e69467416271c7c9128ab6b76f9ee1b0bf317cec3f5c61667",
+  "exp/out/e8_main_report_ec_hallway.json": "2c6a7ef2ade4a2d28de91834d56b271aaa924c1a1db2ed3a4355a3f73ea0b7d8",
+  "exp/out/e8_main_report_ec_kitchen.json": "4d86786c88a091926886c2b999d6c91121a14a8d59dc751fa86afeb21a94b43a",
+  "exp/out/e8_main_report_ec_porch.json": "c82f1ae85aaf7d183578616bcb07392f7a68a78804a1463d26dce1b1fcac29a3",
+  "exp/out/e8_main_stress_report_porch.json": "a6949dc06fd7ca63ec3c52669b2900e9f67dbcb7aa35670612d2f9877c78ed35",
+  "exp/out/e_c_auth_report_hallway.json": "024ea318b9fb2fb9e3e5a6eb60a3a010c20125b323d24537c26c6aac4c4783d0",
+  "exp/out/e_c_auth_report_kitchen.json": "f48459a14ce4ad7b31621f6216c193988c33b22d2d6c2118aac06994675042e6",
+  "exp/out/e_c_auth_report_porch.json": "03f9810d7b580b13f5283ae2d3771e3c13e1fb9e6f8a85193b54d15081db1419",
+  "exp/out/e_c_clo_report_hallway.json": "8c0cf4d13b1b30e89ada6d799ada7a470e68473686dee749a468abb0e0695504",
+  "exp/out/e_c_clo_report_kitchen.json": "ae36b9c3821dd7d201a0590394afcc133447754143cca888a4ce58c8ca81dd97",
+  "exp/out/e_c_clo_report_porch.json": "897512dfea20eb9ac3402d7f90da5e6cf080fcea111ec8d23ef99ff8267053fe",
+  "exp/out/e_c_report_hallway.json": "2dfe0a70e637349c392b0ec88918e015f7522cc69fb2d427acec01ec4bbda2f7",
+  "exp/out/e_c_report_kitchen.json": "a9c4646d40ebdad2c150562f90e8ffe1244f23c264d173b56d7d0009b7a28631",
+  "exp/out/e_c_report_porch.json": "5a52ec00cca51e6687aa29645f543c2b1d769ef7c224987fc9e7a3a80f6b8608",
+  "exp/out/e_d_auth_report_hallway.json": "6a762f4a0baa27d6b3823d5520077049ac6ce40246549856ebc80313cc129669",
+  "exp/out/e_d_auth_report_kitchen.json": "c1e1270788dbfa72368f6de0df425fc265c4ce29c54a1bdb95d7bbdb08a2780c",
+  "exp/out/e_d_auth_report_porch.json": "f7579fad387b12c5d208f18491b2eb22c0dbb5259bff579590406a5747fd08f1",
+  "exp/out/e_d_clo_report_hallway.json": "4fe0911401bf0406ccde5194a466022cf6ad508dd767faea60e9ba367db42474",
+  "exp/out/e_d_clo_report_kitchen.json": "62c65355c61d5b8e9c8156987fca1cdb5d0e515360acbf3feff317b19675d77e",
+  "exp/out/e_d_clo_report_porch.json": "01a7f937c55feff9507a20384e801a51c7abbd5d271d80c1e3c0e139d502138c",
+  "exp/out/e_d_report_hallway.json": "a06263c1eb1afa813ee3b83202084787ed5316e738993585566169b83b5b80c2",
+  "exp/out/e_d_report_kitchen.json": "9be7bcfc9cde99ec2fd02676cb7e83b7515a478b220d589083cfb714b15d2796",
+  "exp/out/e_d_report_porch.json": "8f5ea0584a04cd9a844c4b7c3fbf67ea611726c433806f90fc0c94682a3bfab4",
+  "exp/out/e_d_whr_report_hallway.json": "92ff1967fdb78b494cddb142dc85975afcecae4ee2474a966d257497c15b3f6b",
+  "exp/out/e_d_whr_report_kitchen.json": "44d4708a9122d2b47aacea3a67d9e1bd58c5d5f32adcd1a8fdd75dd82a94c26c",
+  "exp/out/e_d_whr_report_porch.json": "070c827304e8f33c9321d7a8610b4f5b705cad773566a4d9487ed7a3b947af64",
+  "exp/out/e_dprobe_report_hallway.json": "0c17ad068c911f651d95b1f5db3e4746f8b3d89902a57e86c37302567e6961d9",
+  "exp/out/e_dprobe_report_kitchen.json": "328003f0343ff44c8e2401dcf11c101ec33df1dfca98978ade9854eb69d49b88",
+  "exp/out/e_dprobe_report_porch.json": "76abb8fb874836918a9e159f0abd2979335912f0934ba72e58417b9f76c99e61",
+  "exp/out/e_ps_auth_report_hallway.json": "bcbf6819cc7a90475f4eb6c6308592af7820165137ca179614b04585d35a8b1e",
+  "exp/out/e_ps_auth_report_kitchen.json": "1d2b1a65ea80b824932dc4d7376f01f627408a412e778cf7e60bcd52a6c7b6c3",
+  "exp/out/e_ps_auth_report_porch.json": "ff865bb66cb23127dc48652dd2a4ae9dce3e9104819adc327ec971577ecaec84",
+  "exp/out/e_ps_clo_report_hallway.json": "f01bc62188acb41ed7ac2f87ef8b2eb63ab557633ef093041d42881d4db04054",
+  "exp/out/e_ps_clo_report_kitchen.json": "6c45acba3adbd5c4533200d9f07d793389189d514dd92c1f1333b498dc534938",
+  "exp/out/e_ps_clo_report_porch.json": "08904fab45fb1b40e5af81f601b90c3a8c94253cf206a83ad31800a7417384c3",
+  "exp/out/e_ps_whr_report_hallway.json": "f8129422519bc66b6b6c51b0213f9771882f85d54865f7ada2d98b02ca350d06",
+  "exp/out/e_ps_whr_report_kitchen.json": "d151629c0cb38ec8ddfc5fff9ff71bf756df9d9cd9abff8c8d6c4dd0e29a09f6",
+  "exp/out/e_ps_whr_report_porch.json": "9e2aca0a872080d030e13df52b314f0c5dd98c6acb03700d3f44b9359c6f4e5a",
+  "exp/out/e_psr_clo_report_hallway.json": "10492a7b3208d1edb9224ae84280be22a274a971ac41972497a61b8770ded495",
+  "exp/out/e_psr_clo_report_kitchen.json": "e1be3dc1f60ed091623001f5ccb2553a19bede9cb846d16b5b6cd45aa099657c",
+  "exp/out/e_psr_clo_report_porch.json": "b7c47944909b1d834a3e3152bcc62faa822c799349733f24d6b21f0b8a05525a",
+  "exp/out/e_psr_whr_report_hallway.json": "d7c1d47c8ea2ab0bebe33eb889417511e2b50870a5afbea4197937d2294629e9",
+  "exp/out/e_psr_whr_report_kitchen.json": "d359a6ebb5555f62a8dc99a867291434d0a216f78dae166bad6c6d024f5d62c0",
+  "exp/out/e_psr_whr_report_porch.json": "74b3b238c2d3280e2de58c509553694e32b683f8a10b44de9aa1ce2ee2fd46c2",
+  "exp/out/r14_verify_e7e8_report.json": "98973aded8f75927dce568273142d52a20a69ab20852d41e3acc26de0a0d3ff5",
+  "exp/out/s1_real_report.json": "e446f5821246f7a95d422b9d44d40897ac5d461dade6488731ff8c7a70983639",
+  "exp/out/s1_real_report_hallway.json": "658d57db4978d325da22732999a7c08570ac4759b7e11d15e2569347cf9bf0fa",
+  "exp/out/s1_real_report_kitchen.json": "e486069d30329f8ffa86e0c08d935090bcaab8a922ad819f9083197fcaa5a67c",
+  "exp/out/s1_real_report_porch.json": "2c4f6520d75a80e4710cb45708389aff27fb1367af2f813bfdead328d8df5a0d",
+  "exp/out/e_c_write_time.json": "377a335091ce38a86ceb0e0f814a34152030d9ad450ac5d6efbb41a0ed495a15",
+  "exp/out/e_c_auth_other_principal_real.json": "7c8bf5df715c8e1aad7408048ef7b1e8530caf409276ac31930111ecae0fa3f5",
+  "exp/out/e_c_clo_other_principal_real.json": "8239953b65a9268f516422de37bc76b6b1923375833b9209d829b9056e4bc86a",
+  "exp/out/e8_main_stable_verify_main.json": "bdb297898ae1ff9360f84b6638a169e18342b518f75561be1e5292f6a1b4b679",
+  "exp/out/e8_main_closure_verify_main.json": "94fddbc47f179429c779309852ec88a20d3cdb73adeb22bc5301939ab907f9dc",
+  "[READY] (S&P 2027) HOMEPROV - P13/sections/04_sp_atk.tex": "8d3e56fcd48579a81671c64f4847adc705e2d549941a945ab0a5d247804b3527",
+  "[READY] (S&P 2027) HOMEPROV - P13/sections/07_sp_eval.tex": "216995c77a06475ef2d23c6b2d73e637110b439dfb9707c50d0936b0d03adab5"
+ },
+ "script": "exp/sp2027/r14c_swap_spillover.py",
+ "script_sha256": "883881b7ff4b6f404d8a999fea62139d98c8353d333b5f3e74ec533971c8a268",
+ "python": "3.13.11",
+ "generated_at": "2026-10-12T14:28:53Z"
+}

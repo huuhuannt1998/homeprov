@@ -1,0 +1,32 @@
+{
+ "what": "the first 2,680 lines of the E7 closure monitor's append-only escrow file: the lines exp/stages/e7_verify.py read when it scored the run (exp/out/e7_main_closure_verify.json and exp/out/e7_main_score.json record recovery.escrow_lines = 2680)",
+ "why": "exp/out/e7_main_escrow.jsonl.gz holds the first 2,674 lines of the run's append-only escrow file and that file now holds 2,683; neither is the 2,680 lines the verifier read. This file is, so reproduce/verify_e7e8.py can recompute E7's recovery section. exp/out/e7_main_escrow.jsonl.gz is unchanged.",
+ "source": {
+  "path": "<research-dir>/HOMEPROV-P13-exp/e7/e7_main/escrow/escrow.jsonl",
+  "lines": 2683,
+  "bytes": 4904016,
+  "sha256": "fe1620ac922fff7d8aecf057ca065a54e3e68767ffd0b0bc94ab4cd961f35c73"
+ },
+ "scored": {
+  "path": "exp/out/e7_main_escrow_scored.jsonl.gz",
+  "lines": 2680,
+  "bytes_uncompressed": 4899446,
+  "sha256_uncompressed": "4b1dab9aaa3859cb829ab38cb0003df439f17c373dd7504df3d54e89f6043b00",
+  "sha256": "8dcee5dfa1c2c564634ca49ad7d7b45a4a8e7b318a86cfc7fb2045d846aa9347",
+  "gzip": "gzip.compress(..., mtime=0)",
+  "byte_prefix_of_source": true
+ },
+ "existing_copy": {
+  "path": "exp/out/e7_main_escrow.jsonl.gz",
+  "lines": 2674,
+  "sha256": "df9cda20bbb7bf6bad5fe492b8f74ca55c9c714aa59401a55ac1febfc51ea454",
+  "sha256_uncompressed": "3a149089e8cd00fef841460206a6f24cc457b2c923982e22f8df4b26b8655638",
+  "byte_prefix_of_scored": true,
+  "byte_prefix_of_source": true
+ },
+ "recovery_escrow_lines_recorded": {
+  "exp/out/e7_main_closure_verify.json": 2680,
+  "exp/out/e7_main_score.json": 2680
+ },
+ "made": "2026-10-09T21:38:22.274294+00:00"
+}

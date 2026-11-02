@@ -1,0 +1,7 @@
+# E8 (A2): Ed25519 record signatures. monitor.py imports `cryptography` only when HOMEPROV_SIGN_KEY is set; the
+# verifier (exp/stages/e7_verify.py --sign-pubkey, reproduce/verify_all.py --sign-pubkey) needs it only to check
+# signatures. Versions tested on 2026-10-08 (monitor/test_coverage.py -k E8); cryptography 46.0.3 ships an abi3 wheel
+# for Python 3.12 on linux/aarch64 (manylinux_2_34), so the python:3.12-slim image installs it without a compiler.
+cryptography==46.0.3
+cffi==2.1.1
+pycparser==3.1

@@ -1,0 +1,1835 @@
+{
+ "item": "R6/T7+T5: real-deployment runs re-verified with the typed node encoding; Row scheme offline on the swaps",
+ "inputs_mode": "snapshots",
+ "generated": "2026-10-06T23:36:13.558337+00:00",
+ "script": "exp/sp2027/r6_reverify_v2.py",
+ "script_sha256": "c0232586693839e3f9b7a3252f20085b3d777509f4e99982b7b38bcf35382d20",
+ "monitor_sha256": "c499b860f089ce47461c68f543bf302edd68255b72277ef3f6739a5754d9e5bf",
+ "v1_recount_matches_verify_all_report": {
+  "e_d_clo": true,
+  "e_c_clo": true,
+  "e_ps_clo": true,
+  "e_psr_clo": true,
+  "e_d_auth": true,
+  "e_c_auth": true,
+  "e_ps_auth": true,
+  "e_d_whr": true,
+  "e_ps_whr": true,
+  "e_psr_whr": true
+ },
+ "not_covered": {
+  "e_c_write_time": "unauthenticated run; verifier snapshot not in the snapshot set",
+  "e_d_other_principal_real": "unauthenticated run; verifier snapshot not in the snapshot set"
+ },
+ "runs": {
+  "e_d_clo": {
+   "run": "e_d_clo",
+   "scheme": "closure",
+   "chain_encoding": [
+    "v1"
+   ],
+   "window": [
+    1790968169.0,
+    1790970350.0,
+    1790970444.5623932
+   ],
+   "segments_in_window": {
+    "second": 744,
+    "minute": 38
+   },
+   "reconstruction_status": {
+    "second:as_is": 563,
+    "minute:as_is": 14,
+    "second:not_reconstructed_rows_missing": 178,
+    "minute:not_reconstructed_rows_missing": 24,
+    "second:reverted": 3
+   },
+   "hour_segments_not_reconstructed": 0,
+   "per_arm": {
+    "PU": {
+     "n": 90,
+     "v1_flagged": 90,
+     "v1_attributable": 90,
+     "v1_ambiguous": 0,
+     "v2_flagged": 90,
+     "v2_attributable": 90,
+     "v2_ambiguous": 0,
+     "minute_v1_flagged": 90,
+     "minute_v2_flagged": 90,
+     "v2_basis": {
+      "carried_over_count_or_refinement": 90
+     },
+     "v1_attributable_ci": [
+      0.96,
+      1.0
+     ],
+     "v2_attributable_ci": [
+      0.96,
+      1.0
+     ]
+    },
+    "PI": {
+     "n": 90,
+     "v1_flagged": 90,
+     "v1_attributable": 89,
+     "v1_ambiguous": 1,
+     "v2_flagged": 90,
+     "v2_attributable": 89,
+     "v2_ambiguous": 1,
+     "minute_v1_flagged": 90,
+     "minute_v2_flagged": 90,
+     "v2_basis": {
+      "carried_over_count_or_refinement": 87,
+      "recomputed": 3
+     },
+     "v1_attributable_ci": [
+      0.94,
+      1.0
+     ],
+     "v2_attributable_ci": [
+      0.94,
+      1.0
+     ]
+    }
+   },
+   "trial_verdict_changes_v1_to_v2": [],
+   "edited_rows": 180,
+   "edited_rows_in_v1_collision_class": [],
+   "edited_rows_with_0x7C_in_a_context_field": [
+    {
+     "row": "s:693349",
+     "edited_by": [
+      "PU",
+      3,
+      "porch"
+     ]
+    },
+    {
+     "row": "s:693544",
+     "edited_by": [
+      "PI",
+      3,
+      "porch"
+     ]
+    },
+    {
+     "row": "s:694088",
+     "edited_by": [
+      "PI",
+      19,
+      "hallway"
+     ]
+    },
+    {
+     "row": "s:694091",
+     "edited_by": [
+      "PI",
+      20,
+      "hallway"
+     ]
+    },
+    {
+     "row": "s:694098",
+     "edited_by": [
+      "PI",
+      21,
+      "hallway"
+     ]
+    },
+    {
+     "row": "s:694349",
+     "edited_by": [
+      "PU",
+      10,
+      "kitchen"
+     ]
+    },
+    {
+     "row": "s:694359",
+     "edited_by": [
+      "PU",
+      12,
+      "kitchen"
+     ]
+    },
+    {
+     "row": "s:694371",
+     "edited_by": [
+      "PU",
+      15,
+      "kitchen"
+     ]
+    },
+    {
+     "row": "s:694590",
+     "edited_by": [
+      "PI",
+      22,
+      "kitchen"
+     ]
+    }
+   ],
+   "benign_floor_second": {
+    "v1": [
+     1,
+     560
+    ],
+    "v2": [
+     1,
+     560
+    ]
+   },
+   "floor_segments_v2_basis": {
+    "recomputed": 560
+   },
+   "row_scheme_offline": {
+    "PI": {
+     "n": 90,
+     "v1": {
+      "flagged": 90,
+      "attributable": 89,
+      "ambiguous": 1,
+      "underivable": 0,
+      "flagged_ci": [
+       0.96,
+       1.0
+      ],
+      "attributable_ci": [
+       0.94,
+       1.0
+      ]
+     },
+     "v2": {
+      "flagged": 90,
+      "attributable": 89,
+      "ambiguous": 1,
+      "underivable": 0,
+      "flagged_ci": [
+       0.96,
+       1.0
+      ],
+      "attributable_ci": [
+       0.94,
+       1.0
+      ]
+     }
+    },
+    "PU": {
+     "n": 90,
+     "v1": {
+      "flagged": 90,
+      "attributable": 90,
+      "ambiguous": 0,
+      "underivable": 0,
+      "flagged_ci": [
+       0.96,
+       1.0
+      ],
+      "attributable_ci": [
+       0.96,
+       1.0
+      ]
+     },
+     "v2": {
+      "flagged": 90,
+      "attributable": 90,
+      "ambiguous": 0,
+      "underivable": 0,
+      "flagged_ci": [
+       0.96,
+       1.0
+      ],
+      "attributable_ci": [
+       0.96,
+       1.0
+      ]
+     }
+    },
+    "benign_floor_second": {
+     "v1": [
+      1,
+      560
+     ],
+     "v2": [
+      1,
+      560
+     ]
+    }
+   }
+  },
+  "e_c_clo": {
+   "run": "e_c_clo",
+   "scheme": "closure",
+   "chain_encoding": [
+    "v1"
+   ],
+   "window": [
+    1790970526.0,
+    1790972744.0,
+    1790972837.367859
+   ],
+   "segments_in_window": {
+    "second": 922,
+    "minute": 39,
+    "hour": 1
+   },
+   "reconstruction_status": {
+    "second:as_is": 895,
+    "minute:as_is": 33,
+    "second:not_reconstructed_rows_missing": 27,
+    "minute:not_reconstructed_rows_missing": 6
+   },
+   "hour_segments_not_reconstructed": 1,
+   "per_arm": {
+    "W1": {
+     "n": 30,
+     "v1_flagged": 0,
+     "v1_attributable": 0,
+     "v1_ambiguous": 0,
+     "v2_flagged": 0,
+     "v2_attributable": 0,
+     "v2_ambiguous": 0,
+     "minute_v1_flagged": 0,
+     "minute_v2_flagged": 0,
+     "v2_basis": {
+      "recomputed": 30
+     },
+     "v1_attributable_ci": [
+      0.0,
+      0.116
+     ],
+     "v2_attributable_ci": [
+      0.0,
+      0.116
+     ]
+    },
+    "W2": {
+     "n": 30,
+     "v1_flagged": 0,
+     "v1_attributable": 0,
+     "v1_ambiguous": 0,
+     "v2_flagged": 0,
+     "v2_attributable": 0,
+     "v2_ambiguous": 0,
+     "minute_v1_flagged": 0,
+     "minute_v2_flagged": 0,
+     "v2_basis": {
+      "recomputed": 30
+     },
+     "v1_attributable_ci": [
+      0.0,
+      0.116
+     ],
+     "v2_attributable_ci": [
+      0.0,
+      0.116
+     ]
+    },
+    "W2b": {
+     "n": 30,
+     "v1_flagged": 0,
+     "v1_attributable": 0,
+     "v1_ambiguous": 0,
+     "v2_flagged": 0,
+     "v2_attributable": 0,
+     "v2_ambiguous": 0,
+     "minute_v1_flagged": 0,
+     "minute_v2_flagged": 0,
+     "v2_basis": {
+      "recomputed": 30
+     },
+     "v1_attributable_ci": [
+      0.0,
+      0.116
+     ],
+     "v2_attributable_ci": [
+      0.0,
+      0.116
+     ]
+    },
+    "W3": {
+     "n": 30,
+     "v1_flagged": 0,
+     "v1_attributable": 0,
+     "v1_ambiguous": 0,
+     "v2_flagged": 0,
+     "v2_attributable": 0,
+     "v2_ambiguous": 0,
+     "minute_v1_flagged": 7,
+     "minute_v2_flagged": 7,
+     "v2_basis": {
+      "recomputed": 30
+     },
+     "v1_attributable_ci": [
+      0.0,
+      0.116
+     ],
+     "v2_attributable_ci": [
+      0.0,
+      0.116
+     ]
+    },
+    "P": {
+     "n": 30,
+     "v1_flagged": 30,
+     "v1_attributable": 30,
+     "v1_ambiguous": 0,
+     "v2_flagged": 30,
+     "v2_attributable": 30,
+     "v2_ambiguous": 0,
+     "minute_v1_flagged": 30,
+     "minute_v2_flagged": 30,
+     "v2_basis": {
+      "carried_over_count_or_refinement": 30
+     },
+     "v1_attributable_ci": [
+      0.884,
+      1.0
+     ],
+     "v2_attributable_ci": [
+      0.884,
+      1.0
+     ]
+    }
+   },
+   "trial_verdict_changes_v1_to_v2": [],
+   "edited_rows": 27,
+   "edited_rows_in_v1_collision_class": [],
+   "edited_rows_with_0x7C_in_a_context_field": [],
+   "benign_floor_second": {
+    "v1": [
+     1,
+     714
+    ],
+    "v2": [
+     1,
+     714
+    ]
+   },
+   "floor_segments_v2_basis": {
+    "recomputed": 714
+   },
+   "row_scheme_offline": {
+    "P": {
+     "n": 30,
+     "v1": {
+      "flagged": 30,
+      "attributable": 30,
+      "ambiguous": 0,
+      "underivable": 0,
+      "flagged_ci": [
+       0.884,
+       1.0
+      ],
+      "attributable_ci": [
+       0.884,
+       1.0
+      ]
+     },
+     "v2": {
+      "flagged": 30,
+      "attributable": 30,
+      "ambiguous": 0,
+      "underivable": 0,
+      "flagged_ci": [
+       0.884,
+       1.0
+      ],
+      "attributable_ci": [
+       0.884,
+       1.0
+      ]
+     }
+    },
+    "benign_floor_second": {
+     "v1": [
+      1,
+      714
+     ],
+     "v2": [
+      1,
+      714
+     ]
+    }
+   }
+  },
+  "e_ps_clo": {
+   "run": "e_ps_clo",
+   "scheme": "closure",
+   "chain_encoding": [
+    "v1"
+   ],
+   "window": [
+    1790966773.0,
+    1790967973.0,
+    1790968086.368844
+   ],
+   "segments_in_window": {
+    "second": 402,
+    "minute": 22,
+    "hour": 1
+   },
+   "reconstruction_status": {
+    "second:as_is": 312,
+    "second:reverted": 90,
+    "minute:reverted": 14,
+    "minute:as_is": 8
+   },
+   "hour_segments_not_reconstructed": 1,
+   "per_arm": {
+    "PS": {
+     "n": 90,
+     "v1_flagged": 90,
+     "v1_attributable": 89,
+     "v1_ambiguous": 1,
+     "v2_flagged": 90,
+     "v2_attributable": 89,
+     "v2_ambiguous": 1,
+     "minute_v1_flagged": 90,
+     "minute_v2_flagged": 90,
+     "v2_basis": {
+      "recomputed": 90
+     },
+     "v1_attributable_ci": [
+      0.94,
+      1.0
+     ],
+     "v2_attributable_ci": [
+      0.94,
+      1.0
+     ]
+    }
+   },
+   "trial_verdict_changes_v1_to_v2": [],
+   "edited_rows": 90,
+   "edited_rows_in_v1_collision_class": [],
+   "edited_rows_with_0x7C_in_a_context_field": [
+    {
+     "row": "s:692388",
+     "edited_by": [
+      "PS",
+      4,
+      "porch"
+     ]
+    },
+    {
+     "row": "s:692456",
+     "edited_by": [
+      "PS",
+      19,
+      "porch"
+     ]
+    },
+    {
+     "row": "s:692654",
+     "edited_by": [
+      "PS",
+      0,
+      "hallway"
+     ]
+    },
+    {
+     "row": "s:692957",
+     "edited_by": [
+      "PS",
+      0,
+      "kitchen"
+     ]
+    },
+    {
+     "row": "s:692976",
+     "edited_by": [
+      "PS",
+      2,
+      "kitchen"
+     ]
+    },
+    {
+     "row": "s:693022",
+     "edited_by": [
+      "PS",
+      10,
+      "kitchen"
+     ]
+    },
+    {
+     "row": "s:693072",
+     "edited_by": [
+      "PS",
+      23,
+      "kitchen"
+     ]
+    }
+   ],
+   "benign_floor_second": {
+    "v1": [
+     1,
+     312
+    ],
+    "v2": [
+     1,
+     312
+    ]
+   },
+   "floor_segments_v2_basis": {
+    "recomputed": 312
+   },
+   "row_scheme_offline": {
+    "PS": {
+     "n": 90,
+     "v1": {
+      "flagged": 1,
+      "attributable": 0,
+      "ambiguous": 1,
+      "underivable": 0,
+      "flagged_ci": [
+       0.0,
+       0.06
+      ],
+      "attributable_ci": [
+       0.0,
+       0.04
+      ]
+     },
+     "v2": {
+      "flagged": 1,
+      "attributable": 0,
+      "ambiguous": 1,
+      "underivable": 0,
+      "flagged_ci": [
+       0.0,
+       0.06
+      ],
+      "attributable_ci": [
+       0.0,
+       0.04
+      ]
+     }
+    },
+    "benign_floor_second": {
+     "v1": [
+      1,
+      312
+     ],
+     "v2": [
+      1,
+      312
+     ]
+    }
+   }
+  },
+  "e_psr_clo": {
+   "run": "e_psr_clo",
+   "scheme": "closure",
+   "chain_encoding": [
+    "v1"
+   ],
+   "window": [
+    1790987124.0,
+    1790988313.0,
+    1790988416.464202
+   ],
+   "segments_in_window": {
+    "second": 396,
+    "minute": 21
+   },
+   "reconstruction_status": {
+    "second:as_is": 306,
+    "second:reverted": 90,
+    "minute:reverted": 13,
+    "minute:as_is": 8
+   },
+   "hour_segments_not_reconstructed": 0,
+   "per_arm": {
+    "PSR": {
+     "n": 90,
+     "v1_flagged": 90,
+     "v1_attributable": 90,
+     "v1_ambiguous": 0,
+     "v2_flagged": 90,
+     "v2_attributable": 90,
+     "v2_ambiguous": 0,
+     "minute_v1_flagged": 90,
+     "minute_v2_flagged": 90,
+     "v2_basis": {
+      "recomputed": 90
+     },
+     "v1_attributable_ci": [
+      0.96,
+      1.0
+     ],
+     "v2_attributable_ci": [
+      0.96,
+      1.0
+     ]
+    }
+   },
+   "trial_verdict_changes_v1_to_v2": [],
+   "edited_rows": 90,
+   "edited_rows_in_v1_collision_class": [],
+   "edited_rows_with_0x7C_in_a_context_field": [
+    {
+     "row": "s:702238",
+     "edited_by": [
+      "PSR",
+      28,
+      "porch"
+     ]
+    }
+   ],
+   "benign_floor_second": {
+    "v1": [
+     1,
+     299
+    ],
+    "v2": [
+     1,
+     299
+    ]
+   },
+   "floor_segments_v2_basis": {
+    "recomputed": 299
+   },
+   "row_scheme_offline": {
+    "PSR": {
+     "n": 90,
+     "v1": {
+      "flagged": 0,
+      "attributable": 0,
+      "ambiguous": 0,
+      "underivable": 0,
+      "flagged_ci": [
+       0.0,
+       0.04
+      ],
+      "attributable_ci": [
+       0.0,
+       0.04
+      ]
+     },
+     "v2": {
+      "flagged": 0,
+      "attributable": 0,
+      "ambiguous": 0,
+      "underivable": 0,
+      "flagged_ci": [
+       0.0,
+       0.04
+      ],
+      "attributable_ci": [
+       0.0,
+       0.04
+      ]
+     }
+    },
+    "benign_floor_second": {
+     "v1": [
+      1,
+      299
+     ],
+     "v2": [
+      1,
+      299
+     ]
+    }
+   }
+  },
+  "e_d_auth": {
+   "run": "e_d_auth",
+   "scheme": "row",
+   "chain_encoding": [
+    "v1"
+   ],
+   "window": [
+    1790410030.0,
+    1790412186.0,
+    1790412277.278847
+   ],
+   "segments_in_window": {
+    "second": 723,
+    "minute": 37
+   },
+   "reconstruction_status": {
+    "second:as_is": 542,
+    "second:reverted": 11,
+    "minute:not_reconstructed_rows_missing": 23,
+    "second:not_reconstructed_rows_missing": 170,
+    "minute:as_is": 14
+   },
+   "hour_segments_not_reconstructed": 0,
+   "per_arm": {
+    "PU": {
+     "n": 90,
+     "v1_flagged": 90,
+     "v1_attributable": 89,
+     "v1_ambiguous": 1,
+     "v2_flagged": 90,
+     "v2_attributable": 89,
+     "v2_ambiguous": 1,
+     "minute_v1_flagged": 90,
+     "minute_v2_flagged": 90,
+     "v2_basis": {
+      "recomputed": 9,
+      "carried_over_count_or_refinement": 81
+     },
+     "v1_attributable_ci": [
+      0.94,
+      1.0
+     ],
+     "v2_attributable_ci": [
+      0.94,
+      1.0
+     ]
+    },
+    "PI": {
+     "n": 90,
+     "v1_flagged": 90,
+     "v1_attributable": 89,
+     "v1_ambiguous": 1,
+     "v2_flagged": 90,
+     "v2_attributable": 89,
+     "v2_ambiguous": 1,
+     "minute_v1_flagged": 90,
+     "minute_v2_flagged": 90,
+     "v2_basis": {
+      "carried_over_count_or_refinement": 88,
+      "recomputed": 2
+     },
+     "v1_attributable_ci": [
+      0.94,
+      1.0
+     ],
+     "v2_attributable_ci": [
+      0.94,
+      1.0
+     ]
+    }
+   },
+   "trial_verdict_changes_v1_to_v2": [],
+   "edited_rows": 180,
+   "edited_rows_in_v1_collision_class": [],
+   "edited_rows_with_0x7C_in_a_context_field": [
+    {
+     "row": "s:578378",
+     "edited_by": [
+      "PU",
+      6,
+      "porch"
+     ]
+    },
+    {
+     "row": "s:578464",
+     "edited_by": [
+      "PU",
+      23,
+      "porch"
+     ]
+    },
+    {
+     "row": "s:578480",
+     "edited_by": [
+      "PU",
+      27,
+      "porch"
+     ]
+    },
+    {
+     "row": "s:578565",
+     "edited_by": [
+      "PI",
+      2,
+      "porch"
+     ]
+    },
+    {
+     "row": "s:578568",
+     "edited_by": [
+      "PI",
+      3,
+      "porch"
+     ]
+    },
+    {
+     "row": "s:578570",
+     "edited_by": [
+      "PI",
+      4,
+      "porch"
+     ]
+    },
+    {
+     "row": "s:578577",
+     "edited_by": [
+      "PI",
+      5,
+      "porch"
+     ]
+    },
+    {
+     "row": "s:578580",
+     "edited_by": [
+      "PI",
+      6,
+      "porch"
+     ]
+    },
+    {
+     "row": "s:578584",
+     "edited_by": [
+      "PI",
+      7,
+      "porch"
+     ]
+    },
+    {
+     "row": "s:578590",
+     "edited_by": [
+      "PI",
+      8,
+      "porch"
+     ]
+    },
+    {
+     "row": "s:578594",
+     "edited_by": [
+      "PI",
+      9,
+      "porch"
+     ]
+    },
+    {
+     "row": "s:578936",
+     "edited_by": [
+      "PU",
+      21,
+      "hallway"
+     ]
+    },
+    {
+     "row": "s:578948",
+     "edited_by": [
+      "PU",
+      24,
+      "hallway"
+     ]
+    },
+    {
+     "row": "s:579123",
+     "edited_by": [
+      "PI",
+      22,
+      "hallway"
+     ]
+    },
+    {
+     "row": "s:579154",
+     "edited_by": [
+      "PI",
+      29,
+      "hallway"
+     ]
+    },
+    {
+     "row": "s:579342",
+     "edited_by": [
+      "PU",
+      5,
+      "kitchen"
+     ]
+    },
+    {
+     "row": "s:579396",
+     "edited_by": [
+      "PU",
+      17,
+      "kitchen"
+     ]
+    },
+    {
+     "row": "s:579412",
+     "edited_by": [
+      "PU",
+      20,
+      "kitchen"
+     ]
+    },
+    {
+     "row": "s:579446",
+     "edited_by": [
+      "PU",
+      27,
+      "kitchen"
+     ]
+    },
+    {
+     "row": "s:579537",
+     "edited_by": [
+      "PI",
+      3,
+      "kitchen"
+     ]
+    },
+    {
+     "row": "s:579556",
+     "edited_by": [
+      "PI",
+      8,
+      "kitchen"
+     ]
+    }
+   ],
+   "benign_floor_second": {
+    "v1": [
+     1,
+     527
+    ],
+    "v2": [
+     1,
+     527
+    ]
+   },
+   "floor_segments_v2_basis": {
+    "recomputed": 527
+   },
+   "row_scheme_offline": null
+  },
+  "e_c_auth": {
+   "run": "e_c_auth",
+   "scheme": "row",
+   "chain_encoding": [
+    "v1"
+   ],
+   "window": [
+    1790933227.0,
+    1790935444.0,
+    1790935535.411951
+   ],
+   "segments_in_window": {
+    "second": 929,
+    "minute": 38,
+    "hour": 1
+   },
+   "reconstruction_status": {
+    "second:as_is": 899,
+    "minute:as_is": 33,
+    "second:not_reconstructed_rows_missing": 30,
+    "minute:not_reconstructed_rows_missing": 5
+   },
+   "hour_segments_not_reconstructed": 1,
+   "per_arm": {
+    "W1": {
+     "n": 30,
+     "v1_flagged": 1,
+     "v1_attributable": 0,
+     "v1_ambiguous": 1,
+     "v2_flagged": 1,
+     "v2_attributable": 0,
+     "v2_ambiguous": 1,
+     "minute_v1_flagged": 0,
+     "minute_v2_flagged": 0,
+     "v2_basis": {
+      "recomputed": 30
+     },
+     "v1_attributable_ci": [
+      0.0,
+      0.116
+     ],
+     "v2_attributable_ci": [
+      0.0,
+      0.116
+     ]
+    },
+    "W2": {
+     "n": 30,
+     "v1_flagged": 0,
+     "v1_attributable": 0,
+     "v1_ambiguous": 0,
+     "v2_flagged": 0,
+     "v2_attributable": 0,
+     "v2_ambiguous": 0,
+     "minute_v1_flagged": 0,
+     "minute_v2_flagged": 0,
+     "v2_basis": {
+      "recomputed": 30
+     },
+     "v1_attributable_ci": [
+      0.0,
+      0.116
+     ],
+     "v2_attributable_ci": [
+      0.0,
+      0.116
+     ]
+    },
+    "W2b": {
+     "n": 30,
+     "v1_flagged": 1,
+     "v1_attributable": 0,
+     "v1_ambiguous": 1,
+     "v2_flagged": 1,
+     "v2_attributable": 0,
+     "v2_ambiguous": 1,
+     "minute_v1_flagged": 0,
+     "minute_v2_flagged": 0,
+     "v2_basis": {
+      "recomputed": 30
+     },
+     "v1_attributable_ci": [
+      0.0,
+      0.116
+     ],
+     "v2_attributable_ci": [
+      0.0,
+      0.116
+     ]
+    },
+    "W3": {
+     "n": 30,
+     "v1_flagged": 0,
+     "v1_attributable": 0,
+     "v1_ambiguous": 0,
+     "v2_flagged": 0,
+     "v2_attributable": 0,
+     "v2_ambiguous": 0,
+     "minute_v1_flagged": 6,
+     "minute_v2_flagged": 6,
+     "v2_basis": {
+      "recomputed": 30
+     },
+     "v1_attributable_ci": [
+      0.0,
+      0.116
+     ],
+     "v2_attributable_ci": [
+      0.0,
+      0.116
+     ]
+    },
+    "P": {
+     "n": 30,
+     "v1_flagged": 30,
+     "v1_attributable": 30,
+     "v1_ambiguous": 0,
+     "v2_flagged": 30,
+     "v2_attributable": 30,
+     "v2_ambiguous": 0,
+     "minute_v1_flagged": 30,
+     "minute_v2_flagged": 30,
+     "v2_basis": {
+      "carried_over_count_or_refinement": 30
+     },
+     "v1_attributable_ci": [
+      0.884,
+      1.0
+     ],
+     "v2_attributable_ci": [
+      0.884,
+      1.0
+     ]
+    }
+   },
+   "trial_verdict_changes_v1_to_v2": [],
+   "edited_rows": 30,
+   "edited_rows_in_v1_collision_class": [],
+   "edited_rows_with_0x7C_in_a_context_field": [],
+   "benign_floor_second": {
+    "v1": [
+     3,
+     711
+    ],
+    "v2": [
+     3,
+     711
+    ]
+   },
+   "floor_segments_v2_basis": {
+    "recomputed": 711
+   },
+   "row_scheme_offline": null
+  },
+  "e_ps_auth": {
+   "run": "e_ps_auth",
+   "scheme": "row",
+   "chain_encoding": [
+    "v1"
+   ],
+   "window": [
+    1790948889.0,
+    1790950091.0,
+    1790950199.520383
+   ],
+   "segments_in_window": {
+    "second": 399,
+    "minute": 21,
+    "hour": 1
+   },
+   "reconstruction_status": {
+    "second:as_is": 309,
+    "second:reverted": 90,
+    "minute:reverted": 14,
+    "minute:as_is": 7
+   },
+   "hour_segments_not_reconstructed": 1,
+   "per_arm": {
+    "PS": {
+     "n": 90,
+     "v1_flagged": 1,
+     "v1_attributable": 0,
+     "v1_ambiguous": 1,
+     "v2_flagged": 1,
+     "v2_attributable": 0,
+     "v2_ambiguous": 1,
+     "minute_v1_flagged": 0,
+     "minute_v2_flagged": 0,
+     "v2_basis": {
+      "recomputed": 90
+     },
+     "v1_attributable_ci": [
+      0.0,
+      0.04
+     ],
+     "v2_attributable_ci": [
+      0.0,
+      0.04
+     ]
+    }
+   },
+   "trial_verdict_changes_v1_to_v2": [],
+   "edited_rows": 90,
+   "edited_rows_in_v1_collision_class": [],
+   "edited_rows_with_0x7C_in_a_context_field": [
+    {
+     "row": "s:684908",
+     "edited_by": [
+      "PS",
+      13,
+      "porch"
+     ]
+    },
+    {
+     "row": "s:685162",
+     "edited_by": [
+      "PS",
+      4,
+      "hallway"
+     ]
+    },
+    {
+     "row": "s:685207",
+     "edited_by": [
+      "PS",
+      15,
+      "hallway"
+     ]
+    },
+    {
+     "row": "s:685231",
+     "edited_by": [
+      "PS",
+      21,
+      "hallway"
+     ]
+    },
+    {
+     "row": "s:685257",
+     "edited_by": [
+      "PS",
+      26,
+      "hallway"
+     ]
+    },
+    {
+     "row": "s:685523",
+     "edited_by": [
+      "PS",
+      20,
+      "kitchen"
+     ]
+    },
+    {
+     "row": "s:685557",
+     "edited_by": [
+      "PS",
+      28,
+      "kitchen"
+     ]
+    }
+   ],
+   "benign_floor_second": {
+    "v1": [
+     1,
+     308
+    ],
+    "v2": [
+     1,
+     308
+    ]
+   },
+   "floor_segments_v2_basis": {
+    "recomputed": 308
+   },
+   "row_scheme_offline": null
+  },
+  "e_d_whr": {
+   "run": "e_d_whr",
+   "scheme": "wholerow",
+   "chain_encoding": [
+    "v1"
+   ],
+   "window": [
+    1791100203.0,
+    1791102358.0,
+    1791102450.317405
+   ],
+   "segments_in_window": {
+    "second": 735,
+    "minute": 37,
+    "hour": 1
+   },
+   "reconstruction_status": {
+    "second:as_is": 121,
+    "second:not_reconstructed": 435,
+    "second:not_reconstructed_rows_missing": 178,
+    "minute:not_reconstructed_rows_missing": 23,
+    "minute:not_reconstructed": 13,
+    "second:reverted": 1,
+    "minute:as_is": 1
+   },
+   "hour_segments_not_reconstructed": 1,
+   "per_arm": {
+    "PU": {
+     "n": 90,
+     "v1_flagged": 90,
+     "v1_attributable": 90,
+     "v1_ambiguous": 0,
+     "v2_flagged": 90,
+     "v2_attributable": 90,
+     "v2_ambiguous": 0,
+     "minute_v1_flagged": 90,
+     "minute_v2_flagged": 90,
+     "v2_basis": {
+      "carried_over_count_or_refinement": 90
+     },
+     "v1_attributable_ci": [
+      0.96,
+      1.0
+     ],
+     "v2_attributable_ci": [
+      0.96,
+      1.0
+     ]
+    },
+    "PI": {
+     "n": 90,
+     "v1_flagged": 90,
+     "v1_attributable": 90,
+     "v1_ambiguous": 0,
+     "v2_flagged": 90,
+     "v2_attributable": 90,
+     "v2_ambiguous": 0,
+     "minute_v1_flagged": 90,
+     "minute_v2_flagged": 90,
+     "v2_basis": {
+      "carried_over_count_or_refinement": 89,
+      "recomputed": 1
+     },
+     "v1_attributable_ci": [
+      0.96,
+      1.0
+     ],
+     "v2_attributable_ci": [
+      0.96,
+      1.0
+     ]
+    }
+   },
+   "trial_verdict_changes_v1_to_v2": [],
+   "edited_rows": 180,
+   "edited_rows_in_v1_collision_class": [],
+   "edited_rows_with_0x7C_in_a_context_field": [
+    {
+     "row": "s:747613",
+     "edited_by": [
+      "PI",
+      0,
+      "porch"
+     ]
+    },
+    {
+     "row": "s:747618",
+     "edited_by": [
+      "PI",
+      1,
+      "porch"
+     ]
+    },
+    {
+     "row": "s:747622",
+     "edited_by": [
+      "PI",
+      2,
+      "porch"
+     ]
+    },
+    {
+     "row": "s:747628",
+     "edited_by": [
+      "PI",
+      3,
+      "porch"
+     ]
+    },
+    {
+     "row": "s:747632",
+     "edited_by": [
+      "PI",
+      4,
+      "porch"
+     ]
+    },
+    {
+     "row": "s:747651",
+     "edited_by": [
+      "PI",
+      9,
+      "porch"
+     ]
+    },
+    {
+     "row": "s:748101",
+     "edited_by": [
+      "PI",
+      4,
+      "hallway"
+     ]
+    },
+    {
+     "row": "s:748117",
+     "edited_by": [
+      "PI",
+      8,
+      "hallway"
+     ]
+    },
+    {
+     "row": "s:748151",
+     "edited_by": [
+      "PI",
+      17,
+      "hallway"
+     ]
+    },
+    {
+     "row": "s:748375",
+     "edited_by": [
+      "PU",
+      0,
+      "kitchen"
+     ]
+    },
+    {
+     "row": "s:748380",
+     "edited_by": [
+      "PU",
+      1,
+      "kitchen"
+     ]
+    },
+    {
+     "row": "s:748383",
+     "edited_by": [
+      "PU",
+      2,
+      "kitchen"
+     ]
+    },
+    {
+     "row": "s:748391",
+     "edited_by": [
+      "PU",
+      3,
+      "kitchen"
+     ]
+    },
+    {
+     "row": "s:748396",
+     "edited_by": [
+      "PU",
+      4,
+      "kitchen"
+     ]
+    },
+    {
+     "row": "s:748401",
+     "edited_by": [
+      "PU",
+      5,
+      "kitchen"
+     ]
+    },
+    {
+     "row": "s:748406",
+     "edited_by": [
+      "PU",
+      6,
+      "kitchen"
+     ]
+    },
+    {
+     "row": "s:748410",
+     "edited_by": [
+      "PU",
+      7,
+      "kitchen"
+     ]
+    },
+    {
+     "row": "s:748412",
+     "edited_by": [
+      "PU",
+      8,
+      "kitchen"
+     ]
+    },
+    {
+     "row": "s:748418",
+     "edited_by": [
+      "PU",
+      9,
+      "kitchen"
+     ]
+    },
+    {
+     "row": "s:748422",
+     "edited_by": [
+      "PU",
+      10,
+      "kitchen"
+     ]
+    },
+    {
+     "row": "s:748424",
+     "edited_by": [
+      "PU",
+      11,
+      "kitchen"
+     ]
+    },
+    {
+     "row": "s:748429",
+     "edited_by": [
+      "PU",
+      12,
+      "kitchen"
+     ]
+    },
+    {
+     "row": "s:748432",
+     "edited_by": [
+      "PU",
+      13,
+      "kitchen"
+     ]
+    },
+    {
+     "row": "s:748436",
+     "edited_by": [
+      "PU",
+      14,
+      "kitchen"
+     ]
+    },
+    {
+     "row": "s:748468",
+     "edited_by": [
+      "PU",
+      22,
+      "kitchen"
+     ]
+    }
+   ],
+   "benign_floor_second": {
+    "v1": [
+     432,
+     552
+    ],
+    "v2": [
+     432,
+     552
+    ]
+   },
+   "floor_segments_v2_basis": {
+    "recomputed": 120,
+    "carried_over_count_or_refinement": 432
+   },
+   "row_scheme_offline": null
+  },
+  "e_ps_whr": {
+   "run": "e_ps_whr",
+   "scheme": "wholerow",
+   "chain_encoding": [
+    "v1"
+   ],
+   "window": [
+    1791098825.0,
+    1791100011.0,
+    1791100122.218403
+   ],
+   "segments_in_window": {
+    "second": 370,
+    "minute": 21
+   },
+   "reconstruction_status": {
+    "second:as_is": 78,
+    "second:not_reconstructed": 260,
+    "second:reverted": 32,
+    "minute:not_reconstructed": 20,
+    "minute:as_is": 1
+   },
+   "hour_segments_not_reconstructed": 0,
+   "per_arm": {
+    "PS": {
+     "n": 90,
+     "v1_flagged": 90,
+     "v1_attributable": 89,
+     "v1_ambiguous": 1,
+     "v2_flagged": 90,
+     "v2_attributable": 89,
+     "v2_ambiguous": 1,
+     "minute_v1_flagged": 90,
+     "minute_v2_flagged": 90,
+     "v2_basis": {
+      "carried_over_count_or_refinement": 57,
+      "recomputed": 33
+     },
+     "v1_attributable_ci": [
+      0.94,
+      1.0
+     ],
+     "v2_attributable_ci": [
+      0.94,
+      1.0
+     ]
+    }
+   },
+   "trial_verdict_changes_v1_to_v2": [],
+   "edited_rows": 89,
+   "edited_rows_in_v1_collision_class": [],
+   "edited_rows_with_0x7C_in_a_context_field": [
+    {
+     "row": "s:746510",
+     "edited_by": [
+      "PS",
+      0,
+      "porch"
+     ]
+    },
+    {
+     "row": "s:746528",
+     "edited_by": [
+      "PS",
+      2,
+      "porch"
+     ]
+    },
+    {
+     "row": "s:746550",
+     "edited_by": [
+      "PS",
+      8,
+      "porch"
+     ]
+    },
+    {
+     "row": "s:746587",
+     "edited_by": [
+      "PS",
+      17,
+      "porch"
+     ]
+    },
+    {
+     "row": "s:746611",
+     "edited_by": [
+      "PS",
+      22,
+      "porch"
+     ]
+    },
+    {
+     "row": "s:746633",
+     "edited_by": [
+      "PS",
+      28,
+      "porch"
+     ]
+    },
+    {
+     "row": "s:746845",
+     "edited_by": [
+      "PS",
+      13,
+      "hallway"
+     ]
+    },
+    {
+     "row": "s:746893",
+     "edited_by": [
+      "PS",
+      23,
+      "hallway"
+     ]
+    },
+    {
+     "row": "s:746913",
+     "edited_by": [
+      "PS",
+      27,
+      "hallway"
+     ]
+    },
+    {
+     "row": "s:747090",
+     "edited_by": [
+      "PS",
+      3,
+      "kitchen"
+     ]
+    }
+   ],
+   "benign_floor_second": {
+    "v1": [
+     203,
+     281
+    ],
+    "v2": [
+     203,
+     281
+    ]
+   },
+   "floor_segments_v2_basis": {
+    "recomputed": 78,
+    "carried_over_count_or_refinement": 203
+   },
+   "row_scheme_offline": null
+  },
+  "e_psr_whr": {
+   "run": "e_psr_whr",
+   "scheme": "wholerow",
+   "chain_encoding": [
+    "v1"
+   ],
+   "window": [
+    1791102531.0,
+    1791103718.0,
+    1791103829.366865
+   ],
+   "segments_in_window": {
+    "second": 390,
+    "minute": 22
+   },
+   "reconstruction_status": {
+    "second:as_is": 82,
+    "second:not_reconstructed": 271,
+    "minute:not_reconstructed": 21,
+    "second:reverted": 37,
+    "minute:as_is": 1
+   },
+   "hour_segments_not_reconstructed": 0,
+   "per_arm": {
+    "PSR": {
+     "n": 90,
+     "v1_flagged": 90,
+     "v1_attributable": 90,
+     "v1_ambiguous": 0,
+     "v2_flagged": 90,
+     "v2_attributable": 90,
+     "v2_ambiguous": 0,
+     "minute_v1_flagged": 90,
+     "minute_v2_flagged": 90,
+     "v2_basis": {
+      "carried_over_count_or_refinement": 54,
+      "recomputed": 36
+     },
+     "v1_attributable_ci": [
+      0.96,
+      1.0
+     ],
+     "v2_attributable_ci": [
+      0.96,
+      1.0
+     ]
+    }
+   },
+   "trial_verdict_changes_v1_to_v2": [],
+   "edited_rows": 90,
+   "edited_rows_in_v1_collision_class": [],
+   "edited_rows_with_0x7C_in_a_context_field": [
+    {
+     "row": "s:748931",
+     "edited_by": [
+      "PSR",
+      6,
+      "porch"
+     ]
+    },
+    {
+     "row": "s:749219",
+     "edited_by": [
+      "PSR",
+      4,
+      "hallway"
+     ]
+    },
+    {
+     "row": "s:749296",
+     "edited_by": [
+      "PSR",
+      23,
+      "hallway"
+     ]
+    },
+    {
+     "row": "s:749308",
+     "edited_by": [
+      "PSR",
+      26,
+      "hallway"
+     ]
+    },
+    {
+     "row": "s:749508",
+     "edited_by": [
+      "PSR",
+      6,
+      "kitchen"
+     ]
+    },
+    {
+     "row": "s:749547",
+     "edited_by": [
+      "PSR",
+      14,
+      "kitchen"
+     ]
+    }
+   ],
+   "benign_floor_second": {
+    "v1": [
+     218,
+     300
+    ],
+    "v2": [
+     218,
+     300
+    ]
+   },
+   "floor_segments_v2_basis": {
+    "recomputed": 82,
+    "carried_over_count_or_refinement": 218
+   },
+   "row_scheme_offline": null
+  }
+ },
+ "seconds": 3.1
+}

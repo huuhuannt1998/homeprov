@@ -1,0 +1,331 @@
+{
+ "item": "R7/N2: every evaluated run used the unlinked anchor record format",
+ "generated": "2026-10-07T02:51:11.145305+00:00",
+ "script": "exp/sp2027/r7_anchor_link_scope.py",
+ "anchord_versions_in_history": [
+  {
+   "commit": "0153df5",
+   "date": "2026-10-05",
+   "subject": "Anonymized artifact for review",
+   "has_prev_digest": false
+  },
+  {
+   "commit": "0cb8962",
+   "date": "2026-10-04",
+   "subject": "Snapshot 2026-10-04: code, experiments and results for the ACM TIOT / TMLR revision",
+   "has_prev_digest": false
+  },
+  {
+   "commit": "1914b6e",
+   "date": "2026-09-08",
+   "subject": "E-A: authenticate the monitor->anchor append path; re-run pre-emption and A.13 matrix",
+   "has_prev_digest": false
+  },
+  {
+   "commit": "f644936",
+   "date": "2026-08-25",
+   "subject": "HomeProv: defender, anchor, verifier, and evaluation harness",
+   "has_prev_digest": false
+  }
+ ],
+ "linking_introduced": "2026-10-07 (working tree; HOMEPROV_ANCHOR_LINK=v2 default, v1 reproduces the old format)",
+ "saved_chains": {
+  "exp/out/e2_auth_anchor_chain.jsonl.gz": {
+   "records": 28,
+   "link": "v1",
+   "linked_records": 0,
+   "ok": true
+  },
+  "exp/out/e_c_auth_anchor_chain.jsonl.gz": {
+   "records": 417,
+   "link": "v1",
+   "linked_records": 0,
+   "ok": true
+  },
+  "exp/out/e_c_clo_anchor_chain.jsonl.gz": {
+   "records": 408,
+   "link": "v1",
+   "linked_records": 0,
+   "ok": true
+  },
+  "exp/out/e_d_auth_anchor_chain.jsonl.gz": {
+   "records": 389,
+   "link": "v1",
+   "linked_records": 0,
+   "ok": true
+  },
+  "exp/out/e_d_clo_anchor_chain.jsonl.gz": {
+   "records": 379,
+   "link": "v1",
+   "linked_records": 0,
+   "ok": true
+  },
+  "exp/out/e_d_whr_anchor_chain.jsonl.gz": {
+   "records": 379,
+   "link": "v1",
+   "linked_records": 0,
+   "ok": true
+  },
+  "exp/out/e_ps_auth_anchor_chain.jsonl.gz": {
+   "records": 208,
+   "link": "v1",
+   "linked_records": 0,
+   "ok": true
+  },
+  "exp/out/e_ps_clo_anchor_chain.jsonl.gz": {
+   "records": 223,
+   "link": "v1",
+   "linked_records": 0,
+   "ok": true
+  },
+  "exp/out/e_ps_whr_anchor_chain.jsonl.gz": {
+   "records": 218,
+   "link": "v1",
+   "linked_records": 0,
+   "ok": true
+  },
+  "exp/out/e_psr_clo_anchor_chain.jsonl.gz": {
+   "records": 222,
+   "link": "v1",
+   "linked_records": 0,
+   "ok": true
+  },
+  "exp/out/e_psr_whr_anchor_chain.jsonl.gz": {
+   "records": 222,
+   "link": "v1",
+   "linked_records": 0,
+   "ok": true
+  },
+  "reproduce/snapshots/e_c_auth.chain.jsonl": {
+   "records": 417,
+   "link": "v1",
+   "linked_records": 0,
+   "ok": true
+  },
+  "reproduce/snapshots/e_c_clo.chain.jsonl": {
+   "records": 408,
+   "link": "v1",
+   "linked_records": 0,
+   "ok": true
+  },
+  "reproduce/snapshots/e_d_auth.chain.jsonl.gz": {
+   "records": 389,
+   "link": "v1",
+   "linked_records": 0,
+   "ok": true
+  },
+  "reproduce/snapshots/e_d_clo.chain.jsonl": {
+   "records": 379,
+   "link": "v1",
+   "linked_records": 0,
+   "ok": true
+  },
+  "reproduce/snapshots/e_d_whr.chain.jsonl": {
+   "records": 379,
+   "link": "v1",
+   "linked_records": 0,
+   "ok": true
+  },
+  "reproduce/snapshots/e_ps_auth.chain.jsonl": {
+   "records": 208,
+   "link": "v1",
+   "linked_records": 0,
+   "ok": true
+  },
+  "reproduce/snapshots/e_ps_clo.chain.jsonl": {
+   "records": 223,
+   "link": "v1",
+   "linked_records": 0,
+   "ok": true
+  },
+  "reproduce/snapshots/e_ps_whr.chain.jsonl": {
+   "records": 218,
+   "link": "v1",
+   "linked_records": 0,
+   "ok": true
+  },
+  "reproduce/snapshots/e_psr_clo.chain.jsonl": {
+   "records": 222,
+   "link": "v1",
+   "linked_records": 0,
+   "ok": true
+  },
+  "reproduce/snapshots/e_psr_whr.chain.jsonl": {
+   "records": 222,
+   "link": "v1",
+   "linked_records": 0,
+   "ok": true
+  }
+ },
+ "all_saved_chains_unlinked_and_well_formed": true,
+ "table13_runs": [
+  {
+   "run": "In-process blinding",
+   "date": "2026-09-03",
+   "result_file": "exp/out/e2_real_boundary.json",
+   "chain": null,
+   "note": "no anchor chain saved; every anchord.py version up to this run's date is unlinked (see anchord_versions)",
+   "anchor": "unlinked (v1)"
+  },
+  {
+   "run": "Write-time strategies",
+   "date": "2026-09-09",
+   "result_file": "exp/out/e_c_write_time.json",
+   "chain": null,
+   "note": "no anchor chain saved; every anchord.py version up to this run's date is unlinked (see anchord_versions)",
+   "anchor": "unlinked (v1)"
+  },
+  {
+   "run": "Other principal",
+   "date": "2026-09-18",
+   "result_file": "exp/out/e_d_other_principal_real.json",
+   "chain": null,
+   "note": "no anchor chain saved; every anchord.py version up to this run's date is unlinked (see anchord_versions)",
+   "anchor": "unlinked (v1)"
+  },
+  {
+   "run": "Other principal",
+   "date": "2026-09-26",
+   "result_file": "exp/out/e_d_auth_other_principal_real.json",
+   "chain": "exp/out/e_d_auth_anchor_chain.jsonl.gz",
+   "chain_check": {
+    "records": 389,
+    "link": "v1",
+    "linked_records": 0,
+    "ok": true
+   },
+   "anchor": "unlinked (v1)"
+  },
+  {
+   "run": "Write-time strategies",
+   "date": "2026-10-02",
+   "result_file": "exp/out/e_c_auth_other_principal_real.json",
+   "chain": "exp/out/e_c_auth_anchor_chain.jsonl.gz",
+   "chain_check": {
+    "records": 417,
+    "link": "v1",
+    "linked_records": 0,
+    "ok": true
+   },
+   "anchor": "unlinked (v1)"
+  },
+  {
+   "run": "Random-id swap",
+   "date": "2026-10-02",
+   "result_file": "exp/out/e_ps_auth_detection.json",
+   "chain": "exp/out/e_ps_auth_anchor_chain.jsonl.gz",
+   "chain_check": {
+    "records": 208,
+    "link": "v1",
+    "linked_records": 0,
+    "ok": true
+   },
+   "anchor": "unlinked (v1)"
+  },
+  {
+   "run": "In-process blinding",
+   "date": "2026-10-02",
+   "result_file": "exp/out/e2_auth_seal_check.json",
+   "chain": "exp/out/e2_auth_anchor_chain.jsonl.gz",
+   "chain_check": {
+    "records": 28,
+    "link": "v1",
+    "linked_records": 0,
+    "ok": true
+   },
+   "anchor": "unlinked (v1)"
+  },
+  {
+   "run": "Random-id swap",
+   "date": "2026-10-02",
+   "result_file": "exp/out/e_ps_clo_detection.json",
+   "chain": "exp/out/e_ps_clo_anchor_chain.jsonl.gz",
+   "chain_check": {
+    "records": 223,
+    "link": "v1",
+    "linked_records": 0,
+    "ok": true
+   },
+   "anchor": "unlinked (v1)"
+  },
+  {
+   "run": "Other principal",
+   "date": "2026-10-02",
+   "result_file": "exp/out/e_d_clo_other_principal_real.json",
+   "chain": "exp/out/e_d_clo_anchor_chain.jsonl.gz",
+   "chain_check": {
+    "records": 379,
+    "link": "v1",
+    "linked_records": 0,
+    "ok": true
+   },
+   "anchor": "unlinked (v1)"
+  },
+  {
+   "run": "Write-time strategies",
+   "date": "2026-10-02",
+   "result_file": "exp/out/e_c_clo_other_principal_real.json",
+   "chain": "exp/out/e_c_clo_anchor_chain.jsonl.gz",
+   "chain_check": {
+    "records": 408,
+    "link": "v1",
+    "linked_records": 0,
+    "ok": true
+   },
+   "anchor": "unlinked (v1)"
+  },
+  {
+   "run": "Member-account swap",
+   "date": "2026-10-03",
+   "result_file": "exp/out/e_psr_clo_detection.json",
+   "chain": "exp/out/e_psr_clo_anchor_chain.jsonl.gz",
+   "chain_check": {
+    "records": 222,
+    "link": "v1",
+    "linked_records": 0,
+    "ok": true
+   },
+   "anchor": "unlinked (v1)"
+  },
+  {
+   "run": "Random-id swap",
+   "date": "2026-10-04",
+   "result_file": "exp/out/e_ps_whr_detection.json",
+   "chain": "exp/out/e_ps_whr_anchor_chain.jsonl.gz",
+   "chain_check": {
+    "records": 218,
+    "link": "v1",
+    "linked_records": 0,
+    "ok": true
+   },
+   "anchor": "unlinked (v1)"
+  },
+  {
+   "run": "Other principal",
+   "date": "2026-10-04",
+   "result_file": "exp/out/e_d_whr_other_principal_real.json",
+   "chain": "exp/out/e_d_whr_anchor_chain.jsonl.gz",
+   "chain_check": {
+    "records": 379,
+    "link": "v1",
+    "linked_records": 0,
+    "ok": true
+   },
+   "anchor": "unlinked (v1)"
+  },
+  {
+   "run": "Member-account swap",
+   "date": "2026-10-04",
+   "result_file": "exp/out/e_psr_whr_detection.json",
+   "chain": "exp/out/e_psr_whr_anchor_chain.jsonl.gz",
+   "chain_check": {
+    "records": 222,
+    "link": "v1",
+    "linked_records": 0,
+    "ok": true
+   },
+   "anchor": "unlinked (v1)"
+  }
+ ],
+ "statement": "All 14 Table 13 runs, and every other evaluated run, used the unlinked anchor: no committed version of anchord.py links records, and every saved chain (21 files) parses as unlinked v1 with 0 linked records. Their first anchored roots rest on the anchor host (A4)."
+}

@@ -1,0 +1,64 @@
+[
+  {
+    "arm": "F_del (a): erase naming event",
+    "writes": 1,
+    "attr": {
+      "verdict": "UNKNOWN",
+      "detail": "no parent, no naming event"
+    },
+    "plaus": {
+      "plausible": false,
+      "failures": [
+        "SI-4: actuation attributed to an automation with no automation_triggered event",
+        "SI-4: automation-attributed actuation with no service call"
+      ]
+    }
+  },
+  {
+    "arm": "F_del (b): erase the actuation entirely",
+    "writes": 3,
+    "attr": {
+      "verdict": "ABSENT",
+      "detail": "actuation no longer present"
+    },
+    "plaus": {
+      "plausible": false,
+      "failures": [
+        "no actuation states at the attributed context"
+      ]
+    }
+  },
+  {
+    "arm": "F_rep: re-point onto the real innocent automation",
+    "writes": 3,
+    "attr": {
+      "verdict": "NAMED_INNOCENT",
+      "principal": "automation:Arrive Home"
+    },
+    "plaus": {
+      "plausible": false,
+      "failures": [
+        "SI-5: one automation context spans 13.4s of actuations (duplicate run under mode:single)",
+        "SI-4: 2 disjoint actuation episodes under a single automation run"
+      ]
+    }
+  },
+  {
+    "arm": "F_inj: fabricate a complete decoy chain",
+    "writes": 5,
+    "attr_of_real_actuation": {
+      "verdict": "INTEGRATION",
+      "principal": "service-call (integration)"
+    },
+    "attr_of_decoy": {
+      "verdict": "NAMED_INNOCENT",
+      "principal": "automation:Arrive Home"
+    },
+    "plaus": {
+      "plausible": false,
+      "failures": [
+        "residual: 1 event(s) still bear the adversary's context"
+      ]
+    }
+  }
+]

@@ -1,0 +1,77 @@
+{
+ "experiment": "E7: sealed coverage (row watermark, sealed-through time, keylog), stall-proof sealing, escrow, stable-columns baseline; one real-deployment run on the default deployment (Home Assistant 2026.7.4)",
+ "registered_at": "2026-10-08T17:53:09.068797+00:00",
+ "registered_before": "any trial of the main run (tag e7_main); only scratch-stack dry runs and a smoke run precede it",
+ "approval": "PI 2026-10-08: 'Approve E7 in full' and 'Include in E7' (escrow)",
+ "design": {
+  "doc": "drafts/round13/E7_DESIGN.md",
+  "impl_notes": "drafts/round13/E7_IMPL_NOTES.md",
+  "code_review": "drafts/round13/E7_CODE_REVIEW.md (final check: GO)",
+  "run_notes": "drafts/round13/E7_RUN_NOTES.md"
+ },
+ "code_sha256": {
+  "monitor/monitor.py": "af8fd5b731b50eb6aa53065b6ea13cfbc34161b05b6f8898758e2197a5a0d99a",
+  "exp/stages/e7_verify.py": "7fef951fd5e6ffedc54ef09209ec7af1e189ccd4cf1c7349927cc375d278420d",
+  "exp/stages/e7_score.py": "f8a7ae565a129272a047c13361acbe917123699b68d20cfbdcb9e85fa66dc1d2",
+  "testbed/e7/run_e7.sh": "7373b26127650aecafa9c7e199ae9a1b9bec0f4d847e2e0797d1add2aad3df25",
+  "testbed/anchord/anchord.py": "fa662e94374c46ebf4e63a8092d0a48a84ac94a32baf049076cd279f94341171",
+  "testbed/real/ha-config/custom_components/homeprov_e7/__init__.py": "19154b0f8ed4392f4ac25794c65872968d392bacfbb7ff85b4df9bcf1b1cf3dd",
+  "monitor/test_coverage.py": "4a0cf6a0f1dc382604936d95318457787c41e01928bdaa938c68cd6984655f17",
+  "exp/out/e7_late_delays_prior.json": "2d7b74c85f2defa137960693f59ef8f6cc6a8050fdb5e1744e61f28d314b8d39",
+  "exp/out/e7_anchor_stall_unit.json": "a1b22b5904d4608f313172476788f949f0b9410224301869b51878be0218837e"
+ },
+ "parameters": {
+  "LATE_BOUND_s": 30,
+  "LATE_BOUND_basis": "about five times the largest benign late-row delay bound seen in nine earlier runs (exp/out/e7_late_delays_prior.json)",
+  "GAP_s": 30,
+  "GAP_basis": "reporting threshold for heartbeat gaps; does not affect detection",
+  "poll_period_s": 5,
+  "seal_wait_s": 130,
+  "K_inserted_rows": 9,
+  "bd_min_age_s": 130,
+  "bd_move_delay_s": 130,
+  "stall_connections": 8,
+  "stall_s": 40,
+  "outage_pause_s": 90,
+  "device_pause_s": 200
+ },
+ "arms": {
+  "configurations": [
+   "porch",
+   "hallway",
+   "kitchen"
+  ],
+  "trials_per_configuration": 10,
+  "per_arm_trials": {
+   "INS-L": 30,
+   "INS-M": 30,
+   "BD-S": 30,
+   "BD-M": 30,
+   "BD-PARK": 30,
+   "BD-JOIN": 30,
+   "BD-GAP": 30,
+   "STALL": 30
+  },
+  "OUTAGE_trials": 30,
+  "OUTAGE_label": "simulated (the run pauses its own anchor container); the adversary's own capability is the STALL arm"
+ },
+ "monitors": {
+  "closure": "closure scheme, encoding v2, coverage on, escrow on, per-poll cost log on (the evaluated configuration)",
+  "stable": "stable-columns scheme (every stored column except states.last_reported_ts), coverage on (baseline)"
+ },
+ "outcomes": {
+  "detection": "per arm: trials whose target second (or, for BD, the forged row's second) the verifier flags as attributable at one-second granularity under each monitor, k of n with the exact (Clopper-Pearson) 95% interval; alongside, the earlier rule's flagged / attributable / ambiguous counts on the same run",
+  "benign_floor": "untouched one-second segments in the run window that fail, for each monitor; a segment is touched when it holds a row any trial wrote, edited or named (the paper's counting rule)",
+  "stall": "share of the closure monitor's appends accepted during each stall window; detection of the STALL edits",
+  "outage": "frozen roots anchored after the outage with their sealed_at; detection of the OUTAGE edits",
+  "recovery": "trials whose restored copy (escrow) renders the true pre-edit principal again in a throwaway hub with the same release",
+  "cost": "closure monitor per poll: copy, load, commit, append; median, p90, max",
+  "intervals": "every heartbeat gap above GAP_s and every unobservable interval, listed with its cause where known"
+ },
+ "exclusions": "only trials whose harness record carries an error are excluded, and each is counted and listed; every arm is reported whatever its outcome",
+ "known_limits_stated_in_advance": [
+  "backdating by less than about LATE_BOUND plus one poll period (about 35 s) is scored as a benign late row",
+  "a row changed before any poll sees it (write-time forgery) is outside the guarantee",
+  "R5 (epoch mix-up after a lost monitor state file) is open; the run does not lose the state file"
+ ]
+}

@@ -1,0 +1,190 @@
+{
+  "stage": 4,
+  "runs": [
+    {
+      "scenario": "S1",
+      "budget_b": 7,
+      "T_size": 7,
+      "detected": true,
+      "violations": 5,
+      "B2_detected": true,
+      "LR": 1.0,
+      "LR_elem": 0.8571428571428571,
+      "LP": 1.0,
+      "OQ": 0.0,
+      "OQ_B3": 0.9877551020408163,
+      "RA": 1.0,
+      "miss": {
+        "Miss-D": 0,
+        "Miss-L": 1,
+        "Miss-R-assert": 0,
+        "Miss-R-abstain": 3
+      },
+      "Q_greedy": 6,
+      "Q_exact": 4,
+      "prop2_holds": false,
+      "account_asserted": 141,
+      "account_abstained": 3
+    },
+    {
+      "scenario": "S2",
+      "budget_b": 1,
+      "T_size": 1,
+      "detected": true,
+      "violations": 1,
+      "B2_detected": false,
+      "LR": 1.0,
+      "LR_elem": 1.0,
+      "LP": 0.5,
+      "OQ": 0.002053388090349076,
+      "OQ_B3": 0.997946611909651,
+      "RA": 1.0,
+      "miss": {
+        "Miss-D": 0,
+        "Miss-L": 0,
+        "Miss-R-assert": 0,
+        "Miss-R-abstain": 1
+      },
+      "Q_greedy": 2,
+      "Q_exact": 1,
+      "prop2_holds": false,
+      "account_asserted": 141,
+      "account_abstained": 1
+    },
+    {
+      "scenario": "S3",
+      "budget_b": 5,
+      "T_size": 4,
+      "detected": true,
+      "violations": 3,
+      "B2_detected": true,
+      "LR": 1.0,
+      "LR_elem": 0.75,
+      "LP": 1.0,
+      "OQ": 0.0,
+      "OQ_B3": 0.9938524590163934,
+      "RA": 0.9929577464788732,
+      "miss": {
+        "Miss-D": 0,
+        "Miss-L": 1,
+        "Miss-R-assert": 1,
+        "Miss-R-abstain": 2
+      },
+      "Q_greedy": 3,
+      "Q_exact": null,
+      "prop2_holds": null,
+      "account_asserted": 142,
+      "account_abstained": 2
+    },
+    {
+      "scenario": "S4",
+      "budget_b": 1,
+      "T_size": 1,
+      "detected": true,
+      "violations": 2,
+      "B2_detected": true,
+      "LR": 1.0,
+      "LR_elem": 0.0,
+      "LP": 0.0,
+      "OQ": 0.00205761316872428,
+      "OQ_B3": 1.0,
+      "RA": 1.0,
+      "miss": {
+        "Miss-D": 0,
+        "Miss-L": 1,
+        "Miss-R-assert": 0,
+        "Miss-R-abstain": 1
+      },
+      "Q_greedy": 1,
+      "Q_exact": 1,
+      "prop2_holds": true,
+      "account_asserted": 141,
+      "account_abstained": 1
+    },
+    {
+      "scenario": "S5",
+      "budget_b": 2,
+      "T_size": 2,
+      "detected": true,
+      "violations": 2,
+      "B2_detected": false,
+      "LR": 1.0,
+      "LR_elem": 1.0,
+      "LP": 0.6666666666666666,
+      "OQ": 0.002053388090349076,
+      "OQ_B3": 0.9958932238193019,
+      "RA": 1.0,
+      "miss": {
+        "Miss-D": 0,
+        "Miss-L": 0,
+        "Miss-R-assert": 0,
+        "Miss-R-abstain": 1
+      },
+      "Q_greedy": 3,
+      "Q_exact": 2,
+      "prop2_holds": false,
+      "account_asserted": 141,
+      "account_abstained": 1
+    }
+  ],
+  "conditionals": {
+    "P_detect": 1.0,
+    "P_LR1_given_detect": 1.0,
+    "P_correct_given_LR1": 0.9985915492957746,
+    "RA_e2e": 0.9985915492957746
+  },
+  "HARD_GATE_LR": true,
+  "HARD_GATE_MISS_R_ASSERT": false,
+  "GATE_PASS": false,
+  "note": "OQ must ALSO be reported as a function of event age (laminar retention degrades localization granularity with age by design)",
+  "capability": {
+    "capability_record": {
+      "schema_version": 1,
+      "actor_id": "mal_integration_v1",
+      "actor_position": "in_process_integration",
+      "powers": {
+        "db_read": true,
+        "db_write": true,
+        "fs_read_as_ha_uid": true,
+        "fs_write_as_ha_uid": true,
+        "python_exec_in_core": true,
+        "event_bus_listen": true,
+        "event_bus_emit": true,
+        "service_call": true,
+        "network_egress": false
+      },
+      "knowledge": {
+        "deployment_topology": "full",
+        "automation_configs": "full",
+        "anchor_schedule_known": false,
+        "anchor_key_known": false,
+        "victim_routine_model": "coarse"
+      },
+      "budget": {
+        "db_writes_max": 7,
+        "wallclock_window_s": 5,
+        "cpu_seconds_max": null
+      },
+      "constraints": {
+        "host_root": false,
+        "cross_uid_write": false,
+        "anchor_key_access": false,
+        "external_anchor_retraction": false,
+        "clock_control": false,
+        "cap_linux_immutable": false,
+        "cap_bpf": false
+      },
+      "substrate": {
+        "kind": "native_aarch64_container",
+        "envelope": "Pi-shaped cgroup (cpus/memory/blkio)",
+        "note": "NOT a Raspberry Pi; absolute latency is not claimed as Pi latency"
+      },
+      "provenance": {
+        "rka_mission": null,
+        "seed": 0
+      }
+    }
+  },
+  "_elapsed_s": 0.1,
+  "_digest": "72a8a462079898929c9a9cbfa8585bc4e1b3e6afdd314503f1cf6672195be892"
+}

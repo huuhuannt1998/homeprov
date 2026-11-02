@@ -1,0 +1,66 @@
+{
+ "title": "HOMEPROV E9 seven-day run: pre-registration amendment 2 (new start after amendment 1's start lapsed)",
+ "status": "REGISTERED",
+ "registered_at": "2026-10-12T03:07:45.903773+00:00",
+ "amends": {
+  "file": "exp/out/e9_preregistration.json",
+  "sha256": "3d64b2e5288479bd06dfada94402ffa53359b51c84a074de62986d9d58a0a16f",
+  "and": {
+   "file": "exp/out/e9_preregistration_amendment1.json",
+   "sha256": "cad4f5eb504a7731f611509ab000ab6d20af400177398732b4dbe5a261fdd085"
+  },
+  "note": "neither file is modified; amendment 1's code edit (testbed/e9/e9ops.py real_schedule, sha256 497fb462...) stands; only its START is replaced"
+ },
+ "reason": {
+  "pi_messages": [
+   {
+    "verbatim": "Hold on. Let me finish other projects first. I will tell you when to start",
+    "at": "2026-10-10 ~16:25 UTC",
+    "effect": "amendment 1's START (2026-10-10T19:00Z) lapsed; run_e9.sh was never started"
+   },
+   {
+    "verbatim": "The computer is ready for this long run",
+    "at": "2026-10-12 ~03:00 UTC",
+    "effect": "start now"
+   },
+   {
+    "verbatim": "It's plugged in",
+    "at": "2026-10-12 ~03:08 UTC",
+    "effect": "the Mac on AC power"
+   }
+  ],
+  "relayed_by": "lead",
+  "host_state": "the Mac rebooted about 02:58 UTC 2026-10-12; Docker restarted and the lab hub's containers (hpr-hass, hpr-devices, hpr-broker, hpr-monitor, hpr-anchord) exited (no restart policy)"
+ },
+ "start": {
+  "new_start_utc": "2026-10-12T07:00:00Z",
+  "new_end_utc": "2026-10-19T07:01:00Z (end event; the freeze and scoring follow)",
+  "day_window": "day d = [START + (d-1) x 24 h, START + d x 24 h), 07:00 UTC to 07:00 UTC (as registered: START + (d-1) x 24 h)",
+  "choice": [
+   "The hub's 04:12 UTC purge must not run between the full-history seal and START without a marker (it would disconnect sealed rows): the hub stack is therefore started only at 04:55 UTC, after tonight's purge time, so tonight there is no purge at all (Home Assistant arms the next 04:12 when it starts) and night 1 (2026-10-13 04:12) is the first purge after the seal, under its operator marker.",
+   "run_e9.sh is launched at about 05:00 UTC by a wall-clock launcher (HOMEPROV-P13-exp/e9/launch_e9_amend2.sh, outside the frozen set), leaving about 2 h before START for the setup (MIN_SETUP_S 3600 s unchanged; the final smoke's whole setup took 9 min 49 s).",
+   "07:00 UTC is outside the refused START window (03:40, 04:45]; the daily batch at START + 2 h = 09:00 collides with no special event (17:00, 20:00, 20:30) and no night event (03:40-04:45)."
+  ]
+ },
+ "new_schedule": {
+  "generated_by": "python3 testbed/e9/e9ops.py schedule --start 2026-10-12T07:00:00Z --days 7 --trials 5 --ec-arms PU PSR --e7-arms INS-L BD-S --keep-days 30 (as run_e9.sh runs it; the amendment-1 code)",
+  "file": "<research-dir>/HOMEPROV-P13-exp/e9/amendment2/schedule_start_2026-10-12T0700Z.json",
+  "sha256": "02d6495df1b628b5d4bd8bbfc92116caa5f48efc161caa2a070d6c9ddaea9829",
+  "events": 48,
+  "times_utc": {
+   "attack_batch": "09:00 daily",
+   "nights": "03:40 sleep guard, 03:55 / 04:45 snapshots, 04:07 issuer posting 04:10:00, purge 04:12, inside days 1-7 (2026-10-13 ... 2026-10-19)",
+   "planned_restart": "day 2, 2026-10-13 20:00",
+   "namemap_session": "day 3, 2026-10-14 17:00",
+   "backup_restore": "day 4, 2026-10-15 20:00 / 20:30",
+   "day_end": "07:00:30 daily"
+  }
+ },
+ "unchanged": "code (all 36 frozen repository files: 35 at their registered sha256 and testbed/e9/e9ops.py at amendment 1's 497fb462...; checked 2026-10-12 03:10 UTC), homeprov_e6, parameters, arms, counts per day, outcomes, scoring, exclusions, known limits",
+ "departures_from_the_registered_text": [
+  "the start moves by +19 h from the registered START (not whole days), with day windows from 07:00 UTC; the special events keep their registered day number and UTC time of day (amendment 1's rule)",
+  "the attack batches run at 09:00 UTC instead of 14:00; the day-end snapshot at 07:00:30",
+  "no purge on the night of 2026-10-12 (the hub stack is down until 04:55 UTC); night 1's purge therefore also deletes the rows that the missed purge(s) since the last purge that ran left older than its cutoff (whether the 2026-10-11 purge ran is not known here; the night-1 snapshots record the rows it deletes)"
+ ],
+ "corrected_before_timestamping": "this file was rewritten once, about two minutes after it was first written and before it was timestamped or shared, to replace an unverified count ('two days of rows') with the sentence above"
+}

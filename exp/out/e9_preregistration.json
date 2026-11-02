@@ -1,0 +1,547 @@
+{
+ "experiment": "E9: the deployed configuration for seven days on the lab installation (Home Assistant 2026.7.4, virtual devices, purge_keep_days 30, auto_purge on): two monitors (direct read and copy), both stable columns with coverage, Ed25519 record signatures, escrow, name-map digest, per-row keylog binding and the full-history initial seal; each with its own linked anchor (append key, separate operator key, tagged replies) and a head witness outside Docker's VM; the deployment's own nightly purges under operator-signed PURGE markers, one planned restart, one restore, one benign rename, the person re-link attack and its benign counterpart, and one attack batch a day",
+ "status": "REGISTERED",
+ "registered_at": "2026-10-10T08:52:19.673470+00:00",
+ "registered_before": "any event of the main run (tag e9_main); smoke runs on the scratch stack (prefix e9s-, outputs outside exp/out) precede it and are not results",
+ "approval": "PI 2026-10-09: '7 days (Recommended)'; code changes and smaller additions 'You decide what is the best for s&p' (drafts/round13/E9_DESIGN.md)",
+ "design": {
+  "doc": "drafts/round13/E9_DESIGN.md (section B)",
+  "impl_notes": "drafts/round13/E9_IMPL_NOTES.md (part A: A1-A7)",
+  "run_notes": "drafts/round13/E9_RUN_NOTES.md",
+  "purge_timer_diagnosis": "drafts/round13/E2_PURGE_DIAGNOSIS.md"
+ },
+ "schedule": {
+  "start_utc": "2026-10-11T12:00:00Z",
+  "end_utc": "2026-10-18T12:01:00Z (end event; the freeze and scoring follow)",
+  "condition": "starts only if the part-A code is reviewed, both test suites pass, a smoke run on the final code exits 0 and scores; otherwise the start moves by whole days (HPR_E9_START) and this file is re-issued before any event",
+  "day_window": "day d = [START + (d-1) x 24 h, START + d x 24 h), 12:00 UTC to 12:00 UTC",
+  "daily_utc": {
+   "14:00": "attack batch (rooms rotate porch, hallway, kitchen)",
+   "03:40": "sleep guard (restart the hub if its 04:12 purge timer is more than 30 s late)",
+   "03:55": "recorder snapshot night<d>_pre",
+   "04:07:00 / 04:10:00": "operator PURGE marker: the issuer container starts / posts to both anchors (retried until 04:12:00, when the hub purges)",
+   "04:45": "recorder snapshot night<d>_post",
+   "12:00:30": "recorder snapshot day<d>_end"
+  },
+  "special": {
+   "2026-10-12 20:00": "planned hub restart",
+   "2026-10-13 17:00": "name-map session, in this order: benign entity rename (light.porch_light -> 'Porch lamp') under a RENAME marker; the person re-link as a MOVE (hpr has one household account): the household account's user_id moves from its person to the person without an account ('Jordan Rivera (household)', created at setup), two person_update calls (unlink P1, link P2), declared under RENAME markers for every intermediate name-map state, and moved back (unlink P2, link P1) the same way; then the ATTACK, the same move with no marker and no recorder row written, held 180 s (the verifier consumes a RENAME marker at its first matching transition and counts a duplicated marker once, so the earlier declared move cannot excuse it); its declared move back. The run log names the mode used (move; a swap of two persons' accounts only on a hub without the account-less person)",
+   "2026-10-14 20:00 / 20:30": "backup of the recorder: a consistent SQLite copy wrapped in Home Assistant's backup format and hashed, HELD OUTSIDE THE HUB (run directory, read-only) / an operator RESTORE marker (backup_wm, archive and database sha256 signed into it); 30 s later the hub is STOPPED, the archive and .HA_RESTORE (restore_database=true, restore_homeassistant=false) are placed, the archive's copy in the hub is read back and must match the signed sha256 (else no restore), the hub is started and Home Assistant's own start-up restore runs; once its log says 'Restore complete' and the operator reads the restored recorder's watermark from outside the hub, an operator RESTORE_DONE marker (rig.marker_issuer.restore_done_marker: restore_nonce, restore_sha256 = the SHA-256 of the RESTORE marker's canonical JSON, post_restart_wm, hub_started_ts H = the restored hub's container start) is issued and anchored within 600 s of the RESTORE marker (review re-check N1, E9_IMPL_NOTES.md 12.1)"
+  },
+  "events": [
+   {
+    "utc": "2026-10-11T12:00:00Z",
+    "type": "start"
+   },
+   {
+    "utc": "2026-10-11T14:00:00Z",
+    "type": "attack_batch",
+    "day": 1,
+    "room": "porch",
+    "ec_arms": [
+     "PU",
+     "PSR"
+    ],
+    "e7_arms": [
+     "INS-L",
+     "BD-S"
+    ],
+    "trials": 5
+   },
+   {
+    "utc": "2026-10-12T03:40:00Z",
+    "type": "sleep_guard",
+    "day": 1
+   },
+   {
+    "utc": "2026-10-12T03:55:00Z",
+    "type": "snapshot",
+    "day": 1,
+    "label": "night1_pre"
+   },
+   {
+    "utc": "2026-10-12T04:07:00Z",
+    "type": "purge_marker",
+    "day": 1,
+    "keep_days": 30,
+    "post_utc": "2026-10-12T04:10:00Z"
+   },
+   {
+    "utc": "2026-10-12T04:45:00Z",
+    "type": "snapshot",
+    "day": 1,
+    "label": "night1_post"
+   },
+   {
+    "utc": "2026-10-12T12:00:30Z",
+    "type": "day_end",
+    "day": 1,
+    "label": "day1_end"
+   },
+   {
+    "utc": "2026-10-12T14:00:00Z",
+    "type": "attack_batch",
+    "day": 2,
+    "room": "hallway",
+    "ec_arms": [
+     "PU",
+     "PSR"
+    ],
+    "e7_arms": [
+     "INS-L",
+     "BD-S"
+    ],
+    "trials": 5
+   },
+   {
+    "utc": "2026-10-12T20:00:00Z",
+    "type": "planned_restart",
+    "day": 2
+   },
+   {
+    "utc": "2026-10-13T03:40:00Z",
+    "type": "sleep_guard",
+    "day": 2
+   },
+   {
+    "utc": "2026-10-13T03:55:00Z",
+    "type": "snapshot",
+    "day": 2,
+    "label": "night2_pre"
+   },
+   {
+    "utc": "2026-10-13T04:07:00Z",
+    "type": "purge_marker",
+    "day": 2,
+    "keep_days": 30,
+    "post_utc": "2026-10-13T04:10:00Z"
+   },
+   {
+    "utc": "2026-10-13T04:45:00Z",
+    "type": "snapshot",
+    "day": 2,
+    "label": "night2_post"
+   },
+   {
+    "utc": "2026-10-13T12:00:30Z",
+    "type": "day_end",
+    "day": 2,
+    "label": "day2_end"
+   },
+   {
+    "utc": "2026-10-13T14:00:00Z",
+    "type": "attack_batch",
+    "day": 3,
+    "room": "kitchen",
+    "ec_arms": [
+     "PU",
+     "PSR"
+    ],
+    "e7_arms": [
+     "INS-L",
+     "BD-S"
+    ],
+    "trials": 5
+   },
+   {
+    "utc": "2026-10-13T17:00:00Z",
+    "type": "namemap_session",
+    "day": 3
+   },
+   {
+    "utc": "2026-10-14T03:40:00Z",
+    "type": "sleep_guard",
+    "day": 3
+   },
+   {
+    "utc": "2026-10-14T03:55:00Z",
+    "type": "snapshot",
+    "day": 3,
+    "label": "night3_pre"
+   },
+   {
+    "utc": "2026-10-14T04:07:00Z",
+    "type": "purge_marker",
+    "day": 3,
+    "keep_days": 30,
+    "post_utc": "2026-10-14T04:10:00Z"
+   },
+   {
+    "utc": "2026-10-14T04:45:00Z",
+    "type": "snapshot",
+    "day": 3,
+    "label": "night3_post"
+   },
+   {
+    "utc": "2026-10-14T12:00:30Z",
+    "type": "day_end",
+    "day": 3,
+    "label": "day3_end"
+   },
+   {
+    "utc": "2026-10-14T14:00:00Z",
+    "type": "attack_batch",
+    "day": 4,
+    "room": "porch",
+    "ec_arms": [
+     "PU",
+     "PSR"
+    ],
+    "e7_arms": [
+     "INS-L",
+     "BD-S"
+    ],
+    "trials": 5
+   },
+   {
+    "utc": "2026-10-14T20:00:00Z",
+    "type": "backup",
+    "day": 4
+   },
+   {
+    "utc": "2026-10-14T20:30:00Z",
+    "type": "restore",
+    "day": 4
+   },
+   {
+    "utc": "2026-10-15T03:40:00Z",
+    "type": "sleep_guard",
+    "day": 4
+   },
+   {
+    "utc": "2026-10-15T03:55:00Z",
+    "type": "snapshot",
+    "day": 4,
+    "label": "night4_pre"
+   },
+   {
+    "utc": "2026-10-15T04:07:00Z",
+    "type": "purge_marker",
+    "day": 4,
+    "keep_days": 30,
+    "post_utc": "2026-10-15T04:10:00Z"
+   },
+   {
+    "utc": "2026-10-15T04:45:00Z",
+    "type": "snapshot",
+    "day": 4,
+    "label": "night4_post"
+   },
+   {
+    "utc": "2026-10-15T12:00:30Z",
+    "type": "day_end",
+    "day": 4,
+    "label": "day4_end"
+   },
+   {
+    "utc": "2026-10-15T14:00:00Z",
+    "type": "attack_batch",
+    "day": 5,
+    "room": "hallway",
+    "ec_arms": [
+     "PU",
+     "PSR"
+    ],
+    "e7_arms": [
+     "INS-L",
+     "BD-S"
+    ],
+    "trials": 5
+   },
+   {
+    "utc": "2026-10-16T03:40:00Z",
+    "type": "sleep_guard",
+    "day": 5
+   },
+   {
+    "utc": "2026-10-16T03:55:00Z",
+    "type": "snapshot",
+    "day": 5,
+    "label": "night5_pre"
+   },
+   {
+    "utc": "2026-10-16T04:07:00Z",
+    "type": "purge_marker",
+    "day": 5,
+    "keep_days": 30,
+    "post_utc": "2026-10-16T04:10:00Z"
+   },
+   {
+    "utc": "2026-10-16T04:45:00Z",
+    "type": "snapshot",
+    "day": 5,
+    "label": "night5_post"
+   },
+   {
+    "utc": "2026-10-16T12:00:30Z",
+    "type": "day_end",
+    "day": 5,
+    "label": "day5_end"
+   },
+   {
+    "utc": "2026-10-16T14:00:00Z",
+    "type": "attack_batch",
+    "day": 6,
+    "room": "kitchen",
+    "ec_arms": [
+     "PU",
+     "PSR"
+    ],
+    "e7_arms": [
+     "INS-L",
+     "BD-S"
+    ],
+    "trials": 5
+   },
+   {
+    "utc": "2026-10-17T03:40:00Z",
+    "type": "sleep_guard",
+    "day": 6
+   },
+   {
+    "utc": "2026-10-17T03:55:00Z",
+    "type": "snapshot",
+    "day": 6,
+    "label": "night6_pre"
+   },
+   {
+    "utc": "2026-10-17T04:07:00Z",
+    "type": "purge_marker",
+    "day": 6,
+    "keep_days": 30,
+    "post_utc": "2026-10-17T04:10:00Z"
+   },
+   {
+    "utc": "2026-10-17T04:45:00Z",
+    "type": "snapshot",
+    "day": 6,
+    "label": "night6_post"
+   },
+   {
+    "utc": "2026-10-17T12:00:30Z",
+    "type": "day_end",
+    "day": 6,
+    "label": "day6_end"
+   },
+   {
+    "utc": "2026-10-17T14:00:00Z",
+    "type": "attack_batch",
+    "day": 7,
+    "room": "porch",
+    "ec_arms": [
+     "PU",
+     "PSR"
+    ],
+    "e7_arms": [
+     "INS-L",
+     "BD-S"
+    ],
+    "trials": 5
+   },
+   {
+    "utc": "2026-10-18T03:40:00Z",
+    "type": "sleep_guard",
+    "day": 7
+   },
+   {
+    "utc": "2026-10-18T03:55:00Z",
+    "type": "snapshot",
+    "day": 7,
+    "label": "night7_pre"
+   },
+   {
+    "utc": "2026-10-18T04:07:00Z",
+    "type": "purge_marker",
+    "day": 7,
+    "keep_days": 30,
+    "post_utc": "2026-10-18T04:10:00Z"
+   },
+   {
+    "utc": "2026-10-18T04:45:00Z",
+    "type": "snapshot",
+    "day": 7,
+    "label": "night7_post"
+   },
+   {
+    "utc": "2026-10-18T12:00:30Z",
+    "type": "day_end",
+    "day": 7,
+    "label": "day7_end"
+   },
+   {
+    "utc": "2026-10-18T12:01:00Z",
+    "type": "end"
+   }
+  ],
+  "generated_by": "python3 testbed/e9/e9ops.py schedule --start 2026-10-11T12:00:00Z --days 7 --trials 5",
+  "notes": [
+   "2026-10-11 is the second Sunday of the month: the 04:12 purge that day also repacks (auto_repack); it falls before START. No second Sunday falls inside the run.",
+   "Every wait is on the wall clock; no hub restart in [03:50, 04:45) UTC."
+  ]
+ },
+ "parameters": {
+  "LATE_BOUND_s": 30,
+  "GAP_s": 30,
+  "LATE_BOUND_basis": "unchanged from E7/E8 (exp/out/e7_preregistration.json)",
+  "poll_period_s": 5,
+  "seal_wait_s": 130,
+  "K_inserted_rows": 9,
+  "bd_min_age_s": 130,
+  "bd_lookback_s": 1800,
+  "restart_wait_s": 45,
+  "purge_keep_days": 30,
+  "verifier_purge_keep_s": 2592000,
+  "verifier_purge_tol_s": 60,
+  "verifier_purge_tol_basis": "tol > 0 is required: Home Assistant's own cutoff (its fire time minus keep) lies in [c0, c0 + tol] with c0 = scheduled - keep; with tol = 0 a purge that fires a fraction of a second late leaves unexcused deletions (E9_IMPL_NOTES.md 10.2); 60 s as in E2",
+  "verifier_purge_seen_slack_s": 60,
+  "verifier_purge_seen_slack_basis": "e7_verify.py PURGE_SEEN_SLACK_S (review R7): a removed row counts as purged only if first observed by a poll that copied at or before scheduled + tol + 60 s",
+  "verifier_restore_tol_s": 30,
+  "verifier_restore_max_age_s": 86400,
+  "verifier_restore_done_max_s": 600,
+  "verifier_restore_done_max_basis": "review N1 / re-check 2: a RESTORE marker excuses nothing unless its operator-signed RESTORE_DONE is issued and anchored within this after the RESTORE marker's issued_ts. Measured in the final smoke run on the frozen code: 82.5 s (anchor-direct 82.50 s, anchor-copy 82.53 s, chain receive times; final smoke e9s_final, 2026-10-10 07:18:08 to 07:19:31 UTC: hub stop, archive placed and its copy checked, start, Home Assistant's restore, the restored watermark read outside the hub, RESTORE_DONE issued; H 35.2 s and the first poll reading the restored recorder 37.8 s after the RESTORE marker) from the RESTORE marker to the anchored RESTORE_DONE (both anchors). The reviewer estimated the worst case at about 300 s; smoke 3 (old sequence, no RESTORE_DONE) took 78 s from the RESTORE marker to the operator's post-restart observation; the hub stop, the archive check and up to a minute of Docker latency per container start are inside 600 s",
+  "restore_done_validity_rule": "scorer (e9_score.py restore_done_check), review re-check 2: every anchored, operator-signed RESTORE_DONE must carry hub_started_ts H and a post_restart_wm consistent with the restored recorder observed afterwards (the first snapshot after the RESTORE_DONE was anchored): post_restart_wm >= the RESTORE marker's signed backup_wm in each table, the recorder holds the keys up to post_restart_wm, and no row with a key above backup_wm was written before H. A RESTORE_DONE lacking H or failing a check is reported INVALID and the restore it closes counts as not excused (its RESTORE-excused segments are counted as unexcused). Without H the verifier would excuse a deletion between the restart and the first post-restore poll (reproduced by the reviewer); the harness always sends H",
+  "verifier_restore_max_age_basis": "a RESTORE marker with issued_ts - restore_point_ts above it is rejected (review m2); E9's restore marker comes about 30 min after its backup",
+  "purge_marker_post_s_before_purge": 120,
+  "sleep_guard_threshold_s": 30,
+  "restart_guard_utc": [
+   "03:50",
+   "04:45"
+  ],
+  "marker_lead_s": 30,
+  "namemap_step_s": 60,
+  "namemap_attack_hold_s": 180,
+  "witness_mode": "sync",
+  "initial_seal": "M-direct first; M-copy only after M-direct's history is anchored (its poll counter 6 polls past its first record); at most 5,400 s each, else the run does not start",
+  "monitor_env_both": "HOMEPROV_SCHEME=stable HOMEPROV_COVERAGE=1 HOMEPROV_ESCROW_DIR HOMEPROV_COST_LOG HOMEPROV_SIGN_KEY HOMEPROV_REPLY_TAGS=1 HOMEPROV_NAMEMAP_DIR=/cfg/.storage HOMEPROV_SINCE=0 HOMEPROV_ROWBIND=1 HOMEPROV_KEYLOG_REWIND=1 HOMEPROV_PERIOD=5",
+  "monitor_env_direct": "HOMEPROV_READ=direct HOMEPROV_QUICK_CHECK_EVERY=720",
+  "monitor_env_copy": "HOMEPROV_READ=copy HOMEPROV_QUICK_CHECK_EVERY=1",
+  "quick_check_every": {
+   "M-direct": 720,
+   "M-copy": 1
+  },
+  "quick_check_every_smoke_only": "the smoke runs use M-direct 12 (once a minute) so the hourly path is exercised several times; the real run keeps 720 (its preflight refuses any other value). Final smoke: M-direct quick_check due at 64 of 769 polls, snapshot stage median 242.6 ms when due against 1.3 ms otherwise; M-copy at every poll (705), median 124.3 ms; no quick_check failure and no unobservable poll in either",
+  "quick_check_every_basis": "lead decision 2026-10-10. M-direct 720 (once an hour at 5 s polls): in direct mode quick_check reads the whole live database inside the read transaction and holds off a checkpoint's backfill for that long (E9_IMPL_NOTES.md section 9 item 4), while the per-poll consistency check (WAL salts, checkpoint sequence, change counter; read_raced) catches a torn read at every poll. M-copy 1 (every poll, as E8's copy path did). C1 measured direct mode at both cadences (E9_PRE_NOTES.md) and the final direct-mode re-run measures both again. The run's preflight refuses other values and logs each container's own setting",
+  "verifier": "exp/stages/e7_verify.py verify --scheme stable --late-bound 30 --gap-s 30 --sign-pubkey <monitor> --escrow <monitor escrow> --operator-pubkey <operator> --purge-keep-s 2592000 --purge-tol-s 60 --restore-tol-s 30 --restore-max-age-s 86400 --restore-done-max-s 600 [--namemap-storage <sanitized storage>, last day] [--trials <day reports>]; each day again with --no-rowbind (suspects without the per-row binding, which then is used nowhere); each night's post-purge snapshot again with --no-purge-disconnect (the round-12 rule, for comparison)",
+  "scorer_jobs": 2,
+  "scorer_jobs_basis": "E9_VERIFY_JOBS=2 verifications in parallel, on the host after the freeze (not in Docker's VM). Measured with the indexed escrow on the E8 recorder history (E9_IMPL_NOTES.md 11.2): a day window 64.8 s, 1.17 GB resident (1.36 GB peak footprint); a whole-history window 140.3 s, 1.81 GB resident (2.99 GB footprint): two jobs need at most about 6 GB of the Mac's 24 GB beside the Docker VM. Final smoke (full seed, 2.66 GB escrow per monitor): 18 verifications with 2 jobs in 877 s (day windows 64-72 s, whole-history windows 151-160 s)",
+  "settings_checked": "against drafts/round13/E9_IMPL_NOTES.md section 8 (2026-10-10, part A final pending its re-check); --final re-hashes every file"
+ },
+ "arms": {
+  "per_day": {
+   "PU": 5,
+   "PSR": 5,
+   "INS-L": 5,
+   "BD-S": 5
+  },
+  "per_arm_total": 35,
+  "rooms_by_day": {
+   "1": "porch",
+   "2": "hallway",
+   "3": "kitchen",
+   "4": "porch",
+   "5": "hallway",
+   "6": "kitchen",
+   "7": "porch"
+  },
+  "components": {
+   "homeprov_ec": [
+    "PU",
+    "PSR"
+   ],
+   "homeprov_e7": [
+    "INS-L",
+    "BD-S"
+   ],
+   "homeprov_e6": "setup (persons) and the name-map session only; outside the repository, never released"
+  },
+  "order_per_batch": "homeprov_ec (PU, PSR), then homeprov_e7 (INS-L, BD-S); one hub restart switches each on (exactly one listed in configuration.yaml), one more switches both off",
+  "scored_by": "both monitors (each trial counts once per monitor)",
+  "name_map": {
+   "attack_move": 1,
+   "benign_move_and_back": 1,
+   "benign_entity_rename": 1,
+   "declared_move_back": 1
+  }
+ },
+ "benign_events": {
+  "nightly_purges": 7,
+  "operator_purge_markers": 7,
+  "planned_restart": 1,
+  "restore": 1,
+  "benign_rename": 1,
+  "benign_person_swap_and_back": 1,
+  "setup": "before START: `person:` added to configuration.yaml, one person per household account (active, not system-generated) that has none, and one person without an account, 'Jordan Rivera (household)' (user_id null), the person move's target (homeprov_e6 person_create, the call the person/create websocket handler makes); no account and no token is created"
+ },
+ "outcomes": {
+  "primary": {
+   "unexcused_untouched": "per day and monitor: attributable violations on UNTOUCHED segments that the verifier does not excuse under an operator-signed marker, at one-second, minute and hour granularity, with the untouched anchored segments as denominators (paper's counting rule: a segment is touched when it holds a row any trial wrote, edited or named)",
+   "purge": "per night and monitor: the verifier's NEW attributable violations between the 03:55 and 04:45 snapshots over the historical window (segments sealed by the full-history initial seal), split into excused (segment older than c0 gone, tolerance band [c0, c0 + tol], purge disconnect: count, seconds, rows; and keylog ranges purged or disconnected) and unexcused, next to the round-12 rule alone (--no-purge-disconnect); and the database's own evidence (rows older than the cutoff before and after, retained state rows whose old_state_id the purge set to NULL, statistics_runs)",
+   "detection": "per arm and monitor, per day and pooled: trials whose target second the verifier flags as attributable at one-second granularity, k of n with the exact (Clopper-Pearson) 95% interval"
+  },
+  "secondary": {
+   "suspect_seconds": "untouched seconds of the day flagged by a failed keylog range, with the per-row binding and without it (--no-rowbind)",
+   "name_map": "every digest transition: changed parts, excused by an operator RENAME marker anchored before it with the new part digests, or unexcused (detected); the verifier's verdict",
+   "restore": "segments and keylog ranges the verifier excuses under the RESTORE marker (rule rows_from_the_backup: only segments sealed before the first poll that read the restored recorder and ending after restore point - tol, every row in them an unchanged backup row (key <= the signed backup_wm), every row gone above it; key ranges committed before that poll, rows at or below backup_wm unchanged; E9_IMPL_NOTES.md 11.1; nothing without the operator's RESTORE_DONE within --restore-done-max-s, and no segment starting at or after the hub's start H it carries; a gone row must predate H, a reused-key row must follow it; 12.1), the marker's status (read_back_at, backup_last_key vs the recorder), the archive check in the hub, and any violation outside it",
+   "cost": "per day and monitor: per-poll copy or direct read, load, commit, append and total ms (median, p90, max), the read path, failed appends, unobservable polls; seal delay",
+   "quick_check": "per day and monitor: the polls at which quick_check was due (seq_local % N == 1, every poll for N = 1), the per-poll snapshot/copy and total cost of those polls against the others, and the polls the monitor's signed records report unobservable, by reason (quick_check_failed, read_raced, after_read, direct_open_failed, file checks)",
+   "bytes": "per day and monitor: bytes read and written by the monitor process (/proc/1/io rchar, wchar, read_bytes, write_bytes; sampled every 60 s)",
+   "host": "every wall-clock gap above 90 s, every pmset Sleep entry, every jump of the Docker VM's time()-monotonic() offset above 5 s, every hub start with its cause, power source and lid state",
+   "signatures_and_witness": "monitor records valid under each monitor's key; markers accepted under the operator's key; chain links, every witnessed head, the final head; anchor refusals by reason",
+   "full_history_seal": "seconds holding a row at START without an anchored root (expected 0)"
+  }
+ },
+ "exclusions": "only trials whose harness record carries an error are excluded, each counted and listed; a day with a host sleep, a late event or an unplanned hub start is reported with it, not excluded; a night whose purge did not run (database evidence) is reported as such and its marker as unconsumed; if the Mac or Docker restarts, the run stops and the completed days are scored and reported as an incomplete run",
+ "known_limits_stated_in_advance": [
+  "one physical machine: the witnesses run on the Mac outside Docker's VM, a separate trust domain, not a separate party",
+  "the attack integrations are installed for each batch; the hub restarts three times a day for them",
+  "Home Assistant arms its 04:12 purge on the VM's monotonic clock: a host sleep delays it (the sleep guard restarts the hub at 03:40 if so); a purge delayed past the marker's tolerance can delete rows younger than the scoped cutoff, which then stay unexcused",
+  "the restore runs Home Assistant's own restore code at start-up on an archive the operator built from a consistent SQLite copy (Home Assistant's backup manager needs an access token the lab installation does not have)",
+  "the person re-link attack is one move of the household account between two persons; E6 measured the effect of a re-link on displayed causes",
+  "every recorder snapshot, the restore's backup included, is read OUTSIDE the hub: a throwaway container on the read-only mount of the configuration volume runs SQLite's online backup API from a read-only connection with read-only shared memory (one read transaction, as the direct-read monitor) into the run directory; only if that fails three times does a snapshot go through the hub container's /tmp, recorded per snapshot (event field 'method': readonly_mount or hub_tmp_fallback); the archive is then held outside the hub and checked again inside it, with the hub stopped, before the restore",
+  "a declared multi-step change carries one RENAME marker per intermediate state; markers for states no seal caught stay unconsumed on the chain (reported)",
+  "a host that withholds or moves markers can turn a benign purge, restore or rename into violations (a false accusation the every-head witness check detects unless the markers were never appended), never a violation into a match (exp/out/e9_dishonest_anchor_markers.json)",
+  "backdating by less than about LATE_BOUND plus one poll period is scored as a benign late row; write-time forgery is outside the guarantee"
+ ],
+ "code_sha256": {
+  "computed_at": "2026-10-10T08:52:19Z",
+  "files": {
+   "monitor/monitor.py": "8ad9e2d77f2d098af1e81ed509445631dc3d3ba2d349fddff75bfd920a7ab8ae",
+   "monitor/Dockerfile.sign": "5a6dcec0d93012a5dae13ba72b5ccf1d772623baaa54c07b38c19be701d94d18",
+   "monitor/requirements-sign.txt": "d09f4bcea9d366d767affccde58418307c974bf5c358fb6a09b057b1c8d0922c",
+   "testbed/anchord/anchord.py": "8b35448dcf86df8bd1291b6fec6ff39e045bacbc3b083b09f61d035c1f251421",
+   "testbed/anchord/anchord_linked.py": "f6252e245b0f963fbefd4c511b51187985386870c745b8321c917152486ee1e1",
+   "testbed/anchord/headwitness.py": "0d8a83c8e0c4cb09e4a5097045e3d1ae91ae7ed264d4b491712256f0602781f5",
+   "testbed/anchord/chainverify.py": "38cfa5e9d99e8ece7ee53d4401e6a97d6e16b7dac02e19088b11d13b547f9d0e",
+   "testbed/e8/anchord-e8.Dockerfile": "84191c7adf8fc8a74b75f6603d7850841d8a9428c905622af4a6dc22ca811ebe",
+   "exp/stages/e7_verify.py": "9c42fad983a00e43083359339bc185c11d31ab7cdec7781f0e2cdee94ebea885",
+   "exp/stages/e8_score.py": "85301d2c2d0004175a19b4b6ab16654d5440ab756bb69442078e0bc5411ca692",
+   "exp/stages/e9_score.py": "c991f1675da0d0e5613cdc6896438b551dd45851e862d55c5b4e79d796461714",
+   "exp/rig/markers.py": "ca92f37cde74b7c5ecd921696879118057342ea9c559d9c63c7d682efbff5e33",
+   "exp/rig/marker_issuer.py": "fcf668178b1506ad8e279095c260ac9656dfca780b3c9c37f081df102f544a03",
+   "testbed/e9/run_e9.sh": "0f3f23a3201e8ec39c1abc04e3ec13034778ef528303d78263d3c63e23c4eb7d",
+   "testbed/e9/e9ops.py": "6860faeced0bde1d9fe104741b0bbc69542ce8497f2de379d09c03202eb8cbc8",
+   "testbed/e9/smoke_stack.sh": "efbf741e46acb1ec1ec1a4174897c2de9cba5e5868d63ab2e093d2c739967a55",
+   "testbed/e9/e9_prereg.py": "bec2e3ec3de5e83f4d33fd0e44ce13586df0ea4ff68da4cccc89a23704070f9c",
+   "testbed/e9/start_e9_at.sh": "e031697d61b88d3331802a133f3a359d71c0222f7a97f20c2fbe3e7172b44bf2",
+   "testbed/real/ha-config/custom_components/homeprov_ec/__init__.py": "266d27e298153ede1cc002d715461ecf96fbc211e96e76ed1d1453e762687918",
+   "testbed/real/ha-config/custom_components/homeprov_e7/__init__.py": "26d1d472e8331909cee0f69a16c4eee96ddaf383954d5bd79eba914fa847e707",
+   "monitor/test_coverage.py": "5857010438783e6f4378735685ae26615934872075759504e56d34663e2e65db",
+   "monitor/test_node_hash.py": "567ecb451c5ff604fd39dca1638f43107495dd368b4370765784ffa621d386da",
+   "monitor/test_e9.py": "9d9f034d5a3ea596c809d013b07e83d2a9833f16fab5e9c72318927827424752",
+   "monitor/test_e9_dishonest.py": "84ed49c5c6ce46eb02fe5b9ec541c98f0c3db1fb1e4deeb1c51fafe8401ea857",
+   "testbed/anchord/test_anchor_chain.py": "9c0477d3fdb81c3824054d819a637bb62a49311f6f2d69aac748123498f47967",
+   "testbed/anchord/test_anchor_e8.py": "614d2e994a994d080ce683351a160c664861982417af6cf16da80d3855f3093a",
+   "testbed/anchord/test_anchor_e9.py": "a9401be5925be8d8a53006e5042e4755b8bca824e911775adbfeab13eb638a72",
+   "testbed/anchord/test_anchor_cache.py": "54a3e52cbafe65b824a1074c9b6aed36ffdf5e0f2d7654e4fb628405f859526b",
+   "testbed/anchord/test_anchor_stall.py": "b2844dd38949791eba0a20e22792b7356add062c9a00c10a44901b8e23d0902e",
+   "exp/stages/e9_dishonest_anchor.py": "cb52853ab38d245b8d777f6acd75021291a712b5733df3c4d2697ef1ed792224",
+   "exp/stages/e9_dishonest_markers.py": "77156058e0e9da0992a4214ffc7e2d13e6d95657ea076565e169795e1929c34d",
+   "exp/stages/e9_purge_disconnect_offline.py": "08cf47c1a530d6cd63400d751068df17acd874032b19987d3f87e6e3e30fa03f",
+   "exp/out/e9_dishonest_anchor.json": "69b6a781d50bf87067e97b63d136ebac79835ee0c416eb89745d5df479866b88",
+   "exp/out/e9_dishonest_anchor_markers.json": "8b3bf4606246d6ba4cb764a3ea016deab67b71b9e13bd3a74cc8299eab8e18ba",
+   "exp/out/e9_direct_read_identity.json": "172d586ab482e6ee425fc54c0ed74de61dfc1cf7f95286157239930d2653749e",
+   "exp/out/e9_readonly_shm_lockdrop.json": "d88748ebb03ebfa440a2c9c6cb270c6534256704ff28ed6243cf382511b993a7"
+  },
+  "homeprov_e6 (outside the repository; never released)": "850dce4b06106e237464b1d869e5b0ba1cd876eaa4a0d8f70b394d8d6cceb9b2"
+ }
+}

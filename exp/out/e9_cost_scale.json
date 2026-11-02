@@ -1,0 +1,5353 @@
+{
+ "item": "E9 C1: monitor per-poll cost on synthetic recorders of about 0.2, 1 and 3 GB, copy mode and direct-read mode, under Docker CPU, memory and IO limits (R1 W5, R2 W4, R3 W5)",
+ "generated": "2026-10-10T01:59:46.037649+00:00",
+ "script": "exp/sp2027/e9_cost_scale.py",
+ "script_sha256": "4101120995aa109e9e3b893c7b23cca440fbfd2d0d3a64ea0f05e24ffdd1ba85",
+ "limits_monitor_container": {
+  "cpus": "1",
+  "memory": "1g",
+  "device_read_bps": "100mb",
+  "device_write_bps": "50mb",
+  "device": "/dev/vda"
+ },
+ "polls_measured_per_run": 30,
+ "warmup_polls": 3,
+ "period_s": 5.0,
+ "host": "Darwin Huans-MacBook-Pro.local 25.6.0 Darwin Kernel Version 25.6.0: Fri Jul 31 19:11:03 PDT 2026; root:xnu-12377.161.14~5/RELEASE_ARM64_T8132 arm64",
+ "docker": "29.1.3 10 8322101248",
+ "masters": {
+  "k1": {
+   "k": 1,
+   "bytes": 191459328,
+   "sha256": "6030e982bf938a6fbc04ab93ee4c388873cd7d07dad04e26c279d45d443ac4cf",
+   "states": 755041,
+   "events": 421958,
+   "states_meta": 25,
+   "src_sha256": "07b21122ff2577f4f2638cabc8617b71573d0c740ba6863f9041773105603010",
+   "seed": 20261009,
+   "generator_sha256": "a1a55a14bb36cc4db507a75d30e1bab6f6c5cb304fc902a85ce4f1a4d971d03c",
+   "span_s": 2601445.0644803774
+  },
+  "k5": {
+   "k": 5,
+   "bytes": 961363968,
+   "sha256": "d0c0bf057cd76209460b74d6945f7ee91a3bd47533e3095bf835aa4e6269c426",
+   "states": 3775205,
+   "events": 2109790,
+   "states_meta": 125,
+   "src_sha256": "07b21122ff2577f4f2638cabc8617b71573d0c740ba6863f9041773105603010",
+   "seed": 20261009,
+   "generator_sha256": "a1a55a14bb36cc4db507a75d30e1bab6f6c5cb304fc902a85ce4f1a4d971d03c",
+   "span_s": 2601445.0644803774
+  },
+  "k15": {
+   "k": 15,
+   "bytes": 2935984128,
+   "sha256": "e2045254242a2f042d402a93103e40863d87e3adc4bd82f8be180a92bb5e7a74",
+   "states": 11325615,
+   "events": 6329370,
+   "states_meta": 375,
+   "src_sha256": "07b21122ff2577f4f2638cabc8617b71573d0c740ba6863f9041773105603010",
+   "seed": 20261009,
+   "generator_sha256": "a1a55a14bb36cc4db507a75d30e1bab6f6c5cb304fc902a85ce4f1a4d971d03c",
+   "span_s": 2601445.0644803774
+  }
+ },
+ "runs": {
+  "k1_copy_m3e479ae0": {
+   "k": 1,
+   "mode": "copy",
+   "image": "hpr-monitor:e8",
+   "limits": {
+    "cpus": "1",
+    "memory": "1g",
+    "device_read_bps": "100mb",
+    "device_write_bps": "50mb",
+    "device": "/dev/vda"
+   },
+   "master_bytes": 191459328,
+   "master_sha256": "6030e982bf938a6fbc04ab93ee4c388873cd7d07dad04e26c279d45d443ac4cf",
+   "monitor_sha256": "3e479ae01caf299e697b0274a22ddddbaa6b57b9bf4b730a8774b2d7c5b5282b",
+   "read_mode": "copy",
+   "wrapped_functions": [
+    "snapshot",
+    "validate_copy",
+    "watermark",
+    "keylog_poll",
+    "load",
+    "commit",
+    "escrow_write",
+    "escrow_keylog",
+    "append",
+    "save_state",
+    "namemap_seal"
+   ],
+   "polls_measured": 30,
+   "warmup_polls": 3,
+   "poll_errors": [],
+   "unobservable_polls": 0,
+   "unobservable_reasons": {},
+   "unobservable_detail_examples": [],
+   "read_path_counts": {
+    "copy": 30
+   },
+   "env_extra": {
+    "HOMEPROV_DB": "/cfg/home-assistant_v2.db",
+    "HOMEPROV_ANCHOR": "http://anchor:9900/append",
+    "HOMEPROV_PERIOD": "5.0",
+    "HOMEPROV_SCRATCH": "/scratch",
+    "HOMEPROV_ANCHOR_KEY": "<key>",
+    "HOMEPROV_SCHEME": "stable",
+    "HOMEPROV_COVERAGE": "1",
+    "HOMEPROV_KEYLOG": "1",
+    "HOMEPROV_ESCROW_DIR": "/escrow",
+    "HOMEPROV_SIGN_KEY": "/sign/monitor.pem",
+    "HOMEPROV_REPLY_TAGS": "1"
+   },
+   "failed_appends": 0,
+   "per_poll_ms": {
+    "total": {
+     "n": 30,
+     "median": 4128.53,
+     "p90": 4512.276,
+     "max": 4721.683,
+     "min": 3872.309
+    },
+    "tick_copy_ms": {
+     "n": 30,
+     "median": 187.707,
+     "p90": 620.007,
+     "max": 721.81,
+     "min": 56.127
+    },
+    "tick_load_ms": {
+     "n": 30,
+     "median": 34.642,
+     "p90": 55.411,
+     "max": 73.45,
+     "min": 14.589
+    },
+    "tick_commit_ms": {
+     "n": 30,
+     "median": 127.172,
+     "p90": 205.407,
+     "max": 274.397,
+     "min": 55.58
+    },
+    "tick_append_ms": {
+     "n": 30,
+     "median": 9.042,
+     "p90": 28.127,
+     "max": 57.588,
+     "min": 2.642
+    },
+    "phase_append": {
+     "n": 30,
+     "median": 8.633,
+     "p90": 27.848,
+     "max": 55.485,
+     "min": 2.537
+    },
+    "phase_commit": {
+     "n": 30,
+     "median": 127.166,
+     "p90": 205.399,
+     "max": 274.39,
+     "min": 55.575
+    },
+    "phase_escrow_keylog": {
+     "n": 30,
+     "median": 3.18,
+     "p90": 7.437,
+     "max": 33.346,
+     "min": 0.903
+    },
+    "phase_escrow_write": {
+     "n": 30,
+     "median": 2.934,
+     "p90": 13.931,
+     "max": 31.357,
+     "min": 1.177
+    },
+    "phase_keylog_poll": {
+     "n": 30,
+     "median": 1.291,
+     "p90": 2.859,
+     "max": 6.444,
+     "min": 0.453
+    },
+    "phase_load": {
+     "n": 30,
+     "median": 34.631,
+     "p90": 55.38,
+     "max": 73.441,
+     "min": 14.585
+    },
+    "phase_save_state": {
+     "n": 30,
+     "median": 0.873,
+     "p90": 2.326,
+     "max": 6.15,
+     "min": 0.45
+    },
+    "phase_snapshot": {
+     "n": 30,
+     "median": 187.53,
+     "p90": 619.819,
+     "max": 721.637,
+     "min": 56.096
+    },
+    "phase_validate_copy": {
+     "n": 30,
+     "median": 3717.345,
+     "p90": 3793.324,
+     "max": 4160.257,
+     "min": 3614.966
+    },
+    "phase_watermark": {
+     "n": 30,
+     "median": 0.711,
+     "p90": 2.28,
+     "max": 3.444,
+     "min": 0.298
+    }
+   },
+   "per_poll_bytes": {
+    "proc_rchar": {
+     "n": 30,
+     "median": 474087609.0,
+     "p90": 476225293,
+     "max": 476877213,
+     "min": 470549700
+    },
+    "proc_wchar": {
+     "n": 30,
+     "median": 193939450.0,
+     "p90": 195013994,
+     "max": 195424002,
+     "min": 192072313
+    },
+    "proc_read_bytes": {
+     "n": 30,
+     "median": 0.0,
+     "p90": 0,
+     "max": 0,
+     "min": 0
+    },
+    "proc_write_bytes": {
+     "n": 30,
+     "median": 194101248.0,
+     "p90": 195190784,
+     "max": 195600384,
+     "min": 192249856
+    },
+    "cgroup_rbytes": {
+     "n": 30,
+     "median": 0.0,
+     "p90": 0,
+     "max": 0,
+     "min": 0
+    },
+    "cgroup_wbytes": {
+     "n": 30,
+     "median": 193986560.0,
+     "p90": 194998272,
+     "max": 195469312,
+     "min": 192057344
+    }
+   },
+   "measured_window": {
+    "clock_first": 1791518171.460605,
+    "clock_last": 1791518438.8599722,
+    "seconds": 267.4,
+    "sum_read_bytes": 0,
+    "sum_write_bytes": 5821108224,
+    "sum_rchar": 14218728879,
+    "sum_wchar": 5815923770,
+    "sum_cgroup_rbytes": 0,
+    "sum_cgroup_wbytes": 5815734272,
+    "bytes_written_per_hour_proc": 78369445050,
+    "bytes_written_per_hour_cgroup": 78297095659
+   },
+   "rows_in_open_window": {
+    "n": 30,
+    "median": 4202.5,
+    "p90": 4264,
+    "max": 4281,
+    "min": 2168
+   },
+   "writer": {
+    "start": {
+     "writer": "start",
+     "replay_rows": 8203,
+     "offset": -63468.50542593002,
+     "clock": 1791518122.5599377,
+     "history_end": 1791518120.073026
+    },
+    "stop": {
+     "writer": "stop",
+     "clock": 1791518456.0021882,
+     "states": 129,
+     "events": 67,
+     "commits": 62,
+     "commit_s_median": 0.0007244348526000977,
+     "commit_s_max": 0.007816076278686523
+    },
+    "rows_per_minute": 35.27
+   },
+   "steps": [
+    {
+     "step": "start",
+     "context": {
+      "uptime": "17:33  up 38 days, 21:30, 2 users, load averages: 7.37 8.81 6.64",
+      "containers_cpu": [
+       "e9s-hass 0.00%",
+       "e9s-devices 0.01%",
+       "e9s-broker 0.02%",
+       "ds-readpath-ha 0.01%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 0.01%",
+       "hpr-broker 0.02%",
+       "rka-server 0.12%",
+       "rka-worker 0.14%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 24.00%",
+       "hpr-devices 0.00%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "k": 1,
+     "mode": "copy",
+     "image": "hpr-monitor:e8",
+     "limits": {
+      "cpus": "1",
+      "memory": "1g",
+      "device_read_bps": "100mb",
+      "device_write_bps": "50mb",
+      "device": "/dev/vda"
+     },
+     "polls": 30,
+     "warmup": 3,
+     "period": 5.0,
+     "master": "<research-dir>/HOMEPROV-P13-exp/e9pre/c1/master_k1.db",
+     "master_sha256": "6030e982bf938a6fbc04ab93ee4c388873cd7d07dad04e26c279d45d443ac4cf",
+     "master_bytes": 191459328,
+     "load": "17:33  up 38 days, 21:30, 2 users, load averages: 7.37 8.81 6.64",
+     "at": "2026-10-09T21:33:08Z"
+    },
+    {
+     "step": "live_copy",
+     "seconds": 0.9,
+     "at": "2026-10-09T21:33:09Z"
+    },
+    {
+     "step": "monitor_start",
+     "env": {
+      "HOMEPROV_DB": "/cfg/home-assistant_v2.db",
+      "HOMEPROV_ANCHOR": "http://anchor:9900/append",
+      "HOMEPROV_PERIOD": "5.0",
+      "HOMEPROV_SCRATCH": "/scratch",
+      "HOMEPROV_ANCHOR_KEY": "<key>",
+      "HOMEPROV_SCHEME": "stable",
+      "HOMEPROV_COVERAGE": "1",
+      "HOMEPROV_KEYLOG": "1",
+      "HOMEPROV_ESCROW_DIR": "/escrow",
+      "HOMEPROV_SIGN_KEY": "/sign/monitor.pem",
+      "HOMEPROV_REPLY_TAGS": "1"
+     },
+     "mount_ro": true,
+     "offset": -63468.50542593002,
+     "at": "2026-10-09T21:33:26Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "17:38  up 38 days, 21:36, 2 users, load averages: 4.88 6.79 6.42",
+      "containers_cpu": [
+       "e9s-anchord-copy 6.66%",
+       "e9s-anchord-direct 0.01%",
+       "e9k-monitor 0.00%",
+       "e9k-writer 0.11%",
+       "e9k-anchord 0.49%",
+       "e9s-hass 0.93%",
+       "e9s-devices 0.07%",
+       "e9s-broker 0.09%",
+       "ds-readpath-ha 0.14%",
+       "delaysteer-e2-mosquitto 0.03%",
+       "delaysteer-ha 0.15%",
+       "hpr-broker 0.04%",
+       "rka-server 0.14%",
+       "rka-worker 0.12%",
+       "hpr-monitor 30.27%",
+       "hpr-hass 101.54%",
+       "hpr-devices 0.01%",
+       "hpr-anchord 6.21%",
+       "e9s-monitor-direct 98.42%"
+      ]
+     },
+     "at": "2026-10-09T21:38:31Z"
+    },
+    {
+     "step": "monitor_done",
+     "exit": "0",
+     "context": {
+      "uptime": "17:38  up 38 days, 21:36, 2 users, load averages: 5.27 6.78 6.42",
+      "containers_cpu": [
+       "e9s-monitor-copy 101.55%",
+       "e9s-monitor-direct 97.02%",
+       "e9s-anchord-copy 0.01%",
+       "e9s-anchord-direct 0.01%",
+       "e9k-writer 0.00%",
+       "e9k-anchord 0.02%",
+       "e9s-hass 0.04%",
+       "e9s-devices 0.01%",
+       "e9s-broker 0.02%",
+       "ds-readpath-ha 0.02%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 0.04%",
+       "hpr-broker 0.02%",
+       "rka-server 0.11%",
+       "rka-worker 0.10%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 101.46%",
+       "hpr-devices 0.03%",
+       "hpr-anchord 0.04%"
+      ]
+     },
+     "at": "2026-10-09T21:38:44Z"
+    },
+    {
+     "step": "sizes",
+     "sizes": [
+      "/cfg/home-assistant_v2.db 191483904",
+      "/scratch/monitor_state.json 10967",
+      "/scratch/recorder.db 191483904",
+      "/escrow/escrow.jsonl 5940166",
+      "/anchor/chain.jsonl 191861",
+      "33"
+     ],
+     "load": "17:38  up 38 days, 21:36, 2 users, load averages: 6.29 6.97 6.49",
+     "at": "2026-10-09T21:38:45Z"
+    },
+    {
+     "step": "teardown",
+     "left": "",
+     "at": "2026-10-09T21:38:46Z"
+    }
+   ]
+  },
+  "k5_copy_m3e479ae0": {
+   "k": 5,
+   "mode": "copy",
+   "image": "hpr-monitor:e8",
+   "limits": {
+    "cpus": "1",
+    "memory": "1g",
+    "device_read_bps": "100mb",
+    "device_write_bps": "50mb",
+    "device": "/dev/vda"
+   },
+   "master_bytes": 961363968,
+   "master_sha256": "d0c0bf057cd76209460b74d6945f7ee91a3bd47533e3095bf835aa4e6269c426",
+   "monitor_sha256": "3e479ae01caf299e697b0274a22ddddbaa6b57b9bf4b730a8774b2d7c5b5282b",
+   "read_mode": "copy",
+   "wrapped_functions": [
+    "snapshot",
+    "validate_copy",
+    "watermark",
+    "keylog_poll",
+    "load",
+    "commit",
+    "escrow_write",
+    "escrow_keylog",
+    "append",
+    "save_state",
+    "namemap_seal"
+   ],
+   "polls_measured": 30,
+   "warmup_polls": 3,
+   "poll_errors": [],
+   "unobservable_polls": 0,
+   "unobservable_reasons": {},
+   "unobservable_detail_examples": [],
+   "read_path_counts": {
+    "copy": 30
+   },
+   "env_extra": {
+    "HOMEPROV_DB": "/cfg/home-assistant_v2.db",
+    "HOMEPROV_ANCHOR": "http://anchor:9900/append",
+    "HOMEPROV_PERIOD": "5.0",
+    "HOMEPROV_SCRATCH": "/scratch",
+    "HOMEPROV_ANCHOR_KEY": "<key>",
+    "HOMEPROV_SCHEME": "stable",
+    "HOMEPROV_COVERAGE": "1",
+    "HOMEPROV_KEYLOG": "1",
+    "HOMEPROV_ESCROW_DIR": "/escrow",
+    "HOMEPROV_SIGN_KEY": "/sign/monitor.pem",
+    "HOMEPROV_REPLY_TAGS": "1"
+   },
+   "failed_appends": 0,
+   "per_poll_ms": {
+    "total": {
+     "n": 30,
+     "median": 42670.227,
+     "p90": 64626.58,
+     "max": 76716.107,
+     "min": 29693.394
+    },
+    "tick_copy_ms": {
+     "n": 30,
+     "median": 17646.262,
+     "p90": 39144.324,
+     "max": 40899.53,
+     "min": 14743.852
+    },
+    "tick_load_ms": {
+     "n": 30,
+     "median": 104.16,
+     "p90": 194.75,
+     "max": 350.791,
+     "min": 65.188
+    },
+    "tick_commit_ms": {
+     "n": 30,
+     "median": 314.847,
+     "p90": 567.774,
+     "max": 1812.222,
+     "min": 228.185
+    },
+    "tick_append_ms": {
+     "n": 30,
+     "median": 10.124,
+     "p90": 19.416,
+     "max": 62.975,
+     "min": 4.874
+    },
+    "phase_append": {
+     "n": 30,
+     "median": 9.696,
+     "p90": 16.764,
+     "max": 60.648,
+     "min": 4.646
+    },
+    "phase_commit": {
+     "n": 30,
+     "median": 314.842,
+     "p90": 567.762,
+     "max": 1811.931,
+     "min": 228.18
+    },
+    "phase_escrow_keylog": {
+     "n": 30,
+     "median": 5.213,
+     "p90": 15.715,
+     "max": 41.432,
+     "min": 1.734
+    },
+    "phase_escrow_write": {
+     "n": 30,
+     "median": 8.516,
+     "p90": 22.049,
+     "max": 33.175,
+     "min": 4.218
+    },
+    "phase_keylog_poll": {
+     "n": 30,
+     "median": 5.261,
+     "p90": 11.199,
+     "max": 34.641,
+     "min": 2.669
+    },
+    "phase_load": {
+     "n": 30,
+     "median": 104.153,
+     "p90": 194.74,
+     "max": 350.667,
+     "min": 65.184
+    },
+    "phase_save_state": {
+     "n": 30,
+     "median": 1.575,
+     "p90": 3.503,
+     "max": 6.453,
+     "min": 1.022
+    },
+    "phase_snapshot": {
+     "n": 30,
+     "median": 17645.92,
+     "p90": 39144.411,
+     "max": 40898.822,
+     "min": 14741.552
+    },
+    "phase_validate_copy": {
+     "n": 30,
+     "median": 22352.359,
+     "p90": 36790.607,
+     "max": 47111.595,
+     "min": 11815.754
+    },
+    "phase_watermark": {
+     "n": 30,
+     "median": 0.59,
+     "p90": 1.601,
+     "max": 5.08,
+     "min": 0.272
+    }
+   },
+   "per_poll_bytes": {
+    "proc_rchar": {
+     "n": 30,
+     "median": 2365589843.5,
+     "p90": 3329720375,
+     "max": 3330715704,
+     "min": 2362283484
+    },
+    "proc_wchar": {
+     "n": 30,
+     "median": 967034081.0,
+     "p90": 1933044344,
+     "max": 1933485262,
+     "min": 966323254
+    },
+    "proc_read_bytes": {
+     "n": 30,
+     "median": 1788532736.0,
+     "p90": 2746679296,
+     "max": 3019280384,
+     "min": 1783410688
+    },
+    "proc_write_bytes": {
+     "n": 30,
+     "median": 967211008.0,
+     "p90": 1933230080,
+     "max": 1933672448,
+     "min": 966500352
+    },
+    "cgroup_rbytes": {
+     "n": 30,
+     "median": 1788532736.0,
+     "p90": 2746679296,
+     "max": 3019280384,
+     "min": 1783410688
+    },
+    "cgroup_wbytes": {
+     "n": 30,
+     "median": 967761920.0,
+     "p90": 1933910016,
+     "max": 1936863232,
+     "min": 966549504
+    }
+   },
+   "measured_window": {
+    "clock_first": 1791518385.107192,
+    "clock_last": 1791519902.3895223,
+    "seconds": 1517.3,
+    "sum_read_bytes": 61572001792,
+    "sum_write_bytes": 34808913920,
+    "sum_rchar": 76733827353,
+    "sum_wchar": 34803578031,
+    "sum_cgroup_rbytes": 61572001792,
+    "sum_cgroup_wbytes": 34854993920,
+    "bytes_written_per_hour_proc": 82588868458,
+    "bytes_written_per_hour_cgroup": 82698199507
+   },
+   "rows_in_open_window": {
+    "n": 30,
+    "median": 10381.5,
+    "p90": 11820,
+    "max": 17051,
+    "min": 8612
+   },
+   "writer": {
+    "start": {
+     "writer": "start",
+     "replay_rows": 43411,
+     "offset": -63815.83030796051,
+     "clock": 1791518123.469463,
+     "history_end": 1791518120.073026
+    },
+    "stop": {
+     "writer": "stop",
+     "clock": 1791519912.0046542,
+     "states": 2838,
+     "events": 1463,
+     "commits": 1041,
+     "commit_s_median": 0.0014224052429199219,
+     "commit_s_max": 3.3317203521728516
+    },
+    "rows_per_minute": 144.29
+   },
+   "steps": [
+    {
+     "step": "start",
+     "context": {
+      "uptime": "17:38  up 38 days, 21:36, 2 users, load averages: 6.29 6.97 6.49",
+      "containers_cpu": [
+       "e9s-monitor-copy 102.43%",
+       "e9s-monitor-direct 95.56%",
+       "e9s-anchord-copy 0.04%",
+       "e9s-anchord-direct 0.02%",
+       "e9s-hass 0.09%",
+       "e9s-devices 0.01%",
+       "e9s-broker 0.02%",
+       "ds-readpath-ha 0.00%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 0.00%",
+       "hpr-broker 0.03%",
+       "rka-server 0.16%",
+       "rka-worker 0.08%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 0.09%",
+       "hpr-devices 0.04%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "k": 5,
+     "mode": "copy",
+     "image": "hpr-monitor:e8",
+     "limits": {
+      "cpus": "1",
+      "memory": "1g",
+      "device_read_bps": "100mb",
+      "device_write_bps": "50mb",
+      "device": "/dev/vda"
+     },
+     "polls": 30,
+     "warmup": 3,
+     "period": 5.0,
+     "master": "<research-dir>/HOMEPROV-P13-exp/e9pre/c1/master_k5.db",
+     "master_sha256": "d0c0bf057cd76209460b74d6945f7ee91a3bd47533e3095bf835aa4e6269c426",
+     "master_bytes": 961363968,
+     "load": "17:38  up 38 days, 21:36, 2 users, load averages: 6.29 6.97 6.49",
+     "at": "2026-10-09T21:38:48Z"
+    },
+    {
+     "step": "master_volume",
+     "volume": "e9k-master-k5",
+     "at": "2026-10-09T21:38:52Z"
+    },
+    {
+     "step": "live_copy",
+     "seconds": 2.1,
+     "at": "2026-10-09T21:38:54Z"
+    },
+    {
+     "step": "monitor_start",
+     "env": {
+      "HOMEPROV_DB": "/cfg/home-assistant_v2.db",
+      "HOMEPROV_ANCHOR": "http://anchor:9900/append",
+      "HOMEPROV_PERIOD": "5.0",
+      "HOMEPROV_SCRATCH": "/scratch",
+      "HOMEPROV_ANCHOR_KEY": "<key>",
+      "HOMEPROV_SCHEME": "stable",
+      "HOMEPROV_COVERAGE": "1",
+      "HOMEPROV_KEYLOG": "1",
+      "HOMEPROV_ESCROW_DIR": "/escrow",
+      "HOMEPROV_SIGN_KEY": "/sign/monitor.pem",
+      "HOMEPROV_REPLY_TAGS": "1"
+     },
+     "mount_ro": true,
+     "offset": -63815.83030796051,
+     "at": "2026-10-09T21:39:13Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "17:44  up 38 days, 21:41, 2 users, load averages: 7.42 8.09 7.29",
+      "containers_cpu": [
+       "e9dc-anc-ip 0.02%",
+       "e9dc-anc-ext 0.51%",
+       "e9k-monitor 17.91%",
+       "e9k-writer 0.01%",
+       "e9k-anchord 0.02%",
+       "e9s-monitor-direct 101.96%",
+       "e9s-anchord-copy 0.01%",
+       "e9s-anchord-direct 0.04%",
+       "e9s-hass 0.39%",
+       "e9s-devices 0.01%",
+       "e9s-broker 0.03%",
+       "ds-readpath-ha 0.20%",
+       "delaysteer-e2-mosquitto 0.03%",
+       "delaysteer-ha 0.05%",
+       "hpr-broker 0.03%",
+       "rka-server 0.17%",
+       "rka-worker 1.04%",
+       "hpr-monitor 39.48%",
+       "hpr-hass 75.23%",
+       "hpr-devices 0.01%",
+       "hpr-anchord 14.27%"
+      ]
+     },
+     "at": "2026-10-09T21:44:21Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "17:49  up 38 days, 21:47, 2 users, load averages: 5.10 6.48 6.78",
+      "containers_cpu": [
+       "e9k-monitor 0.32%",
+       "e9k-writer 0.02%",
+       "e9k-anchord 0.01%",
+       "e9s-monitor-direct 100.23%",
+       "e9s-anchord-copy 0.01%",
+       "e9s-anchord-direct 0.01%",
+       "e9s-hass 0.80%",
+       "e9s-devices 0.01%",
+       "e9s-broker 0.02%",
+       "ds-readpath-ha 0.03%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 0.04%",
+       "hpr-broker 0.02%",
+       "rka-server 0.13%",
+       "rka-worker 0.23%",
+       "hpr-monitor 10.98%",
+       "hpr-hass 100.26%",
+       "hpr-devices 0.02%",
+       "hpr-anchord 4.62%"
+      ]
+     },
+     "at": "2026-10-09T21:49:24Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "17:54  up 38 days, 21:52, 2 users, load averages: 8.86 7.90 7.32",
+      "containers_cpu": [
+       "e9s-hass 0.12%",
+       "e9s-devices 0.04%",
+       "e9s-broker 0.03%",
+       "e9k-monitor 15.55%",
+       "e9k-writer 0.24%",
+       "e9k-anchord 0.02%",
+       "ds-readpath-ha 0.15%",
+       "delaysteer-e2-mosquitto 0.03%",
+       "delaysteer-ha 0.09%",
+       "hpr-broker 0.12%",
+       "rka-server 0.16%",
+       "rka-worker 0.09%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 3.27%",
+       "hpr-devices 0.25%",
+       "hpr-anchord 12.17%"
+      ]
+     },
+     "at": "2026-10-09T21:54:27Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "17:59  up 38 days, 21:57, 2 users, load averages: 11.15 8.42 7.62",
+      "containers_cpu": [
+       "e9s-monitor-copy 0.00%",
+       "e9s-monitor-direct 0.00%",
+       "e9s-anchord-copy 1.89%",
+       "e9s-anchord-direct 0.01%",
+       "e9s-hass 0.07%",
+       "e9s-devices 0.01%",
+       "e9s-broker 0.03%",
+       "e9k-monitor 8.16%",
+       "e9k-writer 0.08%",
+       "e9k-anchord 0.01%",
+       "ds-readpath-ha 1.06%",
+       "delaysteer-e2-mosquitto 0.03%",
+       "delaysteer-ha 0.68%",
+       "hpr-broker 0.03%",
+       "rka-server 0.16%",
+       "rka-worker 0.16%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 0.05%",
+       "hpr-devices 0.01%",
+       "hpr-anchord 0.02%"
+      ]
+     },
+     "at": "2026-10-09T21:59:31Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "18:04  up 38 days, 22:02, 2 users, load averages: 6.66 6.41 6.87",
+      "containers_cpu": [
+       "e9s-monitor-copy 7.90%",
+       "e9s-monitor-direct 0.00%",
+       "e9s-anchord-copy 5.84%",
+       "e9s-anchord-direct 0.03%",
+       "e9s-hass 0.12%",
+       "e9s-devices 0.02%",
+       "e9s-broker 0.02%",
+       "e9k-monitor 27.51%",
+       "e9k-writer 0.08%",
+       "e9k-anchord 0.03%",
+       "ds-readpath-ha 0.56%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 0.51%",
+       "hpr-broker 0.04%",
+       "rka-server 0.15%",
+       "rka-worker 0.07%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 101.93%",
+       "hpr-devices 0.00%",
+       "hpr-anchord 0.02%"
+      ]
+     },
+     "at": "2026-10-09T22:04:33Z"
+    },
+    {
+     "step": "monitor_done",
+     "exit": "0",
+     "context": {
+      "uptime": "18:08  up 38 days, 22:06, 2 users, load averages: 6.44 6.83 6.97",
+      "containers_cpu": [
+       "e9s-monitor-copy 16.00%",
+       "e9s-monitor-direct 12.30%",
+       "e9s-anchord-copy 2.58%",
+       "e9s-anchord-direct 2.73%",
+       "e9s-hass 7.56%",
+       "e9s-devices 0.01%",
+       "e9s-broker 0.03%",
+       "e9k-writer 0.02%",
+       "e9k-anchord 0.01%",
+       "ds-readpath-ha 2.60%",
+       "delaysteer-e2-mosquitto 0.03%",
+       "delaysteer-ha 1.61%",
+       "hpr-broker 0.02%",
+       "rka-server 0.13%",
+       "rka-worker 0.06%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 100.38%",
+       "hpr-devices 0.01%",
+       "hpr-anchord 8.65%"
+      ]
+     },
+     "at": "2026-10-09T22:08:47Z"
+    },
+    {
+     "step": "sizes",
+     "sizes": [
+      "/cfg/home-assistant_v2.db 962072576",
+      "/scratch/monitor_state.json 42701",
+      "/scratch/recorder.db 962060288",
+      "/escrow/escrow.jsonl 31116719",
+      "/anchor/chain.jsonl 673414",
+      "33"
+     ],
+     "load": "18:08  up 38 days, 22:06, 2 users, load averages: 6.25 6.78 6.96",
+     "at": "2026-10-09T22:08:49Z"
+    },
+    {
+     "step": "teardown",
+     "left": "",
+     "at": "2026-10-09T22:08:50Z"
+    }
+   ]
+  },
+  "k15_copy_m3e479ae0": {
+   "k": 15,
+   "mode": "copy",
+   "image": "hpr-monitor:e8",
+   "limits": {
+    "cpus": "1",
+    "memory": "1g",
+    "device_read_bps": "100mb",
+    "device_write_bps": "50mb",
+    "device": "/dev/vda"
+   },
+   "master_bytes": 2935984128,
+   "master_sha256": "e2045254242a2f042d402a93103e40863d87e3adc4bd82f8be180a92bb5e7a74",
+   "monitor_sha256": "3e479ae01caf299e697b0274a22ddddbaa6b57b9bf4b730a8774b2d7c5b5282b",
+   "read_mode": "copy",
+   "wrapped_functions": [
+    "snapshot",
+    "validate_copy",
+    "watermark",
+    "keylog_poll",
+    "load",
+    "commit",
+    "escrow_write",
+    "escrow_keylog",
+    "append",
+    "save_state",
+    "namemap_seal"
+   ],
+   "polls_measured": 30,
+   "warmup_polls": 3,
+   "poll_errors": [],
+   "unobservable_polls": 30,
+   "unobservable_reasons": {
+    "copy_raced": 30
+   },
+   "unobservable_detail_examples": [],
+   "read_path_counts": {
+    "copy": 30
+   },
+   "env_extra": {
+    "HOMEPROV_DB": "/cfg/home-assistant_v2.db",
+    "HOMEPROV_ANCHOR": "http://anchor:9900/append",
+    "HOMEPROV_PERIOD": "5.0",
+    "HOMEPROV_SCRATCH": "/scratch",
+    "HOMEPROV_ANCHOR_KEY": "<key>",
+    "HOMEPROV_SCHEME": "stable",
+    "HOMEPROV_COVERAGE": "1",
+    "HOMEPROV_KEYLOG": "1",
+    "HOMEPROV_ESCROW_DIR": "/escrow",
+    "HOMEPROV_SIGN_KEY": "/sign/monitor.pem",
+    "HOMEPROV_REPLY_TAGS": "1"
+   },
+   "failed_appends": 0,
+   "per_poll_ms": {
+    "total": {
+     "n": 30,
+     "median": 175171.154,
+     "p90": 181303.413,
+     "max": 188219.448,
+     "min": 170182.54
+    },
+    "tick_copy_ms": {
+     "n": 30,
+     "median": 171796.864,
+     "p90": 178106.864,
+     "max": 184870.178,
+     "min": 166786.69
+    },
+    "tick_load_ms": null,
+    "tick_commit_ms": null,
+    "tick_append_ms": {
+     "n": 30,
+     "median": 45.088,
+     "p90": 112.245,
+     "max": 130.84,
+     "min": 8.073
+    },
+    "phase_append": {
+     "n": 30,
+     "median": 44.472,
+     "p90": 111.635,
+     "max": 135.478,
+     "min": 7.913
+    },
+    "phase_save_state": {
+     "n": 30,
+     "median": 3265.605,
+     "p90": 3330.901,
+     "max": 3424.043,
+     "min": 2789.526
+    },
+    "phase_snapshot": {
+     "n": 30,
+     "median": 171796.435,
+     "p90": 178104.098,
+     "max": 184869.399,
+     "min": 166783.913
+    }
+   },
+   "per_poll_bytes": {
+    "proc_rchar": {
+     "n": 30,
+     "median": 8833734095.0,
+     "p90": 8842217671,
+     "max": 8844105927,
+     "min": 8824344005
+    },
+    "proc_wchar": {
+     "n": 30,
+     "median": 8833709481.5,
+     "p90": 8842193057,
+     "max": 8844081314,
+     "min": 8824319398
+    },
+    "proc_read_bytes": {
+     "n": 30,
+     "median": 8739147776.0,
+     "p90": 8742244352,
+     "max": 8744321024,
+     "min": 8737370112
+    },
+    "proc_write_bytes": {
+     "n": 30,
+     "median": 8833722368.0,
+     "p90": 8842203136,
+     "max": 8844091392,
+     "min": 8824332288
+    },
+    "cgroup_rbytes": {
+     "n": 30,
+     "median": 8739147776.0,
+     "p90": 8742244352,
+     "max": 8744321024,
+     "min": 8737370112
+    },
+    "cgroup_wbytes": {
+     "n": 30,
+     "median": 8833722368.0,
+     "p90": 8842203136,
+     "max": 8844091392,
+     "min": 8824332288
+    }
+   },
+   "measured_window": {
+    "clock_first": 1791518860.073291,
+    "clock_last": 1791524128.6122253,
+    "seconds": 5268.5,
+    "sum_read_bytes": 262187757568,
+    "sum_write_bytes": 265019019264,
+    "sum_rchar": 265019398135,
+    "sum_wchar": 265018659791,
+    "sum_cgroup_rbytes": 262187757568,
+    "sum_cgroup_wbytes": 265019019264,
+    "bytes_written_per_hour_proc": 181089203635,
+    "bytes_written_per_hour_cgroup": 181089203635
+   },
+   "rows_in_open_window": null,
+   "writer": {
+    "start": {
+     "writer": "start",
+     "replay_rows": 98967,
+     "offset": -65643.39578819275,
+     "clock": 1791518124.2489102,
+     "history_end": 1791518120.073026
+    },
+    "stop": {
+     "writer": "stop",
+     "clock": 1791524142.001132,
+     "states": 25116,
+     "events": 19737,
+     "commits": 5424,
+     "commit_s_median": 0.0008606910705566406,
+     "commit_s_max": 5.471168756484985
+    },
+    "rows_per_minute": 447.21
+   },
+   "steps": [
+    {
+     "step": "start",
+     "context": {
+      "uptime": "18:08  up 38 days, 22:06, 2 users, load averages: 6.25 6.78 6.96",
+      "containers_cpu": [
+       "e9s-monitor-copy 0.00%",
+       "e9s-monitor-direct 14.57%",
+       "e9s-anchord-copy 0.01%",
+       "e9s-anchord-direct 3.49%",
+       "e9s-devices 0.01%",
+       "e9s-broker 0.07%",
+       "ds-readpath-ha 0.26%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 0.22%",
+       "hpr-broker 0.06%",
+       "rka-server 0.12%",
+       "rka-worker 0.16%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 0.82%",
+       "hpr-devices 0.11%",
+       "hpr-anchord 0.01%",
+       "e9s-hass 101.20%"
+      ]
+     },
+     "k": 15,
+     "mode": "copy",
+     "image": "hpr-monitor:e8",
+     "limits": {
+      "cpus": "1",
+      "memory": "1g",
+      "device_read_bps": "100mb",
+      "device_write_bps": "50mb",
+      "device": "/dev/vda"
+     },
+     "polls": 30,
+     "warmup": 3,
+     "period": 5.0,
+     "master": "<research-dir>/HOMEPROV-P13-exp/e9pre/c1/master_k15.db",
+     "master_sha256": "e2045254242a2f042d402a93103e40863d87e3adc4bd82f8be180a92bb5e7a74",
+     "master_bytes": 2935984128,
+     "load": "18:08  up 38 days, 22:06, 2 users, load averages: 6.15 6.75 6.94",
+     "at": "2026-10-09T22:08:53Z"
+    },
+    {
+     "step": "master_volume",
+     "volume": "e9k-master-k15",
+     "at": "2026-10-09T22:09:15Z"
+    },
+    {
+     "step": "live_copy",
+     "seconds": 6.2,
+     "at": "2026-10-09T22:09:22Z"
+    },
+    {
+     "step": "monitor_start",
+     "env": {
+      "HOMEPROV_DB": "/cfg/home-assistant_v2.db",
+      "HOMEPROV_ANCHOR": "http://anchor:9900/append",
+      "HOMEPROV_PERIOD": "5.0",
+      "HOMEPROV_SCRATCH": "/scratch",
+      "HOMEPROV_ANCHOR_KEY": "<key>",
+      "HOMEPROV_SCHEME": "stable",
+      "HOMEPROV_COVERAGE": "1",
+      "HOMEPROV_KEYLOG": "1",
+      "HOMEPROV_ESCROW_DIR": "/escrow",
+      "HOMEPROV_SIGN_KEY": "/sign/monitor.pem",
+      "HOMEPROV_REPLY_TAGS": "1"
+     },
+     "mount_ro": true,
+     "offset": -65643.39578819275,
+     "at": "2026-10-09T22:09:42Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "18:14  up 38 days, 22:12, 2 users, load averages: 7.27 7.54 7.32",
+      "containers_cpu": [
+       "e9k-monitor 4.93%",
+       "e9k-writer 0.00%",
+       "e9k-anchord 0.02%",
+       "e9s-monitor-copy 0.00%",
+       "e9s-monitor-direct 0.00%",
+       "e9s-anchord-copy 0.01%",
+       "e9s-anchord-direct 0.01%",
+       "e9s-hass 0.05%",
+       "e9s-devices 0.00%",
+       "e9s-broker 0.04%",
+       "ds-readpath-ha 0.03%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 0.01%",
+       "hpr-broker 0.03%",
+       "rka-server 0.09%",
+       "rka-worker 0.05%",
+       "hpr-monitor 20.12%",
+       "hpr-hass 100.34%",
+       "hpr-devices 0.05%",
+       "hpr-anchord 4.45%"
+      ]
+     },
+     "at": "2026-10-09T22:14:46Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "18:19  up 38 days, 22:17, 2 users, load averages: 4.52 5.77 6.55",
+      "containers_cpu": [
+       "e9k-monitor 6.27%",
+       "e9k-writer 0.09%",
+       "e9k-anchord 0.11%",
+       "e9s-monitor-copy 15.58%",
+       "e9s-monitor-direct 0.00%",
+       "e9s-anchord-copy 1.64%",
+       "e9s-anchord-direct 0.76%",
+       "e9s-hass 0.63%",
+       "e9s-devices 0.02%",
+       "e9s-broker 0.71%",
+       "ds-readpath-ha 0.00%",
+       "delaysteer-e2-mosquitto 0.03%",
+       "delaysteer-ha 0.00%",
+       "hpr-broker 0.12%",
+       "rka-server 0.19%",
+       "rka-worker 0.07%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 100.96%",
+       "hpr-devices 0.35%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "at": "2026-10-09T22:19:50Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "18:24  up 38 days, 22:22, 2 users, load averages: 5.77 5.79 6.39",
+      "containers_cpu": [
+       "e9k-monitor 51.99%",
+       "e9k-writer 1.52%",
+       "e9k-anchord 1.30%",
+       "e9s-monitor-copy 0.00%",
+       "e9s-monitor-direct 65.71%",
+       "e9s-anchord-copy 0.29%",
+       "e9s-anchord-direct 29.70%",
+       "e9s-devices 0.44%",
+       "e9s-broker 1.83%",
+       "ds-readpath-ha 6.89%",
+       "delaysteer-e2-mosquitto 0.13%",
+       "delaysteer-ha 7.15%",
+       "hpr-broker 0.04%",
+       "rka-server 1.70%",
+       "rka-worker 0.50%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 115.00%",
+       "hpr-devices 0.16%",
+       "hpr-anchord 49.26%",
+       "e9s-hass 104.14%"
+      ]
+     },
+     "at": "2026-10-09T22:24:55Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "18:29  up 38 days, 22:27, 2 users, load averages: 4.93 6.44 6.73",
+      "containers_cpu": [
+       "e9k-monitor 2.91%",
+       "e9k-writer 0.03%",
+       "e9k-anchord 0.02%",
+       "e9s-monitor-copy 0.00%",
+       "e9s-monitor-direct 0.00%",
+       "e9s-anchord-copy 0.97%",
+       "e9s-anchord-direct 0.01%",
+       "e9s-hass 0.05%",
+       "e9s-devices 0.01%",
+       "e9s-broker 0.01%",
+       "ds-readpath-ha 0.00%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 0.02%",
+       "hpr-broker 0.01%",
+       "rka-server 0.08%",
+       "rka-worker 0.09%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 100.70%",
+       "hpr-devices 0.01%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "at": "2026-10-09T22:29:59Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "18:34  up 38 days, 22:32, 2 users, load averages: 4.11 4.92 5.91",
+      "containers_cpu": [
+       "e9k-monitor 6.48%",
+       "e9k-writer 0.07%",
+       "e9k-anchord 0.09%",
+       "e9s-monitor-copy 18.39%",
+       "e9s-monitor-direct 0.00%",
+       "e9s-anchord-copy 0.46%",
+       "e9s-anchord-direct 0.01%",
+       "e9s-hass 0.08%",
+       "e9s-devices 0.01%",
+       "e9s-broker 0.02%",
+       "ds-readpath-ha 0.67%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 0.00%",
+       "hpr-broker 0.02%",
+       "rka-server 0.10%",
+       "rka-worker 0.07%",
+       "hpr-monitor 9.83%",
+       "hpr-hass 0.03%",
+       "hpr-devices 0.00%",
+       "hpr-anchord 6.46%"
+      ]
+     },
+     "at": "2026-10-09T22:35:01Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "18:40  up 38 days, 22:37, 2 users, load averages: 4.04 4.62 5.48",
+      "containers_cpu": [
+       "e9k-monitor 15.26%",
+       "e9k-writer 0.11%",
+       "e9k-anchord 0.01%",
+       "e9s-monitor-copy 4.18%",
+       "e9s-monitor-direct 0.00%",
+       "e9s-anchord-copy 7.98%",
+       "e9s-anchord-direct 11.11%",
+       "e9s-hass 0.11%",
+       "e9s-devices 0.01%",
+       "e9s-broker 0.04%",
+       "ds-readpath-ha 0.00%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 0.00%",
+       "hpr-broker 0.03%",
+       "rka-server 0.13%",
+       "rka-worker 0.11%",
+       "hpr-monitor 13.36%",
+       "hpr-hass 0.15%",
+       "hpr-devices 0.01%",
+       "hpr-anchord 5.55%"
+      ]
+     },
+     "at": "2026-10-09T22:40:05Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "18:45  up 38 days, 22:42, 2 users, load averages: 3.46 4.02 4.94",
+      "containers_cpu": [
+       "e9k-monitor 18.89%",
+       "e9k-writer 0.15%",
+       "e9k-anchord 0.01%",
+       "e9s-monitor-copy 0.00%",
+       "e9s-monitor-direct 0.00%",
+       "e9s-anchord-copy 5.12%",
+       "e9s-anchord-direct 0.01%",
+       "e9s-hass 0.06%",
+       "e9s-devices 0.01%",
+       "e9s-broker 0.02%",
+       "ds-readpath-ha 0.00%",
+       "delaysteer-e2-mosquitto 0.03%",
+       "delaysteer-ha 0.00%",
+       "hpr-broker 0.02%",
+       "rka-server 0.16%",
+       "rka-worker 0.08%",
+       "hpr-monitor 40.54%",
+       "hpr-hass 0.06%",
+       "hpr-devices 0.01%",
+       "hpr-anchord 0.02%"
+      ]
+     },
+     "at": "2026-10-09T22:45:08Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "18:50  up 38 days, 22:47, 2 users, load averages: 4.90 4.89 5.09",
+      "containers_cpu": [
+       "e9k-monitor 19.92%",
+       "e9k-writer 0.98%",
+       "e9k-anchord 0.05%",
+       "e9s-monitor-copy 0.00%",
+       "e9s-monitor-direct 0.00%",
+       "e9s-anchord-copy 0.04%",
+       "e9s-anchord-direct 0.04%",
+       "e9s-hass 4.63%",
+       "e9s-devices 0.01%",
+       "e9s-broker 0.03%",
+       "ds-readpath-ha 3.28%",
+       "delaysteer-e2-mosquitto 0.03%",
+       "delaysteer-ha 5.50%",
+       "hpr-broker 0.06%",
+       "rka-server 0.21%",
+       "rka-worker 0.28%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 3.00%",
+       "hpr-devices 0.07%",
+       "hpr-anchord 0.06%"
+      ]
+     },
+     "at": "2026-10-09T22:50:11Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "18:55  up 38 days, 22:52, 2 users, load averages: 5.91 6.19 5.67",
+      "containers_cpu": [
+       "e9k-monitor 11.87%",
+       "e9k-writer 0.12%",
+       "e9k-anchord 0.01%",
+       "e9s-monitor-copy 0.00%",
+       "e9s-monitor-direct 26.21%",
+       "e9s-anchord-copy 0.01%",
+       "e9s-anchord-direct 5.79%",
+       "e9s-hass 0.02%",
+       "e9s-devices 0.01%",
+       "e9s-broker 0.02%",
+       "ds-readpath-ha 1.97%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 0.17%",
+       "hpr-broker 0.02%",
+       "rka-server 0.11%",
+       "rka-worker 0.07%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 100.87%",
+       "hpr-devices 0.01%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "at": "2026-10-09T22:55:14Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "19:00  up 38 days, 22:57, 2 users, load averages: 4.91 5.54 5.51",
+      "containers_cpu": [
+       "e9k-monitor 11.54%",
+       "e9k-writer 0.10%",
+       "e9k-anchord 0.12%",
+       "e9s-monitor-copy 0.00%",
+       "e9s-monitor-direct 22.34%",
+       "e9s-anchord-copy 0.01%",
+       "e9s-anchord-direct 5.58%",
+       "e9s-hass 0.05%",
+       "e9s-devices 0.01%",
+       "e9s-broker 0.02%",
+       "ds-readpath-ha 2.89%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 3.06%",
+       "hpr-broker 0.02%",
+       "rka-server 0.10%",
+       "rka-worker 0.07%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 0.02%",
+       "hpr-devices 0.00%",
+       "hpr-anchord 19.86%"
+      ]
+     },
+     "at": "2026-10-09T23:00:18Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "19:05  up 38 days, 23:02, 2 users, load averages: 12.36 7.79 6.38",
+      "containers_cpu": [
+       "e9k-monitor 21.15%",
+       "e9k-writer 0.33%",
+       "e9k-anchord 0.05%",
+       "e9s-anchord-copy 0.06%",
+       "e9s-anchord-direct 0.05%",
+       "e9s-hass 1.05%",
+       "e9s-devices 0.14%",
+       "e9s-broker 0.06%",
+       "ds-readpath-ha 0.00%",
+       "delaysteer-e2-mosquitto 0.06%",
+       "delaysteer-ha 0.35%",
+       "hpr-broker 0.04%",
+       "rka-server 0.60%",
+       "rka-worker 0.48%",
+       "hpr-monitor 96.13%",
+       "hpr-hass 3.19%",
+       "hpr-devices 0.18%",
+       "hpr-anchord 52.63%"
+      ]
+     },
+     "at": "2026-10-09T23:05:22Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "19:10  up 38 days, 23:08, 2 users, load averages: 12.73 10.35 7.91",
+      "containers_cpu": [
+       "e9k-monitor 23.40%",
+       "e9k-writer 0.12%",
+       "e9k-anchord 0.01%",
+       "e9s-anchord-copy 0.01%",
+       "e9s-anchord-direct 0.02%",
+       "e9s-hass 3.63%",
+       "e9s-devices 0.42%",
+       "e9s-broker 0.22%",
+       "ds-readpath-ha 0.07%",
+       "delaysteer-e2-mosquitto 0.03%",
+       "delaysteer-ha 0.23%",
+       "hpr-broker 0.21%",
+       "rka-server 0.29%",
+       "rka-worker 0.53%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 85.51%",
+       "hpr-devices 0.98%",
+       "hpr-anchord 0.04%"
+      ]
+     },
+     "at": "2026-10-09T23:10:27Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "19:15  up 38 days, 23:13, 2 users, load averages: 9.62 10.83 9.02",
+      "containers_cpu": [
+       "e9k-monitor 16.10%",
+       "e9k-writer 0.04%",
+       "e9k-anchord 0.01%",
+       "e9s-hass 0.03%",
+       "e9s-devices 0.01%",
+       "e9s-broker 0.03%",
+       "ds-readpath-ha 0.02%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 0.16%",
+       "hpr-broker 0.02%",
+       "rka-server 0.15%",
+       "rka-worker 0.08%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 0.02%",
+       "hpr-devices 0.01%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "at": "2026-10-09T23:15:32Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "19:20  up 38 days, 23:18, 2 users, load averages: 6.56 9.30 9.00",
+      "containers_cpu": [
+       "e9s-hass 0.11%",
+       "e9s-devices 0.03%",
+       "e9s-broker 0.03%",
+       "e9k-monitor 18.30%",
+       "e9k-writer 0.16%",
+       "e9k-anchord 0.34%",
+       "ds-readpath-ha 0.11%",
+       "delaysteer-e2-mosquitto 0.03%",
+       "delaysteer-ha 0.36%",
+       "hpr-broker 0.03%",
+       "rka-server 0.19%",
+       "rka-worker 0.12%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 12.33%",
+       "hpr-devices 0.02%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "at": "2026-10-09T23:20:37Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "19:25  up 38 days, 23:23, 2 users, load averages: 3.64 6.06 7.63",
+      "containers_cpu": [
+       "e9s-hass 0.12%",
+       "e9s-devices 0.04%",
+       "e9s-broker 0.02%",
+       "e9k-monitor 5.83%",
+       "e9k-writer 0.01%",
+       "e9k-anchord 0.01%",
+       "ds-readpath-ha 0.01%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 0.02%",
+       "hpr-broker 0.05%",
+       "rka-server 0.12%",
+       "rka-worker 0.32%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 100.94%",
+       "hpr-devices 0.05%",
+       "hpr-anchord 0.02%"
+      ]
+     },
+     "at": "2026-10-09T23:25:39Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "19:30  up 38 days, 23:28, 2 users, load averages: 3.18 4.53 6.46",
+      "containers_cpu": [
+       "e9s-anchord-copy 0.01%",
+       "e9s-anchord-direct 0.01%",
+       "e9s-hass 0.17%",
+       "e9s-devices 0.03%",
+       "e9s-broker 0.03%",
+       "e9k-monitor 5.40%",
+       "e9k-writer 0.08%",
+       "e9k-anchord 0.04%",
+       "ds-readpath-ha 0.02%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 0.00%",
+       "hpr-broker 0.03%",
+       "rka-server 0.13%",
+       "rka-worker 0.14%",
+       "hpr-monitor 11.33%",
+       "hpr-hass 0.05%",
+       "hpr-devices 0.01%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "at": "2026-10-09T23:30:42Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "19:35  up 38 days, 23:33, 2 users, load averages: 3.59 4.06 5.66",
+      "containers_cpu": [
+       "e9s-monitor-copy 0.00%",
+       "e9s-monitor-direct 0.00%",
+       "e9s-anchord-copy 0.01%",
+       "e9s-anchord-direct 0.21%",
+       "e9s-hass 0.10%",
+       "e9s-devices 0.01%",
+       "e9s-broker 0.03%",
+       "e9k-monitor 12.13%",
+       "e9k-writer 0.04%",
+       "e9k-anchord 0.03%",
+       "ds-readpath-ha 0.02%",
+       "delaysteer-e2-mosquitto 0.04%",
+       "delaysteer-ha 0.03%",
+       "hpr-broker 0.04%",
+       "rka-server 0.20%",
+       "rka-worker 0.10%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 0.17%",
+       "hpr-devices 0.01%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "at": "2026-10-09T23:35:45Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "19:40  up 38 days, 23:38, 2 users, load averages: 3.62 3.90 5.11",
+      "containers_cpu": [
+       "e9s-monitor-copy 13.91%",
+       "e9s-monitor-direct 13.16%",
+       "e9s-anchord-copy 0.41%",
+       "e9s-anchord-direct 0.86%",
+       "e9s-hass 0.87%",
+       "e9s-devices 0.10%",
+       "e9s-broker 0.06%",
+       "e9k-monitor 16.15%",
+       "e9k-writer 0.08%",
+       "e9k-anchord 0.18%",
+       "ds-readpath-ha 5.58%",
+       "delaysteer-e2-mosquitto 0.04%",
+       "delaysteer-ha 4.99%",
+       "hpr-broker 0.03%",
+       "rka-server 0.15%",
+       "rka-worker 0.16%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 0.07%",
+       "hpr-devices 0.02%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "at": "2026-10-09T23:40:48Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "19:45  up 38 days, 23:43, 2 users, load averages: 4.71 4.40 5.00",
+      "containers_cpu": [
+       "e9s-monitor-copy 0.00%",
+       "e9s-monitor-direct 0.00%",
+       "e9s-anchord-copy 0.01%",
+       "e9s-anchord-direct 0.03%",
+       "e9s-hass 1.64%",
+       "e9s-devices 0.28%",
+       "e9s-broker 0.09%",
+       "e9k-monitor 25.57%",
+       "e9k-writer 1.18%",
+       "e9k-anchord 0.02%",
+       "ds-readpath-ha 1.49%",
+       "delaysteer-e2-mosquitto 0.04%",
+       "delaysteer-ha 0.51%",
+       "hpr-broker 0.07%",
+       "rka-server 0.37%",
+       "rka-worker 0.64%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 3.47%",
+       "hpr-devices 0.18%",
+       "hpr-anchord 20.84%"
+      ]
+     },
+     "at": "2026-10-09T23:45:51Z"
+    },
+    {
+     "step": "monitor_done",
+     "exit": "0",
+     "context": {
+      "uptime": "19:49  up 38 days, 23:47, 2 users, load averages: 2.92 3.75 4.58",
+      "containers_cpu": [
+       "e9s-monitor-copy 0.00%",
+       "e9s-monitor-direct 0.00%",
+       "e9s-anchord-copy 0.01%",
+       "e9s-anchord-direct 0.09%",
+       "e9s-hass 0.02%",
+       "e9s-devices 0.00%",
+       "e9s-broker 0.03%",
+       "e9k-writer 0.10%",
+       "e9k-anchord 0.01%",
+       "ds-readpath-ha 0.00%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 0.00%",
+       "hpr-broker 0.02%",
+       "rka-server 0.08%",
+       "rka-worker 0.08%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 81.42%",
+       "hpr-devices 0.01%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "at": "2026-10-09T23:49:44Z"
+    },
+    {
+     "step": "sizes",
+     "sizes": [
+      "/cfg/home-assistant_v2.db 2943328256",
+      "/scratch/monitor_state.json 126",
+      "/scratch/recorder.db 2943307776",
+      "/scratch/recorder.db-shm 32768",
+      "/scratch/recorder.db-wal 4787472",
+      "/anchor/chain.jsonl 20840",
+      "33"
+     ],
+     "load": "19:49  up 38 days, 23:47, 2 users, load averages: 2.84 3.72 4.56",
+     "at": "2026-10-09T23:49:47Z"
+    },
+    {
+     "step": "teardown",
+     "left": "",
+     "at": "2026-10-09T23:49:47Z"
+    }
+   ]
+  },
+  "k1_copy_m38370b2a": {
+   "k": 1,
+   "mode": "copy",
+   "image": "e9c1-mon:38370b2a51ea",
+   "limits": {
+    "cpus": "1",
+    "memory": "1g",
+    "device_read_bps": "100mb",
+    "device_write_bps": "50mb",
+    "device": "/dev/vda"
+   },
+   "master_bytes": 191459328,
+   "master_sha256": "6030e982bf938a6fbc04ab93ee4c388873cd7d07dad04e26c279d45d443ac4cf",
+   "monitor_sha256": "38370b2a51ea47b5ad30ab99670a3799a1958c559c4f83ecc02a2bee3a70ac9c",
+   "read_mode": "copy",
+   "wrapped_functions": [
+    "snapshot",
+    "validate_copy",
+    "watermark",
+    "keylog_poll",
+    "load",
+    "commit",
+    "escrow_write",
+    "escrow_keylog",
+    "append",
+    "save_state",
+    "namemap_seal",
+    "direct_close",
+    "direct_snapshot",
+    "quick_check_due"
+   ],
+   "polls_measured": 30,
+   "warmup_polls": 3,
+   "poll_errors": [],
+   "unobservable_polls": 0,
+   "unobservable_reasons": {},
+   "unobservable_detail_examples": [],
+   "read_path_counts": {
+    "copy": 30
+   },
+   "env_extra": {
+    "HOMEPROV_DB": "/cfg/home-assistant_v2.db",
+    "HOMEPROV_ANCHOR": "http://anchor:9900/append",
+    "HOMEPROV_PERIOD": "5.0",
+    "HOMEPROV_SCRATCH": "/scratch",
+    "HOMEPROV_ANCHOR_KEY": "<key>",
+    "HOMEPROV_SCHEME": "stable",
+    "HOMEPROV_COVERAGE": "1",
+    "HOMEPROV_KEYLOG": "1",
+    "HOMEPROV_ESCROW_DIR": "/escrow",
+    "HOMEPROV_SIGN_KEY": "/sign/monitor.pem",
+    "HOMEPROV_REPLY_TAGS": "1"
+   },
+   "failed_appends": 0,
+   "per_poll_ms": {
+    "total": {
+     "n": 30,
+     "median": 3922.763,
+     "p90": 4000.929,
+     "max": 4314.272,
+     "min": 3843.162
+    },
+    "tick_copy_ms": {
+     "n": 30,
+     "median": 77.635,
+     "p90": 145.301,
+     "max": 417.27,
+     "min": 55.338
+    },
+    "tick_load_ms": {
+     "n": 30,
+     "median": 28.336,
+     "p90": 32.92,
+     "max": 86.124,
+     "min": 14.133
+    },
+    "tick_commit_ms": {
+     "n": 30,
+     "median": 107.464,
+     "p90": 119.216,
+     "max": 139.518,
+     "min": 54.281
+    },
+    "tick_append_ms": {
+     "n": 30,
+     "median": 2.465,
+     "p90": 5.929,
+     "max": 9.512,
+     "min": 1.542
+    },
+    "phase_append": {
+     "n": 30,
+     "median": 2.354,
+     "p90": 5.843,
+     "max": 9.38,
+     "min": 1.454
+    },
+    "phase_commit": {
+     "n": 30,
+     "median": 107.46,
+     "p90": 119.21,
+     "max": 139.513,
+     "min": 54.275
+    },
+    "phase_escrow_keylog": {
+     "n": 30,
+     "median": 2.607,
+     "p90": 3.188,
+     "max": 11.255,
+     "min": 0.005
+    },
+    "phase_escrow_write": {
+     "n": 30,
+     "median": 1.603,
+     "p90": 3.489,
+     "max": 7.772,
+     "min": 0.0
+    },
+    "phase_keylog_poll": {
+     "n": 30,
+     "median": 0.772,
+     "p90": 1.172,
+     "max": 2.003,
+     "min": 0.004
+    },
+    "phase_load": {
+     "n": 30,
+     "median": 28.332,
+     "p90": 32.912,
+     "max": 86.107,
+     "min": 14.129
+    },
+    "phase_quick_check_due": {
+     "n": 30,
+     "median": 0.002,
+     "p90": 0.011,
+     "max": 0.035,
+     "min": 0.001
+    },
+    "phase_save_state": {
+     "n": 30,
+     "median": 0.568,
+     "p90": 0.702,
+     "max": 0.803,
+     "min": 0.426
+    },
+    "phase_snapshot": {
+     "n": 30,
+     "median": 77.603,
+     "p90": 145.261,
+     "max": 416.716,
+     "min": 55.279
+    },
+    "phase_validate_copy": {
+     "n": 30,
+     "median": 3689.472,
+     "p90": 3730.27,
+     "max": 3778.073,
+     "min": 3639.118
+    },
+    "phase_watermark": {
+     "n": 30,
+     "median": 0.386,
+     "p90": 0.624,
+     "max": 0.943,
+     "min": 0.29
+    }
+   },
+   "per_poll_bytes": {
+    "proc_rchar": {
+     "n": 30,
+     "median": 473997039.0,
+     "p90": 476085213,
+     "max": 476687693,
+     "min": 470549700
+    },
+    "proc_wchar": {
+     "n": 30,
+     "median": 193897305.5,
+     "p90": 195006001,
+     "max": 195322140,
+     "min": 192072307
+    },
+    "proc_read_bytes": {
+     "n": 30,
+     "median": 0.0,
+     "p90": 0,
+     "max": 0,
+     "min": 0
+    },
+    "proc_write_bytes": {
+     "n": 30,
+     "median": 194035712.0,
+     "p90": 195112960,
+     "max": 195493888,
+     "min": 192249856
+    },
+    "cgroup_rbytes": {
+     "n": 30,
+     "median": 0.0,
+     "p90": 0,
+     "max": 0,
+     "min": 0
+    },
+    "cgroup_wbytes": {
+     "n": 30,
+     "median": 193875968.0,
+     "p90": 194977792,
+     "max": 195301376,
+     "min": 192057344
+    }
+   },
+   "measured_window": {
+    "clock_first": 1791518170.8703332,
+    "clock_last": 1791518430.2757046,
+    "seconds": 259.4,
+    "sum_read_bytes": 0,
+    "sum_write_bytes": 5818949632,
+    "sum_rchar": 14214889645,
+    "sum_wchar": 5813976258,
+    "sum_cgroup_rbytes": 0,
+    "sum_cgroup_wbytes": 5813436416,
+    "bytes_written_per_hour_proc": 80756432827,
+    "bytes_written_per_hour_cgroup": 80679919420
+   },
+   "rows_in_open_window": {
+    "n": 30,
+    "median": 4205.5,
+    "p90": 4264,
+    "max": 4282,
+    "min": 2168
+   },
+   "writer": {
+    "start": {
+     "writer": "start",
+     "replay_rows": 8203,
+     "offset": -71691.80302286148,
+     "clock": 1791518122.645146,
+     "history_end": 1791518120.073026
+    },
+    "stop": {
+     "writer": "stop",
+     "clock": 1791518444.0019164,
+     "states": 123,
+     "events": 64,
+     "commits": 59,
+     "commit_s_median": 0.00027823448181152344,
+     "commit_s_max": 0.006417989730834961
+    },
+    "rows_per_minute": 34.91
+   },
+   "steps": [
+    {
+     "step": "start",
+     "context": {
+      "uptime": "19:50  up 38 days, 23:47, 2 users, load averages: 2.89 3.67 4.52",
+      "containers_cpu": [
+       "e9s-monitor-copy 0.00%",
+       "e9s-monitor-direct 0.00%",
+       "e9s-anchord-copy 0.01%",
+       "e9s-anchord-direct 0.01%",
+       "e9s-hass 0.68%",
+       "e9s-devices 0.01%",
+       "e9s-broker 0.04%",
+       "ds-readpath-ha 1.78%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 2.42%",
+       "hpr-broker 0.05%",
+       "rka-server 0.12%",
+       "rka-worker 0.05%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 100.27%",
+       "hpr-devices 0.00%",
+       "hpr-anchord 7.73%"
+      ]
+     },
+     "k": 1,
+     "mode": "copy",
+     "image": "e9c1-mon:38370b2a51ea",
+     "limits": {
+      "cpus": "1",
+      "memory": "1g",
+      "device_read_bps": "100mb",
+      "device_write_bps": "50mb",
+      "device": "/dev/vda"
+     },
+     "polls": 30,
+     "warmup": 3,
+     "period": 5.0,
+     "master": "<research-dir>/HOMEPROV-P13-exp/e9pre/c1/master_k1.db",
+     "master_sha256": "6030e982bf938a6fbc04ab93ee4c388873cd7d07dad04e26c279d45d443ac4cf",
+     "master_bytes": 191459328,
+     "load": "19:50  up 38 days, 23:47, 2 users, load averages: 2.90 3.66 4.51",
+     "at": "2026-10-09T23:50:11Z"
+    },
+    {
+     "step": "live_copy",
+     "seconds": 1.2,
+     "at": "2026-10-09T23:50:12Z"
+    },
+    {
+     "step": "monitor_start",
+     "env": {
+      "HOMEPROV_DB": "/cfg/home-assistant_v2.db",
+      "HOMEPROV_ANCHOR": "http://anchor:9900/append",
+      "HOMEPROV_PERIOD": "5.0",
+      "HOMEPROV_SCRATCH": "/scratch",
+      "HOMEPROV_ANCHOR_KEY": "<key>",
+      "HOMEPROV_SCHEME": "stable",
+      "HOMEPROV_COVERAGE": "1",
+      "HOMEPROV_KEYLOG": "1",
+      "HOMEPROV_ESCROW_DIR": "/escrow",
+      "HOMEPROV_SIGN_KEY": "/sign/monitor.pem",
+      "HOMEPROV_REPLY_TAGS": "1"
+     },
+     "mount_ro": true,
+     "offset": -71691.80302286148,
+     "at": "2026-10-09T23:50:30Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "19:55  up 38 days, 23:53, 2 users, load averages: 3.28 3.31 4.06",
+      "containers_cpu": [
+       "e9k-writer 0.01%",
+       "e9k-anchord 0.14%",
+       "e9s-monitor-copy 0.00%",
+       "e9s-monitor-direct 0.00%",
+       "e9s-anchord-copy 0.11%",
+       "e9s-anchord-direct 0.01%",
+       "e9s-hass 0.03%",
+       "e9s-devices 0.01%",
+       "e9s-broker 0.02%",
+       "ds-readpath-ha 0.04%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 0.04%",
+       "hpr-broker 0.04%",
+       "rka-server 0.14%",
+       "rka-worker 0.14%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 0.46%",
+       "hpr-devices 0.05%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "at": "2026-10-09T23:55:33Z"
+    },
+    {
+     "step": "monitor_done",
+     "exit": "0",
+     "context": {
+      "uptime": "19:55  up 38 days, 23:53, 2 users, load averages: 3.28 3.31 4.06",
+      "containers_cpu": [
+       "e9k-writer 0.02%",
+       "e9k-anchord 0.01%",
+       "e9s-monitor-copy 0.00%",
+       "e9s-monitor-direct 0.00%",
+       "e9s-anchord-copy 0.01%",
+       "e9s-anchord-direct 0.01%",
+       "e9s-hass 0.06%",
+       "e9s-devices 0.03%",
+       "e9s-broker 0.03%",
+       "ds-readpath-ha 0.03%",
+       "delaysteer-e2-mosquitto 0.03%",
+       "delaysteer-ha 0.03%",
+       "hpr-broker 0.02%",
+       "rka-server 0.15%",
+       "rka-worker 0.30%",
+       "hpr-monitor 1.78%",
+       "hpr-hass 3.53%",
+       "hpr-devices 0.01%",
+       "hpr-anchord 8.33%"
+      ]
+     },
+     "at": "2026-10-09T23:55:35Z"
+    },
+    {
+     "step": "sizes",
+     "sizes": [
+      "/cfg/home-assistant_v2.db 191483904",
+      "/scratch/monitor_state.json 10939",
+      "/scratch/recorder.db 191483904",
+      "/escrow/escrow.jsonl 5925620",
+      "/anchor/chain.jsonl 191030",
+      "33"
+     ],
+     "load": "19:55  up 38 days, 23:53, 2 users, load averages: 3.18 3.29 4.05",
+     "at": "2026-10-09T23:55:36Z"
+    },
+    {
+     "step": "teardown",
+     "left": "",
+     "at": "2026-10-09T23:55:36Z"
+    }
+   ]
+  },
+  "k5_copy_m38370b2a": {
+   "k": 5,
+   "mode": "copy",
+   "image": "e9c1-mon:38370b2a51ea",
+   "limits": {
+    "cpus": "1",
+    "memory": "1g",
+    "device_read_bps": "100mb",
+    "device_write_bps": "50mb",
+    "device": "/dev/vda"
+   },
+   "master_bytes": 961363968,
+   "master_sha256": "d0c0bf057cd76209460b74d6945f7ee91a3bd47533e3095bf835aa4e6269c426",
+   "monitor_sha256": "38370b2a51ea47b5ad30ab99670a3799a1958c559c4f83ecc02a2bee3a70ac9c",
+   "read_mode": "copy",
+   "wrapped_functions": [
+    "snapshot",
+    "validate_copy",
+    "watermark",
+    "keylog_poll",
+    "load",
+    "commit",
+    "escrow_write",
+    "escrow_keylog",
+    "append",
+    "save_state",
+    "namemap_seal",
+    "direct_close",
+    "direct_snapshot",
+    "quick_check_due"
+   ],
+   "polls_measured": 30,
+   "warmup_polls": 3,
+   "poll_errors": [],
+   "unobservable_polls": 0,
+   "unobservable_reasons": {},
+   "unobservable_detail_examples": [],
+   "read_path_counts": {
+    "copy": 30
+   },
+   "env_extra": {
+    "HOMEPROV_DB": "/cfg/home-assistant_v2.db",
+    "HOMEPROV_ANCHOR": "http://anchor:9900/append",
+    "HOMEPROV_PERIOD": "5.0",
+    "HOMEPROV_SCRATCH": "/scratch",
+    "HOMEPROV_ANCHOR_KEY": "<key>",
+    "HOMEPROV_SCHEME": "stable",
+    "HOMEPROV_COVERAGE": "1",
+    "HOMEPROV_KEYLOG": "1",
+    "HOMEPROV_ESCROW_DIR": "/escrow",
+    "HOMEPROV_SIGN_KEY": "/sign/monitor.pem",
+    "HOMEPROV_REPLY_TAGS": "1"
+   },
+   "failed_appends": 0,
+   "per_poll_ms": {
+    "total": {
+     "n": 30,
+     "median": 30332.278,
+     "p90": 54790.349,
+     "max": 56669.804,
+     "min": 26992.61
+    },
+    "tick_copy_ms": {
+     "n": 30,
+     "median": 18480.842,
+     "p90": 37917.293,
+     "max": 41559.62,
+     "min": 15775.085
+    },
+    "tick_load_ms": {
+     "n": 30,
+     "median": 77.48,
+     "p90": 125.363,
+     "max": 205.317,
+     "min": 63.516
+    },
+    "tick_commit_ms": {
+     "n": 30,
+     "median": 274.601,
+     "p90": 434.448,
+     "max": 653.414,
+     "min": 237.606
+    },
+    "tick_append_ms": {
+     "n": 30,
+     "median": 4.485,
+     "p90": 8.809,
+     "max": 41.122,
+     "min": 2.8
+    },
+    "phase_append": {
+     "n": 30,
+     "median": 4.248,
+     "p90": 8.552,
+     "max": 42.79,
+     "min": 2.629
+    },
+    "phase_commit": {
+     "n": 30,
+     "median": 274.596,
+     "p90": 434.436,
+     "max": 653.402,
+     "min": 237.602
+    },
+    "phase_escrow_keylog": {
+     "n": 30,
+     "median": 2.526,
+     "p90": 6.311,
+     "max": 13.122,
+     "min": 1.607
+    },
+    "phase_escrow_write": {
+     "n": 30,
+     "median": 4.566,
+     "p90": 8.307,
+     "max": 113.938,
+     "min": 3.51
+    },
+    "phase_keylog_poll": {
+     "n": 30,
+     "median": 3.367,
+     "p90": 5.095,
+     "max": 6.301,
+     "min": 2.343
+    },
+    "phase_load": {
+     "n": 30,
+     "median": 77.472,
+     "p90": 125.356,
+     "max": 205.292,
+     "min": 63.511
+    },
+    "phase_quick_check_due": {
+     "n": 30,
+     "median": 0.005,
+     "p90": 0.028,
+     "max": 0.221,
+     "min": 0.001
+    },
+    "phase_save_state": {
+     "n": 30,
+     "median": 1.002,
+     "p90": 1.646,
+     "max": 18.195,
+     "min": 0.823
+    },
+    "phase_snapshot": {
+     "n": 30,
+     "median": 18480.789,
+     "p90": 37916.898,
+     "max": 41559.068,
+     "min": 15774.918
+    },
+    "phase_validate_copy": {
+     "n": 30,
+     "median": 11783.178,
+     "p90": 14411.688,
+     "max": 16662.843,
+     "min": 8532.805
+    },
+    "phase_watermark": {
+     "n": 30,
+     "median": 0.444,
+     "p90": 0.654,
+     "max": 2.614,
+     "min": 0.303
+    }
+   },
+   "per_poll_bytes": {
+    "proc_rchar": {
+     "n": 30,
+     "median": 2365295589.5,
+     "p90": 3328545631,
+     "max": 3330291663,
+     "min": 2362579143
+    },
+    "proc_wchar": {
+     "n": 30,
+     "median": 966920116.5,
+     "p90": 1932380206,
+     "max": 1933149838,
+     "min": 966387460
+    },
+    "proc_read_bytes": {
+     "n": 30,
+     "median": 1799358464.0,
+     "p90": 2749972480,
+     "max": 2754162688,
+     "min": 1796968448
+    },
+    "proc_write_bytes": {
+     "n": 30,
+     "median": 967094272.0,
+     "p90": 1932570624,
+     "max": 1933340672,
+     "min": 966561792
+    },
+    "cgroup_rbytes": {
+     "n": 30,
+     "median": 1799358464.0,
+     "p90": 2749972480,
+     "max": 2754162688,
+     "min": 1796968448
+    },
+    "cgroup_wbytes": {
+     "n": 30,
+     "median": 966901760.0,
+     "p90": 1932402688,
+     "max": 1933172736,
+     "min": 966369280
+    }
+   },
+   "measured_window": {
+    "clock_first": 1791518299.4691374,
+    "clock_last": 1791519447.0817025,
+    "seconds": 1147.6,
+    "sum_read_bytes": 58727694336,
+    "sum_write_bytes": 33839271936,
+    "sum_rchar": 75769419949,
+    "sum_wchar": 33833925255,
+    "sum_cgroup_rbytes": 58727694336,
+    "sum_cgroup_wbytes": 33833705472,
+    "bytes_written_per_hour_proc": 106153170939,
+    "bytes_written_per_hour_cgroup": 106135709044
+   },
+   "rows_in_open_window": {
+    "n": 30,
+    "median": 10094.0,
+    "p90": 16883,
+    "max": 17141,
+    "min": 8759
+   },
+   "writer": {
+    "start": {
+     "writer": "start",
+     "replay_rows": 43411,
+     "offset": -72020.45168018341,
+     "clock": 1791518122.9106874,
+     "history_end": 1791518120.073026
+    },
+    "stop": {
+     "writer": "stop",
+     "clock": 1791519462.0076506,
+     "states": 2127,
+     "events": 1098,
+     "commits": 771,
+     "commit_s_median": 0.0004012584686279297,
+     "commit_s_max": 0.12658238410949707
+    },
+    "rows_per_minute": 144.5
+   },
+   "steps": [
+    {
+     "step": "start",
+     "context": {
+      "uptime": "19:55  up 38 days, 23:53, 2 users, load averages: 3.18 3.29 4.05",
+      "containers_cpu": [
+       "e9s-monitor-copy 0.00%",
+       "e9s-monitor-direct 8.26%",
+       "e9s-anchord-copy 0.01%",
+       "e9s-anchord-direct 0.33%",
+       "e9s-hass 0.01%",
+       "e9s-devices 0.00%",
+       "e9s-broker 0.02%",
+       "ds-readpath-ha 0.00%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 0.00%",
+       "hpr-broker 0.02%",
+       "rka-server 12.20%",
+       "rka-worker 0.07%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 101.18%",
+       "hpr-devices 0.01%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "k": 5,
+     "mode": "copy",
+     "image": "e9c1-mon:38370b2a51ea",
+     "limits": {
+      "cpus": "1",
+      "memory": "1g",
+      "device_read_bps": "100mb",
+      "device_write_bps": "50mb",
+      "device": "/dev/vda"
+     },
+     "polls": 30,
+     "warmup": 3,
+     "period": 5.0,
+     "master": "<research-dir>/HOMEPROV-P13-exp/e9pre/c1/master_k5.db",
+     "master_sha256": "d0c0bf057cd76209460b74d6945f7ee91a3bd47533e3095bf835aa4e6269c426",
+     "master_bytes": 961363968,
+     "load": "19:55  up 38 days, 23:53, 2 users, load averages: 3.18 3.29 4.05",
+     "at": "2026-10-09T23:55:39Z"
+    },
+    {
+     "step": "live_copy",
+     "seconds": 1.7,
+     "at": "2026-10-09T23:55:41Z"
+    },
+    {
+     "step": "monitor_start",
+     "env": {
+      "HOMEPROV_DB": "/cfg/home-assistant_v2.db",
+      "HOMEPROV_ANCHOR": "http://anchor:9900/append",
+      "HOMEPROV_PERIOD": "5.0",
+      "HOMEPROV_SCRATCH": "/scratch",
+      "HOMEPROV_ANCHOR_KEY": "<key>",
+      "HOMEPROV_SCHEME": "stable",
+      "HOMEPROV_COVERAGE": "1",
+      "HOMEPROV_KEYLOG": "1",
+      "HOMEPROV_ESCROW_DIR": "/escrow",
+      "HOMEPROV_SIGN_KEY": "/sign/monitor.pem",
+      "HOMEPROV_REPLY_TAGS": "1"
+     },
+     "mount_ro": true,
+     "offset": -72020.45168018341,
+     "at": "2026-10-09T23:55:58Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "20:01  up 38 days, 23:58, 2 users, load averages: 3.80 3.67 3.99",
+      "containers_cpu": [
+       "e9k-monitor 9.37%",
+       "e9k-writer 0.02%",
+       "e9k-anchord 0.01%",
+       "e9s-monitor-copy 0.00%",
+       "e9s-monitor-direct 0.00%",
+       "e9s-anchord-copy 0.01%",
+       "e9s-anchord-direct 0.01%",
+       "e9s-hass 0.31%",
+       "e9s-devices 0.01%",
+       "e9s-broker 0.02%",
+       "ds-readpath-ha 0.00%",
+       "delaysteer-e2-mosquitto 0.03%",
+       "delaysteer-ha 0.00%",
+       "hpr-broker 0.02%",
+       "rka-server 0.13%",
+       "rka-worker 0.12%",
+       "hpr-monitor 29.59%",
+       "hpr-hass 0.03%",
+       "hpr-devices 0.06%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "at": "2026-10-10T00:01:01Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "20:06  up 39 days, 3 mins, 2 users, load averages: 4.65 3.97 3.99",
+      "containers_cpu": [
+       "e9k-monitor 0.00%",
+       "e9k-writer 0.01%",
+       "e9k-anchord 0.01%",
+       "e9s-monitor-copy 6.21%",
+       "e9s-monitor-direct 0.00%",
+       "e9s-anchord-copy 0.05%",
+       "e9s-anchord-direct 0.01%",
+       "e9s-hass 0.05%",
+       "e9s-devices 0.01%",
+       "e9s-broker 0.02%",
+       "ds-readpath-ha 0.01%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 0.03%",
+       "hpr-broker 0.01%",
+       "rka-server 0.08%",
+       "rka-worker 0.04%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 100.23%",
+       "hpr-devices 0.01%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "at": "2026-10-10T00:06:03Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "20:11  up 39 days, 8 mins, 2 users, load averages: 3.20 3.52 3.77",
+      "containers_cpu": [
+       "e9k-monitor 3.98%",
+       "e9k-writer 0.00%",
+       "e9k-anchord 0.01%",
+       "e9s-monitor-copy 0.00%",
+       "e9s-monitor-direct 0.00%",
+       "e9s-anchord-copy 0.01%",
+       "e9s-anchord-direct 0.01%",
+       "e9s-hass 0.18%",
+       "e9s-devices 0.00%",
+       "e9s-broker 0.02%",
+       "ds-readpath-ha 0.00%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 0.00%",
+       "hpr-broker 0.02%",
+       "rka-server 0.12%",
+       "rka-worker 0.14%",
+       "hpr-monitor 18.04%",
+       "hpr-hass 0.02%",
+       "hpr-devices 0.01%",
+       "hpr-anchord 7.78%"
+      ]
+     },
+     "at": "2026-10-10T00:11:06Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "20:16  up 39 days, 13 mins, 2 users, load averages: 3.42 3.82 3.86",
+      "containers_cpu": [
+       "e9k-monitor 7.56%",
+       "e9k-writer 0.01%",
+       "e9k-anchord 0.01%",
+       "e9s-monitor-copy 0.00%",
+       "e9s-monitor-direct 10.05%",
+       "e9s-anchord-copy 0.01%",
+       "e9s-anchord-direct 0.34%",
+       "e9s-hass 0.04%",
+       "e9s-devices 0.09%",
+       "e9s-broker 0.03%",
+       "ds-readpath-ha 0.04%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 0.01%",
+       "hpr-broker 0.07%",
+       "rka-server 0.32%",
+       "rka-worker 0.05%",
+       "hpr-monitor 2.81%",
+       "hpr-hass 1.08%",
+       "hpr-devices 0.11%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "at": "2026-10-10T00:16:09Z"
+    },
+    {
+     "step": "monitor_done",
+     "exit": "0",
+     "context": {
+      "uptime": "20:18  up 39 days, 15 mins, 2 users, load averages: 3.89 3.77 3.82",
+      "containers_cpu": [
+       "e9k-writer 0.07%",
+       "e9k-anchord 0.01%",
+       "e9s-monitor-copy 0.00%",
+       "e9s-monitor-direct 0.00%",
+       "e9s-anchord-copy 0.06%",
+       "e9s-anchord-direct 0.01%",
+       "e9s-hass 0.05%",
+       "e9s-devices 0.00%",
+       "e9s-broker 0.02%",
+       "ds-readpath-ha 0.00%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 0.00%",
+       "hpr-broker 0.02%",
+       "rka-server 0.08%",
+       "rka-worker 0.05%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 100.19%",
+       "hpr-devices 0.11%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "at": "2026-10-10T00:18:02Z"
+    },
+    {
+     "step": "sizes",
+     "sizes": [
+      "/cfg/home-assistant_v2.db 961896448",
+      "/scratch/monitor_state.json 38837",
+      "/scratch/recorder.db 961884160",
+      "/escrow/escrow.jsonl 28763583",
+      "/anchor/chain.jsonl 613808",
+      "33"
+     ],
+     "load": "20:18  up 39 days, 15 mins, 2 users, load averages: 3.73 3.74 3.81",
+     "at": "2026-10-10T00:18:03Z"
+    },
+    {
+     "step": "teardown",
+     "left": "",
+     "at": "2026-10-10T00:18:04Z"
+    }
+   ]
+  },
+  "k1_direct_m38370b2a": {
+   "k": 1,
+   "mode": "direct",
+   "image": "e9c1-mon:38370b2a51ea",
+   "limits": {
+    "cpus": "1",
+    "memory": "1g",
+    "device_read_bps": "100mb",
+    "device_write_bps": "50mb",
+    "device": "/dev/vda"
+   },
+   "master_bytes": 191459328,
+   "master_sha256": "6030e982bf938a6fbc04ab93ee4c388873cd7d07dad04e26c279d45d443ac4cf",
+   "monitor_sha256": "38370b2a51ea47b5ad30ab99670a3799a1958c559c4f83ecc02a2bee3a70ac9c",
+   "read_mode": "direct",
+   "wrapped_functions": [
+    "snapshot",
+    "validate_copy",
+    "watermark",
+    "keylog_poll",
+    "load",
+    "commit",
+    "escrow_write",
+    "escrow_keylog",
+    "append",
+    "save_state",
+    "namemap_seal",
+    "direct_close",
+    "direct_snapshot",
+    "quick_check_due"
+   ],
+   "polls_measured": 30,
+   "warmup_polls": 3,
+   "poll_errors": [],
+   "unobservable_polls": 0,
+   "unobservable_reasons": {},
+   "unobservable_detail_examples": [],
+   "read_path_counts": {
+    "direct": 30
+   },
+   "env_extra": {
+    "HOMEPROV_DB": "/cfg/home-assistant_v2.db",
+    "HOMEPROV_ANCHOR": "http://anchor:9900/append",
+    "HOMEPROV_PERIOD": "5.0",
+    "HOMEPROV_SCRATCH": "/scratch",
+    "HOMEPROV_ANCHOR_KEY": "<key>",
+    "HOMEPROV_SCHEME": "stable",
+    "HOMEPROV_COVERAGE": "1",
+    "HOMEPROV_KEYLOG": "1",
+    "HOMEPROV_ESCROW_DIR": "/escrow",
+    "HOMEPROV_SIGN_KEY": "/sign/monitor.pem",
+    "HOMEPROV_REPLY_TAGS": "1",
+    "HOMEPROV_READ": "direct"
+   },
+   "failed_appends": 0,
+   "per_poll_ms": {
+    "total": {
+     "n": 30,
+     "median": 372.384,
+     "p90": 437.816,
+     "max": 508.463,
+     "min": 348.442
+    },
+    "tick_copy_ms": {
+     "n": 30,
+     "median": 229.466,
+     "p90": 280.015,
+     "max": 342.989,
+     "min": 207.771
+    },
+    "tick_load_ms": {
+     "n": 30,
+     "median": 27.249,
+     "p90": 33.016,
+     "max": 40.15,
+     "min": 25.206
+    },
+    "tick_commit_ms": {
+     "n": 30,
+     "median": 105.489,
+     "p90": 117.838,
+     "max": 167.65,
+     "min": 100.891
+    },
+    "tick_append_ms": {
+     "n": 30,
+     "median": 2.867,
+     "p90": 6.647,
+     "max": 13.401,
+     "min": 1.65
+    },
+    "phase_append": {
+     "n": 30,
+     "median": 2.75,
+     "p90": 6.466,
+     "max": 13.177,
+     "min": 1.57
+    },
+    "phase_commit": {
+     "n": 30,
+     "median": 105.483,
+     "p90": 117.833,
+     "max": 167.645,
+     "min": 100.886
+    },
+    "phase_direct_close": {
+     "n": 30,
+     "median": 0.202,
+     "p90": 0.28,
+     "max": 0.612,
+     "min": 0.169
+    },
+    "phase_direct_snapshot": {
+     "n": 30,
+     "median": 229.423,
+     "p90": 279.827,
+     "max": 342.904,
+     "min": 207.75
+    },
+    "phase_escrow_keylog": {
+     "n": 30,
+     "median": 0.553,
+     "p90": 3.503,
+     "max": 4.69,
+     "min": 0.004
+    },
+    "phase_escrow_write": {
+     "n": 30,
+     "median": 1.635,
+     "p90": 2.566,
+     "max": 11.482,
+     "min": 0.0
+    },
+    "phase_keylog_poll": {
+     "n": 30,
+     "median": 0.315,
+     "p90": 0.533,
+     "max": 0.929,
+     "min": 0.004
+    },
+    "phase_load": {
+     "n": 30,
+     "median": 27.245,
+     "p90": 33.01,
+     "max": 40.146,
+     "min": 25.202
+    },
+    "phase_quick_check_due": {
+     "n": 30,
+     "median": 0.003,
+     "p90": 0.012,
+     "max": 0.04,
+     "min": 0.001
+    },
+    "phase_save_state": {
+     "n": 30,
+     "median": 0.574,
+     "p90": 0.806,
+     "max": 1.301,
+     "min": 0.498
+    },
+    "phase_watermark": {
+     "n": 30,
+     "median": 0.032,
+     "p90": 0.075,
+     "max": 0.174,
+     "min": 0.027
+    }
+   },
+   "per_poll_bytes": {
+    "proc_rchar": {
+     "n": 30,
+     "median": 277854687.0,
+     "p90": 277869024,
+     "max": 277869024,
+     "min": 277844444
+    },
+    "proc_wchar": {
+     "n": 30,
+     "median": 49834.5,
+     "p90": 60817,
+     "max": 63050,
+     "min": 42064
+    },
+    "proc_read_bytes": {
+     "n": 30,
+     "median": 0.0,
+     "p90": 0,
+     "max": 0,
+     "min": 0
+    },
+    "proc_write_bytes": {
+     "n": 30,
+     "median": 65536.0,
+     "p90": 73728,
+     "max": 77824,
+     "min": 49152
+    },
+    "cgroup_rbytes": {
+     "n": 30,
+     "median": 0.0,
+     "p90": 0,
+     "max": 0,
+     "min": 0
+    },
+    "cgroup_wbytes": {
+     "n": 30,
+     "median": 65536.0,
+     "p90": 73728,
+     "max": 77824,
+     "min": 49152
+    }
+   },
+   "measured_window": {
+    "clock_first": 1791518157.910772,
+    "clock_last": 1791518314.3794408,
+    "seconds": 156.5,
+    "sum_read_bytes": 0,
+    "sum_write_bytes": 1908736,
+    "sum_rchar": 8335697952,
+    "sum_wchar": 1510474,
+    "sum_cgroup_rbytes": 0,
+    "sum_cgroup_wbytes": 1908736,
+    "bytes_written_per_hour_proc": 43907026,
+    "bytes_written_per_hour_cgroup": 43907026
+   },
+   "rows_in_open_window": {
+    "n": 30,
+    "median": 4184.5,
+    "p90": 4227,
+    "max": 4236,
+    "min": 4138
+   },
+   "writer": {
+    "start": {
+     "writer": "start",
+     "replay_rows": 8203,
+     "offset": -73367.11011314392,
+     "clock": 1791518122.4853477,
+     "history_end": 1791518120.073026
+    },
+    "stop": {
+     "writer": "stop",
+     "clock": 1791518322.002307,
+     "states": 80,
+     "events": 40,
+     "commits": 37,
+     "commit_s_median": 0.0004749298095703125,
+     "commit_s_max": 0.007664918899536133
+    },
+    "rows_per_minute": 36.09
+   },
+   "steps": [
+    {
+     "step": "start",
+     "context": {
+      "uptime": "20:18  up 39 days, 15 mins, 2 users, load averages: 3.73 3.74 3.81",
+      "containers_cpu": [
+       "e9s-monitor-copy 0.00%",
+       "e9s-monitor-direct 0.00%",
+       "e9s-anchord-copy 0.56%",
+       "e9s-anchord-direct 0.02%",
+       "e9s-hass 0.07%",
+       "e9s-devices 0.02%",
+       "e9s-broker 0.02%",
+       "ds-readpath-ha 0.00%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 0.00%",
+       "hpr-broker 0.02%",
+       "rka-server 0.10%",
+       "rka-worker 0.17%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 100.46%",
+       "hpr-devices 0.02%",
+       "hpr-anchord 0.04%"
+      ]
+     },
+     "k": 1,
+     "mode": "direct",
+     "image": "e9c1-mon:38370b2a51ea",
+     "limits": {
+      "cpus": "1",
+      "memory": "1g",
+      "device_read_bps": "100mb",
+      "device_write_bps": "50mb",
+      "device": "/dev/vda"
+     },
+     "polls": 30,
+     "warmup": 3,
+     "period": 5.0,
+     "master": "<research-dir>/HOMEPROV-P13-exp/e9pre/c1/master_k1.db",
+     "master_sha256": "6030e982bf938a6fbc04ab93ee4c388873cd7d07dad04e26c279d45d443ac4cf",
+     "master_bytes": 191459328,
+     "load": "20:18  up 39 days, 15 mins, 2 users, load averages: 3.84 3.76 3.82",
+     "at": "2026-10-10T00:18:07Z"
+    },
+    {
+     "step": "live_copy",
+     "seconds": 0.8,
+     "at": "2026-10-10T00:18:07Z"
+    },
+    {
+     "step": "monitor_start",
+     "env": {
+      "HOMEPROV_DB": "/cfg/home-assistant_v2.db",
+      "HOMEPROV_ANCHOR": "http://anchor:9900/append",
+      "HOMEPROV_PERIOD": "5.0",
+      "HOMEPROV_SCRATCH": "/scratch",
+      "HOMEPROV_ANCHOR_KEY": "<key>",
+      "HOMEPROV_SCHEME": "stable",
+      "HOMEPROV_COVERAGE": "1",
+      "HOMEPROV_KEYLOG": "1",
+      "HOMEPROV_ESCROW_DIR": "/escrow",
+      "HOMEPROV_SIGN_KEY": "/sign/monitor.pem",
+      "HOMEPROV_REPLY_TAGS": "1",
+      "HOMEPROV_READ": "direct"
+     },
+     "mount_ro": true,
+     "offset": -73367.11011314392,
+     "at": "2026-10-10T00:18:25Z"
+    },
+    {
+     "step": "monitor_done",
+     "exit": "0",
+     "context": {
+      "uptime": "20:21  up 39 days, 19 mins, 2 users, load averages: 3.38 3.68 3.79",
+      "containers_cpu": [
+       "e9k-writer 0.07%",
+       "e9k-anchord 0.01%",
+       "e9s-monitor-copy 12.44%",
+       "e9s-monitor-direct 12.72%",
+       "e9s-anchord-copy 0.13%",
+       "e9s-anchord-direct 0.17%",
+       "e9s-hass 0.03%",
+       "e9s-devices 0.01%",
+       "e9s-broker 0.02%",
+       "ds-readpath-ha 0.01%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 0.01%",
+       "hpr-broker 0.02%",
+       "rka-server 0.11%",
+       "rka-worker 0.04%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 51.00%",
+       "hpr-devices 0.00%",
+       "hpr-anchord 4.09%"
+      ]
+     },
+     "at": "2026-10-10T00:21:28Z"
+    },
+    {
+     "step": "sizes",
+     "sizes": [
+      "/cfg/home-assistant_v2.db 191471616",
+      "/scratch/monitor_state.json 21197",
+      "/escrow/escrow.jsonl 5794165",
+      "/anchor/chain.jsonl 186364",
+      "33"
+     ],
+     "load": "20:21  up 39 days, 19 mins, 2 users, load averages: 3.38 3.68 3.79",
+     "at": "2026-10-10T00:21:30Z"
+    },
+    {
+     "step": "teardown",
+     "left": "",
+     "at": "2026-10-10T00:21:30Z"
+    }
+   ]
+  },
+  "k5_direct_m38370b2a": {
+   "k": 5,
+   "mode": "direct",
+   "image": "e9c1-mon:38370b2a51ea",
+   "limits": {
+    "cpus": "1",
+    "memory": "1g",
+    "device_read_bps": "100mb",
+    "device_write_bps": "50mb",
+    "device": "/dev/vda"
+   },
+   "master_bytes": 961363968,
+   "master_sha256": "d0c0bf057cd76209460b74d6945f7ee91a3bd47533e3095bf835aa4e6269c426",
+   "monitor_sha256": "38370b2a51ea47b5ad30ab99670a3799a1958c559c4f83ecc02a2bee3a70ac9c",
+   "read_mode": "direct",
+   "wrapped_functions": [
+    "snapshot",
+    "validate_copy",
+    "watermark",
+    "keylog_poll",
+    "load",
+    "commit",
+    "escrow_write",
+    "escrow_keylog",
+    "append",
+    "save_state",
+    "namemap_seal",
+    "direct_close",
+    "direct_snapshot",
+    "quick_check_due"
+   ],
+   "polls_measured": 30,
+   "warmup_polls": 3,
+   "poll_errors": [],
+   "unobservable_polls": 0,
+   "unobservable_reasons": {},
+   "unobservable_detail_examples": [],
+   "read_path_counts": {
+    "direct": 30
+   },
+   "env_extra": {
+    "HOMEPROV_DB": "/cfg/home-assistant_v2.db",
+    "HOMEPROV_ANCHOR": "http://anchor:9900/append",
+    "HOMEPROV_PERIOD": "5.0",
+    "HOMEPROV_SCRATCH": "/scratch",
+    "HOMEPROV_ANCHOR_KEY": "<key>",
+    "HOMEPROV_SCHEME": "stable",
+    "HOMEPROV_COVERAGE": "1",
+    "HOMEPROV_KEYLOG": "1",
+    "HOMEPROV_ESCROW_DIR": "/escrow",
+    "HOMEPROV_SIGN_KEY": "/sign/monitor.pem",
+    "HOMEPROV_REPLY_TAGS": "1",
+    "HOMEPROV_READ": "direct"
+   },
+   "failed_appends": 0,
+   "per_poll_ms": {
+    "total": {
+     "n": 30,
+     "median": 1765.749,
+     "p90": 2407.935,
+     "max": 4298.342,
+     "min": 1620.193
+    },
+    "tick_copy_ms": {
+     "n": 30,
+     "median": 1185.974,
+     "p90": 1745.286,
+     "max": 3481.267,
+     "min": 1043.611
+    },
+    "tick_load_ms": {
+     "n": 30,
+     "median": 115.126,
+     "p90": 145.993,
+     "max": 215.802,
+     "min": 106.213
+    },
+    "tick_commit_ms": {
+     "n": 30,
+     "median": 451.557,
+     "p90": 494.477,
+     "max": 635.514,
+     "min": 418.897
+    },
+    "tick_append_ms": {
+     "n": 30,
+     "median": 3.72,
+     "p90": 6.198,
+     "max": 27.227,
+     "min": 1.745
+    },
+    "phase_append": {
+     "n": 30,
+     "median": 3.575,
+     "p90": 5.835,
+     "max": 25.764,
+     "min": 1.637
+    },
+    "phase_commit": {
+     "n": 30,
+     "median": 451.535,
+     "p90": 494.466,
+     "max": 635.498,
+     "min": 418.893
+    },
+    "phase_direct_close": {
+     "n": 30,
+     "median": 0.21,
+     "p90": 0.556,
+     "max": 1.017,
+     "min": 0.181
+    },
+    "phase_direct_snapshot": {
+     "n": 30,
+     "median": 1185.919,
+     "p90": 1744.984,
+     "max": 3481.098,
+     "min": 1043.584
+    },
+    "phase_escrow_keylog": {
+     "n": 30,
+     "median": 1.776,
+     "p90": 3.392,
+     "max": 5.291,
+     "min": 0.005
+    },
+    "phase_escrow_write": {
+     "n": 30,
+     "median": 3.882,
+     "p90": 6.966,
+     "max": 41.033,
+     "min": 0.0
+    },
+    "phase_keylog_poll": {
+     "n": 30,
+     "median": 0.75,
+     "p90": 1.404,
+     "max": 2.226,
+     "min": 0.009
+    },
+    "phase_load": {
+     "n": 30,
+     "median": 115.121,
+     "p90": 145.985,
+     "max": 215.786,
+     "min": 106.208
+    },
+    "phase_quick_check_due": {
+     "n": 30,
+     "median": 0.003,
+     "p90": 0.033,
+     "max": 0.066,
+     "min": 0.001
+    },
+    "phase_save_state": {
+     "n": 30,
+     "median": 1.222,
+     "p90": 2.159,
+     "max": 3.518,
+     "min": 1.08
+    },
+    "phase_watermark": {
+     "n": 30,
+     "median": 0.036,
+     "p90": 0.117,
+     "max": 0.196,
+     "min": 0.027
+    }
+   },
+   "per_poll_bytes": {
+    "proc_rchar": {
+     "n": 30,
+     "median": 1395706341.0,
+     "p90": 1395765733,
+     "max": 1395778022,
+     "min": 1395626467
+    },
+    "proc_wchar": {
+     "n": 30,
+     "median": 155022.0,
+     "p90": 175570,
+     "max": 201152,
+     "min": 119015
+    },
+    "proc_read_bytes": {
+     "n": 30,
+     "median": 0.0,
+     "p90": 0,
+     "max": 0,
+     "min": 0
+    },
+    "proc_write_bytes": {
+     "n": 30,
+     "median": 167936.0,
+     "p90": 188416,
+     "max": 212992,
+     "min": 122880
+    },
+    "cgroup_rbytes": {
+     "n": 30,
+     "median": 0.0,
+     "p90": 0,
+     "max": 0,
+     "min": 0
+    },
+    "cgroup_wbytes": {
+     "n": 30,
+     "median": 167936.0,
+     "p90": 188416,
+     "max": 212992,
+     "min": 122880
+    }
+   },
+   "measured_window": {
+    "clock_first": 1791518177.0365274,
+    "clock_last": 1791518377.9573424,
+    "seconds": 200.9,
+    "sum_read_bytes": 0,
+    "sum_write_bytes": 5046272,
+    "sum_rchar": 41871112395,
+    "sum_wchar": 4690796,
+    "sum_cgroup_rbytes": 0,
+    "sum_cgroup_wbytes": 5046272,
+    "bytes_written_per_hour_proc": 90425979,
+    "bytes_written_per_hour_cgroup": 90425979
+   },
+   "rows_in_open_window": {
+    "n": 30,
+    "median": 16847.0,
+    "p90": 17028,
+    "max": 17067,
+    "min": 16597
+   },
+   "writer": {
+    "start": {
+     "writer": "start",
+     "replay_rows": 43411,
+     "offset": -73573.86439704895,
+     "clock": 1791518122.5684848,
+     "history_end": 1791518120.073026
+    },
+    "stop": {
+     "writer": "stop",
+     "clock": 1791518392.0077672,
+     "states": 432,
+     "events": 219,
+     "commits": 154,
+     "commit_s_median": 0.00045430660247802734,
+     "commit_s_max": 0.018366336822509766
+    },
+    "rows_per_minute": 144.97
+   },
+   "steps": [
+    {
+     "step": "start",
+     "context": {
+      "uptime": "20:21  up 39 days, 19 mins, 2 users, load averages: 3.38 3.68 3.79",
+      "containers_cpu": [
+       "e9s-monitor-copy 0.00%",
+       "e9s-monitor-direct 0.00%",
+       "e9s-anchord-copy 0.14%",
+       "e9s-anchord-direct 0.01%",
+       "e9s-hass 0.04%",
+       "e9s-devices 0.00%",
+       "e9s-broker 0.02%",
+       "ds-readpath-ha 0.00%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 0.00%",
+       "hpr-broker 0.01%",
+       "rka-server 0.11%",
+       "rka-worker 0.11%",
+       "hpr-monitor 20.34%",
+       "hpr-hass 100.85%",
+       "hpr-devices 0.02%",
+       "hpr-anchord 0.02%"
+      ]
+     },
+     "k": 5,
+     "mode": "direct",
+     "image": "e9c1-mon:38370b2a51ea",
+     "limits": {
+      "cpus": "1",
+      "memory": "1g",
+      "device_read_bps": "100mb",
+      "device_write_bps": "50mb",
+      "device": "/dev/vda"
+     },
+     "polls": 30,
+     "warmup": 3,
+     "period": 5.0,
+     "master": "<research-dir>/HOMEPROV-P13-exp/e9pre/c1/master_k5.db",
+     "master_sha256": "d0c0bf057cd76209460b74d6945f7ee91a3bd47533e3095bf835aa4e6269c426",
+     "master_bytes": 961363968,
+     "load": "20:21  up 39 days, 19 mins, 2 users, load averages: 3.99 3.80 3.83",
+     "at": "2026-10-10T00:21:32Z"
+    },
+    {
+     "step": "live_copy",
+     "seconds": 1.8,
+     "at": "2026-10-10T00:21:34Z"
+    },
+    {
+     "step": "monitor_start",
+     "env": {
+      "HOMEPROV_DB": "/cfg/home-assistant_v2.db",
+      "HOMEPROV_ANCHOR": "http://anchor:9900/append",
+      "HOMEPROV_PERIOD": "5.0",
+      "HOMEPROV_SCRATCH": "/scratch",
+      "HOMEPROV_ANCHOR_KEY": "<key>",
+      "HOMEPROV_SCHEME": "stable",
+      "HOMEPROV_COVERAGE": "1",
+      "HOMEPROV_KEYLOG": "1",
+      "HOMEPROV_ESCROW_DIR": "/escrow",
+      "HOMEPROV_SIGN_KEY": "/sign/monitor.pem",
+      "HOMEPROV_REPLY_TAGS": "1",
+      "HOMEPROV_READ": "direct"
+     },
+     "mount_ro": true,
+     "offset": -73573.86439704895,
+     "at": "2026-10-10T00:21:51Z"
+    },
+    {
+     "step": "monitor_done",
+     "exit": "0",
+     "context": {
+      "uptime": "20:26  up 39 days, 23 mins, 2 users, load averages: 2.89 3.43 3.67",
+      "containers_cpu": [
+       "e9k-writer 0.18%",
+       "e9k-anchord 0.17%",
+       "e9s-monitor-copy 15.43%",
+       "e9s-monitor-direct 0.00%",
+       "e9s-anchord-copy 0.23%",
+       "e9s-anchord-direct 0.16%",
+       "e9s-hass 0.20%",
+       "e9s-devices 0.02%",
+       "e9s-broker 0.03%",
+       "ds-readpath-ha 0.02%",
+       "delaysteer-e2-mosquitto 0.03%",
+       "delaysteer-ha 0.02%",
+       "hpr-broker 0.05%",
+       "rka-server 0.14%",
+       "rka-worker 0.11%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 0.87%",
+       "hpr-devices 0.05%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "at": "2026-10-10T00:26:05Z"
+    },
+    {
+     "step": "sizes",
+     "sizes": [
+      "/cfg/home-assistant_v2.db 961454080",
+      "/scratch/monitor_state.json 60019",
+      "/escrow/escrow.jsonl 23169553",
+      "/anchor/chain.jsonl 476144",
+      "33"
+     ],
+     "load": "20:26  up 39 days, 23 mins, 2 users, load averages: 3.46 3.54 3.71",
+     "at": "2026-10-10T00:26:06Z"
+    },
+    {
+     "step": "teardown",
+     "left": "",
+     "at": "2026-10-10T00:26:07Z"
+    }
+   ]
+  },
+  "k15_direct_m38370b2a": {
+   "k": 15,
+   "mode": "direct",
+   "image": "e9c1-mon:38370b2a51ea",
+   "limits": {
+    "cpus": "1",
+    "memory": "1g",
+    "device_read_bps": "100mb",
+    "device_write_bps": "50mb",
+    "device": "/dev/vda"
+   },
+   "master_bytes": 2935984128,
+   "master_sha256": "e2045254242a2f042d402a93103e40863d87e3adc4bd82f8be180a92bb5e7a74",
+   "monitor_sha256": "38370b2a51ea47b5ad30ab99670a3799a1958c559c4f83ecc02a2bee3a70ac9c",
+   "read_mode": "direct",
+   "wrapped_functions": [
+    "snapshot",
+    "validate_copy",
+    "watermark",
+    "keylog_poll",
+    "load",
+    "commit",
+    "escrow_write",
+    "escrow_keylog",
+    "append",
+    "save_state",
+    "namemap_seal",
+    "direct_close",
+    "direct_snapshot",
+    "quick_check_due"
+   ],
+   "polls_measured": 30,
+   "warmup_polls": 3,
+   "poll_errors": [],
+   "unobservable_polls": 30,
+   "unobservable_reasons": {
+    "quick_check_failed": 30
+   },
+   "unobservable_detail_examples": [],
+   "read_path_counts": {
+    "direct": 30
+   },
+   "env_extra": {
+    "HOMEPROV_DB": "/cfg/home-assistant_v2.db",
+    "HOMEPROV_ANCHOR": "http://anchor:9900/append",
+    "HOMEPROV_PERIOD": "5.0",
+    "HOMEPROV_SCRATCH": "/scratch",
+    "HOMEPROV_ANCHOR_KEY": "<key>",
+    "HOMEPROV_SCHEME": "stable",
+    "HOMEPROV_COVERAGE": "1",
+    "HOMEPROV_KEYLOG": "1",
+    "HOMEPROV_ESCROW_DIR": "/escrow",
+    "HOMEPROV_SIGN_KEY": "/sign/monitor.pem",
+    "HOMEPROV_REPLY_TAGS": "1",
+    "HOMEPROV_READ": "direct"
+   },
+   "failed_appends": 0,
+   "per_poll_ms": {
+    "total": {
+     "n": 30,
+     "median": 53356.537,
+     "p90": 73684.544,
+     "max": 136170.321,
+     "min": 32584.901
+    },
+    "tick_copy_ms": {
+     "n": 30,
+     "median": 53348.337,
+     "p90": 73679.961,
+     "max": 136165.033,
+     "min": 32579.736
+    },
+    "tick_load_ms": null,
+    "tick_commit_ms": null,
+    "tick_append_ms": {
+     "n": 30,
+     "median": 6.149,
+     "p90": 11.613,
+     "max": 47.315,
+     "min": 3.209
+    },
+    "phase_append": {
+     "n": 30,
+     "median": 5.767,
+     "p90": 11.217,
+     "max": 45.542,
+     "min": 2.999
+    },
+    "phase_direct_close": {
+     "n": 30,
+     "median": 0.581,
+     "p90": 0.829,
+     "max": 5.429,
+     "min": 0.23
+    },
+    "phase_direct_snapshot": {
+     "n": 30,
+     "median": 53347.927,
+     "p90": 73679.736,
+     "max": 136162.51,
+     "min": 32579.188
+    },
+    "phase_quick_check_due": {
+     "n": 30,
+     "median": 0.007,
+     "p90": 0.018,
+     "max": 0.185,
+     "min": 0.001
+    },
+    "phase_save_state": {
+     "n": 30,
+     "median": 0.506,
+     "p90": 0.884,
+     "max": 7.54,
+     "min": 0.223
+    }
+   },
+   "per_poll_bytes": {
+    "proc_rchar": {
+     "n": 30,
+     "median": 2937446882.0,
+     "p90": 2938114531,
+     "max": 2938348005,
+     "min": 2936279516
+    },
+    "proc_wchar": {
+     "n": 30,
+     "median": 377.0,
+     "p90": 378,
+     "max": 378,
+     "min": 374
+    },
+    "proc_read_bytes": {
+     "n": 30,
+     "median": 3246342144.0,
+     "p90": 3247841280,
+     "max": 3248144384,
+     "min": 3245993984
+    },
+    "proc_write_bytes": {
+     "n": 30,
+     "median": 8192.0,
+     "p90": 8192,
+     "max": 8192,
+     "min": 8192
+    },
+    "cgroup_rbytes": {
+     "n": 30,
+     "median": 3246342144.0,
+     "p90": 3247841280,
+     "max": 3248144384,
+     "min": 3245993984
+    },
+    "cgroup_wbytes": {
+     "n": 30,
+     "median": 8192.0,
+     "p90": 8192,
+     "max": 8192,
+     "min": 8192
+    }
+   },
+   "measured_window": {
+    "clock_first": 1791518403.3492613,
+    "clock_last": 1791520219.0303779,
+    "seconds": 1815.7,
+    "sum_read_bytes": 97397161984,
+    "sum_write_bytes": 245760,
+    "sum_rchar": 88120653936,
+    "sum_wchar": 11303,
+    "sum_cgroup_rbytes": 97397161984,
+    "sum_cgroup_wbytes": 245760,
+    "bytes_written_per_hour_proc": 487270,
+    "bytes_written_per_hour_cgroup": 487270
+   },
+   "rows_in_open_window": null,
+   "writer": {
+    "start": {
+     "writer": "start",
+     "replay_rows": 98967,
+     "offset": -73853.41566109657,
+     "clock": 1791518122.9171674,
+     "history_end": 1791518120.073026
+    },
+    "stop": {
+     "writer": "stop",
+     "clock": 1791520233.0022278,
+     "states": 8481,
+     "events": 6342,
+     "commits": 1877,
+     "commit_s_median": 0.0004169940948486328,
+     "commit_s_max": 0.7432034015655518
+    },
+    "rows_per_minute": 421.49
+   },
+   "steps": [
+    {
+     "step": "start",
+     "context": {
+      "uptime": "20:26  up 39 days, 23 mins, 2 users, load averages: 3.46 3.54 3.71",
+      "containers_cpu": [
+       "e9s-monitor-copy 0.00%",
+       "e9s-monitor-direct 0.00%",
+       "e9s-anchord-copy 0.01%",
+       "e9s-anchord-direct 0.05%",
+       "e9s-hass 0.01%",
+       "e9s-devices 0.00%",
+       "e9s-broker 0.02%",
+       "ds-readpath-ha 0.03%",
+       "delaysteer-e2-mosquitto 0.03%",
+       "delaysteer-ha 0.02%",
+       "hpr-broker 0.02%",
+       "rka-server 0.11%",
+       "rka-worker 0.03%",
+       "hpr-monitor 3.45%",
+       "hpr-hass 83.48%",
+       "hpr-devices 0.00%",
+       "hpr-anchord 4.22%"
+      ]
+     },
+     "k": 15,
+     "mode": "direct",
+     "image": "e9c1-mon:38370b2a51ea",
+     "limits": {
+      "cpus": "1",
+      "memory": "1g",
+      "device_read_bps": "100mb",
+      "device_write_bps": "50mb",
+      "device": "/dev/vda"
+     },
+     "polls": 30,
+     "warmup": 3,
+     "period": 5.0,
+     "master": "<research-dir>/HOMEPROV-P13-exp/e9pre/c1/master_k15.db",
+     "master_sha256": "e2045254242a2f042d402a93103e40863d87e3adc4bd82f8be180a92bb5e7a74",
+     "master_bytes": 2935984128,
+     "load": "20:26  up 39 days, 23 mins, 2 users, load averages: 3.46 3.54 3.71",
+     "at": "2026-10-10T00:26:09Z"
+    },
+    {
+     "step": "live_copy",
+     "seconds": 4.3,
+     "at": "2026-10-10T00:26:13Z"
+    },
+    {
+     "step": "monitor_start",
+     "env": {
+      "HOMEPROV_DB": "/cfg/home-assistant_v2.db",
+      "HOMEPROV_ANCHOR": "http://anchor:9900/append",
+      "HOMEPROV_PERIOD": "5.0",
+      "HOMEPROV_SCRATCH": "/scratch",
+      "HOMEPROV_ANCHOR_KEY": "<key>",
+      "HOMEPROV_SCHEME": "stable",
+      "HOMEPROV_COVERAGE": "1",
+      "HOMEPROV_KEYLOG": "1",
+      "HOMEPROV_ESCROW_DIR": "/escrow",
+      "HOMEPROV_SIGN_KEY": "/sign/monitor.pem",
+      "HOMEPROV_REPLY_TAGS": "1",
+      "HOMEPROV_READ": "direct"
+     },
+     "mount_ro": true,
+     "offset": -73853.41566109657,
+     "at": "2026-10-10T00:26:31Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "20:31  up 39 days, 29 mins, 2 users, load averages: 3.89 3.83 3.81",
+      "containers_cpu": [
+       "e9k-monitor 10.00%",
+       "e9k-writer 0.08%",
+       "e9k-anchord 0.05%",
+       "e9s-monitor-copy 0.00%",
+       "e9s-monitor-direct 0.00%",
+       "e9s-anchord-copy 0.01%",
+       "e9s-anchord-direct 0.04%",
+       "e9s-hass 0.02%",
+       "e9s-devices 0.01%",
+       "e9s-broker 0.01%",
+       "ds-readpath-ha 0.91%",
+       "delaysteer-e2-mosquitto 0.01%",
+       "delaysteer-ha 0.66%",
+       "hpr-broker 0.03%",
+       "rka-server 0.09%",
+       "rka-worker 0.22%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 0.90%",
+       "hpr-devices 0.07%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "at": "2026-10-10T00:31:34Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "20:36  up 39 days, 34 mins, 2 users, load averages: 9.55 5.69 4.51",
+      "containers_cpu": [
+       "e9k-monitor 10.17%",
+       "e9k-writer 0.06%",
+       "e9k-anchord 0.01%",
+       "e9s-anchord-copy 0.01%",
+       "e9s-anchord-direct 0.01%",
+       "e9s-hass 0.97%",
+       "e9s-devices 0.12%",
+       "e9s-broker 0.06%",
+       "ds-readpath-ha 0.00%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 0.00%",
+       "hpr-broker 0.02%",
+       "rka-server 0.12%",
+       "rka-worker 0.07%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 0.04%",
+       "hpr-devices 0.01%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "at": "2026-10-10T00:36:38Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "20:41  up 39 days, 39 mins, 2 users, load averages: 4.44 5.79 5.03",
+      "containers_cpu": [
+       "e9k-monitor 0.00%",
+       "e9k-writer 0.01%",
+       "e9k-anchord 0.04%",
+       "ds-readpath-ha 0.01%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 0.01%",
+       "hpr-broker 0.03%",
+       "rka-server 0.08%",
+       "rka-worker 0.07%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 99.99%",
+       "hpr-devices 0.05%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "at": "2026-10-10T00:41:41Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "20:46  up 39 days, 44 mins, 2 users, load averages: 6.58 5.56 5.11",
+      "containers_cpu": [
+       "e9k-monitor 24.86%",
+       "e9k-writer 0.03%",
+       "e9k-anchord 0.01%",
+       "ds-readpath-ha 0.01%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 0.01%",
+       "hpr-broker 0.03%",
+       "rka-server 0.08%",
+       "rka-worker 0.04%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 102.37%",
+       "hpr-devices 0.02%",
+       "hpr-anchord 5.10%"
+      ]
+     },
+     "at": "2026-10-10T00:46:44Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "20:51  up 39 days, 49 mins, 2 users, load averages: 4.01 4.73 4.88",
+      "containers_cpu": [
+       "e9k-monitor 13.20%",
+       "e9k-writer 0.04%",
+       "e9k-anchord 0.01%",
+       "ds-readpath-ha 0.00%",
+       "delaysteer-e2-mosquitto 0.01%",
+       "delaysteer-ha 0.00%",
+       "hpr-broker 0.02%",
+       "rka-server 0.07%",
+       "rka-worker 0.04%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 0.24%",
+       "hpr-devices 0.00%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "at": "2026-10-10T00:51:48Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "20:56  up 39 days, 54 mins, 2 users, load averages: 3.99 4.11 4.51",
+      "containers_cpu": [
+       "e9k-monitor 13.75%",
+       "e9k-writer 0.06%",
+       "e9k-anchord 0.01%",
+       "ds-readpath-ha 0.13%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 0.05%",
+       "hpr-broker 0.03%",
+       "rka-server 0.10%",
+       "rka-worker 0.07%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 101.51%",
+       "hpr-devices 0.02%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "at": "2026-10-10T00:56:51Z"
+    },
+    {
+     "step": "monitor_done",
+     "exit": "0",
+     "context": {
+      "uptime": "21:01  up 39 days, 59 mins, 2 users, load averages: 3.58 4.03 4.38",
+      "containers_cpu": [
+       "e9k-writer 0.12%",
+       "e9k-anchord 0.01%",
+       "ds-readpath-ha 0.17%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 0.10%",
+       "hpr-broker 0.03%",
+       "rka-server 0.13%",
+       "rka-worker 0.09%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 19.05%",
+       "hpr-devices 0.02%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "at": "2026-10-10T01:01:25Z"
+    },
+    {
+     "step": "sizes",
+     "sizes": [
+      "/cfg/home-assistant_v2.db 2938417152",
+      "/scratch/monitor_state.json 126",
+      "/anchor/chain.jsonl 23873",
+      "33"
+     ],
+     "load": "21:01  up 39 days, 59 mins, 2 users, load averages: 3.58 4.03 4.38",
+     "at": "2026-10-10T01:01:26Z"
+    },
+    {
+     "step": "teardown",
+     "left": "",
+     "at": "2026-10-10T01:01:27Z"
+    }
+   ]
+  },
+  "k1_direct_qc720_m38370b2a": {
+   "k": 1,
+   "mode": "direct",
+   "image": "e9c1-mon:38370b2a51ea",
+   "limits": {
+    "cpus": "1",
+    "memory": "1g",
+    "device_read_bps": "100mb",
+    "device_write_bps": "50mb",
+    "device": "/dev/vda"
+   },
+   "master_bytes": 191459328,
+   "master_sha256": "6030e982bf938a6fbc04ab93ee4c388873cd7d07dad04e26c279d45d443ac4cf",
+   "monitor_sha256": "38370b2a51ea47b5ad30ab99670a3799a1958c559c4f83ecc02a2bee3a70ac9c",
+   "read_mode": "direct",
+   "wrapped_functions": [
+    "snapshot",
+    "validate_copy",
+    "watermark",
+    "keylog_poll",
+    "load",
+    "commit",
+    "escrow_write",
+    "escrow_keylog",
+    "append",
+    "save_state",
+    "namemap_seal",
+    "direct_close",
+    "direct_snapshot",
+    "quick_check_due"
+   ],
+   "polls_measured": 30,
+   "warmup_polls": 3,
+   "poll_errors": [],
+   "unobservable_polls": 0,
+   "unobservable_reasons": {},
+   "unobservable_detail_examples": [],
+   "read_path_counts": {
+    "direct": 30
+   },
+   "env_extra": {
+    "HOMEPROV_DB": "/cfg/home-assistant_v2.db",
+    "HOMEPROV_ANCHOR": "http://anchor:9900/append",
+    "HOMEPROV_PERIOD": "5.0",
+    "HOMEPROV_SCRATCH": "/scratch",
+    "HOMEPROV_ANCHOR_KEY": "<key>",
+    "HOMEPROV_SCHEME": "stable",
+    "HOMEPROV_COVERAGE": "1",
+    "HOMEPROV_KEYLOG": "1",
+    "HOMEPROV_ESCROW_DIR": "/escrow",
+    "HOMEPROV_SIGN_KEY": "/sign/monitor.pem",
+    "HOMEPROV_REPLY_TAGS": "1",
+    "HOMEPROV_READ": "direct",
+    "HOMEPROV_QUICK_CHECK_EVERY": "720"
+   },
+   "failed_appends": 0,
+   "per_poll_ms": {
+    "total": {
+     "n": 30,
+     "median": 187.002,
+     "p90": 263.476,
+     "max": 483.647,
+     "min": 147.195
+    },
+    "tick_copy_ms": {
+     "n": 30,
+     "median": 1.908,
+     "p90": 4.866,
+     "max": 8.615,
+     "min": 0.371
+    },
+    "tick_load_ms": {
+     "n": 30,
+     "median": 38.517,
+     "p90": 64.441,
+     "max": 108.557,
+     "min": 27.445
+    },
+    "tick_commit_ms": {
+     "n": 30,
+     "median": 116.733,
+     "p90": 191.639,
+     "max": 284.646,
+     "min": 103.428
+    },
+    "tick_append_ms": {
+     "n": 30,
+     "median": 9.71,
+     "p90": 27.887,
+     "max": 111.317,
+     "min": 2.84
+    },
+    "phase_append": {
+     "n": 30,
+     "median": 9.262,
+     "p90": 27.207,
+     "max": 110.286,
+     "min": 2.75
+    },
+    "phase_commit": {
+     "n": 30,
+     "median": 116.725,
+     "p90": 191.629,
+     "max": 284.64,
+     "min": 103.424
+    },
+    "phase_direct_close": {
+     "n": 30,
+     "median": 0.188,
+     "p90": 0.347,
+     "max": 0.493,
+     "min": 0.126
+    },
+    "phase_direct_snapshot": {
+     "n": 30,
+     "median": 1.738,
+     "p90": 4.097,
+     "max": 7.752,
+     "min": 0.355
+    },
+    "phase_escrow_keylog": {
+     "n": 30,
+     "median": 2.24,
+     "p90": 5.112,
+     "max": 6.405,
+     "min": 0.005
+    },
+    "phase_escrow_write": {
+     "n": 30,
+     "median": 2.778,
+     "p90": 6.934,
+     "max": 11.192,
+     "min": 0.0
+    },
+    "phase_keylog_poll": {
+     "n": 30,
+     "median": 0.636,
+     "p90": 2.269,
+     "max": 5.976,
+     "min": 0.005
+    },
+    "phase_load": {
+     "n": 30,
+     "median": 38.511,
+     "p90": 64.435,
+     "max": 108.541,
+     "min": 27.441
+    },
+    "phase_quick_check_due": {
+     "n": 30,
+     "median": 0.024,
+     "p90": 0.096,
+     "max": 0.195,
+     "min": 0.001
+    },
+    "phase_save_state": {
+     "n": 30,
+     "median": 1.095,
+     "p90": 1.956,
+     "max": 2.672,
+     "min": 0.54
+    },
+    "phase_watermark": {
+     "n": 30,
+     "median": 0.117,
+     "p90": 0.249,
+     "max": 0.586,
+     "min": 0.023
+    }
+   },
+   "per_poll_bytes": {
+    "proc_rchar": {
+     "n": 30,
+     "median": 670172.0,
+     "p90": 676317,
+     "max": 676317,
+     "min": 668123
+    },
+    "proc_wchar": {
+     "n": 30,
+     "median": 49697.0,
+     "p90": 57216,
+     "max": 63784,
+     "min": 42062
+    },
+    "proc_read_bytes": {
+     "n": 30,
+     "median": 0.0,
+     "p90": 0,
+     "max": 0,
+     "min": 0
+    },
+    "proc_write_bytes": {
+     "n": 30,
+     "median": 61440.0,
+     "p90": 73728,
+     "max": 77824,
+     "min": 49152
+    },
+    "cgroup_rbytes": {
+     "n": 30,
+     "median": 0.0,
+     "p90": 0,
+     "max": 0,
+     "min": 0
+    },
+    "cgroup_wbytes": {
+     "n": 30,
+     "median": 61440.0,
+     "p90": 77824,
+     "max": 225280,
+     "min": 49152
+    }
+   },
+   "measured_window": {
+    "clock_first": 1791518159.3865757,
+    "clock_last": 1791518310.6119843,
+    "seconds": 151.2,
+    "sum_read_bytes": 0,
+    "sum_write_bytes": 1871872,
+    "sum_rchar": 20154322,
+    "sum_wchar": 1497949,
+    "sum_cgroup_rbytes": 0,
+    "sum_cgroup_wbytes": 2031616,
+    "bytes_written_per_hour_proc": 44568381,
+    "bytes_written_per_hour_cgroup": 48371810
+   },
+   "rows_in_open_window": {
+    "n": 30,
+    "median": 4184.5,
+    "p90": 4222,
+    "max": 4231,
+    "min": 4138
+   },
+   "writer": {
+    "start": {
+     "writer": "start",
+     "replay_rows": 8203,
+     "offset": -76419.96725010872,
+     "clock": 1791518123.1055536,
+     "history_end": 1791518120.073026
+    },
+    "stop": {
+     "writer": "stop",
+     "clock": 1791518325.0118725,
+     "states": 80,
+     "events": 40,
+     "commits": 37,
+     "commit_s_median": 0.0018296241760253906,
+     "commit_s_max": 0.04587078094482422
+    },
+    "rows_per_minute": 35.66
+   },
+   "steps": [
+    {
+     "step": "start",
+     "context": {
+      "uptime": "21:08  up 39 days,  1:06, 2 users, load averages: 4.20 4.55 4.46",
+      "containers_cpu": [
+       "ds-readpath-ha 0.00%",
+       "delaysteer-e2-mosquitto 0.03%",
+       "delaysteer-ha 0.00%",
+       "hpr-broker 0.03%",
+       "rka-server 0.22%",
+       "rka-worker 0.08%",
+       "hpr-monitor 40.53%",
+       "hpr-hass 100.58%",
+       "hpr-devices 0.04%",
+       "hpr-anchord 11.12%"
+      ]
+     },
+     "k": 1,
+     "mode": "direct",
+     "image": "e9c1-mon:38370b2a51ea",
+     "limits": {
+      "cpus": "1",
+      "memory": "1g",
+      "device_read_bps": "100mb",
+      "device_write_bps": "50mb",
+      "device": "/dev/vda"
+     },
+     "polls": 30,
+     "warmup": 3,
+     "period": 5.0,
+     "master": "<research-dir>/HOMEPROV-P13-exp/e9pre/c1/master_k1.db",
+     "master_sha256": "6030e982bf938a6fbc04ab93ee4c388873cd7d07dad04e26c279d45d443ac4cf",
+     "master_bytes": 191459328,
+     "load": "21:08  up 39 days,  1:06, 2 users, load averages: 4.34 4.58 4.46",
+     "at": "2026-10-10T01:08:58Z"
+    },
+    {
+     "step": "live_copy",
+     "seconds": 1.2,
+     "at": "2026-10-10T01:08:59Z"
+    },
+    {
+     "step": "monitor_start",
+     "env": {
+      "HOMEPROV_DB": "/cfg/home-assistant_v2.db",
+      "HOMEPROV_ANCHOR": "http://anchor:9900/append",
+      "HOMEPROV_PERIOD": "5.0",
+      "HOMEPROV_SCRATCH": "/scratch",
+      "HOMEPROV_ANCHOR_KEY": "<key>",
+      "HOMEPROV_SCHEME": "stable",
+      "HOMEPROV_COVERAGE": "1",
+      "HOMEPROV_KEYLOG": "1",
+      "HOMEPROV_ESCROW_DIR": "/escrow",
+      "HOMEPROV_SIGN_KEY": "/sign/monitor.pem",
+      "HOMEPROV_REPLY_TAGS": "1",
+      "HOMEPROV_READ": "direct",
+      "HOMEPROV_QUICK_CHECK_EVERY": "720"
+     },
+     "mount_ro": true,
+     "offset": -76419.96725010872,
+     "at": "2026-10-10T01:09:18Z"
+    },
+    {
+     "step": "monitor_done",
+     "exit": "0",
+     "context": {
+      "uptime": "21:12  up 39 days,  1:10, 2 users, load averages: 5.43 5.04 4.68",
+      "containers_cpu": [
+       "e9k-writer 0.01%",
+       "e9k-anchord 0.03%",
+       "ds-readpath-ha 0.00%",
+       "delaysteer-e2-mosquitto 0.03%",
+       "delaysteer-ha 0.00%",
+       "hpr-broker 0.08%",
+       "rka-server 0.15%",
+       "rka-worker 0.49%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 1.40%",
+       "hpr-devices 0.16%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "at": "2026-10-10T01:12:23Z"
+    },
+    {
+     "step": "sizes",
+     "sizes": [
+      "/cfg/home-assistant_v2.db 191471616",
+      "/scratch/monitor_state.json 21183",
+      "/escrow/escrow.jsonl 5779323",
+      "/anchor/chain.jsonl 185568",
+      "33"
+     ],
+     "load": "21:12  up 39 days,  1:10, 2 users, load averages: 5.56 5.07 4.70",
+     "at": "2026-10-10T01:12:25Z"
+    },
+    {
+     "step": "teardown",
+     "left": "",
+     "at": "2026-10-10T01:12:26Z"
+    }
+   ]
+  },
+  "k5_direct_qc720_m38370b2a": {
+   "k": 5,
+   "mode": "direct",
+   "image": "e9c1-mon:38370b2a51ea",
+   "limits": {
+    "cpus": "1",
+    "memory": "1g",
+    "device_read_bps": "100mb",
+    "device_write_bps": "50mb",
+    "device": "/dev/vda"
+   },
+   "master_bytes": 961363968,
+   "master_sha256": "d0c0bf057cd76209460b74d6945f7ee91a3bd47533e3095bf835aa4e6269c426",
+   "monitor_sha256": "38370b2a51ea47b5ad30ab99670a3799a1958c559c4f83ecc02a2bee3a70ac9c",
+   "read_mode": "direct",
+   "wrapped_functions": [
+    "snapshot",
+    "validate_copy",
+    "watermark",
+    "keylog_poll",
+    "load",
+    "commit",
+    "escrow_write",
+    "escrow_keylog",
+    "append",
+    "save_state",
+    "namemap_seal",
+    "direct_close",
+    "direct_snapshot",
+    "quick_check_due"
+   ],
+   "polls_measured": 30,
+   "warmup_polls": 3,
+   "poll_errors": [],
+   "unobservable_polls": 0,
+   "unobservable_reasons": {},
+   "unobservable_detail_examples": [],
+   "read_path_counts": {
+    "direct": 30
+   },
+   "env_extra": {
+    "HOMEPROV_DB": "/cfg/home-assistant_v2.db",
+    "HOMEPROV_ANCHOR": "http://anchor:9900/append",
+    "HOMEPROV_PERIOD": "5.0",
+    "HOMEPROV_SCRATCH": "/scratch",
+    "HOMEPROV_ANCHOR_KEY": "<key>",
+    "HOMEPROV_SCHEME": "stable",
+    "HOMEPROV_COVERAGE": "1",
+    "HOMEPROV_KEYLOG": "1",
+    "HOMEPROV_ESCROW_DIR": "/escrow",
+    "HOMEPROV_SIGN_KEY": "/sign/monitor.pem",
+    "HOMEPROV_REPLY_TAGS": "1",
+    "HOMEPROV_READ": "direct",
+    "HOMEPROV_QUICK_CHECK_EVERY": "720"
+   },
+   "failed_appends": 0,
+   "per_poll_ms": {
+    "total": {
+     "n": 30,
+     "median": 557.608,
+     "p90": 597.899,
+     "max": 608.942,
+     "min": 540.142
+    },
+    "tick_copy_ms": {
+     "n": 30,
+     "median": 0.388,
+     "p90": 1.232,
+     "max": 2.202,
+     "min": 0.333
+    },
+    "tick_load_ms": {
+     "n": 30,
+     "median": 112.673,
+     "p90": 124.596,
+     "max": 147.97,
+     "min": 106.105
+    },
+    "tick_commit_ms": {
+     "n": 30,
+     "median": 423.352,
+     "p90": 452.061,
+     "max": 468.781,
+     "min": 414.66
+    },
+    "tick_append_ms": {
+     "n": 30,
+     "median": 3.146,
+     "p90": 4.474,
+     "max": 5.93,
+     "min": 1.867
+    },
+    "phase_append": {
+     "n": 30,
+     "median": 3.044,
+     "p90": 4.365,
+     "max": 5.832,
+     "min": 1.775
+    },
+    "phase_commit": {
+     "n": 30,
+     "median": 423.347,
+     "p90": 452.054,
+     "max": 468.776,
+     "min": 414.653
+    },
+    "phase_direct_close": {
+     "n": 30,
+     "median": 0.195,
+     "p90": 0.218,
+     "max": 0.374,
+     "min": 0.17
+    },
+    "phase_direct_snapshot": {
+     "n": 30,
+     "median": 0.368,
+     "p90": 1.192,
+     "max": 1.991,
+     "min": 0.319
+    },
+    "phase_escrow_keylog": {
+     "n": 30,
+     "median": 2.717,
+     "p90": 6.097,
+     "max": 7.709,
+     "min": 0.841
+    },
+    "phase_escrow_write": {
+     "n": 30,
+     "median": 5.101,
+     "p90": 8.389,
+     "max": 10.984,
+     "min": 2.974
+    },
+    "phase_keylog_poll": {
+     "n": 30,
+     "median": 0.683,
+     "p90": 2.013,
+     "max": 2.622,
+     "min": 0.176
+    },
+    "phase_load": {
+     "n": 30,
+     "median": 112.666,
+     "p90": 124.588,
+     "max": 147.965,
+     "min": 106.1
+    },
+    "phase_quick_check_due": {
+     "n": 30,
+     "median": 0.002,
+     "p90": 0.004,
+     "max": 0.07,
+     "min": 0.001
+    },
+    "phase_save_state": {
+     "n": 30,
+     "median": 1.147,
+     "p90": 1.327,
+     "max": 2.17,
+     "min": 1.084
+    },
+    "phase_watermark": {
+     "n": 30,
+     "median": 0.028,
+     "p90": 0.103,
+     "max": 0.114,
+     "min": 0.022
+    }
+   },
+   "per_poll_bytes": {
+    "proc_rchar": {
+     "n": 30,
+     "median": 2464227.0,
+     "p90": 2474467,
+     "max": 2478563,
+     "min": 2449890
+    },
+    "proc_wchar": {
+     "n": 30,
+     "median": 146732.0,
+     "p90": 170955,
+     "max": 191707,
+     "min": 123824
+    },
+    "proc_read_bytes": {
+     "n": 30,
+     "median": 0.0,
+     "p90": 0,
+     "max": 0,
+     "min": 0
+    },
+    "proc_write_bytes": {
+     "n": 30,
+     "median": 159744.0,
+     "p90": 180224,
+     "max": 204800,
+     "min": 135168
+    },
+    "cgroup_rbytes": {
+     "n": 30,
+     "median": 0.0,
+     "p90": 0,
+     "max": 0,
+     "min": 0
+    },
+    "cgroup_wbytes": {
+     "n": 30,
+     "median": 159744.0,
+     "p90": 180224,
+     "max": 204800,
+     "min": 135168
+    }
+   },
+   "measured_window": {
+    "clock_first": 1791518172.973341,
+    "clock_last": 1791518334.5325449,
+    "seconds": 161.6,
+    "sum_read_bytes": 0,
+    "sum_write_bytes": 4849664,
+    "sum_rchar": 73963666,
+    "sum_wchar": 4501781,
+    "sum_cgroup_rbytes": 0,
+    "sum_cgroup_wbytes": 4849664,
+    "bytes_written_per_hour_proc": 108037069,
+    "bytes_written_per_hour_cgroup": 108037069
+   },
+   "rows_in_open_window": {
+    "n": 30,
+    "median": 16792.0,
+    "p90": 16945,
+    "max": 16985,
+    "min": 16586
+   },
+   "writer": {
+    "start": {
+     "writer": "start",
+     "replay_rows": 43411,
+     "offset": -76629.61569809914,
+     "clock": 1791518122.7457297,
+     "history_end": 1791518120.073026
+    },
+    "stop": {
+     "writer": "stop",
+     "clock": 1791518352.0035543,
+     "states": 373,
+     "events": 189,
+     "commits": 132,
+     "commit_s_median": 0.0002872943878173828,
+     "commit_s_max": 0.01920151710510254
+    },
+    "rows_per_minute": 147.08
+   },
+   "steps": [
+    {
+     "step": "start",
+     "context": {
+      "uptime": "21:12  up 39 days,  1:10, 2 users, load averages: 5.56 5.07 4.70",
+      "containers_cpu": [
+       "ds-readpath-ha 0.00%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 0.01%",
+       "hpr-broker 0.02%",
+       "rka-server 0.09%",
+       "rka-worker 0.05%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 100.20%",
+       "hpr-devices 0.00%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "k": 5,
+     "mode": "direct",
+     "image": "e9c1-mon:38370b2a51ea",
+     "limits": {
+      "cpus": "1",
+      "memory": "1g",
+      "device_read_bps": "100mb",
+      "device_write_bps": "50mb",
+      "device": "/dev/vda"
+     },
+     "polls": 30,
+     "warmup": 3,
+     "period": 5.0,
+     "master": "<research-dir>/HOMEPROV-P13-exp/e9pre/c1/master_k5.db",
+     "master_sha256": "d0c0bf057cd76209460b74d6945f7ee91a3bd47533e3095bf835aa4e6269c426",
+     "master_bytes": 961363968,
+     "load": "21:12  up 39 days,  1:10, 2 users, load averages: 5.43 5.05 4.69",
+     "at": "2026-10-10T01:12:28Z"
+    },
+    {
+     "step": "live_copy",
+     "seconds": 1.3,
+     "at": "2026-10-10T01:12:30Z"
+    },
+    {
+     "step": "monitor_start",
+     "env": {
+      "HOMEPROV_DB": "/cfg/home-assistant_v2.db",
+      "HOMEPROV_ANCHOR": "http://anchor:9900/append",
+      "HOMEPROV_PERIOD": "5.0",
+      "HOMEPROV_SCRATCH": "/scratch",
+      "HOMEPROV_ANCHOR_KEY": "<key>",
+      "HOMEPROV_SCHEME": "stable",
+      "HOMEPROV_COVERAGE": "1",
+      "HOMEPROV_KEYLOG": "1",
+      "HOMEPROV_ESCROW_DIR": "/escrow",
+      "HOMEPROV_SIGN_KEY": "/sign/monitor.pem",
+      "HOMEPROV_REPLY_TAGS": "1",
+      "HOMEPROV_READ": "direct",
+      "HOMEPROV_QUICK_CHECK_EVERY": "720"
+     },
+     "mount_ro": true,
+     "offset": -76629.61569809914,
+     "at": "2026-10-10T01:12:47Z"
+    },
+    {
+     "step": "monitor_done",
+     "exit": "0",
+     "context": {
+      "uptime": "21:16  up 39 days,  1:13, 2 users, load averages: 3.94 4.36 4.46",
+      "containers_cpu": [
+       "e9k-writer 0.00%",
+       "e9k-anchord 0.20%",
+       "ds-readpath-ha 0.04%",
+       "delaysteer-e2-mosquitto 0.03%",
+       "delaysteer-ha 0.04%",
+       "hpr-broker 0.05%",
+       "rka-server 0.14%",
+       "rka-worker 0.14%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 0.21%",
+       "hpr-devices 0.06%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "at": "2026-10-10T01:16:21Z"
+    },
+    {
+     "step": "sizes",
+     "sizes": [
+      "/cfg/home-assistant_v2.db 961449984",
+      "/scratch/monitor_state.json 59685",
+      "/escrow/escrow.jsonl 22998837",
+      "/anchor/chain.jsonl 471421",
+      "33"
+     ],
+     "load": "21:16  up 39 days,  1:14, 2 users, load averages: 3.94 4.36 4.46",
+     "at": "2026-10-10T01:16:22Z"
+    },
+    {
+     "step": "teardown",
+     "left": "",
+     "at": "2026-10-10T01:16:23Z"
+    }
+   ]
+  },
+  "k15_direct_qc720_m38370b2a": {
+   "k": 15,
+   "mode": "direct",
+   "image": "e9c1-mon:38370b2a51ea",
+   "limits": {
+    "cpus": "1",
+    "memory": "1g",
+    "device_read_bps": "100mb",
+    "device_write_bps": "50mb",
+    "device": "/dev/vda"
+   },
+   "master_bytes": 2935984128,
+   "master_sha256": "e2045254242a2f042d402a93103e40863d87e3adc4bd82f8be180a92bb5e7a74",
+   "monitor_sha256": "38370b2a51ea47b5ad30ab99670a3799a1958c559c4f83ecc02a2bee3a70ac9c",
+   "read_mode": "direct",
+   "wrapped_functions": [
+    "snapshot",
+    "validate_copy",
+    "watermark",
+    "keylog_poll",
+    "load",
+    "commit",
+    "escrow_write",
+    "escrow_keylog",
+    "append",
+    "save_state",
+    "namemap_seal",
+    "direct_close",
+    "direct_snapshot",
+    "quick_check_due"
+   ],
+   "polls_measured": 30,
+   "warmup_polls": 3,
+   "poll_errors": [],
+   "unobservable_polls": 0,
+   "unobservable_reasons": {},
+   "unobservable_detail_examples": [
+    {
+     "quick_check": "*** in database main ***\nTree 31 page 508256 cell 36: invalid page number 716804"
+    }
+   ],
+   "read_path_counts": {
+    "direct": 30
+   },
+   "env_extra": {
+    "HOMEPROV_DB": "/cfg/home-assistant_v2.db",
+    "HOMEPROV_ANCHOR": "http://anchor:9900/append",
+    "HOMEPROV_PERIOD": "5.0",
+    "HOMEPROV_SCRATCH": "/scratch",
+    "HOMEPROV_ANCHOR_KEY": "<key>",
+    "HOMEPROV_SCHEME": "stable",
+    "HOMEPROV_COVERAGE": "1",
+    "HOMEPROV_KEYLOG": "1",
+    "HOMEPROV_ESCROW_DIR": "/escrow",
+    "HOMEPROV_SIGN_KEY": "/sign/monitor.pem",
+    "HOMEPROV_REPLY_TAGS": "1",
+    "HOMEPROV_READ": "direct",
+    "HOMEPROV_QUICK_CHECK_EVERY": "720"
+   },
+   "failed_appends": 0,
+   "per_poll_ms": {
+    "total": {
+     "n": 30,
+     "median": 1749.957,
+     "p90": 1973.389,
+     "max": 2956.707,
+     "min": 757.289
+    },
+    "tick_copy_ms": {
+     "n": 30,
+     "median": 1.176,
+     "p90": 4.633,
+     "max": 33.136,
+     "min": 0.335
+    },
+    "tick_load_ms": {
+     "n": 30,
+     "median": 347.769,
+     "p90": 503.285,
+     "max": 705.533,
+     "min": 143.355
+    },
+    "tick_commit_ms": {
+     "n": 30,
+     "median": 1330.594,
+     "p90": 1430.202,
+     "max": 1642.217,
+     "min": 590.845
+    },
+    "tick_append_ms": {
+     "n": 30,
+     "median": 4.963,
+     "p90": 11.751,
+     "max": 26.517,
+     "min": 2.113
+    },
+    "phase_append": {
+     "n": 30,
+     "median": 4.728,
+     "p90": 11.003,
+     "max": 26.034,
+     "min": 1.992
+    },
+    "phase_commit": {
+     "n": 30,
+     "median": 1330.588,
+     "p90": 1430.195,
+     "max": 1642.211,
+     "min": 590.84
+    },
+    "phase_direct_close": {
+     "n": 30,
+     "median": 0.224,
+     "p90": 0.542,
+     "max": 7.384,
+     "min": 0.177
+    },
+    "phase_direct_snapshot": {
+     "n": 30,
+     "median": 1.136,
+     "p90": 4.458,
+     "max": 32.945,
+     "min": 0.318
+    },
+    "phase_escrow_keylog": {
+     "n": 30,
+     "median": 3.498,
+     "p90": 7.42,
+     "max": 497.817,
+     "min": 1.477
+    },
+    "phase_escrow_write": {
+     "n": 30,
+     "median": 10.146,
+     "p90": 14.901,
+     "max": 20.448,
+     "min": 5.331
+    },
+    "phase_keylog_poll": {
+     "n": 30,
+     "median": 4.083,
+     "p90": 8.1,
+     "max": 13.039,
+     "min": 1.114
+    },
+    "phase_load": {
+     "n": 30,
+     "median": 347.76,
+     "p90": 503.272,
+     "max": 705.521,
+     "min": 143.35
+    },
+    "phase_quick_check_due": {
+     "n": 30,
+     "median": 0.005,
+     "p90": 0.044,
+     "max": 0.145,
+     "min": 0.002
+    },
+    "phase_save_state": {
+     "n": 30,
+     "median": 2.011,
+     "p90": 2.712,
+     "max": 5.783,
+     "min": 1.026
+    },
+    "phase_watermark": {
+     "n": 30,
+     "median": 0.099,
+     "p90": 0.345,
+     "max": 1.306,
+     "min": 0.023
+    }
+   },
+   "per_poll_bytes": {
+    "proc_rchar": {
+     "n": 30,
+     "median": 52634083.0,
+     "p90": 53809636,
+     "max": 54231524,
+     "min": 4510180
+    },
+    "proc_wchar": {
+     "n": 30,
+     "median": 282330.0,
+     "p90": 310908,
+     "max": 898305,
+     "min": 174234
+    },
+    "proc_read_bytes": {
+     "n": 30,
+     "median": 0.0,
+     "p90": 0,
+     "max": 0,
+     "min": 0
+    },
+    "proc_write_bytes": {
+     "n": 30,
+     "median": 294912.0,
+     "p90": 323584,
+     "max": 909312,
+     "min": 184320
+    },
+    "cgroup_rbytes": {
+     "n": 30,
+     "median": 0.0,
+     "p90": 0,
+     "max": 0,
+     "min": 0
+    },
+    "cgroup_wbytes": {
+     "n": 30,
+     "median": 294912.0,
+     "p90": 323584,
+     "max": 909312,
+     "min": 184320
+    }
+   },
+   "measured_window": {
+    "clock_first": 1791518230.466249,
+    "clock_last": 1791518424.7427526,
+    "seconds": 194.3,
+    "sum_read_bytes": 0,
+    "sum_write_bytes": 9232384,
+    "sum_rchar": 1394047139,
+    "sum_wchar": 8838415,
+    "sum_cgroup_rbytes": 0,
+    "sum_cgroup_wbytes": 9232384,
+    "bytes_written_per_hour_proc": 171058067,
+    "bytes_written_per_hour_cgroup": 171058067
+   },
+   "rows_in_open_window": {
+    "n": 30,
+    "median": 44079.5,
+    "p90": 44946,
+    "max": 45119,
+    "min": 22448
+   },
+   "writer": {
+    "start": {
+     "writer": "start",
+     "replay_rows": 98967,
+     "offset": -76100.95283222198,
+     "clock": 1791518122.9891603,
+     "history_end": 1791518120.073026
+    },
+    "stop": {
+     "writer": "stop",
+     "clock": 1791518433.0044773,
+     "states": 1397,
+     "events": 1004,
+     "commits": 286,
+     "commit_s_median": 0.000836491584777832,
+     "commit_s_max": 0.4966912269592285
+    },
+    "rows_per_minute": 464.69
+   },
+   "steps": [
+    {
+     "step": "start",
+     "context": {
+      "uptime": "21:03  up 39 days,  1:01, 2 users, load averages: 2.87 3.72 4.21",
+      "containers_cpu": [
+       "ds-readpath-ha 0.01%",
+       "delaysteer-e2-mosquitto 0.03%",
+       "delaysteer-ha 0.00%",
+       "hpr-broker 0.07%",
+       "rka-server 0.10%",
+       "rka-worker 0.04%",
+       "hpr-monitor 11.71%",
+       "hpr-hass 1.00%",
+       "hpr-devices 0.10%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "k": 15,
+     "mode": "direct",
+     "image": "e9c1-mon:38370b2a51ea",
+     "limits": {
+      "cpus": "1",
+      "memory": "1g",
+      "device_read_bps": "100mb",
+      "device_write_bps": "50mb",
+      "device": "/dev/vda"
+     },
+     "polls": 30,
+     "warmup": 3,
+     "period": 5.0,
+     "master": "<research-dir>/HOMEPROV-P13-exp/e9pre/c1/master_k15.db",
+     "master_sha256": "e2045254242a2f042d402a93103e40863d87e3adc4bd82f8be180a92bb5e7a74",
+     "master_bytes": 2935984128,
+     "load": "21:03  up 39 days,  1:01, 2 users, load averages: 2.72 3.67 4.19",
+     "at": "2026-10-10T01:03:38Z"
+    },
+    {
+     "step": "live_copy",
+     "seconds": 3.3,
+     "at": "2026-10-10T01:03:41Z"
+    },
+    {
+     "step": "monitor_start",
+     "env": {
+      "HOMEPROV_DB": "/cfg/home-assistant_v2.db",
+      "HOMEPROV_ANCHOR": "http://anchor:9900/append",
+      "HOMEPROV_PERIOD": "5.0",
+      "HOMEPROV_SCRATCH": "/scratch",
+      "HOMEPROV_ANCHOR_KEY": "<key>",
+      "HOMEPROV_SCHEME": "stable",
+      "HOMEPROV_COVERAGE": "1",
+      "HOMEPROV_KEYLOG": "1",
+      "HOMEPROV_ESCROW_DIR": "/escrow",
+      "HOMEPROV_SIGN_KEY": "/sign/monitor.pem",
+      "HOMEPROV_REPLY_TAGS": "1",
+      "HOMEPROV_READ": "direct",
+      "HOMEPROV_QUICK_CHECK_EVERY": "720"
+     },
+     "mount_ro": true,
+     "offset": -76100.95283222198,
+     "at": "2026-10-10T01:03:59Z"
+    },
+    {
+     "step": "monitor_done",
+     "exit": "0",
+     "context": {
+      "uptime": "21:08  up 39 days,  1:06, 2 users, load averages: 4.30 4.58 4.46",
+      "containers_cpu": [
+       "e9k-writer 0.78%",
+       "e9k-anchord 1.05%",
+       "ds-readpath-ha 0.00%",
+       "delaysteer-e2-mosquitto 0.03%",
+       "delaysteer-ha 0.00%",
+       "hpr-broker 0.03%",
+       "rka-server 0.39%",
+       "rka-worker 0.12%",
+       "hpr-monitor 6.04%",
+       "hpr-hass 0.54%",
+       "hpr-devices 0.05%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "at": "2026-10-10T01:08:53Z"
+    },
+    {
+     "step": "sizes",
+     "sizes": [
+      "/cfg/home-assistant_v2.db 2936393728",
+      "/scratch/monitor_state.json 46572",
+      "/escrow/escrow.jsonl 60625025",
+      "/anchor/chain.jsonl 746139",
+      "33"
+     ],
+     "load": "21:08  up 39 days,  1:06, 2 users, load averages: 4.20 4.55 4.46",
+     "at": "2026-10-10T01:08:55Z"
+    },
+    {
+     "step": "teardown",
+     "left": "",
+     "at": "2026-10-10T01:08:56Z"
+    }
+   ]
+  },
+  "k5_copy_qc720_m38370b2a": {
+   "k": 5,
+   "mode": "copy",
+   "image": "e9c1-mon:38370b2a51ea",
+   "limits": {
+    "cpus": "1",
+    "memory": "1g",
+    "device_read_bps": "100mb",
+    "device_write_bps": "50mb",
+    "device": "/dev/vda"
+   },
+   "master_bytes": 961363968,
+   "master_sha256": "d0c0bf057cd76209460b74d6945f7ee91a3bd47533e3095bf835aa4e6269c426",
+   "monitor_sha256": "38370b2a51ea47b5ad30ab99670a3799a1958c559c4f83ecc02a2bee3a70ac9c",
+   "read_mode": "copy",
+   "wrapped_functions": [
+    "snapshot",
+    "validate_copy",
+    "watermark",
+    "keylog_poll",
+    "load",
+    "commit",
+    "escrow_write",
+    "escrow_keylog",
+    "append",
+    "save_state",
+    "namemap_seal",
+    "direct_close",
+    "direct_snapshot",
+    "quick_check_due"
+   ],
+   "polls_measured": 30,
+   "warmup_polls": 3,
+   "poll_errors": [],
+   "unobservable_polls": 0,
+   "unobservable_reasons": {},
+   "unobservable_detail_examples": [],
+   "read_path_counts": {
+    "copy": 30
+   },
+   "env_extra": {
+    "HOMEPROV_DB": "/cfg/home-assistant_v2.db",
+    "HOMEPROV_ANCHOR": "http://anchor:9900/append",
+    "HOMEPROV_PERIOD": "5.0",
+    "HOMEPROV_SCRATCH": "/scratch",
+    "HOMEPROV_ANCHOR_KEY": "<key>",
+    "HOMEPROV_SCHEME": "stable",
+    "HOMEPROV_COVERAGE": "1",
+    "HOMEPROV_KEYLOG": "1",
+    "HOMEPROV_ESCROW_DIR": "/escrow",
+    "HOMEPROV_SIGN_KEY": "/sign/monitor.pem",
+    "HOMEPROV_REPLY_TAGS": "1",
+    "HOMEPROV_QUICK_CHECK_EVERY": "720"
+   },
+   "failed_appends": 0,
+   "per_poll_ms": {
+    "total": {
+     "n": 30,
+     "median": 22393.624,
+     "p90": 42315.91,
+     "max": 45916.892,
+     "min": 20339.102
+    },
+    "tick_copy_ms": {
+     "n": 30,
+     "median": 18935.997,
+     "p90": 39255.704,
+     "max": 42597.751,
+     "min": 15479.86
+    },
+    "tick_load_ms": {
+     "n": 30,
+     "median": 78.883,
+     "p90": 110.561,
+     "max": 129.771,
+     "min": 57.808
+    },
+    "tick_commit_ms": {
+     "n": 30,
+     "median": 248.342,
+     "p90": 421.609,
+     "max": 431.679,
+     "min": 212.036
+    },
+    "tick_append_ms": {
+     "n": 30,
+     "median": 3.266,
+     "p90": 5.821,
+     "max": 12.968,
+     "min": 2.1
+    },
+    "phase_append": {
+     "n": 30,
+     "median": 3.075,
+     "p90": 5.647,
+     "max": 12.818,
+     "min": 1.928
+    },
+    "phase_commit": {
+     "n": 30,
+     "median": 248.337,
+     "p90": 421.604,
+     "max": 431.675,
+     "min": 212.031
+    },
+    "phase_escrow_keylog": {
+     "n": 30,
+     "median": 1.739,
+     "p90": 5.283,
+     "max": 22.414,
+     "min": 1.08
+    },
+    "phase_escrow_write": {
+     "n": 30,
+     "median": 3.634,
+     "p90": 5.479,
+     "max": 24.914,
+     "min": 2.754
+    },
+    "phase_keylog_poll": {
+     "n": 30,
+     "median": 7.06,
+     "p90": 14.061,
+     "max": 16.505,
+     "min": 2.174
+    },
+    "phase_load": {
+     "n": 30,
+     "median": 78.867,
+     "p90": 110.555,
+     "max": 129.765,
+     "min": 57.803
+    },
+    "phase_quick_check_due": {
+     "n": 30,
+     "median": 0.003,
+     "p90": 0.007,
+     "max": 0.034,
+     "min": 0.001
+    },
+    "phase_save_state": {
+     "n": 30,
+     "median": 0.874,
+     "p90": 1.2,
+     "max": 1.396,
+     "min": 0.774
+    },
+    "phase_snapshot": {
+     "n": 30,
+     "median": 18935.904,
+     "p90": 39255.192,
+     "max": 42597.776,
+     "min": 15479.207
+    },
+    "phase_validate_copy": {
+     "n": 30,
+     "median": 3247.417,
+     "p90": 4220.034,
+     "max": 5365.615,
+     "min": 1729.027
+    },
+    "phase_watermark": {
+     "n": 30,
+     "median": 0.322,
+     "p90": 0.424,
+     "max": 0.66,
+     "min": 0.281
+    }
+   },
+   "per_poll_bytes": {
+    "proc_rchar": {
+     "n": 30,
+     "median": 971888613.0,
+     "p90": 1935347093,
+     "max": 1935912965,
+     "min": 969532671
+    },
+    "proc_wchar": {
+     "n": 30,
+     "median": 966852458.0,
+     "p90": 1932517739,
+     "max": 1932939422,
+     "min": 966294901
+    },
+    "proc_read_bytes": {
+     "n": 30,
+     "median": 953516032.0,
+     "p90": 1905786880,
+     "max": 1906601984,
+     "min": 952975360
+    },
+    "proc_write_bytes": {
+     "n": 30,
+     "median": 967028736.0,
+     "p90": 1932705792,
+     "max": 1933127680,
+     "min": 966467584
+    },
+    "cgroup_rbytes": {
+     "n": 30,
+     "median": 953516032.0,
+     "p90": 1905786880,
+     "max": 1906601984,
+     "min": 952975360
+    },
+    "cgroup_wbytes": {
+     "n": 30,
+     "median": 966836224.0,
+     "p90": 1932537856,
+     "max": 1932959744,
+     "min": 966275072
+    }
+   },
+   "measured_window": {
+    "clock_first": 1791518274.3109915,
+    "clock_last": 1791519221.9871836,
+    "seconds": 947.7,
+    "sum_read_bytes": 36219576320,
+    "sum_write_bytes": 36734009344,
+    "sum_rchar": 36852747420,
+    "sum_wchar": 36728640784,
+    "sum_cgroup_rbytes": 36219576320,
+    "sum_cgroup_wbytes": 36728430592,
+    "bytes_written_per_hour_proc": 139540396368,
+    "bytes_written_per_hour_cgroup": 139519204528
+   },
+   "rows_in_open_window": {
+    "n": 30,
+    "median": 9799.5,
+    "p90": 16910,
+    "max": 17067,
+    "min": 8598
+   },
+   "writer": {
+    "start": {
+     "writer": "start",
+     "replay_rows": 43411,
+     "offset": -76866.50427603722,
+     "clock": 1791518122.5860019,
+     "history_end": 1791518120.073026
+    },
+    "stop": {
+     "writer": "stop",
+     "clock": 1791519235.0025864,
+     "states": 1786,
+     "events": 921,
+     "commits": 642,
+     "commit_s_median": 0.00027048587799072266,
+     "commit_s_max": 0.14690446853637695
+    },
+    "rows_per_minute": 146.01
+   },
+   "steps": [
+    {
+     "step": "start",
+     "context": {
+      "uptime": "21:16  up 39 days,  1:14, 2 users, load averages: 4.66 4.50 4.51",
+      "containers_cpu": [
+       "ds-readpath-ha 0.01%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 0.01%",
+       "hpr-broker 0.04%",
+       "rka-server 0.11%",
+       "rka-worker 0.05%",
+       "hpr-monitor 22.92%",
+       "hpr-hass 101.00%",
+       "hpr-devices 0.04%",
+       "hpr-anchord 6.05%"
+      ]
+     },
+     "k": 5,
+     "mode": "copy",
+     "image": "e9c1-mon:38370b2a51ea",
+     "limits": {
+      "cpus": "1",
+      "memory": "1g",
+      "device_read_bps": "100mb",
+      "device_write_bps": "50mb",
+      "device": "/dev/vda"
+     },
+     "polls": 30,
+     "warmup": 3,
+     "period": 5.0,
+     "master": "<research-dir>/HOMEPROV-P13-exp/e9pre/c1/master_k5.db",
+     "master_sha256": "d0c0bf057cd76209460b74d6945f7ee91a3bd47533e3095bf835aa4e6269c426",
+     "master_bytes": 961363968,
+     "load": "21:16  up 39 days,  1:14, 2 users, load averages: 4.66 4.50 4.51",
+     "at": "2026-10-10T01:16:25Z"
+    },
+    {
+     "step": "live_copy",
+     "seconds": 1.4,
+     "at": "2026-10-10T01:16:27Z"
+    },
+    {
+     "step": "monitor_start",
+     "env": {
+      "HOMEPROV_DB": "/cfg/home-assistant_v2.db",
+      "HOMEPROV_ANCHOR": "http://anchor:9900/append",
+      "HOMEPROV_PERIOD": "5.0",
+      "HOMEPROV_SCRATCH": "/scratch",
+      "HOMEPROV_ANCHOR_KEY": "<key>",
+      "HOMEPROV_SCHEME": "stable",
+      "HOMEPROV_COVERAGE": "1",
+      "HOMEPROV_KEYLOG": "1",
+      "HOMEPROV_ESCROW_DIR": "/escrow",
+      "HOMEPROV_SIGN_KEY": "/sign/monitor.pem",
+      "HOMEPROV_REPLY_TAGS": "1",
+      "HOMEPROV_QUICK_CHECK_EVERY": "720"
+     },
+     "mount_ro": true,
+     "offset": -76866.50427603722,
+     "at": "2026-10-10T01:16:44Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "21:21  up 39 days,  1:19, 2 users, load averages: 2.92 3.71 4.16",
+      "containers_cpu": [
+       "e9k-monitor 2.44%",
+       "e9k-writer 0.01%",
+       "e9k-anchord 0.01%",
+       "ds-readpath-ha 0.01%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 0.14%",
+       "hpr-broker 0.02%",
+       "rka-server 11.34%",
+       "rka-worker 0.04%",
+       "hpr-monitor 16.24%",
+       "hpr-hass 83.59%",
+       "hpr-devices 0.01%",
+       "hpr-anchord 4.38%"
+      ]
+     },
+     "at": "2026-10-10T01:21:48Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "21:26  up 39 days,  1:24, 2 users, load averages: 2.69 3.17 3.76",
+      "containers_cpu": [
+       "e9k-monitor 4.64%",
+       "e9k-writer 0.03%",
+       "e9k-anchord 0.01%",
+       "ds-readpath-ha 0.02%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 0.02%",
+       "hpr-broker 0.02%",
+       "rka-server 0.12%",
+       "rka-worker 0.09%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 0.11%",
+       "hpr-devices 0.01%",
+       "hpr-anchord 4.85%"
+      ]
+     },
+     "at": "2026-10-10T01:26:55Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "21:31  up 39 days,  1:29, 2 users, load averages: 2.48 2.85 3.45",
+      "containers_cpu": [
+       "e9k-monitor 9.09%",
+       "e9k-writer 0.05%",
+       "e9k-anchord 0.02%",
+       "ds-readpath-ha 0.00%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 0.00%",
+       "hpr-broker 0.04%",
+       "rka-server 0.19%",
+       "rka-worker 0.14%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 0.51%",
+       "hpr-devices 0.02%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "at": "2026-10-10T01:31:58Z"
+    },
+    {
+     "step": "monitor_done",
+     "exit": "0",
+     "context": {
+      "uptime": "21:34  up 39 days,  1:32, 2 users, load averages: 2.85 2.81 3.31",
+      "containers_cpu": [
+       "e9k-writer 0.32%",
+       "e9k-anchord 0.01%",
+       "ds-readpath-ha 0.02%",
+       "delaysteer-e2-mosquitto 0.02%",
+       "delaysteer-ha 0.01%",
+       "hpr-broker 0.03%",
+       "rka-server 0.14%",
+       "rka-worker 0.15%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 10.03%",
+       "hpr-devices 0.01%",
+       "hpr-anchord 5.90%"
+      ]
+     },
+     "at": "2026-10-10T01:35:01Z"
+    },
+    {
+     "step": "sizes",
+     "sizes": [
+      "/cfg/home-assistant_v2.db 961802240",
+      "/scratch/monitor_state.json 37053",
+      "/scratch/recorder.db 961802240",
+      "/escrow/escrow.jsonl 27670291",
+      "/anchor/chain.jsonl 586235",
+      "33"
+     ],
+     "load": "21:35  up 39 days,  1:32, 2 users, load averages: 2.85 2.81 3.31",
+     "at": "2026-10-10T01:35:02Z"
+    },
+    {
+     "step": "teardown",
+     "left": "",
+     "at": "2026-10-10T01:35:03Z"
+    }
+   ]
+  }
+ },
+ "caveats": [
+  "Copy-mode scaling runs (tags *_m3e479ae0) use the evaluated E8 monitor image hpr-monitor:e8 (monitor.py 3e479ae0). Runs tagged *_m38370b2a use an image built from the working-tree monitor.py 38370b2a, which carried the parallel code agent's unfinished HOMEPROV_READ=direct mode; its direct-read rows are preliminary.",
+  "Direct-read correctness: exp/out/e9_readonly_shm_lockdrop.json shows that validate_files()'s ordinary open-read-close of the live database, -shm and -wal after the read transaction is pinned (as direct_snapshot() does in 38370b2a) leaves the snapshot unprotected against the writer's checkpoints (torn reads fail quick_check); exp/out/e9_readonly_shm_probe.json shows the readonly_shm reader alone stays consistent. The quick_check_failed polls of the K=15 direct runs are of that kind (the masters pass quick_check offline). Direct-read polls that skip quick_check are not checked here for torn reads.",
+  "rows_in_open_window differs between runs of one size because the monitor re-reads from the start of the previous hour: runs whose measured polls fall after the clock crosses an hour boundary fold about one hour of rows, earlier ones up to two. Load and commit times scale with it; copy and check do not.",
+  "Page cache: a poll's storage reads are cache misses only; the 1 GB memory limit of the monitor container bounds what it can keep cached, and pages the writer touched may be served from the VM's cache. proc_rchar counts the bytes read through system calls whether cached or not.",
+  "The Mac was shared with other agents' work during the runs; load averages and per-container CPU at the start, every 300 s and at the end of each run are in runs[*].steps."
+ ],
+ "definitions": {
+  "total": "wall time of monitor.tick() for one poll (everything the poll does)",
+  "phase_*": "time inside that monitor function during the poll (timers only; nested calls counted in both, e.g. watermark inside keylog_poll is not nested, validate_copy holds quick_check)",
+  "proc_read_bytes/write_bytes": "from /proc/self/io: bytes the monitor process caused to be fetched from / sent to storage in the poll (page-cache hits are not reads)",
+  "proc_rchar/wchar": "bytes passed through read/write-type system calls (includes page-cache hits)",
+  "cgroup_rbytes/wbytes": "the container's cgroup io.stat on the VM disk (includes writeback)",
+  "bytes_written_per_hour": "sum over the measured polls / the measured window's seconds * 3600: the run's measured rate, expressed per hour"
+ }
+}

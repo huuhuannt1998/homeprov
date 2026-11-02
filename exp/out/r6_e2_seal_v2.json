@@ -1,0 +1,36 @@
+{
+ "item": "R6/T7: E2 seal check with v1 and v2",
+ "snapshot": "hp-e2-auth/seal_verify/recorder.db",
+ "chain": "hp-e2-auth/e2_auth_chain.jsonl",
+ "chain_scheme": "row",
+ "published": {
+  "adversary_second_sealed": true,
+  "sealed_root_includes_adversary_row": true,
+  "adversary_seconds": [
+   1790950375
+  ]
+ },
+ "per_second": [
+  {
+   "second": 1790950375,
+   "anchored": {
+    "acc": "c9bf152a3eb1ae4a6cb2d8afe6a7cb52a0218d4135feef1c7f34a441b47be77d",
+    "n": 2,
+    "encoding": "v1"
+   },
+   "v1_recomputed": {
+    "acc": "c9bf152a3eb1ae4a6cb2d8afe6a7cb52a0218d4135feef1c7f34a441b47be77d",
+    "n": 2
+   },
+   "v1_root_matches": true,
+   "v2_root_of_sealed_rows": {
+    "acc": "544b3194c5756583e1c2cc12d4b7ded98112553a3162f61de90ce2c537b7b509",
+    "n": 2
+   },
+   "rows_with_0x7C_in_ctx_or_par": 0,
+   "rows": 2
+  }
+ ],
+ "v1_reproduces_published": true,
+ "conclusion": "the snapshot rows reproduce the anchored v1 root, so they are the sealed rows; the adversary row is in the sealed segment under either encoding"
+}

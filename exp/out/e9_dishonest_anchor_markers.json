@@ -1,0 +1,1842 @@
+{
+ "cases": {
+  "honest": "the saved chain as it is",
+  "reorder_rename": "each RENAME marker record moved to just after the first monitor record that already carries its new part digest(s)",
+  "replay_markers": "every marker record appended again at the end of the chain",
+  "withhold_purge": "the PURGE marker record removed",
+  "withhold_rename": "every RENAME marker record removed",
+  "withhold_restore": "the RESTORE marker record removed"
+ },
+ "check": "e9_dishonest_anchor_markers (E9 code review R5)",
+ "code_sha256": {
+  "exp/rig/marker_issuer.py": "0c644d43df8b6a1a2c2a2443cad1084f3c46d0e96f1c336d7edd555e457a6eec",
+  "exp/stages/e7_verify.py": "59a1b228f4b6cdf0ba3a5a9842746ccb65d5a91d95365a99a9e92c631c9e0b90",
+  "exp/stages/e9_dishonest_anchor.py": "cb52853ab38d245b8d777f6acd75021291a712b5733df3c4d2697ef1ed792224",
+  "exp/stages/e9_dishonest_markers.py": "77156058e0e9da0992a4214ffc7e2d13e6d95657ea076565e169795e1929c34d",
+  "monitor/monitor.py": "3f277d393410983354f0dd55a4c1a92e8dc78528de90fa96beba26333f8087cf",
+  "testbed/anchord/chainverify.py": "38cfa5e9d99e8ece7ee53d4401e6a97d6e16b7dac02e19088b11d13b547f9d0e"
+ },
+ "generated_utc": "2026-10-10T02:49:55Z",
+ "inputs": {
+  "copy": {
+   "chain": {
+    "path": "<research-dir>/HOMEPROV-P13-exp/e9/smoke/e9s_smoke3/copy_chain.jsonl",
+    "records": 741,
+    "sha256": "2aabf0c873ebff43b2a51341bc9c2cb4b5a830c066024f4ab0bfdbeb7cf9fc1d"
+   },
+   "escrow": {
+    "bytes": 352946741,
+    "path": "<research-dir>/HOMEPROV-P13-exp/e9/smoke/e9s_smoke3/escrow_copy/escrow.jsonl"
+   },
+   "markers": [
+    {
+     "kind": "PURGE",
+     "seq": 234
+    },
+    {
+     "kind": "RENAME",
+     "seq": 327
+    },
+    {
+     "kind": "RENAME",
+     "seq": 343
+    },
+    {
+     "kind": "RENAME",
+     "seq": 344
+    },
+    {
+     "kind": "RENAME",
+     "seq": 345
+    },
+    {
+     "kind": "RENAME",
+     "seq": 364
+    },
+    {
+     "kind": "RENAME",
+     "seq": 365
+    },
+    {
+     "kind": "RENAME",
+     "seq": 366
+    },
+    {
+     "kind": "RENAME",
+     "seq": 394
+    },
+    {
+     "kind": "RENAME",
+     "seq": 395
+    },
+    {
+     "kind": "RENAME",
+     "seq": 396
+    },
+    {
+     "kind": "RESTORE",
+     "seq": 660
+    }
+   ],
+   "pubkey": {
+    "path": "<research-dir>/HOMEPROV-P13-exp/e9/smoke/e9s_smoke3/keys/copy_sign_pub.pem",
+    "sha256": "3c4780d143549bb668935bf031ca10a6aa454b519350d3d4628b1243bc358268"
+   },
+   "witness_heads": {
+    "heads": 740,
+    "path": "<research-dir>/HOMEPROV-P13-exp/e9/smoke/e9s_smoke3/witness_copy/heads.jsonl",
+    "sha256": "bc1162ac968f8ac8ed9145e1927bdf92e79fcf6de839f50c172906558b50639e"
+   }
+  },
+  "direct": {
+   "chain": {
+    "path": "<research-dir>/HOMEPROV-P13-exp/e9/smoke/e9s_smoke3/direct_chain.jsonl",
+    "records": 760,
+    "sha256": "d6a7dfcdc82720965df7ccb7c44b6725285be44950dab7dbcae877aef1dee15d"
+   },
+   "escrow": {
+    "bytes": 353015352,
+    "path": "<research-dir>/HOMEPROV-P13-exp/e9/smoke/e9s_smoke3/escrow_direct/escrow.jsonl"
+   },
+   "markers": [
+    {
+     "kind": "PURGE",
+     "seq": 248
+    },
+    {
+     "kind": "RENAME",
+     "seq": 342
+    },
+    {
+     "kind": "RENAME",
+     "seq": 358
+    },
+    {
+     "kind": "RENAME",
+     "seq": 359
+    },
+    {
+     "kind": "RENAME",
+     "seq": 360
+    },
+    {
+     "kind": "RENAME",
+     "seq": 379
+    },
+    {
+     "kind": "RENAME",
+     "seq": 380
+    },
+    {
+     "kind": "RENAME",
+     "seq": 381
+    },
+    {
+     "kind": "RENAME",
+     "seq": 409
+    },
+    {
+     "kind": "RENAME",
+     "seq": 410
+    },
+    {
+     "kind": "RENAME",
+     "seq": 411
+    },
+    {
+     "kind": "RESTORE",
+     "seq": 678
+    }
+   ],
+   "pubkey": {
+    "path": "<research-dir>/HOMEPROV-P13-exp/e9/smoke/e9s_smoke3/keys/direct_sign_pub.pem",
+    "sha256": "e43e80fc167ec067a0493f3ccebce3856295e9477292e8f7e166de37ccd4fe85"
+   },
+   "witness_heads": {
+    "heads": 759,
+    "path": "<research-dir>/HOMEPROV-P13-exp/e9/smoke/e9s_smoke3/witness_direct/heads.jsonl",
+    "sha256": "9e7331053a3ccfb687b78586c0371d042cdd518d0dc01360c7d6a94e0507f13a"
+   }
+  },
+  "operator_pubkey": {
+   "path": "<research-dir>/HOMEPROV-P13-exp/e9/smoke/e9s_smoke3/keys/operator_sign_pub.pem",
+   "sha256": "7319079ccff881060da628f257b0438489a1336972459d7754d6d39651813029"
+  },
+  "run_dir": "<research-dir>/HOMEPROV-P13-exp/e9/smoke/e9s_smoke3",
+  "snapshots": {
+   "day2": {
+    "path": "<research-dir>/HOMEPROV-P13-exp/e9/smoke/e9s_smoke3/snapshots/day2_end.db",
+    "sha256": "50ddc87d759bcb3e22958f04768f0553336ac9e4433ebab30040652196ec8d05"
+   },
+   "day3": {
+    "path": "<research-dir>/HOMEPROV-P13-exp/e9/smoke/e9s_smoke3/snapshots/day3_end.db",
+    "sha256": "da8b033f2e523933a204084c6cce822ad43533668eed917e6f9b187d83907a64"
+   },
+   "night1_post": {
+    "path": "<research-dir>/HOMEPROV-P13-exp/e9/smoke/e9s_smoke3/snapshots/night1_post.db",
+    "sha256": "b8d253cf54efd765ffe8c66903af7e62c747d1fd8891da886e3a811e2eb91b46"
+   }
+  }
+ },
+ "monitors": {
+  "copy": {
+   "day2": {
+    "cases": {
+     "honest": {
+      "chainverify_every_witnessed_head": {
+       "beyond_chain_seqs": 0,
+       "conflicting_seqs": 0,
+       "distinct_seqs": 740,
+       "heads": 740,
+       "latest_seq": 741,
+       "matched": 740,
+       "mismatched_seqs": 0,
+       "ok": true,
+       "records_after_latest_witnessed_head": 0,
+       "records_after_the_last_witnessed_head": 0
+      },
+      "excused_keylog_violations": 590,
+      "excused_violations": 0,
+      "flagged_seconds": 3,
+      "markers": {
+       "accepted": 11,
+       "duplicates": 0,
+       "rejected": [
+        {
+         "chain_seq": 660,
+         "kind": "RESTORE",
+         "why": "after_snapshot"
+        }
+       ]
+      },
+      "namemap": {
+       "transitions": 5,
+       "unexcused_changes": 1,
+       "verdict": "display_input_changed_after_seal"
+      },
+      "outcomes": {
+       "match": 222,
+       "violation": 3
+      },
+      "purge_disconnects": 13,
+      "records": 741,
+      "restore_excused": null
+     },
+     "reorder_rename": {
+      "chainverify_every_witnessed_head": {
+       "beyond_chain_seqs": 0,
+       "conflicting_seqs": 0,
+       "distinct_seqs": 740,
+       "heads": 740,
+       "latest_seq": 741,
+       "matched": 326,
+       "mismatched_seqs": 414,
+       "ok": false,
+       "records_after_latest_witnessed_head": 0,
+       "records_after_the_last_witnessed_head": 0
+      },
+      "excused_keylog_violations": 590,
+      "excused_violations": 0,
+      "flagged_seconds": 3,
+      "markers": {
+       "accepted": 11,
+       "duplicates": 0,
+       "rejected": [
+        {
+         "chain_seq": 654,
+         "kind": "RESTORE",
+         "why": "after_snapshot"
+        }
+       ]
+      },
+      "namemap": {
+       "transitions": 5,
+       "unexcused_changes": 3,
+       "verdict": "display_input_changed_after_seal"
+      },
+      "newly_flagged_seconds": [],
+      "newly_violation": 0,
+      "outcomes": {
+       "match": 222,
+       "violation": 3
+      },
+      "purge_disconnects": 13,
+      "records": 741,
+      "restore_excused": null,
+      "transitions_from_honest": {
+       "match->match": 222,
+       "violation->violation": 3
+      },
+      "violation_to_match": 0,
+      "violation_to_not_violation": 0
+     },
+     "replay_markers": {
+      "chainverify_every_witnessed_head": {
+       "beyond_chain_seqs": 0,
+       "conflicting_seqs": 0,
+       "distinct_seqs": 740,
+       "heads": 740,
+       "latest_seq": 741,
+       "matched": 740,
+       "mismatched_seqs": 0,
+       "ok": true,
+       "records_after_latest_witnessed_head": 12,
+       "records_after_the_last_witnessed_head": 12
+      },
+      "excused_keylog_violations": 590,
+      "excused_violations": 0,
+      "flagged_seconds": 3,
+      "markers": {
+       "accepted": 11,
+       "duplicates": 11,
+       "rejected": [
+        {
+         "chain_seq": 660,
+         "kind": "RESTORE",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 753,
+         "kind": "RESTORE",
+         "why": "after_snapshot"
+        }
+       ]
+      },
+      "namemap": {
+       "transitions": 5,
+       "unexcused_changes": 1,
+       "verdict": "display_input_changed_after_seal"
+      },
+      "newly_flagged_seconds": [],
+      "newly_violation": 0,
+      "outcomes": {
+       "match": 222,
+       "violation": 3
+      },
+      "purge_disconnects": 13,
+      "records": 753,
+      "restore_excused": null,
+      "transitions_from_honest": {
+       "match->match": 222,
+       "violation->violation": 3
+      },
+      "violation_to_match": 0,
+      "violation_to_not_violation": 0
+     },
+     "withhold_rename": {
+      "chainverify_every_witnessed_head": {
+       "beyond_chain_seqs": 10,
+       "conflicting_seqs": 0,
+       "distinct_seqs": 740,
+       "heads": 740,
+       "latest_seq": 741,
+       "matched": 326,
+       "mismatched_seqs": 404,
+       "ok": false,
+       "records_after_latest_witnessed_head": 0,
+       "records_after_the_last_witnessed_head": 0
+      },
+      "excused_keylog_violations": 590,
+      "excused_violations": 0,
+      "flagged_seconds": 3,
+      "markers": {
+       "accepted": 1,
+       "duplicates": 0,
+       "rejected": [
+        {
+         "chain_seq": 650,
+         "kind": "RESTORE",
+         "why": "after_snapshot"
+        }
+       ]
+      },
+      "namemap": {
+       "transitions": 5,
+       "unexcused_changes": 5,
+       "verdict": "display_input_changed_after_seal"
+      },
+      "newly_flagged_seconds": [],
+      "newly_violation": 0,
+      "outcomes": {
+       "match": 222,
+       "violation": 3
+      },
+      "purge_disconnects": 13,
+      "records": 731,
+      "restore_excused": null,
+      "transitions_from_honest": {
+       "match->match": 222,
+       "violation->violation": 3
+      },
+      "violation_to_match": 0,
+      "violation_to_not_violation": 0
+     }
+    },
+    "seconds_classified": 225,
+    "snapshot_at": 1791591222.455816,
+    "window": [
+     1791590112.0,
+     1791591192.0
+    ]
+   },
+   "day3": {
+    "cases": {
+     "honest": {
+      "chainverify_every_witnessed_head": {
+       "beyond_chain_seqs": 0,
+       "conflicting_seqs": 0,
+       "distinct_seqs": 740,
+       "heads": 740,
+       "latest_seq": 741,
+       "matched": 740,
+       "mismatched_seqs": 0,
+       "ok": true,
+       "records_after_latest_witnessed_head": 0,
+       "records_after_the_last_witnessed_head": 0
+      },
+      "excused_keylog_violations": 633,
+      "excused_violations": 34,
+      "flagged_seconds": 8,
+      "markers": {
+       "accepted": 12,
+       "duplicates": 0,
+       "rejected": []
+      },
+      "namemap": {
+       "transitions": 5,
+       "unexcused_changes": 1,
+       "verdict": "display_input_changed_after_seal"
+      },
+      "outcomes": {
+       "match": 158,
+       "violation": 8,
+       "violation_coarse_only": 51
+      },
+      "purge_disconnects": 13,
+      "records": 741,
+      "restore_excused": {
+       "keylog_ranges": 43,
+       "segments_after_restore_point": {
+        "minute": 2,
+        "second": 32
+       }
+      }
+     },
+     "replay_markers": {
+      "chainverify_every_witnessed_head": {
+       "beyond_chain_seqs": 0,
+       "conflicting_seqs": 0,
+       "distinct_seqs": 740,
+       "heads": 740,
+       "latest_seq": 741,
+       "matched": 740,
+       "mismatched_seqs": 0,
+       "ok": true,
+       "records_after_latest_witnessed_head": 12,
+       "records_after_the_last_witnessed_head": 12
+      },
+      "excused_keylog_violations": 633,
+      "excused_violations": 34,
+      "flagged_seconds": 8,
+      "markers": {
+       "accepted": 12,
+       "duplicates": 12,
+       "rejected": []
+      },
+      "namemap": {
+       "transitions": 5,
+       "unexcused_changes": 1,
+       "verdict": "display_input_changed_after_seal"
+      },
+      "newly_flagged_seconds": [],
+      "newly_violation": 0,
+      "outcomes": {
+       "match": 158,
+       "violation": 8,
+       "violation_coarse_only": 51
+      },
+      "purge_disconnects": 13,
+      "records": 753,
+      "restore_excused": {
+       "keylog_ranges": 43,
+       "segments_after_restore_point": {
+        "minute": 2,
+        "second": 32
+       }
+      },
+      "transitions_from_honest": {
+       "match->match": 158,
+       "violation->violation": 8,
+       "violation_coarse_only->violation_coarse_only": 51
+      },
+      "violation_to_match": 0,
+      "violation_to_not_violation": 0
+     },
+     "withhold_restore": {
+      "chainverify_every_witnessed_head": {
+       "beyond_chain_seqs": 1,
+       "conflicting_seqs": 0,
+       "distinct_seqs": 740,
+       "heads": 740,
+       "latest_seq": 741,
+       "matched": 658,
+       "mismatched_seqs": 81,
+       "ok": false,
+       "records_after_latest_witnessed_head": 0,
+       "records_after_the_last_witnessed_head": 0
+      },
+      "excused_keylog_violations": 590,
+      "excused_violations": 0,
+      "flagged_seconds": 51,
+      "markers": {
+       "accepted": 11,
+       "duplicates": 0,
+       "rejected": []
+      },
+      "namemap": {
+       "transitions": 5,
+       "unexcused_changes": 1,
+       "verdict": "display_input_changed_after_seal"
+      },
+      "newly_flagged_seconds": [
+       "1791591915",
+       "1791591926",
+       "1791591928",
+       "1791591934",
+       "1791591935",
+       "1791591938",
+       "1791591944",
+       "1791591947",
+       "1791591948",
+       "1791591955",
+       "1791591960",
+       "1791591964",
+       "1791591972",
+       "1791591979",
+       "1791591982",
+       "1791591988",
+       "1791592000",
+       "1791592002",
+       "1791592008",
+       "1791592017",
+       "1791592019",
+       "1791592029",
+       "1791592031",
+       "1791592033",
+       "1791592039",
+       "1791592040",
+       "1791592042",
+       "1791592047",
+       "1791592051",
+       "1791592057",
+       "1791592059",
+       "1791592064",
+       "1791592068",
+       "1791592069",
+       "1791592075",
+       "1791592077",
+       "1791592083",
+       "1791592091",
+       "1791592094",
+       "1791592100",
+       "1791592112",
+       "1791592116",
+       "1791592122"
+      ],
+      "newly_violation": 43,
+      "outcomes": {
+       "match": 111,
+       "violation": 51,
+       "violation_coarse_only": 55
+      },
+      "purge_disconnects": 13,
+      "records": 740,
+      "restore_excused": null,
+      "transitions_from_honest": {
+       "match->match": 111,
+       "match->violation": 43,
+       "match->violation_coarse_only": 4,
+       "violation->violation": 8,
+       "violation_coarse_only->violation_coarse_only": 51
+      },
+      "violation_to_match": 0,
+      "violation_to_not_violation": 0
+     }
+    },
+    "seconds_classified": 217,
+    "snapshot_at": 1791592302.457152,
+    "window": [
+     1791591192.0,
+     1791592272.0
+    ]
+   },
+   "night1_post": {
+    "cases": {
+     "honest": {
+      "chainverify_every_witnessed_head": {
+       "beyond_chain_seqs": 0,
+       "conflicting_seqs": 0,
+       "distinct_seqs": 740,
+       "heads": 740,
+       "latest_seq": 741,
+       "matched": 740,
+       "mismatched_seqs": 0,
+       "ok": true,
+       "records_after_latest_witnessed_head": 0,
+       "records_after_the_last_witnessed_head": 0
+      },
+      "excused_keylog_violations": 590,
+      "excused_violations": 25847,
+      "flagged_seconds": 3,
+      "markers": {
+       "accepted": 1,
+       "duplicates": 0,
+       "rejected": [
+        {
+         "chain_seq": 327,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 343,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 344,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 345,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 364,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 365,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 366,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 394,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 395,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 396,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 660,
+         "kind": "RESTORE",
+         "why": "after_snapshot"
+        }
+       ]
+      },
+      "namemap": {
+       "transitions": 0,
+       "unexcused_changes": 0,
+       "verdict": "unchanged"
+      },
+      "outcomes": {
+       "match": 47525,
+       "violation": 3
+      },
+      "purge_disconnects": 13,
+      "records": 741,
+      "restore_excused": null
+     },
+     "replay_markers": {
+      "chainverify_every_witnessed_head": {
+       "beyond_chain_seqs": 0,
+       "conflicting_seqs": 0,
+       "distinct_seqs": 740,
+       "heads": 740,
+       "latest_seq": 741,
+       "matched": 740,
+       "mismatched_seqs": 0,
+       "ok": true,
+       "records_after_latest_witnessed_head": 12,
+       "records_after_the_last_witnessed_head": 12
+      },
+      "excused_keylog_violations": 590,
+      "excused_violations": 25847,
+      "flagged_seconds": 3,
+      "markers": {
+       "accepted": 1,
+       "duplicates": 1,
+       "rejected": [
+        {
+         "chain_seq": 327,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 343,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 344,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 345,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 364,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 365,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 366,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 394,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 395,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 396,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 660,
+         "kind": "RESTORE",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 743,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 744,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 745,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 746,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 747,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 748,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 749,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 750,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 751,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 752,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 753,
+         "kind": "RESTORE",
+         "why": "after_snapshot"
+        }
+       ]
+      },
+      "namemap": {
+       "transitions": 0,
+       "unexcused_changes": 0,
+       "verdict": "unchanged"
+      },
+      "newly_flagged_seconds": [],
+      "newly_violation": 0,
+      "outcomes": {
+       "match": 47525,
+       "violation": 3
+      },
+      "purge_disconnects": 13,
+      "records": 753,
+      "restore_excused": null,
+      "transitions_from_honest": {
+       "match->match": 47525,
+       "violation->violation": 3
+      },
+      "violation_to_match": 0,
+      "violation_to_not_violation": 0
+     },
+     "withhold_purge": {
+      "chainverify_every_witnessed_head": {
+       "beyond_chain_seqs": 1,
+       "conflicting_seqs": 0,
+       "distinct_seqs": 740,
+       "heads": 740,
+       "latest_seq": 741,
+       "matched": 233,
+       "mismatched_seqs": 506,
+       "ok": false,
+       "records_after_latest_witnessed_head": 0,
+       "records_after_the_last_witnessed_head": 0
+      },
+      "excused_keylog_violations": 0,
+      "excused_violations": 0,
+      "flagged_seconds": 23809,
+      "markers": {
+       "accepted": 0,
+       "duplicates": 0,
+       "rejected": [
+        {
+         "chain_seq": 326,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 342,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 343,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 344,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 363,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 364,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 365,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 393,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 394,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 395,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 659,
+         "kind": "RESTORE",
+         "why": "after_snapshot"
+        }
+       ]
+      },
+      "namemap": {
+       "transitions": 0,
+       "unexcused_changes": 0,
+       "verdict": "unchanged"
+      },
+      "newly_flagged_seconds": [
+       "1791274812",
+       "1791274814",
+       "1791274820",
+       "1791274833",
+       "1791274835",
+       "1791274841",
+       "1791274843",
+       "1791274845",
+       "1791274851",
+       "1791274860",
+       "1791274862",
+       "1791274872",
+       "1791274880",
+       "1791274881",
+       "1791274891",
+       "1791274898",
+       "1791274899",
+       "1791274905",
+       "1791274910",
+       "1791274912",
+       "1791274922",
+       "1791274924",
+       "1791274929",
+       "1791274935",
+       "1791274948",
+       "1791274950",
+       "1791274960",
+       "1791274963",
+       "1791274968",
+       "1791274970",
+       "1791274980",
+       "1791274986",
+       "1791274990",
+       "1791274995",
+       "1791274996",
+       "1791274997",
+       "1791275005",
+       "1791275007",
+       "1791275009",
+       "1791275019",
+       "1791275021",
+       "1791275027",
+       "1791275029",
+       "1791275032",
+       "1791275040",
+       "1791275051",
+       "1791275055",
+       "1791275063",
+       "1791275066",
+       "1791275069"
+      ],
+      "newly_violation": 23806,
+      "outcomes": {
+       "match": 21550,
+       "violation": 23809,
+       "violation_coarse_only": 2169
+      },
+      "purge_disconnects": null,
+      "records": 740,
+      "restore_excused": null,
+      "transitions_from_honest": {
+       "match->match": 21550,
+       "match->violation": 23806,
+       "match->violation_coarse_only": 2169,
+       "violation->violation": 3
+      },
+      "violation_to_match": 0,
+      "violation_to_not_violation": 0
+     }
+    },
+    "seconds_classified": 47528,
+    "snapshot_at": 1791590067.1410701,
+    "window": [
+     1791271212.0,
+     1791589032.0
+    ]
+   },
+   "property": {
+    "newly_violation": {
+     "day2/reorder_rename": 0,
+     "day2/replay_markers": 0,
+     "day2/withhold_rename": 0,
+     "day3/replay_markers": 0,
+     "day3/withhold_restore": 43,
+     "night1_post/replay_markers": 0,
+     "night1_post/withhold_purge": 23806
+    },
+    "violation_to_match": {
+     "day2/reorder_rename": 0,
+     "day2/replay_markers": 0,
+     "day2/withhold_rename": 0,
+     "day3/replay_markers": 0,
+     "day3/withhold_restore": 0,
+     "night1_post/replay_markers": 0,
+     "night1_post/withhold_purge": 0
+    },
+    "violation_to_not_violation": {
+     "day2/reorder_rename": 0,
+     "day2/replay_markers": 0,
+     "day2/withhold_rename": 0,
+     "day3/replay_markers": 0,
+     "day3/withhold_restore": 0,
+     "night1_post/replay_markers": 0,
+     "night1_post/withhold_purge": 0
+    }
+   }
+  },
+  "direct": {
+   "day2": {
+    "cases": {
+     "honest": {
+      "chainverify_every_witnessed_head": {
+       "beyond_chain_seqs": 0,
+       "conflicting_seqs": 0,
+       "distinct_seqs": 759,
+       "heads": 759,
+       "latest_seq": 760,
+       "matched": 759,
+       "mismatched_seqs": 0,
+       "ok": true,
+       "records_after_latest_witnessed_head": 0,
+       "records_after_the_last_witnessed_head": 0
+      },
+      "excused_keylog_violations": 590,
+      "excused_violations": 0,
+      "flagged_seconds": 3,
+      "markers": {
+       "accepted": 11,
+       "duplicates": 0,
+       "rejected": [
+        {
+         "chain_seq": 678,
+         "kind": "RESTORE",
+         "why": "after_snapshot"
+        }
+       ]
+      },
+      "namemap": {
+       "transitions": 5,
+       "unexcused_changes": 1,
+       "verdict": "display_input_changed_after_seal"
+      },
+      "outcomes": {
+       "match": 222,
+       "violation": 3
+      },
+      "purge_disconnects": 13,
+      "records": 760,
+      "restore_excused": null
+     },
+     "reorder_rename": {
+      "chainverify_every_witnessed_head": {
+       "beyond_chain_seqs": 0,
+       "conflicting_seqs": 0,
+       "distinct_seqs": 759,
+       "heads": 759,
+       "latest_seq": 760,
+       "matched": 341,
+       "mismatched_seqs": 418,
+       "ok": false,
+       "records_after_latest_witnessed_head": 0,
+       "records_after_the_last_witnessed_head": 0
+      },
+      "excused_keylog_violations": 590,
+      "excused_violations": 0,
+      "flagged_seconds": 3,
+      "markers": {
+       "accepted": 11,
+       "duplicates": 0,
+       "rejected": [
+        {
+         "chain_seq": 672,
+         "kind": "RESTORE",
+         "why": "after_snapshot"
+        }
+       ]
+      },
+      "namemap": {
+       "transitions": 5,
+       "unexcused_changes": 3,
+       "verdict": "display_input_changed_after_seal"
+      },
+      "newly_flagged_seconds": [],
+      "newly_violation": 0,
+      "outcomes": {
+       "match": 222,
+       "violation": 3
+      },
+      "purge_disconnects": 13,
+      "records": 760,
+      "restore_excused": null,
+      "transitions_from_honest": {
+       "match->match": 222,
+       "violation->violation": 3
+      },
+      "violation_to_match": 0,
+      "violation_to_not_violation": 0
+     },
+     "replay_markers": {
+      "chainverify_every_witnessed_head": {
+       "beyond_chain_seqs": 0,
+       "conflicting_seqs": 0,
+       "distinct_seqs": 759,
+       "heads": 759,
+       "latest_seq": 760,
+       "matched": 759,
+       "mismatched_seqs": 0,
+       "ok": true,
+       "records_after_latest_witnessed_head": 12,
+       "records_after_the_last_witnessed_head": 12
+      },
+      "excused_keylog_violations": 590,
+      "excused_violations": 0,
+      "flagged_seconds": 3,
+      "markers": {
+       "accepted": 11,
+       "duplicates": 11,
+       "rejected": [
+        {
+         "chain_seq": 678,
+         "kind": "RESTORE",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 772,
+         "kind": "RESTORE",
+         "why": "after_snapshot"
+        }
+       ]
+      },
+      "namemap": {
+       "transitions": 5,
+       "unexcused_changes": 1,
+       "verdict": "display_input_changed_after_seal"
+      },
+      "newly_flagged_seconds": [],
+      "newly_violation": 0,
+      "outcomes": {
+       "match": 222,
+       "violation": 3
+      },
+      "purge_disconnects": 13,
+      "records": 772,
+      "restore_excused": null,
+      "transitions_from_honest": {
+       "match->match": 222,
+       "violation->violation": 3
+      },
+      "violation_to_match": 0,
+      "violation_to_not_violation": 0
+     },
+     "withhold_rename": {
+      "chainverify_every_witnessed_head": {
+       "beyond_chain_seqs": 10,
+       "conflicting_seqs": 0,
+       "distinct_seqs": 759,
+       "heads": 759,
+       "latest_seq": 760,
+       "matched": 341,
+       "mismatched_seqs": 408,
+       "ok": false,
+       "records_after_latest_witnessed_head": 0,
+       "records_after_the_last_witnessed_head": 0
+      },
+      "excused_keylog_violations": 590,
+      "excused_violations": 0,
+      "flagged_seconds": 3,
+      "markers": {
+       "accepted": 1,
+       "duplicates": 0,
+       "rejected": [
+        {
+         "chain_seq": 668,
+         "kind": "RESTORE",
+         "why": "after_snapshot"
+        }
+       ]
+      },
+      "namemap": {
+       "transitions": 5,
+       "unexcused_changes": 5,
+       "verdict": "display_input_changed_after_seal"
+      },
+      "newly_flagged_seconds": [],
+      "newly_violation": 0,
+      "outcomes": {
+       "match": 222,
+       "violation": 3
+      },
+      "purge_disconnects": 13,
+      "records": 750,
+      "restore_excused": null,
+      "transitions_from_honest": {
+       "match->match": 222,
+       "violation->violation": 3
+      },
+      "violation_to_match": 0,
+      "violation_to_not_violation": 0
+     }
+    },
+    "seconds_classified": 225,
+    "snapshot_at": 1791591222.455816,
+    "window": [
+     1791590112.0,
+     1791591192.0
+    ]
+   },
+   "day3": {
+    "cases": {
+     "honest": {
+      "chainverify_every_witnessed_head": {
+       "beyond_chain_seqs": 0,
+       "conflicting_seqs": 0,
+       "distinct_seqs": 759,
+       "heads": 759,
+       "latest_seq": 760,
+       "matched": 759,
+       "mismatched_seqs": 0,
+       "ok": true,
+       "records_after_latest_witnessed_head": 0,
+       "records_after_the_last_witnessed_head": 0
+      },
+      "excused_keylog_violations": 632,
+      "excused_violations": 34,
+      "flagged_seconds": 8,
+      "markers": {
+       "accepted": 12,
+       "duplicates": 0,
+       "rejected": []
+      },
+      "namemap": {
+       "transitions": 5,
+       "unexcused_changes": 1,
+       "verdict": "display_input_changed_after_seal"
+      },
+      "outcomes": {
+       "match": 158,
+       "violation": 8,
+       "violation_coarse_only": 51
+      },
+      "purge_disconnects": 13,
+      "records": 760,
+      "restore_excused": {
+       "keylog_ranges": 42,
+       "segments_after_restore_point": {
+        "minute": 2,
+        "second": 32
+       }
+      }
+     },
+     "replay_markers": {
+      "chainverify_every_witnessed_head": {
+       "beyond_chain_seqs": 0,
+       "conflicting_seqs": 0,
+       "distinct_seqs": 759,
+       "heads": 759,
+       "latest_seq": 760,
+       "matched": 759,
+       "mismatched_seqs": 0,
+       "ok": true,
+       "records_after_latest_witnessed_head": 12,
+       "records_after_the_last_witnessed_head": 12
+      },
+      "excused_keylog_violations": 632,
+      "excused_violations": 34,
+      "flagged_seconds": 8,
+      "markers": {
+       "accepted": 12,
+       "duplicates": 12,
+       "rejected": []
+      },
+      "namemap": {
+       "transitions": 5,
+       "unexcused_changes": 1,
+       "verdict": "display_input_changed_after_seal"
+      },
+      "newly_flagged_seconds": [],
+      "newly_violation": 0,
+      "outcomes": {
+       "match": 158,
+       "violation": 8,
+       "violation_coarse_only": 51
+      },
+      "purge_disconnects": 13,
+      "records": 772,
+      "restore_excused": {
+       "keylog_ranges": 42,
+       "segments_after_restore_point": {
+        "minute": 2,
+        "second": 32
+       }
+      },
+      "transitions_from_honest": {
+       "match->match": 158,
+       "violation->violation": 8,
+       "violation_coarse_only->violation_coarse_only": 51
+      },
+      "violation_to_match": 0,
+      "violation_to_not_violation": 0
+     },
+     "withhold_restore": {
+      "chainverify_every_witnessed_head": {
+       "beyond_chain_seqs": 1,
+       "conflicting_seqs": 0,
+       "distinct_seqs": 759,
+       "heads": 759,
+       "latest_seq": 760,
+       "matched": 676,
+       "mismatched_seqs": 82,
+       "ok": false,
+       "records_after_latest_witnessed_head": 0,
+       "records_after_the_last_witnessed_head": 0
+      },
+      "excused_keylog_violations": 590,
+      "excused_violations": 0,
+      "flagged_seconds": 51,
+      "markers": {
+       "accepted": 11,
+       "duplicates": 0,
+       "rejected": []
+      },
+      "namemap": {
+       "transitions": 5,
+       "unexcused_changes": 1,
+       "verdict": "display_input_changed_after_seal"
+      },
+      "newly_flagged_seconds": [
+       "1791591915",
+       "1791591926",
+       "1791591928",
+       "1791591934",
+       "1791591935",
+       "1791591938",
+       "1791591944",
+       "1791591947",
+       "1791591948",
+       "1791591955",
+       "1791591960",
+       "1791591964",
+       "1791591972",
+       "1791591979",
+       "1791591982",
+       "1791591988",
+       "1791592000",
+       "1791592002",
+       "1791592008",
+       "1791592017",
+       "1791592019",
+       "1791592029",
+       "1791592031",
+       "1791592033",
+       "1791592039",
+       "1791592040",
+       "1791592042",
+       "1791592047",
+       "1791592051",
+       "1791592057",
+       "1791592059",
+       "1791592064",
+       "1791592068",
+       "1791592069",
+       "1791592075",
+       "1791592077",
+       "1791592083",
+       "1791592091",
+       "1791592094",
+       "1791592100",
+       "1791592112",
+       "1791592116",
+       "1791592122"
+      ],
+      "newly_violation": 43,
+      "outcomes": {
+       "match": 111,
+       "violation": 51,
+       "violation_coarse_only": 55
+      },
+      "purge_disconnects": 13,
+      "records": 759,
+      "restore_excused": null,
+      "transitions_from_honest": {
+       "match->match": 111,
+       "match->violation": 43,
+       "match->violation_coarse_only": 4,
+       "violation->violation": 8,
+       "violation_coarse_only->violation_coarse_only": 51
+      },
+      "violation_to_match": 0,
+      "violation_to_not_violation": 0
+     }
+    },
+    "seconds_classified": 217,
+    "snapshot_at": 1791592302.457152,
+    "window": [
+     1791591192.0,
+     1791592272.0
+    ]
+   },
+   "night1_post": {
+    "cases": {
+     "honest": {
+      "chainverify_every_witnessed_head": {
+       "beyond_chain_seqs": 0,
+       "conflicting_seqs": 0,
+       "distinct_seqs": 759,
+       "heads": 759,
+       "latest_seq": 760,
+       "matched": 759,
+       "mismatched_seqs": 0,
+       "ok": true,
+       "records_after_latest_witnessed_head": 0,
+       "records_after_the_last_witnessed_head": 0
+      },
+      "excused_keylog_violations": 590,
+      "excused_violations": 25847,
+      "flagged_seconds": 3,
+      "markers": {
+       "accepted": 1,
+       "duplicates": 0,
+       "rejected": [
+        {
+         "chain_seq": 342,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 358,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 359,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 360,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 379,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 380,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 381,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 409,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 410,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 411,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 678,
+         "kind": "RESTORE",
+         "why": "after_snapshot"
+        }
+       ]
+      },
+      "namemap": {
+       "transitions": 0,
+       "unexcused_changes": 0,
+       "verdict": "unchanged"
+      },
+      "outcomes": {
+       "match": 47525,
+       "violation": 3
+      },
+      "purge_disconnects": 13,
+      "records": 760,
+      "restore_excused": null
+     },
+     "replay_markers": {
+      "chainverify_every_witnessed_head": {
+       "beyond_chain_seqs": 0,
+       "conflicting_seqs": 0,
+       "distinct_seqs": 759,
+       "heads": 759,
+       "latest_seq": 760,
+       "matched": 759,
+       "mismatched_seqs": 0,
+       "ok": true,
+       "records_after_latest_witnessed_head": 12,
+       "records_after_the_last_witnessed_head": 12
+      },
+      "excused_keylog_violations": 590,
+      "excused_violations": 25847,
+      "flagged_seconds": 3,
+      "markers": {
+       "accepted": 1,
+       "duplicates": 1,
+       "rejected": [
+        {
+         "chain_seq": 342,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 358,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 359,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 360,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 379,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 380,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 381,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 409,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 410,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 411,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 678,
+         "kind": "RESTORE",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 762,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 763,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 764,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 765,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 766,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 767,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 768,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 769,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 770,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 771,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 772,
+         "kind": "RESTORE",
+         "why": "after_snapshot"
+        }
+       ]
+      },
+      "namemap": {
+       "transitions": 0,
+       "unexcused_changes": 0,
+       "verdict": "unchanged"
+      },
+      "newly_flagged_seconds": [],
+      "newly_violation": 0,
+      "outcomes": {
+       "match": 47525,
+       "violation": 3
+      },
+      "purge_disconnects": 13,
+      "records": 772,
+      "restore_excused": null,
+      "transitions_from_honest": {
+       "match->match": 47525,
+       "violation->violation": 3
+      },
+      "violation_to_match": 0,
+      "violation_to_not_violation": 0
+     },
+     "withhold_purge": {
+      "chainverify_every_witnessed_head": {
+       "beyond_chain_seqs": 1,
+       "conflicting_seqs": 0,
+       "distinct_seqs": 759,
+       "heads": 759,
+       "latest_seq": 760,
+       "matched": 247,
+       "mismatched_seqs": 511,
+       "ok": false,
+       "records_after_latest_witnessed_head": 0,
+       "records_after_the_last_witnessed_head": 0
+      },
+      "excused_keylog_violations": 0,
+      "excused_violations": 0,
+      "flagged_seconds": 23809,
+      "markers": {
+       "accepted": 0,
+       "duplicates": 0,
+       "rejected": [
+        {
+         "chain_seq": 341,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 357,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 358,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 359,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 378,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 379,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 380,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 408,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 409,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 410,
+         "kind": "RENAME",
+         "why": "after_snapshot"
+        },
+        {
+         "chain_seq": 677,
+         "kind": "RESTORE",
+         "why": "after_snapshot"
+        }
+       ]
+      },
+      "namemap": {
+       "transitions": 0,
+       "unexcused_changes": 0,
+       "verdict": "unchanged"
+      },
+      "newly_flagged_seconds": [
+       "1791274812",
+       "1791274814",
+       "1791274820",
+       "1791274833",
+       "1791274835",
+       "1791274841",
+       "1791274843",
+       "1791274845",
+       "1791274851",
+       "1791274860",
+       "1791274862",
+       "1791274872",
+       "1791274880",
+       "1791274881",
+       "1791274891",
+       "1791274898",
+       "1791274899",
+       "1791274905",
+       "1791274910",
+       "1791274912",
+       "1791274922",
+       "1791274924",
+       "1791274929",
+       "1791274935",
+       "1791274948",
+       "1791274950",
+       "1791274960",
+       "1791274963",
+       "1791274968",
+       "1791274970",
+       "1791274980",
+       "1791274986",
+       "1791274990",
+       "1791274995",
+       "1791274996",
+       "1791274997",
+       "1791275005",
+       "1791275007",
+       "1791275009",
+       "1791275019",
+       "1791275021",
+       "1791275027",
+       "1791275029",
+       "1791275032",
+       "1791275040",
+       "1791275051",
+       "1791275055",
+       "1791275063",
+       "1791275066",
+       "1791275069"
+      ],
+      "newly_violation": 23806,
+      "outcomes": {
+       "match": 21550,
+       "violation": 23809,
+       "violation_coarse_only": 2169
+      },
+      "purge_disconnects": null,
+      "records": 759,
+      "restore_excused": null,
+      "transitions_from_honest": {
+       "match->match": 21550,
+       "match->violation": 23806,
+       "match->violation_coarse_only": 2169,
+       "violation->violation": 3
+      },
+      "violation_to_match": 0,
+      "violation_to_not_violation": 0
+     }
+    },
+    "seconds_classified": 47528,
+    "snapshot_at": 1791590067.1410701,
+    "window": [
+     1791271212.0,
+     1791589032.0
+    ]
+   },
+   "property": {
+    "newly_violation": {
+     "day2/reorder_rename": 0,
+     "day2/replay_markers": 0,
+     "day2/withhold_rename": 0,
+     "day3/replay_markers": 0,
+     "day3/withhold_restore": 43,
+     "night1_post/replay_markers": 0,
+     "night1_post/withhold_purge": 23806
+    },
+    "violation_to_match": {
+     "day2/reorder_rename": 0,
+     "day2/replay_markers": 0,
+     "day2/withhold_rename": 0,
+     "day3/replay_markers": 0,
+     "day3/withhold_restore": 0,
+     "night1_post/replay_markers": 0,
+     "night1_post/withhold_purge": 0
+    },
+    "violation_to_not_violation": {
+     "day2/reorder_rename": 0,
+     "day2/replay_markers": 0,
+     "day2/withhold_rename": 0,
+     "day3/replay_markers": 0,
+     "day3/withhold_restore": 0,
+     "night1_post/replay_markers": 0,
+     "night1_post/withhold_purge": 0
+    }
+   }
+  }
+ },
+ "parameters": {
+  "gap_s": 30.0,
+  "late_bound_s": 30.0,
+  "purge_keep_s": 172800.0,
+  "purge_tol_s": 60.0,
+  "restore_tol_s": 30.0
+ }
+}

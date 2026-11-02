@@ -1,0 +1,61 @@
+{
+ "experiment": "e1_psr_clo: E1 two-host placement, member-account swap (arm PSR) against a privileged Core on Home Assistant OS, monitor and authenticated anchor on another host (a second VM on the same Mac)",
+ "monitor": {
+  "image": "hpr-monitor:e1",
+  "scheme": "closure",
+  "encoding": "v2",
+  "clock_file": "/cfg/clock",
+  "period_s": 5,
+  "monitor_py_sha256": "f23c12707278e66266bd02ee7c3fcd24fae231c39182319d705b2cce66215532"
+ },
+ "replicator": {
+  "image": "hpr-e1-replicator:1",
+  "period_s": 2,
+  "replicator_py_sha256": "b45d2f202923965fc8ef3818ba725b7809902b9021981a2589d25539bd049ecb",
+  "hub_backup_py_sha256": "16ac3f0d88ad391f7d35bfdd36a40bccdd916deee9e71e04be48ee4ec0433711"
+ },
+ "configuration_log": [
+  "2026-10-08T00:58:49Z tag=e1_psr_clo arms=\"PSR\" trials=30 scheme=closure placement=two-host",
+  "2026-10-08T00:58:50Z load_before: 20:58  up 37 days, 56 mins, 2 users, load averages: 6.92 8.24 8.86",
+  "2026-10-08T00:58:50Z git_head: b7611992393052a568df00c9ebc805f4d15ee6f5 (monitor.py modified in the working tree: encoding v2, closure, GRACE_S, CLOCK_FILE)",
+  "2026-10-08T00:58:50Z monitor_py_sha256: f23c12707278e662",
+  "2026-10-08T00:58:50Z replicator_py_sha256: b45d2f202923965f hub_backup_py_sha256: 16ac3f0d88ad391f",
+  "2026-10-08T00:58:50Z hostA_os: NAME=\"Home Assistant OS\" VERSION=\"18.3 (Generic aarch64)\" ",
+  "2026-10-08T00:58:50Z hostA_core: image=ghcr.io/home-assistant/qemuarm-64-homeassistant:2026.10.0 digest=sha256:bac198fa74d7871d19a707013e8d620929c9e2d91ddf1c847cb3df86cb379ce1 privileged=true network=host",
+  "2026-10-08T00:58:50Z hostA_vm: qemu-system-aarch64 -M virt -accel hvf -cpu host -smp 2 -m 3072 -drive if=pflash,format=raw,file=code.fd,readonly=on -drive if=pflash,format=raw,file=vars-a.fd -drive if=none,id=hd,format=qcow2,file=haos-a.qcow2 -device virtio-blk-pci,drive=hd,bootindex=0,addr=0x2 -device qemu-xhci,addr=0x5 -drive if=none,id=cfg,format=raw,file=config.dmg -device usb-storage,drive=cfg -netdev user,id=n0,hostfwd=tc",
+  "2026-10-08T00:58:50Z hostA_harness: homeprov_scenario sha256 5657e950b36abe89, homeprov_ec sha256 266d27e298153ede",
+  "2026-10-08T00:58:50Z clock_skew: mac=1791421130.527 hostA=1791421130.894 mac_after=1791421130.901",
+  "2026-10-08T00:58:50Z key_fingerprint_sha256_16: cf42b8730759158e (key itself not recorded; held only by the anchor and monitor containers on host B)",
+  "2026-10-08T00:59:00Z first_replica_after_polls: 1 (total 836 drwxr-xr-x    2 root     root          4096 Oct  8 00:58 . drwxr-xr-x    1 root     root          4096 Oct  8 00:58 .. -rw-r--r--    1 root     root            18 Oct  8 00:58 clock -rw-r--r--    1 root     root        843776 Oct  8 00:58 home-assistant_v2.db )",
+  "2026-10-08T00:59:03Z anchor image: hpr-anchord:sig sha256:196961946d8bf9f70830065c17f1e0f84f27d4c69ac28a6ada5079f9ad59776d",
+  "2026-10-08T00:59:03Z monitor image: hpr-monitor:e1 sha256:0993903107ee6811ef6be2bc99bafdc13fde622a97d616b24ed112dff21f0635",
+  "2026-10-08T00:59:03Z replicator image: hpr-e1-replicator:1 sha256:b6af2d9498e665e2123d3b0499e5055aceaa737f039241a4d577a31a346c8dbf",
+  "2026-10-08T00:59:25Z probe_from_hub: {\"untagged\": 401, \"forged_tag\": 401}",
+  "2026-10-08T00:59:25Z core_privilege_on_hostA: CapEff: 000001ffffffffff /dev/vda8 ",
+  "2026-10-08T01:00:16Z monitor_log_head: {\"tick\": 1, \"n_nodes\": 4441, \"copy_ms\": 13.405, \"load_ms\": 51.153, \"commit_ms\": 96.918, \"sealed_new\": {\"second\": 393, \"minute\": 34}, \"anchor\": {\"ok\": true, \"seq\": 1}} {\"tick\": 2, \"n_nodes\": 4446, \"copy_ms\": 346.674, \"load_ms\": 772.384, \"commit_ms\": 130.925, \"sealed_new\": {\"second\": 1}, \"anchor\": {\"ok\": true, \"seq\": 2}} {\"tick\": 3, \"n_nodes\": 4447, \"copy_ms\": 213.239, \"load_ms\": 227.141, \"commit_ms\": 70.575, \"sealed_new\": {\"second\": 1}, \"anchor\": {\"ok\": true, \"seq\": 3}} ",
+  "2026-10-08T01:00:23Z chain_lines_before_run: 10",
+  "2026-10-08T01:00:23Z starting E1 runner arms=\"PSR\" x30",
+  "2026-10-08T01:00:23Z -- configuration: porch --",
+  "2026-10-08T01:09:34Z ack porch: {\"ok\": true, \"n\": 30, \"room\": \"porch\", \"member\": \"8d5165f5f39641d191540c1662f8792e\"}",
+  "2026-10-08T01:09:34Z   -> exp/out/e1_psr_clo_report_porch.json",
+  "2026-10-08T01:11:28Z -- configuration: hallway --",
+  "2026-10-08T01:25:08Z MANUAL: the runner's Core restart for configuration hallway (about 01:11:30Z) was not performed: the Supervisor was still finishing the previous restart (porch teardown, job 01:09:36-01:11:57Z), and the request, sent from inside Core, was dropped; Core ran without homeprov_ec. Restart issued by hand now via the Supervisor CLI container (ha core restart). No trial ran in the gap.",
+  "2026-10-08T01:32:01Z ack hallway: {\"ok\": true, \"n\": 30, \"room\": \"hallway\", \"member\": \"8d5165f5f39641d191540c1662f8792e\"}",
+  "2026-10-08T01:32:01Z   -> exp/out/e1_psr_clo_report_hallway.json",
+  "2026-10-08T01:32:48Z -- configuration: kitchen --",
+  "2026-10-08T01:38:35Z ack kitchen: {\"ok\": true, \"n\": 30, \"room\": \"kitchen\", \"member\": \"8d5165f5f39641d191540c1662f8792e\"}",
+  "2026-10-08T01:38:35Z   -> exp/out/e1_psr_clo_report_kitchen.json",
+  "2026-10-08T01:39:21Z settling 90s so the final segments seal and anchor",
+  "2026-10-08T01:40:51Z chain_lines after run: 331",
+  "2026-10-08T01:40:51Z load_after: 21:40  up 37 days,  1:38, 2 users, load averages: 2.28 3.53 5.43",
+  "2026-10-08T01:40:51Z running the E1 aggregator (shipped e_ps_detection scoring, host-A transport)",
+  "2026-10-08T01:40:53Z aggregator exit: 0 ( } }   -> <artifact-root>/exp/out/e1_psr_clo_two_host.json )",
+  "2026-10-08T01:40:53Z done"
+ ],
+ "anchor_chain": {
+  "file": "exp/out/e1_psr_clo_anchor_chain.jsonl.gz",
+  "records": 331,
+  "sha256_uncompressed": "f98a4d1cb3160333b088ee349e13a76d7332c955f5792ad6841109d5af4f0925"
+ },
+ "wrapper_script_sha256": "ad13b5af9979a6332fd96a8303af1a04196eb4720eed1fc3c2233d41dd882cbd"
+}

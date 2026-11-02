@@ -1,0 +1,634 @@
+{
+ "title": "HOMEPROV E9 seven-day run: pre-registration amendment 1 (start today)",
+ "status": "REGISTERED",
+ "registered_at": "2026-10-10T16:15:15.534510+00:00",
+ "amends": {
+  "file": "exp/out/e9_preregistration.json",
+  "sha256": "3d64b2e5288479bd06dfada94402ffa53359b51c84a074de62986d9d58a0a16f",
+  "registered_at": "2026-10-10T08:52:19.673470+00:00",
+  "timestamp_proof": "exp/out/e9_preregistration.json.ots (OpenTimestamps)",
+  "note": "the registered file is not modified; where this amendment is silent, it governs"
+ },
+ "reason": {
+  "pi_messages": [
+   {
+    "verbatim": "go",
+    "at": "2026-10-10 13:22 UTC",
+    "answering": "E9 is ready; it starts automatically on Sunday ... If you'd rather start later, say so",
+    "relayed_by": "lead",
+    "read_as": "start E9 today instead of waiting ~20 h"
+   },
+   {
+    "verbatim": "Can you run it?",
+    "at": "2026-10-10 (after 13:28 UTC)",
+    "answering": "(asked again after being told that E9 starts on Sunday 2026-10-11 and that starting today needs an edit to a frozen file)",
+    "relayed_by": "lead",
+    "read_as": "start today, with the frozen-file edit (lead: option 2)"
+   }
+  ],
+  "lead_decisions": [
+   "13:28 UTC option 1 (keep the registered START, no edit), superseded by",
+   "option 2: change only e9ops.py real_schedule so the nights sit at the hub's 04:12 purge for any START; special events at their registered day number and UTC time of day; attack batches at START + 2 h; prove the change neutral for the registered START; register this amendment and timestamp it before any event"
+  ],
+  "why_an_edit": "the registered real_schedule put each night at day start + 16 h 12 min, i.e. it assumed START = 12:00 UTC: for any START today every PURGE marker, sleep guard and night snapshot would have missed the hub's own 04:12:00 UTC purge (Home Assistant's recorder runs it at a fixed time of day), and the special events would have moved off their registered times of day"
+ },
+ "start": {
+  "registered_start_utc": "2026-10-11T12:00:00Z",
+  "new_start_utc": "2026-10-10T19:00:00Z",
+  "new_end_utc": "2026-10-17T19:01:00Z (end event; the freeze and scoring follow)",
+  "day_window": "day d = [START + (d-1) x 24 h, START + d x 24 h), 19:00 UTC to 19:00 UTC (as registered: START + (d-1) x 24 h)",
+  "choice": [
+   "17:00 UTC (the lead's default) is infeasible: at 16:08 UTC, when option 2 was given, it is less than run_e9.sh's MIN_SETUP_S (3600 s, unchanged) away",
+   "18:00 UTC would put the daily attack batch (START + 2 h = 20:00) at the same instant as the day-2 planned restart and the day-4 backup (registered 20:00 UTC): the event loop is sequential, so those would run late by the batch's duration",
+   "19:00 UTC is the earliest whole hour with no such collision: batch 21:00; day-2 restart 20:00 and day-4 backup/restore 20:00/20:30 one hour or more before it; day-3 name-map session 17:00 (two hours before the day's end, 20 h after the day-3 batch); every night's block 03:40-04:45 at least 6 h 40 min after the batch"
+  ],
+  "setup_margin": "run_e9.sh is started before 17:00 UTC, i.e. at least 2 h before START: MIN_SETUP_S (60 min) plus at least 60 min. Basis: the final smoke's whole setup (preflight with both test suites ~112 s, image build, persons, keys, witnesses, anchors, the two staggered streamed full-history seals 144 s and 145 s, probes) took 9 min 49 s (05:48:52-05:58:41 UTC) on a 199 MB 30-day recorder; the real hub's whole configuration volume is 210 MB (docker system df), so the real setup is expected in 10-20 min; the margin covers a setup several times slower and one retry of a failed image build"
+ },
+ "edited_files": [
+  {
+   "file": "testbed/e9/e9ops.py",
+   "sha256_registered": "6860faeced0bde1d9fe104741b0bbc69542ce8497f2de379d09c03202eb8cbc8",
+   "sha256_amended": "497fb46261841cdb3a297a3770d4b1576c5eaf4f578c4480366dcdb1ab2e5bd0",
+   "scope": "real_schedule only (one diff hunk): constants PURGE_TOD 04:12:00, RESTART_TOD 20:00, NAMEMAP_TOD 17:00, BACKUP_TOD 20:00, RESTORE_TOD 20:30 (the registered UTC times of day), helper at_tod(d0, tod) = d0 + (tod - d0) mod 24 h (the first such time at or after the day's start, always inside the day), the night = at_tod(d0, 04:12:00) with sleep guard, snapshots and PURGE marker at their registered offsets from it, a refusal when a start's time of day falls in (03:40, 04:45] (the night block would leave its day), and the docstring. Attack batches (d0 + 2 h), day ends and the end event are unchanged. smoke_schedule, namemap_only_schedule, cmd_schedule and every other subcommand (issue, namemap, ha-backup, hostlog, sleep-guard, pmset) are byte-for-byte unchanged",
+   "reason": "the nights at the hub's real 04:12 UTC purge and the special events at their registered times of day for a START that is not 12:00 UTC",
+   "diff_file": "<research-dir>/HOMEPROV-P13-exp/e9/amendment1/e9ops_amendment1.diff",
+   "diff_sha256": "fd99e7fd1e3fccd5af32b510636b7637d3377ba052bd5ffd7cb975b1acf776c7",
+   "diff": "--- e9ops.py@6860faec\n+++ e9ops.py@497fb462\n@@ -59,24 +59,42 @@\n ROOMS = (\"porch\", \"hallway\", \"kitchen\")\n \n \n+PURGE_TOD = 4 * 3600 + 12 * 60     # the hub's own nightly purge: 04:12:00 UTC (Home Assistant's recorder)\n+RESTART_TOD = 20 * 3600            # pre-registered UTC times of day of the special events\n+NAMEMAP_TOD = 17 * 3600\n+BACKUP_TOD = 20 * 3600\n+RESTORE_TOD = 20.5 * 3600\n+\n+\n+def at_tod(d0, tod):\n+    \"\"\"The first time at or after d0 whose UTC time of day is `tod` seconds: always inside the day [d0, d0 + DAY).\"\"\"\n+    return d0 + (tod - d0) % DAY\n+\n+\n def real_schedule(start, days, a):\n-    \"\"\"Seven days from `start` (12:00 UTC). Daily: attack batch at +2 h (14:00), sleep guard 03:40, pre-purge snapshot\n-    03:55, PURGE marker 04:10:00 (the hub purges at 04:12:00), post-purge snapshot 04:45, end-of-day snapshot at the\n-    next 12:00:30. Day 2: planned hub restart 20:00. Day 3: name-map session 17:00 (benign rename, benign re-link and\n-    revert, the re-link attack, declared clean-up). Day 4: backup 20:00, restore 20:30.\"\"\"\n+    \"\"\"Seven days from `start` (registered: 12:00 UTC; amendment 1: any time of day outside (03:40, 04:45] UTC), day d =\n+    [start + (d-1) x 24 h, + 24 h). Daily: attack batch at +2 h, end-of-day snapshot at the day's end + 30 s, and each\n+    night at the first 04:12:00 UTC (the hub's own purge) inside the day: sleep guard 03:40, pre-purge snapshot 03:55,\n+    PURGE marker 04:10:00 (issuer started 04:07), post-purge snapshot 04:45. Special events at their registered day and\n+    UTC time of day: day 2 planned hub restart 20:00; day 3 name-map session 17:00 (benign rename, benign re-link and\n+    revert, the re-link attack, declared clean-up); day 4 backup 20:00, restore 20:30. For start = 12:00 UTC this is\n+    the registered schedule, byte for byte.\"\"\"\n     ev = [{\"t\": start, \"type\": \"start\"}]\n     for d in range(1, days + 1):\n         d0 = start + (d - 1) * DAY\n         ev.append({\"t\": d0 + 2 * 3600, \"type\": \"attack_batch\", \"day\": d, \"room\": ROOMS[(d - 1) % 3],\n                    \"ec_arms\": a.ec_arms, \"e7_arms\": a.e7_arms, \"trials\": a.trials})\n         if d == a.restart_day:\n-            ev.append({\"t\": d0 + 8 * 3600, \"type\": \"planned_restart\", \"day\": d})\n+            ev.append({\"t\": at_tod(d0, RESTART_TOD), \"type\": \"planned_restart\", \"day\": d})\n         if d == a.namemap_day:\n-            ev.append({\"t\": d0 + 5 * 3600, \"type\": \"namemap_session\", \"day\": d})\n+            ev.append({\"t\": at_tod(d0, NAMEMAP_TOD), \"type\": \"namemap_session\", \"day\": d})\n         if d == a.restore_day:\n-            ev.append({\"t\": d0 + 8 * 3600, \"type\": \"backup\", \"day\": d})\n-            ev.append({\"t\": d0 + 8.5 * 3600, \"type\": \"restore\", \"day\": d})\n-        night = d0 + DAY - 12 * 3600 + 4 * 3600 + 12 * 60       # 04:12:00 of the next calendar day\n+            ev.append({\"t\": at_tod(d0, BACKUP_TOD), \"type\": \"backup\", \"day\": d})\n+            ev.append({\"t\": at_tod(d0, RESTORE_TOD), \"type\": \"restore\", \"day\": d})\n+        night = at_tod(d0, PURGE_TOD)                           # the first 04:12:00 UTC inside the day\n+        if not (d0 <= night - 32 * 60 and night + 33 * 60 < d0 + DAY):\n+            raise SystemExit(\"start %s: night %d (%s) does not fit inside its day with its sleep guard and snapshots; \"\n+                             \"start at a UTC time of day outside (03:40, 04:45]\" % (iso(start), d, iso(night)))\n         ev.append({\"t\": night - 32 * 60, \"type\": \"sleep_guard\", \"day\": d, \"purge_ts\": night})\n         ev.append({\"t\": night - 17 * 60, \"type\": \"snapshot\", \"label\": \"night%d_pre\" % d, \"day\": d})\n         ev.append({\"t\": night - 300, \"type\": \"purge_marker\", \"day\": d, \"scheduled_ts\": night, \"post_at\": night - 120,\n"
+  }
+ ],
+ "not_edited": {
+  "run_e9.sh": "unchanged: it reads no pre-registration and takes the start from HPR_E9_START (MIN_SETUP_S check only), so no hash-list change was needed",
+  "other_frozen_files": {
+   "monitor/monitor.py": "8ad9e2d77f2d098af1e81ed509445631dc3d3ba2d349fddff75bfd920a7ab8ae",
+   "monitor/Dockerfile.sign": "5a6dcec0d93012a5dae13ba72b5ccf1d772623baaa54c07b38c19be701d94d18",
+   "monitor/requirements-sign.txt": "d09f4bcea9d366d767affccde58418307c974bf5c358fb6a09b057b1c8d0922c",
+   "testbed/anchord/anchord.py": "8b35448dcf86df8bd1291b6fec6ff39e045bacbc3b083b09f61d035c1f251421",
+   "testbed/anchord/anchord_linked.py": "f6252e245b0f963fbefd4c511b51187985386870c745b8321c917152486ee1e1",
+   "testbed/anchord/headwitness.py": "0d8a83c8e0c4cb09e4a5097045e3d1ae91ae7ed264d4b491712256f0602781f5",
+   "testbed/anchord/chainverify.py": "38cfa5e9d99e8ece7ee53d4401e6a97d6e16b7dac02e19088b11d13b547f9d0e",
+   "testbed/e8/anchord-e8.Dockerfile": "84191c7adf8fc8a74b75f6603d7850841d8a9428c905622af4a6dc22ca811ebe",
+   "exp/stages/e7_verify.py": "9c42fad983a00e43083359339bc185c11d31ab7cdec7781f0e2cdee94ebea885",
+   "exp/stages/e8_score.py": "85301d2c2d0004175a19b4b6ab16654d5440ab756bb69442078e0bc5411ca692",
+   "exp/stages/e9_score.py": "c991f1675da0d0e5613cdc6896438b551dd45851e862d55c5b4e79d796461714",
+   "exp/rig/markers.py": "ca92f37cde74b7c5ecd921696879118057342ea9c559d9c63c7d682efbff5e33",
+   "exp/rig/marker_issuer.py": "fcf668178b1506ad8e279095c260ac9656dfca780b3c9c37f081df102f544a03",
+   "testbed/e9/run_e9.sh": "0f3f23a3201e8ec39c1abc04e3ec13034778ef528303d78263d3c63e23c4eb7d",
+   "testbed/e9/smoke_stack.sh": "efbf741e46acb1ec1ec1a4174897c2de9cba5e5868d63ab2e093d2c739967a55",
+   "testbed/e9/e9_prereg.py": "bec2e3ec3de5e83f4d33fd0e44ce13586df0ea4ff68da4cccc89a23704070f9c",
+   "testbed/e9/start_e9_at.sh": "e031697d61b88d3331802a133f3a359d71c0222f7a97f20c2fbe3e7172b44bf2",
+   "testbed/real/ha-config/custom_components/homeprov_ec/__init__.py": "266d27e298153ede1cc002d715461ecf96fbc211e96e76ed1d1453e762687918",
+   "testbed/real/ha-config/custom_components/homeprov_e7/__init__.py": "26d1d472e8331909cee0f69a16c4eee96ddaf383954d5bd79eba914fa847e707",
+   "monitor/test_coverage.py": "5857010438783e6f4378735685ae26615934872075759504e56d34663e2e65db",
+   "monitor/test_node_hash.py": "567ecb451c5ff604fd39dca1638f43107495dd368b4370765784ffa621d386da",
+   "monitor/test_e9.py": "9d9f034d5a3ea596c809d013b07e83d2a9833f16fab5e9c72318927827424752",
+   "monitor/test_e9_dishonest.py": "84ed49c5c6ce46eb02fe5b9ec541c98f0c3db1fb1e4deeb1c51fafe8401ea857",
+   "testbed/anchord/test_anchor_chain.py": "9c0477d3fdb81c3824054d819a637bb62a49311f6f2d69aac748123498f47967",
+   "testbed/anchord/test_anchor_e8.py": "614d2e994a994d080ce683351a160c664861982417af6cf16da80d3855f3093a",
+   "testbed/anchord/test_anchor_e9.py": "a9401be5925be8d8a53006e5042e4755b8bca824e911775adbfeab13eb638a72",
+   "testbed/anchord/test_anchor_cache.py": "54a3e52cbafe65b824a1074c9b6aed36ffdf5e0f2d7654e4fb628405f859526b",
+   "testbed/anchord/test_anchor_stall.py": "b2844dd38949791eba0a20e22792b7356add062c9a00c10a44901b8e23d0902e",
+   "exp/stages/e9_dishonest_anchor.py": "cb52853ab38d245b8d777f6acd75021291a712b5733df3c4d2697ef1ed792224",
+   "exp/stages/e9_dishonest_markers.py": "77156058e0e9da0992a4214ffc7e2d13e6d95657ea076565e169795e1929c34d",
+   "exp/stages/e9_purge_disconnect_offline.py": "08cf47c1a530d6cd63400d751068df17acd874032b19987d3f87e6e3e30fa03f",
+   "exp/out/e9_dishonest_anchor.json": "69b6a781d50bf87067e97b63d136ebac79835ee0c416eb89745d5df479866b88",
+   "exp/out/e9_dishonest_anchor_markers.json": "8b3bf4606246d6ba4cb764a3ea016deab67b71b9e13bd3a74cc8299eab8e18ba",
+   "exp/out/e9_direct_read_identity.json": "172d586ab482e6ee425fc54c0ed74de61dfc1cf7f95286157239930d2653749e",
+   "exp/out/e9_readonly_shm_lockdrop.json": "d88748ebb03ebfa440a2c9c6cb270c6534256704ff28ed6243cf382511b993a7"
+  },
+  "homeprov_e6 (outside the repository; never released)": "850dce4b06106e237464b1d869e5b0ba1cd876eaa4a0d8f70b394d8d6cceb9b2",
+  "statement": "35 of the 36 registered repository files and homeprov_e6 have exactly their registered sha256 (checked when this file was written); parameters, arms, trial counts, days, verifier and scorer settings, monitor settings, the markers, outcomes, exclusions and the analysis are unchanged"
+ },
+ "neutrality_proof": {
+  "claim": "for the registered START the amended code produces the registered schedule byte for byte",
+  "command": "python3 <e9ops.py> schedule --start 2026-10-11T12:00:00Z --days 7 --trials 5 --ec-arms PU PSR --e7-arms INS-L BD-S --keep-days 30 (the arguments run_e9.sh passes)",
+  "registered_code": {
+   "file": "<research-dir>/HOMEPROV-P13-exp/e9/amendment1/e9ops_registered.py",
+   "sha256": "6860faeced0bde1d9fe104741b0bbc69542ce8497f2de379d09c03202eb8cbc8"
+  },
+  "schedule_from_registered_code": {
+   "file": "<research-dir>/HOMEPROV-P13-exp/e9/amendment1/schedule_registered_code_start_2026-10-11T1200Z.json",
+   "sha256": "1c1bfae1ead54c7b4b3194712fa747af01fe5da089c8744ee6d80ac12b5e8ddb"
+  },
+  "schedule_from_amended_code": {
+   "file": "<research-dir>/HOMEPROV-P13-exp/e9/amendment1/schedule_amended_code_start_2026-10-11T1200Z.json",
+   "sha256": "1c1bfae1ead54c7b4b3194712fa747af01fe5da089c8744ee6d80ac12b5e8ddb"
+  },
+  "byte_identical": true,
+  "also": [
+   "the registered file's embedded event list equals the registered-code schedule (utc, type, day)",
+   "byte-identical for starts 2026-10-12T12:00Z and 2026-10-13T12:00Z as well",
+   "--smoke and --smoke --smoke-only namemap schedules byte-identical (start 2026-10-10T19:00Z)",
+   "monitor tests 180 passed, anchor tests 81 passed on the amended tree (no e9ops unit tests exist)"
+  ]
+ },
+ "new_schedule": {
+  "generated_by": "python3 testbed/e9/e9ops.py schedule --start 2026-10-10T19:00:00Z --days 7 --trials 5 --ec-arms PU PSR --e7-arms INS-L BD-S --keep-days 30 (as run_e9.sh runs it; amended code)",
+  "file": "<research-dir>/HOMEPROV-P13-exp/e9/amendment1/schedule_amended_code_start_2026-10-10T1900Z.json",
+  "sha256": "279256430cf7ccff87612221591ba7fd9a8278577145e3d72fb1bffcf6c06bb8",
+  "checks": [
+   "48 events, the same (type, day, label) set as the registered schedule, with the same fields apart from times",
+   "every night's scheduled purge at 04:12:00 UTC inside its day (2026-10-11 ... 2026-10-17); sleep guard 03:40, snapshots 03:55 / 04:45, PURGE issuer 04:07 posting 04:10:00, as registered",
+   "special events at their registered day number and UTC time of day: day 2 restart 2026-10-11 20:00; day 3 name-map session 2026-10-13 17:00; day 4 backup 2026-10-13 20:00, restore 20:30",
+   "attack batches at START + (d-1) x 24 h + 2 h (21:00 UTC), day ends at the day's end + 30 s (19:00:30 UTC), end event START + 7 x 24 h + 60 s, as registered"
+  ],
+  "schedule": {
+   "mode": "real",
+   "start": 1791658800.0,
+   "start_utc": "2026-10-10T19:00:00Z",
+   "end": 1792263660.0,
+   "end_utc": "2026-10-17T19:01:00Z",
+   "days": 7,
+   "day_s": 86400.0,
+   "events": [
+    {
+     "t": 1791658800.0,
+     "type": "start",
+     "id": 0,
+     "utc": "2026-10-10T19:00:00Z"
+    },
+    {
+     "t": 1791666000.0,
+     "type": "attack_batch",
+     "day": 1,
+     "room": "porch",
+     "ec_arms": [
+      "PU",
+      "PSR"
+     ],
+     "e7_arms": [
+      "INS-L",
+      "BD-S"
+     ],
+     "trials": 5,
+     "id": 1,
+     "utc": "2026-10-10T21:00:00Z"
+    },
+    {
+     "t": 1791690000.0,
+     "type": "sleep_guard",
+     "day": 1,
+     "purge_ts": 1791691920.0,
+     "id": 2,
+     "utc": "2026-10-11T03:40:00Z"
+    },
+    {
+     "t": 1791690900.0,
+     "type": "snapshot",
+     "label": "night1_pre",
+     "day": 1,
+     "id": 3,
+     "utc": "2026-10-11T03:55:00Z"
+    },
+    {
+     "t": 1791691620.0,
+     "type": "purge_marker",
+     "day": 1,
+     "scheduled_ts": 1791691920.0,
+     "post_at": 1791691800.0,
+     "keep_days": 30,
+     "id": 4,
+     "utc": "2026-10-11T04:07:00Z"
+    },
+    {
+     "t": 1791693900.0,
+     "type": "snapshot",
+     "label": "night1_post",
+     "day": 1,
+     "id": 5,
+     "utc": "2026-10-11T04:45:00Z"
+    },
+    {
+     "t": 1791745230.0,
+     "type": "day_end",
+     "day": 1,
+     "label": "day1_end",
+     "window": [
+      1791658800.0,
+      1791745200.0
+     ],
+     "id": 6,
+     "utc": "2026-10-11T19:00:30Z"
+    },
+    {
+     "t": 1791748800.0,
+     "type": "planned_restart",
+     "day": 2,
+     "id": 7,
+     "utc": "2026-10-11T20:00:00Z"
+    },
+    {
+     "t": 1791752400.0,
+     "type": "attack_batch",
+     "day": 2,
+     "room": "hallway",
+     "ec_arms": [
+      "PU",
+      "PSR"
+     ],
+     "e7_arms": [
+      "INS-L",
+      "BD-S"
+     ],
+     "trials": 5,
+     "id": 8,
+     "utc": "2026-10-11T21:00:00Z"
+    },
+    {
+     "t": 1791776400.0,
+     "type": "sleep_guard",
+     "day": 2,
+     "purge_ts": 1791778320.0,
+     "id": 9,
+     "utc": "2026-10-12T03:40:00Z"
+    },
+    {
+     "t": 1791777300.0,
+     "type": "snapshot",
+     "label": "night2_pre",
+     "day": 2,
+     "id": 10,
+     "utc": "2026-10-12T03:55:00Z"
+    },
+    {
+     "t": 1791778020.0,
+     "type": "purge_marker",
+     "day": 2,
+     "scheduled_ts": 1791778320.0,
+     "post_at": 1791778200.0,
+     "keep_days": 30,
+     "id": 11,
+     "utc": "2026-10-12T04:07:00Z"
+    },
+    {
+     "t": 1791780300.0,
+     "type": "snapshot",
+     "label": "night2_post",
+     "day": 2,
+     "id": 12,
+     "utc": "2026-10-12T04:45:00Z"
+    },
+    {
+     "t": 1791831630.0,
+     "type": "day_end",
+     "day": 2,
+     "label": "day2_end",
+     "window": [
+      1791745200.0,
+      1791831600.0
+     ],
+     "id": 13,
+     "utc": "2026-10-12T19:00:30Z"
+    },
+    {
+     "t": 1791838800.0,
+     "type": "attack_batch",
+     "day": 3,
+     "room": "kitchen",
+     "ec_arms": [
+      "PU",
+      "PSR"
+     ],
+     "e7_arms": [
+      "INS-L",
+      "BD-S"
+     ],
+     "trials": 5,
+     "id": 14,
+     "utc": "2026-10-12T21:00:00Z"
+    },
+    {
+     "t": 1791862800.0,
+     "type": "sleep_guard",
+     "day": 3,
+     "purge_ts": 1791864720.0,
+     "id": 15,
+     "utc": "2026-10-13T03:40:00Z"
+    },
+    {
+     "t": 1791863700.0,
+     "type": "snapshot",
+     "label": "night3_pre",
+     "day": 3,
+     "id": 16,
+     "utc": "2026-10-13T03:55:00Z"
+    },
+    {
+     "t": 1791864420.0,
+     "type": "purge_marker",
+     "day": 3,
+     "scheduled_ts": 1791864720.0,
+     "post_at": 1791864600.0,
+     "keep_days": 30,
+     "id": 17,
+     "utc": "2026-10-13T04:07:00Z"
+    },
+    {
+     "t": 1791866700.0,
+     "type": "snapshot",
+     "label": "night3_post",
+     "day": 3,
+     "id": 18,
+     "utc": "2026-10-13T04:45:00Z"
+    },
+    {
+     "t": 1791910800.0,
+     "type": "namemap_session",
+     "day": 3,
+     "id": 19,
+     "utc": "2026-10-13T17:00:00Z"
+    },
+    {
+     "t": 1791918030.0,
+     "type": "day_end",
+     "day": 3,
+     "label": "day3_end",
+     "window": [
+      1791831600.0,
+      1791918000.0
+     ],
+     "id": 20,
+     "utc": "2026-10-13T19:00:30Z"
+    },
+    {
+     "t": 1791921600.0,
+     "type": "backup",
+     "day": 4,
+     "id": 21,
+     "utc": "2026-10-13T20:00:00Z"
+    },
+    {
+     "t": 1791923400.0,
+     "type": "restore",
+     "day": 4,
+     "id": 22,
+     "utc": "2026-10-13T20:30:00Z"
+    },
+    {
+     "t": 1791925200.0,
+     "type": "attack_batch",
+     "day": 4,
+     "room": "porch",
+     "ec_arms": [
+      "PU",
+      "PSR"
+     ],
+     "e7_arms": [
+      "INS-L",
+      "BD-S"
+     ],
+     "trials": 5,
+     "id": 23,
+     "utc": "2026-10-13T21:00:00Z"
+    },
+    {
+     "t": 1791949200.0,
+     "type": "sleep_guard",
+     "day": 4,
+     "purge_ts": 1791951120.0,
+     "id": 24,
+     "utc": "2026-10-14T03:40:00Z"
+    },
+    {
+     "t": 1791950100.0,
+     "type": "snapshot",
+     "label": "night4_pre",
+     "day": 4,
+     "id": 25,
+     "utc": "2026-10-14T03:55:00Z"
+    },
+    {
+     "t": 1791950820.0,
+     "type": "purge_marker",
+     "day": 4,
+     "scheduled_ts": 1791951120.0,
+     "post_at": 1791951000.0,
+     "keep_days": 30,
+     "id": 26,
+     "utc": "2026-10-14T04:07:00Z"
+    },
+    {
+     "t": 1791953100.0,
+     "type": "snapshot",
+     "label": "night4_post",
+     "day": 4,
+     "id": 27,
+     "utc": "2026-10-14T04:45:00Z"
+    },
+    {
+     "t": 1792004430.0,
+     "type": "day_end",
+     "day": 4,
+     "label": "day4_end",
+     "window": [
+      1791918000.0,
+      1792004400.0
+     ],
+     "id": 28,
+     "utc": "2026-10-14T19:00:30Z"
+    },
+    {
+     "t": 1792011600.0,
+     "type": "attack_batch",
+     "day": 5,
+     "room": "hallway",
+     "ec_arms": [
+      "PU",
+      "PSR"
+     ],
+     "e7_arms": [
+      "INS-L",
+      "BD-S"
+     ],
+     "trials": 5,
+     "id": 29,
+     "utc": "2026-10-14T21:00:00Z"
+    },
+    {
+     "t": 1792035600.0,
+     "type": "sleep_guard",
+     "day": 5,
+     "purge_ts": 1792037520.0,
+     "id": 30,
+     "utc": "2026-10-15T03:40:00Z"
+    },
+    {
+     "t": 1792036500.0,
+     "type": "snapshot",
+     "label": "night5_pre",
+     "day": 5,
+     "id": 31,
+     "utc": "2026-10-15T03:55:00Z"
+    },
+    {
+     "t": 1792037220.0,
+     "type": "purge_marker",
+     "day": 5,
+     "scheduled_ts": 1792037520.0,
+     "post_at": 1792037400.0,
+     "keep_days": 30,
+     "id": 32,
+     "utc": "2026-10-15T04:07:00Z"
+    },
+    {
+     "t": 1792039500.0,
+     "type": "snapshot",
+     "label": "night5_post",
+     "day": 5,
+     "id": 33,
+     "utc": "2026-10-15T04:45:00Z"
+    },
+    {
+     "t": 1792090830.0,
+     "type": "day_end",
+     "day": 5,
+     "label": "day5_end",
+     "window": [
+      1792004400.0,
+      1792090800.0
+     ],
+     "id": 34,
+     "utc": "2026-10-15T19:00:30Z"
+    },
+    {
+     "t": 1792098000.0,
+     "type": "attack_batch",
+     "day": 6,
+     "room": "kitchen",
+     "ec_arms": [
+      "PU",
+      "PSR"
+     ],
+     "e7_arms": [
+      "INS-L",
+      "BD-S"
+     ],
+     "trials": 5,
+     "id": 35,
+     "utc": "2026-10-15T21:00:00Z"
+    },
+    {
+     "t": 1792122000.0,
+     "type": "sleep_guard",
+     "day": 6,
+     "purge_ts": 1792123920.0,
+     "id": 36,
+     "utc": "2026-10-16T03:40:00Z"
+    },
+    {
+     "t": 1792122900.0,
+     "type": "snapshot",
+     "label": "night6_pre",
+     "day": 6,
+     "id": 37,
+     "utc": "2026-10-16T03:55:00Z"
+    },
+    {
+     "t": 1792123620.0,
+     "type": "purge_marker",
+     "day": 6,
+     "scheduled_ts": 1792123920.0,
+     "post_at": 1792123800.0,
+     "keep_days": 30,
+     "id": 38,
+     "utc": "2026-10-16T04:07:00Z"
+    },
+    {
+     "t": 1792125900.0,
+     "type": "snapshot",
+     "label": "night6_post",
+     "day": 6,
+     "id": 39,
+     "utc": "2026-10-16T04:45:00Z"
+    },
+    {
+     "t": 1792177230.0,
+     "type": "day_end",
+     "day": 6,
+     "label": "day6_end",
+     "window": [
+      1792090800.0,
+      1792177200.0
+     ],
+     "id": 40,
+     "utc": "2026-10-16T19:00:30Z"
+    },
+    {
+     "t": 1792184400.0,
+     "type": "attack_batch",
+     "day": 7,
+     "room": "porch",
+     "ec_arms": [
+      "PU",
+      "PSR"
+     ],
+     "e7_arms": [
+      "INS-L",
+      "BD-S"
+     ],
+     "trials": 5,
+     "id": 41,
+     "utc": "2026-10-16T21:00:00Z"
+    },
+    {
+     "t": 1792208400.0,
+     "type": "sleep_guard",
+     "day": 7,
+     "purge_ts": 1792210320.0,
+     "id": 42,
+     "utc": "2026-10-17T03:40:00Z"
+    },
+    {
+     "t": 1792209300.0,
+     "type": "snapshot",
+     "label": "night7_pre",
+     "day": 7,
+     "id": 43,
+     "utc": "2026-10-17T03:55:00Z"
+    },
+    {
+     "t": 1792210020.0,
+     "type": "purge_marker",
+     "day": 7,
+     "scheduled_ts": 1792210320.0,
+     "post_at": 1792210200.0,
+     "keep_days": 30,
+     "id": 44,
+     "utc": "2026-10-17T04:07:00Z"
+    },
+    {
+     "t": 1792212300.0,
+     "type": "snapshot",
+     "label": "night7_post",
+     "day": 7,
+     "id": 45,
+     "utc": "2026-10-17T04:45:00Z"
+    },
+    {
+     "t": 1792263630.0,
+     "type": "day_end",
+     "day": 7,
+     "label": "day7_end",
+     "window": [
+      1792177200.0,
+      1792263600.0
+     ],
+     "id": 46,
+     "utc": "2026-10-17T19:00:30Z"
+    },
+    {
+     "t": 1792263660.0,
+     "type": "end",
+     "id": 47,
+     "utc": "2026-10-17T19:01:00Z"
+    }
+   ]
+  }
+ },
+ "departures_from_the_registered_text": [
+  "the registered condition says a start 'moves by whole days (HPR_E9_START) and this file is re-issued before any event': the start moves by -17 h, not by whole days, because the PI asked to start now; day windows remain START + (d-1) x 24 h; this amendment is registered and timestamped before any event",
+  "the daily times of day that are offsets from START move with it: attack batch 21:00 (registered 14:00), end-of-day snapshot 19:00:30 (registered 12:00:30); the night times and the special events keep their registered UTC times",
+  "order inside a day: on day 2 the planned restart (20:00) and on day 4 the backup and restore (20:00/20:30) now precede the day's attack batch (21:00); registered, the batch came first. Day 4's batch therefore runs 30 min after the restore (post-restore detection is exercised from day 4, registered from day 5)",
+  "the special events' calendar dates follow from day number and time of day: restart 2026-10-11, name-map session 2026-10-13 17:00, backup/restore 2026-10-13 20:00/20:30",
+  "the final smoke (exit 0, scored) ran on the registered e9ops.py; the smoke schedule paths are byte-identical in the amended file, and the real schedule is verified by the checks above"
+ ]
+}

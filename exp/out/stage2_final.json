@@ -1,0 +1,173 @@
+{
+  "stage": 2,
+  "arms": [
+    {
+      "ft": "FT-10",
+      "budget_b": 7,
+      "T_size": 7,
+      "HOMEPROV_detected": true,
+      "HOMEPROV_violations": 5,
+      "B2_detected": true,
+      "B2_violations": 4,
+      "LR": 1.0,
+      "LR_elem": 0.8571428571428571,
+      "LP": 1.0,
+      "OQ": 0.0,
+      "forge_log": [
+        {
+          "ft": "FT-10",
+          "rows": 1,
+          "entity": "input_boolean.owner_present",
+          "state": "on"
+        },
+        {
+          "ft": "FT-10",
+          "rows": 1,
+          "etype": "automation_triggered"
+        },
+        {
+          "ft": "FT-10",
+          "rows": 1,
+          "etype": "call_service"
+        },
+        {
+          "ft": "FT-10",
+          "rows": 1,
+          "entity": "automation.arrive_home",
+          "state": "on"
+        },
+        {
+          "ft": "FT-4",
+          "rows": 2,
+          "content_byte_identical": true
+        },
+        {
+          "ft": "FT-1",
+          "rows": 1,
+          "ctx": "01a0224ab64c6f0b0d7afaf25d97602a"
+        }
+      ]
+    },
+    {
+      "ft": "FT-11",
+      "budget_b": 2,
+      "T_size": 2,
+      "HOMEPROV_detected": true,
+      "HOMEPROV_violations": 3,
+      "B2_detected": true,
+      "B2_violations": 2,
+      "LR": 1.0,
+      "LR_elem": 0.5,
+      "LP": 0.14285714285714285,
+      "OQ": 0.012345679012345678,
+      "forge_log": [
+        {
+          "ft": "FT-2",
+          "rows": 1,
+          "targeted": "latest automation_triggered"
+        },
+        {
+          "ft": "FT-5",
+          "rows": 1
+        }
+      ]
+    },
+    {
+      "ft": "FT-12",
+      "budget_b": 5,
+      "T_size": 4,
+      "HOMEPROV_detected": true,
+      "HOMEPROV_violations": 3,
+      "B2_detected": true,
+      "B2_violations": 3,
+      "LR": 1.0,
+      "LR_elem": 0.75,
+      "LP": 1.0,
+      "OQ": 0.0,
+      "forge_log": [
+        {
+          "ft": "FT-3",
+          "rows": 2,
+          "window": [
+            1787281714.813257,
+            1787281718.813257
+          ]
+        },
+        {
+          "ft": "FT-12",
+          "rows": 1,
+          "entity": "input_boolean.owner_present",
+          "state": "on"
+        },
+        {
+          "ft": "FT-12",
+          "rows": 1,
+          "etype": "automation_triggered"
+        },
+        {
+          "ft": "FT-12",
+          "rows": 1,
+          "entity": "lock.kitchen_door",
+          "state": "unlocked"
+        }
+      ]
+    }
+  ],
+  "GATE_PASS": true,
+  "ce_b_prior": {
+    "value": 1,
+    "budget": 7,
+    "method": "exact enumeration",
+    "caveat": "holds under the predeclared SI catalog; SI-4 and SI-5 carry the entire necessity argument"
+  },
+  "capability": {
+    "capability_record": {
+      "schema_version": 1,
+      "actor_id": "mal_integration_v1",
+      "actor_position": "in_process_integration",
+      "powers": {
+        "db_read": true,
+        "db_write": true,
+        "fs_read_as_ha_uid": true,
+        "fs_write_as_ha_uid": true,
+        "python_exec_in_core": true,
+        "event_bus_listen": true,
+        "event_bus_emit": true,
+        "service_call": true,
+        "network_egress": false
+      },
+      "knowledge": {
+        "deployment_topology": "full",
+        "automation_configs": "full",
+        "anchor_schedule_known": false,
+        "anchor_key_known": false,
+        "victim_routine_model": "coarse"
+      },
+      "budget": {
+        "db_writes_max": 7,
+        "wallclock_window_s": 5,
+        "cpu_seconds_max": null
+      },
+      "constraints": {
+        "host_root": false,
+        "cross_uid_write": false,
+        "anchor_key_access": false,
+        "external_anchor_retraction": false,
+        "clock_control": false,
+        "cap_linux_immutable": false,
+        "cap_bpf": false
+      },
+      "substrate": {
+        "kind": "native_aarch64_container",
+        "envelope": "Pi-shaped cgroup (cpus/memory/blkio)",
+        "note": "NOT a Raspberry Pi; absolute latency is not claimed as Pi latency"
+      },
+      "provenance": {
+        "rka_mission": null,
+        "seed": 0
+      }
+    }
+  },
+  "_elapsed_s": 0.0,
+  "_digest": "a2fdc6b4d9561b0fac92b3e78fbe7e4d2b5364da9debee5f27c004fba3be5a89"
+}

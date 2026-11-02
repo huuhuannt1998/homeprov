@@ -1,0 +1,566 @@
+{
+  "item": "R9(a) localization over-quarantine intervals",
+  "method": {
+    "bootstrap": "paired, percentile",
+    "B": 10000,
+    "rng": "numpy.default_rng",
+    "seed": 20261006,
+    "alpha": 0.05,
+    "primary_unit": "row = (seed, forgery type); 16 rows as in the paper",
+    "sensitivity_unit": "seed cluster (8 clusters x 2 rows)",
+    "metric": "OQ = |Q \\ T| / U  (rig.metrics.oq), per row",
+    "policies": {
+      "R5_homeprov": "paper policy, localize.greedy",
+      "R4_component": "connected causal component"
+    }
+  },
+  "arms": {
+    "published_bg24": {
+      "input": "exp/out/stage24_final.json",
+      "published_numbers": {
+        "R5": 0.00179,
+        "R4": 0.00193,
+        "rel_margin_pct": 7.3
+      },
+      "point": {
+        "n_rows": 16,
+        "row_keys": [
+          [
+            201,
+            "FT-1"
+          ],
+          [
+            201,
+            "FT-4"
+          ],
+          [
+            202,
+            "FT-1"
+          ],
+          [
+            202,
+            "FT-4"
+          ],
+          [
+            203,
+            "FT-1"
+          ],
+          [
+            203,
+            "FT-4"
+          ],
+          [
+            204,
+            "FT-1"
+          ],
+          [
+            204,
+            "FT-4"
+          ],
+          [
+            205,
+            "FT-1"
+          ],
+          [
+            205,
+            "FT-4"
+          ],
+          [
+            206,
+            "FT-1"
+          ],
+          [
+            206,
+            "FT-4"
+          ],
+          [
+            207,
+            "FT-1"
+          ],
+          [
+            207,
+            "FT-4"
+          ],
+          [
+            208,
+            "FT-1"
+          ],
+          [
+            208,
+            "FT-4"
+          ]
+        ],
+        "per_row_OQ_R5": [
+          0.0022641509433962265,
+          0.0022624434389140274,
+          0.0022641509433962265,
+          0.0022624434389140274,
+          0.0018867924528301887,
+          0.001885369532428356,
+          0.0015094339622641509,
+          0.0015082956259426848,
+          0.0018867924528301887,
+          0.0003770739064856712,
+          0.0018867924528301887,
+          0.001885369532428356,
+          0.0015094339622641509,
+          0.0015082956259426848,
+          0.0018867924528301887,
+          0.001885369532428356
+        ],
+        "per_row_OQ_R4": [
+          0.0022641509433962265,
+          0.0022624434389140274,
+          0.0022641509433962265,
+          0.0022624434389140274,
+          0.0022641509433962265,
+          0.001885369532428356,
+          0.0015094339622641509,
+          0.0015082956259426848,
+          0.0026415094339622643,
+          0.0015082956259426848,
+          0.0018867924528301887,
+          0.001885369532428356,
+          0.0015094339622641509,
+          0.0015082956259426848,
+          0.0018867924528301887,
+          0.001885369532428356
+        ],
+        "per_row_Q_R5": [
+          6,
+          8,
+          6,
+          8,
+          5,
+          7,
+          4,
+          6,
+          5,
+          3,
+          5,
+          7,
+          4,
+          6,
+          5,
+          7
+        ],
+        "per_row_Q_R4": [
+          6,
+          8,
+          6,
+          8,
+          6,
+          7,
+          4,
+          6,
+          7,
+          6,
+          5,
+          7,
+          4,
+          6,
+          5,
+          7
+        ],
+        "per_row_U": [
+          2650,
+          2652,
+          2650,
+          2652,
+          2650,
+          2652,
+          2650,
+          2652,
+          2650,
+          2652,
+          2650,
+          2652,
+          2650,
+          2652,
+          2650,
+          2652
+        ],
+        "per_row_T": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "mean_R5": 0.0017918125160078545,
+        "mean_R4": 0.00193326859045505,
+        "summary_mean_OQ_R5_in_file": 0.0017918125160078545,
+        "summary_mean_OQ_R4_in_file": 0.00193326859045505,
+        "means_equal_file_summary": true,
+        "diff_R4_minus_R5": 0.00014145607444719546,
+        "ratio_R4_over_R5": 1.0789458010720667,
+        "rel_margin_1_minus_R5_over_R4": 0.0731693853330021,
+        "rows_R4_gt_R5": 3,
+        "rows_R4_eq_R5": 13,
+        "rows_R4_lt_R5": 0,
+        "rows_R4_equals_R5_setwise": null,
+        "n_seeds": 8,
+        "seeds": [
+          201,
+          202,
+          203,
+          204,
+          205,
+          206,
+          207,
+          208
+        ],
+        "reproduces_published_3dp": {
+          "R5": true,
+          "R4": true,
+          "rel_margin_pct": true
+        }
+      },
+      "ci95_primary_rows": {
+        "mean_R5_homeprov": [
+          0.0015557855943538518,
+          0.0019806344979936825
+        ],
+        "mean_R4_component": [
+          0.0017681382331597372,
+          0.002098594154642989
+        ],
+        "diff_R4_minus_R5": [
+          0.0,
+          0.0003299752411850079
+        ],
+        "ratio_R4_over_R5": [
+          1.0,
+          1.2026797684140724
+        ],
+        "rel_margin_1_minus_R5_over_R4": [
+          0.0,
+          0.1685234704268439
+        ],
+        "frac_resamples_diff_le_0": 0.0381,
+        "frac_resamples_diff_eq_0": 0.0381
+      },
+      "ci95_sensitivity_seed_clusters": {
+        "mean_R5_homeprov": [
+          0.001509007086143601,
+          0.002027537067076468
+        ],
+        "mean_R4_component": [
+          0.0017210933720367685,
+          0.002121876689717977
+        ],
+        "diff_R4_minus_R5": [
+          0.0,
+          0.00037719841202083155
+        ],
+        "ratio_R4_over_R5": [
+          1.0,
+          1.2423961869492164
+        ],
+        "rel_margin_1_minus_R5_over_R4": [
+          0.0,
+          0.1951037756679178
+        ],
+        "frac_resamples_diff_le_0": 0.1013,
+        "frac_resamples_diff_eq_0": 0.1013
+      }
+    },
+    "refit_bg4.4": {
+      "input": "exp/out_recal/stage24_recon_baselines.json",
+      "published_numbers": {
+        "R5": 0.00157,
+        "R4": 0.00159
+      },
+      "point": {
+        "n_rows": 16,
+        "row_keys": [
+          [
+            201,
+            "FT-1"
+          ],
+          [
+            201,
+            "FT-4"
+          ],
+          [
+            202,
+            "FT-1"
+          ],
+          [
+            202,
+            "FT-4"
+          ],
+          [
+            203,
+            "FT-1"
+          ],
+          [
+            203,
+            "FT-4"
+          ],
+          [
+            204,
+            "FT-1"
+          ],
+          [
+            204,
+            "FT-4"
+          ],
+          [
+            205,
+            "FT-1"
+          ],
+          [
+            205,
+            "FT-4"
+          ],
+          [
+            206,
+            "FT-1"
+          ],
+          [
+            206,
+            "FT-4"
+          ],
+          [
+            207,
+            "FT-1"
+          ],
+          [
+            207,
+            "FT-4"
+          ],
+          [
+            208,
+            "FT-1"
+          ],
+          [
+            208,
+            "FT-4"
+          ]
+        ],
+        "per_row_OQ_R5": [
+          0.001379310344827586,
+          0.0013783597518952446,
+          0.001379310344827586,
+          0.0013783597518952446,
+          0.0010344827586206897,
+          0.0013783597518952446,
+          0.001379310344827586,
+          0.0013783597518952446,
+          0.001379310344827586,
+          0.0013783597518952446,
+          0.002413793103448276,
+          0.002412129565816678,
+          0.0017241379310344827,
+          0.0017229496898690559,
+          0.0017241379310344827,
+          0.0017229496898690559
+        ],
+        "per_row_OQ_R4": [
+          0.001379310344827586,
+          0.0013783597518952446,
+          0.001379310344827586,
+          0.0013783597518952446,
+          0.001379310344827586,
+          0.0013783597518952446,
+          0.001379310344827586,
+          0.0013783597518952446,
+          0.001379310344827586,
+          0.0013783597518952446,
+          0.002413793103448276,
+          0.002412129565816678,
+          0.0017241379310344827,
+          0.0017229496898690559,
+          0.0017241379310344827,
+          0.0017229496898690559
+        ],
+        "per_row_Q_R5": [
+          4,
+          6,
+          4,
+          6,
+          3,
+          6,
+          4,
+          6,
+          4,
+          6,
+          7,
+          9,
+          5,
+          7,
+          5,
+          7
+        ],
+        "per_row_Q_R4": [
+          4,
+          6,
+          4,
+          6,
+          4,
+          6,
+          4,
+          6,
+          4,
+          6,
+          7,
+          9,
+          5,
+          7,
+          5,
+          7
+        ],
+        "per_row_U": [
+          2900,
+          2902,
+          2900,
+          2902,
+          2900,
+          2902,
+          2900,
+          2902,
+          2900,
+          2902,
+          2900,
+          2902,
+          2900,
+          2902,
+          2900,
+          2902
+        ],
+        "per_row_T": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "mean_R5": 0.0015727263005299555,
+        "mean_R4": 0.0015942780246678866,
+        "summary_mean_OQ_R5_in_file": 0.0015727263005299555,
+        "summary_mean_OQ_R4_in_file": 0.0015942780246678866,
+        "means_equal_file_summary": true,
+        "diff_R4_minus_R5": 2.155172413793112e-05,
+        "ratio_R4_over_R5": 1.0137034168823074,
+        "rel_margin_1_minus_R5_over_R4": 0.013518171739474782,
+        "rows_R4_gt_R5": 1,
+        "rows_R4_eq_R5": 15,
+        "rows_R4_lt_R5": 0,
+        "rows_R4_equals_R5_setwise": null,
+        "n_seeds": 8,
+        "seeds": [
+          201,
+          202,
+          203,
+          204,
+          205,
+          206,
+          207,
+          208
+        ],
+        "reproduces_published_3dp": {
+          "R5": true,
+          "R4": true
+        }
+      },
+      "ci95_primary_rows": {
+        "mean_R5_homeprov": [
+          0.0014217602604624634,
+          0.001766602699683928
+        ],
+        "mean_R4_component": [
+          0.0014434753677606408,
+          0.0017674656598303117
+        ],
+        "diff_R4_minus_R5": [
+          0.0,
+          6.465517241379315e-05
+        ],
+        "ratio_R4_over_R5": [
+          1.0,
+          1.0454706890068106
+        ],
+        "rel_margin_1_minus_R5_over_R4": [
+          0.0,
+          0.043493030923714815
+        ],
+        "frac_resamples_diff_le_0": 0.3644,
+        "frac_resamples_diff_eq_0": 0.3644
+      },
+      "ci95_sensitivity_seed_clusters": {
+        "mean_R5_homeprov": [
+          0.0013572833242234844,
+          0.001852809596235652
+        ],
+        "mean_R4_component": [
+          0.0014219236436227097,
+          0.001852809596235652
+        ],
+        "diff_R4_minus_R5": [
+          0.0,
+          6.465517241379315e-05
+        ],
+        "ratio_R4_over_R5": [
+          1.0,
+          1.046170490342699
+        ],
+        "rel_margin_1_minus_R5_over_R4": [
+          0.0,
+          0.044132854796520404
+        ],
+        "frac_resamples_diff_le_0": 0.3473,
+        "frac_resamples_diff_eq_0": 0.3473
+      }
+    }
+  },
+  "provenance": {
+    "script": "<artifact-root>/exp/sp2027/r9_a_localization_bootstrap.py",
+    "script_sha256": "f81de9724648aec9cb4e99d770f79b4677a380ea30386c23c1e83cec0ed2886d",
+    "helper": "<artifact-root>/exp/sp2027/r9_common.py",
+    "helper_sha256": "07566d8b2e76ef06cea180fefca0fa5f17bd27a7f0097292d5b0557d8e040ed7",
+    "python": "3.13.11 | packaged by Anaconda, Inc. | (main, Dec 10 2025, 21:21:08) [Clang 20.1.8 ]",
+    "python_executable": "python3",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "git_head": "b7611992393052a568df00c9ebc805f4d15ee6f5",
+    "git_branch": "<branch>",
+    "exp_rig_dirty": false,
+    "exp_rig_status_porcelain": "",
+    "inputs": {
+      "exp/out/stage24_final.json": "b369e92874cd436191fbe418fa3e5f1e6eb23eba2c67247f652013beffbf69ed",
+      "exp/out_recal/stage24_recon_baselines.json": "8a541e97157b9f1f725912c82f90759ad5609e48dd48bf8b600235d838997dac"
+    },
+    "seeds": {
+      "bootstrap_rng": 20261006,
+      "deployment_seeds_in_inputs": "201-208"
+    },
+    "started": "2026-10-06T17:36:54.244964+00:00",
+    "finished": "2026-10-06T17:36:54.294446+00:00"
+  },
+  "deviations": [
+    "No recomputation: per-row values are taken from the saved stage-24 artifacts.",
+    "The paper's '16 generated deployments' are 8 generated deployments (seeds 201-208) x 2 forgery types (FT-1, FT-4); FT-7/10/12 produced no row. The seed-cluster bootstrap is reported as a sensitivity analysis for that."
+  ]
+}

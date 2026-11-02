@@ -1,0 +1,357 @@
+{
+ "item": "R10: offline check of the minute and hour roots on the saved real-deployment runs (review sp2027-r4, R2 N2)",
+ "generated": "2026-10-07T13:34:54.629002+00:00",
+ "script": "exp/sp2027/r10_coarse_roots.py",
+ "script_sha256": "39bf22981436c0a95dfa8612550cb67765a666a128ec88b8cb5a68e876cff889",
+ "monitor_sha256": "c499b860f089ce47461c68f543bf302edd68255b72277ef3f6739a5754d9e5bf",
+ "inputs_mode": "extracts",
+ "substrate": "real deployment (Home Assistant 2026.7.4), saved recorder extracts and anchor chains of the closure- and row-scheme runs; offline, no live run",
+ "runs_left_out": {
+  "e_d_whr": "whole-row scheme: the recorder rewrites committed columns in place, so untouched roots do not reproduce",
+  "e_ps_whr": "whole-row scheme: the recorder rewrites committed columns in place, so untouched roots do not reproduce",
+  "e_psr_whr": "whole-row scheme: the recorder rewrites committed columns in place, so untouched roots do not reproduce"
+ },
+ "pooled": {
+  "minute": {
+   "anchored_in_window": 209,
+   "reproduced_by_extract": 127,
+   "with_an_empty_second": 127,
+   "root_changed_after_one_inserted_row": 127,
+   "inserted_rows_with_an_anchored_finer_root": 0,
+   "other_anchored_second_roots_unchanged": true
+  }
+ },
+ "runs": {
+  "e_d_clo": {
+   "scheme": "closure",
+   "inputs": {
+    "snapshot_db": {
+     "path": "reproduce/snapshots/e_d_clo.db",
+     "sha256": "289d1b8e889f83767cbb8739acab827de1f2c307b6ba6a2c3240ee72aea428cf",
+     "listed": true
+    },
+    "chain": {
+     "path": "reproduce/snapshots/e_d_clo.chain.jsonl",
+     "sha256": "f177af7fe874c45e00d13d95893350914c17dd77674a97b083f99a4bb799b3ba",
+     "listed": true
+    }
+   },
+   "window": {
+    "t_start": 1790968169.0,
+    "t_end": 1790970350.0
+   },
+   "minute": {
+    "anchored_in_window": 37,
+    "reproduced_by_extract": 13,
+    "with_an_empty_second": 13,
+    "root_changed_after_one_inserted_row": 13,
+    "inserted_rows_with_an_anchored_finer_root": 0,
+    "other_anchored_second_roots_unchanged": true
+   }
+  },
+  "e_c_clo": {
+   "scheme": "closure",
+   "inputs": {
+    "snapshot_db": {
+     "path": "reproduce/snapshots/e_c_clo.db",
+     "sha256": "88ae4d925e686a3bd91341568d8846c77fe0b451f293592477c91a51faf59ff3",
+     "listed": true
+    },
+    "chain": {
+     "path": "reproduce/snapshots/e_c_clo.chain.jsonl",
+     "sha256": "17b5b3cece50b3c2f06c3981ac6138b8a102eda1b8011111ac44ec5ffb01fd75",
+     "listed": true
+    }
+   },
+   "window": {
+    "t_start": 1790970526.0,
+    "t_end": 1790972744.0
+   },
+   "minute": {
+    "anchored_in_window": 38,
+    "reproduced_by_extract": 32,
+    "with_an_empty_second": 32,
+    "root_changed_after_one_inserted_row": 32,
+    "inserted_rows_with_an_anchored_finer_root": 0,
+    "other_anchored_second_roots_unchanged": true
+   }
+  },
+  "e_ps_clo": {
+   "scheme": "closure",
+   "inputs": {
+    "snapshot_db": {
+     "path": "reproduce/snapshots/e_ps_clo.db",
+     "sha256": "e90e060365effba1dd5915a4908ff2c45ae29b0ca76dcc072fa31718870d0402",
+     "listed": true
+    },
+    "chain": {
+     "path": "reproduce/snapshots/e_ps_clo.chain.jsonl",
+     "sha256": "779aa39e020d51d9e65015da65768dae56848fd2c0170440d568d0be45239cc4",
+     "listed": true
+    }
+   },
+   "window": {
+    "t_start": 1790966773.0,
+    "t_end": 1790967973.0
+   },
+   "minute": {
+    "anchored_in_window": 21,
+    "reproduced_by_extract": 8,
+    "with_an_empty_second": 8,
+    "root_changed_after_one_inserted_row": 8,
+    "inserted_rows_with_an_anchored_finer_root": 0,
+    "other_anchored_second_roots_unchanged": true
+   }
+  },
+  "e_psr_clo": {
+   "scheme": "closure",
+   "inputs": {
+    "snapshot_db": {
+     "path": "reproduce/snapshots/e_psr_clo.db",
+     "sha256": "18256b52fc5a86dca3e8f5af8fad62e29426c3ea49b6ee7f27112070edcb15c4",
+     "listed": true
+    },
+    "chain": {
+     "path": "reproduce/snapshots/e_psr_clo.chain.jsonl",
+     "sha256": "49af63ecd4c43ae6b0e4baf7f69a3de4108a3cbdd9f1e53a85ddb1e3551a47b9",
+     "listed": true
+    }
+   },
+   "window": {
+    "t_start": 1790987124.0,
+    "t_end": 1790988313.0
+   },
+   "minute": {
+    "anchored_in_window": 20,
+    "reproduced_by_extract": 8,
+    "with_an_empty_second": 8,
+    "root_changed_after_one_inserted_row": 8,
+    "inserted_rows_with_an_anchored_finer_root": 0,
+    "other_anchored_second_roots_unchanged": true
+   }
+  },
+  "e_d_auth": {
+   "scheme": "row",
+   "inputs": {
+    "snapshot_db": {
+     "path": "reproduce/snapshots/e_d_auth.db",
+     "sha256": "7ae99036a555d476381beb1fd93a4785c57bd4ae016eec09c5e23ce045b62ba1",
+     "listed": true
+    },
+    "chain": {
+     "path": "reproduce/snapshots/e_d_auth.chain.jsonl.gz",
+     "sha256": "d7df26bd3ac59dff119a303545495731de3f60b21106fef1a0e0a5d90102cbc2",
+     "listed": true
+    }
+   },
+   "window": {
+    "t_start": 1790410030.0,
+    "t_end": 1790412186.0
+   },
+   "minute": {
+    "anchored_in_window": 36,
+    "reproduced_by_extract": 14,
+    "with_an_empty_second": 14,
+    "root_changed_after_one_inserted_row": 14,
+    "inserted_rows_with_an_anchored_finer_root": 0,
+    "other_anchored_second_roots_unchanged": true
+   }
+  },
+  "e_c_auth": {
+   "scheme": "row",
+   "inputs": {
+    "snapshot_db": {
+     "path": "reproduce/snapshots/e_c_auth.db",
+     "sha256": "3da100cd285d347a8c90a9138dd4feda73bb0ef94cf86e5a2a5637d29ac4c8f8",
+     "listed": true
+    },
+    "chain": {
+     "path": "reproduce/snapshots/e_c_auth.chain.jsonl",
+     "sha256": "a0a7e7038b476b9c2bda48cb589aa84b7c5355de7e6bad1f71a7623e8dc3a7f7",
+     "listed": true
+    }
+   },
+   "window": {
+    "t_start": 1790933227.0,
+    "t_end": 1790935444.0
+   },
+   "minute": {
+    "anchored_in_window": 37,
+    "reproduced_by_extract": 32,
+    "with_an_empty_second": 32,
+    "root_changed_after_one_inserted_row": 32,
+    "inserted_rows_with_an_anchored_finer_root": 0,
+    "other_anchored_second_roots_unchanged": true
+   }
+  },
+  "e_ps_auth": {
+   "scheme": "row",
+   "inputs": {
+    "snapshot_db": {
+     "path": "reproduce/snapshots/e_ps_auth.db",
+     "sha256": "e3fdc0f531b69fd1d23ed11dcd1cd291b790c597e7630fbc56cf5851d69e583f",
+     "listed": true
+    },
+    "chain": {
+     "path": "reproduce/snapshots/e_ps_auth.chain.jsonl",
+     "sha256": "8a8e7fe1773c59e4df61a1196af40d1197b8533b0b3d7c8c737ba660d0faa134",
+     "listed": true
+    }
+   },
+   "window": {
+    "t_start": 1790948889.0,
+    "t_end": 1790950091.0
+   },
+   "minute": {
+    "anchored_in_window": 20,
+    "reproduced_by_extract": 20,
+    "with_an_empty_second": 20,
+    "root_changed_after_one_inserted_row": 20,
+    "inserted_rows_with_an_anchored_finer_root": 0,
+    "other_anchored_second_roots_unchanged": true
+   }
+  }
+ },
+ "hour_case": {
+  "inputs_mode": "extracts",
+  "hours_anchored_during_runs": 4,
+  "hours_reproduced": 2,
+  "empty_minutes_in_reproduced_hours": 0,
+  "runs": {
+   "e_d_clo": {
+    "inputs": {
+     "snapshot_db": {
+      "path": "reproduce/snapshots/e_d_clo.db",
+      "sha256": "289d1b8e889f83767cbb8739acab827de1f2c307b6ba6a2c3240ee72aea428cf",
+      "listed": true
+     },
+     "chain": {
+      "path": "reproduce/snapshots/e_d_clo.chain.jsonl",
+      "sha256": "f177af7fe874c45e00d13d95893350914c17dd77674a97b083f99a4bb799b3ba",
+      "listed": true
+     }
+    },
+    "hours_anchored_during_run": []
+   },
+   "e_c_clo": {
+    "inputs": {
+     "snapshot_db": {
+      "path": "reproduce/snapshots/e_c_clo.db",
+      "sha256": "88ae4d925e686a3bd91341568d8846c77fe0b451f293592477c91a51faf59ff3",
+      "listed": true
+     },
+     "chain": {
+      "path": "reproduce/snapshots/e_c_clo.chain.jsonl",
+      "sha256": "17b5b3cece50b3c2f06c3981ac6138b8a102eda1b8011111ac44ec5ffb01fd75",
+      "listed": true
+     }
+    },
+    "hours_anchored_during_run": [
+     {
+      "hour": 497491,
+      "reproduced": false,
+      "empty_minutes": 0
+     }
+    ]
+   },
+   "e_ps_clo": {
+    "inputs": {
+     "snapshot_db": {
+      "path": "reproduce/snapshots/e_ps_clo.db",
+      "sha256": "e90e060365effba1dd5915a4908ff2c45ae29b0ca76dcc072fa31718870d0402",
+      "listed": true
+     },
+     "chain": {
+      "path": "reproduce/snapshots/e_ps_clo.chain.jsonl",
+      "sha256": "779aa39e020d51d9e65015da65768dae56848fd2c0170440d568d0be45239cc4",
+      "listed": true
+     }
+    },
+    "hours_anchored_during_run": [
+     {
+      "hour": 497490,
+      "reproduced": false,
+      "empty_minutes": 0
+     }
+    ]
+   },
+   "e_psr_clo": {
+    "inputs": {
+     "snapshot_db": {
+      "path": "reproduce/snapshots/e_psr_clo.db",
+      "sha256": "18256b52fc5a86dca3e8f5af8fad62e29426c3ea49b6ee7f27112070edcb15c4",
+      "listed": true
+     },
+     "chain": {
+      "path": "reproduce/snapshots/e_psr_clo.chain.jsonl",
+      "sha256": "49af63ecd4c43ae6b0e4baf7f69a3de4108a3cbdd9f1e53a85ddb1e3551a47b9",
+      "listed": true
+     }
+    },
+    "hours_anchored_during_run": []
+   },
+   "e_d_auth": {
+    "inputs": {
+     "snapshot_db": {
+      "path": "reproduce/snapshots/e_d_auth.db",
+      "sha256": "7ae99036a555d476381beb1fd93a4785c57bd4ae016eec09c5e23ce045b62ba1",
+      "listed": true
+     },
+     "chain": {
+      "path": "reproduce/snapshots/e_d_auth.chain.jsonl.gz",
+      "sha256": "d7df26bd3ac59dff119a303545495731de3f60b21106fef1a0e0a5d90102cbc2",
+      "listed": true
+     }
+    },
+    "hours_anchored_during_run": []
+   },
+   "e_c_auth": {
+    "inputs": {
+     "snapshot_db": {
+      "path": "reproduce/snapshots/e_c_auth.db",
+      "sha256": "3da100cd285d347a8c90a9138dd4feda73bb0ef94cf86e5a2a5637d29ac4c8f8",
+      "listed": true
+     },
+     "chain": {
+      "path": "reproduce/snapshots/e_c_auth.chain.jsonl",
+      "sha256": "a0a7e7038b476b9c2bda48cb589aa84b7c5355de7e6bad1f71a7623e8dc3a7f7",
+      "listed": true
+     }
+    },
+    "hours_anchored_during_run": [
+     {
+      "hour": 497481,
+      "reproduced": true,
+      "empty_minutes": 0
+     }
+    ]
+   },
+   "e_ps_auth": {
+    "inputs": {
+     "snapshot_db": {
+      "path": "reproduce/snapshots/e_ps_auth.db",
+      "sha256": "e3fdc0f531b69fd1d23ed11dcd1cd291b790c597e7630fbc56cf5851d69e583f",
+      "listed": true
+     },
+     "chain": {
+      "path": "reproduce/snapshots/e_ps_auth.chain.jsonl",
+      "sha256": "8a8e7fe1773c59e4df61a1196af40d1197b8533b0b3d7c8c737ba660d0faa134",
+      "listed": true
+     }
+    },
+    "hours_anchored_during_run": [
+     {
+      "hour": 497485,
+      "reproduced": true,
+      "empty_minutes": 0
+     }
+    ]
+   }
+  },
+  "note": "the hour test needs an empty minute inside a reproduced hour; where there is none it is not run, and the hour root's role rests on the construction"
+ },
+ "caveats": [
+  "deterministic given the hash chain: the check exercises the shipped load()/commit() on real rows, it is not a rate",
+  "one inserted row per kept segment, at the first empty second (minute test) or empty minute (hour test)"
+ ]
+}

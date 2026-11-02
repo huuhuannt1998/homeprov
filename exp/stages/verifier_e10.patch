@@ -1,0 +1,340 @@
+--- a/exp/stages/e7_verify.py
++++ b/exp/stages/e7_verify.py
+@@ -436,8 +436,142 @@
+         poll that saw it, so how late the row was committed is not bounded from above.)"""
+         pts = self.bracket.get(table) or []
+         return bool(pts) and pts[-1][0] >= key
++
++
++# OBSERVATION BREAKS (E10; drafts/round13/FORMAL_DRAFT.md section 6, D1). A late row's commit time lies between the copy
++# of Q, the last known poll whose copy lacked its key, and the read of P, the first known poll whose copy held it. The
++# late-row test reads only the lower end (committed_after), which bounds the commit delay only if the monitor watched
++# the recorder in between. An unobservable poll, a poll missing from the chain (a skipped seq_local, or a known poll
++# without its watermark), a poll whose own record failed (backlogged), a monitor restart (a new epoch), or more than
++# GAP_S between the copies of two consecutive polls leaves the commit time unbounded inside [Q, P]: such a row is
++# judged unobserved_late (neither benign nor attributable) unless the lower end alone already exceeds LATE_BOUND, which
++# stays attributable. Probe P2 of the draft: 12 unobservable polls, then a row backdated about 70 s into a second
++# sealed before them, read benign_late (lower bound 7.6 s) and its second "match".
++# A backlogged poll (its own record failed; its head, signed, came later in a backlog) carries its watermark and copy
++# time, so it could bound the commit time like any poll; with LATE_BREAK_BACKLOG (the lead's specification, 2026-10-12)
++# it is not used as either end of the bracket, so a late row whose bracket spans an anchor outage is unobserved_late.
++LATE_BREAK_BACKLOG = True
++
++
++class ObservationBreaks:
++    """For a key: the first known poll whose copy held it, the known poll before it, and the first break between them."""
++
++    def __init__(self, polls, gap_s):
++        self.polls = polls
++        self.keys = sorted(polls)
++        self.index = {k: i for i, k in enumerate(self.keys)}
++        self.trans, self.state = {}, {}
++        prev = None
++        for i, k in enumerate(self.keys):
++            p = polls[k]
++            if prev is not None:
++                pp = polls[prev]
++                if k[0] != prev[0]:
++                    self.trans[i] = "monitor_restarted"
++                elif k[1] - prev[1] > 1:
++                    self.trans[i] = "poll_missing_from_the_chain"
++                elif p.get("copy_at") is not None and pp.get("copy_at") is not None \
++                        and p["copy_at"] - pp["copy_at"] > gap_s:
++                    self.trans[i] = "gap_above_gap_s"
++            if p.get("unobservable"):
++                self.state[i] = "unobservable_poll"
++            elif p.get("through") is None or not isinstance(p.get("wm"), dict) or p.get("copy_at") is None:
++                self.state[i] = "poll_without_its_watermark"
++            elif LATE_BREAK_BACKLOG and p.get("in_backlog"):
++                self.state[i] = "backlogged_poll"
++            prev = k
++        self.valid = [k for k in self.keys if polls[k].get("through") is not None
++                      and isinstance(polls[k].get("wm"), dict) and polls[k].get("copy_at") is not None
++                      and not polls[k].get("unobservable")
++                      and not (LATE_BREAK_BACKLOG and polls[k].get("in_backlog"))]
++        self.pmax = {}
++        for t in ("states", "events"):
++            m, out = -1, []
++            for k in self.valid:
++                w = polls[k]["wm"].get(t)
++                m = max(m, -1 if w is None else w)
++                out.append(m)
++            self.pmax[t] = out
+ 
++    def bracket(self, table, key):
++        """(Q key, P key) or None: P the first valid poll in poll order whose copy held the key, Q the valid poll
++        before it."""
++        pm = self.pmax.get(table) or []
++        i = bisect.bisect_left(pm, key)
++        if i >= len(pm) or i == 0:
++            return None
++        return self.valid[i - 1], self.valid[i]
+ 
++    def first_holding_copy_at(self, table, key):
++        b = self.bracket(table, key)
++        return None if b is None else self.polls[b[1]].get("copy_at")
++
++    def between(self, table, key):
++        """The first break between Q and P (a reason string), or None."""
++        b = self.bracket(table, key)
++        if b is None:
++            return None
++        a, z = self.index[b[0]], self.index[b[1]]
++        for j in range(a + 1, z + 1):
++            if j in self.trans:
++                return self.trans[j]
++            if j < z and j in self.state:
++                return self.state[j]
++        return None
++
++
++# CLOCK_STEP (E10; FORMAL_DRAFT.md D3). The coverage verifier had no rule for a backward clock step, which the paper's
++# G3 lists among the operations markers declare: after the hub's clock steps back by s seconds, the rows it writes for
++# the next s seconds carry timestamps in seconds sealed already, so each is a late row whose commit delay exceeds
++# LATE_BOUND when s does, an attributable backdated insertion. An operator CLOCK_STEP marker {"marker": "CLOCK_STEP",
++# "window": [lo, hi], "issued_ts": I, ...}, signed like every marker, excuses exactly such rows: a late row (its key
++# above the sealing poll's watermark, so it was not in the sealed copy) with lo <= t(r) < hi, first held by a poll that
++# copied after I and at most CLOCK_STEP_SEEN_S after it. The window is BOUNDED and AT THE MARKER, as in exp/rig/
++# markers.py (an unbounded window was measured to hide injection): 0 < hi - lo <= MAX_CLOCK_STEP_S and
++# |hi - I| <= MAX_CLOCK_STEP_S. It never excuses a changed or deleted sealed row, a row inserted with a low key, or a
++# keylog violation: a clock step adds rows, it never removes or edits them. Its cost: a row the hub adversary inserts
++# with a timestamp in the declared window during those CLOCK_STEP_SEEN_S seconds is excused too.
++MAX_CLOCK_STEP_S = 300.0
++CLOCK_STEP_SEEN_S = 2 * MAX_CLOCK_STEP_S
++
++
++def clock_steps(markers):
++    acc, rej = [], []
++    for m in markers or []:
++        if m.get("marker") != "CLOCK_STEP":
++            continue
++        why = None
++        try:
++            lo, hi = (float(x) for x in m["window"])
++            i = float(m["issued_ts"])
++        except (KeyError, TypeError, ValueError):
++            lo = hi = i = None
++            why = "malformed"
++        if why is None and not lo < hi:
++            why = "empty_window"
++        elif why is None and hi - lo > MAX_CLOCK_STEP_S:
++            why = "window_longer_than_the_maximum"
++        elif why is None and abs(hi - i) > MAX_CLOCK_STEP_S:
++            why = "window_not_at_the_marker"
++        if why:
++            rej.append({"chain_seq": m.get("chain_seq"), "kind": "CLOCK_STEP", "why": why})
++            continue
++        acc.append({"chain_seq": m.get("chain_seq"), "lo": lo, "hi": hi, "issued_ts": i,
++                    "seen_by": i + CLOCK_STEP_SEEN_S})
++    return acc, rej
++
++
++def clock_step_excuse(steps, ts, first_held_at):
++    """The accepted CLOCK_STEP window that excuses a late row timestamped ts, first held by a poll that copied at
++    first_held_at, or None."""
++    if first_held_at is None:
++        return None
++    for c in steps:
++        if c["lo"] <= ts < c["hi"] and c["issued_ts"] < first_held_at <= c["seen_by"]:
++            return c
++    return None
++
++
+ # ------------------------------------------------------------------------------------------------ verification
+ def fold(M, rows, g, seg, enc):
+     return ((M.commit(rows, encoding=enc).get(g) or {}).get(seg)) if rows else None
+@@ -1133,8 +1267,9 @@
+     rest. With cutoffs C (one per accepted marker):
+       * a segment wholly before some C is excused only if it holds no row now (a purge deletes everything older than
+         its cutoff);
+-      * the one segment per granularity that straddles some C is excused for removed or changed rows (as
+-        exp/rig/markers.py explains_scoped), never for inserted ones;
++      * the one segment per granularity that straddles some C is excused for removed rows and valid purge
++        disconnects only (E10, D5: every row still in it exactly as committed, checked per row), never for inserted
++        or changed ones;
+       * a segment wholly at or after the latest C at or before its start (the purge-disconnect rule): excused only if
+         restoring, for every current state row whose old_state_id is now NULL, the value committed at first read
+         (escrow; else the per-row binding) reproduces the anchored root, and every restored value names a state row
+@@ -1287,10 +1422,23 @@
+                 v["excused_by"] = {"marker": "PURGE", "rule": "tolerance_band", "c0": band["c0"], "c1": band["c1"]}
+                 report["excused"]["tolerance_band"][v["gran"]] += 1
+         elif any(lo < c < hi for c in cvals):
++            # E10, FORMAL_DRAFT.md D5: a removed row, or a valid purge disconnect, only. Every row still in the segment
++            # must be exactly as committed (or such a disconnect), checked per row (escrowed tuple, else the per-row
++            # binding); without either, only a segment that lost every sealed row is excused.
+             inserted = (v.get("mechanism") == "row_inserted_with_low_key_or_moved_in" if v["rule"] == "coverage"
+                         else (v["existing_rule"].get("delta_n") or 0) > 0)
++            scut = next(c for c in cuts if lo < c["c1"] < hi)
++            a = P["roots"].get((v["gran"], v["seg"])) or {}
++            sealed = [n for n in rows if under(n, a.get("wm"))] if a.get("wm") is not None else rows
++            # (the comparison mode without the purge-disconnect rule keeps the round-12 rule, exp/rig/markers.py
++            # explains_scoped: removed or changed rows)
++            verdicts = [evidence.row_verdict(n, pred_check_for(scut)) for n in sealed] if disconnect else []
+             if inserted:
+                 why = "rows_inserted_into_the_straddling_segment"
++            elif any(x is False for x in verdicts):
++                why = "a_row_in_the_straddling_segment_changed"
++            elif any(x is None for x in verdicts):
++                why = "a_row_in_the_straddling_segment_cannot_be_checked_without_binding_or_escrow"
+             else:
+                 v["excused_by"] = {"marker": "PURGE", "rule": "straddling_segment"}
+                 report["excused"]["straddling"][v["gran"]] += 1
+@@ -1523,8 +1671,8 @@
+ 
+     RESTORE_DONE (re-check N1): the operator's signed statement that the restored hub is up. It names the RESTORE marker
+     it closes (restore_nonce and/or restore_sha256, each of which must match when present, at least one present) and
+-    carries post_restart_wm (the restored recorder's largest keys the operator read after the restart) and, optionally,
+-    hub_started_ts (the restored hub's start, between I and the DONE's own issued_ts). It counts only when issued at or
++    carries post_restart_wm (the restored recorder's largest keys the operator read after the restart) and
++    hub_started_ts (the restored hub's start, between I and the DONE's own issued_ts; required since E10, D4). It counts only when issued at or
+     after I and, like its arrival on the chain (recv_ts), at most done_max_s after I. The first one on the chain that
+     passes is used; the others are listed as rejected."""
+     out, rej = [], []
+@@ -1567,6 +1715,8 @@
+                 dwhy = "restore_done_anchored_after_the_maximum"
+             elif dwhy is None and not _wm_ok(d.get("post_restart_wm")):
+                 dwhy = "no_post_restart_wm"
++            elif dwhy is None and h is None:
++                dwhy = "no_hub_started_ts"             # E10, FORMAL_DRAFT.md D4: required (E9's harness always sent it)
+             elif dwhy is None and h is not None and not (i <= h <= di):
+                 dwhy = "hub_started_ts_outside_the_restore"
+             if dwhy or x["done"] is not None:
+@@ -1813,6 +1963,9 @@
+     P = parse_chain(lines, scheme, t0, tsnap)
+     roots, polls = P["roots"], P["polls"]
+     TL = Timeline(polls)
++    BR = ObservationBreaks(polls, gap_s)                       # E10, D1
++    csteps, csteps_rej = clock_steps(markers)                  # E10, D3 (operator-signed markers only)
++    clock_excused = []
+     W = dict(M.GRAN)
+     bad = malformed_rows(M, db)
+     raw_text = invalid_text_rows(M, db)
+@@ -1841,22 +1994,38 @@
+         else:
+             after = TL.committed_after(table, k)
+             lat = None if after is None else round(after - n[0], 6)
++            brk = None
+             if lat is not None and lat > late_bound:
+-                v, why = "attributable", why_base
++                cs = clock_step_excuse(csteps, n[0], BR.first_holding_copy_at(table, k))
++                if cs is not None:
++                    # E10, D3: a row written by the hub's stepped-back clock inside a declared, bounded window
++                    v, why = "excused_clock_step", "clock_step_marker"
++                    clock_excused.append({"key": n[1], "ts": n[0], "gran": g, "seg": seg,
++                                          "committed_after_lower_bound_s": lat, "marker_chain_seq": cs["chain_seq"]})
++                else:
++                    v, why = "attributable", why_base
+             elif not TL.observed(table, k):
+                 # no known poll holds the row, so nothing bounds how late it was committed: neither benign nor
+                 # attributable (E9 A7: a chain cut, or withheld, right after a row was backdated into sealed time)
+                 v, why = "unobserved_late", "no_known_poll_holds_the_row"
+             else:
+-                v, why = "benign_late", "late_within_bound"
++                brk = BR.between(table, k)
++                if brk:
++                    # E10, D1: the monitor did not watch the recorder between the poll that lacked the row and the
++                    # first that held it, so its commit delay is not bounded by LATE_BOUND
++                    v, why = "unobserved_late", "observation_break:" + brk
++                else:
++                    v, why = "benign_late", "late_within_bound"
+         cur = verdict_of(n[1], n[0])
+         if lat is not None:
+             cur["committed_after_lower_bound_s"] = lat
+         cur["why"].append({"gran": g, "seg": seg, "verdict": v, "why": why})
+         if v == "attributable":
+             cur["verdict"] = "attributable"
+-        elif v == "unobserved_late" and cur["verdict"] == "benign_late":
++        elif v == "unobserved_late" and cur["verdict"] in ("benign_late", "excused_clock_step"):
+             cur["verdict"] = "unobserved_late"
++        elif v == "excused_clock_step" and cur["verdict"] == "benign_late":
++            cur["verdict"] = "excused_clock_step"
+         return v
+ 
+     segs_out, viol, checked = {g: {"anchored_in_window": 0, "violated": 0, "violated_existing_rule": 0} for g in W}, [], []
+@@ -1934,6 +2103,35 @@
+                 continue
+             for n in rows:
+                 judge_late(n, g, seg, "backdated_into_empty_sealed_time", p["wm"])
++
++    # E10, D2 (FORMAL_DRAFT.md section 6, probe P3): the loop above sees only segments that still hold rows. A segment
++    # first covered by a poll whose roots are not all on the chain, or that follows a poll missing from the chain, is
++    # root_unknown whether or not it holds rows now: a second the hub emptied, sealed by the one record the anchor host
++    # withheld, read "sealed empty" and so "match".
++    for lo_, hi_, p in TL.pieces:
++        gapped = bool(gap_before.get(p["key"]))
++        incomplete = {g for g in W if not roots_complete(p, g)}
++        if not gapped and not incomplete:
++            continue
++        for g, w in W.items():
++            if not gapped and g not in incomplete:
++                continue
++            w = int(w)
++            for s_ in range(int(lo_) // w, (int(hi_) - 1) // w + 1):
++                start, end = s_ * w, (s_ + 1) * w
++                seg = str(s_)
++                if not (lo_ <= end - 1 < hi_) or seg in groups[g] or not in_window(g, seg):
++                    continue
++                if TL.first_cover(start, end) is not p:
++                    continue
++                a = P["all_roots"].get((g, seg))
++                if a is not None and (a["wm"] is None or a["poll"] <= p["key"]):
++                    continue                  # its root is on the chain: step 1 checks it
++                root_unknown.append({"gran": g, "seg": seg, "first_cover_poll": list(p["key"]), "rows": 0,
++                                     "roots_known": len(seen.get(p["key"], {}).get(g, ())),
++                                     "n_sealed": (p.get("n_sealed") or {}).get(g),
++                                     "why": ("a_poll_before_its_first_cover_is_missing_from_the_chain"
++                                             if gapped else "first_cover_roots_incomplete") + ":no_row_now"})
+ 
+     # step 2b: the keylog (review B1). Rows changed, re-timed, made visible or inserted into a committed key range after
+     # their first observation are attributable; their current seconds are flagged.
+@@ -2166,7 +2364,10 @@
+             "recovery": recovery, "groups": groups, "roots": roots, "checked": checked, "signatures": sigs,
+             "markers": marker_report, "purge": purge, "restore": restore, "excused_violations": excused_viol,
+             "excused_keylog_violations": excused_kl,
+-            "namemap": check_namemap(M, lines, markers, namemap_storage, tsnap)}
++            "namemap": check_namemap(M, lines, markers, namemap_storage, tsnap),
++            "clock_step": ({"accepted": csteps, "rejected": csteps_rej, "excused_rows": clock_excused,
++                            "max_window_s": MAX_CLOCK_STEP_S, "seen_s": CLOCK_STEP_SEEN_S}
++                           if (csteps or csteps_rej) else None)}
+ 
+ 
+ # ------------------------------------------------------------------------------------------------ escrow
+@@ -2774,6 +2975,8 @@
+         out["namemap"] = res["namemap"]
+     if res["unobserved_late_rows"]:
+         out["unobserved_late_rows"] = res["unobserved_late_rows"]
++    if res.get("clock_step"):
++        out["clock_step"] = res["clock_step"]
+     if trials:
+         out["arms"] = score_trials(res, trials)
+         out["trials"] = [{"arm": t.get("arm"), "room": t.get("room"), **t["_e7"]} for t in trials]
+--- a/monitor/test_e9.py
++++ b/monitor/test_e9.py
+@@ -1339,20 +1339,23 @@
+ def test_N1_the_hub_start_in_restore_done_closes_the_window_before_the_restore_done_poll(tmp, rec, hub_started):
+     """No poll sees the watermark fall (the restored hub wrote past the old maxima at once) and the RESTORE_DONE record
+     reaches the chain after the last poll, so every second the restored hub wrote was sealed before B. A whole such
+-    second emptied: with the hub's start in the marker it is not excused; without it, it is (the residual window the
+-    harness closes by passing --hub-started-ts)."""
++    second emptied: with the hub's start in the marker it is not excused. Without it (E10, drafts/round13/
++    FORMAL_DRAFT.md D4) the RESTORE_DONE marker is rejected (no_hub_started_ts), the restore excuses nothing and the
++    second is flagged; before E10 it was excused (the residual window the harness closed by passing the hub's start)."""
+     r, pub = restore_scenario(tmp, rec, "rowbind", restart_rows=60, done_at_end=True, hub_started=hub_started,
+                               done_issued=T0 + 141.0)
+     rec.sql("DELETE FROM states WHERE last_updated_ts >= ? AND last_updated_ts < ?", (T0 + 115.0, T0 + 116.0))
+     r.polls(T0 + 145.0, T0 + 150.0)
+     res = verify(tmp, r, operator_key=OP, operator_pubkey=pub, restore_tol_s=2.0)
+     x = res["restore"]["restores"][0]
+-    assert x["falling_watermark_at"] is None and x["read_back_by"] == "restore_done"
+     if hub_started:
++        assert x["falling_watermark_at"] is None and x["read_back_by"] == "restore_done"
+         assert str(int(T0) + 115) in res["flagged_seconds"]
+         assert seg_v(res, T0 + 115)["not_excused_by_restore"] == "segment_starts_after_the_hub_restarted"
+     else:
+-        assert str(int(T0) + 115) not in res["flagged_seconds"]
++        assert any(j["kind"] == "RESTORE_DONE" and j["why"] == "no_hub_started_ts" for j in res["restore"]["rejected"])
++        assert x["done"] is None
++        assert str(int(T0) + 115) in res["flagged_seconds"]
+ 
+ 
+ def test_N2_a_direct_read_that_raced_a_legitimate_wal_restart_is_repeated(tmp, hub):

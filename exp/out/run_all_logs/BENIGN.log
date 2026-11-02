@@ -1,0 +1,9 @@
+== benign catalogue, false alarms on real device churn ==
+   real service calls over the broker, not helper toggles
+{"ok": true, "cmd": "reload", "did": "automation.reload"}
+{"ok": true, "cmd": "interleave", "did": "8 concurrent real service calls across 3 lights and 2 locks"}
+{"ok": true, "cmd": "churn", "did": "repeated real actuation during live automation runs", "before": {"light.hallway_light": "off", "light.kitchen_light": "off", "light.porch_light": "on", "lock.front_door": "locked", "lock.back_door": "unlocked"}, "after": {"light.hallway_light": "on", "light.kitchen_light": "on", "light.porch_light": "off", "lock.front_door": "locked", "lock.back_door": "unlocked"}}
+-- verify the arm actually generated load --
+   last 5 min: 128 state rows, 61 call_service events, 53 with causal parents
+   VERDICT: load generated
+  -> exp/out/benign_load_check.json

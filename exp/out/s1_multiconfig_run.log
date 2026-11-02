@@ -1,0 +1,16 @@
+== S1 flagship laundering, rooms: porch hallway kitchen ==
+-- configuration: porch --
+{"ok": true, "n_valid": 10, "misattributed": "10/10", "operations": {"delete": {"min": 0, "max": 1, "mean": 0.9}, "reattach": {"min": 1, "max": 1, "mean": 1.0}, "inject": {"min": 0, "max": 0, "mean": 0.0}}, "principals_before": ["None", "service:lock.unlock"]}
+  -> exp/out/s1_real_report_porch.json
+-- configuration: hallway --
+{"ok": true, "n_valid": 10, "misattributed": "10/10", "operations": {"delete": {"min": 0, "max": 1, "mean": 0.9}, "reattach": {"min": 1, "max": 1, "mean": 1.0}, "inject": {"min": 0, "max": 0, "mean": 0.0}}, "principals_before": ["None", "service:lock.unlock"]}
+  -> exp/out/s1_real_report_hallway.json
+-- configuration: kitchen --
+{"ok": true, "n_valid": 10, "misattributed": "10/10", "operations": {"delete": {"min": 0, "max": 1, "mean": 0.9}, "reattach": {"min": 1, "max": 1, "mean": 1.0}, "inject": {"min": 0, "max": 0, "mean": 0.0}}, "principals_before": ["None", "service:lock.unlock"]}
+  -> exp/out/s1_real_report_kitchen.json
+-- pooled across configurations --
+  porch     10/10   before={None: 1, 'service:lock.unlock': 9}  ops={'delete': 9, 'reattach': 10, 'inject': 0}
+  hallway   10/10   before={None: 1, 'service:lock.unlock': 9}  ops={'delete': 9, 'reattach': 10, 'inject': 0}
+  kitchen   10/10   before={None: 1, 'service:lock.unlock': 9}  ops={'delete': 9, 'reattach': 10, 'inject': 0}
+  POOLED   30/30 = 1.000  CI [0.884, 1.000]  across 3 configurations
+  -> exp/out/s1_real_multiconfig.json

@@ -1,0 +1,102 @@
+{
+ "stage": 16,
+ "rows": [
+  {
+   "target": 50000,
+   "nodes": 36414,
+   "gen_s": 0.11222391599994808,
+   "load_s": 0.23362999999994827,
+   "full_commit_s": 0.113504750000061,
+   "inc_p50_ms": 0.23087499994289828,
+   "inc_p95_ms": 0.3003749999379579,
+   "inc_max_ms": 0.5900419999989026,
+   "anchors": 500,
+   "verify_s": 0.12189470799989977,
+   "localize_s": 0.012851749999981621,
+   "detected": true,
+   "Q": 11,
+   "phi_bytes": 254089
+  },
+  {
+   "target": 200000,
+   "nodes": 145659,
+   "gen_s": 0.4407995830000573,
+   "load_s": 0.8654308330000049,
+   "full_commit_s": 0.4654814159999887,
+   "inc_p50_ms": 0.22595799998725852,
+   "inc_p95_ms": 0.2889580000555725,
+   "inc_max_ms": 3.064332999997532,
+   "anchors": 2000,
+   "verify_s": 0.49398037499997827,
+   "localize_s": 0.07300662499994814,
+   "detected": true,
+   "Q": 22,
+   "phi_bytes": 1015750
+  },
+  {
+   "target": 1000000,
+   "nodes": 728390,
+   "gen_s": 2.1038952500000505,
+   "load_s": 4.754839417000085,
+   "full_commit_s": 2.6006981670000187,
+   "inc_p50_ms": 0.24479199998950207,
+   "inc_p95_ms": 0.3092919999971855,
+   "inc_max_ms": 2.955457999973987,
+   "anchors": 10000,
+   "verify_s": 3.0484826669999165,
+   "localize_s": 0.3404649160000872,
+   "detected": true,
+   "Q": 20,
+   "phi_bytes": 5077773
+  }
+ ],
+ "claim": "incremental per-anchor cost is O(new nodes), flat in history length",
+ "capability": {
+  "capability_record": {
+   "schema_version": 1,
+   "actor_id": "none",
+   "actor_position": "in_process_integration",
+   "powers": {
+    "db_read": true,
+    "db_write": true,
+    "fs_read_as_ha_uid": true,
+    "fs_write_as_ha_uid": true,
+    "python_exec_in_core": true,
+    "event_bus_listen": true,
+    "event_bus_emit": true,
+    "service_call": true,
+    "network_egress": false
+   },
+   "knowledge": {
+    "deployment_topology": "full",
+    "automation_configs": "full",
+    "anchor_schedule_known": false,
+    "anchor_key_known": false,
+    "victim_routine_model": "coarse"
+   },
+   "budget": {
+    "db_writes_max": 2,
+    "wallclock_window_s": 5,
+    "cpu_seconds_max": null
+   },
+   "constraints": {
+    "host_root": false,
+    "cross_uid_write": false,
+    "anchor_key_access": false,
+    "external_anchor_retraction": false,
+    "clock_control": false,
+    "cap_linux_immutable": false,
+    "cap_bpf": false
+   },
+   "substrate": {
+    "kind": "native_aarch64_container",
+    "envelope": "Pi-shaped cgroup (cpus/memory/blkio)",
+    "note": "NOT a Raspberry Pi; absolute latency is not claimed as Pi latency"
+   },
+   "provenance": {
+    "rka_mission": null,
+    "seed": 0
+   }
+  }
+ }
+}

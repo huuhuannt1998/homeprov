@@ -1,0 +1,1732 @@
+{
+ "cases": {
+  "alter_signed": "in every record carrying a trial second's root, that root replaced after signing",
+  "cross_monitor": "the other E8 monitor's signed records interleaved",
+  "drop": "every record that carries the one-second root of a trial second, removed",
+  "drop_all_evidence": "also every record carrying a minute or hour root over a trial second, or a keylog range with a row first observed in a trial second, removed",
+  "forge_unsigned": "before every monitor record of the arms, an unsigned copy whose roots and keylog ranges are recomputed from the current recorder (after the attacks)",
+  "forge_unsigned_no_key": "the forge_unsigned chain verified without the monitor's public key",
+  "forged_marker": "a PURGE marker tagged with the operator's HMAC key (which the anchor host holds to check markers), without the operator's signature, cutoff one hour after the arms; verified with an operator public key",
+  "forged_marker_hmac_only": "the forged_marker chain verified with the operator's HMAC key alone",
+  "honest": "the saved chain as it is",
+  "reorder": "the arms' records in reverse order",
+  "replay": "50 records of the arms appended again",
+  "truncate": "the tail from the middle of the arms cut",
+  "withhold": "every record of a 15-minute span of the arms (t_start + 600 s to t_start + 1,500 s) held back"
+ },
+ "check": "e9_dishonest_anchor",
+ "code_sha256": {
+  "exp/rig/marker_issuer.py": "05bde4e476fd448b076c3ce7486537ab7a6607f7b5d77ab9b91804a546792604",
+  "exp/stages/e7_verify.py": "b610ffd946f102ce2d8f2298df9915f9a44f979dfad1c48793ec913d3e016571",
+  "exp/stages/e9_dishonest_anchor.py": "cb52853ab38d245b8d777f6acd75021291a712b5733df3c4d2697ef1ed792224",
+  "monitor/monitor.py": "8d0c10405c110db3f4a9b05f2033169eaca5fd1c51e7f398bda3d289edd1e564",
+  "testbed/anchord/chainverify.py": "38cfa5e9d99e8ece7ee53d4401e6a97d6e16b7dac02e19088b11d13b547f9d0e"
+ },
+ "generated_utc": "2026-10-09T22:29:08Z",
+ "inputs": {
+  "clo_chain": {
+   "path": "<research-dir>/HOMEPROV-P13-exp/e8/e8_main/clo_chain.jsonl",
+   "records": 1539,
+   "sha256": "1d35e0614463fb27b8880a302cf0b27eac91ca091edbd5ef1ffd0a68afcd01c6"
+  },
+  "clo_pubkey": {
+   "path": "<research-dir>/HOMEPROV-P13-exp/e8/e8_main/keys/clo_sign_pub.pem",
+   "sha256": "0e610317af1593b0a25e4ca3ea49d15a9b614f2d55788e0e65c32e0329878a00"
+  },
+  "clo_witness_heads": {
+   "heads": 1539,
+   "path": "<research-dir>/HOMEPROV-P13-exp/e8/e8_main/witness_clo/heads.jsonl",
+   "sha256": "066ba197312094e360b7981c6b0222450b40606bddb39672d3cc07925f0f679c"
+  },
+  "recorder": {
+   "path": "<research-dir>/HOMEPROV-P13-exp/e8/e8_main/recorder.db",
+   "sha256": "756270479c89c72f4509934c2a5513f41612abd7256f4a4e7772275d96299bd4"
+  },
+  "reports": {
+   "e8_main_report_e7_hallway.json": "74d951f2fe1d1f03d79ac3f8e6043e21471f2b0a6e27fd0dc51a9cbd89ed45b5",
+   "e8_main_report_e7_kitchen.json": "18bbc6a197d41be00d3b70fd2e429fac7541424d0e815d64f24ef00a18fcde53",
+   "e8_main_report_e7_porch.json": "92af675d6e7c843e69467416271c7c9128ab6b76f9ee1b0bf317cec3f5c61667",
+   "e8_main_report_ec_hallway.json": "2c6a7ef2ade4a2d28de91834d56b271aaa924c1a1db2ed3a4355a3f73ea0b7d8",
+   "e8_main_report_ec_kitchen.json": "4d86786c88a091926886c2b999d6c91121a14a8d59dc751fa86afeb21a94b43a",
+   "e8_main_report_ec_porch.json": "c82f1ae85aaf7d183578616bcb07392f7a68a78804a1463d26dce1b1fcac29a3"
+  },
+  "snapshot_at": 1791532754.0,
+  "stb_chain": {
+   "path": "<research-dir>/HOMEPROV-P13-exp/e8/e8_main/stb_chain.jsonl",
+   "records": 1509,
+   "sha256": "7ac24d8985f11f9035395669051c74c8d2bfea56cdd4a6dc9cb6f51265744f5b"
+  },
+  "stb_pubkey": {
+   "path": "<research-dir>/HOMEPROV-P13-exp/e8/e8_main/keys/stb_sign_pub.pem",
+   "sha256": "16de074e2469f31d2525733f25483ded7a18b408406fb1b91caf777e9aa001b1"
+  },
+  "stb_witness_heads": {
+   "heads": 1508,
+   "path": "<research-dir>/HOMEPROV-P13-exp/e8/e8_main/witness_stb/heads.jsonl",
+   "sha256": "c338e50f130b9ac487ab93ab4cfcab6df12423c5e8e78036dd3c3caddca15992"
+  },
+  "window": [
+   1791523970.0,
+   1791530123.0
+  ]
+ },
+ "monitors": {
+  "closure": {
+   "cases": {
+    "alter_signed": {
+     "chainverify_every_witnessed_head": {
+      "beyond_chain_seqs": 0,
+      "conflicting_seqs": 0,
+      "distinct_seqs": 1539,
+      "heads": 1539,
+      "latest_seq": 1539,
+      "link": "v2",
+      "matched": 21,
+      "mismatched_seqs": 1518,
+      "ok": false,
+      "records_after_latest_witnessed_head": 0,
+      "records_after_the_last_witnessed_head": 0
+     },
+     "flagged_seconds": 259,
+     "markers": {
+      "checked": false,
+      "marker_records": 1,
+      "note": "no operator key given: markers are not considered"
+     },
+     "records": 1539,
+     "root_unknown_second_segments": 1582,
+     "seconds_with_unobserved_late_rows": 0,
+     "signatures": {
+      "bad_signature": 570,
+      "checked": true,
+      "excluded_from_verification": 570,
+      "signed_ok": 968,
+      "unsigned": 0,
+      "wrong_key": 0
+     },
+     "stall_kinds": {
+      "polls_unrecorded": 53
+     },
+     "trial_seconds": {
+      "n": 629,
+      "outcomes": {
+       "unknown": 522,
+       "violation": 107
+      },
+      "transitions_from_honest": {
+       "violation->unknown": 522,
+       "violation->violation": 107
+      }
+     },
+     "untouched_seconds": {
+      "n": 1435,
+      "outcomes": {
+       "match": 366,
+       "unknown": 818,
+       "violation": 20,
+       "violation_coarse_only": 231
+      },
+      "transitions_from_honest": {
+       "match->match": 81,
+       "match->unknown": 15,
+       "violation->unknown": 746,
+       "violation->violation": 20,
+       "violation->violation_coarse_only": 2,
+       "violation_coarse_only->match": 285,
+       "violation_coarse_only->unknown": 57,
+       "violation_coarse_only->violation_coarse_only": 229
+      }
+     }
+    },
+    "cross_monitor": {
+     "chainverify_every_witnessed_head": {
+      "beyond_chain_seqs": 0,
+      "conflicting_seqs": 0,
+      "distinct_seqs": 1539,
+      "heads": 1539,
+      "latest_seq": 1539,
+      "link": "v2",
+      "matched": 0,
+      "mismatched_seqs": 1539,
+      "ok": false,
+      "records_after_latest_witnessed_head": 1508,
+      "records_after_the_last_witnessed_head": 1508
+     },
+     "flagged_seconds": 1662,
+     "markers": {
+      "checked": false,
+      "marker_records": 1,
+      "note": "no operator key given: markers are not considered"
+     },
+     "records": 3047,
+     "root_unknown_second_segments": 0,
+     "seconds_with_unobserved_late_rows": 0,
+     "signatures": {
+      "bad_signature": 0,
+      "checked": true,
+      "excluded_from_verification": 1508,
+      "signed_ok": 1538,
+      "unsigned": 0,
+      "wrong_key": 1508
+     },
+     "stall_kinds": {},
+     "trial_seconds": {
+      "n": 629,
+      "outcomes": {
+       "violation": 629
+      },
+      "transitions_from_honest": {
+       "violation->violation": 629
+      }
+     },
+     "untouched_seconds": {
+      "n": 1435,
+      "outcomes": {
+       "match": 96,
+       "violation": 768,
+       "violation_coarse_only": 571
+      },
+      "transitions_from_honest": {
+       "match->match": 96,
+       "violation->violation": 768,
+       "violation_coarse_only->violation_coarse_only": 571
+      }
+     }
+    },
+    "drop": {
+     "chainverify_every_witnessed_head": {
+      "beyond_chain_seqs": 570,
+      "conflicting_seqs": 0,
+      "distinct_seqs": 1539,
+      "heads": 1539,
+      "latest_seq": 1539,
+      "link": "v2",
+      "matched": 21,
+      "mismatched_seqs": 948,
+      "ok": false,
+      "records_after_latest_witnessed_head": 0,
+      "records_after_the_last_witnessed_head": 0
+     },
+     "flagged_seconds": 259,
+     "markers": {
+      "checked": false,
+      "marker_records": 1,
+      "note": "no operator key given: markers are not considered"
+     },
+     "records": 969,
+     "root_unknown_second_segments": 1582,
+     "seconds_with_unobserved_late_rows": 0,
+     "signatures": {
+      "bad_signature": 0,
+      "checked": true,
+      "excluded_from_verification": 0,
+      "signed_ok": 968,
+      "unsigned": 0,
+      "wrong_key": 0
+     },
+     "stall_kinds": {
+      "polls_unrecorded": 53
+     },
+     "trial_seconds": {
+      "n": 629,
+      "outcomes": {
+       "unknown": 522,
+       "violation": 107
+      },
+      "transitions_from_honest": {
+       "violation->unknown": 522,
+       "violation->violation": 107
+      }
+     },
+     "untouched_seconds": {
+      "n": 1435,
+      "outcomes": {
+       "match": 366,
+       "unknown": 818,
+       "violation": 20,
+       "violation_coarse_only": 231
+      },
+      "transitions_from_honest": {
+       "match->match": 81,
+       "match->unknown": 15,
+       "violation->unknown": 746,
+       "violation->violation": 20,
+       "violation->violation_coarse_only": 2,
+       "violation_coarse_only->match": 285,
+       "violation_coarse_only->unknown": 57,
+       "violation_coarse_only->violation_coarse_only": 229
+      }
+     }
+    },
+    "drop_all_evidence": {
+     "chainverify_every_witnessed_head": {
+      "beyond_chain_seqs": 606,
+      "conflicting_seqs": 0,
+      "distinct_seqs": 1539,
+      "heads": 1539,
+      "latest_seq": 1539,
+      "link": "v2",
+      "matched": 21,
+      "mismatched_seqs": 912,
+      "ok": false,
+      "records_after_latest_witnessed_head": 0,
+      "records_after_the_last_witnessed_head": 0
+     },
+     "flagged_seconds": 130,
+     "markers": {
+      "checked": false,
+      "marker_records": 1,
+      "note": "no operator key given: markers are not considered"
+     },
+     "records": 933,
+     "root_unknown_second_segments": 1638,
+     "seconds_with_unobserved_late_rows": 0,
+     "signatures": {
+      "bad_signature": 0,
+      "checked": true,
+      "excluded_from_verification": 0,
+      "signed_ok": 932,
+      "unsigned": 0,
+      "wrong_key": 0
+     },
+     "stall_kinds": {
+      "polls_unrecorded": 52
+     },
+     "trial_seconds": {
+      "n": 629,
+      "outcomes": {
+       "unknown": 629
+      },
+      "transitions_from_honest": {
+       "violation->unknown": 629
+      }
+     },
+     "untouched_seconds": {
+      "n": 1435,
+      "outcomes": {
+       "match": 564,
+       "unknown": 871
+      },
+      "transitions_from_honest": {
+       "match->match": 80,
+       "match->unknown": 16,
+       "violation->match": 2,
+       "violation->unknown": 766,
+       "violation_coarse_only->match": 482,
+       "violation_coarse_only->unknown": 89
+      }
+     }
+    },
+    "forge_unsigned": {
+     "chainverify_every_witnessed_head": {
+      "beyond_chain_seqs": 0,
+      "conflicting_seqs": 0,
+      "distinct_seqs": 1539,
+      "heads": 1539,
+      "latest_seq": 1539,
+      "link": "v2",
+      "matched": 14,
+      "mismatched_seqs": 1525,
+      "ok": false,
+      "records_after_latest_witnessed_head": 1066,
+      "records_after_the_last_witnessed_head": 1066
+     },
+     "flagged_seconds": 1662,
+     "markers": {
+      "checked": false,
+      "marker_records": 1,
+      "note": "no operator key given: markers are not considered"
+     },
+     "records": 2605,
+     "root_unknown_second_segments": 0,
+     "seconds_with_unobserved_late_rows": 0,
+     "signatures": {
+      "bad_signature": 0,
+      "checked": true,
+      "excluded_from_verification": 1066,
+      "signed_ok": 1538,
+      "unsigned": 1066,
+      "wrong_key": 0
+     },
+     "stall_kinds": {},
+     "trial_seconds": {
+      "n": 629,
+      "outcomes": {
+       "violation": 629
+      },
+      "transitions_from_honest": {
+       "violation->violation": 629
+      }
+     },
+     "untouched_seconds": {
+      "n": 1435,
+      "outcomes": {
+       "match": 96,
+       "violation": 768,
+       "violation_coarse_only": 571
+      },
+      "transitions_from_honest": {
+       "match->match": 96,
+       "violation->violation": 768,
+       "violation_coarse_only->violation_coarse_only": 571
+      }
+     }
+    },
+    "forge_unsigned_no_key": {
+     "chainverify_every_witnessed_head": {
+      "beyond_chain_seqs": 0,
+      "conflicting_seqs": 0,
+      "distinct_seqs": 1539,
+      "heads": 1539,
+      "latest_seq": 1539,
+      "link": "v2",
+      "matched": 14,
+      "mismatched_seqs": 1525,
+      "ok": false,
+      "records_after_latest_witnessed_head": 1066,
+      "records_after_the_last_witnessed_head": 1066
+     },
+     "flagged_seconds": 402,
+     "markers": {
+      "checked": false,
+      "marker_records": 1,
+      "note": "no operator key given: markers are not considered"
+     },
+     "records": 2605,
+     "root_unknown_second_segments": 0,
+     "seconds_with_unobserved_late_rows": 0,
+     "signatures": {
+      "checked": false
+     },
+     "stall_kinds": {},
+     "trial_seconds": {
+      "n": 629,
+      "outcomes": {
+       "match": 359,
+       "violation": 270
+      },
+      "transitions_from_honest": {
+       "violation->match": 359,
+       "violation->violation": 270
+      }
+     },
+     "untouched_seconds": {
+      "n": 1435,
+      "outcomes": {
+       "match": 1435
+      },
+      "transitions_from_honest": {
+       "match->match": 96,
+       "violation->match": 768,
+       "violation_coarse_only->match": 571
+      }
+     }
+    },
+    "forged_marker": {
+     "chainverify_every_witnessed_head": {
+      "beyond_chain_seqs": 0,
+      "conflicting_seqs": 0,
+      "distinct_seqs": 1539,
+      "heads": 1539,
+      "latest_seq": 1539,
+      "link": "v2",
+      "matched": 1080,
+      "mismatched_seqs": 459,
+      "ok": false,
+      "records_after_latest_witnessed_head": 1,
+      "records_after_the_last_witnessed_head": 1
+     },
+     "flagged_seconds": 1662,
+     "markers": {
+      "accepted": [],
+      "checked": true,
+      "hmac": true,
+      "pubkey_fp": "b5cdfa79aa79650317c4f2a666d653747c4766e22f238486b5f89629a4ff99b5",
+      "rejected": [
+       {
+        "chain_seq": 7,
+        "kind": "MIGRATE",
+        "why": "bad_marker_tag"
+       },
+       {
+        "chain_seq": 1081,
+        "kind": "PURGE",
+        "why": "unsigned"
+       }
+      ],
+      "signature": true
+     },
+     "records": 1540,
+     "root_unknown_second_segments": 0,
+     "seconds_with_unobserved_late_rows": 0,
+     "signatures": {
+      "bad_signature": 0,
+      "checked": true,
+      "excluded_from_verification": 0,
+      "signed_ok": 1538,
+      "unsigned": 0,
+      "wrong_key": 0
+     },
+     "stall_kinds": {},
+     "trial_seconds": {
+      "n": 629,
+      "outcomes": {
+       "violation": 629
+      },
+      "transitions_from_honest": {
+       "violation->violation": 629
+      }
+     },
+     "untouched_seconds": {
+      "n": 1435,
+      "outcomes": {
+       "match": 96,
+       "violation": 768,
+       "violation_coarse_only": 571
+      },
+      "transitions_from_honest": {
+       "match->match": 96,
+       "violation->violation": 768,
+       "violation_coarse_only->violation_coarse_only": 571
+      }
+     }
+    },
+    "forged_marker_hmac_only": {
+     "chainverify_every_witnessed_head": {
+      "beyond_chain_seqs": 0,
+      "conflicting_seqs": 0,
+      "distinct_seqs": 1539,
+      "heads": 1539,
+      "latest_seq": 1539,
+      "link": "v2",
+      "matched": 1080,
+      "mismatched_seqs": 459,
+      "ok": false,
+      "records_after_latest_witnessed_head": 1,
+      "records_after_the_last_witnessed_head": 1
+     },
+     "excused_violations": 2,
+     "flagged_seconds": 1662,
+     "markers": {
+      "accepted": [
+       {
+        "chain_seq": 1081,
+        "kind": "PURGE"
+       }
+      ],
+      "checked": true,
+      "hmac": true,
+      "pubkey_fp": null,
+      "rejected": [
+       {
+        "chain_seq": 7,
+        "kind": "MIGRATE",
+        "why": "bad_marker_tag"
+       }
+      ],
+      "signature": false
+     },
+     "purge": {
+      "cutoffs": [
+       {
+        "chain_seq": 1081,
+        "cutoff": 1791533723.0,
+        "issued_ts": 1794125603.0,
+        "scheduled_ts": 1794125723.0
+       }
+      ],
+      "excused": {
+       "disconnect_segments": {},
+       "keylog_ranges_purged": 15,
+       "keylog_ranges_with_disconnects": 0,
+       "segments_before_cutoff": {
+        "second": 2
+       },
+       "straddling": {}
+      }
+     },
+     "records": 1540,
+     "root_unknown_second_segments": 0,
+     "seconds_with_unobserved_late_rows": 0,
+     "signatures": {
+      "bad_signature": 0,
+      "checked": true,
+      "excluded_from_verification": 0,
+      "signed_ok": 1538,
+      "unsigned": 0,
+      "wrong_key": 0
+     },
+     "stall_kinds": {},
+     "trial_seconds": {
+      "n": 629,
+      "outcomes": {
+       "violation": 629
+      },
+      "transitions_from_honest": {
+       "violation->violation": 629
+      }
+     },
+     "untouched_seconds": {
+      "n": 1435,
+      "outcomes": {
+       "match": 96,
+       "violation": 768,
+       "violation_coarse_only": 571
+      },
+      "transitions_from_honest": {
+       "match->match": 96,
+       "violation->violation": 768,
+       "violation_coarse_only->violation_coarse_only": 571
+      }
+     }
+    },
+    "honest": {
+     "chainverify_every_witnessed_head": {
+      "beyond_chain_seqs": 0,
+      "conflicting_seqs": 0,
+      "distinct_seqs": 1539,
+      "heads": 1539,
+      "latest_seq": 1539,
+      "link": "v2",
+      "matched": 1539,
+      "mismatched_seqs": 0,
+      "ok": true,
+      "records_after_latest_witnessed_head": 0,
+      "records_after_the_last_witnessed_head": 0
+     },
+     "flagged_seconds": 1662,
+     "markers": {
+      "checked": false,
+      "marker_records": 1,
+      "note": "no operator key given: markers are not considered"
+     },
+     "records": 1539,
+     "root_unknown_second_segments": 0,
+     "seconds_with_unobserved_late_rows": 0,
+     "signatures": {
+      "bad_signature": 0,
+      "checked": true,
+      "excluded_from_verification": 0,
+      "signed_ok": 1538,
+      "unsigned": 0,
+      "wrong_key": 0
+     },
+     "stall_kinds": {},
+     "trial_seconds": {
+      "n": 629,
+      "outcomes": {
+       "violation": 629
+      }
+     },
+     "untouched_seconds": {
+      "n": 1435,
+      "outcomes": {
+       "match": 96,
+       "violation": 768,
+       "violation_coarse_only": 571
+      }
+     }
+    },
+    "reorder": {
+     "chainverify_every_witnessed_head": {
+      "beyond_chain_seqs": 0,
+      "conflicting_seqs": 0,
+      "distinct_seqs": 1539,
+      "heads": 1539,
+      "latest_seq": 1539,
+      "link": "v2",
+      "matched": 14,
+      "mismatched_seqs": 1525,
+      "ok": false,
+      "records_after_latest_witnessed_head": 0,
+      "records_after_the_last_witnessed_head": 0
+     },
+     "flagged_seconds": 1662,
+     "markers": {
+      "checked": false,
+      "marker_records": 1,
+      "note": "no operator key given: markers are not considered"
+     },
+     "records": 1539,
+     "root_unknown_second_segments": 0,
+     "seconds_with_unobserved_late_rows": 0,
+     "signatures": {
+      "bad_signature": 0,
+      "checked": true,
+      "excluded_from_verification": 0,
+      "signed_ok": 1538,
+      "unsigned": 0,
+      "wrong_key": 0
+     },
+     "stall_kinds": {},
+     "trial_seconds": {
+      "n": 629,
+      "outcomes": {
+       "violation": 629
+      },
+      "transitions_from_honest": {
+       "violation->violation": 629
+      }
+     },
+     "untouched_seconds": {
+      "n": 1435,
+      "outcomes": {
+       "match": 96,
+       "violation": 768,
+       "violation_coarse_only": 571
+      },
+      "transitions_from_honest": {
+       "match->match": 96,
+       "violation->violation": 768,
+       "violation_coarse_only->violation_coarse_only": 571
+      }
+     }
+    },
+    "replay": {
+     "chainverify_every_witnessed_head": {
+      "beyond_chain_seqs": 0,
+      "conflicting_seqs": 0,
+      "distinct_seqs": 1539,
+      "heads": 1539,
+      "latest_seq": 1539,
+      "link": "v2",
+      "matched": 1539,
+      "mismatched_seqs": 0,
+      "ok": true,
+      "records_after_latest_witnessed_head": 50,
+      "records_after_the_last_witnessed_head": 50
+     },
+     "flagged_seconds": 1662,
+     "markers": {
+      "checked": false,
+      "marker_records": 1,
+      "note": "no operator key given: markers are not considered"
+     },
+     "records": 1589,
+     "root_unknown_second_segments": 0,
+     "seconds_with_unobserved_late_rows": 0,
+     "signatures": {
+      "bad_signature": 0,
+      "checked": true,
+      "excluded_from_verification": 0,
+      "signed_ok": 1588,
+      "unsigned": 0,
+      "wrong_key": 0
+     },
+     "stall_kinds": {},
+     "trial_seconds": {
+      "n": 629,
+      "outcomes": {
+       "violation": 629
+      },
+      "transitions_from_honest": {
+       "violation->violation": 629
+      }
+     },
+     "untouched_seconds": {
+      "n": 1435,
+      "outcomes": {
+       "match": 96,
+       "violation": 768,
+       "violation_coarse_only": 571
+      },
+      "transitions_from_honest": {
+       "match->match": 96,
+       "violation->violation": 768,
+       "violation_coarse_only->violation_coarse_only": 571
+      }
+     }
+    },
+    "truncate": {
+     "chainverify_every_witnessed_head": {
+      "beyond_chain_seqs": 994,
+      "conflicting_seqs": 0,
+      "distinct_seqs": 1539,
+      "heads": 1539,
+      "latest_seq": 1539,
+      "link": "v2",
+      "matched": 545,
+      "mismatched_seqs": 0,
+      "ok": false,
+      "records_after_latest_witnessed_head": 0,
+      "records_after_the_last_witnessed_head": 0
+     },
+     "flagged_seconds": 781,
+     "markers": {
+      "checked": false,
+      "marker_records": 1,
+      "note": "no operator key given: markers are not considered"
+     },
+     "records": 545,
+     "root_unknown_second_segments": 0,
+     "seconds_with_unobserved_late_rows": 0,
+     "signatures": {
+      "bad_signature": 0,
+      "checked": true,
+      "excluded_from_verification": 0,
+      "signed_ok": 544,
+      "unsigned": 0,
+      "wrong_key": 0
+     },
+     "stall_kinds": {},
+     "trial_seconds": {
+      "n": 629,
+      "outcomes": {
+       "unknown": 319,
+       "violation": 310
+      },
+      "transitions_from_honest": {
+       "violation->unknown": 319,
+       "violation->violation": 310
+      }
+     },
+     "untouched_seconds": {
+      "n": 1435,
+      "outcomes": {
+       "match": 88,
+       "unknown": 699,
+       "violation": 427,
+       "violation_coarse_only": 221
+      },
+      "transitions_from_honest": {
+       "match->unknown": 96,
+       "violation->unknown": 341,
+       "violation->violation": 427,
+       "violation_coarse_only->match": 88,
+       "violation_coarse_only->unknown": 262,
+       "violation_coarse_only->violation_coarse_only": 221
+      }
+     }
+    },
+    "withhold": {
+     "chainverify_every_witnessed_head": {
+      "beyond_chain_seqs": 155,
+      "conflicting_seqs": 0,
+      "distinct_seqs": 1539,
+      "heads": 1539,
+      "latest_seq": 1539,
+      "link": "v2",
+      "matched": 117,
+      "mismatched_seqs": 1267,
+      "ok": false,
+      "records_after_latest_witnessed_head": 0,
+      "records_after_the_last_witnessed_head": 0
+     },
+     "flagged_seconds": 1453,
+     "markers": {
+      "checked": false,
+      "marker_records": 1,
+      "note": "no operator key given: markers are not considered"
+     },
+     "records": 1384,
+     "root_unknown_second_segments": 325,
+     "seconds_with_unobserved_late_rows": 0,
+     "signatures": {
+      "bad_signature": 0,
+      "checked": true,
+      "excluded_from_verification": 0,
+      "signed_ok": 1383,
+      "unsigned": 0,
+      "wrong_key": 0
+     },
+     "stall_kinds": {
+      "polls_unrecorded": 1
+     },
+     "trial_seconds": {
+      "n": 629,
+      "outcomes": {
+       "unknown": 60,
+       "violation": 569
+      },
+      "transitions_from_honest": {
+       "violation->unknown": 60,
+       "violation->violation": 569
+      }
+     },
+     "untouched_seconds": {
+      "n": 1435,
+      "outcomes": {
+       "match": 96,
+       "unknown": 199,
+       "violation": 656,
+       "violation_coarse_only": 484
+      },
+      "transitions_from_honest": {
+       "match->match": 96,
+       "violation->unknown": 112,
+       "violation->violation": 656,
+       "violation_coarse_only->unknown": 87,
+       "violation_coarse_only->violation_coarse_only": 484
+      }
+     }
+    }
+   },
+   "counting_rule": "verify_all.touched_segments",
+   "property": {
+    "trial_second_violation_to_match": {
+     "alter_signed": 0,
+     "cross_monitor": 0,
+     "drop": 0,
+     "drop_all_evidence": 0,
+     "forge_unsigned": 0,
+     "forge_unsigned_no_key": 359,
+     "forged_marker": 0,
+     "forged_marker_hmac_only": 0,
+     "reorder": 0,
+     "replay": 0,
+     "truncate": 0,
+     "withhold": 0
+    },
+    "untouched_second_match_to_violation": {
+     "alter_signed": 0,
+     "cross_monitor": 0,
+     "drop": 0,
+     "drop_all_evidence": 0,
+     "forge_unsigned": 0,
+     "forge_unsigned_no_key": 0,
+     "forged_marker": 0,
+     "forged_marker_hmac_only": 0,
+     "reorder": 0,
+     "replay": 0,
+     "truncate": 0,
+     "withhold": 0
+    }
+   },
+   "trial_seconds": 629,
+   "trials": 630,
+   "untouched_anchored_seconds": 1435
+  },
+  "stable": {
+   "cases": {
+    "alter_signed": {
+     "chainverify_every_witnessed_head": {
+      "beyond_chain_seqs": 0,
+      "conflicting_seqs": 0,
+      "distinct_seqs": 1508,
+      "heads": 1508,
+      "latest_seq": 1509,
+      "link": "v2",
+      "matched": 21,
+      "mismatched_seqs": 1487,
+      "ok": false,
+      "records_after_latest_witnessed_head": 0,
+      "records_after_the_last_witnessed_head": 0
+     },
+     "flagged_seconds": 255,
+     "markers": {
+      "checked": false,
+      "marker_records": 1,
+      "note": "no operator key given: markers are not considered"
+     },
+     "records": 1509,
+     "root_unknown_second_segments": 1598,
+     "seconds_with_unobserved_late_rows": 0,
+     "signatures": {
+      "bad_signature": 568,
+      "checked": true,
+      "excluded_from_verification": 568,
+      "signed_ok": 940,
+      "unsigned": 0,
+      "wrong_key": 0
+     },
+     "stall_kinds": {
+      "polls_unrecorded": 43
+     },
+     "trial_seconds": {
+      "n": 629,
+      "outcomes": {
+       "unknown": 524,
+       "violation": 105
+      },
+      "transitions_from_honest": {
+       "violation->unknown": 524,
+       "violation->violation": 105
+      }
+     },
+     "untouched_seconds": {
+      "n": 1435,
+      "outcomes": {
+       "match": 354,
+       "unknown": 832,
+       "violation": 17,
+       "violation_coarse_only": 232
+      },
+      "transitions_from_honest": {
+       "match->match": 81,
+       "match->unknown": 15,
+       "violation->match": 1,
+       "violation->unknown": 769,
+       "violation->violation": 17,
+       "violation->violation_coarse_only": 4,
+       "violation_coarse_only->match": 272,
+       "violation_coarse_only->unknown": 48,
+       "violation_coarse_only->violation_coarse_only": 228
+      }
+     }
+    },
+    "cross_monitor": {
+     "chainverify_every_witnessed_head": {
+      "beyond_chain_seqs": 0,
+      "conflicting_seqs": 0,
+      "distinct_seqs": 1508,
+      "heads": 1508,
+      "latest_seq": 1509,
+      "link": "v2",
+      "matched": 1,
+      "mismatched_seqs": 1507,
+      "ok": false,
+      "records_after_latest_witnessed_head": 1538,
+      "records_after_the_last_witnessed_head": 1538
+     },
+     "flagged_seconds": 1688,
+     "markers": {
+      "checked": false,
+      "marker_records": 1,
+      "note": "no operator key given: markers are not considered"
+     },
+     "records": 3047,
+     "root_unknown_second_segments": 0,
+     "seconds_with_unobserved_late_rows": 0,
+     "signatures": {
+      "bad_signature": 0,
+      "checked": true,
+      "excluded_from_verification": 1538,
+      "signed_ok": 1508,
+      "unsigned": 0,
+      "wrong_key": 1538
+     },
+     "stall_kinds": {},
+     "trial_seconds": {
+      "n": 629,
+      "outcomes": {
+       "violation": 629
+      },
+      "transitions_from_honest": {
+       "violation->violation": 629
+      }
+     },
+     "untouched_seconds": {
+      "n": 1435,
+      "outcomes": {
+       "match": 96,
+       "violation": 791,
+       "violation_coarse_only": 548
+      },
+      "transitions_from_honest": {
+       "match->match": 96,
+       "violation->violation": 791,
+       "violation_coarse_only->violation_coarse_only": 548
+      }
+     }
+    },
+    "drop": {
+     "chainverify_every_witnessed_head": {
+      "beyond_chain_seqs": 568,
+      "conflicting_seqs": 0,
+      "distinct_seqs": 1508,
+      "heads": 1508,
+      "latest_seq": 1509,
+      "link": "v2",
+      "matched": 21,
+      "mismatched_seqs": 919,
+      "ok": false,
+      "records_after_latest_witnessed_head": 0,
+      "records_after_the_last_witnessed_head": 0
+     },
+     "flagged_seconds": 255,
+     "markers": {
+      "checked": false,
+      "marker_records": 1,
+      "note": "no operator key given: markers are not considered"
+     },
+     "records": 941,
+     "root_unknown_second_segments": 1598,
+     "seconds_with_unobserved_late_rows": 0,
+     "signatures": {
+      "bad_signature": 0,
+      "checked": true,
+      "excluded_from_verification": 0,
+      "signed_ok": 940,
+      "unsigned": 0,
+      "wrong_key": 0
+     },
+     "stall_kinds": {
+      "polls_unrecorded": 43
+     },
+     "trial_seconds": {
+      "n": 629,
+      "outcomes": {
+       "unknown": 524,
+       "violation": 105
+      },
+      "transitions_from_honest": {
+       "violation->unknown": 524,
+       "violation->violation": 105
+      }
+     },
+     "untouched_seconds": {
+      "n": 1435,
+      "outcomes": {
+       "match": 354,
+       "unknown": 832,
+       "violation": 17,
+       "violation_coarse_only": 232
+      },
+      "transitions_from_honest": {
+       "match->match": 81,
+       "match->unknown": 15,
+       "violation->match": 1,
+       "violation->unknown": 769,
+       "violation->violation": 17,
+       "violation->violation_coarse_only": 4,
+       "violation_coarse_only->match": 272,
+       "violation_coarse_only->unknown": 48,
+       "violation_coarse_only->violation_coarse_only": 228
+      }
+     }
+    },
+    "drop_all_evidence": {
+     "chainverify_every_witnessed_head": {
+      "beyond_chain_seqs": 596,
+      "conflicting_seqs": 0,
+      "distinct_seqs": 1508,
+      "heads": 1508,
+      "latest_seq": 1509,
+      "link": "v2",
+      "matched": 21,
+      "mismatched_seqs": 891,
+      "ok": false,
+      "records_after_latest_witnessed_head": 0,
+      "records_after_the_last_witnessed_head": 0
+     },
+     "flagged_seconds": 131,
+     "markers": {
+      "checked": false,
+      "marker_records": 1,
+      "note": "no operator key given: markers are not considered"
+     },
+     "records": 913,
+     "root_unknown_second_segments": 1639,
+     "seconds_with_unobserved_late_rows": 0,
+     "signatures": {
+      "bad_signature": 0,
+      "checked": true,
+      "excluded_from_verification": 0,
+      "signed_ok": 912,
+      "unsigned": 0,
+      "wrong_key": 0
+     },
+     "stall_kinds": {
+      "polls_unrecorded": 49
+     },
+     "trial_seconds": {
+      "n": 629,
+      "outcomes": {
+       "unknown": 629
+      },
+      "transitions_from_honest": {
+       "violation->unknown": 629
+      }
+     },
+     "untouched_seconds": {
+      "n": 1435,
+      "outcomes": {
+       "match": 564,
+       "unknown": 871
+      },
+      "transitions_from_honest": {
+       "match->match": 80,
+       "match->unknown": 16,
+       "violation->match": 5,
+       "violation->unknown": 786,
+       "violation_coarse_only->match": 479,
+       "violation_coarse_only->unknown": 69
+      }
+     }
+    },
+    "forge_unsigned": {
+     "chainverify_every_witnessed_head": {
+      "beyond_chain_seqs": 0,
+      "conflicting_seqs": 0,
+      "distinct_seqs": 1508,
+      "heads": 1508,
+      "latest_seq": 1509,
+      "link": "v2",
+      "matched": 14,
+      "mismatched_seqs": 1494,
+      "ok": false,
+      "records_after_latest_witnessed_head": 1048,
+      "records_after_the_last_witnessed_head": 1048
+     },
+     "flagged_seconds": 1688,
+     "markers": {
+      "checked": false,
+      "marker_records": 1,
+      "note": "no operator key given: markers are not considered"
+     },
+     "records": 2557,
+     "root_unknown_second_segments": 0,
+     "seconds_with_unobserved_late_rows": 0,
+     "signatures": {
+      "bad_signature": 0,
+      "checked": true,
+      "excluded_from_verification": 1048,
+      "signed_ok": 1508,
+      "unsigned": 1048,
+      "wrong_key": 0
+     },
+     "stall_kinds": {},
+     "trial_seconds": {
+      "n": 629,
+      "outcomes": {
+       "violation": 629
+      },
+      "transitions_from_honest": {
+       "violation->violation": 629
+      }
+     },
+     "untouched_seconds": {
+      "n": 1435,
+      "outcomes": {
+       "match": 96,
+       "violation": 791,
+       "violation_coarse_only": 548
+      },
+      "transitions_from_honest": {
+       "match->match": 96,
+       "violation->violation": 791,
+       "violation_coarse_only->violation_coarse_only": 548
+      }
+     }
+    },
+    "forge_unsigned_no_key": {
+     "chainverify_every_witnessed_head": {
+      "beyond_chain_seqs": 0,
+      "conflicting_seqs": 0,
+      "distinct_seqs": 1508,
+      "heads": 1508,
+      "latest_seq": 1509,
+      "link": "v2",
+      "matched": 14,
+      "mismatched_seqs": 1494,
+      "ok": false,
+      "records_after_latest_witnessed_head": 1048,
+      "records_after_the_last_witnessed_head": 1048
+     },
+     "flagged_seconds": 403,
+     "markers": {
+      "checked": false,
+      "marker_records": 1,
+      "note": "no operator key given: markers are not considered"
+     },
+     "records": 2557,
+     "root_unknown_second_segments": 0,
+     "seconds_with_unobserved_late_rows": 0,
+     "signatures": {
+      "checked": false
+     },
+     "stall_kinds": {},
+     "trial_seconds": {
+      "n": 629,
+      "outcomes": {
+       "match": 359,
+       "violation": 270
+      },
+      "transitions_from_honest": {
+       "violation->match": 359,
+       "violation->violation": 270
+      }
+     },
+     "untouched_seconds": {
+      "n": 1435,
+      "outcomes": {
+       "match": 1435
+      },
+      "transitions_from_honest": {
+       "match->match": 96,
+       "violation->match": 791,
+       "violation_coarse_only->match": 548
+      }
+     }
+    },
+    "forged_marker": {
+     "chainverify_every_witnessed_head": {
+      "beyond_chain_seqs": 0,
+      "conflicting_seqs": 0,
+      "distinct_seqs": 1508,
+      "heads": 1508,
+      "latest_seq": 1509,
+      "link": "v2",
+      "matched": 1061,
+      "mismatched_seqs": 447,
+      "ok": false,
+      "records_after_latest_witnessed_head": 1,
+      "records_after_the_last_witnessed_head": 1
+     },
+     "flagged_seconds": 1688,
+     "markers": {
+      "accepted": [],
+      "checked": true,
+      "hmac": true,
+      "pubkey_fp": "b5cdfa79aa79650317c4f2a666d653747c4766e22f238486b5f89629a4ff99b5",
+      "rejected": [
+       {
+        "chain_seq": 7,
+        "kind": "MIGRATE",
+        "why": "bad_marker_tag"
+       },
+       {
+        "chain_seq": 1063,
+        "kind": "PURGE",
+        "why": "unsigned"
+       }
+      ],
+      "signature": true
+     },
+     "records": 1510,
+     "root_unknown_second_segments": 0,
+     "seconds_with_unobserved_late_rows": 0,
+     "signatures": {
+      "bad_signature": 0,
+      "checked": true,
+      "excluded_from_verification": 0,
+      "signed_ok": 1508,
+      "unsigned": 0,
+      "wrong_key": 0
+     },
+     "stall_kinds": {},
+     "trial_seconds": {
+      "n": 629,
+      "outcomes": {
+       "violation": 629
+      },
+      "transitions_from_honest": {
+       "violation->violation": 629
+      }
+     },
+     "untouched_seconds": {
+      "n": 1435,
+      "outcomes": {
+       "match": 96,
+       "violation": 791,
+       "violation_coarse_only": 548
+      },
+      "transitions_from_honest": {
+       "match->match": 96,
+       "violation->violation": 791,
+       "violation_coarse_only->violation_coarse_only": 548
+      }
+     }
+    },
+    "forged_marker_hmac_only": {
+     "chainverify_every_witnessed_head": {
+      "beyond_chain_seqs": 0,
+      "conflicting_seqs": 0,
+      "distinct_seqs": 1508,
+      "heads": 1508,
+      "latest_seq": 1509,
+      "link": "v2",
+      "matched": 1061,
+      "mismatched_seqs": 447,
+      "ok": false,
+      "records_after_latest_witnessed_head": 1,
+      "records_after_the_last_witnessed_head": 1
+     },
+     "excused_violations": 2,
+     "flagged_seconds": 1688,
+     "markers": {
+      "accepted": [
+       {
+        "chain_seq": 1063,
+        "kind": "PURGE"
+       }
+      ],
+      "checked": true,
+      "hmac": true,
+      "pubkey_fp": null,
+      "rejected": [
+       {
+        "chain_seq": 7,
+        "kind": "MIGRATE",
+        "why": "bad_marker_tag"
+       }
+      ],
+      "signature": false
+     },
+     "purge": {
+      "cutoffs": [
+       {
+        "chain_seq": 1063,
+        "cutoff": 1791533723.0,
+        "issued_ts": 1794125603.0,
+        "scheduled_ts": 1794125723.0
+       }
+      ],
+      "excused": {
+       "disconnect_segments": {},
+       "keylog_ranges_purged": 13,
+       "keylog_ranges_with_disconnects": 0,
+       "segments_before_cutoff": {
+        "second": 2
+       },
+       "straddling": {}
+      }
+     },
+     "records": 1510,
+     "root_unknown_second_segments": 0,
+     "seconds_with_unobserved_late_rows": 0,
+     "signatures": {
+      "bad_signature": 0,
+      "checked": true,
+      "excluded_from_verification": 0,
+      "signed_ok": 1508,
+      "unsigned": 0,
+      "wrong_key": 0
+     },
+     "stall_kinds": {},
+     "trial_seconds": {
+      "n": 629,
+      "outcomes": {
+       "violation": 629
+      },
+      "transitions_from_honest": {
+       "violation->violation": 629
+      }
+     },
+     "untouched_seconds": {
+      "n": 1435,
+      "outcomes": {
+       "match": 96,
+       "violation": 791,
+       "violation_coarse_only": 548
+      },
+      "transitions_from_honest": {
+       "match->match": 96,
+       "violation->violation": 791,
+       "violation_coarse_only->violation_coarse_only": 548
+      }
+     }
+    },
+    "honest": {
+     "chainverify_every_witnessed_head": {
+      "beyond_chain_seqs": 0,
+      "conflicting_seqs": 0,
+      "distinct_seqs": 1508,
+      "heads": 1508,
+      "latest_seq": 1509,
+      "link": "v2",
+      "matched": 1508,
+      "mismatched_seqs": 0,
+      "ok": true,
+      "records_after_latest_witnessed_head": 0,
+      "records_after_the_last_witnessed_head": 0
+     },
+     "flagged_seconds": 1688,
+     "markers": {
+      "checked": false,
+      "marker_records": 1,
+      "note": "no operator key given: markers are not considered"
+     },
+     "records": 1509,
+     "root_unknown_second_segments": 0,
+     "seconds_with_unobserved_late_rows": 0,
+     "signatures": {
+      "bad_signature": 0,
+      "checked": true,
+      "excluded_from_verification": 0,
+      "signed_ok": 1508,
+      "unsigned": 0,
+      "wrong_key": 0
+     },
+     "stall_kinds": {},
+     "trial_seconds": {
+      "n": 629,
+      "outcomes": {
+       "violation": 629
+      }
+     },
+     "untouched_seconds": {
+      "n": 1435,
+      "outcomes": {
+       "match": 96,
+       "violation": 791,
+       "violation_coarse_only": 548
+      }
+     }
+    },
+    "reorder": {
+     "chainverify_every_witnessed_head": {
+      "beyond_chain_seqs": 0,
+      "conflicting_seqs": 0,
+      "distinct_seqs": 1508,
+      "heads": 1508,
+      "latest_seq": 1509,
+      "link": "v2",
+      "matched": 14,
+      "mismatched_seqs": 1494,
+      "ok": false,
+      "records_after_latest_witnessed_head": 0,
+      "records_after_the_last_witnessed_head": 0
+     },
+     "flagged_seconds": 1688,
+     "markers": {
+      "checked": false,
+      "marker_records": 1,
+      "note": "no operator key given: markers are not considered"
+     },
+     "records": 1509,
+     "root_unknown_second_segments": 0,
+     "seconds_with_unobserved_late_rows": 0,
+     "signatures": {
+      "bad_signature": 0,
+      "checked": true,
+      "excluded_from_verification": 0,
+      "signed_ok": 1508,
+      "unsigned": 0,
+      "wrong_key": 0
+     },
+     "stall_kinds": {},
+     "trial_seconds": {
+      "n": 629,
+      "outcomes": {
+       "violation": 629
+      },
+      "transitions_from_honest": {
+       "violation->violation": 629
+      }
+     },
+     "untouched_seconds": {
+      "n": 1435,
+      "outcomes": {
+       "match": 96,
+       "violation": 791,
+       "violation_coarse_only": 548
+      },
+      "transitions_from_honest": {
+       "match->match": 96,
+       "violation->violation": 791,
+       "violation_coarse_only->violation_coarse_only": 548
+      }
+     }
+    },
+    "replay": {
+     "chainverify_every_witnessed_head": {
+      "beyond_chain_seqs": 0,
+      "conflicting_seqs": 0,
+      "distinct_seqs": 1508,
+      "heads": 1508,
+      "latest_seq": 1509,
+      "link": "v2",
+      "matched": 1508,
+      "mismatched_seqs": 0,
+      "ok": true,
+      "records_after_latest_witnessed_head": 50,
+      "records_after_the_last_witnessed_head": 50
+     },
+     "flagged_seconds": 1688,
+     "markers": {
+      "checked": false,
+      "marker_records": 1,
+      "note": "no operator key given: markers are not considered"
+     },
+     "records": 1559,
+     "root_unknown_second_segments": 0,
+     "seconds_with_unobserved_late_rows": 0,
+     "signatures": {
+      "bad_signature": 0,
+      "checked": true,
+      "excluded_from_verification": 0,
+      "signed_ok": 1558,
+      "unsigned": 0,
+      "wrong_key": 0
+     },
+     "stall_kinds": {},
+     "trial_seconds": {
+      "n": 629,
+      "outcomes": {
+       "violation": 629
+      },
+      "transitions_from_honest": {
+       "violation->violation": 629
+      }
+     },
+     "untouched_seconds": {
+      "n": 1435,
+      "outcomes": {
+       "match": 96,
+       "violation": 791,
+       "violation_coarse_only": 548
+      },
+      "transitions_from_honest": {
+       "match->match": 96,
+       "violation->violation": 791,
+       "violation_coarse_only->violation_coarse_only": 548
+      }
+     }
+    },
+    "truncate": {
+     "chainverify_every_witnessed_head": {
+      "beyond_chain_seqs": 968,
+      "conflicting_seqs": 0,
+      "distinct_seqs": 1508,
+      "heads": 1508,
+      "latest_seq": 1509,
+      "link": "v2",
+      "matched": 540,
+      "mismatched_seqs": 0,
+      "ok": false,
+      "records_after_latest_witnessed_head": 0,
+      "records_after_the_last_witnessed_head": 0
+     },
+     "flagged_seconds": 781,
+     "markers": {
+      "checked": false,
+      "marker_records": 1,
+      "note": "no operator key given: markers are not considered"
+     },
+     "records": 540,
+     "root_unknown_second_segments": 0,
+     "seconds_with_unobserved_late_rows": 1,
+     "signatures": {
+      "bad_signature": 0,
+      "checked": true,
+      "excluded_from_verification": 0,
+      "signed_ok": 539,
+      "unsigned": 0,
+      "wrong_key": 0
+     },
+     "stall_kinds": {},
+     "trial_seconds": {
+      "n": 629,
+      "outcomes": {
+       "unknown": 320,
+       "violation": 309
+      },
+      "transitions_from_honest": {
+       "violation->unknown": 320,
+       "violation->violation": 309
+      }
+     },
+     "untouched_seconds": {
+      "n": 1435,
+      "outcomes": {
+       "match": 88,
+       "unknown": 699,
+       "violation": 428,
+       "violation_coarse_only": 220
+      },
+      "transitions_from_honest": {
+       "match->unknown": 96,
+       "violation->unknown": 363,
+       "violation->violation": 428,
+       "violation_coarse_only->match": 88,
+       "violation_coarse_only->unknown": 240,
+       "violation_coarse_only->violation_coarse_only": 220
+      }
+     }
+    },
+    "withhold": {
+     "chainverify_every_witnessed_head": {
+      "beyond_chain_seqs": 154,
+      "conflicting_seqs": 0,
+      "distinct_seqs": 1508,
+      "heads": 1508,
+      "latest_seq": 1509,
+      "link": "v2",
+      "matched": 117,
+      "mismatched_seqs": 1237,
+      "ok": false,
+      "records_after_latest_witnessed_head": 0,
+      "records_after_the_last_witnessed_head": 0
+     },
+     "flagged_seconds": 1477,
+     "markers": {
+      "checked": false,
+      "marker_records": 1,
+      "note": "no operator key given: markers are not considered"
+     },
+     "records": 1355,
+     "root_unknown_second_segments": 327,
+     "seconds_with_unobserved_late_rows": 0,
+     "signatures": {
+      "bad_signature": 0,
+      "checked": true,
+      "excluded_from_verification": 0,
+      "signed_ok": 1354,
+      "unsigned": 0,
+      "wrong_key": 0
+     },
+     "stall_kinds": {
+      "polls_unrecorded": 1
+     },
+     "trial_seconds": {
+      "n": 629,
+      "outcomes": {
+       "unknown": 60,
+       "violation": 569
+      },
+      "transitions_from_honest": {
+       "violation->unknown": 60,
+       "violation->violation": 569
+      }
+     },
+     "untouched_seconds": {
+      "n": 1435,
+      "outcomes": {
+       "match": 96,
+       "unknown": 199,
+       "violation": 677,
+       "violation_coarse_only": 463
+      },
+      "transitions_from_honest": {
+       "match->match": 96,
+       "violation->unknown": 114,
+       "violation->violation": 677,
+       "violation_coarse_only->unknown": 85,
+       "violation_coarse_only->violation_coarse_only": 463
+      }
+     }
+    }
+   },
+   "counting_rule": "verify_all.touched_segments",
+   "property": {
+    "trial_second_violation_to_match": {
+     "alter_signed": 0,
+     "cross_monitor": 0,
+     "drop": 0,
+     "drop_all_evidence": 0,
+     "forge_unsigned": 0,
+     "forge_unsigned_no_key": 359,
+     "forged_marker": 0,
+     "forged_marker_hmac_only": 0,
+     "reorder": 0,
+     "replay": 0,
+     "truncate": 0,
+     "withhold": 0
+    },
+    "untouched_second_match_to_violation": {
+     "alter_signed": 0,
+     "cross_monitor": 0,
+     "drop": 0,
+     "drop_all_evidence": 0,
+     "forge_unsigned": 0,
+     "forge_unsigned_no_key": 0,
+     "forged_marker": 0,
+     "forged_marker_hmac_only": 0,
+     "reorder": 0,
+     "replay": 0,
+     "truncate": 0,
+     "withhold": 0
+    }
+   },
+   "trial_seconds": 629,
+   "trials": 630,
+   "untouched_anchored_seconds": 1435
+  }
+ },
+ "parameters": {
+  "gap_s": 30.0,
+  "keep_s_for_markers": 2592000.0,
+  "late_bound_s": 30.0
+ }
+}

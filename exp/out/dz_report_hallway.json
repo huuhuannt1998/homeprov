@@ -1,0 +1,8162 @@
+{
+ "experiment": "E-DZ",
+ "room": "hallway",
+ "tag": "dz",
+ "lock_device_idx": 4,
+ "light_device_idx": 2,
+ "integration": {
+  "pid": 1,
+  "uid": 0,
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "sqlite": "3.46.1",
+  "hardware_name": "LockBridge",
+  "hardware_id": 3,
+  "domoticz_version": "2026.3",
+  "domoticz_hash": "f734fde31",
+  "domoticz_build_time": "2026-08-02 09:10:11",
+  "lock_device_row_id": 4,
+  "cmdline": "/opt/domoticz/domoticz -www 8080 -noupdates -sslwww 443 -userdata /opt/domoticz/userdata ",
+  "op": "info",
+  "t_ack": 1791429765.1023543
+ },
+ "seal_wait_s": 130.0,
+ "n_trials_requested": 10,
+ "arms": [
+  "laundering",
+  "memberswap"
+ ],
+ "host_minus_vm_s": -0.05474042892456055,
+ "trials": [
+  {
+   "arm": "laundering",
+   "room": "hallway",
+   "trial": 0,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 213,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:29:19"
+    },
+    "op": "lock",
+    "t_ack": 1791430159.1120195
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 218,
+     "Date": "2026-10-08 03:29:20",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 218,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:29:20",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:20",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:20",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791430336.073779,
+    "before": {
+     "rowid": 218,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:29:20"
+    },
+    "after": {
+     "rowid": 218,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791430336.0805416
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:29:20",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:20",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:20",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    }
+   },
+   "row_ts": 1791430160.0,
+   "edit_delay_s": 176.07377910614014,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "hallway",
+   "trial": 1,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 221,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:29:24"
+    },
+    "op": "lock",
+    "t_ack": 1791430164.0776176
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 222,
+     "Date": "2026-10-08 03:29:25",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 222,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:29:25",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:25",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:25",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791430337.0687695,
+    "before": {
+     "rowid": 222,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:29:25"
+    },
+    "after": {
+     "rowid": 222,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:25"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791430337.0744994
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:29:25",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:25",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:25",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    }
+   },
+   "row_ts": 1791430165.0,
+   "edit_delay_s": 172.06876945495605,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "hallway",
+   "trial": 2,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 223,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:29:28"
+    },
+    "op": "lock",
+    "t_ack": 1791430168.0809197
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 224,
+     "Date": "2026-10-08 03:29:29",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 224,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:29:29",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:29",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:29",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791430338.07269,
+    "before": {
+     "rowid": 224,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:29:29"
+    },
+    "after": {
+     "rowid": 224,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:29"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791430338.0767303
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:29:29",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:29",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:29",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    }
+   },
+   "row_ts": 1791430169.0,
+   "edit_delay_s": 169.0726900100708,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "hallway",
+   "trial": 3,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 225,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:29:33"
+    },
+    "op": "lock",
+    "t_ack": 1791430173.1097999
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 226,
+     "Date": "2026-10-08 03:29:34",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 226,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:29:34",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:34",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:34",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791430339.0877612,
+    "before": {
+     "rowid": 226,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:29:34"
+    },
+    "after": {
+     "rowid": 226,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:34"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791430339.0894585
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:29:34",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:34",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:34",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    }
+   },
+   "row_ts": 1791430174.0,
+   "edit_delay_s": 165.08776116371155,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "hallway",
+   "trial": 4,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 227,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:29:38"
+    },
+    "op": "lock",
+    "t_ack": 1791430178.0667834
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 228,
+     "Date": "2026-10-08 03:29:39",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 228,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:29:39",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:39",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:39",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791430340.0918086,
+    "before": {
+     "rowid": 228,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:29:39"
+    },
+    "after": {
+     "rowid": 228,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:39"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791430340.0945632
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:29:39",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:39",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:39",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    }
+   },
+   "row_ts": 1791430179.0,
+   "edit_delay_s": 161.09180855751038,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "hallway",
+   "trial": 5,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 231,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:29:43"
+    },
+    "op": "lock",
+    "t_ack": 1791430183.0992272
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 232,
+     "Date": "2026-10-08 03:29:44",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 232,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:29:44",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:44",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:44",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791430341.0678082,
+    "before": {
+     "rowid": 232,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:29:44"
+    },
+    "after": {
+     "rowid": 232,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:44"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791430341.0708191
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:29:44",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:44",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:44",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    }
+   },
+   "row_ts": 1791430184.0,
+   "edit_delay_s": 157.06780815124512,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "hallway",
+   "trial": 6,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 237,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:29:48"
+    },
+    "op": "lock",
+    "t_ack": 1791430188.1052966
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 238,
+     "Date": "2026-10-08 03:29:49",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 238,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:29:49",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:49",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:49",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791430342.0973396,
+    "before": {
+     "rowid": 238,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:29:49"
+    },
+    "after": {
+     "rowid": 238,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:49"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791430342.1020918
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:29:49",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:49",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:49",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    }
+   },
+   "row_ts": 1791430189.0,
+   "edit_delay_s": 153.09733963012695,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "hallway",
+   "trial": 7,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 241,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:29:53"
+    },
+    "op": "lock",
+    "t_ack": 1791430193.0794492
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 242,
+     "Date": "2026-10-08 03:29:54",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 242,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:29:54",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:54",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:54",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791430343.0804615,
+    "before": {
+     "rowid": 242,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:29:54"
+    },
+    "after": {
+     "rowid": 242,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:54"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791430343.0873113
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:29:54",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:54",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:54",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    }
+   },
+   "row_ts": 1791430194.0,
+   "edit_delay_s": 149.0804615020752,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "hallway",
+   "trial": 8,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 243,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:29:57"
+    },
+    "op": "lock",
+    "t_ack": 1791430197.0856583
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 244,
+     "Date": "2026-10-08 03:29:58",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 244,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:29:58",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:58",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:58",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791430344.080148,
+    "before": {
+     "rowid": 244,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:29:58"
+    },
+    "after": {
+     "rowid": 244,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:58"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791430344.0814342
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:29:58",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:58",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:58",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    }
+   },
+   "row_ts": 1791430198.0,
+   "edit_delay_s": 146.08014798164368,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "hallway",
+   "trial": 9,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 247,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:30:02"
+    },
+    "op": "lock",
+    "t_ack": 1791430202.1086943
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 248,
+     "Date": "2026-10-08 03:30:03",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 248,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:30:03",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:30:03",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:30:03",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791430345.0847855,
+    "before": {
+     "rowid": 248,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:30:03"
+    },
+    "after": {
+     "rowid": 248,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:30:03"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 246,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:30:02"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791430345.0858662
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:30:03",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:30:03",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:30:03",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    }
+   },
+   "row_ts": 1791430203.0,
+   "edit_delay_s": 142.08478546142578,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 246,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:30:02"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "memberswap",
+   "room": "hallway",
+   "trial": 0,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 300,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:32:38"
+    },
+    "op": "lock",
+    "t_ack": 1791430358.1023571
+   },
+   "unlock": {
+    "ok": true,
+    "row": {
+     "rowid": 301,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:32:40"
+    },
+    "op": "unlock",
+    "t_ack": 1791430360.0895019
+   },
+   "target_rowid": 301,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:32:40",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "LockBridge"
+    },
+    "member": {
+     "Date": "2026-10-08 03:32:40",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "LockBridge"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:32:40",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "LockBridge"
+    }
+   },
+   "clean_user": "LockBridge",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "swap",
+    "rows_updated": 1,
+    "t_edit": 1791430538.0653677,
+    "before": {
+     "rowid": 301,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:32:40"
+    },
+    "after": {
+     "rowid": 301,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:32:40"
+    },
+    "db_writes": 1,
+    "label_source_row": {
+     "rowid": 299,
+     "device_row_id": 2,
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:32:35"
+    },
+    "op": "swap",
+    "t_ack": 1791430538.0682964
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:32:40",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:32:40",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:32:40",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "row_ts": 1791430360.0,
+   "edit_delay_s": 178.06536769866943,
+   "per_role": {
+    "owner": {
+     "before_user": "LockBridge",
+     "after_user": "member (IP: 192.168.96.3)",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "LockBridge",
+     "after_user": "member (IP: 192.168.96.3)",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "LockBridge",
+     "after_user": "member (IP: 192.168.96.3)",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 299,
+     "device_row_id": 2,
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:32:35"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "LockBridge"
+     ],
+     "api_user": "LockBridge",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "LockBridge"
+     ],
+     "api_user": "LockBridge",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "LockBridge"
+     ],
+     "api_user": "LockBridge",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "memberswap",
+   "room": "hallway",
+   "trial": 1,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 304,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:32:43"
+    },
+    "op": "lock",
+    "t_ack": 1791430363.1141105
+   },
+   "unlock": {
+    "ok": true,
+    "row": {
+     "rowid": 305,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:32:45"
+    },
+    "op": "unlock",
+    "t_ack": 1791430365.0724316
+   },
+   "target_rowid": 305,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:32:45",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "LockBridge"
+    },
+    "member": {
+     "Date": "2026-10-08 03:32:45",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "LockBridge"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:32:45",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "LockBridge"
+    }
+   },
+   "clean_user": "LockBridge",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "swap",
+    "rows_updated": 1,
+    "t_edit": 1791430539.0798025,
+    "before": {
+     "rowid": 305,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:32:45"
+    },
+    "after": {
+     "rowid": 305,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:32:45"
+    },
+    "db_writes": 1,
+    "label_source_row": {
+     "rowid": 299,
+     "device_row_id": 2,
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:32:35"
+    },
+    "op": "swap",
+    "t_ack": 1791430539.081146
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:32:45",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:32:45",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:32:45",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "row_ts": 1791430365.0,
+   "edit_delay_s": 174.07980251312256,
+   "per_role": {
+    "owner": {
+     "before_user": "LockBridge",
+     "after_user": "member (IP: 192.168.96.3)",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "LockBridge",
+     "after_user": "member (IP: 192.168.96.3)",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "LockBridge",
+     "after_user": "member (IP: 192.168.96.3)",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 299,
+     "device_row_id": 2,
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:32:35"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "LockBridge"
+     ],
+     "api_user": "LockBridge",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "LockBridge"
+     ],
+     "api_user": "LockBridge",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "LockBridge"
+     ],
+     "api_user": "LockBridge",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "memberswap",
+   "room": "hallway",
+   "trial": 2,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 306,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:32:48"
+    },
+    "op": "lock",
+    "t_ack": 1791430368.0601776
+   },
+   "unlock": {
+    "ok": true,
+    "row": {
+     "rowid": 309,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:32:50"
+    },
+    "op": "unlock",
+    "t_ack": 1791430370.0832543
+   },
+   "target_rowid": 309,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:32:50",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "LockBridge"
+    },
+    "member": {
+     "Date": "2026-10-08 03:32:50",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "LockBridge"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:32:50",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "LockBridge"
+    }
+   },
+   "clean_user": "LockBridge",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "swap",
+    "rows_updated": 1,
+    "t_edit": 1791430540.0733473,
+    "before": {
+     "rowid": 309,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:32:50"
+    },
+    "after": {
+     "rowid": 309,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:32:50"
+    },
+    "db_writes": 1,
+    "label_source_row": {
+     "rowid": 299,
+     "device_row_id": 2,
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:32:35"
+    },
+    "op": "swap",
+    "t_ack": 1791430540.0743034
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:32:50",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:32:50",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:32:50",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "row_ts": 1791430370.0,
+   "edit_delay_s": 170.07334733009338,
+   "per_role": {
+    "owner": {
+     "before_user": "LockBridge",
+     "after_user": "member (IP: 192.168.96.3)",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "LockBridge",
+     "after_user": "member (IP: 192.168.96.3)",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "LockBridge",
+     "after_user": "member (IP: 192.168.96.3)",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 299,
+     "device_row_id": 2,
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:32:35"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "LockBridge"
+     ],
+     "api_user": "LockBridge",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "LockBridge"
+     ],
+     "api_user": "LockBridge",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "LockBridge"
+     ],
+     "api_user": "LockBridge",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "memberswap",
+   "room": "hallway",
+   "trial": 3,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 310,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:32:53"
+    },
+    "op": "lock",
+    "t_ack": 1791430373.1164172
+   },
+   "unlock": {
+    "ok": true,
+    "row": {
+     "rowid": 311,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:32:55"
+    },
+    "op": "unlock",
+    "t_ack": 1791430375.0819523
+   },
+   "target_rowid": 311,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:32:55",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "LockBridge"
+    },
+    "member": {
+     "Date": "2026-10-08 03:32:55",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "LockBridge"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:32:55",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "LockBridge"
+    }
+   },
+   "clean_user": "LockBridge",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "swap",
+    "rows_updated": 1,
+    "t_edit": 1791430541.1037123,
+    "before": {
+     "rowid": 311,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:32:55"
+    },
+    "after": {
+     "rowid": 311,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:32:55"
+    },
+    "db_writes": 1,
+    "label_source_row": {
+     "rowid": 299,
+     "device_row_id": 2,
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:32:35"
+    },
+    "op": "swap",
+    "t_ack": 1791430541.1045518
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:32:55",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:32:55",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:32:55",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "row_ts": 1791430375.0,
+   "edit_delay_s": 166.10371232032776,
+   "per_role": {
+    "owner": {
+     "before_user": "LockBridge",
+     "after_user": "member (IP: 192.168.96.3)",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "LockBridge",
+     "after_user": "member (IP: 192.168.96.3)",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "LockBridge",
+     "after_user": "member (IP: 192.168.96.3)",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 299,
+     "device_row_id": 2,
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:32:35"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "LockBridge"
+     ],
+     "api_user": "LockBridge",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "LockBridge"
+     ],
+     "api_user": "LockBridge",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "LockBridge"
+     ],
+     "api_user": "LockBridge",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "memberswap",
+   "room": "hallway",
+   "trial": 4,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 312,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:32:58"
+    },
+    "op": "lock",
+    "t_ack": 1791430378.101542
+   },
+   "unlock": {
+    "ok": true,
+    "row": {
+     "rowid": 313,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:33:00"
+    },
+    "op": "unlock",
+    "t_ack": 1791430380.0794575
+   },
+   "target_rowid": 313,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:33:00",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "LockBridge"
+    },
+    "member": {
+     "Date": "2026-10-08 03:33:00",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "LockBridge"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:33:00",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "LockBridge"
+    }
+   },
+   "clean_user": "LockBridge",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "swap",
+    "rows_updated": 1,
+    "t_edit": 1791430542.0778112,
+    "before": {
+     "rowid": 313,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:33:00"
+    },
+    "after": {
+     "rowid": 313,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:33:00"
+    },
+    "db_writes": 1,
+    "label_source_row": {
+     "rowid": 299,
+     "device_row_id": 2,
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:32:35"
+    },
+    "op": "swap",
+    "t_ack": 1791430542.0819664
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:33:00",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:33:00",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:33:00",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "row_ts": 1791430380.0,
+   "edit_delay_s": 162.0778112411499,
+   "per_role": {
+    "owner": {
+     "before_user": "LockBridge",
+     "after_user": "member (IP: 192.168.96.3)",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "LockBridge",
+     "after_user": "member (IP: 192.168.96.3)",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "LockBridge",
+     "after_user": "member (IP: 192.168.96.3)",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 299,
+     "device_row_id": 2,
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:32:35"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "LockBridge"
+     ],
+     "api_user": "LockBridge",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "LockBridge"
+     ],
+     "api_user": "LockBridge",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "LockBridge"
+     ],
+     "api_user": "LockBridge",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "memberswap",
+   "room": "hallway",
+   "trial": 5,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 314,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:33:03"
+    },
+    "op": "lock",
+    "t_ack": 1791430383.0958343
+   },
+   "unlock": {
+    "ok": true,
+    "row": {
+     "rowid": 316,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:33:05"
+    },
+    "op": "unlock",
+    "t_ack": 1791430385.0900257
+   },
+   "target_rowid": 316,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:33:05",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "LockBridge"
+    },
+    "member": {
+     "Date": "2026-10-08 03:33:05",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "LockBridge"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:33:05",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "LockBridge"
+    }
+   },
+   "clean_user": "LockBridge",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "swap",
+    "rows_updated": 1,
+    "t_edit": 1791430543.083693,
+    "before": {
+     "rowid": 316,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:33:05"
+    },
+    "after": {
+     "rowid": 316,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:33:05"
+    },
+    "db_writes": 1,
+    "label_source_row": {
+     "rowid": 299,
+     "device_row_id": 2,
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:32:35"
+    },
+    "op": "swap",
+    "t_ack": 1791430543.088509
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:33:05",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:33:05",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:33:05",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "row_ts": 1791430385.0,
+   "edit_delay_s": 158.08369302749634,
+   "per_role": {
+    "owner": {
+     "before_user": "LockBridge",
+     "after_user": "member (IP: 192.168.96.3)",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "LockBridge",
+     "after_user": "member (IP: 192.168.96.3)",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "LockBridge",
+     "after_user": "member (IP: 192.168.96.3)",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 299,
+     "device_row_id": 2,
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:32:35"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "LockBridge"
+     ],
+     "api_user": "LockBridge",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "LockBridge"
+     ],
+     "api_user": "LockBridge",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "LockBridge"
+     ],
+     "api_user": "LockBridge",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "memberswap",
+   "room": "hallway",
+   "trial": 6,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 317,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:33:08"
+    },
+    "op": "lock",
+    "t_ack": 1791430388.0884879
+   },
+   "unlock": {
+    "ok": true,
+    "row": {
+     "rowid": 319,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:33:10"
+    },
+    "op": "unlock",
+    "t_ack": 1791430390.125293
+   },
+   "target_rowid": 319,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:33:10",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "LockBridge"
+    },
+    "member": {
+     "Date": "2026-10-08 03:33:10",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "LockBridge"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:33:10",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "LockBridge"
+    }
+   },
+   "clean_user": "LockBridge",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "swap",
+    "rows_updated": 1,
+    "t_edit": 1791430544.106312,
+    "before": {
+     "rowid": 319,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:33:10"
+    },
+    "after": {
+     "rowid": 319,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:33:10"
+    },
+    "db_writes": 1,
+    "label_source_row": {
+     "rowid": 299,
+     "device_row_id": 2,
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:32:35"
+    },
+    "op": "swap",
+    "t_ack": 1791430544.1092606
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:33:10",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:33:10",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:33:10",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "row_ts": 1791430390.0,
+   "edit_delay_s": 154.10631203651428,
+   "per_role": {
+    "owner": {
+     "before_user": "LockBridge",
+     "after_user": "member (IP: 192.168.96.3)",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "LockBridge",
+     "after_user": "member (IP: 192.168.96.3)",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "LockBridge",
+     "after_user": "member (IP: 192.168.96.3)",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 299,
+     "device_row_id": 2,
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:32:35"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "LockBridge"
+     ],
+     "api_user": "LockBridge",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "LockBridge"
+     ],
+     "api_user": "LockBridge",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "LockBridge"
+     ],
+     "api_user": "LockBridge",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "memberswap",
+   "room": "hallway",
+   "trial": 7,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 323,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:33:13"
+    },
+    "op": "lock",
+    "t_ack": 1791430393.0788207
+   },
+   "unlock": {
+    "ok": true,
+    "row": {
+     "rowid": 324,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:33:15"
+    },
+    "op": "unlock",
+    "t_ack": 1791430395.0769322
+   },
+   "target_rowid": 324,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:33:15",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "LockBridge"
+    },
+    "member": {
+     "Date": "2026-10-08 03:33:15",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "LockBridge"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:33:15",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "LockBridge"
+    }
+   },
+   "clean_user": "LockBridge",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "swap",
+    "rows_updated": 1,
+    "t_edit": 1791430545.0651476,
+    "before": {
+     "rowid": 324,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:33:15"
+    },
+    "after": {
+     "rowid": 324,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:33:15"
+    },
+    "db_writes": 1,
+    "label_source_row": {
+     "rowid": 299,
+     "device_row_id": 2,
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:32:35"
+    },
+    "op": "swap",
+    "t_ack": 1791430545.0677593
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:33:15",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:33:15",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:33:15",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "row_ts": 1791430395.0,
+   "edit_delay_s": 150.06514763832092,
+   "per_role": {
+    "owner": {
+     "before_user": "LockBridge",
+     "after_user": "member (IP: 192.168.96.3)",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "LockBridge",
+     "after_user": "member (IP: 192.168.96.3)",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "LockBridge",
+     "after_user": "member (IP: 192.168.96.3)",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 299,
+     "device_row_id": 2,
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:32:35"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "LockBridge"
+     ],
+     "api_user": "LockBridge",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "LockBridge"
+     ],
+     "api_user": "LockBridge",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "LockBridge"
+     ],
+     "api_user": "LockBridge",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "memberswap",
+   "room": "hallway",
+   "trial": 8,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 328,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:33:18"
+    },
+    "op": "lock",
+    "t_ack": 1791430398.070833
+   },
+   "unlock": {
+    "ok": true,
+    "row": {
+     "rowid": 332,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:33:20"
+    },
+    "op": "unlock",
+    "t_ack": 1791430400.0973208
+   },
+   "target_rowid": 332,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:33:20",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "LockBridge"
+    },
+    "member": {
+     "Date": "2026-10-08 03:33:20",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "LockBridge"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:33:20",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "LockBridge"
+    }
+   },
+   "clean_user": "LockBridge",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "swap",
+    "rows_updated": 1,
+    "t_edit": 1791430546.0945463,
+    "before": {
+     "rowid": 332,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:33:20"
+    },
+    "after": {
+     "rowid": 332,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:33:20"
+    },
+    "db_writes": 1,
+    "label_source_row": {
+     "rowid": 299,
+     "device_row_id": 2,
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:32:35"
+    },
+    "op": "swap",
+    "t_ack": 1791430546.1001582
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:33:20",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:33:20",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:33:20",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "row_ts": 1791430400.0,
+   "edit_delay_s": 146.0945463180542,
+   "per_role": {
+    "owner": {
+     "before_user": "LockBridge",
+     "after_user": "member (IP: 192.168.96.3)",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "LockBridge",
+     "after_user": "member (IP: 192.168.96.3)",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "LockBridge",
+     "after_user": "member (IP: 192.168.96.3)",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 299,
+     "device_row_id": 2,
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:32:35"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "LockBridge"
+     ],
+     "api_user": "LockBridge",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "LockBridge"
+     ],
+     "api_user": "LockBridge",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "LockBridge"
+     ],
+     "api_user": "LockBridge",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "memberswap",
+   "room": "hallway",
+   "trial": 9,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 333,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:33:23"
+    },
+    "op": "lock",
+    "t_ack": 1791430403.07406
+   },
+   "unlock": {
+    "ok": true,
+    "row": {
+     "rowid": 334,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:33:25"
+    },
+    "op": "unlock",
+    "t_ack": 1791430405.0783641
+   },
+   "target_rowid": 334,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:33:25",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "LockBridge"
+    },
+    "member": {
+     "Date": "2026-10-08 03:33:25",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "LockBridge"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:33:25",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "LockBridge"
+    }
+   },
+   "clean_user": "LockBridge",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "swap",
+    "rows_updated": 1,
+    "t_edit": 1791430547.0714414,
+    "before": {
+     "rowid": 334,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:33:25"
+    },
+    "after": {
+     "rowid": 334,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:33:25"
+    },
+    "db_writes": 1,
+    "label_source_row": {
+     "rowid": 299,
+     "device_row_id": 2,
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:32:35"
+    },
+    "op": "swap",
+    "t_ack": 1791430547.0728478
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:33:25",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:33:25",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:33:25",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "row_ts": 1791430405.0,
+   "edit_delay_s": 142.07144141197205,
+   "per_role": {
+    "owner": {
+     "before_user": "LockBridge",
+     "after_user": "member (IP: 192.168.96.3)",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "LockBridge",
+     "after_user": "member (IP: 192.168.96.3)",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "LockBridge",
+     "after_user": "member (IP: 192.168.96.3)",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 299,
+     "device_row_id": 2,
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:32:35"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "LockBridge"
+     ],
+     "api_user": "LockBridge",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "LockBridge"
+     ],
+     "api_user": "LockBridge",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "LockBridge"
+     ],
+     "api_user": "LockBridge",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    }
+   }
+  }
+ ],
+ "arm_runs": [
+  {
+   "arm": "laundering",
+   "room": "hallway",
+   "t_arm_start": 1791430158.0146177,
+   "cover_check": {
+    "ok": true,
+    "row": {
+     "rowid": 210,
+     "Date": "2026-10-08 03:29:16",
+     "Data": "On",
+     "Status": "On",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    }
+   },
+   "t_phase1_end": 1791430206.0408735,
+   "ui_before": {
+    "owner": {
+     "rows": [
+      [
+       "2026-10-08 03:30:03",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:30:02",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:58",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:29:57",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:54",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:29:53",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:49",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:29:48",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:44",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:29:43",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:39",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:29:38",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:34",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:29:33",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:29",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:29:28",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:25",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:29:24",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:20",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:29:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:46",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:44",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:41",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:39",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:36",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:34",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:31",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:29",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:26",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:24",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:21",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:16",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:14",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:11",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:09",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:06",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:04",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:01",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:25:59",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:24",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:23",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:20",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:16",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:15",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:12",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:11",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:07",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:06",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:03",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:02",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:59",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:58",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:55",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:54",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:51",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:50",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:47",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:46",
+       "Locked",
+       "LockBridge"
+      ]
+     ],
+     "screenshot": "<research-dir>/HOMEPROV-P13-exp/dz/runs/dz/screens/hallway_laundering_before_owner.png",
+     "t": 1791430209.839722
+    },
+    "member": {
+     "rows": [
+      [
+       "2026-10-08 03:30:03",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:30:02",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:58",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:29:57",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:54",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:29:53",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:49",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:29:48",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:44",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:29:43",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:39",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:29:38",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:34",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:29:33",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:29",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:29:28",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:25",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:29:24",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:20",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:29:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:46",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:44",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:41",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:39",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:36",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:34",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:31",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:29",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:26",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:24",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:21",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:16",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:14",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:11",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:09",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:06",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:04",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:01",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:25:59",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:24",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:23",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:20",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:16",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:15",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:12",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:11",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:07",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:06",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:03",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:02",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:59",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:58",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:55",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:54",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:51",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:50",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:47",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:46",
+       "Locked",
+       "LockBridge"
+      ]
+     ],
+     "screenshot": "<research-dir>/HOMEPROV-P13-exp/dz/runs/dz/screens/hallway_laundering_before_member.png",
+     "t": 1791430212.841491
+    },
+    "guest": {
+     "rows": [
+      [
+       "2026-10-08 03:30:03",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:30:02",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:58",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:29:57",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:54",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:29:53",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:49",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:29:48",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:44",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:29:43",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:39",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:29:38",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:34",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:29:33",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:29",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:29:28",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:25",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:29:24",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:20",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:29:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:46",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:44",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:41",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:39",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:36",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:34",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:31",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:29",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:26",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:24",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:21",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:16",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:14",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:11",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:09",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:06",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:04",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:01",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:25:59",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:24",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:23",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:20",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:16",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:15",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:12",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:11",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:07",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:06",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:03",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:02",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:59",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:58",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:55",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:54",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:51",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:50",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:47",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:46",
+       "Locked",
+       "LockBridge"
+      ]
+     ],
+     "screenshot": "<research-dir>/HOMEPROV-P13-exp/dz/runs/dz/screens/hallway_laundering_before_guest.png",
+     "t": 1791430215.845279
+    }
+   },
+   "seal_wait_s": 130.0,
+   "ui_after": {
+    "owner": {
+     "rows": [
+      [
+       "2026-10-08 03:30:03",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:30:02",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:58",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:57",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:54",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:53",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:49",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:48",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:44",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:43",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:39",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:38",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:34",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:33",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:29",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:28",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:25",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:24",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:20",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:46",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:44",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:41",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:39",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:36",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:34",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:31",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:29",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:26",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:24",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:21",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:16",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:14",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:11",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:09",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:06",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:04",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:01",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:25:59",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:24",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:23",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:20",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:16",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:15",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:12",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:11",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:07",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:06",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:03",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:02",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:59",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:58",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:55",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:54",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:51",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:50",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:47",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:46",
+       "Locked",
+       "LockBridge"
+      ]
+     ],
+     "screenshot": "<research-dir>/HOMEPROV-P13-exp/dz/runs/dz/screens/hallway_laundering_after_owner.png",
+     "t": 1791430349.197713
+    },
+    "member": {
+     "rows": [
+      [
+       "2026-10-08 03:30:03",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:30:02",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:58",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:57",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:54",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:53",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:49",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:48",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:44",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:43",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:39",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:38",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:34",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:33",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:29",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:28",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:25",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:24",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:20",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:46",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:44",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:41",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:39",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:36",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:34",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:31",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:29",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:26",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:24",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:21",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:16",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:14",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:11",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:09",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:06",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:04",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:01",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:25:59",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:24",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:23",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:20",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:16",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:15",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:12",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:11",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:07",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:06",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:03",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:02",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:59",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:58",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:55",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:54",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:51",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:50",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:47",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:46",
+       "Locked",
+       "LockBridge"
+      ]
+     ],
+     "screenshot": "<research-dir>/HOMEPROV-P13-exp/dz/runs/dz/screens/hallway_laundering_after_member.png",
+     "t": 1791430352.21437
+    },
+    "guest": {
+     "rows": [
+      [
+       "2026-10-08 03:30:03",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:30:02",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:58",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:57",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:54",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:53",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:49",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:48",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:44",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:43",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:39",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:38",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:34",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:33",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:29",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:28",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:25",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:24",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:20",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:46",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:44",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:41",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:39",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:36",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:34",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:31",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:29",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:26",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:24",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:21",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:16",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:14",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:11",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:09",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:06",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:04",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:01",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:25:59",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:24",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:23",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:20",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:16",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:15",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:12",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:11",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:07",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:06",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:03",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:02",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:59",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:58",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:55",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:54",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:51",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:50",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:47",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:46",
+       "Locked",
+       "LockBridge"
+      ]
+     ],
+     "screenshot": "<research-dir>/HOMEPROV-P13-exp/dz/runs/dz/screens/hallway_laundering_after_guest.png",
+     "t": 1791430355.254575
+    }
+   },
+   "t_arm_end": 1791430355.3603287
+  },
+  {
+   "arm": "memberswap",
+   "room": "hallway",
+   "t_arm_start": 1791430355.4130983,
+   "member_warmup": {
+    "ok": true,
+    "device_idx": 2,
+    "row": {
+     "rowid": 299,
+     "Date": "2026-10-08 03:32:35",
+     "Data": "On",
+     "Status": "On",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "t_phase1_end": 1791430407.4836147,
+   "ui_before": {
+    "owner": {
+     "rows": [
+      [
+       "2026-10-08 03:33:25",
+       "Unlocked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:23",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:20",
+       "Unlocked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:18",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:15",
+       "Unlocked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:13",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:10",
+       "Unlocked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:08",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:05",
+       "Unlocked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:03",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:00",
+       "Unlocked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:58",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:55",
+       "Unlocked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:53",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:50",
+       "Unlocked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:48",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:45",
+       "Unlocked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:43",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:40",
+       "Unlocked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:38",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:30:03",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:30:02",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:58",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:57",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:54",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:53",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:49",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:48",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:44",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:43",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:39",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:38",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:34",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:33",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:29",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:28",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:25",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:24",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:20",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:46",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:44",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:41",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:39",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:36",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:34",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:31",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:29",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:26",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:24",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:21",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:16",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:14",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:11",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:09",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:06",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:04",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:01",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:25:59",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:24",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:23",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:20",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:16",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:15",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:12",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:11",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:07",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:06",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:03",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:02",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:59",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:58",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:55",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:54",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:51",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:50",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:47",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:46",
+       "Locked",
+       "LockBridge"
+      ]
+     ],
+     "screenshot": "<research-dir>/HOMEPROV-P13-exp/dz/runs/dz/screens/hallway_memberswap_before_owner.png",
+     "t": 1791430411.49895
+    },
+    "member": {
+     "rows": [
+      [
+       "2026-10-08 03:33:25",
+       "Unlocked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:23",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:20",
+       "Unlocked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:18",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:15",
+       "Unlocked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:13",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:10",
+       "Unlocked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:08",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:05",
+       "Unlocked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:03",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:00",
+       "Unlocked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:58",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:55",
+       "Unlocked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:53",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:50",
+       "Unlocked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:48",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:45",
+       "Unlocked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:43",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:40",
+       "Unlocked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:38",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:30:03",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:30:02",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:58",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:57",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:54",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:53",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:49",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:48",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:44",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:43",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:39",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:38",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:34",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:33",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:29",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:28",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:25",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:24",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:20",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:46",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:44",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:41",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:39",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:36",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:34",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:31",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:29",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:26",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:24",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:21",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:16",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:14",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:11",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:09",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:06",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:04",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:01",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:25:59",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:24",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:23",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:20",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:16",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:15",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:12",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:11",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:07",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:06",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:03",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:02",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:59",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:58",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:55",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:54",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:51",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:50",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:47",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:46",
+       "Locked",
+       "LockBridge"
+      ]
+     ],
+     "screenshot": "<research-dir>/HOMEPROV-P13-exp/dz/runs/dz/screens/hallway_memberswap_before_member.png",
+     "t": 1791430414.4643571
+    },
+    "guest": {
+     "rows": [
+      [
+       "2026-10-08 03:33:25",
+       "Unlocked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:23",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:20",
+       "Unlocked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:18",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:15",
+       "Unlocked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:13",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:10",
+       "Unlocked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:08",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:05",
+       "Unlocked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:03",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:00",
+       "Unlocked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:58",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:55",
+       "Unlocked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:53",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:50",
+       "Unlocked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:48",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:45",
+       "Unlocked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:43",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:40",
+       "Unlocked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:38",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:30:03",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:30:02",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:58",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:57",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:54",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:53",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:49",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:48",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:44",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:43",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:39",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:38",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:34",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:33",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:29",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:28",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:25",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:24",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:20",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:46",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:44",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:41",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:39",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:36",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:34",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:31",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:29",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:26",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:24",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:21",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:16",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:14",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:11",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:09",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:06",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:04",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:01",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:25:59",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:24",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:23",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:20",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:16",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:15",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:12",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:11",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:07",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:06",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:03",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:02",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:59",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:58",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:55",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:54",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:51",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:50",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:47",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:46",
+       "Locked",
+       "LockBridge"
+      ]
+     ],
+     "screenshot": "<research-dir>/HOMEPROV-P13-exp/dz/runs/dz/screens/hallway_memberswap_before_guest.png",
+     "t": 1791430417.540541
+    }
+   },
+   "seal_wait_s": 130.0,
+   "ui_after": {
+    "owner": {
+     "rows": [
+      [
+       "2026-10-08 03:33:25",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:33:23",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:20",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:33:18",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:15",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:33:13",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:10",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:33:08",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:05",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:33:03",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:00",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:32:58",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:55",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:32:53",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:50",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:32:48",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:45",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:32:43",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:40",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:32:38",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:30:03",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:30:02",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:58",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:57",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:54",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:53",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:49",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:48",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:44",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:43",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:39",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:38",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:34",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:33",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:29",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:28",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:25",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:24",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:20",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:46",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:44",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:41",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:39",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:36",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:34",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:31",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:29",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:26",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:24",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:21",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:16",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:14",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:11",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:09",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:06",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:04",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:01",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:25:59",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:24",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:23",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:20",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:16",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:15",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:12",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:11",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:07",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:06",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:03",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:02",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:59",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:58",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:55",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:54",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:51",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:50",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:47",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:46",
+       "Locked",
+       "LockBridge"
+      ]
+     ],
+     "screenshot": "<research-dir>/HOMEPROV-P13-exp/dz/runs/dz/screens/hallway_memberswap_after_owner.png",
+     "t": 1791430551.2857878
+    },
+    "member": {
+     "rows": [
+      [
+       "2026-10-08 03:33:25",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:33:23",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:20",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:33:18",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:15",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:33:13",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:10",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:33:08",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:05",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:33:03",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:00",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:32:58",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:55",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:32:53",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:50",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:32:48",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:45",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:32:43",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:40",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:32:38",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:30:03",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:30:02",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:58",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:57",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:54",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:53",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:49",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:48",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:44",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:43",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:39",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:38",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:34",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:33",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:29",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:28",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:25",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:24",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:20",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:46",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:44",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:41",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:39",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:36",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:34",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:31",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:29",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:26",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:24",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:21",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:16",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:14",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:11",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:09",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:06",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:04",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:01",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:25:59",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:24",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:23",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:20",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:16",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:15",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:12",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:11",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:07",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:06",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:03",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:02",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:59",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:58",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:55",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:54",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:51",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:50",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:47",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:46",
+       "Locked",
+       "LockBridge"
+      ]
+     ],
+     "screenshot": "<research-dir>/HOMEPROV-P13-exp/dz/runs/dz/screens/hallway_memberswap_after_member.png",
+     "t": 1791430554.273893
+    },
+    "guest": {
+     "rows": [
+      [
+       "2026-10-08 03:33:25",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:33:23",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:20",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:33:18",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:15",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:33:13",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:10",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:33:08",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:05",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:33:03",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:33:00",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:32:58",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:55",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:32:53",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:50",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:32:48",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:45",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:32:43",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:32:40",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:32:38",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:30:03",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:30:02",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:58",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:57",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:54",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:53",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:49",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:48",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:44",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:43",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:39",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:38",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:34",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:33",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:29",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:28",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:25",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:24",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:29:20",
+       "Unlocked",
+       "EventSystem/hallway_motion_light"
+      ],
+      [
+       "2026-10-08 03:29:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:46",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:44",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:41",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:39",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:36",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:34",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:31",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:29",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:26",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:24",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:21",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:16",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:14",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:11",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:09",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:06",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:26:04",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:26:01",
+       "Unlocked",
+       "member (IP: 192.168.96.3)"
+      ],
+      [
+       "2026-10-08 03:25:59",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:24",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:23",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:20",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:19",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:16",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:15",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:12",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:11",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:07",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:06",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:23:03",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:23:02",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:59",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:58",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:55",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:54",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:51",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:50",
+       "Locked",
+       "LockBridge"
+      ],
+      [
+       "2026-10-08 03:22:47",
+       "Unlocked",
+       "EventSystem/porch_motion_light"
+      ],
+      [
+       "2026-10-08 03:22:46",
+       "Locked",
+       "LockBridge"
+      ]
+     ],
+     "screenshot": "<research-dir>/HOMEPROV-P13-exp/dz/runs/dz/screens/hallway_memberswap_after_guest.png",
+     "t": 1791430557.241523
+    }
+   },
+   "t_arm_end": 1791430557.3267746
+  }
+ ]
+}

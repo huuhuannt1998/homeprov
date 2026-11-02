@@ -1,0 +1,83 @@
+{
+ "item": "R6/T7: v1 collision demonstrated on a real snapshot copy; v2 detects it",
+ "generated": "2026-10-06T23:36:17.690976+00:00",
+ "script": "exp/sp2027/r6_collision_demo.py",
+ "inputs_mode": "snapshots",
+ "snapshot": "hp-clo/e_psr_clo/ps_verify/recorder.db",
+ "chain": "hp-clo/e_psr_clo/chain.jsonl",
+ "snapshot_sha256": "dbbb9f40fb816324b2c8f7de7932508baa34cc8c102e2e862839168acc7df78c",
+ "cases": {
+  "A": {
+   "applied": true,
+   "state_id": 702361,
+   "segment": "1790987491",
+   "before": {
+    "context_id_bin": "01a0ff2c575244860cab3bf2172053cc",
+    "context_parent_id_bin": "01a0ff2c57524d7cb2387f44d4792c14",
+    "context_user_id_bin": null
+   },
+   "after": {
+    "context_parent_id_bin": "01a0ff2c57524d",
+    "context_user_id_bin": "b2387f44d4792c147c"
+   },
+   "anchored_v1_root": {
+    "acc": "7fdab701bc6fb198dc7d50df87dc3aa93abe356ed7bb499897d7594a7d483afa",
+    "n": 4,
+    "encoding": "v1"
+   },
+   "v1_unmodified_rows_reproduce_anchored_root": true,
+   "v1_verifier_on_rewritten_rows": {
+    "acc": "7fdab701bc6fb198dc7d50df87dc3aa93abe356ed7bb499897d7594a7d483afa",
+    "n": 4
+   },
+   "v1_detects": false,
+   "v2_sealed_from_unmodified_rows": "d460acb3cfeed69d2762bc27ca559dbd0f56b061f0e529fdd659157946d984d6",
+   "v2_verifier_on_rewritten_rows": "e1f49ea12f6ae3c30d201432cc92844ecd0cffb8a221fcc7087b38a85384f14c",
+   "v2_detects": true,
+   "v1_minute_root_unchanged": true
+  },
+  "B": {
+   "applied": true,
+   "state_id": 702086,
+   "segment": "1790987127",
+   "before": {
+    "context_id_bin": "01a0ff26c9baffbce55ebbaacfa87c2b",
+    "context_parent_id_bin": null,
+    "context_user_id_bin": null
+   },
+   "after": {
+    "context_id_bin": "01a0ff26c9baffbce55ebbaacfa8",
+    "context_parent_id_bin": "2b7c"
+   },
+   "anchored_v1_root": {
+    "acc": "977f42f92613006b52b4f35bc7f08f3974e14ff1c7500df9d0a23dcd79a4ae86",
+    "n": 85,
+    "encoding": "v1"
+   },
+   "v1_unmodified_rows_reproduce_anchored_root": true,
+   "v1_verifier_on_rewritten_rows": {
+    "acc": "977f42f92613006b52b4f35bc7f08f3974e14ff1c7500df9d0a23dcd79a4ae86",
+    "n": 85
+   },
+   "v1_detects": false,
+   "v2_sealed_from_unmodified_rows": "490dae8954483c0085c5ec2d484b455d3571177609135bb600dc884018e47702",
+   "v2_verifier_on_rewritten_rows": "2a35fe3597defbc61547f605cb22ae931d5f005ca522cc315bf238319e91f14b",
+   "v2_detects": true,
+   "v1_minute_root_unchanged": false
+  }
+ },
+ "v1_window_verdicts_identical_before_and_after_rewrites": true,
+ "v1_violations_in_window": 104,
+ "ha_decoders_on_rewritten_values": {
+  "ha_version": "2026.7.4",
+  "A": {
+   "context_parent_id_bin": null,
+   "context_user_id_bin": null
+  },
+  "B": {
+   "context_id_bin": null,
+   "context_parent_id_bin": null
+  }
+ },
+ "ha_container": "hpr-hass"
+}

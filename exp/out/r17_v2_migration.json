@@ -1,0 +1,438 @@
+{
+ "chain": {
+  "file": "e10s/direct_chain.jsonl",
+  "lines": 4708,
+  "sha256": "f744d1b8559e2eeaffaed5edb9dda994d865da63c2274b5c93935c207715288d"
+ },
+ "check": "r17 v2 migration (E10 O-MIG re-verified with verifier version 2), exploratory",
+ "code_sha256": {
+  "exp/stages/e7_verify.py": "ae9d9c42bf484cbfda50f2e32f1de26ea19f3a956b659f8ad4abf245e5f03ef7",
+  "exp/stages/verify_v2.py": "dbf1a21143706447efc890b3cf07207b90253fc863f61b20c013a5ef0b7ea6f3",
+  "monitor/monitor.py": "4b9931cb7d1cffae6485fb2b660b68d733da9f73e5c22c22ca7265d49ceaa9b7",
+  "monitor/pinned_columns.py": "3dd4e371fe089fde971348d36e19cf1c55cf890af9d28a1f1c1db795b67c1910",
+  "registered_code_unchanged": true
+ },
+ "comparison": {
+  "v1": {
+   "checked_seconds": 419143,
+   "column_violated_seconds": 413161,
+   "increment": 298053,
+   "increment_of": 304035,
+   "none_violated_seconds": 115108
+  },
+  "v2": {
+   "checked_seconds": 419143,
+   "column_violated_seconds": 115108,
+   "increment": 0,
+   "increment_of": 304035,
+   "none_violated_seconds": 115108
+  },
+  "v2_none_equals_v1_none": {
+   "flagged_seconds": true,
+   "keylog_ranges_checked": true,
+   "keylog_violations": true,
+   "segments_checked": true,
+   "violations": true
+  }
+ },
+ "generated_at": "2026-10-26T18:36:25Z",
+ "monitor": "direct",
+ "parameters": {
+  "as": "exp/stages/e10_migration_offline.py (registered with E10)",
+  "gap_s": 30.0,
+  "late_bound_s": 30.0,
+  "recovery": false,
+  "scheme": "stable",
+  "sign_pubkey": "e10s/direct_sign_pub.pem",
+  "window": null
+ },
+ "pinned_columns": {
+  "columns": {
+   "events": [
+    "event_id",
+    "event_type",
+    "event_data",
+    "origin",
+    "origin_idx",
+    "time_fired",
+    "time_fired_ts",
+    "context_id",
+    "context_user_id",
+    "context_parent_id",
+    "data_id",
+    "context_id_bin",
+    "context_user_id_bin",
+    "context_parent_id_bin",
+    "event_type_id"
+   ],
+   "states": [
+    "state_id",
+    "entity_id",
+    "state",
+    "attributes",
+    "event_id",
+    "last_changed",
+    "last_changed_ts",
+    "last_updated",
+    "last_updated_ts",
+    "old_state_id",
+    "attributes_id",
+    "context_id",
+    "context_user_id",
+    "context_parent_id",
+    "origin_idx",
+    "context_id_bin",
+    "context_user_id_bin",
+    "context_parent_id_bin",
+    "metadata_id"
+   ]
+  },
+  "digest": "d208e34be75694d6b026129f650633baa874c8e6de97c47b0f6c8521cbdf04d8",
+  "equals_final_snapshot_list": true,
+  "file": "e10s/snapshots/start.db",
+  "sha256": "81b5167ed341ea00c1faeb630bd0de14b33e899289ac6ef307bce6b291751c83",
+  "source": "start snapshot of the same stack"
+ },
+ "run_dir": "/Volumes/ResearchSSD/HOMEPROV-P13-exp.noindex/e10/e10_main",
+ "shapes": {
+  "column": {
+   "flagged_seconds": 115215,
+   "keylog_ranges_checked": 18299,
+   "keylog_violations": 10043,
+   "second_violations_by_v2_reason": {
+    "none": 115108
+   },
+   "segments_checked": {
+    "hour": 738,
+    "minute": 35343,
+    "second": 419143
+   },
+   "statements": [
+    "ALTER TABLE states ADD COLUMN e10_probe TEXT"
+   ],
+   "v1_same_shape": {
+    "flagged_seconds": 413196,
+    "keylog_ranges_checked": 18299,
+    "keylog_violations": 12354,
+    "segments_checked": {
+     "hour": 738,
+     "minute": 35343,
+     "second": 419143
+    },
+    "violations": {
+     "hour": 738,
+     "minute": 35341,
+     "second": 413161
+    }
+   },
+   "v2": {
+    "code_sha256": {
+     "exp/stages/e7_verify.py": "ae9d9c42bf484cbfda50f2e32f1de26ea19f3a956b659f8ad4abf245e5f03ef7",
+     "exp/stages/verify_v2.py": "dbf1a21143706447efc890b3cf07207b90253fc863f61b20c013a5ef0b7ea6f3",
+     "monitor/monitor.py": "4b9931cb7d1cffae6485fb2b660b68d733da9f73e5c22c22ca7265d49ceaa9b7",
+     "monitor/pinned_columns.py": "3dd4e371fe089fde971348d36e19cf1c55cf890af9d28a1f1c1db795b67c1910",
+     "registered_code_unchanged": true
+    },
+    "column_list": {
+     "added_since_sealing_not_read": {
+      "states": {
+       "e10_probe": 0
+      }
+     },
+     "current": {
+      "events": [
+       "event_id",
+       "event_type",
+       "event_data",
+       "origin",
+       "origin_idx",
+       "time_fired",
+       "time_fired_ts",
+       "context_id",
+       "context_user_id",
+       "context_parent_id",
+       "data_id",
+       "context_id_bin",
+       "context_user_id_bin",
+       "context_parent_id_bin",
+       "event_type_id"
+      ],
+      "states": [
+       "state_id",
+       "entity_id",
+       "state",
+       "attributes",
+       "event_id",
+       "last_changed",
+       "last_changed_ts",
+       "last_updated",
+       "last_updated_ts",
+       "old_state_id",
+       "attributes_id",
+       "context_id",
+       "context_user_id",
+       "context_parent_id",
+       "origin_idx",
+       "context_id_bin",
+       "context_user_id_bin",
+       "context_parent_id_bin",
+       "metadata_id",
+       "e10_probe"
+      ]
+     },
+     "current_digest": "f70c27c0a39a0219e71bb327318d75d2bd905d19804d86fbd53ecc88b0d21d2c",
+     "default_source": "external:e10s start snapshot e10s/snapshots/start.db (sha256 81b5167ed341)",
+     "external": {
+      "digest": "d208e34be75694d6b026129f650633baa874c8e6de97c47b0f6c8521cbdf04d8",
+      "label": "e10s start snapshot e10s/snapshots/start.db (sha256 81b5167ed341)"
+     },
+     "keylog_list_ambiguous": 0,
+     "lists": {
+      "d208e34be75694d6b026129f650633baa874c8e6de97c47b0f6c8521cbdf04d8": {
+       "columns": {
+        "events": [
+         "event_id",
+         "event_type",
+         "event_data",
+         "origin",
+         "origin_idx",
+         "time_fired",
+         "time_fired_ts",
+         "context_id",
+         "context_user_id",
+         "context_parent_id",
+         "data_id",
+         "context_id_bin",
+         "context_user_id_bin",
+         "context_parent_id_bin",
+         "event_type_id"
+        ],
+        "states": [
+         "state_id",
+         "entity_id",
+         "state",
+         "attributes",
+         "event_id",
+         "last_changed",
+         "last_changed_ts",
+         "last_updated",
+         "last_updated_ts",
+         "old_state_id",
+         "attributes_id",
+         "context_id",
+         "context_user_id",
+         "context_parent_id",
+         "origin_idx",
+         "context_id_bin",
+         "context_user_id_bin",
+         "context_parent_id_bin",
+         "metadata_id"
+        ]
+       },
+       "dropped_now": {
+        "events": [],
+        "states": []
+       }
+      }
+     },
+     "lookup_failures": {},
+     "mode": "one_list",
+     "monitor_instances": [],
+     "records_with_committed_columns": 0,
+     "roots_checked_by_source": {
+      "external:e10s start snapshot e10s/snapshots/start.db (sha256 81b5167ed341)": 455224
+     }
+    },
+    "conflict_rule": {
+     "applied": true,
+     "in_window_reported_as_violation": 0,
+     "outside_the_window_or_not_first_anchored": 0,
+     "roots_after_the_snapshot_ignored": 0,
+     "rule": "strict",
+     "segments_with_two_or_more_signed_roots": {},
+     "unsigned_conflicts_listed_only": [],
+     "violations": [],
+     "why_not_applied": null
+    },
+    "verifier_version": 2
+   },
+   "violations": {
+    "hour": 736,
+    "minute": 30486,
+    "second": 115108
+   },
+   "wall_s": 4047.2
+  },
+  "none": {
+   "flagged_seconds": 115215,
+   "keylog_ranges_checked": 18299,
+   "keylog_violations": 10043,
+   "second_violations_by_v2_reason": {
+    "none": 115108
+   },
+   "segments_checked": {
+    "hour": 738,
+    "minute": 35343,
+    "second": 419143
+   },
+   "statements": [],
+   "v1_same_shape": {
+    "flagged_seconds": 115215,
+    "keylog_ranges_checked": 18299,
+    "keylog_violations": 10043,
+    "segments_checked": {
+     "hour": 738,
+     "minute": 35343,
+     "second": 419143
+    },
+    "violations": {
+     "hour": 736,
+     "minute": 30486,
+     "second": 115108
+    }
+   },
+   "v2": {
+    "code_sha256": {
+     "exp/stages/e7_verify.py": "ae9d9c42bf484cbfda50f2e32f1de26ea19f3a956b659f8ad4abf245e5f03ef7",
+     "exp/stages/verify_v2.py": "dbf1a21143706447efc890b3cf07207b90253fc863f61b20c013a5ef0b7ea6f3",
+     "monitor/monitor.py": "4b9931cb7d1cffae6485fb2b660b68d733da9f73e5c22c22ca7265d49ceaa9b7",
+     "monitor/pinned_columns.py": "3dd4e371fe089fde971348d36e19cf1c55cf890af9d28a1f1c1db795b67c1910",
+     "registered_code_unchanged": true
+    },
+    "column_list": {
+     "added_since_sealing_not_read": {},
+     "current": {
+      "events": [
+       "event_id",
+       "event_type",
+       "event_data",
+       "origin",
+       "origin_idx",
+       "time_fired",
+       "time_fired_ts",
+       "context_id",
+       "context_user_id",
+       "context_parent_id",
+       "data_id",
+       "context_id_bin",
+       "context_user_id_bin",
+       "context_parent_id_bin",
+       "event_type_id"
+      ],
+      "states": [
+       "state_id",
+       "entity_id",
+       "state",
+       "attributes",
+       "event_id",
+       "last_changed",
+       "last_changed_ts",
+       "last_updated",
+       "last_updated_ts",
+       "old_state_id",
+       "attributes_id",
+       "context_id",
+       "context_user_id",
+       "context_parent_id",
+       "origin_idx",
+       "context_id_bin",
+       "context_user_id_bin",
+       "context_parent_id_bin",
+       "metadata_id"
+      ]
+     },
+     "current_digest": "d208e34be75694d6b026129f650633baa874c8e6de97c47b0f6c8521cbdf04d8",
+     "default_source": "external:e10s start snapshot e10s/snapshots/start.db (sha256 81b5167ed341)",
+     "external": {
+      "digest": "d208e34be75694d6b026129f650633baa874c8e6de97c47b0f6c8521cbdf04d8",
+      "label": "e10s start snapshot e10s/snapshots/start.db (sha256 81b5167ed341)"
+     },
+     "keylog_list_ambiguous": 0,
+     "lists": {
+      "d208e34be75694d6b026129f650633baa874c8e6de97c47b0f6c8521cbdf04d8": {
+       "columns": {
+        "events": [
+         "event_id",
+         "event_type",
+         "event_data",
+         "origin",
+         "origin_idx",
+         "time_fired",
+         "time_fired_ts",
+         "context_id",
+         "context_user_id",
+         "context_parent_id",
+         "data_id",
+         "context_id_bin",
+         "context_user_id_bin",
+         "context_parent_id_bin",
+         "event_type_id"
+        ],
+        "states": [
+         "state_id",
+         "entity_id",
+         "state",
+         "attributes",
+         "event_id",
+         "last_changed",
+         "last_changed_ts",
+         "last_updated",
+         "last_updated_ts",
+         "old_state_id",
+         "attributes_id",
+         "context_id",
+         "context_user_id",
+         "context_parent_id",
+         "origin_idx",
+         "context_id_bin",
+         "context_user_id_bin",
+         "context_parent_id_bin",
+         "metadata_id"
+        ]
+       },
+       "dropped_now": {
+        "events": [],
+        "states": []
+       }
+      }
+     },
+     "lookup_failures": {},
+     "mode": "one_list",
+     "monitor_instances": [],
+     "records_with_committed_columns": 0,
+     "roots_checked_by_source": {
+      "external:e10s start snapshot e10s/snapshots/start.db (sha256 81b5167ed341)": 455224
+     }
+    },
+    "conflict_rule": {
+     "applied": true,
+     "in_window_reported_as_violation": 0,
+     "outside_the_window_or_not_first_anchored": 0,
+     "roots_after_the_snapshot_ignored": 0,
+     "rule": "strict",
+     "segments_with_two_or_more_signed_roots": {},
+     "unsigned_conflicts_listed_only": [],
+     "violations": [],
+     "why_not_applied": null
+    },
+    "verifier_version": 2
+   },
+   "violations": {
+    "hour": 736,
+    "minute": 30486,
+    "second": 115108
+   },
+   "wall_s": 4785.3
+  }
+ },
+ "snapshot": {
+  "file": "e10s/snapshots/final.db",
+  "sha256": "f4ca80eb3bf1d85adc6dc19baf4ea042a3c3defe07ef3da071210650ea57a3f3",
+  "t_snapshot": 1792590623.7832222
+ },
+ "stack": "e10s",
+ "v1_result": {
+  "file": "exp/out/e10_main_migration_offline.json",
+  "sha256": "a0aed96879b754d8efc2f4e33d1e76b4ba490532a81c053ecb2b791a13e7ae5f"
+ }
+}

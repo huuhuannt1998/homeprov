@@ -1,0 +1,158 @@
+{
+ "experiment": "e8_main: E8 part C on the default deployment: arms PU, PI, PSR, P (homeprov_ec) and INS-L, INS-M, BD-S (homeprov_e7), then a lab-rate baseline and a write-rate stress window with a PU arm, under the stable-columns monitor (evaluated) and the closure monitor (alongside), each with coverage, escrow, Ed25519 record signatures and tagged anchor replies, its own linked anchor (append key + separate operator key) and a head witness on the Mac outside Docker's VM",
+ "verifier_parameters": {
+  "late_bound_s": 30.0,
+  "gap_s": 30.0,
+  "verifier": "exp/stages/e7_verify.py",
+  "e7_verify_py_sha256": "7e036386baacea9d05808a50a709489bd554d5a4b0a3d568583d07afbb0ae1f8"
+ },
+ "monitors": {
+  "stable": {
+   "image": "hpr-monitor:e8",
+   "scheme": "stable",
+   "evaluated": true
+  },
+  "closure": {
+   "image": "hpr-monitor:e8",
+   "scheme": "closure",
+   "evaluated": false
+  },
+  "both": "HOMEPROV_COVERAGE=1, HOMEPROV_ESCROW_DIR, HOMEPROV_COST_LOG, HOMEPROV_SIGN_KEY, HOMEPROV_REPLY_TAGS=1"
+ },
+ "anchor": {
+  "image": "hpr-anchord:e8",
+  "dockerfile": "testbed/e8/anchord-e8.Dockerfile",
+  "entry": "anchord_linked.py",
+  "link": "v2",
+  "operator_key": true,
+  "head_witness_mode": "sync"
+ },
+ "in_image_sha256": {
+  "monitor.py": "3e479ae01caf299e697b0274a22ddddbaa6b57b9bf4b730a8774b2d7c5b5282b",
+  "anchord.py": "53d1ac92ebbca11e7d3aeda742c1bd790ccb98edb913ad0f4eda8b664af96dfd",
+  "anchord_linked.py": "966d2b351cec120538e059eb293293892cf5bb312fc7b310ffb8888f0fad9b5c"
+ },
+ "code_sha256": {
+  "monitor/monitor.py": "3e479ae01caf299e697b0274a22ddddbaa6b57b9bf4b730a8774b2d7c5b5282b",
+  "testbed/anchord/anchord.py": "53d1ac92ebbca11e7d3aeda742c1bd790ccb98edb913ad0f4eda8b664af96dfd",
+  "testbed/anchord/anchord_linked.py": "966d2b351cec120538e059eb293293892cf5bb312fc7b310ffb8888f0fad9b5c",
+  "testbed/anchord/headwitness.py": "0d8a83c8e0c4cb09e4a5097045e3d1ae91ae7ed264d4b491712256f0602781f5",
+  "testbed/anchord/chainverify.py": "38cfa5e9d99e8ece7ee53d4401e6a97d6e16b7dac02e19088b11d13b547f9d0e",
+  "exp/stages/e7_verify.py": "7e036386baacea9d05808a50a709489bd554d5a4b0a3d568583d07afbb0ae1f8",
+  "exp/stages/e8_score.py": "488e116bc92d56aa8303c7e960f61a4056b702da01a8d53be35ec7f9e0f48934",
+  "testbed/e8/stress_publisher.py": "bf099e10e411465c6af973f6929b6bbcc85298a24815f9611f984c633b3bd756",
+  "testbed/e8/anchord-e8.Dockerfile": "84191c7adf8fc8a74b75f6603d7850841d8a9428c905622af4a6dc22ca811ebe",
+  "testbed/real/ha-config/custom_components/homeprov_ec/__init__.py": "266d27e298153ede1cc002d715461ecf96fbc211e96e76ed1d1453e762687918",
+  "testbed/real/ha-config/custom_components/homeprov_e7/__init__.py": "26d1d472e8331909cee0f69a16c4eee96ddaf383954d5bd79eba914fa847e707"
+ },
+ "witness_code_sha256_as_run": "0d8a83c8e0c4cb09e4a5097045e3d1ae91ae7ed264d4b491712256f0602781f5",
+ "signing_public_keys": {
+  "stb": {
+   "pem_sha256": "16de074e2469f31d2525733f25483ded7a18b408406fb1b91caf777e9aa001b1",
+   "path_in_run_dir": "keys/stb_sign_pub.pem"
+  },
+  "clo": {
+   "pem_sha256": "0e610317af1593b0a25e4ca3ea49d15a9b614f2d55788e0e65c32e0329878a00",
+   "path_in_run_dir": "keys/clo_sign_pub.pem"
+  }
+ },
+ "configuration_log": [
+  "2026-10-09T05:31:21Z tag=e8_main hub=hpr-hass net=homeprov-real_hp-real cfgvol=homeprov-real_hpr-config devices=hpr-devices broker=hpr-broker prefix=e8 scratch=0",
+  "2026-10-09T05:31:21Z arms (skip_main=0): homeprov_ec [\"PU\",\"PI\",\"PSR\",\"P\"] + homeprov_e7 [\"INS-L\",\"INS-M\",\"BD-S\"]; trials/config=30 rooms='porch hallway kitchen' K=9 seal_wait_s=130 bd_min_age_s=130 bd_lookback_s=1800 period=5",
+  "2026-10-09T05:31:21Z stress: skip=0 baseline_s=600 stress_s=1800 ramp_s=300 factor=6 rooms='porch' trials=30 arms=[\"PU\"]",
+  "2026-10-09T05:31:21Z verifier parameters (pre-registered, as E7): LATE_BOUND=30s GAP_S=30s; recovery_render=0 operator_probe=1",
+  "2026-10-09T05:31:21Z evaluated scheme: stable columns (e8-monitor-stb / e8-anchord-stb); alongside: closure (e8-monitor-clo / e8-anchord-clo)",
+  "2026-10-09T05:31:22Z load_before:  1:31  up 38 days,  5:29, 2 users, load averages: 5.33 4.13 3.78",
+  "2026-10-09T05:31:22Z git_head: b7611992393052a568df00c9ebc805f4d15ee6f5 (working tree carries the round-13 monitor/anchor/verifier changes; hashes below)",
+  "2026-10-09T05:31:22Z hub_image: homeassistant/home-assistant:2026.7.4 sha256:5a531753cea96444200158fc2b0ac7ccd739291ec50414877b396de6e0bb29b3",
+  "2026-10-09T05:31:22Z devices_image: hpr-devices:1 sha256:75daf6534617b165f64e2c021729974a59ab9df44564c3f67860f4ee0446081b (not restarted or modified by this run)",
+  "2026-10-09T05:31:22Z monitor_image: hpr-monitor:e8 (sha256:c9f5904d5c5003973b19acfd812b0b7e9a2b8709bb91764028ed0e3d635203e2) cryptography=46.0.3",
+  "2026-10-09T05:31:22Z anchor_image:  hpr-anchord:e8 (sha256:7f23dcb163785fb36f1ff633fb8bb217fd9430e3cd4a1dd4e22e09a500be58b3)",
+  "2026-10-09T05:31:26Z in_image_sha256: monitor.py=3e479ae01caf299e697b0274a22ddddbaa6b57b9bf4b730a8774b2d7c5b5282b anchord.py=53d1ac92ebbca11e7d3aeda742c1bd790ccb98edb913ad0f4eda8b664af96dfd anchord_linked.py=966d2b351cec120538e059eb293293892cf5bb312fc7b310ffb8888f0fad9b5c",
+  "2026-10-09T05:31:26Z repo_sha256_16: monitor.py=3e479ae01caf299e anchord.py=53d1ac92ebbca11e anchord_linked.py=966d2b351cec1205 headwitness.py(run copy)=0d8a83c8e0c4cb09 chainverify.py=38cfa5e9d99e8ece",
+  "2026-10-09T05:31:26Z repo_sha256_16: e7_verify.py=7e036386baacea9d e8_score.py=488e116bc92d56aa homeprov_ec=266d27e298153ede homeprov_e7=26d1d472e8331909 stress_publisher.py=bf099e10e411465c run_e8.sh=fbddce8e2f904ef6",
+  "2026-10-09T05:31:26Z hub_configuration_yaml_sha256: 0ac1834b72c92c9356c121b4ea78c916d29549996b32fe4c6120c746e9c1d563 (restored byte for byte at teardown)",
+  "2026-10-09T05:31:26Z stable:  append_key_fp=4519335680d7350c operator_key_fp=ceb64d04720efbb2 witness_key_fp=7ffc17da18efe6b5 (sha256(hex)[:16]; keys not recorded)",
+  "2026-10-09T05:31:26Z closure: append_key_fp=1f702bf211df838f operator_key_fp=a9e1c70105fab3ea witness_key_fp=ce224f2c13e39fd6 (sha256(hex)[:16]; keys not recorded)",
+  "2026-10-09T05:31:27Z stb: signing public key fingerprint (sha256 of the raw 32-byte Ed25519 key) e96b6e5305ef13b7f38610674434a29ac56211c09bb631015def6a6a31a25f80; public key at <research-dir>/HOMEPROV-P13-exp/e8/e8_main/keys/stb_sign_pub.pem; private key only in volume e8-e8_main-stb-sign",
+  "2026-10-09T05:31:30Z clo: signing public key fingerprint (sha256 of the raw 32-byte Ed25519 key) 1272d204e82098a69fc7269a8ddde36ceec8fde2fd7732f8976cd2ce5bfc989d; public key at <research-dir>/HOMEPROV-P13-exp/e8/e8_main/keys/clo_sign_pub.pem; private key only in volume e8-e8_main-clo-sign",
+  "2026-10-09T05:31:30Z witness stb: pid=49050 bind=127.0.0.1:19970 code=<research-dir>/HOMEPROV-P13-exp/e8/e8_main/code/headwitness.py (0d8a83c8e0c4cb09) python=Python 3.13.11 head={\"seq\": 0, \"head_digest\": null}",
+  "2026-10-09T05:31:31Z witness clo: pid=49083 bind=127.0.0.1:19971 code=<research-dir>/HOMEPROV-P13-exp/e8/e8_main/code/headwitness.py (0d8a83c8e0c4cb09) python=Python 3.13.11 head={\"seq\": 0, \"head_digest\": null}",
+  "2026-10-09T05:31:31Z stopping+renaming the stock monitor and anchor (restored on exit)",
+  "2026-10-09T05:31:35Z e8-anchord-stb: witness reachable from the anchor container: 200",
+  "2026-10-09T05:31:37Z e8-anchord-clo: witness reachable from the anchor container: 200",
+  "2026-10-09T05:31:39Z anchors: hpr-anchord:e8 [\"python\",\"-u\",\"/app/anchord_linked.py\"]; monitors: stb=running clo=running",
+  "2026-10-09T05:32:09Z probe_from_hub: {\"anchor-stb\": {\"record_untagged\": 401, \"record_forged\": 401, \"marker_untagged\": 401, \"marker_forged\": 401}, \"anchor-clo\": {\"record_untagged\": 401, \"record_forged\": 401, \"marker_untagged\": 401, \"marker_forged\": 401}, \"witness_from_hub\": {\"19970\": \"URLError(gaierror(-3, 'Try again'))\", \"19971\": \"URLError(gaierror(-3, 'Try again'))\"}}",
+  "2026-10-09T05:32:10Z operator_probe: {\"anchor-clo\": {\"marker_with_append_key\": {\"reason\": \"marker_needs_operator_key\", \"reply_tag_ok\": true, \"status\": 403}, \"marker_with_operator_key\": {\"reason\": null, \"reply_tag_ok\": true, \"status\": 200}, \"record_with_operator_key\": {\"reason\": \"operator_key_for_markers_only\", \"reply_tag_ok\": true, \"status\": 403}}, \"anchor-stb\": {\"marker_with_append_key\": {\"reason\": \"marker_needs_operator_key\", \"reply_tag_ok\": true, \"status\": 403}, \"marker_with_operator_key\": {\"reason\": null, \"reply_tag_ok\": true, \"status\": 200}, \"record_with_operator_key\": {\"reason\": \"operator_key_for_markers_only\", \"reply_tag_ok\": true, \"status\": 403}}}",
+  "2026-10-09T05:32:50Z stb chain before run: 14 records; witness head {\"seq\": 14, \"head_digest\": \"8d8483c10e15ea7a0601878d599124ea6bd7107543cd8004ec936b23648a4a85\"}",
+  "2026-10-09T05:32:50Z clo chain before run: 14 records; witness head {\"seq\": 14, \"head_digest\": \"27799ad2ae5db2b663e2afb427a98715a58f37f8ae856a4966dabf17e654cdc3\"}",
+  "2026-10-09T05:32:50Z monitor_log_head stb: {\"tick\": 1, \"seq_local\": 1, \"copy_ms\": 57.212, \"escrowed\": 1263, \"escrowed_keylog\": 0, \"n_nodes\": 5699, \"load_ms\": 39.133, \"commit_ms\": 191.535, \"sealed_new\": {\"second\": 1263, \"minute\": 91, \"hour\": 1}, \"append_ms\": 40.006, \"anchor\": {\"ok\": true, \"seq\": 1, \"head_digest\": \"f5d62ccf4c1ca9eed73763f62a5b {\"tick\": 2, \"seq_local\": 2, \"copy_ms\": 69.292, \"escrowed_keylog\": 0, \"n_nodes\": 5699, \"load_ms\": 33.948, \"commit_ms\": 145.142, \"sealed_new\": {}, \"append_ms\": 58.896, \"anchor\": {\"ok\": true, \"seq\": 2, \"head_digest\": \"449b66017bc05ed539638b1c4ae6805b9905e76fe98bf49937f85a1653f787fa\", \"witness_push\": {\" ",
+  "2026-10-09T05:32:50Z -- configuration: porch --",
+  "2026-10-09T05:32:51Z   homeprov_ec [\"PU\",\"PI\",\"PSR\",\"P\"] x30 in porch: starting",
+  "2026-10-09T05:54:27Z   ack homeprov_ec porch: {\"ok\": true, \"n\": 120, \"room\": \"porch\", \"member\": \"90b6f1f5983443c2b47f563e8f652752\"}",
+  "2026-10-09T05:54:27Z   -> <artifact-root>/exp/out/e8_main_report_ec_porch.json",
+  "2026-10-09T05:54:27Z   homeprov_e7 [\"INS-L\",\"INS-M\",\"BD-S\"] x30 in porch: starting",
+  "2026-10-09T06:06:37Z   ack homeprov_e7 porch: {\"ok\": true, \"n\": 90, \"room\": \"porch\", \"member\": \"90b6f1f5983443c2b47f563e8f652752\"}",
+  "2026-10-09T06:06:37Z   -> <artifact-root>/exp/out/e8_main_report_e7_porch.json",
+  "2026-10-09T06:06:37Z -- configuration: hallway --",
+  "2026-10-09T06:06:37Z   homeprov_ec [\"PU\",\"PI\",\"PSR\",\"P\"] x30 in hallway: starting",
+  "2026-10-09T06:28:18Z   ack homeprov_ec hallway: {\"ok\": true, \"n\": 120, \"room\": \"hallway\", \"member\": \"90b6f1f5983443c2b47f563e8f652752\"}",
+  "2026-10-09T06:28:18Z   -> <artifact-root>/exp/out/e8_main_report_ec_hallway.json",
+  "2026-10-09T06:28:18Z   homeprov_e7 [\"INS-L\",\"INS-M\",\"BD-S\"] x30 in hallway: starting",
+  "2026-10-09T06:40:32Z   ack homeprov_e7 hallway: {\"ok\": true, \"n\": 90, \"room\": \"hallway\", \"member\": \"90b6f1f5983443c2b47f563e8f652752\"}",
+  "2026-10-09T06:40:32Z   -> <artifact-root>/exp/out/e8_main_report_e7_hallway.json",
+  "2026-10-09T06:40:32Z -- configuration: kitchen --",
+  "2026-10-09T06:40:32Z   homeprov_ec [\"PU\",\"PI\",\"PSR\",\"P\"] x30 in kitchen: starting",
+  "2026-10-09T07:02:16Z   ack homeprov_ec kitchen: {\"ok\": true, \"n\": 120, \"room\": \"kitchen\", \"member\": \"90b6f1f5983443c2b47f563e8f652752\"}",
+  "2026-10-09T07:02:16Z   -> <artifact-root>/exp/out/e8_main_report_ec_kitchen.json",
+  "2026-10-09T07:02:17Z   homeprov_e7 [\"INS-L\",\"INS-M\",\"BD-S\"] x30 in kitchen: starting",
+  "2026-10-09T07:14:37Z   ack homeprov_e7 kitchen: {\"ok\": true, \"n\": 90, \"room\": \"kitchen\", \"member\": \"90b6f1f5983443c2b47f563e8f652752\"}",
+  "2026-10-09T07:14:37Z   -> <artifact-root>/exp/out/e8_main_report_e7_kitchen.json",
+  "2026-10-09T07:15:23Z phase 1 done; load:  3:15  up 38 days,  7:13, 2 users, load averages: 4.07 5.33 5.62",
+  "2026-10-09T07:15:23Z settling 90s",
+  "2026-10-09T07:16:53Z baseline window (lab rate, no trials): 600s",
+  "2026-10-09T07:26:53Z baseline done; load:  3:26  up 38 days,  7:24, 2 users, load averages: 4.98 4.42 4.89",
+  "2026-10-09T07:26:54Z stress publisher e8-e8_main-stress started (factor 6, image hpr-devices:1); ramp 300s",
+  "2026-10-09T07:31:54Z   homeprov_ec [\"PU\"] x30 in porch: starting",
+  "2026-10-09T07:37:47Z   ack homeprov_ec porch: {\"ok\": true, \"n\": 30, \"room\": \"porch\", \"member\": \"90b6f1f5983443c2b47f563e8f652752\"}",
+  "2026-10-09T07:37:47Z   -> <artifact-root>/exp/out/e8_main_stress_report_porch.json",
+  "2026-10-09T07:37:47Z stress continues 1147s to the end of the fixed window",
+  "2026-10-09T07:56:54Z stress publisher: {\"stress\": \"tick\", \"ts\": 1791532603.5103433, \"elapsed_s\": 1788.3, \"on\": 719, \"off\": 719}",
+  "2026-10-09T07:56:57Z stress done: {\"stress\": \"stop\", \"ts\": 1791532616.906126, \"elapsed_s\": 1801.7, \"on\": 724, \"off\": 724, \"motion_on_per_min\": 24.11}; load:  3:56  up 38 days,  7:54, 2 users, load averages: 3.71 4.34 4.43",
+  "2026-10-09T07:57:43Z settling 90s so the final segments seal and anchor on both monitors",
+  "2026-10-09T07:59:13Z taking a consistent recorder snapshot (SQLite backup API, inside the hub)",
+  "2026-10-09T07:59:54Z stb: chain 1509 records, witness head {\"seq\": 1509, \"head_digest\": \"dbc59a0d3e2c46e5a9b2a57246e7cb38787b66fafa83bb91e2a697385ffe1fc0\"}, heads logged 1508, forks 0, refusals 6, escrow lines 7609",
+  "2026-10-09T07:59:55Z clo: chain 1539 records, witness head {\"seq\": 1539, \"head_digest\": \"78b4ec6c0a413f89d3f5711f660f25d3357c128356e696155b52af514cc1d95e\"}, heads logged 1539, forks 0, refusals 6, escrow lines 7660",
+  "2026-10-09T07:59:56Z witness 49050 (port 19970) stopped",
+  "2026-10-09T07:59:57Z witness 49083 (port 19971) stopped",
+  "2026-10-09T07:59:58Z recorder snapshot sha256 756270479c89c72f at 1791532754",
+  "2026-10-09T07:59:58Z scoring with exp/stages/e8_score.py (LATE_BOUND=30s GAP_S=30s)",
+  "2026-10-09T08:00:20Z score exit: 0 (  main   cost total ms median 435.082 p90 834.454 max 5738.263 (1048 polls, 0 failed appends); seal delay {'n': 2210, 'median': 3.866, 'p90': 6.359, 'max': 245.273}   base   cost total ms median 417.471 p90 735.747 max 1273.807 (103 polls, 0 failed appends); seal delay {'n': 123, 'median': 3.431, 'p90': 5.989, 'max': 7.623}   stress cost total ms median 542.186 p90 988.185 max 2060.361 (300 polls, 0 failed appends); seal delay {'n': 1231, 'median': 3.869, 'p90': 6.273, 'max': 8.63}   witness: chain 1509 records link=v2 ok=True; final head = chain head: True; never witnessed 1; forks 0; controls {\"truncated_tail\": {\"alone_ok\": true, \"vs_latest_head_ok\": false, \"vs_every_witnessed_head_ok\": false}, \"relinked_rewrite\": {\"rewritten_record\": 754, \"alone_ok\": true, \"vs_true_latest_head_ok\": false, \"vs_doctored_latest_head_only_ok\": true, \"vs_every_witnessed_head_with_doctored_latest_ok\": false, \"expected\": \"alone and against a doctored latest head: passes (the gap); against every witnessed hea  -- closure monitor --   main   BD-S   n=90  e7_detected=90  [0.96, 1.0]  earlier rule: flagged=0 attributable=0 ambiguous=0   main   INS-L  n=90  e7_detected=90  [0.96, 1.0]  earlier rule: flagged=90 attributable=0 ambiguous=90   main   INS-M  n=90  e7_detected=90  [0.96, 1.0]  earlier rule: flagged=90 attributable=0 ambiguous=90   main   P      n=90  e7_detected=90  [0.96, 1.0]  earlier rule: flagged=90 attributable=89 ambiguous=1   main   PI     n=90  e7_detected=90  [0.96, 1.0]  earlier r)"
+ ],
+ "chains": {
+  "stb": {
+   "file": "exp/out/e8_main_stable_chain.jsonl.gz",
+   "records": 1509,
+   "sha256_uncompressed": "7ac24d8985f11f9035395669051c74c8d2bfea56cdd4a6dc9cb6f51265744f5b"
+  },
+  "clo": {
+   "file": "exp/out/e8_main_closure_chain.jsonl.gz",
+   "records": 1539,
+   "sha256_uncompressed": "1d35e0614463fb27b8880a302cf0b27eac91ca091edbd5ef1ffd0a68afcd01c6"
+  }
+ },
+ "witness_heads": {
+  "stb": {
+   "file": "exp/out/e8_main_stable_witness_heads.jsonl.gz",
+   "heads": 1508,
+   "sha256_uncompressed": "c338e50f130b9ac487ab93ab4cfcab6df12423c5e8e78036dd3c3caddca15992"
+  },
+  "clo": {
+   "file": "exp/out/e8_main_closure_witness_heads.jsonl.gz",
+   "heads": 1539,
+   "sha256_uncompressed": "066ba197312094e360b7981c6b0222450b40606bddb39672d3cc07925f0f679c"
+  }
+ },
+ "recorder_snapshot_sha256": "756270479c89c72f4509934c2a5513f41612abd7256f4a4e7772275d96299bd4",
+ "wrapper_script_sha256": "fbddce8e2f904ef6b328342e1bf1d7404fc3ffbcdbf8b32f6d93757d036a6959"
+}

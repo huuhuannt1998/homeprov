@@ -1,0 +1,74 @@
+# E10 schema-upgrade arm (round 14): a FRESH Home Assistant on the release before the recorder schema change
+# (2025.11.1, schema 51), upgraded with the monitor live to 2026.7.4 (schema 53). YAML only: no config entry, no storage
+# file of a later release, no device simulator. Rows every few seconds (states, automation_triggered and call_service
+# events with contexts), and a temperature sensor with long-term statistics, so the 51 -> 52 migration (it adds
+# statistics_meta.unit_class and fills it) has a row to update. drafts/round13/E10_DESIGN.md section 3.
+homeassistant:
+  name: E10 upgrade stack
+  latitude: 0
+  longitude: 0
+  elevation: 0
+  unit_system: metric
+  time_zone: UTC
+
+http:
+
+recorder:
+  db_url: sqlite:////config/home-assistant_v2.db
+  commit_interval: 1
+  purge_keep_days: 30
+
+logbook:
+history:
+
+logger:
+  default: warning
+
+input_boolean:
+  e10u_porch_light:
+    name: Porch light
+  e10u_front_door:
+    name: Front door
+
+counter:
+  e10u_ticks:
+    name: Ticks
+    step: 1
+
+template:
+  - sensor:
+      - name: Porch temperature
+        unique_id: e10u_porch_temperature
+        unit_of_measurement: "°C"
+        device_class: temperature
+        state_class: measurement
+        state: "{{ (states('counter.e10u_ticks') | int(0)) % 40 + 15 }}"
+
+automation:
+  - id: e10u_tick
+    alias: E10 tick
+    triggers:
+      - trigger: time_pattern
+        seconds: "/3"
+    actions:
+      - action: counter.increment
+        target:
+          entity_id: counter.e10u_ticks
+  - id: e10u_porch_light
+    alias: E10 porch light
+    triggers:
+      - trigger: time_pattern
+        seconds: "/7"
+    actions:
+      - action: input_boolean.toggle
+        target:
+          entity_id: input_boolean.e10u_porch_light
+  - id: e10u_front_door
+    alias: E10 front door
+    triggers:
+      - trigger: time_pattern
+        seconds: "/29"
+    actions:
+      - action: input_boolean.toggle
+        target:
+          entity_id: input_boolean.e10u_front_door

@@ -1,0 +1,94 @@
+{
+ "check": "E10 O-MIG",
+ "monitor": "direct",
+ "shapes": {
+  "column": {
+   "applied": [
+    "ALTER TABLE states ADD COLUMN e10_probe TEXT"
+   ],
+   "flagged_seconds": 413196,
+   "keylog_ranges_checked": 18299,
+   "keylog_violations": 12354,
+   "segments_checked": {
+    "hour": 738,
+    "minute": 35343,
+    "second": 419143
+   },
+   "skipped": [],
+   "statements": [
+    "ALTER TABLE states ADD COLUMN e10_probe TEXT"
+   ],
+   "violations": {
+    "hour": 738,
+    "minute": 35341,
+    "second": 413161
+   }
+  },
+  "index": {
+   "applied": [
+    "CREATE INDEX ix_e10_probe ON states (state, last_updated_ts)"
+   ],
+   "flagged_seconds": 115215,
+   "keylog_ranges_checked": 18299,
+   "keylog_violations": 10043,
+   "segments_checked": {
+    "hour": 738,
+    "minute": 35343,
+    "second": 419143
+   },
+   "skipped": [],
+   "statements": [
+    "CREATE INDEX ix_e10_probe ON states (state, last_updated_ts)"
+   ],
+   "violations": {
+    "hour": 736,
+    "minute": 30486,
+    "second": 115108
+   }
+  },
+  "m52": {
+   "applied": [],
+   "flagged_seconds": 115215,
+   "keylog_ranges_checked": 18299,
+   "keylog_violations": 10043,
+   "segments_checked": {
+    "hour": 738,
+    "minute": 35343,
+    "second": 419143
+   },
+   "skipped": [
+    {
+     "statement": "ALTER TABLE statistics_meta ADD COLUMN unit_class VARCHAR(255)",
+     "why": "column already present"
+    }
+   ],
+   "statements": [
+    "ALTER TABLE statistics_meta ADD COLUMN unit_class VARCHAR(255)"
+   ],
+   "violations": {
+    "hour": 736,
+    "minute": 30486,
+    "second": 115108
+   }
+  },
+  "none": {
+   "applied": [],
+   "flagged_seconds": 115215,
+   "keylog_ranges_checked": 18299,
+   "keylog_violations": 10043,
+   "segments_checked": {
+    "hour": 738,
+    "minute": 35343,
+    "second": 419143
+   },
+   "skipped": [],
+   "statements": [],
+   "violations": {
+    "hour": 736,
+    "minute": 30486,
+    "second": 115108
+   }
+  }
+ },
+ "snapshot": "e10s/snapshots/final.db"
+}

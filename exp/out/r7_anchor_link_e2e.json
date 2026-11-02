@@ -1,0 +1,193 @@
+{
+ "item": "R7/N2: hash-linked anchor, end to end through the real daemon, the shipped monitor and a head witness",
+ "generated": "2026-10-07T02:54:44.434528+00:00",
+ "script": "exp/sp2027/r7_anchor_link_e2e.py",
+ "anchord_sha256": "7b1ef9f1e11a36584eb0fde218fc6a0bb234ff33071e80990d0d354883a0c17f",
+ "anchord_linked_sha256": "99aa18ceb8f39c568716a7cfe52218b9715299239435596d793b0f231508a6e2",
+ "headwitness_sha256": "cde6896535ea99d1f0dbfcd805a925a00b482d8fcab5e8d01cf2ff5c027ca3c7",
+ "chainverify_sha256": "0f05a5a4bad337b5a9187bb95b701c000c77d5078839b2b4b21747db292761a7",
+ "monitor_sha256": "c499b860f089ce47461c68f543bf302edd68255b72277ef3f6739a5754d9e5bf",
+ "linked_run": {
+  "ticks": [
+   {
+    "sealed_new": {
+     "second": 2316,
+     "minute": 114,
+     "hour": 1
+    },
+    "anchor": {
+     "ok": true,
+     "seq": 1,
+     "witness_push": {
+      "ok": true,
+      "ms": 19.053,
+      "witness": {
+       "ok": true,
+       "seq": 1
+      }
+     }
+    }
+   },
+   {
+    "sealed_new": {
+     "second": 1
+    },
+    "anchor": {
+     "ok": true,
+     "seq": 2,
+     "witness_push": {
+      "ok": true,
+      "ms": 2.012,
+      "witness": {
+       "ok": true,
+       "seq": 2
+      }
+     }
+    }
+   },
+   {
+    "sealed_new": {
+     "second": 1
+    },
+    "anchor": {
+     "ok": true,
+     "seq": 3,
+     "witness_push": {
+      "ok": true,
+      "ms": 2.735,
+      "witness": {
+       "ok": true,
+       "seq": 3
+      }
+     }
+    }
+   },
+   {
+    "sealed_new": {
+     "second": 1
+    },
+    "anchor": {
+     "ok": true,
+     "seq": 4,
+     "witness_push": {
+      "ok": true,
+      "ms": 0.952,
+      "witness": {
+       "ok": true,
+       "seq": 4
+      }
+     }
+    }
+   },
+   {
+    "sealed_new": {
+     "second": 1
+    },
+    "anchor": {
+     "ok": true,
+     "seq": 5,
+     "witness_push": {
+      "ok": true,
+      "ms": 1.937,
+      "witness": {
+       "ok": true,
+       "seq": 5
+      }
+     }
+    }
+   },
+   {
+    "sealed_new": {
+     "second": 1
+    },
+    "anchor": {
+     "ok": true,
+     "seq": 6,
+     "witness_push": {
+      "ok": true,
+      "ms": 1.016,
+      "witness": {
+       "ok": true,
+       "seq": 6
+      }
+     }
+    }
+   }
+  ],
+  "chain_records": 6,
+  "chain_check_against_witness": {
+   "ok": true,
+   "link": "v2",
+   "linked_records": 6,
+   "problems": [],
+   "integrity": "linked and checked against the externally held head"
+  },
+  "witness_head": {
+   "seq": 6,
+   "head_digest": "c03516c4ee16df683697537d643e4615239ac6e00e40f5722d61d427e151b67c"
+  },
+  "anchor_get_head_digest": "c03516c4ee16df683697537d643e4615239ac6e00e40f5722d61d427e151b67c",
+  "published_head_digest": "c03516c4ee16df683697537d643e4615239ac6e00e40f5722d61d427e151b67c",
+  "heads_agree": true,
+  "monitor_roots_verified": 2436,
+  "root_violations": 0,
+  "record_encodings": [
+   "v2"
+  ]
+ },
+ "tamper_checks": {
+  "swap": {
+   "detected_with_witness_head": true,
+   "detected_by_chain_alone": true,
+   "problems": [
+    "sequence number 3 where 2 was expected",
+    "prev_digest does not match the previous record",
+    "sequence number 2 where 3 was expected"
+   ]
+  },
+  "delete": {
+   "detected_with_witness_head": true,
+   "detected_by_chain_alone": true,
+   "problems": [
+    "sequence number 4 where 3 was expected",
+    "prev_digest does not match the previous record",
+    "sequence number 5 where 4 was expected"
+   ]
+  },
+  "rewrite_root": {
+   "detected_with_witness_head": true,
+   "detected_by_chain_alone": true,
+   "problems": [
+    "prev_digest does not match the previous record"
+   ]
+  },
+  "truncate": {
+   "detected_with_witness_head": true,
+   "detected_by_chain_alone": false,
+   "problems": [
+    "chain holds 4 records but the external head is at 6: truncated or replaced"
+   ]
+  }
+ },
+ "upgrade_from_unlinked_chain": {
+  "legacy_chain": "reproduce/snapshots/e_c_clo.chain.jsonl",
+  "legacy_records": 408,
+  "legacy_chain_alone": {
+   "records": 408,
+   "link": "v1",
+   "ok": true
+  },
+  "tick_anchor": {
+   "ok": true,
+   "seq": 409
+  },
+  "after_append": {
+   "ok": true,
+   "link": "mixed",
+   "records": 409,
+   "linked_records": 1,
+   "problems": []
+  },
+  "edit_inside_unlinked_prefix_detected": true
+ }
+}

@@ -1,0 +1,108 @@
+{
+  "stage": 10,
+  "n_trials": 448,
+  "BFP_homeprov": {
+    "k": 0,
+    "n": 448,
+    "prop": 0.0,
+    "ci_lo": 0.0,
+    "ci_hi": 0.008200298529035463,
+    "method": "Clopper-Pearson exact"
+  },
+  "BFP_b2": {
+    "k": 192,
+    "n": 448,
+    "prop": 0.42857142857142855,
+    "ci_lo": 0.38223447492597584,
+    "ci_hi": 0.47585764806044584,
+    "method": "Clopper-Pearson exact"
+  },
+  "per_benign_event": {
+    "BE-11": {
+      "n": 64,
+      "hp": 0,
+      "b2": 0
+    },
+    "BE-2": {
+      "n": 64,
+      "hp": 0,
+      "b2": 64
+    },
+    "BE-3": {
+      "n": 64,
+      "hp": 0,
+      "b2": 0
+    },
+    "BE-4": {
+      "n": 64,
+      "hp": 0,
+      "b2": 64
+    },
+    "BE-5b": {
+      "n": 64,
+      "hp": 0,
+      "b2": 64
+    },
+    "BE-5f": {
+      "n": 64,
+      "hp": 0,
+      "b2": 0
+    },
+    "BE-7": {
+      "n": 64,
+      "hp": 0,
+      "b2": 0
+    }
+  },
+  "threshold_cleared": true,
+  "rule_of_three_note": "zero events in n trials bounds the rate at ~3/n",
+  "GATE_PASS": true,
+  "capability": {
+    "capability_record": {
+      "schema_version": 1,
+      "actor_id": "none",
+      "actor_position": "in_process_integration",
+      "powers": {
+        "db_read": true,
+        "db_write": true,
+        "fs_read_as_ha_uid": true,
+        "fs_write_as_ha_uid": true,
+        "python_exec_in_core": true,
+        "event_bus_listen": true,
+        "event_bus_emit": true,
+        "service_call": true,
+        "network_egress": false
+      },
+      "knowledge": {
+        "deployment_topology": "full",
+        "automation_configs": "full",
+        "anchor_schedule_known": false,
+        "anchor_key_known": false,
+        "victim_routine_model": "coarse"
+      },
+      "budget": {
+        "db_writes_max": 0,
+        "wallclock_window_s": 5,
+        "cpu_seconds_max": null
+      },
+      "constraints": {
+        "host_root": false,
+        "cross_uid_write": false,
+        "anchor_key_access": false,
+        "external_anchor_retraction": false,
+        "clock_control": false,
+        "cap_linux_immutable": false,
+        "cap_bpf": false
+      },
+      "substrate": {
+        "kind": "native_aarch64_container",
+        "envelope": "Pi-shaped cgroup (cpus/memory/blkio)",
+        "note": "NOT a Raspberry Pi; absolute latency is not claimed as Pi latency"
+      },
+      "provenance": {
+        "rka_mission": null,
+        "seed": 0
+      }
+    }
+  }
+}

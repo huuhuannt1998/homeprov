@@ -1,0 +1,736 @@
+{
+ "baseline_2026_7_4": {
+  "all_tested": [
+   "event_data.shared_data",
+   "events.context_id_bin",
+   "events.context_parent_id_bin",
+   "events.context_user_id_bin",
+   "events.data_id",
+   "events.event_type_id",
+   "events.time_fired_ts",
+   "states.attributes_id",
+   "states.context_id_bin",
+   "states.context_parent_id_bin",
+   "states.context_user_id_bin",
+   "states.last_changed_ts",
+   "states.last_updated_ts",
+   "states.metadata_id",
+   "states.old_state_id",
+   "states.state",
+   "states.state_id(row identity)"
+  ],
+  "n_relevant": 12,
+  "relevant": [
+   "events.context_id_bin",
+   "events.context_parent_id_bin",
+   "events.context_user_id_bin",
+   "events.data_id",
+   "events.event_type_id",
+   "events.time_fired_ts",
+   "states.context_id_bin",
+   "states.context_user_id_bin",
+   "states.last_updated_ts",
+   "states.metadata_id",
+   "states.old_state_id",
+   "states.state"
+  ]
+ },
+ "comparison": {
+  "all_tested_set_identical": true,
+  "only_in_baseline": [],
+  "only_in_new": [
+   "states.last_changed_ts"
+  ],
+  "relevant_set_identical": false
+ },
+ "experiment": "R1-item1-dynamic",
+ "ha_version": "2026.9.4",
+ "new_release": {
+  "all_tested": [
+   "event_data.shared_data",
+   "events.context_id_bin",
+   "events.context_parent_id_bin",
+   "events.context_user_id_bin",
+   "events.data_id",
+   "events.event_type_id",
+   "events.time_fired_ts",
+   "states.attributes_id",
+   "states.context_id_bin",
+   "states.context_parent_id_bin",
+   "states.context_user_id_bin",
+   "states.last_changed_ts",
+   "states.last_updated_ts",
+   "states.metadata_id",
+   "states.old_state_id",
+   "states.state",
+   "states.state_id(row identity)"
+  ],
+  "n_relevant": 13,
+  "relevant": [
+   "events.context_id_bin",
+   "events.context_parent_id_bin",
+   "events.context_user_id_bin",
+   "events.data_id",
+   "events.event_type_id",
+   "events.time_fired_ts",
+   "states.context_id_bin",
+   "states.context_user_id_bin",
+   "states.last_changed_ts",
+   "states.last_updated_ts",
+   "states.metadata_id",
+   "states.old_state_id",
+   "states.state"
+  ]
+ },
+ "positive_control": {
+  "attribution_relevant": true,
+  "effect": {
+   "appeared": 1,
+   "attribution_changed": 0,
+   "examples": [],
+   "rows_after": 81,
+   "rows_before": 81,
+   "vanished": 1
+  },
+  "field": "states.state",
+  "method": "mutation",
+  "restore_verified": true
+ },
+ "provenance": {
+  "frontend_version": "20260826.7",
+  "git_head": "b7611992393052a568df00c9ebc805f4d15ee6f5",
+  "ha_version": "2026.9.4",
+  "image_digest": "sha256:3e6710a7ab2a61311d9d899b719f6c3657791c63e8f4942cec4ebc42401d6b76",
+  "script_sha256": {
+   "__init__.py": "07dfcc944b2d4c3bb9a556d869f99369ce2f9c89b8ee8c7776df05cad2f978c3",
+   "r1_cmd.sh": "cb503dd24b592c9aa4db0f7c5d87c13cb58d6a9f95504f248f8fe08fd7de91ad"
+  },
+  "timestamp_utc": "2026-10-06T20:12:58.385943+00:00"
+ },
+ "raw_component_output": {
+  "baseline_rows": 81,
+  "entities_scoped": [
+   "binary_sensor.porch_motion",
+   "binary_sensor.kitchen_motion",
+   "binary_sensor.hallway_motion",
+   "light.kitchen_light",
+   "automation.kitchen_motion_light",
+   "light.hallway_light",
+   "automation.hallway_motion_light",
+   "sensor.backup_backup_manager_state",
+   "light.porch_light",
+   "automation.porch_motion_light",
+   "lock.front_door",
+   "lock.back_door",
+   "zone.home",
+   "sensor.backup_next_scheduled_automatic_backup",
+   "sensor.backup_last_successful_automatic_backup",
+   "sensor.backup_last_attempted_automatic_backup",
+   "event.backup_automatic_backup",
+   "conversation.home_assistant"
+  ],
+  "ha_version": "2026.9.4",
+  "mutations": [
+   {
+    "attribution_relevant": true,
+    "effect": {
+     "appeared": 0,
+     "attribution_changed": 1,
+     "examples": [
+      {
+       "now": {
+        "context_entity_id": "binary_sensor.kitchen_motion",
+        "context_entity_id_name": "Kitchen Motion",
+        "context_state": "on"
+       },
+       "row": {
+        "entity_id": "light.kitchen_light",
+        "message": null,
+        "name": "Kitchen Light",
+        "state": "off",
+        "when": "2026-10-06T20:12:08.774125+00:00"
+       },
+       "was": {
+        "context_domain": "automation",
+        "context_entity_id": "automation.kitchen_motion_light",
+        "context_entity_id_name": "Kitchen motion light",
+        "context_event_type": "automation_triggered",
+        "context_message": "triggered by state of binary_sensor.kitchen_motion",
+        "context_name": "Kitchen motion light"
+       }
+      }
+     ],
+     "rows_after": 81,
+     "rows_before": 81,
+     "vanished": 0
+    },
+    "field": "states.context_id_bin",
+    "method": "mutation",
+    "restore_verified": true
+   },
+   {
+    "attribution_relevant": false,
+    "effect": {
+     "appeared": 0,
+     "attribution_changed": 0,
+     "examples": [],
+     "rows_after": 81,
+     "rows_before": 81,
+     "vanished": 0
+    },
+    "field": "states.context_parent_id_bin",
+    "method": "mutation",
+    "restore_verified": true
+   },
+   {
+    "attribution_relevant": true,
+    "effect": {
+     "appeared": 0,
+     "attribution_changed": 1,
+     "examples": [
+      {
+       "now": {
+        "context_domain": "automation",
+        "context_entity_id": "automation.kitchen_motion_light",
+        "context_entity_id_name": "Kitchen motion light",
+        "context_event_type": "automation_triggered",
+        "context_message": "triggered by state of binary_sensor.kitchen_motion",
+        "context_name": "Kitchen motion light",
+        "context_user_id": "39bc867cf398d7d4bb869ef87f1db67a"
+       },
+       "row": {
+        "entity_id": "light.kitchen_light",
+        "message": null,
+        "name": "Kitchen Light",
+        "state": "off",
+        "when": "2026-10-06T20:12:08.774125+00:00"
+       },
+       "was": {
+        "context_domain": "automation",
+        "context_entity_id": "automation.kitchen_motion_light",
+        "context_entity_id_name": "Kitchen motion light",
+        "context_event_type": "automation_triggered",
+        "context_message": "triggered by state of binary_sensor.kitchen_motion",
+        "context_name": "Kitchen motion light"
+       }
+      }
+     ],
+     "rows_after": 81,
+     "rows_before": 81,
+     "vanished": 0
+    },
+    "field": "states.context_user_id_bin",
+    "method": "mutation",
+    "restore_verified": true
+   },
+   {
+    "attribution_relevant": true,
+    "effect": {
+     "appeared": 1,
+     "attribution_changed": 0,
+     "examples": [],
+     "rows_after": 81,
+     "rows_before": 81,
+     "vanished": 1
+    },
+    "field": "states.state",
+    "method": "mutation",
+    "restore_verified": true
+   },
+   {
+    "attribution_relevant": true,
+    "effect": {
+     "appeared": 1,
+     "attribution_changed": 0,
+     "examples": [],
+     "rows_after": 81,
+     "rows_before": 81,
+     "vanished": 1
+    },
+    "field": "states.metadata_id",
+    "method": "mutation",
+    "restore_verified": true
+   },
+   {
+    "attribution_relevant": false,
+    "effect": {
+     "appeared": 0,
+     "attribution_changed": 0,
+     "examples": [],
+     "rows_after": 81,
+     "rows_before": 81,
+     "vanished": 0
+    },
+    "field": "states.attributes_id",
+    "method": "mutation",
+    "restore_verified": true
+   },
+   {
+    "attribution_relevant": true,
+    "effect": {
+     "appeared": 0,
+     "attribution_changed": 0,
+     "examples": [],
+     "rows_after": 80,
+     "rows_before": 81,
+     "vanished": 1
+    },
+    "field": "states.old_state_id",
+    "method": "mutation",
+    "restore_verified": true
+   },
+   {
+    "attribution_relevant": true,
+    "effect": {
+     "appeared": 1,
+     "attribution_changed": 0,
+     "examples": [],
+     "rows_after": 81,
+     "rows_before": 81,
+     "vanished": 1
+    },
+    "field": "states.last_updated_ts",
+    "method": "mutation",
+    "restore_verified": true
+   },
+   {
+    "attribution_relevant": true,
+    "effect": {
+     "appeared": 0,
+     "attribution_changed": 0,
+     "examples": [],
+     "rows_after": 80,
+     "rows_before": 81,
+     "vanished": 1
+    },
+    "field": "states.last_changed_ts",
+    "method": "mutation",
+    "restore_verified": true
+   },
+   {
+    "attribution_relevant": null,
+    "field": "states.state_id(row identity)",
+    "method": "static-only"
+   },
+   {
+    "attribution_relevant": true,
+    "effect": {
+     "appeared": 0,
+     "attribution_changed": 2,
+     "examples": [
+      {
+       "now": {
+        "context_entity_id": "automation.kitchen_motion_light",
+        "context_entity_id_name": "Kitchen motion light",
+        "context_state": "on"
+       },
+       "row": {
+        "entity_id": "light.kitchen_light",
+        "message": null,
+        "name": "Kitchen Light",
+        "state": "on",
+        "when": "2026-10-06T20:11:58.976353+00:00"
+       },
+       "was": {
+        "context_domain": "automation",
+        "context_entity_id": "automation.kitchen_motion_light",
+        "context_entity_id_name": "Kitchen motion light",
+        "context_event_type": "automation_triggered",
+        "context_message": "triggered by state of binary_sensor.kitchen_motion",
+        "context_name": "Kitchen motion light"
+       }
+      },
+      {
+       "now": {
+        "context_entity_id": "automation.kitchen_motion_light",
+        "context_entity_id_name": "Kitchen motion light",
+        "context_state": "on"
+       },
+       "row": {
+        "entity_id": "light.kitchen_light",
+        "message": null,
+        "name": "Kitchen Light",
+        "state": "off",
+        "when": "2026-10-06T20:12:08.774125+00:00"
+       },
+       "was": {
+        "context_domain": "automation",
+        "context_entity_id": "automation.kitchen_motion_light",
+        "context_entity_id_name": "Kitchen motion light",
+        "context_event_type": "automation_triggered",
+        "context_message": "triggered by state of binary_sensor.kitchen_motion",
+        "context_name": "Kitchen motion light"
+       }
+      }
+     ],
+     "rows_after": 81,
+     "rows_before": 81,
+     "vanished": 0
+    },
+    "field": "events.context_id_bin",
+    "method": "mutation",
+    "restore_verified": true
+   },
+   {
+    "attribution_relevant": true,
+    "effect": {
+     "appeared": 0,
+     "attribution_changed": 1,
+     "examples": [
+      {
+       "now": {
+        "source": "state of binary_sensor.kitchen_motion"
+       },
+       "row": {
+        "entity_id": "automation.kitchen_motion_light",
+        "message": "triggered by state of binary_sensor.kitchen_motion",
+        "name": "Kitchen motion light",
+        "state": null,
+        "when": "2026-10-06T20:11:58.965218+00:00"
+       },
+       "was": {
+        "context_entity_id": "binary_sensor.kitchen_motion",
+        "context_entity_id_name": "Kitchen Motion",
+        "context_state": "on",
+        "source": "state of binary_sensor.kitchen_motion"
+       }
+      }
+     ],
+     "rows_after": 81,
+     "rows_before": 81,
+     "vanished": 0
+    },
+    "field": "events.context_parent_id_bin",
+    "method": "mutation",
+    "restore_verified": true
+   },
+   {
+    "attribution_relevant": true,
+    "effect": {
+     "appeared": 0,
+     "attribution_changed": 1,
+     "examples": [
+      {
+       "now": {
+        "context_entity_id": "binary_sensor.kitchen_motion",
+        "context_entity_id_name": "Kitchen Motion",
+        "context_state": "on",
+        "context_user_id": "fb0ba24755eda4971b46447539b03764",
+        "source": "state of binary_sensor.kitchen_motion"
+       },
+       "row": {
+        "entity_id": "automation.kitchen_motion_light",
+        "message": "triggered by state of binary_sensor.kitchen_motion",
+        "name": "Kitchen motion light",
+        "state": null,
+        "when": "2026-10-06T20:11:58.965218+00:00"
+       },
+       "was": {
+        "context_entity_id": "binary_sensor.kitchen_motion",
+        "context_entity_id_name": "Kitchen Motion",
+        "context_state": "on",
+        "source": "state of binary_sensor.kitchen_motion"
+       }
+      }
+     ],
+     "rows_after": 81,
+     "rows_before": 81,
+     "vanished": 0
+    },
+    "field": "events.context_user_id_bin",
+    "method": "mutation",
+    "restore_verified": true
+   },
+   {
+    "attribution_relevant": true,
+    "effect": {
+     "appeared": 0,
+     "attribution_changed": 2,
+     "examples": [
+      {
+       "now": {},
+       "row": {
+        "entity_id": "light.kitchen_light",
+        "message": null,
+        "name": "Kitchen Light",
+        "state": "on",
+        "when": "2026-10-06T20:11:58.976353+00:00"
+       },
+       "was": {
+        "context_domain": "automation",
+        "context_entity_id": "automation.kitchen_motion_light",
+        "context_entity_id_name": "Kitchen motion light",
+        "context_event_type": "automation_triggered",
+        "context_message": "triggered by state of binary_sensor.kitchen_motion",
+        "context_name": "Kitchen motion light"
+       }
+      },
+      {
+       "now": {},
+       "row": {
+        "entity_id": "light.kitchen_light",
+        "message": null,
+        "name": "Kitchen Light",
+        "state": "off",
+        "when": "2026-10-06T20:12:08.774125+00:00"
+       },
+       "was": {
+        "context_domain": "automation",
+        "context_entity_id": "automation.kitchen_motion_light",
+        "context_entity_id_name": "Kitchen motion light",
+        "context_event_type": "automation_triggered",
+        "context_message": "triggered by state of binary_sensor.kitchen_motion",
+        "context_name": "Kitchen motion light"
+       }
+      }
+     ],
+     "rows_after": 80,
+     "rows_before": 81,
+     "vanished": 1
+    },
+    "field": "events.event_type_id",
+    "method": "mutation",
+    "restore_verified": true
+   },
+   {
+    "attribution_relevant": true,
+    "effect": {
+     "appeared": 0,
+     "attribution_changed": 2,
+     "examples": [
+      {
+       "now": {
+        "context_domain": "automation",
+        "context_event_type": "automation_triggered",
+        "context_message": "triggered"
+       },
+       "row": {
+        "entity_id": "light.kitchen_light",
+        "message": null,
+        "name": "Kitchen Light",
+        "state": "on",
+        "when": "2026-10-06T20:11:58.976353+00:00"
+       },
+       "was": {
+        "context_domain": "automation",
+        "context_entity_id": "automation.kitchen_motion_light",
+        "context_entity_id_name": "Kitchen motion light",
+        "context_event_type": "automation_triggered",
+        "context_message": "triggered by state of binary_sensor.kitchen_motion",
+        "context_name": "Kitchen motion light"
+       }
+      },
+      {
+       "now": {
+        "context_domain": "automation",
+        "context_event_type": "automation_triggered",
+        "context_message": "triggered"
+       },
+       "row": {
+        "entity_id": "light.kitchen_light",
+        "message": null,
+        "name": "Kitchen Light",
+        "state": "off",
+        "when": "2026-10-06T20:12:08.774125+00:00"
+       },
+       "was": {
+        "context_domain": "automation",
+        "context_entity_id": "automation.kitchen_motion_light",
+        "context_entity_id_name": "Kitchen motion light",
+        "context_event_type": "automation_triggered",
+        "context_message": "triggered by state of binary_sensor.kitchen_motion",
+        "context_name": "Kitchen motion light"
+       }
+      }
+     ],
+     "rows_after": 80,
+     "rows_before": 81,
+     "vanished": 1
+    },
+    "field": "events.data_id",
+    "method": "mutation",
+    "restore_verified": true
+   },
+   {
+    "attribution_relevant": true,
+    "effect": {
+     "appeared": 1,
+     "attribution_changed": 0,
+     "examples": [],
+     "rows_after": 81,
+     "rows_before": 81,
+     "vanished": 1
+    },
+    "field": "events.time_fired_ts",
+    "method": "mutation",
+    "restore_verified": true
+   },
+   {
+    "attribution_relevant": null,
+    "field": "event_data.shared_data",
+    "method": "static-only"
+   }
+  ],
+  "picked": {
+   "event_id": 1282,
+   "state_id": 143
+  },
+  "positive_control": {
+   "attribution_relevant": true,
+   "effect": {
+    "appeared": 1,
+    "attribution_changed": 0,
+    "examples": [],
+    "rows_after": 81,
+    "rows_before": 81,
+    "vanished": 1
+   },
+   "field": "states.state",
+   "method": "mutation",
+   "restore_verified": true
+  },
+  "processor_form": "entity_ids",
+  "relaxed_pick": null,
+  "static": {
+   "EVENT_COLUMNS": [
+    {
+     "columns": [
+      "events.event_id"
+     ],
+     "label": "row_id"
+    },
+    {
+     "columns": [
+      "event_types.event_type"
+     ],
+     "label": "event_type"
+    },
+    {
+     "columns": [
+      "event_data.shared_data",
+      "events.event_data"
+     ],
+     "label": "event_data"
+    },
+    {
+     "columns": [
+      "events.time_fired_ts"
+     ],
+     "label": "time_fired_ts"
+    },
+    {
+     "columns": [
+      "events.context_id_bin"
+     ],
+     "label": "context_id_bin"
+    },
+    {
+     "columns": [
+      "events.context_user_id_bin"
+     ],
+     "label": "context_user_id_bin"
+    },
+    {
+     "columns": [
+      "events.context_parent_id_bin"
+     ],
+     "label": "context_parent_id_bin"
+    }
+   ],
+   "EVENT_COLUMNS_FOR_STATE_SELECT": [
+    {
+     "columns": [
+      "states.state_id"
+     ],
+     "label": "row_id"
+    },
+    {
+     "columns": [],
+     "label": "event_type"
+    },
+    {
+     "columns": [],
+     "label": "event_data"
+    },
+    {
+     "columns": [
+      "states.last_updated_ts"
+     ],
+     "label": "time_fired_ts"
+    },
+    {
+     "columns": [
+      "states.context_id_bin"
+     ],
+     "label": "context_id_bin"
+    },
+    {
+     "columns": [
+      "states.context_user_id_bin"
+     ],
+     "label": "context_user_id_bin"
+    },
+    {
+     "columns": [
+      "states.context_parent_id_bin"
+     ],
+     "label": "context_parent_id_bin"
+    }
+   ],
+   "STATE_COLUMNS": [
+    {
+     "columns": [
+      "states.state"
+     ],
+     "label": "state"
+    },
+    {
+     "columns": [
+      "states_meta.entity_id"
+     ],
+     "label": "entity_id"
+    },
+    {
+     "columns": [
+      "state_attributes.shared_attrs",
+      "states.attributes"
+     ],
+     "label": "icon"
+    },
+    {
+     "columns": [
+      "state_attributes.shared_attrs",
+      "states.attributes"
+     ],
+     "label": "attributes"
+    }
+   ],
+   "STATE_CONTEXT_ONLY_COLUMNS": [
+    {
+     "columns": [
+      "states.state"
+     ],
+     "label": "state"
+    },
+    {
+     "columns": [
+      "states_meta.entity_id"
+     ],
+     "label": "entity_id"
+    },
+    {
+     "columns": [],
+     "label": "icon"
+    },
+    {
+     "columns": [],
+     "label": "attributes"
+    }
+   ]
+  },
+  "ts": 1791317539.9639056,
+  "window_hours": 6
+ },
+ "verdict": "CHANGES the current closure claim: the attribution-relevant field set is NOT identical dynamically. 2026.9.4 (frontend 20260826.7, the 2026.9 Activity Details chain PR #53362) additionally renders states.last_changed_ts as attribution-relevant (13 fields vs 12 on 2026.7.4); the fields tested (17) and all baseline-relevant fields are unchanged. Single live-hub run; to be corroborated on 2026.10.0b2.",
+ "what": "renderer dependency-closure MUTATION re-run (homeprov_e4 closure) on 2026.9.4; each DB column mutated, rendered cause re-read, field flagged attribution-relevant if the render changed"
+}

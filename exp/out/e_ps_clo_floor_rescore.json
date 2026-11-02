@@ -1,0 +1,77 @@
+{
+ "tag": "e_ps_clo",
+ "scheme": "closure",
+ "result_file": "exp/out/e_ps_clo_detection.json",
+ "snapshot_sha256": "2e73df08f5d0933fdef0e865794c0fe293e7bc4ce9e9f09d64f542b4cf1b3677",
+ "chain_sha256": "779aa39e020d51d9e65015da65768dae56848fd2c0170440d568d0be45239cc4",
+ "segment_window_filter": true,
+ "result_sha256": "bf8dc6895a33e88a82e27e4175c0b01bef796f2d69026beff6534c219173bbf9",
+ "snapshot": "../hp-clo/e_ps_clo/ps_verify/recorder.db",
+ "chain": "../hp-clo/e_ps_clo/chain.jsonl",
+ "window": {
+  "t_start": 1790966773.0,
+  "t_end": 1790967973.0,
+  "duration_s": 1200.0,
+  "recorder_snapshot_at": 1790968086.368844
+ },
+ "published_floor": {
+  "second": {
+   "k": 1,
+   "n": 312
+  },
+  "minute": {
+   "k": 0,
+   "n": 8
+  }
+ },
+ "old_rule_floor": {
+  "second": {
+   "k": 1,
+   "n": 312,
+   "mechanisms": {
+    "rows_arrived_after_seal": 1
+   },
+   "failing": [
+    {
+     "segment": "1790967289",
+     "mechanism": "rows_arrived_after_seal",
+     "delta_n": 1
+    }
+   ]
+  },
+  "minute": {
+   "k": 0,
+   "n": 8,
+   "mechanisms": {},
+   "failing": []
+  }
+ },
+ "old_rule_reproduces_published": true,
+ "new_rule_floor": {
+  "second": {
+   "k": 1,
+   "n": 312,
+   "mechanisms": {
+    "rows_arrived_after_seal": 1
+   },
+   "failing": [
+    {
+     "segment": "1790967289",
+     "mechanism": "rows_arrived_after_seal",
+     "delta_n": 1
+    }
+   ]
+  },
+  "minute": {
+   "k": 0,
+   "n": 8,
+   "mechanisms": {},
+   "failing": []
+  }
+ },
+ "failures_moved_to_touched": [],
+ "newly_touched_second_segments": [],
+ "rule": "Benign-floor re-score (review D2, N-01). Read-only re-analysis of existing data.\n\nThe shipped aggregators (e_c_write_time.py, e_ps_detection.py) count a trial's touched segment from one row only:\ntrial_row_ts(t), the second of the judged / forged / captured state row. A trial also wrote other rows: the\nservice-call event of its actuation (in the trial's own context, fired between the context's creation and the\nstate row) and every state row it edited. When those lie in another second, that second was counted \"untouched\",\nand an edit could enter the benign floor.\n\nNEW COUNTING RULE. A trial touches every one-second segment (and its minute) that holds a row the trial wrote:\n  1. the second of trial_row_ts(t) (the old rule);\n  2. the second of every state row it names (row_before, judged_row, forged_row, laundered_state_ids,\n     swapped_state_ids), looked up in the snapshot;\n  3. the second of every event that carries the trial's own context (row_before / forged_row context_id_bin) or a\n     fabricated event context it minted (fabricated_event_context), read from the snapshot; when the trial deleted\n     those events (laundering arms P, PU, PI), every second from the context's creation (its ULID timestamp) to the\n     trial's state row, because the deleted service-call event fired inside that span;\n  4. for the write-path hook (W3), whose state row carries a cover context, the adversary's residual service-call\n     event (residual_adversary_call_service ts).\nEverything else is the shipped verifier: first anchored root per segment among chain records whose payload ts lies\nin [t_start, recorder_snapshot_at]; recompute with the shipped monitor's load()/commit() for the run's scheme;\nsegments whose start lies in [t_start - w, t_end + w]. The OLD rule is recomputed too, and must reproduce the\npublished floor exactly before the new one is reported.\n\nUsage: floor_rescore.py TAG RESULT_JSON SNAPSHOT_DB CHAIN SCHEME\n  CHAIN: a .jsonl or .jsonl.gz path, or container:<name> (read with docker exec cat)\n  SCHEME: row | closure | wholerow\nWrites exp/out/<TAG>_floor_rescore.json (never overwrites) and prints a one-line summary.\n",
+ "script_sha256": "56d8e3a94cb410fe27761012b4a2bdc0c49bfabbd8b7dbd338098046595861c3",
+ "script": "\"\"\"Benign-floor re-score (review D2, N-01). Read-only re-analysis of existing data.\n\nThe shipped aggregators (e_c_write_time.py, e_ps_detection.py) count a trial's touched segment from one row only:\ntrial_row_ts(t), the second of the judged / forged / captured state row. A trial also wrote other rows: the\nservice-call event of its actuation (in the trial's own context, fired between the context's creation and the\nstate row) and every state row it edited. When those lie in another second, that second was counted \"untouched\",\nand an edit could enter the benign floor.\n\nNEW COUNTING RULE. A trial touches every one-second segment (and its minute) that holds a row the trial wrote:\n  1. the second of trial_row_ts(t) (the old rule);\n  2. the second of every state row it names (row_before, judged_row, forged_row, laundered_state_ids,\n     swapped_state_ids), looked up in the snapshot;\n  3. the second of every event that carries the trial's own context (row_before / forged_row context_id_bin) or a\n     fabricated event context it minted (fabricated_event_context), read from the snapshot; when the trial deleted\n     those events (laundering arms P, PU, PI), every second from the context's creation (its ULID timestamp) to the\n     trial's state row, because the deleted service-call event fired inside that span;\n  4. for the write-path hook (W3), whose state row carries a cover context, the adversary's residual service-call\n     event (residual_adversary_call_service ts).\nEverything else is the shipped verifier: first anchored root per segment among chain records whose payload ts lies\nin [t_start, recorder_snapshot_at]; recompute with the shipped monitor's load()/commit() for the run's scheme;\nsegments whose start lies in [t_start - w, t_end + w]. The OLD rule is recomputed too, and must reproduce the\npublished floor exactly before the new one is reported.\n\nUsage: floor_rescore.py TAG RESULT_JSON SNAPSHOT_DB CHAIN SCHEME\n  CHAIN: a .jsonl or .jsonl.gz path, or container:<name> (read with docker exec cat)\n  SCHEME: row | closure | wholerow\nWrites exp/out/<TAG>_floor_rescore.json (never overwrites) and prints a one-line summary.\n\"\"\"\nimport base64, collections, gzip, hashlib, importlib.util, json, os, subprocess, sys\n\nTAG, RES, DB, CHAIN, SCHEME = sys.argv[1:6]\n# The segment-window filter of verify_window ([t_start - w, t_end + w]) was not applied by the verifier that produced\n# the earliest run (e_c_write_time, 2026-09-09): its published denominator (810) equals all roots anchored inside the\n# time window minus the touched ones. \"--no-segwin\" reproduces that verifier; every other run uses the filter.\nSEGWIN = \"--no-segwin\" not in sys.argv\nREPO = \"<artifact-root>\"\nOUT = os.path.join(REPO, \"exp\", \"out\")\ndst = os.path.join(OUT, f\"{TAG}_floor_rescore.json\")\nif os.path.exists(dst):\n    raise SystemExit(\"refusing to overwrite \" + dst)\nos.environ[\"HOMEPROV_SCRATCH\"] = os.path.dirname(DB)\nif SCHEME == \"wholerow\":\n    sys.path.insert(0, os.path.join(REPO, \"monitor\"))\n    import monitor_wholerow as _wr\n    M = _wr.M\nelse:\n    os.environ[\"HOMEPROV_SCHEME\"] = SCHEME\n    spec = importlib.util.spec_from_file_location(\"mon_\" + SCHEME, os.path.join(REPO, \"monitor\", \"monitor.py\"))\n    M = importlib.util.module_from_spec(spec); spec.loader.exec_module(M)\nW = dict(M.GRAN)\nres = json.load(open(RES))\nwin = res[\"window\"]\nt0, t1, tsnap = win[\"t_start\"], win[\"t_end\"], win[\"recorder_snapshot_at\"]\ntrials = [t for t in res[\"trials\"] if t.get(\"arm\") in (\"PS\", \"PSR\")] if \"homeprov_detection_second\" in res else res[\"trials\"]\n\n# ---------------------------------------------------------------- anchored roots (shipped rule)\nif CHAIN.startswith(\"container:\"):\n    raw = subprocess.run([\"docker\", \"exec\", CHAIN.split(\":\", 1)[1], \"cat\", \"/anchor/chain.jsonl\"],\n                         capture_output=True, text=True).stdout.splitlines()\nelif CHAIN.endswith(\".gz\"):\n    raw = gzip.open(CHAIN, \"rt\").read().splitlines()\nelse:\n    raw = open(CHAIN).read().splitlines()\nroots = {}\nfor line in raw:\n    if not line.strip():\n        continue\n    try:\n        rec = json.loads(line)\n    except ValueError:\n        continue\n    p = rec.get(\"payload\") or {}\n    ts = p.get(\"ts\") or rec.get(\"recv_ts\") or 0.0\n    if not (t0 <= ts <= tsnap) or p.get(\"evidence_unobservable\"):\n        continue\n    for g, segs in (p.get(\"sealed\") or {}).items():\n        if g in W and isinstance(segs, dict):\n            for s, v in segs.items():\n                roots.setdefault((g, str(s)), v)\n\n# ---------------------------------------------------------------- recompute (shipped load/commit)\nsince = (int(t0 // 3600) - 1) * 3600.0\nphi = M.commit(M.load(DB, since=since))\nverd = {}\nfor (g, s), a in roots.items():\n    w = W[g]\n    if SEGWIN and not (t0 - w <= int(s) * w <= t1 + w):\n        continue\n    got = (phi.get(g) or {}).get(s)\n    if got is None:\n        verd[(g, s)] = (\"segment_vanished\", None)\n    elif got[\"acc\"] != a[\"acc\"] or got[\"n\"] != a[\"n\"]:\n        dn = got[\"n\"] - a[\"n\"]\n        verd[(g, s)] = (\"rows_arrived_after_seal\" if dn > 0 else \"rows_removed_after_seal\" if dn < 0\n                        else \"content_changed_in_place\", dn)\n    else:\n        verd[(g, s)] = (None, 0)\n\n# ---------------------------------------------------------------- touched sets\nimport sqlite3\ncon = sqlite3.connect(DB)\nstate_ts = lambda sid: (con.execute(\"SELECT last_updated_ts FROM states WHERE state_id=?\", (sid,)).fetchone() or [None])[0]\nB32 = \"0123456789ABCDEFGHJKMNPQRSTVWXYZ\"\n\n\ndef ulid_s(v):\n    if not v:\n        return None\n    if len(v) == 32:                                   # context_id_bin as hex\n        return int(v[:12], 16) / 1000.0\n    if len(v) == 26:                                   # ULID string\n        n = 0\n        for ch in v[:10].upper():\n            n = n * 32 + B32.index(ch)\n        return n / 1000.0\n    return None\n\n\ndef ulid_bytes(v):\n    n = 0\n    for ch in v.upper():\n        n = n * 32 + B32.index(ch)\n    return n.to_bytes(16, \"big\")\n\n\ndef row_ts(t):\n    for k in (\"judged_row\", \"forged_row\", \"row_before\"):\n        r = t.get(k)\n        if isinstance(r, dict) and r.get(\"ts\"):\n            return float(r[\"ts\"])\n    return None\n\n\nold = {g: set() for g in W}\nnew = {g: set() for g in W}\nwhy_new = collections.defaultdict(list)\nfor t in trials:\n    ts = row_ts(t)\n    if ts is None:\n        continue\n    secs = {int(ts // 1)}\n    old_s = int(ts // 1)\n    for k in (\"row_before\", \"judged_row\", \"forged_row\"):\n        r = t.get(k)\n        if isinstance(r, dict) and r.get(\"state_id\"):\n            x = state_ts(r[\"state_id\"]) or r.get(\"ts\")\n            if x:\n                secs.add(int(float(x) // 1))\n    for sid in (t.get(\"laundered_state_ids\") or []) + (t.get(\"swapped_state_ids\") or []):\n        x = state_ts(sid)\n        if x:\n            secs.add(int(x // 1))\n    if t.get(\"arm\") == \"W3\":\n        for e in t.get(\"residual_adversary_call_service\") or []:\n            if e.get(\"ts\"):\n                secs.add(int(float(e[\"ts\"]) // 1))\n    else:\n        r = t.get(\"row_before\") or t.get(\"forged_row\") or t.get(\"judged_row\") or {}\n        for cid in (r.get(\"context_id_bin\"), t.get(\"fabricated_event_context\")):\n            if not cid:\n                continue\n            b = bytes.fromhex(cid) if len(cid) == 32 else ulid_bytes(cid)\n            evs = [x[0] for x in con.execute(\"SELECT time_fired_ts FROM events WHERE context_id_bin=?\", (b,))]\n            if evs:\n                secs |= {int(x // 1) for x in evs if x}\n            else:\n                c = ulid_s(cid)\n                if c is not None:\n                    lo, hi = sorted((c, ts))\n                    secs |= set(range(int(lo // 1), int(hi // 1) + 1))\n    for s in secs:\n        for g, w in W.items():\n            seg = str(int(s * 1.0 // w))\n            new[g].add(seg)\n        if s != old_s:\n            why_new[str(s)].append(f\"{t.get('arm')}/{t.get('room')}/{t.get('trial')}\")\n    for g, w in W.items():\n        old[g].add(str(int(ts // w)))\n\n\ndef floor(touched, g):\n    segs = [s for (gg, s) in verd if gg == g and s not in touched]\n    fails = [s for s in segs if verd[(g, s)][0]]\n    mech = collections.Counter(verd[(g, s)][0] for s in fails)\n    return {\"k\": len(fails), \"n\": len(segs), \"mechanisms\": dict(mech),\n            \"failing\": [{\"segment\": s, \"mechanism\": verd[(g, s)][0], \"delta_n\": verd[(g, s)][1]} for s in sorted(fails)]}\n\n\nfo = {g: floor(old[g], g) for g in (\"second\", \"minute\")}\nfn = {g: floor(new[g], g) for g in (\"second\", \"minute\")}\npub = res[\"benign_violation_floor\"]\nreproduced = all((fo[g][\"k\"], fo[g][\"n\"]) == (pub[g][\"k\"], pub[g][\"n\"]) for g in (\"second\", \"minute\"))\nmoved = [{\"segment\": s, \"mechanism\": verd[(\"second\", s)][0], \"delta_n\": verd[(\"second\", s)][1],\n          \"touched_by\": why_new.get(s, [])}\n         for s in sorted({x[\"segment\"] for x in fo[\"second\"][\"failing\"]} - {x[\"segment\"] for x in fn[\"second\"][\"failing\"]})]\nsrc = open(__file__).read()\nfsha = lambda p: hashlib.sha256(open(p, \"rb\").read()).hexdigest() if os.path.exists(p) else None\nout = {\"tag\": TAG, \"scheme\": SCHEME, \"result_file\": os.path.relpath(RES, REPO),\n       \"snapshot_sha256\": fsha(DB), \"chain_sha256\": fsha(CHAIN), \"segment_window_filter\": SEGWIN,\n       \"result_sha256\": hashlib.sha256(open(RES, \"rb\").read()).hexdigest(),\n       \"snapshot\": DB, \"chain\": CHAIN, \"window\": win,\n       \"published_floor\": {g: {\"k\": pub[g][\"k\"], \"n\": pub[g][\"n\"]} for g in (\"second\", \"minute\")},\n       \"old_rule_floor\": fo, \"old_rule_reproduces_published\": reproduced,\n       \"new_rule_floor\": fn, \"failures_moved_to_touched\": moved,\n       \"newly_touched_second_segments\": sorted(new[\"second\"] - old[\"second\"]),\n       \"rule\": __doc__, \"script_sha256\": hashlib.sha256(src.encode()).hexdigest(), \"script\": src}\njson.dump(out, open(dst, \"w\"), indent=1)\nprint(f\"{TAG} {SCHEME}: published {pub['second']['k']}/{pub['second']['n']} old-rule {fo['second']['k']}/{fo['second']['n']} \"\n      f\"(reproduced={reproduced}) new-rule {fn['second']['k']}/{fn['second']['n']} mech {fn['second']['mechanisms']} \"\n      f\"minute {fo['minute']['k']}/{fo['minute']['n']}->{fn['minute']['k']}/{fn['minute']['n']} moved {moved}\")\n"
+}

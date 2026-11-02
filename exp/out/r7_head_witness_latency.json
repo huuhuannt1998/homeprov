@@ -1,0 +1,144 @@
+{
+ "item": "R7/N2: append latency with hash linking and with the head held on a second (local stand-in) host",
+ "generated": "2026-10-07T02:55:56.346781+00:00",
+ "script": "exp/sp2027/r7_head_witness_latency.py",
+ "code_sha256": {
+  "anchord.py": "7b1ef9f1e11a36584eb0fde218fc6a0bb234ff33071e80990d0d354883a0c17f",
+  "anchord_linked.py": "99aa18ceb8f39c568716a7cfe52218b9715299239435596d793b0f231508a6e2",
+  "headwitness.py": "cde6896535ea99d1f0dbfcd805a925a00b482d8fcab5e8d01cf2ff5c027ca3c7",
+  "chainverify.py": "0f05a5a4bad337b5a9187bb95b701c000c77d5078839b2b4b21747db292761a7"
+ },
+ "setup": {
+  "image": "python:3.13-slim",
+  "anchor_network": "r7a-net-anchor",
+  "witness_network": "r7a-net-witness",
+  "stand_in": "separate containers and bridge networks on one machine (Docker Desktop VM); not a physically separate host",
+  "payloads": "records 2..408 of reproduce/snapshots/e_c_clo.chain.jsonl (steady-state monitor ticks), replayed with fresh ts",
+  "client": "own container on the anchor network, HMAC-tagged appends, urllib, interleaved order",
+  "load_avg_start": [
+   7.1494140625,
+   6.20458984375,
+   5.1796875
+  ],
+  "load_avg_end": [
+   7.39306640625,
+   6.44091796875,
+   5.33056640625
+  ]
+ },
+ "append_round_trip": {
+  "v1": {
+   "n": 407,
+   "median_ms": 2.087,
+   "p90_ms": 3.683,
+   "p99_ms": 11.706,
+   "max_ms": 74.074,
+   "mean_ms": 2.765
+  },
+  "plain": {
+   "n": 407,
+   "median_ms": 2.128,
+   "p90_ms": 3.478,
+   "p99_ms": 12.051,
+   "max_ms": 34.154,
+   "mean_ms": 2.579
+  },
+  "sync": {
+   "n": 407,
+   "median_ms": 4.271,
+   "p90_ms": 6.444,
+   "p99_ms": 22.455,
+   "max_ms": 83.014,
+   "mean_ms": 5.287
+  },
+  "async": {
+   "n": 407,
+   "median_ms": 2.229,
+   "p90_ms": 3.588,
+   "p99_ms": 9.471,
+   "max_ms": 64.271,
+   "mean_ms": 2.775
+  }
+ },
+ "paired_differences": {
+  "plain_minus_v1": {
+   "n": 407,
+   "median_ms": -0.002,
+   "p90_ms": 1.135,
+   "mean_ms": -0.186
+  },
+  "sync_minus_plain": {
+   "n": 407,
+   "median_ms": 1.939,
+   "p90_ms": 3.87,
+   "mean_ms": 2.708
+  },
+  "async_minus_plain": {
+   "n": 407,
+   "median_ms": 0.097,
+   "p90_ms": 1.012,
+   "mean_ms": 0.196
+  },
+  "sync_minus_v1": {
+   "n": 407,
+   "median_ms": 2.027,
+   "p90_ms": 3.975,
+   "mean_ms": 2.522
+  }
+ },
+ "sync_witness_push_ms_inside_append": {
+  "n": 407,
+  "median_ms": 2.006,
+  "p90_ms": 3.212,
+  "p99_ms": 10.222,
+  "max_ms": 19.35,
+  "mean_ms": 2.397
+ },
+ "async_head_lag_ms": {
+  "n": 407,
+  "median_ms": 1.978,
+  "p90_ms": 3.151,
+  "p99_ms": 10.367,
+  "max_ms": 61.715,
+  "mean_ms": 2.605
+ },
+ "body_bytes": {
+  "n": 407,
+  "median_ms": 312.0,
+  "p90_ms": 499.0,
+  "p99_ms": 598.0,
+  "max_ms": 612.0,
+  "mean_ms": 344.666
+ },
+ "chain_checks": {
+  "v1": {
+   "records": 407,
+   "link": "v1",
+   "linked_records": 0,
+   "problems": [],
+   "ok": true
+  },
+  "plain": {
+   "records": 407,
+   "link": "v2",
+   "linked_records": 407,
+   "problems": [],
+   "ok": true
+  },
+  "sync": {
+   "records": 407,
+   "link": "v2",
+   "linked_records": 407,
+   "problems": [],
+   "ok": true
+  },
+  "async": {
+   "records": 407,
+   "link": "v2",
+   "linked_records": 407,
+   "problems": [],
+   "ok": true
+  }
+ },
+ "context": "the monitor appends once per 5 s observation interval; real-deployment write-to-anchor latency is median 3.811 s, max 17.75 s (exp/out/r6_window_latency_real.json)"
+}

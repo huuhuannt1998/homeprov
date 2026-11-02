@@ -1,0 +1,2038 @@
+{
+ "status": "ok",
+ "generated": "2026-10-12T16:55:43.028871+00:00",
+ "script_sha256": "dc9d6fad23358afdd257378c2444223ff3abad802934ea6755bc5297ac2036e8",
+ "code": "e8",
+ "verifier": "exp/stages/e7_verify_e8.py",
+ "monitor": "monitor/monitor_e8.py",
+ "e7_verify_sha256": "7e036386baacea9d05808a50a709489bd554d5a4b0a3d568583d07afbb0ae1f8",
+ "monitor_sha256": "3e479ae01caf299e697b0274a22ddddbaa6b57b9bf4b730a8774b2d7c5b5282b",
+ "python": "3.13.11",
+ "escrow": true,
+ "verifier_runs": 8,
+ "verifier_runs_matching": 8,
+ "printed_number_checks": 219,
+ "printed_number_checks_matching": 219,
+ "runs": [
+  {
+   "experiment": "e7_main",
+   "monitor": "closure",
+   "window": "main",
+   "inputs": {
+    "db": {
+     "path": "reproduce/snapshots/e7e8/e7_main.db",
+     "sha256": "6dcbe6e4db3f25ab9bcf8f67497398b9b137b14a8a2b062dfc00dbd2ac9ce1dc"
+    },
+    "chain": {
+     "path": "reproduce/snapshots/e7e8/e7_main_closure.chain.jsonl.gz",
+     "sha256": "9d46808b4112622e1f60df6a4ef1fcb30eb2a9a25565f9bfe56683d39ff6ab31",
+     "same_bytes_as_exp_out": true
+    }
+   },
+   "published": "exp/out/e7_main_closure_verify.json",
+   "params": {
+    "window": [
+     "1791483728.0",
+     "1791491140.0"
+    ],
+    "snapshot_at": 1791491231.0,
+    "scheme": "closure",
+    "late_bound_s": 30.0,
+    "gap_s": 30.0
+   },
+   "trials_from": [
+    "exp/out/e7_main_report_porch.json",
+    "exp/out/e7_main_report_hallway.json",
+    "exp/out/e7_main_report_kitchen.json"
+   ],
+   "fields_compared": [
+    "ambiguous_seconds",
+    "arms",
+    "attributable_rows",
+    "benign_floor",
+    "benign_late_max_lower_bound_s",
+    "benign_late_rows",
+    "chain",
+    "check",
+    "flagged_seconds",
+    "flagged_segments",
+    "invalid_text_rows",
+    "keylog",
+    "keylog_suspect_rows",
+    "keylog_violations",
+    "malformed_rows",
+    "observation_gaps",
+    "recovery",
+    "root_unknown_segments",
+    "rows_in_unsealed_time",
+    "segments",
+    "stalls",
+    "trials",
+    "violations"
+   ],
+   "fields_ignored": [
+    "params",
+    "signatures"
+   ],
+   "recovery_compared": true,
+   "recovery_fields_added": [
+    "/recovery/keylog",
+    "/recovery/keylog_lines_rejected",
+    "/recovery/keylog_lines_verified",
+    "/recovery/restore/all_keylog_ranges_reproduced",
+    "/recovery/restore/keylog_range_reproduced",
+    "/recovery/restore/keylog_rows_removed",
+    "/recovery/restore/keylog_rows_restored"
+   ],
+   "recovery_escrow": "exp/out/e7_main_escrow_scored.jsonl.gz",
+   "identical_except_ignored": true,
+   "differences": [],
+   "checks": {
+    "arm BD-GAP n": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm BD-GAP e7_detected": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm BD-GAP existing_flagged": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm BD-GAP existing_attributable": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm BD-GAP existing_ambiguous": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm BD-JOIN n": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm BD-JOIN e7_detected": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm BD-JOIN existing_flagged": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm BD-JOIN existing_attributable": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm BD-JOIN existing_ambiguous": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm BD-M n": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm BD-M e7_detected": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm BD-M existing_flagged": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm BD-M existing_attributable": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm BD-M existing_ambiguous": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm BD-PARK n": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm BD-PARK e7_detected": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm BD-PARK existing_flagged": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm BD-PARK existing_attributable": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm BD-PARK existing_ambiguous": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm BD-S n": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm BD-S e7_detected": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm BD-S existing_flagged": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm BD-S existing_attributable": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm BD-S existing_ambiguous": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm INS-L n": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm INS-L e7_detected": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm INS-L existing_flagged": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm INS-L existing_attributable": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm INS-L existing_ambiguous": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm INS-M n": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm INS-M e7_detected": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm INS-M existing_flagged": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm INS-M existing_attributable": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm INS-M existing_ambiguous": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm OUTAGE n": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm OUTAGE e7_detected": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm OUTAGE existing_flagged": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm OUTAGE existing_attributable": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm OUTAGE existing_ambiguous": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm STALL n": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm STALL e7_detected": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm STALL existing_flagged": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm STALL existing_attributable": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm STALL existing_ambiguous": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "floor second violated/untouched": {
+     "recomputed": [
+      0,
+      1212
+     ],
+     "published": [
+      0,
+      1212
+     ],
+     "match": true
+    },
+    "floor minute attributable/untouched": {
+     "recomputed": [
+      0,
+      42
+     ],
+     "published": [
+      0,
+      42
+     ],
+     "match": true
+    },
+    "floor hour attributable/untouched": {
+     "recomputed": [
+      0,
+      0
+     ],
+     "published": [
+      0,
+      0
+     ],
+     "match": true
+    },
+    "suspect seconds (untouched flagged)": {
+     "recomputed": [
+      169,
+      1212
+     ],
+     "published": [
+      169,
+      1212
+     ],
+     "match": true
+    },
+    "recovery: escrow lines, flagged seconds recovered, restored copy written, its roots reproduced": {
+     "recomputed": [
+      2680,
+      523,
+      true,
+      true
+     ],
+     "published": [
+      2680,
+      523,
+      true,
+      true
+     ],
+     "match": true
+    }
+   },
+   "match": true
+  },
+  {
+   "experiment": "e7_main",
+   "monitor": "stable",
+   "window": "main",
+   "inputs": {
+    "db": {
+     "path": "reproduce/snapshots/e7e8/e7_main.db",
+     "sha256": "6dcbe6e4db3f25ab9bcf8f67497398b9b137b14a8a2b062dfc00dbd2ac9ce1dc"
+    },
+    "chain": {
+     "path": "reproduce/snapshots/e7e8/e7_main_stable.chain.jsonl.gz",
+     "sha256": "f18df81e7ae7ea13a4149d1807208ad6255fe92a948ae3153311412685b8432c",
+     "same_bytes_as_exp_out": true
+    }
+   },
+   "published": "exp/out/e7_main_stable_verify.json",
+   "params": {
+    "window": [
+     "1791483728.0",
+     "1791491140.0"
+    ],
+    "snapshot_at": 1791491231.0,
+    "scheme": "stable",
+    "late_bound_s": 30.0,
+    "gap_s": 30.0
+   },
+   "trials_from": [
+    "exp/out/e7_main_report_porch.json",
+    "exp/out/e7_main_report_hallway.json",
+    "exp/out/e7_main_report_kitchen.json"
+   ],
+   "fields_compared": [
+    "ambiguous_seconds",
+    "arms",
+    "attributable_rows",
+    "benign_floor",
+    "benign_late_max_lower_bound_s",
+    "benign_late_rows",
+    "chain",
+    "check",
+    "flagged_seconds",
+    "flagged_segments",
+    "invalid_text_rows",
+    "keylog",
+    "keylog_suspect_rows",
+    "keylog_violations",
+    "malformed_rows",
+    "observation_gaps",
+    "root_unknown_segments",
+    "rows_in_unsealed_time",
+    "segments",
+    "stalls",
+    "trials",
+    "violations"
+   ],
+   "fields_ignored": [
+    "params",
+    "recovery",
+    "signatures"
+   ],
+   "recovery_compared": false,
+   "recovery_fields_added": [],
+   "recovery_escrow": null,
+   "identical_except_ignored": true,
+   "differences": [],
+   "checks": {
+    "arm BD-GAP n": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm BD-GAP e7_detected": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm BD-GAP existing_flagged": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm BD-GAP existing_attributable": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm BD-GAP existing_ambiguous": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm BD-JOIN n": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm BD-JOIN e7_detected": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm BD-JOIN existing_flagged": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm BD-JOIN existing_attributable": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm BD-JOIN existing_ambiguous": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm BD-M n": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm BD-M e7_detected": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm BD-M existing_flagged": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm BD-M existing_attributable": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm BD-M existing_ambiguous": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm BD-PARK n": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm BD-PARK e7_detected": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm BD-PARK existing_flagged": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm BD-PARK existing_attributable": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm BD-PARK existing_ambiguous": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm BD-S n": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm BD-S e7_detected": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm BD-S existing_flagged": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm BD-S existing_attributable": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm BD-S existing_ambiguous": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm INS-L n": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm INS-L e7_detected": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm INS-L existing_flagged": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm INS-L existing_attributable": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm INS-L existing_ambiguous": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm INS-M n": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm INS-M e7_detected": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm INS-M existing_flagged": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm INS-M existing_attributable": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm INS-M existing_ambiguous": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm OUTAGE n": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm OUTAGE e7_detected": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm OUTAGE existing_flagged": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm OUTAGE existing_attributable": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm OUTAGE existing_ambiguous": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm STALL n": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm STALL e7_detected": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm STALL existing_flagged": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm STALL existing_attributable": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm STALL existing_ambiguous": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "floor second violated/untouched": {
+     "recomputed": [
+      0,
+      1212
+     ],
+     "published": [
+      0,
+      1212
+     ],
+     "match": true
+    },
+    "floor minute attributable/untouched": {
+     "recomputed": [
+      0,
+      42
+     ],
+     "published": [
+      0,
+      42
+     ],
+     "match": true
+    },
+    "floor hour attributable/untouched": {
+     "recomputed": [
+      0,
+      0
+     ],
+     "published": [
+      0,
+      0
+     ],
+     "match": true
+    },
+    "suspect seconds (untouched flagged)": {
+     "recomputed": [
+      129,
+      1212
+     ],
+     "published": [
+      129,
+      1212
+     ],
+     "match": true
+    }
+   },
+   "match": true
+  },
+  {
+   "experiment": "e8_main",
+   "monitor": "stable",
+   "window": "main",
+   "inputs": {
+    "db": {
+     "path": "reproduce/snapshots/e7e8/e8_main.db",
+     "sha256": "fab07d50878211fb6dac1193896c97e473581009885164f2066e32dbd70fa6c9"
+    },
+    "chain": {
+     "path": "reproduce/snapshots/e7e8/e8_main_stable.chain.jsonl.gz",
+     "sha256": "f4a3a0c86b1a522c91b9c5e73eb317dd8438d1b21785c83484e20f33a9dc9145",
+     "same_bytes_as_exp_out": true
+    }
+   },
+   "published": "exp/out/e8_main_stable_verify_main.json",
+   "params": {
+    "window": [
+     "1791523970.0",
+     "1791530123.0"
+    ],
+    "snapshot_at": 1791532754.0,
+    "scheme": "stable",
+    "late_bound_s": 30.0,
+    "gap_s": 30.0
+   },
+   "trials_from": [
+    "exp/out/e8_main_report_ec_porch.json",
+    "exp/out/e8_main_report_e7_porch.json",
+    "exp/out/e8_main_report_ec_hallway.json",
+    "exp/out/e8_main_report_e7_hallway.json",
+    "exp/out/e8_main_report_ec_kitchen.json",
+    "exp/out/e8_main_report_e7_kitchen.json"
+   ],
+   "fields_compared": [
+    "ambiguous_seconds",
+    "arms",
+    "attributable_rows",
+    "benign_floor",
+    "benign_late_max_lower_bound_s",
+    "benign_late_rows",
+    "chain",
+    "check",
+    "flagged_seconds",
+    "flagged_segments",
+    "invalid_text_rows",
+    "keylog",
+    "keylog_suspect_rows",
+    "keylog_violations",
+    "malformed_rows",
+    "observation_gaps",
+    "recovery",
+    "root_unknown_segments",
+    "rows_in_unsealed_time",
+    "segments",
+    "signatures",
+    "stalls",
+    "trials",
+    "violations"
+   ],
+   "fields_ignored": [
+    "params"
+   ],
+   "recovery_compared": true,
+   "recovery_fields_added": [],
+   "recovery_escrow": "exp/out/e8_main_stable_escrow.jsonl.gz",
+   "identical_except_ignored": true,
+   "differences": [],
+   "checks": {
+    "arm BD-S n": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm BD-S e7_detected": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm BD-S existing_flagged": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm BD-S existing_attributable": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm BD-S existing_ambiguous": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm INS-L n": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm INS-L e7_detected": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm INS-L existing_flagged": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm INS-L existing_attributable": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm INS-L existing_ambiguous": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm INS-M n": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm INS-M e7_detected": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm INS-M existing_flagged": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm INS-M existing_attributable": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm INS-M existing_ambiguous": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm P n": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm P e7_detected": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm P existing_flagged": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm P existing_attributable": {
+     "recomputed": 89,
+     "published": 89,
+     "match": true
+    },
+    "arm P existing_ambiguous": {
+     "recomputed": 1,
+     "published": 1,
+     "match": true
+    },
+    "arm PI n": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm PI e7_detected": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm PI existing_flagged": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm PI existing_attributable": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm PI existing_ambiguous": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm PSR n": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm PSR e7_detected": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm PSR existing_flagged": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm PSR existing_attributable": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm PSR existing_ambiguous": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm PU n": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm PU e7_detected": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm PU existing_flagged": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm PU existing_attributable": {
+     "recomputed": 89,
+     "published": 89,
+     "match": true
+    },
+    "arm PU existing_ambiguous": {
+     "recomputed": 1,
+     "published": 1,
+     "match": true
+    },
+    "floor second violated/untouched": {
+     "recomputed": [
+      0,
+      1435
+     ],
+     "published": [
+      0,
+      1435
+     ],
+     "match": true
+    },
+    "floor minute attributable/untouched": {
+     "recomputed": [
+      0,
+      35
+     ],
+     "published": [
+      0,
+      35
+     ],
+     "match": true
+    },
+    "floor hour attributable/untouched": {
+     "recomputed": [
+      0,
+      0
+     ],
+     "published": [
+      0,
+      0
+     ],
+     "match": true
+    },
+    "suspect seconds in the window (as e8_main_score_rescored.json)": {
+     "recomputed": [
+      791,
+      1435,
+      1853,
+      0
+     ],
+     "published": [
+      791,
+      1435,
+      1853,
+      0
+     ],
+     "match": true
+    },
+    "signatures: monitor records, verified under its own key, excluded": {
+     "recomputed": [
+      1508,
+      1508,
+      0
+     ],
+     "published": [
+      1508,
+      1508,
+      0
+     ],
+     "match": true
+    },
+    "records under the other monitor's key (wrong_key)": {
+     "recomputed": {
+      "wrong_key": 1508,
+      "fingerprint": "1272d204e82098a69fc7269a8ddde36ceec8fde2fd7732f8976cd2ce5bfc989d"
+     },
+     "published": {
+      "wrong_key": 1508,
+      "fingerprint": "1272d204e82098a69fc7269a8ddde36ceec8fde2fd7732f8976cd2ce5bfc989d"
+     },
+     "match": true
+    },
+    "chain links and every witnessed head": {
+     "recomputed": {
+      "records": 1509,
+      "link": "v2",
+      "ok": true,
+      "witnessed_heads_matched": 1508,
+      "witnessed_heads": 1508
+     },
+     "published": {
+      "records": 1509,
+      "link": "v2",
+      "ok": true,
+      "witnessed_heads_matched": 1508,
+      "witnessed_heads": 1508
+     },
+     "match": true
+    },
+    "recovery: escrow lines, flagged seconds recovered, restored copy written, its roots reproduced": {
+     "recomputed": [
+      4892,
+      1688,
+      null,
+      null
+     ],
+     "published": [
+      4892,
+      1688,
+      null,
+      null
+     ],
+     "match": true
+    }
+   },
+   "match": true
+  },
+  {
+   "experiment": "e8_main",
+   "monitor": "stable",
+   "window": "base",
+   "inputs": {
+    "db": {
+     "path": "reproduce/snapshots/e7e8/e8_main.db",
+     "sha256": "fab07d50878211fb6dac1193896c97e473581009885164f2066e32dbd70fa6c9"
+    },
+    "chain": {
+     "path": "reproduce/snapshots/e7e8/e8_main_stable.chain.jsonl.gz",
+     "sha256": "f4a3a0c86b1a522c91b9c5e73eb317dd8438d1b21785c83484e20f33a9dc9145",
+     "same_bytes_as_exp_out": true
+    }
+   },
+   "published": "exp/out/e8_main_stable_verify_base.json",
+   "params": {
+    "window": [
+     "1791530213.0",
+     "1791530813.0"
+    ],
+    "snapshot_at": 1791532754.0,
+    "scheme": "stable",
+    "late_bound_s": 30.0,
+    "gap_s": 30.0
+   },
+   "trials_from": [],
+   "fields_compared": [
+    "ambiguous_seconds",
+    "attributable_rows",
+    "benign_floor",
+    "benign_late_max_lower_bound_s",
+    "benign_late_rows",
+    "chain",
+    "check",
+    "flagged_seconds",
+    "flagged_segments",
+    "invalid_text_rows",
+    "keylog",
+    "keylog_suspect_rows",
+    "keylog_violations",
+    "malformed_rows",
+    "observation_gaps",
+    "recovery",
+    "root_unknown_segments",
+    "rows_in_unsealed_time",
+    "segments",
+    "signatures",
+    "stalls",
+    "violations"
+   ],
+   "fields_ignored": [
+    "params"
+   ],
+   "recovery_compared": true,
+   "recovery_fields_added": [],
+   "recovery_escrow": "exp/out/e8_main_stable_escrow.jsonl.gz",
+   "identical_except_ignored": true,
+   "differences": [],
+   "checks": {
+    "floor second violated/untouched": {
+     "recomputed": [
+      0,
+      124
+     ],
+     "published": [
+      0,
+      124
+     ],
+     "match": true
+    },
+    "floor minute attributable/untouched": {
+     "recomputed": [
+      0,
+      12
+     ],
+     "published": [
+      0,
+      12
+     ],
+     "match": true
+    },
+    "floor hour attributable/untouched": {
+     "recomputed": [
+      0,
+      0
+     ],
+     "published": [
+      0,
+      0
+     ],
+     "match": true
+    },
+    "suspect seconds in the window (as e8_main_score_rescored.json)": {
+     "recomputed": [
+      0,
+      124,
+      0,
+      0
+     ],
+     "published": [
+      0,
+      124,
+      0,
+      0
+     ],
+     "match": true
+    },
+    "signatures: monitor records, verified under its own key, excluded": {
+     "recomputed": [
+      1508,
+      1508,
+      0
+     ],
+     "published": [
+      1508,
+      1508,
+      0
+     ],
+     "match": true
+    },
+    "recovery: escrow lines, flagged seconds recovered, restored copy written, its roots reproduced": {
+     "recomputed": [
+      4892,
+      1598,
+      null,
+      null
+     ],
+     "published": [
+      4892,
+      1598,
+      null,
+      null
+     ],
+     "match": true
+    }
+   },
+   "match": true
+  },
+  {
+   "experiment": "e8_main",
+   "monitor": "stable",
+   "window": "stress",
+   "inputs": {
+    "db": {
+     "path": "reproduce/snapshots/e7e8/e8_main.db",
+     "sha256": "fab07d50878211fb6dac1193896c97e473581009885164f2066e32dbd70fa6c9"
+    },
+    "chain": {
+     "path": "reproduce/snapshots/e7e8/e8_main_stable.chain.jsonl.gz",
+     "sha256": "f4a3a0c86b1a522c91b9c5e73eb317dd8438d1b21785c83484e20f33a9dc9145",
+     "same_bytes_as_exp_out": true
+    }
+   },
+   "published": "exp/out/e8_main_stable_verify_stress.json",
+   "params": {
+    "window": [
+     "1791530814.0",
+     "1791532617.0"
+    ],
+    "snapshot_at": 1791532754.0,
+    "scheme": "stable",
+    "late_bound_s": 30.0,
+    "gap_s": 30.0
+   },
+   "trials_from": [
+    "exp/out/e8_main_stress_report_porch.json"
+   ],
+   "fields_compared": [
+    "ambiguous_seconds",
+    "arms",
+    "attributable_rows",
+    "benign_floor",
+    "benign_late_max_lower_bound_s",
+    "benign_late_rows",
+    "chain",
+    "check",
+    "flagged_seconds",
+    "flagged_segments",
+    "invalid_text_rows",
+    "keylog",
+    "keylog_suspect_rows",
+    "keylog_violations",
+    "malformed_rows",
+    "observation_gaps",
+    "recovery",
+    "root_unknown_segments",
+    "rows_in_unsealed_time",
+    "segments",
+    "signatures",
+    "stalls",
+    "trials",
+    "violations"
+   ],
+   "fields_ignored": [
+    "params"
+   ],
+   "recovery_compared": true,
+   "recovery_fields_added": [],
+   "recovery_escrow": "exp/out/e8_main_stable_escrow.jsonl.gz",
+   "identical_except_ignored": true,
+   "differences": [],
+   "checks": {
+    "arm PU n": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm PU e7_detected": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm PU existing_flagged": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm PU existing_attributable": {
+     "recomputed": 28,
+     "published": 28,
+     "match": true
+    },
+    "arm PU existing_ambiguous": {
+     "recomputed": 2,
+     "published": 2,
+     "match": true
+    },
+    "floor second violated/untouched": {
+     "recomputed": [
+      0,
+      1201
+     ],
+     "published": [
+      0,
+      1201
+     ],
+     "match": true
+    },
+    "floor minute attributable/untouched": {
+     "recomputed": [
+      0,
+      28
+     ],
+     "published": [
+      0,
+      28
+     ],
+     "match": true
+    },
+    "floor hour attributable/untouched": {
+     "recomputed": [
+      0,
+      0
+     ],
+     "published": [
+      0,
+      0
+     ],
+     "match": true
+    },
+    "suspect seconds in the window (as e8_main_score_rescored.json)": {
+     "recomputed": [
+      100,
+      1201,
+      424,
+      0
+     ],
+     "published": [
+      100,
+      1201,
+      424,
+      0
+     ],
+     "match": true
+    },
+    "signatures: monitor records, verified under its own key, excluded": {
+     "recomputed": [
+      1508,
+      1508,
+      0
+     ],
+     "published": [
+      1508,
+      1508,
+      0
+     ],
+     "match": true
+    },
+    "recovery: escrow lines, flagged seconds recovered, restored copy written, its roots reproduced": {
+     "recomputed": [
+      4892,
+      1598,
+      null,
+      null
+     ],
+     "published": [
+      4892,
+      1598,
+      null,
+      null
+     ],
+     "match": true
+    }
+   },
+   "match": true
+  },
+  {
+   "experiment": "e8_main",
+   "monitor": "closure",
+   "window": "main",
+   "inputs": {
+    "db": {
+     "path": "reproduce/snapshots/e7e8/e8_main.db",
+     "sha256": "fab07d50878211fb6dac1193896c97e473581009885164f2066e32dbd70fa6c9"
+    },
+    "chain": {
+     "path": "reproduce/snapshots/e7e8/e8_main_closure.chain.jsonl.gz",
+     "sha256": "177f21623f280470d4f8fefd50ea5c567f58b948f66da4bd6e37f71a4cbb55f1",
+     "same_bytes_as_exp_out": true
+    }
+   },
+   "published": "exp/out/e8_main_closure_verify_main.json",
+   "params": {
+    "window": [
+     "1791523970.0",
+     "1791530123.0"
+    ],
+    "snapshot_at": 1791532754.0,
+    "scheme": "closure",
+    "late_bound_s": 30.0,
+    "gap_s": 30.0
+   },
+   "trials_from": [
+    "exp/out/e8_main_report_ec_porch.json",
+    "exp/out/e8_main_report_e7_porch.json",
+    "exp/out/e8_main_report_ec_hallway.json",
+    "exp/out/e8_main_report_e7_hallway.json",
+    "exp/out/e8_main_report_ec_kitchen.json",
+    "exp/out/e8_main_report_e7_kitchen.json"
+   ],
+   "fields_compared": [
+    "ambiguous_seconds",
+    "arms",
+    "attributable_rows",
+    "benign_floor",
+    "benign_late_max_lower_bound_s",
+    "benign_late_rows",
+    "chain",
+    "check",
+    "flagged_seconds",
+    "flagged_segments",
+    "invalid_text_rows",
+    "keylog",
+    "keylog_suspect_rows",
+    "keylog_violations",
+    "malformed_rows",
+    "observation_gaps",
+    "recovery",
+    "root_unknown_segments",
+    "rows_in_unsealed_time",
+    "segments",
+    "signatures",
+    "stalls",
+    "trials",
+    "violations"
+   ],
+   "fields_ignored": [
+    "params"
+   ],
+   "recovery_compared": true,
+   "recovery_fields_added": [],
+   "recovery_escrow": "exp/out/e8_main_closure_escrow.jsonl.gz",
+   "identical_except_ignored": true,
+   "differences": [],
+   "checks": {
+    "arm BD-S n": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm BD-S e7_detected": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm BD-S existing_flagged": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm BD-S existing_attributable": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm BD-S existing_ambiguous": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm INS-L n": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm INS-L e7_detected": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm INS-L existing_flagged": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm INS-L existing_attributable": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm INS-L existing_ambiguous": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm INS-M n": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm INS-M e7_detected": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm INS-M existing_flagged": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm INS-M existing_attributable": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm INS-M existing_ambiguous": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm P n": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm P e7_detected": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm P existing_flagged": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm P existing_attributable": {
+     "recomputed": 89,
+     "published": 89,
+     "match": true
+    },
+    "arm P existing_ambiguous": {
+     "recomputed": 1,
+     "published": 1,
+     "match": true
+    },
+    "arm PI n": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm PI e7_detected": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm PI existing_flagged": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm PI existing_attributable": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm PI existing_ambiguous": {
+     "recomputed": 0,
+     "published": 0,
+     "match": true
+    },
+    "arm PSR n": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm PSR e7_detected": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm PSR existing_flagged": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm PSR existing_attributable": {
+     "recomputed": 89,
+     "published": 89,
+     "match": true
+    },
+    "arm PSR existing_ambiguous": {
+     "recomputed": 1,
+     "published": 1,
+     "match": true
+    },
+    "arm PU n": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm PU e7_detected": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm PU existing_flagged": {
+     "recomputed": 90,
+     "published": 90,
+     "match": true
+    },
+    "arm PU existing_attributable": {
+     "recomputed": 89,
+     "published": 89,
+     "match": true
+    },
+    "arm PU existing_ambiguous": {
+     "recomputed": 1,
+     "published": 1,
+     "match": true
+    },
+    "floor second violated/untouched": {
+     "recomputed": [
+      0,
+      1435
+     ],
+     "published": [
+      0,
+      1435
+     ],
+     "match": true
+    },
+    "floor minute attributable/untouched": {
+     "recomputed": [
+      0,
+      35
+     ],
+     "published": [
+      0,
+      35
+     ],
+     "match": true
+    },
+    "floor hour attributable/untouched": {
+     "recomputed": [
+      0,
+      0
+     ],
+     "published": [
+      0,
+      0
+     ],
+     "match": true
+    },
+    "suspect seconds in the window (as e8_main_score_rescored.json)": {
+     "recomputed": [
+      768,
+      1435,
+      1797,
+      0
+     ],
+     "published": [
+      768,
+      1435,
+      1797,
+      0
+     ],
+     "match": true
+    },
+    "signatures: monitor records, verified under its own key, excluded": {
+     "recomputed": [
+      1538,
+      1538,
+      0
+     ],
+     "published": [
+      1538,
+      1538,
+      0
+     ],
+     "match": true
+    },
+    "records under the other monitor's key (wrong_key)": {
+     "recomputed": {
+      "wrong_key": 1538,
+      "fingerprint": "e96b6e5305ef13b7f38610674434a29ac56211c09bb631015def6a6a31a25f80"
+     },
+     "published": {
+      "wrong_key": 1538,
+      "fingerprint": "e96b6e5305ef13b7f38610674434a29ac56211c09bb631015def6a6a31a25f80"
+     },
+     "match": true
+    },
+    "chain links and every witnessed head": {
+     "recomputed": {
+      "records": 1539,
+      "link": "v2",
+      "ok": true,
+      "witnessed_heads_matched": 1539,
+      "witnessed_heads": 1539
+     },
+     "published": {
+      "records": 1539,
+      "link": "v2",
+      "ok": true,
+      "witnessed_heads_matched": 1539,
+      "witnessed_heads": 1539
+     },
+     "match": true
+    },
+    "recovery: escrow lines, flagged seconds recovered, restored copy written, its roots reproduced": {
+     "recomputed": [
+      4892,
+      1662,
+      null,
+      null
+     ],
+     "published": [
+      4892,
+      1662,
+      null,
+      null
+     ],
+     "match": true
+    }
+   },
+   "match": true
+  },
+  {
+   "experiment": "e8_main",
+   "monitor": "closure",
+   "window": "base",
+   "inputs": {
+    "db": {
+     "path": "reproduce/snapshots/e7e8/e8_main.db",
+     "sha256": "fab07d50878211fb6dac1193896c97e473581009885164f2066e32dbd70fa6c9"
+    },
+    "chain": {
+     "path": "reproduce/snapshots/e7e8/e8_main_closure.chain.jsonl.gz",
+     "sha256": "177f21623f280470d4f8fefd50ea5c567f58b948f66da4bd6e37f71a4cbb55f1",
+     "same_bytes_as_exp_out": true
+    }
+   },
+   "published": "exp/out/e8_main_closure_verify_base.json",
+   "params": {
+    "window": [
+     "1791530213.0",
+     "1791530813.0"
+    ],
+    "snapshot_at": 1791532754.0,
+    "scheme": "closure",
+    "late_bound_s": 30.0,
+    "gap_s": 30.0
+   },
+   "trials_from": [],
+   "fields_compared": [
+    "ambiguous_seconds",
+    "attributable_rows",
+    "benign_floor",
+    "benign_late_max_lower_bound_s",
+    "benign_late_rows",
+    "chain",
+    "check",
+    "flagged_seconds",
+    "flagged_segments",
+    "invalid_text_rows",
+    "keylog",
+    "keylog_suspect_rows",
+    "keylog_violations",
+    "malformed_rows",
+    "observation_gaps",
+    "recovery",
+    "root_unknown_segments",
+    "rows_in_unsealed_time",
+    "segments",
+    "signatures",
+    "stalls",
+    "violations"
+   ],
+   "fields_ignored": [
+    "params"
+   ],
+   "recovery_compared": true,
+   "recovery_fields_added": [],
+   "recovery_escrow": "exp/out/e8_main_closure_escrow.jsonl.gz",
+   "identical_except_ignored": true,
+   "differences": [],
+   "checks": {
+    "floor second violated/untouched": {
+     "recomputed": [
+      0,
+      124
+     ],
+     "published": [
+      0,
+      124
+     ],
+     "match": true
+    },
+    "floor minute attributable/untouched": {
+     "recomputed": [
+      0,
+      12
+     ],
+     "published": [
+      0,
+      12
+     ],
+     "match": true
+    },
+    "floor hour attributable/untouched": {
+     "recomputed": [
+      0,
+      0
+     ],
+     "published": [
+      0,
+      0
+     ],
+     "match": true
+    },
+    "suspect seconds in the window (as e8_main_score_rescored.json)": {
+     "recomputed": [
+      0,
+      124,
+      0,
+      0
+     ],
+     "published": [
+      0,
+      124,
+      0,
+      0
+     ],
+     "match": true
+    },
+    "signatures: monitor records, verified under its own key, excluded": {
+     "recomputed": [
+      1538,
+      1538,
+      0
+     ],
+     "published": [
+      1538,
+      1538,
+      0
+     ],
+     "match": true
+    },
+    "recovery: escrow lines, flagged seconds recovered, restored copy written, its roots reproduced": {
+     "recomputed": [
+      4892,
+      1572,
+      null,
+      null
+     ],
+     "published": [
+      4892,
+      1572,
+      null,
+      null
+     ],
+     "match": true
+    }
+   },
+   "match": true
+  },
+  {
+   "experiment": "e8_main",
+   "monitor": "closure",
+   "window": "stress",
+   "inputs": {
+    "db": {
+     "path": "reproduce/snapshots/e7e8/e8_main.db",
+     "sha256": "fab07d50878211fb6dac1193896c97e473581009885164f2066e32dbd70fa6c9"
+    },
+    "chain": {
+     "path": "reproduce/snapshots/e7e8/e8_main_closure.chain.jsonl.gz",
+     "sha256": "177f21623f280470d4f8fefd50ea5c567f58b948f66da4bd6e37f71a4cbb55f1",
+     "same_bytes_as_exp_out": true
+    }
+   },
+   "published": "exp/out/e8_main_closure_verify_stress.json",
+   "params": {
+    "window": [
+     "1791530814.0",
+     "1791532617.0"
+    ],
+    "snapshot_at": 1791532754.0,
+    "scheme": "closure",
+    "late_bound_s": 30.0,
+    "gap_s": 30.0
+   },
+   "trials_from": [
+    "exp/out/e8_main_stress_report_porch.json"
+   ],
+   "fields_compared": [
+    "ambiguous_seconds",
+    "arms",
+    "attributable_rows",
+    "benign_floor",
+    "benign_late_max_lower_bound_s",
+    "benign_late_rows",
+    "chain",
+    "check",
+    "flagged_seconds",
+    "flagged_segments",
+    "invalid_text_rows",
+    "keylog",
+    "keylog_suspect_rows",
+    "keylog_violations",
+    "malformed_rows",
+    "observation_gaps",
+    "recovery",
+    "root_unknown_segments",
+    "rows_in_unsealed_time",
+    "segments",
+    "signatures",
+    "stalls",
+    "trials",
+    "violations"
+   ],
+   "fields_ignored": [
+    "params"
+   ],
+   "recovery_compared": true,
+   "recovery_fields_added": [],
+   "recovery_escrow": "exp/out/e8_main_closure_escrow.jsonl.gz",
+   "identical_except_ignored": true,
+   "differences": [],
+   "checks": {
+    "arm PU n": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm PU e7_detected": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm PU existing_flagged": {
+     "recomputed": 30,
+     "published": 30,
+     "match": true
+    },
+    "arm PU existing_attributable": {
+     "recomputed": 29,
+     "published": 29,
+     "match": true
+    },
+    "arm PU existing_ambiguous": {
+     "recomputed": 1,
+     "published": 1,
+     "match": true
+    },
+    "floor second violated/untouched": {
+     "recomputed": [
+      0,
+      1201
+     ],
+     "published": [
+      0,
+      1201
+     ],
+     "match": true
+    },
+    "floor minute attributable/untouched": {
+     "recomputed": [
+      0,
+      28
+     ],
+     "published": [
+      0,
+      28
+     ],
+     "match": true
+    },
+    "floor hour attributable/untouched": {
+     "recomputed": [
+      0,
+      0
+     ],
+     "published": [
+      0,
+      0
+     ],
+     "match": true
+    },
+    "suspect seconds in the window (as e8_main_score_rescored.json)": {
+     "recomputed": [
+      99,
+      1201,
+      435,
+      0
+     ],
+     "published": [
+      99,
+      1201,
+      435,
+      0
+     ],
+     "match": true
+    },
+    "signatures: monitor records, verified under its own key, excluded": {
+     "recomputed": [
+      1538,
+      1538,
+      0
+     ],
+     "published": [
+      1538,
+      1538,
+      0
+     ],
+     "match": true
+    },
+    "recovery: escrow lines, flagged seconds recovered, restored copy written, its roots reproduced": {
+     "recomputed": [
+      4892,
+      1572,
+      null,
+      null
+     ],
+     "published": [
+      4892,
+      1572,
+      null,
+      null
+     ],
+     "match": true
+    }
+   },
+   "match": true
+  }
+ ],
+ "not_regenerated": [
+  "the rendering of the escrow-restored copy (E7: true author shown again in 119 of 120 trials) needs a throwaway Home Assistant container; exp/out/e7_main_recovery_render.json holds it",
+  "per-poll cost and seal delay (monitor cost logs of the run, not recorder rows)",
+  "the hub and operator probes (configuration log of the run)"
+ ]
+}

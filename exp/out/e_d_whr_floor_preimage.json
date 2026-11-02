@@ -1,0 +1,149 @@
+{
+ "untouched_failing": 434,
+ "explained_by_last_reported_null": 405,
+ "count_changed": 1,
+ "unexplained": [
+  {
+   "segment": "1791100207",
+   "rows": 8,
+   "state_rows_with_last_reported": 7
+  },
+  {
+   "segment": "1791100245",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791100258",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791100321",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791100338",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791100877",
+   "rows": 330,
+   "state_rows_with_last_reported": 15
+  },
+  {
+   "segment": "1791100884",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791100901",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791100918",
+   "rows": 4,
+   "state_rows_with_last_reported": 2
+  },
+  {
+   "segment": "1791100925",
+   "rows": 16,
+   "state_rows_with_last_reported": 15
+  },
+  {
+   "segment": "1791100934",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791100992",
+   "rows": 8,
+   "state_rows_with_last_reported": 5
+  },
+  {
+   "segment": "1791101045",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791101054",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791101068",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791101313",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791101539",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791101599",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791101614",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791101644",
+   "rows": 8,
+   "state_rows_with_last_reported": 7
+  },
+  {
+   "segment": "1791101648",
+   "rows": 6,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791101663",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791102146",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791102279",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791102315",
+   "rows": 38,
+   "state_rows_with_last_reported": 20
+  },
+  {
+   "segment": "1791102323",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791102329",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  },
+  {
+   "segment": "1791102340",
+   "rows": 5,
+   "state_rows_with_last_reported": 3
+  }
+ ],
+ "tag": "e_d_whr",
+ "how": "Pre-image test for the whole-row benign floor (review D1, F-09). Read-only. For every untouched one-second\nsegment that fails whole-row recomputation in one run, try to reproduce its FIRST ANCHORED whole-row root\nfrom the final snapshot by restoring last_reported_ts to NULL (its value when the recorder inserts a state that\nhas not been reported again) on any subset of the segment's state rows that now carry a non-null value. A match\nshows the failure is an in-place update of last_reported_ts after sealing. Writes exp/out/<TAG>_floor_preimage.json.\nUsage: whr_preimage.py TAG DETECTION_JSON SNAPSHOT CHAIN"
+}

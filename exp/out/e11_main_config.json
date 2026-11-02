@@ -1,0 +1,313 @@
+{
+ "experiment": "E11 (RQ4): HOMEPROV on openHAB",
+ "configuration_log": [
+  "2026-10-24T11:54:16Z tag=e11_main phase=all smoke=0 seed=20261021 python={\"ok\": true, \"python\": \"<home>/miniconda3/bin/python3.13\", \"expected\": \"<home>/miniconda3/bin/python3.13\", \"version\": \"3.13.11\", \"sqlite\": \"3.51.0\", \"wal_copy_readable_ro\": true} load=load averages: 3.90 3.19 3.03",
+  "2026-10-24T11:54:24Z code sha256: monitor.py=4b9931cb7d1cffae6485fb2b660b68d733da9f73e5c22c22ca7265d49ceaa9b7 oh_monitor.py=4e0ad7465b753bddcc8dbafda16e6e75d3508e0fd1f8c70b3a3fac2f85e15503 e11ops.py=48a27a1d5821ab96e719c3a55648a8f053123df93ce21e500d81ba82bfb47251 e11_stack.sh=b4469d1f5084e2971e52b5acb6497aa1dfc709b4655fbac1e170db56beecdc02 run_e11.sh=2fb8241158fe9433b8991bbd4b4cd021526b9c7301b7d0bdc38217366f0b85e3 e11_score.py=94d58da534eabe16857bd6b16737c15e55bc72ad4fe8e4446aea4f38a1267112 plan=141a9fc7d8a2d88b4ba67e405a4ea6f8815c08142295620a75905bc6cb119af3",
+  "2026-10-24T11:54:24Z hardened monitor (E10 patch applied): yes",
+  "{\"ok\": true, \"mismatch\": []}",
+  "2026-10-24T11:54:29Z ok    pre-registration registered and every frozen file at its registered sha256",
+  "2026-10-24T11:57:25Z ok    tests: 27 passed in 110.72s (0:01:50)",
+  "2026-10-24T11:57:29Z hub image openhab/openhab:5.2.3@sha256:fa50a6934dfd5bcbf21db18af66f2558f58c6c493ba23bdeb7a894e764507a99: sha256:fa50a6934dfd5bcbf21db18af66f2558f58c6c493ba23bdeb7a894e764507a99 arm64 created=2026-10-10T03:47:42.456093498Z",
+  "2026-10-24T11:57:37Z bundles: {\"org.homeprov.e11.fixture-1.0.0.jar\": \"4050b729146d5b4b24e3696d06f5055f3f91c3373b5e2e9e9b501540399a6598\", \"org.homeprov.e11.lockbridge-1.0.0.jar\": \"fde70d4ebe11da3acdfc7afdf8b8a6452fcfc964fadf17fc53c68f9edee02427\"}",
+  "2026-10-24T11:57:51Z ok    hpr-monitor:e11:/app/monitor.py = monitor/monitor.py (4b9931cb7d1cffae)",
+  "2026-10-24T11:57:52Z ok    hpr-anchord:e11:/app/anchord.py = testbed/anchord/anchord.py (8b35448dcf86df8b)",
+  "2026-10-24T11:57:53Z ok    hpr-anchord:e11:/app/anchord_linked.py = testbed/anchord/anchord_linked.py (f6252e245b0f963f)",
+  "2026-10-24T11:57:53Z image python:3.13-slim sha256:9d2e5553305c7c7b0097999bb17187c69b921ccd6bc9d40e4bb5ebe652c00285 [\"python@sha256:9d2e5553305c7c7b0097999bb17187c69b921ccd6bc9d40e4bb5ebe652c00285\"]",
+  "2026-10-24T11:57:53Z image alpine:3 sha256:28bd5fe8b56d1bd048e5babf5b10710ebe0bae67db86916198a6eec434943f8b [\"alpine@sha256:28bd5fe8b56d1bd048e5babf5b10710ebe0bae67db86916198a6eec434943f8b\"]",
+  "2026-10-24T11:57:58Z account password fingerprints: owner 299f8937f1b42796 member f669f375678221bb (passwords not recorded)",
+  "2026-10-24T11:59:11Z closure stack: {\"image\": \"openhab/openhab:5.2.3@sha256:fa50a6934dfd5bcbf21db18af66f2558f58c6c493ba23bdeb7a894e764507a99\", \"image_inspect\": \"sha256:fa50a6934dfd5bcbf21db18af66f2558f58c6c493ba23bdeb7a894e764507a99 [\\\"openhab/openhab@sha256:fa50a6934dfd5bcbf21db18af66f2558f58c6c493ba23bdeb7a894e764507a99\\\"] arm64\", \"kind\": \"closure\", \"openhab_info\": \"{\\\"version\\\":\\\"8\\\",\\\"locale\\\":\\\"en_US\\\",\\\"measurementSystem\\\":\\\"SI\\\",\\\"timezone\\\":\\\"UTC\\\",\\\"runtimeInfo\\\":{\\\"version\\\":\\\"5.2.3\\\",\\\"buildString\\\":\\\"Release Build\\\"},\\\"links\\\":[{\\\"type\\\":\\\"items\\\",\\\"url\\\":\\\"http://e11c-hub:8080/rest/items\\\"},{\\\"type\\\":\\\"module-types\\",
+  "2026-10-24T12:05:11Z closure: {\"fixtures\": 8, \"mutations\": 181, \"in_place\": []} -> <artifact-root>/exp/out/e11_main_clo_closure.json 24b981a7655880546d0df5633e5805c680595cfbd5cf443ebb2b4ae898137219",
+  "{\"down\": \"e11c\"}",
+  "2026-10-24T12:05:20Z closure gate: {\"ok\": true, \"missing_from_reader\": [], \"controls_hold\": true, \"committed_but_not_measured\": []}",
+  "2026-10-24T12:05:26Z account password fingerprints: owner 34aa88167ef94cfe member 705efbaaa5a8bd06 (passwords not recorded)",
+  "2026-10-24T12:06:26Z main stack: {\"image\": \"openhab/openhab:5.2.3@sha256:fa50a6934dfd5bcbf21db18af66f2558f58c6c493ba23bdeb7a894e764507a99\", \"image_inspect\": \"sha256:fa50a6934dfd5bcbf21db18af66f2558f58c6c493ba23bdeb7a894e764507a99 [\\\"openhab/openhab@sha256:fa50a6934dfd5bcbf21db18af66f2558f58c6c493ba23bdeb7a894e764507a99\\\"] arm64\", \"kind\": \"main\", \"openhab_info\": \"{\\\"version\\\":\\\"8\\\",\\\"locale\\\":\\\"en_US\\\",\\\"measurementSystem\\\":\\\"SI\\\",\\\"timezone\\\":\\\"UTC\\\",\\\"runtimeInfo\\\":{\\\"version\\\":\\\"5.2.3\\\",\\\"buildString\\\":\\\"Release Build\\\"},\\\"links\\\":[{\\\"type\\\":\\\"services\\\",\\\"url\\\":\\\"http://e11s-hub:8080/rest/services\\\"},{\\\"type\\\":\\\"items\\\",\\\"",
+  "2026-10-24T12:06:41Z instrument: {\"ok\": true, \"bundle\": \"org.homeprov.e11.lockbridge\", \"version\": \"1.0.0\", \"item\": \"FrontDoor_Lock\", \"item_type\": \"Switch\", \"java\": \"21.0.12.1\", \"user\": \"openhab\", \"tz\": \"UTC\", \"op\": \"info\", \"t_ack\": 1792843601.611}",
+  "2026-10-24T12:06:48Z append_key_fp b1d468bbe5cbf438 operator_key_fp 8ec72f0fed4b24c4 witness_key_fp 018263050a8b9f9d (keys not recorded)",
+  "2026-10-24T12:06:57Z record-signing key fingerprint c852fdec5dda53051d746020fd2426c3b55c59324b5c879d2a621e84d7ecb0a3",
+  "2026-10-24T12:07:08Z monitor start: {\"oh_reader\": {\"version\": \"e11-oh-1\", \"refusals\": [], \"db\": \"/hub/persistence/jdbc/openhab.db\", \"jsondb\": \"/hub/jsondb\", \"closure_registry\": [\"type\", \"meta:unit\"], \"table_prefix\": \"item\", \"digits\": 4, \"real_names\": false, \"hardened_monitor\": true, \"monitor_py_sha256\": \"4b9931cb7d1cffae6485fb2b660b68d733da9f73e5c22c22ca7265d49ceaa9b7\", \"replaced\": [\"snapshot\", \"validate_copy (snapshot_failed only)\", \"check_connection\", \"watermark\", \"load\"]}}",
+  "2026-10-24T12:07:09Z monitor mounts: /scratch:rw /sign:ro /hub:ro /ohm:ro ",
+  "2026-10-24T12:07:25Z chain records after start: 6",
+  "2026-10-24T12:07:29Z warm-up 600 s",
+  "2026-10-24T12:17:50Z   benign B-REPLACE-SETUP: {\"op\": \"B-REPLACE-SETUP\", \"ok\": true, \"affected_past\": 0}",
+  "2026-10-24T12:17:51Z window 1: 1500 s untouched (benign household only)",
+  "2026-10-24T12:46:18Z   ui before_arms: {\"requests\": 1, \"error\": null, \"queries\": [{\"starttime\": \"2026-10-23T12:46:12.830Z\", \"endtime\": \"2026-10-24T12:46:12.829Z\", \"boundary\": \"true\", \"itemState\": \"true\"}], \"agree\": [true]}",
+  "2026-10-24T12:50:37Z   arm A-BD: {\"arm\": \"A-BD\", \"valid\": 30, \"n\": 30, \"rendered_as_intended\": 30}",
+  "2026-10-24T12:53:54Z   ui after_A-BD: {\"requests\": 1, \"error\": null, \"queries\": [{\"starttime\": \"2026-10-23T12:53:48.617Z\", \"endtime\": \"2026-10-24T12:53:48.616Z\", \"boundary\": \"true\", \"itemState\": \"true\"}], \"agree\": [true]}",
+  "2026-10-24T12:59:21Z   arm A-RM: {\"arm\": \"A-RM\", \"valid\": 30, \"n\": 30, \"rendered_as_intended\": 30}",
+  "2026-10-24T13:01:12Z   ui after_A-RM: {\"requests\": 1, \"error\": null, \"queries\": [{\"starttime\": \"2026-10-23T13:01:06.993Z\", \"endtime\": \"2026-10-24T13:01:06.992Z\", \"boundary\": \"true\", \"itemState\": \"true\"}], \"agree\": [true]}",
+  "2026-10-24T13:06:32Z   arm A-CHG: {\"arm\": \"A-CHG\", \"valid\": 30, \"n\": 30, \"rendered_as_intended\": 30}",
+  "2026-10-24T13:09:59Z   ui after_A-CHG: {\"requests\": 1, \"error\": null, \"queries\": [{\"starttime\": \"2026-10-23T13:09:53.888Z\", \"endtime\": \"2026-10-24T13:09:53.887Z\", \"boundary\": \"true\", \"itemState\": \"true\"}], \"agree\": [true]}",
+  "2026-10-24T13:10:08Z   benign B-REPLACE-SAME: {\"op\": \"B-REPLACE-SAME\", \"ok\": true, \"affected_past\": 6}",
+  "2026-10-24T13:12:21Z   benign B-BACKFILL: {\"op\": \"B-BACKFILL\", \"ok\": true, \"affected_past\": 10}",
+  "2026-10-24T13:14:35Z   benign B-LABEL: {\"op\": \"B-LABEL\", \"ok\": true, \"affected_past\": 0}",
+  "2026-10-24T13:17:18Z   benign B-RESTART: {\"op\": \"B-RESTART\", \"ok\": true, \"affected_past\": 0}",
+  "2026-10-24T13:19:25Z   benign B-REPLACE-NEW: {\"op\": \"B-REPLACE-NEW\", \"ok\": true, \"affected_past\": 6}",
+  "2026-10-24T13:21:34Z   benign B-BACKFILL: {\"op\": \"B-BACKFILL\", \"ok\": true, \"affected_past\": 10}",
+  "2026-10-24T13:23:46Z   benign B-CLEAN: {\"op\": \"B-CLEAN\", \"ok\": true, \"affected_past\": 0}",
+  "2026-10-24T13:26:35Z   benign B-RESTART: {\"op\": \"B-RESTART\", \"ok\": true, \"affected_past\": 0}",
+  "2026-10-24T13:28:50Z   benign B-BACKFILL: {\"op\": \"B-BACKFILL\", \"ok\": true, \"affected_past\": 10}",
+  "2026-10-24T13:31:00Z   benign B-RETAIN: {\"op\": \"B-RETAIN\", \"ok\": true, \"affected_past\": 128}",
+  "2026-10-24T13:33:05Z window 2: 1800 s untouched",
+  "2026-10-24T14:03:11Z settling 90 s",
+  "2026-10-24T14:04:50Z final snapshot: {\"t_snapshot\": 1792850682.9167364, \"t_done\": 1792850682.9275088, \"quick_check\": \"ok\", \"hub_journal_mode\": \"delete\", \"ok\": true, \"file\": \"final.db\", \"sha256\": \"a3e8365cbfe6bf4749ec17c5d7e3f038521cf988e871f9b4cf44e22e43221eff\", \"bytes\": 258048}",
+  "2026-10-24T14:05:37Z chain records     1407, refusals        0, monitor errors 0, archive lines     1407",
+  "{\"down\": \"e11s\"}",
+  "2026-10-24T14:05:39Z main stack down (signing-key volume destroyed)"
+ ],
+ "stack": {
+  "image": "openhab/openhab:5.2.3@sha256:fa50a6934dfd5bcbf21db18af66f2558f58c6c493ba23bdeb7a894e764507a99",
+  "image_inspect": "sha256:fa50a6934dfd5bcbf21db18af66f2558f58c6c493ba23bdeb7a894e764507a99 [\"openhab/openhab@sha256:fa50a6934dfd5bcbf21db18af66f2558f58c6c493ba23bdeb7a894e764507a99\"] arm64",
+  "kind": "main",
+  "openhab_info": "{\"version\":\"8\",\"locale\":\"en_US\",\"measurementSystem\":\"SI\",\"timezone\":\"UTC\",\"runtimeInfo\":{\"version\":\"5.2.3\",\"buildString\":\"Release Build\"},\"links\":[{\"type\":\"services\",\"url\":\"http://e11s-hub:8080/rest/services\"},{\"type\":\"items\",\"url\":\"http://e11s-hub:8080/rest/items\"},{\"type\":\"discovery\",\"url\":\"http://e11s-hub:8080/rest/discovery\"},{\"type\":\"tags\",\"url\":\"http://e11s-hub:8080/rest/tags\"},{\"type\":\"thing-types\",\"url\":\"http://e11s-hub:8080/rest/thing-types\"},{\"type\":\"events\",\"url\":\"http://e11s-hub:8080/rest/events\"},{\"type\":\"persistence\",\"url\":\"http://e11s-hub:8080/rest/persistence\"},{\"type\":\"inbox\",",
+  "bundles": "220 \u2502 Active \u2502 80 \u2502 5.2.3 \u2502 org.openhab.core.persistence;270 \u2502 Active \u2502 80 \u2502 5.2.3 \u2502 org.openhab.persistence.jdbc;271 \u2502 Active \u2502 80 \u2502 3.53.1.0 \u2502 org.xerial.sqlite-jdbc;272 \u2502 Active \u2502 80 \u2502 1.0.0 \u2502 org.homeprov.e11.fixture;273 \u2502 Active \u2502 80 \u2502 1.0.0 \u2502 org.homeprov.e11.lockbridge;",
+  "users": "owner (administrator);member (user);",
+  "hub_reaches_outside_after_provisioning": "000none",
+  "jdbc_bundle_started_by_harness": 0,
+  "up_seconds": 59.9
+ },
+ "build": {
+  "hub_image": "openhab/openhab:5.2.3@sha256:fa50a6934dfd5bcbf21db18af66f2558f58c6c493ba23bdeb7a894e764507a99",
+  "hub_image_inspect": "sha256:fa50a6934dfd5bcbf21db18af66f2558f58c6c493ba23bdeb7a894e764507a99 [\"openhab/openhab@sha256:fa50a6934dfd5bcbf21db18af66f2558f58c6c493ba23bdeb7a894e764507a99\"]",
+  "jdk_image": "eclipse-temurin:21-jdk",
+  "jdk_image_inspect": "sha256:23cc5734ff46e776f51ce66eb9ee08444fd47caabec0a95b7eb6e94be2d3696d [\"eclipse-temurin@sha256:23cc5734ff46e776f51ce66eb9ee08444fd47caabec0a95b7eb6e94be2d3696d\"]",
+  "classpath": {
+   "gson-2.13.2.jar": "dd0ce1b55a3ed2080cb70f9c655850cda86c206862310009dcb5e5c95265a5e0",
+   "org.apache.felix.framework-7.0.5.jar": "aba72932c5ffe52d1ae9fb735415474bc8305fd04f050e851f3a8f67da1834fd",
+   "org.openhab.core-5.2.3.jar": "a30d81934a04868a13e1e0b802d5c52344fc2e59ef9e3841cc51e579041bb731",
+   "org.openhab.core.persistence-5.2.3.jar": "50ade5c76d8820d3696e5d2c5241c70c1a6de03ac2f4013323b5f21df6ee4b22",
+   "unit-api-2.2.jar": "667487e1ee57298cdc767885f00b86c899b2fe7e72dc00b6560a6aa64f2bc9c4"
+  },
+  "sources_sha256": {
+   "fixture/META-INF/MANIFEST.MF": "a24da942cdb9156490e10a6ac7f913a0b48a47e732e15f5802eacea6e6520d7d",
+   "fixture/src/org/homeprov/e11/fixture/Activator.java": "8f9f7da95813e37e5158ea8e2e95853eae987a79d1b382a78a78b5c7aed28d47",
+   "attack/META-INF/MANIFEST.MF": "34e7d4f180f5f37e91e13f067306d6758b37ef57a6ff453b93c792183a1136b1",
+   "attack/src/org/homeprov/e11/lockbridge/Activator.java": "3820e3bc128b4ce732e6bff185b398ea93ce0fc2214c2e36e570fa8fe3a6ff7e"
+  },
+  "jars_sha256": {
+   "org.homeprov.e11.fixture-1.0.0.jar": "4050b729146d5b4b24e3696d06f5055f3f91c3373b5e2e9e9b501540399a6598",
+   "org.homeprov.e11.lockbridge-1.0.0.jar": "fde70d4ebe11da3acdfc7afdf8b8a6452fcfc964fadf17fc53c68f9edee02427"
+  }
+ },
+ "provision": {
+  "items": {
+   "FrontDoor_Lock": 201,
+   "Porch_Light": 201,
+   "Hallway_Light": 201,
+   "Kitchen_Light": 201,
+   "Porch_Motion": 201,
+   "Hallway_Motion": 201,
+   "Kitchen_Motion": 201,
+   "Kitchen_Temp": 201,
+   "Hallway_Temp": 201,
+   "Power_Meter": 201,
+   "Energy_Backfill": 201,
+   "Price_Forecast": 201,
+   "Retention_Probe": 201,
+   "Label_Probe": 201
+  },
+  "metadata": {
+   "Kitchen_Temp": 201,
+   "Hallway_Temp": 201,
+   "Power_Meter": 201,
+   "Energy_Backfill": 201
+  },
+  "rules": {
+   "porch_motion_light_on": 201,
+   "porch_motion_light_off": 201,
+   "hallway_motion_light_on": 201,
+   "hallway_motion_light_off": 201,
+   "kitchen_motion_light_on": 201,
+   "kitchen_motion_light_off": 201
+  },
+  "persistence_services": [
+   {
+    "id": "jdbc",
+    "label": "JDBC",
+    "type": "Modifiable"
+   }
+  ],
+  "ok": true
+ },
+ "instrument_info": {
+  "ok": true,
+  "bundle": "org.homeprov.e11.lockbridge",
+  "version": "1.0.0",
+  "item": "FrontDoor_Lock",
+  "item_type": "Switch",
+  "java": "21.0.12.1",
+  "user": "openhab",
+  "tz": "UTC",
+  "op": "info",
+  "t_ack": 1792843601.611
+ },
+ "plan": {
+  "arms": [
+   {
+    "arm": "A-BD",
+    "mark_ms_offsets": [
+     594,
+     872,
+     994,
+     11,
+     390,
+     414,
+     321,
+     653,
+     658,
+     238,
+     493,
+     408,
+     415,
+     0,
+     930,
+     224,
+     18,
+     55,
+     697,
+     639,
+     600,
+     644,
+     63,
+     123,
+     472,
+     418,
+     92,
+     111,
+     315,
+     770
+    ],
+    "n": 30,
+    "seal_wait_s": 130.0,
+    "spacing_s": 3.0
+   },
+   {
+    "arm": "A-RM",
+    "mark_ms_offsets": null,
+    "n": 30,
+    "seal_wait_s": 130.0,
+    "spacing_s": 3.0
+   },
+   {
+    "arm": "A-CHG",
+    "mark_ms_offsets": null,
+    "n": 30,
+    "seal_wait_s": 130.0,
+    "spacing_s": 3.0
+   }
+  ],
+  "backfill": {
+   "item": "Energy_Backfill",
+   "offset_s": 30.25,
+   "points": 10,
+   "span_s": 600
+  },
+  "benign": [
+   "B-REPLACE-SAME",
+   "B-BACKFILL",
+   "B-LABEL",
+   "B-RESTART",
+   "B-REPLACE-NEW",
+   "B-BACKFILL",
+   "B-CLEAN",
+   "B-RESTART",
+   "B-BACKFILL",
+   "B-RETAIN"
+  ],
+  "benign_gap_s": 120,
+  "label": {
+   "item": "Label_Probe",
+   "new_label": "Label probe (renamed by the owner)"
+  },
+  "late_bound_s": 30.0,
+  "replace": {
+   "future_points": 12,
+   "item": "Price_Forecast",
+   "new_delta": 1.0,
+   "past_window_s": 1800,
+   "step_s": 300
+  },
+  "retain": {
+   "item": "Retention_Probe",
+   "older_than_s": 1200
+  },
+  "schedule": {
+   "Energy_Backfill": {
+    "kind": "counter",
+    "lo": 1000.0,
+    "period_s": 60,
+    "step": 0.05,
+    "unit": "kWh"
+   },
+   "Hallway_Motion": {
+    "kind": "choice",
+    "period_s": 60,
+    "values": [
+     "OPEN",
+     "CLOSED",
+     "CLOSED"
+    ]
+   },
+   "Hallway_Temp": {
+    "hi": 22.0,
+    "kind": "walk",
+    "lo": 18.0,
+    "period_s": 10,
+    "unit": "\u00b0C"
+   },
+   "Kitchen_Motion": {
+    "kind": "choice",
+    "period_s": 90,
+    "values": [
+     "OPEN",
+     "CLOSED",
+     "CLOSED"
+    ]
+   },
+   "Kitchen_Temp": {
+    "hi": 24.0,
+    "kind": "walk",
+    "lo": 19.0,
+    "period_s": 10,
+    "unit": "\u00b0C"
+   },
+   "Label_Probe": {
+    "kind": "toggle",
+    "period_s": 420,
+    "values": [
+     "ON",
+     "OFF"
+    ]
+   },
+   "Porch_Motion": {
+    "kind": "choice",
+    "period_s": 75,
+    "values": [
+     "OPEN",
+     "CLOSED",
+     "CLOSED"
+    ]
+   },
+   "Power_Meter": {
+    "hi": 900.0,
+    "kind": "walk",
+    "lo": 80.0,
+    "period_s": 3,
+    "unit": "W"
+   },
+   "Retention_Probe": {
+    "kind": "counter",
+    "lo": 0.0,
+    "period_s": 30,
+    "step": 1.0
+   }
+  },
+  "schedule_seed": 20261021,
+  "seed": 20261021,
+  "settle_s": 90,
+  "smoke": false,
+  "warmup_s": 600,
+  "window1_s": 1500,
+  "window2_s": 1800
+ },
+ "keys_recorded": false
+}

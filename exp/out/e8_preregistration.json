@@ -1,0 +1,121 @@
+{
+ "experiment": "E8 part C: real-deployment run on the default deployment (Home Assistant 2026.7.4), stable columns as the evaluated commitment and the closure monitor alongside, both with sealed coverage, escrow, Ed25519 record signatures and tagged anchor replies; linked anchors with a separate operator key and head witnesses outside Docker's VM; arms PU, PI, PSR, P, INS-L, INS-M, BD-S; then a write-rate stress window",
+ "registered_at": "2026-10-09T02:13:47.437436+00:00",
+ "registered_before": "any trial of the main run (tag e8_main); a smoke run on the real deployment (tag e8_smoke, one trial per arm) precedes it and is not a result",
+ "approval": "PI 2026-10-08: 'Reframe (Recommended)', 'Approve E8 in full (Recommended)', 'Add Ed25519 signatures (Recommended)' (drafts/round13/E8_DESIGN.md)",
+ "design": {
+  "doc": "drafts/round13/E8_DESIGN.md (section C)",
+  "impl_notes": "drafts/round13/E7_IMPL_NOTES.md section 11 (signatures, tagged replies); drafts/round13/E8_ANCHOR_NOTES.md (witness extension check, operator key)",
+  "run_notes": "drafts/round13/E8_RUN_NOTES.md"
+ },
+ "parameters": {
+  "LATE_BOUND_s": 30,
+  "LATE_BOUND_basis": "unchanged from E7 (exp/out/e7_preregistration.json; evidence exp/out/e7_late_delays_prior.json)",
+  "GAP_s": 30,
+  "GAP_basis": "reporting threshold for heartbeat gaps; does not affect detection (as E7)",
+  "poll_period_s": 5,
+  "seal_wait_s": 130,
+  "K_inserted_rows": 9,
+  "bd_min_age_s": 130,
+  "bd_lookback_s": 1800,
+  "restart_wait_s": 45,
+  "baseline_window_s": 600,
+  "stress_window_s": 1800,
+  "stress_ramp_s": 300,
+  "stress_factor": 6.0,
+  "stress_factor_meaning": "a second motion publisher (testbed/e8/stress_publisher.py, image hpr-devices:1) on the simulator's three motion topics with every sleep of the simulator's loop divided by this factor; the achieved write rate is measured, not assumed (outcome write_rate)",
+  "witness_mode": "sync (the anchor pushes each head, with the records that extend the witness's last head, before acknowledging the append)",
+  "monitor_reply_tags": "HOMEPROV_REPLY_TAGS=1 (every anchor reply must carry a valid X-HP-Reply-Auth)",
+  "stress_factor_open_decision": "lead: factor 6 targets about five times this run's own baseline write rate (scratch calibration, E8_RUN_NOTES.md 3.3); five times the pooled lab rate of exp/out/r13_write_rate.json would need a factor near 30 (untested above 25)",
+  "operator_probe": "one inert operator-key MIGRATE marker per anchor before the arms (HPR_E8_OPERATOR_PROBE=1); set 0 to keep the evaluated chains marker-free"
+ },
+ "arms": {
+  "configurations": [
+   "porch",
+   "hallway",
+   "kitchen"
+  ],
+  "trials_per_configuration": 30,
+  "per_arm_trials": {
+   "PU": 90,
+   "PI": 90,
+   "PSR": 90,
+   "P": 90,
+   "INS-L": 90,
+   "INS-M": 90,
+   "BD-S": 90
+  },
+  "components": {
+   "homeprov_ec": [
+    "PU",
+    "PI",
+    "PSR",
+    "P"
+   ],
+   "homeprov_e7": [
+    "INS-L",
+    "INS-M",
+    "BD-S"
+   ]
+  },
+  "order_per_configuration": "homeprov_ec (PU, PI, PSR, P), then homeprov_e7 (INS-L, INS-M, BD-S); one hub restart switches each component on (exactly one listed in configuration.yaml); one more restart after the last configuration switches both off",
+  "stress_arm": {
+   "arm": "PU",
+   "configuration": "porch",
+   "trials": 30,
+   "when": "inside the stress window, after the ramp"
+  }
+ },
+ "monitors": {
+  "stable": "stable-columns scheme (every stored column except states.last_reported_ts), coverage on, escrow on, per-poll cost log on, record signatures on: the EVALUATED configuration",
+  "closure": "closure scheme, same settings: run alongside (the renderer closure is the measured set any commitment must contain)"
+ },
+ "anchors": "one per monitor: testbed/anchord/anchord_linked.py over the hardened anchord.py (testbed/e8/anchord-e8.Dockerfile), link v2, its own append key, a separate operator key for markers, tagged replies; each pushes its head to its own witness (testbed/anchord/headwitness.py, python3 on the evaluation Mac, outside Docker's VM, loopback only, its own witness key); fresh keys, only fingerprints recorded",
+ "outcomes": {
+  "detection": "per arm and monitor: trials whose target second (for BD-S the forged row's second) the verifier (exp/stages/e7_verify.py) flags as attributable at one-second granularity, k of n with the exact (Clopper-Pearson) 95% interval; alongside, the earlier rule's flagged / attributable / ambiguous counts on the same run",
+  "benign_floor": "per monitor and window (arms, baseline, stress): untouched one-second segments that fail, and minute and hour segments; a segment is touched when it holds a row any trial wrote, edited or named (the paper's counting rule)",
+  "cost": "per monitor and window: copy, load, commit, append and total milliseconds per poll; median, p90, max; and the seal delay (end of a one-second segment to the anchor's receipt of its root)",
+  "signatures": "per monitor: monitor records with a valid signature under that monitor's published key, unsigned, bad and wrong-key records (by chain seq); every record checked also against the other monitor's key",
+  "witness": "per anchor: chain links; the chain against every head its witness accepted and against the witness's final head; records never witnessed; forks; controls on copies (truncation, a relinked rewrite with a doctored latest head, an unrelinked rewrite)",
+  "probes": "from the hub: untagged and forged records and markers refused (401) by both anchors, no route to either witness; operator probe: a marker under the append key refused (403), a record under the operator key refused (403), one inert operator-key MIGRATE marker accepted, every reply tag valid",
+  "write_rate": "rows per minute of monitor.load() in each window, the stress-over-baseline ratio and the ratio to the lab rate of exp/out/r13_write_rate.json",
+  "intervals": "every heartbeat gap above GAP_s and every unobservable or anchor-unreachable interval, with its cause where known; reply-tag failures and failed appends from each monitor's log"
+ },
+ "exclusions": "only trials whose harness record carries an error are excluded, and each is counted and listed; every arm is reported whatever its outcome",
+ "known_limits_stated_in_advance": [
+  "backdating by less than about LATE_BOUND plus one poll period (about 35 s) is scored as a benign late row",
+  "a row changed before any poll sees it (write-time forgery) is outside the guarantee",
+  "the witnesses run on the same physical machine as the Docker VM that hosts the hub, the monitors and the anchors: a separate trust domain (outside the VM), not a separate party",
+  "the stress raises the motion rate with a second publisher next to the unmodified lab simulator; the achieved write rate is whatever the recorder shows",
+  "R5 (epoch mix-up after a lost monitor state file) is open; the run does not lose the state file"
+ ],
+ "code_sha256": {
+  "monitor/monitor.py": "3e479ae01caf299e697b0274a22ddddbaa6b57b9bf4b730a8774b2d7c5b5282b",
+  "monitor/Dockerfile.sign": "5a6dcec0d93012a5dae13ba72b5ccf1d772623baaa54c07b38c19be701d94d18",
+  "monitor/requirements-sign.txt": "d09f4bcea9d366d767affccde58418307c974bf5c358fb6a09b057b1c8d0922c",
+  "monitor/test_coverage.py": "84d5029d86f1ae35e41544039b0f7fb2970a0eee1f35e0c25e76c36cabc0a25e",
+  "exp/stages/e7_verify.py": "7e036386baacea9d05808a50a709489bd554d5a4b0a3d568583d07afbb0ae1f8",
+  "exp/stages/e8_score.py": "488e116bc92d56aa8303c7e960f61a4056b702da01a8d53be35ec7f9e0f48934",
+  "testbed/e8/run_e8.sh": "fbddce8e2f904ef6b328342e1bf1d7404fc3ffbcdbf8b32f6d93757d036a6959",
+  "testbed/e8/stress_publisher.py": "bf099e10e411465c6af973f6929b6bbcc85298a24815f9611f984c633b3bd756",
+  "testbed/e8/anchord-e8.Dockerfile": "84191c7adf8fc8a74b75f6603d7850841d8a9428c905622af4a6dc22ca811ebe",
+  "testbed/anchord/anchord.py": "53d1ac92ebbca11e7d3aeda742c1bd790ccb98edb913ad0f4eda8b664af96dfd",
+  "testbed/anchord/anchord_linked.py": "966d2b351cec120538e059eb293293892cf5bb312fc7b310ffb8888f0fad9b5c",
+  "testbed/anchord/headwitness.py": "0d8a83c8e0c4cb09e4a5097045e3d1ae91ae7ed264d4b491712256f0602781f5",
+  "testbed/anchord/chainverify.py": "38cfa5e9d99e8ece7ee53d4401e6a97d6e16b7dac02e19088b11d13b547f9d0e",
+  "testbed/anchord/test_anchor_e8.py": "614d2e994a994d080ce683351a160c664861982417af6cf16da80d3855f3093a",
+  "testbed/real/ha-config/custom_components/homeprov_ec/__init__.py": "266d27e298153ede1cc002d715461ecf96fbc211e96e76ed1d1453e762687918",
+  "testbed/real/ha-config/custom_components/homeprov_e7/__init__.py": "26d1d472e8331909cee0f69a16c4eee96ddaf383954d5bd79eba914fa847e707",
+  "exp/out/e7_late_delays_prior.json": "2d7b74c85f2defa137960693f59ef8f6cc6a8050fdb5e1744e61f28d314b8d39",
+  "testbed/anchord/test_anchor_chain.py": "9c0477d3fdb81c3824054d819a637bb62a49311f6f2d69aac748123498f47967",
+  "exp/out/e8_witness_gap_check.json": "5f1cfe0b764f5fb00648c3baa4cd81db526f681b33c4cfa3f80232fc6280a777",
+  "exp/out/e8_closure_real.json": "8b4899b8881b530dc07c6c03e6fe876f331da8c48de5579b56072a521f755ae5"
+ },
+ "lead_decisions": {
+  "stress": "second motion publisher at factor 6 (about five times the run's own baseline-window write rate, as calibrated in the dry runs); the measured rows per minute of both windows are reported; this is not five times the pooled lab rate of r13_write_rate.json",
+  "operator_probe": "on: one inert MIGRATE marker per chain, accepted under the operator key, refused under the append key (403)",
+  "recovery_render": "off (not dry-run); recovery was measured in E7; the escrow of keylog first-read rows is shown by tests only",
+  "smoke_gate": "the main run starts only if the smoke run exits 0 and its scoring exits 0",
+  "evaluated_scheme": "stable columns (PI 2026-10-08 'Reframe'); the closure monitor runs alongside"
+ }
+}

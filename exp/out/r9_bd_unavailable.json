@@ -1,0 +1,140 @@
+{
+  "item": "R9(b) and R9(d): not produced; search record",
+  "b_window_escape": {
+    "status": "NOT DONE -- raw per-segment latencies are not in the repository",
+    "needed": "55 per-segment observation latencies (+ position within segment) from the 2026-08-24 E1 run of the external monitor",
+    "searched": {
+      "working_tree_text_hits_excluding_READY_and_archive": {
+        "exposure": [
+          "FEEDBACK_CHECKLIST.md",
+          "EXPERIMENTS.md",
+          "research_design_detailed.md",
+          "lit/ruledger.txt",
+          "exp/rig/baselines.py"
+        ],
+        "never observed": [
+          "EXPERIMENTS.md",
+          "monitor/monitor.py"
+        ],
+        "dwell": [
+          "EXPERIMENTS.md"
+        ],
+        "P(never observed)": [
+          "EXPERIMENTS.md"
+        ]
+      },
+      "git_history_paths_matching_e1_window_latency": [
+        "exp/out/stage1_1787281689.json",
+        "exp/out/stage1_1787281776.json",
+        "exp/out/stage1_final.json",
+        "exp/out_precalib/stage1_1787281689.json",
+        "exp/out_precalib/stage1_1787281776.json",
+        "exp/out_precalib/stage1_final.json",
+        "exp/out_recal/stage27_window.json",
+        "exp/stages/stage27_window.py"
+      ],
+      "first_commit": "f644936dc8dede9e14acaa4acab4ea86d43efcf0 2026-08-25T19:04:59-04:00",
+      "note_on_dates": "RKA jrn_01M0TT14JJRFV02N6GVN2SS9CS (the E1 entry) was written 2026-08-24T21:15Z; the repository's first commit is the one above, so the E1 run predates version control.",
+      "stage27_window_py": "E23 exposure curve on a generated substrate with uniformly drawn write instants; not the monitor's observed latencies, so it cannot stand in for E1."
+    },
+    "why_not_from_summary_stats": {
+      "k_over_55": {
+        "50": 0.9090909090909091,
+        "51": 0.9272727272727272,
+        "52": 0.9454545454545454,
+        "53": 0.9636363636363636,
+        "54": 0.9818181818181818,
+        "55": 1.0
+      },
+      "comment": "0.975 equals no k/55, so the escape estimator is not a plain fraction of the 55 segments; it cannot be rebuilt from the published quantiles without the raw values."
+    }
+  },
+  "d_hashing_cost": {
+    "status": "NOT DONE -- producing script and the 27,132-node input set are absent",
+    "needed": "the script that wrote exp/out/stage31_cost.json and its node set",
+    "searched": {
+      "non_json_files_in_any_commit_writing_cost_keys": [],
+      "commits_searched": 55,
+      "working_tree_text_hits_excluding_READY_and_archive": {
+        "mean_hash_input_bytes": [
+          "exp/out/stage31_cost.json",
+          "exp/out_precalib/stage31_cost.json"
+        ],
+        "hash_p50_s": [
+          "exp/out/stage31_cost.json",
+          "exp/out_precalib/stage31_cost.json"
+        ],
+        "bytes_vs_b2": [
+          "exp/out/stage31_cost.json",
+          "exp/out_precalib/stage31_cost.json"
+        ]
+      },
+      "node_count_probe_of_stage31_deployments": {
+        "HEAD_rig_bg4.4": {
+          "per_deployment": {
+            "1800_5000_seed81": 3634,
+            "1800_5000_seed82": 3634,
+            "1800_5000_seed83": 3634,
+            "1800_5000_seed84": 3634,
+            "1800_5000_seed85": 3634,
+            "1800_5000_seed86": 3634,
+            "7200_7000_seed81": 5097,
+            "7200_7000_seed82": 5097,
+            "7200_7000_seed83": 5097,
+            "7200_7000_seed84": 5097,
+            "7200_7000_seed85": 5097,
+            "7200_7000_seed86": 5097
+          },
+          "sum_arm_1800s": 21804,
+          "sum_arm_7200s": 30582,
+          "sum_all_12": 52386,
+          "any_single_equals_27132": false,
+          "any_subset_sum_equals_27132": false
+        },
+        "f644936_rig_bg24.0": {
+          "per_deployment": {
+            "1800_5000_seed81": 3366,
+            "1800_5000_seed82": 3366,
+            "1800_5000_seed83": 3366,
+            "1800_5000_seed84": 3366,
+            "1800_5000_seed85": 3366,
+            "1800_5000_seed86": 3366,
+            "7200_7000_seed81": 4692,
+            "7200_7000_seed82": 4692,
+            "7200_7000_seed83": 4692,
+            "7200_7000_seed84": 4692,
+            "7200_7000_seed85": 4692,
+            "7200_7000_seed86": 4692
+          },
+          "sum_arm_1800s": 20196,
+          "sum_arm_7200s": 28152,
+          "sum_all_12": 48348,
+          "any_single_equals_27132": false,
+          "any_subset_sum_equals_27132": false
+        }
+      }
+    },
+    "why_input_ratio_not_confirmed": "mean hash-input bytes per node depend on the node set; without it the 1.478x ratio cannot be recomputed exactly."
+  },
+  "provenance": {
+    "script": "<artifact-root>/exp/sp2027/r9_bd_unavailable.py",
+    "script_sha256": "cddfcf75f5310bed10bf7fa027be8470c88df045a81ec2742827b8e4802b94c6",
+    "helper": "<artifact-root>/exp/sp2027/r9_common.py",
+    "helper_sha256": "07566d8b2e76ef06cea180fefca0fa5f17bd27a7f0097292d5b0557d8e040ed7",
+    "python": "3.13.11 | packaged by Anaconda, Inc. | (main, Dec 10 2025, 21:21:08) [Clang 20.1.8 ]",
+    "python_executable": "python3",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "git_head": "b7611992393052a568df00c9ebc805f4d15ee6f5",
+    "git_branch": "<branch>",
+    "exp_rig_dirty": false,
+    "exp_rig_status_porcelain": "",
+    "inputs": {
+      "exp/out/stage31_cost.json": "5a53b8acccf10f6507518119fced3497feeddfeca39884a274b6271374546da8",
+      "exp/stages/stage27_window.py": "199c5770258bc289e07ac93bf0e38a24c0668fd225fab79495850858f8b0e50a"
+    },
+    "seeds": null,
+    "started": "2026-10-06T17:43:23.806610+00:00",
+    "finished": "2026-10-06T17:43:26.438432+00:00",
+    "f644936_rig_extracted_to": "<scratch>/r9_tmp/f644936"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "broker_commands": 37,
+  "broker_state_msgs": 75,
+  "recorder_rows": 55,
+  "tolerance_s": 15.0,
+  "commands_without_row": 0,
+  "interpretation": "the broker holds an independent record of every command the hub published; a deletion-based launder removes the recorder row but cannot remove the broker's copy, so the discrepancy is detectable by a second producer the in-process adversary does not control",
+  "forgery_arm": {
+    "rows_deleted": 11,
+    "commands_without_row_after_deletion": 8,
+    "commands_without_row_before": 0,
+    "detected_by_witness": true
+  }
+}

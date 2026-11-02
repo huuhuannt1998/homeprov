@@ -1,0 +1,99 @@
+{
+  "stage": 6,
+  "rows": [
+    {
+      "target": 1000,
+      "nodes": 1343,
+      "full_recompute_ms": 3.90324997715652,
+      "incremental_ms": 2.5773749221116304,
+      "speedup": 1.5144284766915503,
+      "AB1_prop2": {
+        "testable": true,
+        "greedy": 593,
+        "exact": 5,
+        "prop2_holds": false,
+        "excess": 588
+      }
+    },
+    {
+      "target": 10000,
+      "nodes": 10343,
+      "full_recompute_ms": 20.415915874764323,
+      "incremental_ms": 19.525790819898248,
+      "speedup": 1.0455871448729734,
+      "AB1_prop2": {
+        "testable": true,
+        "greedy": 593,
+        "exact": 5,
+        "prop2_holds": false,
+        "excess": 588
+      }
+    },
+    {
+      "target": 50000,
+      "nodes": 50343,
+      "full_recompute_ms": 114.8314590100199,
+      "incremental_ms": 93.96637510508299,
+      "speedup": 1.2220484070137152,
+      "AB1_prop2": {
+        "testable": true,
+        "greedy": 593,
+        "exact": 5,
+        "prop2_holds": false,
+        "excess": 588
+      }
+    }
+  ],
+  "AB1_prop2_holds": false,
+  "GATE_PASS": false,
+  "falsifier_note": "any divergence between greedy and exact FALSIFIES Prop. 2",
+  "capability": {
+    "capability_record": {
+      "schema_version": 1,
+      "actor_id": "none",
+      "actor_position": "in_process_integration",
+      "powers": {
+        "db_read": true,
+        "db_write": true,
+        "fs_read_as_ha_uid": true,
+        "fs_write_as_ha_uid": true,
+        "python_exec_in_core": true,
+        "event_bus_listen": true,
+        "event_bus_emit": true,
+        "service_call": true,
+        "network_egress": false
+      },
+      "knowledge": {
+        "deployment_topology": "full",
+        "automation_configs": "full",
+        "anchor_schedule_known": false,
+        "anchor_key_known": false,
+        "victim_routine_model": "coarse"
+      },
+      "budget": {
+        "db_writes_max": 0,
+        "wallclock_window_s": 5,
+        "cpu_seconds_max": null
+      },
+      "constraints": {
+        "host_root": false,
+        "cross_uid_write": false,
+        "anchor_key_access": false,
+        "external_anchor_retraction": false,
+        "clock_control": false,
+        "cap_linux_immutable": false,
+        "cap_bpf": false
+      },
+      "substrate": {
+        "kind": "native_aarch64_container",
+        "envelope": "Pi-shaped cgroup (cpus/memory/blkio)",
+        "note": "NOT a Raspberry Pi; absolute latency is not claimed as Pi latency"
+      },
+      "provenance": {
+        "rka_mission": null,
+        "seed": 0
+      }
+    }
+  },
+  "_digest": "0b85c918fcbcaf8f2ea59eae521d6256d8809464b34af884c5262019f1f3df58"
+}

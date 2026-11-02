@@ -1,0 +1,281 @@
+{
+ "experiment": "E2 real night: retention-scoped PURGE markers through the deployment's own nightly purge",
+ "purge_scheduled_utc": "2026-10-10T04:12:00Z",
+ "policy": {
+  "purge_keep_days": 30,
+  "time_zone": "UTC",
+  "tol_s": 60.0
+ },
+ "scoped_cutoff_ts": 1789013580.0,
+ "oldest_state_after_purge": 1789013522.5532064,
+ "purge_evidence": {
+  "pre": {
+   "recorder_runs": [
+    133,
+    "2026-09-09 01:17:55.009282"
+   ],
+   "statistics_runs": [
+    6956,
+    "2026-09-08 04:15:00.000000"
+   ]
+  },
+  "post": {
+   "recorder_runs": [
+    124,
+    "2026-09-09 02:11:05.005209"
+   ],
+   "statistics_runs": [
+    6421,
+    "2026-09-10 04:15:00.000000"
+   ]
+  },
+  "ran": true
+ },
+ "night": "2026-10-10",
+ "rows_older_than_cutoff_before_purge": {
+  "states": 34790,
+  "events": 20999
+ },
+ "window": [
+  1788916615.0,
+  1789017120.0
+ ],
+ "anchored_segments_in_window": {
+  "second": 18285,
+  "minute": 1519,
+  "hour": 29
+ },
+ "markers_on_chain": {
+  "tag_valid": 3,
+  "any": 3,
+  "scoped_for_this_purge": 1,
+  "scoped": [
+   {
+    "cutoff_ts": 1789013520.0,
+    "issued_ts": 1791605399.9839203,
+    "issuer": "operator",
+    "keep_s": 2592000.0,
+    "marker": "PURGE",
+    "scheduled_ts": 1791605520.0,
+    "scope": "retention_policy",
+    "seq": 336656,
+    "recv_ts": 1791605400.0741646
+   }
+  ]
+ },
+ "violations_before_purge": 62,
+ "new_violations_after_purge": 18999,
+ "new_by_granularity": {
+  "second": 17527,
+  "minute": 1445,
+  "hour": 27
+ },
+ "scoped": {
+  "excused": 18999,
+  "remaining": 0,
+  "remaining_detail": []
+ },
+ "unscoped_declared_cutoff_plus_1h": {
+  "excused": 18999,
+  "remaining": 0
+ },
+ "offline_attack_copy": {
+  "deleted_rows": 2067,
+  "deleted_window": [
+   1789013580.0,
+   1789017120.0
+  ],
+  "new_violations": 19757,
+  "by_granularity": {
+   "second": 18225,
+   "minute": 1504,
+   "hour": 28
+  },
+  "scoped_remaining": 758,
+  "scoped_excused": 18999,
+  "declared_remaining": 0,
+  "declared_excused": 19757
+ },
+ "inputs": {
+  "pre_oct10.db": "015213e3d0f67e1b56edd9c7b4baf8687c322c3a53d4d9b8fb0ac9d81f53bf30",
+  "post_oct10.db": "2f081049776313ba2a3bc2afe157f9fdfcce484dc6fb060ebc6c9d1da4fe816f",
+  "post_oct10.chain.jsonl": "17bcfefd645a08ec392c3ddcba63f379932b91eb5bc44f11aa0a6a1053a826ed"
+ },
+ "versions": {
+  "generated_at": "2026-10-10T04:45:26Z",
+  "monitor_py_sha256": "8ad9e2d77f2d098af1e81ed509445631dc3d3ba2d349fddff75bfd920a7ab8ae",
+  "markers_py_sha256": "ca92f37cde74b7c5ecd921696879118057342ea9c559d9c63c7d682efbff5e33",
+  "marker_issuer_py_sha256": "fcf668178b1506ad8e279095c260ac9656dfca780b3c9c37f081df102f544a03",
+  "operator_key_fingerprint_sha256_16": "c38ecd2f53aaf623"
+ },
+ "night_log": [
+  {
+   "step": "snapshot",
+   "tag": "base_oct7",
+   "db_sha256": "b3e13a988b8f30f17a361a33e649ba12c2dd83737a1234399f6e75b7399e6d17",
+   "chain_sha256": "fa4310573e397214250395307b9bb22b4679adf977b0459052c3c2a5d620959e",
+   "states": [
+    713812,
+    1788916675.0435889,
+    1791409650.629311
+   ],
+   "events": [
+    395150,
+    1788916675.0095456
+   ],
+   "at": "2026-10-07T21:47:47Z"
+  },
+  {
+   "step": "issuer_container_started",
+   "image": "hpr-monitor:1",
+   "until": 1791520200.0,
+   "at": "2026-10-07T21:51:14Z"
+  },
+  {
+   "step": "snapshot",
+   "tag": "pre_oct8",
+   "db_sha256": "703d097e94e8dee1b643fced58e3341783d586c9b435cdd2672992e13a38d48b",
+   "chain_sha256": "d4ade32bc508ab38a45a18865debbd6969b04c7aa570ec97b3a4546b1792234d",
+   "states": [
+    723296,
+    1788916675.0435889,
+    1791431721.116669
+   ],
+   "events": [
+    403509,
+    1788916675.0095456
+   ],
+   "at": "2026-10-08T03:55:23Z"
+  },
+  {
+   "step": "snapshot",
+   "tag": "post_oct8",
+   "db_sha256": "2b6eb7c4703989983938d2bda9f4c0520824c3d1e1517a56aaf67423f8a07e48",
+   "chain_sha256": "72409bb322558e5261fb5d1324a38e89196065ee24b6566828eb554e24ccd57f",
+   "states": [
+    724337,
+    1788916675.0435889,
+    1791434423.4406497
+   ],
+   "events": [
+    404045,
+    1788916675.0095456
+   ],
+   "at": "2026-10-08T04:40:27Z"
+  },
+  {
+   "step": "driver_stopped_by_operator",
+   "reason": "PI asked to stop running experiments before leaving",
+   "at": "2026-10-08T15:30:15Z"
+  },
+  {
+   "step": "issuer_container_renamed",
+   "to": "e2-issuer-stopped-20261008",
+   "reason": "E2 night stopped 15:30 UTC; E7 preflight checks for the container name",
+   "at": "2026-10-08T17:53:32Z"
+  },
+  {
+   "step": "second_night_started",
+   "issuer": "e2-issuer restarted (until 2026-10-09T04:30Z)",
+   "driver": "driver_oct9.sh",
+   "at": "2026-10-08T21:53:44Z"
+  },
+  {
+   "step": "snapshot",
+   "tag": "pre_oct9",
+   "db_sha256": "07b21122ff2577f4f2638cabc8617b71573d0c740ba6863f9041773105603010",
+   "chain_sha256": "00002e555f436a886589ce15b7b710012dda10fabb1102b5f2ec9ceb094c1d44",
+   "states": [
+    755041,
+    1788916675.0435889,
+    1791518120.073026
+   ],
+   "events": [
+    421958,
+    1788916675.0095456
+   ],
+   "at": "2026-10-09T03:55:29Z"
+  },
+  {
+   "step": "snapshot",
+   "tag": "post_oct9",
+   "db_sha256": "e9f44f3366967f6376195e5623495451595260ac53814cb304907554e5846af4",
+   "chain_sha256": "8440a8a8ab21080fb5e1d5d12ecfdc929489bfe86ebf52d82b592d2f56b7d894",
+   "states": [
+    756210,
+    1788916675.0435889,
+    1791521100.8054767
+   ],
+   "events": [
+    422559,
+    1788916675.0095456
+   ],
+   "at": "2026-10-09T04:45:03Z"
+  },
+  {
+   "step": "driver_done",
+   "at": "2026-10-09T04:45:33Z"
+  },
+  {
+   "step": "third_night_armed",
+   "driver": "driver_oct10.sh",
+   "pid": 9069,
+   "at": "2026-10-09T18:22:58Z"
+  },
+  {
+   "step": "hub_restarted",
+   "rc": 0,
+   "started_at": "2026-10-10T03:20:07.140881136Z",
+   "at": "2026-10-10T03:20:07Z"
+  },
+  {
+   "step": "hub_recorder_writing",
+   "newest_state_age_s": 1,
+   "at": "2026-10-10T03:20:07Z"
+  },
+  {
+   "step": "issuer_started",
+   "container": "e2-issuer-oct10",
+   "rc": 0,
+   "until": 1791606600.0,
+   "at": "2026-10-10T03:25:08Z"
+  },
+  {
+   "step": "snapshot",
+   "tag": "pre_oct10",
+   "db_sha256": "015213e3d0f67e1b56edd9c7b4baf8687c322c3a53d4d9b8fb0ac9d81f53bf30",
+   "chain_sha256": "fbf001f34c36e0d2a25b68956c38f74cbe57ca5de025301a9afb2c5a3d710371",
+   "states": [
+    788287,
+    1788916675.0435889,
+    1791604499.2621682
+   ],
+   "events": [
+    442891,
+    1788916675.0095456
+   ],
+   "at": "2026-10-10T03:55:12Z"
+  },
+  {
+   "step": "snapshot",
+   "tag": "post_oct10",
+   "db_sha256": "2f081049776313ba2a3bc2afe157f9fdfcce484dc6fb060ebc6c9d1da4fe816f",
+   "chain_sha256": "17bcfefd645a08ec392c3ddcba63f379932b91eb5bc44f11aa0a6a1053a826ed",
+   "states": [
+    754621,
+    1789013522.5532064,
+    1791607497.9432836
+   ],
+   "events": [
+    422469,
+    1789013522.5516994
+   ],
+   "at": "2026-10-10T04:45:02Z"
+  }
+ ],
+ "capability": {
+  "issuer": "operator-side, outside the hub's container, holds the operator key",
+  "anchor": "the deployment's default anchor (no tag check); the verifier checks marker_tag",
+  "purge": "Home Assistant's own scheduled purge; the deployment was not reconfigured"
+ }
+}

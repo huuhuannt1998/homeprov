@@ -1,0 +1,1487 @@
+{
+ "accounts": {
+  "household member (no person in configuration A)": "533597b621f04fed979bf09cac87f879",
+  "household viewer (non-admin viewer)": "897ddaf2311343af94263a2077d60286",
+  "owner (admin, person.home_owner)": "d99171b0c9de45d291aa9e6a4258f323"
+ },
+ "adversary": "integration homeprov_e6 in the hub process; in-process APIs only (no SQL) for every variant",
+ "code_sha256": {
+  "<research-dir>/HOMEPROV-P13-exp/e6/code/e6_finalize.py": "b48720df3aa6d61dfc602cde417963913e495368fbcb6cb2bc9cc30da343f486",
+  "<research-dir>/HOMEPROV-P13-exp/e6/code/e6_run.py": "7dbbe77f2efde68805ab2223885a01e10e186b117bca018de9cbaca915f68384",
+  "<research-dir>/HOMEPROV-P13-exp/e6/code/e6lib.py": "6895f89ba72ae50664627e6f53d506fd5b3dadb4d0d7b6430b10b6a9c30d2508",
+  "<research-dir>/HOMEPROV-P13-exp/e6/code/homeprov_e6/__init__.py": "850dce4b06106e237464b1d869e5b0ba1cd876eaa4a0d8f70b394d8d6cceb9b2",
+  "<research-dir>/HOMEPROV-P13-exp/e6/code/monitor_pre_e6.py": "f23c12707278e66266bd02ee7c3fcd24fae231c39182319d705b2cce66215532",
+  "<research-dir>/HOMEPROV-P13-exp/e6/stack/docker-compose.yml": "453b6961ab4a78fdcdce6b68c64591e08946a805bc31ba25c833050f2d9ba2df",
+  "<research-dir>/HOMEPROV-P13-exp/e6/stack/seed/configuration.yaml": "b9326ce88c45347ddb621ecc8d3e39b35e6d7170826fca17e1a377411e94cbf1",
+  "<artifact-root>/exp/sp2027/r1_render.py": "cd4ecf13d3f3164d4236be970f164faa1e93928542e4ef382b21b178f6a7d647",
+  "<artifact-root>/exp/stages/e6_namemap.py": "57d267195207c55746e37b39b07f1d8ecb339dbb41116a3f0bfb54d0f39b4df2",
+  "<artifact-root>/monitor/monitor.py": "2eb8f872bb9e40452b353a507229e1502fff1ed81e2d772f5de4fe4bb30fc48b"
+ },
+ "committed_rows": {
+  "batch1": "30 unlocks of lock.front_door under Context(user_id=member) (arm PU phase 1), each row sealed and anchored before any variant",
+  "batch2": "30 more member unlocks, each preceded by a genuine porch motion-light run, sealed, then laundered as arm PU does (variant iv's precondition)"
+ },
+ "configB_setup_effect": {
+  "admin": {
+   "after": {
+    "user:Alex Rivera (household)": 30
+   },
+   "before": {
+    "user:Alex Rivera (household)": 30
+   },
+   "displayed_cause_changed": {
+    "ci_hi": 0.11570330822202778,
+    "ci_lo": 0.0,
+    "k": 0,
+    "method": "Clopper-Pearson exact",
+    "n": 30,
+    "prop": 0.0
+   }
+  },
+  "non_admin": {
+   "after": {
+    "user:Alex Rivera (household)": 30
+   },
+   "before": {
+    "integration:lock": 30
+   },
+   "displayed_cause_changed": {
+    "ci_hi": 1.0,
+    "ci_lo": 0.8842966917779722,
+    "k": 30,
+    "method": "Clopper-Pearson exact",
+    "n": 30,
+    "prop": 1.0
+   }
+  }
+ },
+ "configurations": {
+  "A": "member account without a person entity (owner has one, as after onboarding)",
+  "B": "a person entity linked to the member, created by the owner over person/create"
+ },
+ "date_utc": "2026-10-08T03:04:08.719672+00:00",
+ "display_rule": "transcription of the frontend's cause resolution (user via name map, then automation name via registry/state, then integration), exp/../e6/code/e6lib.py displayed_cause; rows from each viewer's own /api/logbook, name map and registry view read through that viewer's session",
+ "display_rule_source": {
+  "cause": {
+   "chunk": "frontend_latest/73485.cd15ef63b9222fdc.js",
+   "quote_automation": "C=(e,t)=>{if(\"automation_triggered\"===t.context_event_type||\"script_started\"===t.context_event_type){const a=(t.context_entity_id?g(e,t.context_entity_id).primary:void 0)??t.context_name;if(a)return{type:\"script_started\"===t.context_event_type?\"script\":\"automation\",name:a,entityId:t.context_entity_id}}",
+   "quote_order": "$=(e,t,a,i)=>w(t,a,i)??C(e,t)",
+   "quote_primary": "g=(e,t,a)=>{const i=e.states[t];if(!i)return{};const[o,n,r,l]=(0,s.Cf)(i,[{type:\"entity\"},{type:\"device\"},{type:\"parent_device\"},{type:\"area\"}],e.entities,e.devices,e.areas,e.floors),d=o||n||t,",
+   "quote_user": "w=(e,t,a)=>{const i=e.context_user_id?t[e.context_user_id]:void 0;if(i)return{type:\"user\",name:i,userId:e.context_user_id,systemUser:a?.has(e.context_user_id)}}",
+   "sha256": "802c1f69e6045b5947da92cc5eccb1647bdaf52df8ac2ec0d0b644e0741ae0ff"
+  },
+  "entity_name": {
+   "chunk": "frontend_latest/27424.3946c8a8aaa3c2e6.js",
+   "quote": "n=(e,t,a)=>{const s=e.name??(\"original_name\"in e&&null!=e.original_name?String(e.original_name):void 0),n=e.device_id?t[e.device_id]:void 0;if(!n)return s||(a?(0,i.u)(a):void 0);",
+   "sha256": "91e5b9de67858701627645f2eb67393c6b007b87b8823f8da9f0ad732ce4c795"
+  },
+  "frontend": "home-assistant-frontend 20260930.1 (in homeassistant/home-assistant:2026.10.0b2)",
+  "logbook_context_name": {
+   "file": "homeassistant/components/automation/logbook.py (2026.10.0b2)",
+   "meaning": "context_name is the name stored in the automation_triggered event (a committed row); the frontend uses it only when the automation entity has no current state",
+   "quote": "LOGBOOK_ENTRY_NAME: data.get(ATTR_NAME), ... LOGBOOK_ENTRY_ENTITY_ID: data.get(ATTR_ENTITY_ID)",
+   "sha256": "5a8497c5cdae8eb413172e377dfca725d9c97e292588c68ba3db6ae3e20d9f33"
+  },
+  "name_map": {
+   "chunk": "frontend_latest/52887.80f0c1f9099d30c6.js",
+   "quote": "_updateUsers=(0,l.n)(async()=>{const t={},e=new Set,o=this.hass.user?.is_admin&&(0,u.hU)(this.hass);for(const e of Object.values(this.hass.states))e.attributes.user_id&&\"person\"===(0,n.t)(e)&&(t[e.attributes.user_id]=e.attributes.friendly_name);if(o){const a=await o;for(const o of a)o.id in t||(t[o.id]=o.name),o.system_generated&&e.add(o.id)}this._userIdToName=t,this._systemUserIds=e},6e4)",
+   "sha256": "49605f32df3526b1e65c71ff9f0c147af3b9a43bc25de5e432f1f93574ec9f7c"
+  },
+  "registry_display_entry": {
+   "file": "homeassistant/helpers/entity_registry.py (2026.10.0b2)",
+   "quote": "name = (self.name if self.name is not None else (self.original_name_unprefixed if self.original_name_unprefixed is not None else self.original_name)) ... display_dict[\"en\"] = name",
+   "sha256": "5755a53db7f7820fccfbc471295027aeee2a3663125ba7774d2573ffa7cba56e"
+  }
+ },
+ "experiment": "E6 Part A: re-attribution of committed actuations through the name map, no committed row edited",
+ "harness_note": "batch-2 trial 0's actuation capture returned the previous unlocked row (batch-1 trial 29, state 365) because the new row was not yet written; arm PU's laundering, copied unchanged, therefore also deleted that row's call_service event and re-attached state 365 when batch 2 was laundered. This happened after every batch-1 measurement (variants1 and render1 ended before batch 2 started) and is the one segment violation in the batch-1 window of the final check (second 1791426736 and its minute).",
+ "inputs_sha256": {
+  "data/anchor_chain.jsonl": "7151a7f5a6e9373558e4aaa1aa5ef8884122c0bc832b83bd3e79c84a176ac7a8",
+  "data/anchor_head.json": "feca69f151c8a1df8c9bb5eade33b506d75159ecfcd7b540be2e5487900fc7aa",
+  "data/anchor_refusals.jsonl": "771478a19a15db8c17482d0d12b2c050e16b2e3caaa2b7d33f23a1c0cfc3c293",
+  "data/anchord.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "data/hass_container.log": "fa300be7740b15e84d01c968c9c1bac3bc4a8eacf7689361abd8ea67e3e0d9bb",
+  "data/marker_probe_from_hub.json": "0cc3ee14a745d25b18cca151771f87c359de2fd8c3407da6673828bb8acc1ec7",
+  "data/monitor.log": "3c9eeaf96618fc4df32b2ba8e2409c140fd9f6b0918d1b3676ee56698812a780",
+  "data/recorder_final.db": "9e14e0d889042a934e4951dda7c1e804b65be0df6ecdf20ab9875c5493ca4693",
+  "data/recorder_final.db-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+  "data/recorder_final.db-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "data/volume_e6-anchor-chain.tgz": "9701f404aaafdc4b6d21e2da648cbd0a941bc59ff2a27ed6589f03ccb9b1c090",
+  "data/volume_e6-config.tgz": "ec5de4d241ade5660132a4bbfd01b76294deca38413d906603921f2d8243e4bf",
+  "data/volume_e6-monitor-scratch.tgz": "7f2283df84eb741a11e562ef67d663e1a0b879d230d68e274cb49eb3f2e5fac3",
+  "work/benign.json": "c235ca1d70b6f1db3bd4f62a6ed0b6d5cb02824b4051ce237f32cfb6cbeb6961",
+  "work/final.json": "379e64e2ab0e374ddfe53b852730ea67c06b732f9088e733b8ed4241dbae4f08",
+  "work/marker_probe_from_hub.json": "0cc3ee14a745d25b18cca151771f87c359de2fd8c3407da6673828bb8acc1ec7",
+  "work/render1.json": "8bbea48fd183a9a7c81cbb012d0bc67911641da0393c9418e5786cc4c66a88fe",
+  "work/rowhash_b2_pre_launder_1791428265.json": "2c5d57ee0b530c9d405da0c03681940fd00b168ef53723236bd784f21cfd1c15",
+  "work/rowhash_i_account_rename_after_1791426920.json": "1c45996fba0393289a41f5846dd3f31f1a5415129b3f03b912cf36198c824b37",
+  "work/rowhash_i_account_rename_pre_1791426883.json": "db478965a0d887bdb1641128225fc704de0e6904c920e085876757cb48fd2808",
+  "work/rowhash_i_b_person_rename_B_after_1791427222.json": "814bc5400c0cd2a59ff1f92e2d4e40cc7b6e93a178fb1dc98ca4929f351c684d",
+  "work/rowhash_i_b_person_rename_B_pre_1791427184.json": "1d71e6468bbcb4bca35061262a809f70c64d842b68000bb9426ed5a9e91d04f0",
+  "work/rowhash_i_ctrl_account_rename_B_after_1791427156.json": "81b4e8996088818687e649d9c0002c3f59bfd497127f6456f27798f81257a20f",
+  "work/rowhash_i_ctrl_account_rename_B_pre_1791427120.json": "48ff5679396682832f60fdfd1e72a81b48556cb4ab2faa834560b41727589655",
+  "work/rowhash_ii_account_swap_after_1791426987.json": "228daff3b9a0c7517b83bfd52534b0a2f9c3149b71297e6563dbc0fc0ad3f003",
+  "work/rowhash_ii_account_swap_pre_1791426949.json": "70fdf9a58e833517301e2e9e58a33a3e1405b514ea57b0caed459fca54f93a8b",
+  "work/rowhash_iii_person_relink_after_1791427054.json": "4e85037dfc2bf92ce716f1bcc79ee8976ce2a0b930e51104baf8f3541d98c633",
+  "work/rowhash_iii_person_relink_pre_1791427017.json": "75917ab8d1dd9a36f4c84dd2f0dc86a1d62c26df9ac46bd39f44b858215e239b",
+  "work/rowhash_iv_automation_rename_after_1791428327.json": "9de16a7cc78ea912c0fb8597765f22536f15185a4b8f7d677237471eee05d9a6",
+  "work/rowhash_iv_automation_rename_pre_1791428291.json": "ab56c3d11e2c35ff4f980893db162424005bbe24b44d41d8c222bc9fc1411604",
+  "work/rowhash_v1B_baseline_1791427119.json": "4c18b5f55b8caf401c30ece22cd75ac4e010c62e9b15caaaeee83f72bcb696d2",
+  "work/rowhash_v1B_baseline_pre_1791427108.json": "6b0c88232704b2b8c883654d8c5084c8c04316adad7b597449f0e6a07e7569c7",
+  "work/rowhash_v1_baseline_1791426882.json": "db478965a0d887bdb1641128225fc704de0e6904c920e085876757cb48fd2808",
+  "work/rowhash_v1_baseline_pre_1791426871.json": "b6376ce6cff87e8045941a46c4f0f54da6c51f69c79654ff127ad3ce513b6988",
+  "work/rowhash_v4_baseline_pre_1791428277.json": "e2423db47f936ab95d8144b0ef37ae5d5c6d84f2c16d617dc67b76ba06181423",
+  "work/rowhash_v4_laundered_baseline_1791428289.json": "1b5491796ff35c4e6e8feabeb9f06315a9bec15e2ece5e41479264b9c86364ff",
+  "work/selftest_1.json": "bcd723a20ea4d24f5b0e5d2bfa5e6b0711f490f643a316fcfe0122e9588ab4d6",
+  "work/selftest_final.json": "b99f2a0ca34c5fe47288061f8bd50ab6bfff13c31461c1ba5f58283f91c06d01",
+  "work/state.json": "56c39de7ad61598286cf7cfec09aa4f07c2763f780eef311c2af915329187d85",
+  "work/variant4.json": "28a80c45c965d74d387a25334b71de1a2e218ba1b2db8b64d8691ec57867da23",
+  "work/variants1.json": "d94fbd9b6e4644428f1487e45d73f93f04a42579a3f19bf9a838e9c4b34adf04",
+  "work/verify_benign_B1_no_marker_1791428434.json": "11aa571cbf2234843bfe6e95a626e3c6ad636a4c5538d9feca3636dd98476e69",
+  "work/verify_benign_B2_marker_1791428464.json": "9e2809aed5a27f1a5b3b87452e9748e4f8ceefb28bde90428a870acf98cba6bb",
+  "work/verify_benign_pre_1791428408.json": "6f2aaf8ebf804af63da2aee05438aa68120be0fcedeba0764265d626e269a7e6",
+  "work/verify_final_b1_1791428481.json": "e90542369abc056a341053394800bd38f8e2fbe3f7483b2a8cc5b613753405de",
+  "work/verify_final_b2_1791428482.json": "02d46ee9a9601dba3f1b8c064a52a3032246b4c45bd3ac8565de1fb53c17c77a",
+  "work/verify_final_full_1791428603.json": "918484f318bda6ce92c680e7fe8bad3177ae4ecd76c53ffe12224ad7ae43234c",
+  "work/verify_i_account_rename_after_1791426921.json": "014b0d30e81656f62a5f0f64899905fd4e6a265c9be80418766f5a6cf99432f1",
+  "work/verify_i_account_rename_reverted_1791426949.json": "02a41e8640caf03c5b585cebcd519c2c93e798eb4aa3e65ee1076eb99b8924b7",
+  "work/verify_i_b_person_rename_B_after_1791427223.json": "c727aee21ad7274d90561a14f44f9bad351fe16c7e5076e57d9d0e7da2361aab",
+  "work/verify_i_b_person_rename_B_reverted_1791427250.json": "7e9202774317541937da192e32cfc2f44061e0d17a0327d531b420feef7a4a69",
+  "work/verify_i_ctrl_account_rename_B_after_1791427157.json": "125bce7847eb5809c1a15e47a6ed15c08f354ee1dceb0359a8fbc216e9f01fba",
+  "work/verify_i_ctrl_account_rename_B_reverted_1791427184.json": "8c6d1395080bd3dc8baf70adc24b42691e29c3c71f960c38bd9bcea93f70c654",
+  "work/verify_ii_account_swap_after_1791426988.json": "9c55e76cff6bc4e661fab67a7c56ca21935a00f37a69d36a68c5b96ac08ca0fd",
+  "work/verify_ii_account_swap_reverted_1791427017.json": "f7e049f6aa1b57ebe4dc768903f3193d1d41268ccf4a8fc2b29bc8301f6ee90e",
+  "work/verify_iii_person_relink_after_1791427055.json": "cf73e85eab75826be81df68b3a34d4a3d5719794e6f5f9e44d33a27afc8face9",
+  "work/verify_iii_person_relink_reverted_1791427083.json": "6f3c5135c693ce34cb011bb88e375b0d9e600681bfaa43e5a93bd93a3ca57867",
+  "work/verify_iv_automation_rename_after_1791428328.json": "8d58b122a97bc45fc2cddfde604cbbd46ab0ee6c3fd9da13275142431658bb1b",
+  "work/verify_iv_automation_rename_reverted_1791428356.json": "0c1b4dec483a5a693f562cdadac11c31f5cc38841f06b11f69508c7e52ad2b27",
+  "work/verify_smoke_1791426424.json": "5bd155298049d93fd0e177c69c04fe76e7f51a0d714ac24395fdbb97ec92c648",
+  "work/verify_v1B_baseline_1791427120.json": "b348c8911ab8a243b254aa67375d1fa63bee5ebf69a2673eb83537da8ebc7903",
+  "work/verify_v1_baseline_1791426883.json": "66b1ddcaa0bf52d159ad9ef209bf2cf3008e68bfbc1d5d3c880878cb2e0f735e",
+  "work/verify_v4_laundered_baseline_1791428290.json": "5ca2beb318a5ed782cdee83692b09be4c0b56a59d4d1269a287bcafada15f742"
+ },
+ "key_fingerprint_sha256_16": "4769f03c2ff0b64c",
+ "recorder_check": "per-row SHA-256 of states, events, event_data, state_attributes, states_meta, event_types immediately before the op and after a 25 s settle; committed = rows present before",
+ "stack": {
+  "compose_project": "e6-namemap",
+  "containers": [
+   "e6-broker",
+   "e6-hass",
+   "e6-devices",
+   "e6-anchord",
+   "e6-monitor"
+  ],
+  "copied_from": "testbed/r2_2026.10.0b2 (seed, mosquitto, devices image)",
+  "frontend": "20260930.1",
+  "ha_version": "2026.10.0b2",
+  "image": "homeassistant/home-assistant:2026.10.0b2",
+  "image_id": "sha256:2c21ccd2682c7f27b674196303e3fa680ad1710c6d1f0ff3a1c2416f4950669d",
+  "ports": "127.0.0.1:8166 -> hub 8123 only"
+ },
+ "variants": {
+  "i_account_rename": {
+   "acks": [
+    {
+     "after": null,
+     "before": null,
+     "err": null,
+     "new_name": "Home Owner",
+     "ok": true,
+     "old_name": "Alex Rivera (household)",
+     "op": "rename_user"
+    }
+   ],
+   "after_revert_displayed_cause_vs_baseline": {
+    "admin": 0,
+    "non_admin": 0
+   },
+   "api": "hass.auth.async_update_user(member, name='Home Owner')",
+   "browser": {
+    "agreement_with_rule": {
+     "after": {
+      "agree": 46,
+      "total": 46
+     },
+     "before": {
+      "agree": 46,
+      "total": 46
+     }
+    },
+    "note": "browser pass re-ran the same op (render1 phase) after the first pass read an unfiltered Activity view that held no trial row; rule counts of that re-run in rule_rerun",
+    "rendered_cause_changed": {
+     "admin": {
+      "after": [
+       "By Home Owner"
+      ],
+      "before": [
+       "By Alex Rivera (household)"
+      ],
+      "rendered_cause_changed": 23,
+      "rendered_trials": 23
+     },
+     "non_admin": {
+      "after": [
+       "Via Lock"
+      ],
+      "before": [
+       "Via Lock"
+      ],
+      "rendered_cause_changed": 0,
+      "rendered_trials": 23
+     }
+    },
+    "rule_rerun": {
+     "admin": {
+      "after": {
+       "user:Home Owner": 30
+      },
+      "before": {
+       "user:Alex Rivera (household)": 30
+      },
+      "displayed_cause_changed": {
+       "ci_hi": 1.0,
+       "ci_lo": 0.8842966917779722,
+       "k": 30,
+       "method": "Clopper-Pearson exact",
+       "n": 30,
+       "prop": 1.0
+      }
+     },
+     "non_admin": {
+      "after": {
+       "integration:lock": 30
+      },
+      "before": {
+       "integration:lock": 30
+      },
+      "displayed_cause_changed": {
+       "ci_hi": 0.11570330822202778,
+       "ci_lo": 0.0,
+       "k": 0,
+       "method": "Clopper-Pearson exact",
+       "n": 30,
+       "prop": 0.0
+      }
+     }
+    }
+   },
+   "configuration": "A",
+   "description": "(i) rename the household member account to the owner's name",
+   "displayed_cause_rule": {
+    "admin": {
+     "after": {
+      "user:Home Owner": 30
+     },
+     "before": {
+      "user:Alex Rivera (household)": 30
+     },
+     "displayed_cause_changed": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.8842966917779722,
+      "k": 30,
+      "method": "Clopper-Pearson exact",
+      "n": 30,
+      "prop": 1.0
+     }
+    },
+    "non_admin": {
+     "after": {
+      "integration:lock": 30
+     },
+     "before": {
+      "integration:lock": 30
+     },
+     "displayed_cause_changed": {
+      "ci_hi": 0.11570330822202778,
+      "ci_lo": 0.0,
+      "k": 0,
+      "method": "Clopper-Pearson exact",
+      "n": 30,
+      "prop": 0.0
+     }
+    }
+   },
+   "n_committed_rows": 30,
+   "recorder": {
+    "appended_events_by_type": {
+     "automation_triggered": 2,
+     "call_service": 4,
+     "recorder_5min_statistics_generated": 1,
+     "user_updated": 1
+    },
+    "appended_states_by_entity": {
+     "automation.hallway_motion_light": 1,
+     "automation.porch_motion_light": 3,
+     "binary_sensor.hallway_motion": 2,
+     "binary_sensor.porch_motion": 2,
+     "light.hallway_light": 1,
+     "light.porch_light": 3
+    },
+    "changed_columns": [
+     "last_reported_ts"
+    ],
+    "committed_rows_changed": {
+     "event_data": 0,
+     "event_types": 0,
+     "events": 0,
+     "state_attributes": 0,
+     "states": 6,
+     "states_meta": 0
+    },
+    "committed_rows_removed": {
+     "event_data": 0,
+     "event_types": 0,
+     "events": 0,
+     "state_attributes": 0,
+     "states": 0,
+     "states_meta": 0
+    },
+    "rows_appended": {
+     "event_data": 1,
+     "event_types": 1,
+     "events": 8,
+     "state_attributes": 0,
+     "states": 12,
+     "states_meta": 0
+    },
+    "tables_sha256_after": {
+     "event_data": "f5b182ba719e378bc459455c33decfbad0bb8f193707321f526f9b32e51836cf",
+     "event_types": "4fd69e64309115ca10f6c0e7087fb5d721d2ca69606c2e5f9dd6688a64a4b285",
+     "events": "f7223911e24fe6b39837916524a4fbcba8f81134680f6cf207b4bf9be9e3e31d",
+     "state_attributes": "5cd5aaad901877bbf0d8c49d0fc63d23cea5074f022d6c521bd69befb47daaa5",
+     "states": "790c021fb0c00c5c2a2d0c70e9f5ed9c0a61638a44920a11f17a0e4040a9b60d",
+     "states_meta": "2d2748fac0b4af7a11f7146454569c1b06c51bd2658796b720b9ada6257f68d6"
+    }
+   },
+   "trial_rows_changed": 0
+  },
+  "i_account_rename_with_member_person": {
+   "acks": [
+    {
+     "after": null,
+     "before": null,
+     "err": null,
+     "new_name": "Home Owner",
+     "ok": true,
+     "old_name": "Alex Rivera (household)",
+     "op": "rename_user"
+    }
+   ],
+   "after_revert_displayed_cause_vs_baseline": {
+    "admin": 0,
+    "non_admin": 0
+   },
+   "api": "hass.auth.async_update_user(member, name='Home Owner')",
+   "browser": {
+    "agreement_with_rule": {
+     "after": {
+      "agree": 46,
+      "total": 46
+     },
+     "before": {
+      "agree": 46,
+      "total": 46
+     }
+    },
+    "note": "browser pass re-ran the same op (render1 phase) after the first pass read an unfiltered Activity view that held no trial row; rule counts of that re-run in rule_rerun",
+    "rendered_cause_changed": {
+     "admin": {
+      "after": [
+       "By Alex Rivera (household)"
+      ],
+      "before": [
+       "By Alex Rivera (household)"
+      ],
+      "rendered_cause_changed": 0,
+      "rendered_trials": 23
+     },
+     "non_admin": {
+      "after": [
+       "By Alex Rivera (household)"
+      ],
+      "before": [
+       "By Alex Rivera (household)"
+      ],
+      "rendered_cause_changed": 0,
+      "rendered_trials": 23
+     }
+    },
+    "rule_rerun": {
+     "admin": {
+      "after": {
+       "user:Alex Rivera (household)": 30
+      },
+      "before": {
+       "user:Alex Rivera (household)": 30
+      },
+      "displayed_cause_changed": {
+       "ci_hi": 0.11570330822202778,
+       "ci_lo": 0.0,
+       "k": 0,
+       "method": "Clopper-Pearson exact",
+       "n": 30,
+       "prop": 0.0
+      }
+     },
+     "non_admin": {
+      "after": {
+       "user:Alex Rivera (household)": 30
+      },
+      "before": {
+       "user:Alex Rivera (household)": 30
+      },
+      "displayed_cause_changed": {
+       "ci_hi": 0.11570330822202778,
+       "ci_lo": 0.0,
+       "k": 0,
+       "method": "Clopper-Pearson exact",
+       "n": 30,
+       "prop": 0.0
+      }
+     }
+    }
+   },
+   "configuration": "B",
+   "description": "control: (i) when a person entity is linked to the member (persons take precedence in the name map)",
+   "displayed_cause_rule": {
+    "admin": {
+     "after": {
+      "user:Alex Rivera (household)": 30
+     },
+     "before": {
+      "user:Alex Rivera (household)": 30
+     },
+     "displayed_cause_changed": {
+      "ci_hi": 0.11570330822202778,
+      "ci_lo": 0.0,
+      "k": 0,
+      "method": "Clopper-Pearson exact",
+      "n": 30,
+      "prop": 0.0
+     }
+    },
+    "non_admin": {
+     "after": {
+      "user:Alex Rivera (household)": 30
+     },
+     "before": {
+      "user:Alex Rivera (household)": 30
+     },
+     "displayed_cause_changed": {
+      "ci_hi": 0.11570330822202778,
+      "ci_lo": 0.0,
+      "k": 0,
+      "method": "Clopper-Pearson exact",
+      "n": 30,
+      "prop": 0.0
+     }
+    }
+   },
+   "n_committed_rows": 30,
+   "recorder": {
+    "appended_events_by_type": {
+     "automation_triggered": 2,
+     "call_service": 4,
+     "user_updated": 1
+    },
+    "appended_states_by_entity": {
+     "automation.hallway_motion_light": 4,
+     "binary_sensor.hallway_motion": 4,
+     "light.hallway_light": 4
+    },
+    "changed_columns": [
+     "last_reported_ts"
+    ],
+    "committed_rows_changed": {
+     "event_data": 0,
+     "event_types": 0,
+     "events": 0,
+     "state_attributes": 0,
+     "states": 3,
+     "states_meta": 0
+    },
+    "committed_rows_removed": {
+     "event_data": 0,
+     "event_types": 0,
+     "events": 0,
+     "state_attributes": 0,
+     "states": 0,
+     "states_meta": 0
+    },
+    "rows_appended": {
+     "event_data": 0,
+     "event_types": 0,
+     "events": 7,
+     "state_attributes": 0,
+     "states": 12,
+     "states_meta": 0
+    },
+    "tables_sha256_after": {
+     "event_data": "41c7982ddb8c29e5182d6b4467789cd9843e54c49acc16aef87026448a6fb64a",
+     "event_types": "bcc65a87f39b159c6f154e1d423588888527a33afdd7082a4db6a820150d299d",
+     "events": "87c71164a259b34e3ec198ddb7896e4fbbadb88925cd4a5c6f27f5e23e892dce",
+     "state_attributes": "e7da68d20f8f028e468075348e1e3afab9b1048410c11656c6b163fd8871a390",
+     "states": "9057b0a0cfb4c679eea5d5c5bfaa9762e132995589c56fd3355c079185900c70",
+     "states_meta": "23c68858435cd71d89ac499d061148ff03b2e8a404141893af2a276ffcbc263e"
+    }
+   },
+   "trial_rows_changed": 0
+  },
+  "i_b_person_rename": {
+   "acks": [
+    {
+     "after": {
+      "name": "Home Owner",
+      "user_id": "533597b621f04fed979bf09cac87f879"
+     },
+     "before": {
+      "name": "Alex Rivera (household)",
+      "user_id": "533597b621f04fed979bf09cac87f879"
+     },
+     "err": null,
+     "new_name": null,
+     "ok": true,
+     "old_name": null,
+     "op": "person_update"
+    }
+   ],
+   "after_revert_displayed_cause_vs_baseline": {
+    "admin": 0,
+    "non_admin": 0
+   },
+   "api": "hass.data['person'][1].async_update_item(<member person>, {'name': 'Home Owner'})",
+   "browser": {
+    "agreement_with_rule": {
+     "after": {
+      "agree": 46,
+      "total": 46
+     },
+     "before": {
+      "agree": 46,
+      "total": 46
+     }
+    },
+    "note": "browser pass re-ran the same op (render1 phase) after the first pass read an unfiltered Activity view that held no trial row; rule counts of that re-run in rule_rerun",
+    "rendered_cause_changed": {
+     "admin": {
+      "after": [
+       "By Home Owner"
+      ],
+      "before": [
+       "By Alex Rivera (household)"
+      ],
+      "rendered_cause_changed": 23,
+      "rendered_trials": 23
+     },
+     "non_admin": {
+      "after": [
+       "By Home Owner"
+      ],
+      "before": [
+       "By Alex Rivera (household)"
+      ],
+      "rendered_cause_changed": 23,
+      "rendered_trials": 23
+     }
+    },
+    "rule_rerun": {
+     "admin": {
+      "after": {
+       "user:Home Owner": 30
+      },
+      "before": {
+       "user:Alex Rivera (household)": 30
+      },
+      "displayed_cause_changed": {
+       "ci_hi": 1.0,
+       "ci_lo": 0.8842966917779722,
+       "k": 30,
+       "method": "Clopper-Pearson exact",
+       "n": 30,
+       "prop": 1.0
+      }
+     },
+     "non_admin": {
+      "after": {
+       "user:Home Owner": 30
+      },
+      "before": {
+       "user:Alex Rivera (household)": 30
+      },
+      "displayed_cause_changed": {
+       "ci_hi": 1.0,
+       "ci_lo": 0.8842966917779722,
+       "k": 30,
+       "method": "Clopper-Pearson exact",
+       "n": 30,
+       "prop": 1.0
+      }
+     }
+    }
+   },
+   "configuration": "B",
+   "description": "(i-b) rename the member's person entity to the owner's name",
+   "displayed_cause_rule": {
+    "admin": {
+     "after": {
+      "user:Home Owner": 30
+     },
+     "before": {
+      "user:Alex Rivera (household)": 30
+     },
+     "displayed_cause_changed": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.8842966917779722,
+      "k": 30,
+      "method": "Clopper-Pearson exact",
+      "n": 30,
+      "prop": 1.0
+     }
+    },
+    "non_admin": {
+     "after": {
+      "user:Home Owner": 30
+     },
+     "before": {
+      "user:Alex Rivera (household)": 30
+     },
+     "displayed_cause_changed": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.8842966917779722,
+      "k": 30,
+      "method": "Clopper-Pearson exact",
+      "n": 30,
+      "prop": 1.0
+     }
+    }
+   },
+   "n_committed_rows": 30,
+   "recorder": {
+    "appended_events_by_type": {
+     "automation_triggered": 3,
+     "call_service": 7,
+     "entity_registry_updated": 2,
+     "recorder_5min_statistics_generated": 1
+    },
+    "appended_states_by_entity": {
+     "automation.hallway_motion_light": 2,
+     "automation.kitchen_motion_light": 4,
+     "automation.porch_motion_light": 1,
+     "binary_sensor.hallway_motion": 2,
+     "binary_sensor.kitchen_motion": 4,
+     "light.hallway_light": 2,
+     "light.kitchen_light": 4,
+     "light.porch_light": 1,
+     "person.alex_rivera_household": 1
+    },
+    "changed_columns": [
+     "last_reported_ts"
+    ],
+    "committed_rows_changed": {
+     "event_data": 0,
+     "event_types": 0,
+     "events": 0,
+     "state_attributes": 0,
+     "states": 9,
+     "states_meta": 0
+    },
+    "committed_rows_removed": {
+     "event_data": 0,
+     "event_types": 0,
+     "events": 0,
+     "state_attributes": 0,
+     "states": 0,
+     "states_meta": 0
+    },
+    "rows_appended": {
+     "event_data": 2,
+     "event_types": 0,
+     "events": 13,
+     "state_attributes": 1,
+     "states": 21,
+     "states_meta": 0
+    },
+    "tables_sha256_after": {
+     "event_data": "bb9069e4c9fddf6b7af16b8d46abd2d257bffe904b2e6be2a61fe9dccdcb1c36",
+     "event_types": "bcc65a87f39b159c6f154e1d423588888527a33afdd7082a4db6a820150d299d",
+     "events": "e524d66876cd1af580b8459dd6171d8b3aa2d632aa15b676bc0d7e565cecf476",
+     "state_attributes": "c4a8c1874e3f80400a817e4d3112599edafbb482653b5e8239fe0bbe2bfc5bb5",
+     "states": "ddcc2e6d95dee0e8854f1273beadc991a3500d766496e5ea4098498560e33a0d",
+     "states_meta": "23c68858435cd71d89ac499d061148ff03b2e8a404141893af2a276ffcbc263e"
+    }
+   },
+   "trial_rows_changed": 0
+  },
+  "ii_account_swap": {
+   "acks": [
+    {
+     "after": null,
+     "before": null,
+     "err": null,
+     "new_name": "Household Viewer",
+     "ok": true,
+     "old_name": "Alex Rivera (household)",
+     "op": "rename_user"
+    },
+    {
+     "after": null,
+     "before": null,
+     "err": null,
+     "new_name": "Alex Rivera (household)",
+     "ok": true,
+     "old_name": "Household Viewer",
+     "op": "rename_user"
+    }
+   ],
+   "after_revert_displayed_cause_vs_baseline": {
+    "admin": 0,
+    "non_admin": 0
+   },
+   "api": "hass.auth.async_update_user x2",
+   "browser": {
+    "agreement_with_rule": {
+     "after": {
+      "agree": 46,
+      "total": 46
+     },
+     "before": {
+      "agree": 46,
+      "total": 46
+     }
+    },
+    "note": "browser pass re-ran the same op (render1 phase) after the first pass read an unfiltered Activity view that held no trial row; rule counts of that re-run in rule_rerun",
+    "rendered_cause_changed": {
+     "admin": {
+      "after": [
+       "By Household Viewer"
+      ],
+      "before": [
+       "By Alex Rivera (household)"
+      ],
+      "rendered_cause_changed": 23,
+      "rendered_trials": 23
+     },
+     "non_admin": {
+      "after": [
+       "Via Lock"
+      ],
+      "before": [
+       "Via Lock"
+      ],
+      "rendered_cause_changed": 0,
+      "rendered_trials": 23
+     }
+    },
+    "rule_rerun": {
+     "admin": {
+      "after": {
+       "user:Household Viewer": 30
+      },
+      "before": {
+       "user:Alex Rivera (household)": 30
+      },
+      "displayed_cause_changed": {
+       "ci_hi": 1.0,
+       "ci_lo": 0.8842966917779722,
+       "k": 30,
+       "method": "Clopper-Pearson exact",
+       "n": 30,
+       "prop": 1.0
+      }
+     },
+     "non_admin": {
+      "after": {
+       "integration:lock": 30
+      },
+      "before": {
+       "integration:lock": 30
+      },
+      "displayed_cause_changed": {
+       "ci_hi": 0.11570330822202778,
+       "ci_lo": 0.0,
+       "k": 0,
+       "method": "Clopper-Pearson exact",
+       "n": 30,
+       "prop": 0.0
+      }
+     }
+    }
+   },
+   "configuration": "A",
+   "description": "(ii) swap the names of the member account and the household viewer account",
+   "displayed_cause_rule": {
+    "admin": {
+     "after": {
+      "user:Household Viewer": 30
+     },
+     "before": {
+      "user:Alex Rivera (household)": 30
+     },
+     "displayed_cause_changed": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.8842966917779722,
+      "k": 30,
+      "method": "Clopper-Pearson exact",
+      "n": 30,
+      "prop": 1.0
+     }
+    },
+    "non_admin": {
+     "after": {
+      "integration:lock": 30
+     },
+     "before": {
+      "integration:lock": 30
+     },
+     "displayed_cause_changed": {
+      "ci_hi": 0.11570330822202778,
+      "ci_lo": 0.0,
+      "k": 0,
+      "method": "Clopper-Pearson exact",
+      "n": 30,
+      "prop": 0.0
+     }
+    }
+   },
+   "n_committed_rows": 30,
+   "recorder": {
+    "appended_events_by_type": {
+     "automation_triggered": 3,
+     "call_service": 6,
+     "user_updated": 2
+    },
+    "appended_states_by_entity": {
+     "automation.kitchen_motion_light": 2,
+     "automation.porch_motion_light": 4,
+     "binary_sensor.kitchen_motion": 1,
+     "binary_sensor.porch_motion": 4,
+     "light.kitchen_light": 2,
+     "light.porch_light": 4
+    },
+    "changed_columns": [
+     "last_reported_ts"
+    ],
+    "committed_rows_changed": {
+     "event_data": 0,
+     "event_types": 0,
+     "events": 0,
+     "state_attributes": 0,
+     "states": 6,
+     "states_meta": 0
+    },
+    "committed_rows_removed": {
+     "event_data": 0,
+     "event_types": 0,
+     "events": 0,
+     "state_attributes": 0,
+     "states": 0,
+     "states_meta": 0
+    },
+    "rows_appended": {
+     "event_data": 1,
+     "event_types": 0,
+     "events": 11,
+     "state_attributes": 0,
+     "states": 17,
+     "states_meta": 0
+    },
+    "tables_sha256_after": {
+     "event_data": "622ef44bd3c8558e489ff471930956b46072feea37c61ebfb28ff54b4d348028",
+     "event_types": "4fd69e64309115ca10f6c0e7087fb5d721d2ca69606c2e5f9dd6688a64a4b285",
+     "events": "a6e5f2a2153e1475e4b55b7967411a0a6a80648d19d9a0506e33be109b2fe79d",
+     "state_attributes": "5cd5aaad901877bbf0d8c49d0fc63d23cea5074f022d6c521bd69befb47daaa5",
+     "states": "32bfe1030b4848bda7bffc200309c2af3e34659c552cf8be2a5161ed8e817249",
+     "states_meta": "2d2748fac0b4af7a11f7146454569c1b06c51bd2658796b720b9ada6257f68d6"
+    }
+   },
+   "trial_rows_changed": 0
+  },
+  "iii_person_relink": {
+   "acks": [
+    {
+     "after": {
+      "name": "Home Owner",
+      "user_id": "533597b621f04fed979bf09cac87f879"
+     },
+     "before": {
+      "name": "Home Owner",
+      "user_id": "d99171b0c9de45d291aa9e6a4258f323"
+     },
+     "err": null,
+     "new_name": null,
+     "ok": true,
+     "old_name": null,
+     "op": "person_update"
+    }
+   ],
+   "after_revert_displayed_cause_vs_baseline": {
+    "admin": 0,
+    "non_admin": 0
+   },
+   "api": "hass.data['person'][1].async_update_item('home_owner', {'user_id': member})",
+   "browser": {
+    "agreement_with_rule": {
+     "after": {
+      "agree": 46,
+      "total": 46
+     },
+     "before": {
+      "agree": 46,
+      "total": 46
+     }
+    },
+    "note": "browser pass re-ran the same op (render1 phase) after the first pass read an unfiltered Activity view that held no trial row; rule counts of that re-run in rule_rerun",
+    "rendered_cause_changed": {
+     "admin": {
+      "after": [
+       "By Home Owner"
+      ],
+      "before": [
+       "By Alex Rivera (household)"
+      ],
+      "rendered_cause_changed": 23,
+      "rendered_trials": 23
+     },
+     "non_admin": {
+      "after": [
+       "By Home Owner"
+      ],
+      "before": [
+       "Via Lock"
+      ],
+      "rendered_cause_changed": 23,
+      "rendered_trials": 23
+     }
+    },
+    "rule_rerun": {
+     "admin": {
+      "after": {
+       "user:Home Owner": 30
+      },
+      "before": {
+       "user:Alex Rivera (household)": 30
+      },
+      "displayed_cause_changed": {
+       "ci_hi": 1.0,
+       "ci_lo": 0.8842966917779722,
+       "k": 30,
+       "method": "Clopper-Pearson exact",
+       "n": 30,
+       "prop": 1.0
+      }
+     },
+     "non_admin": {
+      "after": {
+       "user:Home Owner": 30
+      },
+      "before": {
+       "integration:lock": 30
+      },
+      "displayed_cause_changed": {
+       "ci_hi": 1.0,
+       "ci_lo": 0.8842966917779722,
+       "k": 30,
+       "method": "Clopper-Pearson exact",
+       "n": 30,
+       "prop": 1.0
+      }
+     }
+    }
+   },
+   "configuration": "A",
+   "description": "(iii) re-link the owner's person entity (person.home_owner) to the member account",
+   "displayed_cause_rule": {
+    "admin": {
+     "after": {
+      "user:Home Owner": 30
+     },
+     "before": {
+      "user:Alex Rivera (household)": 30
+     },
+     "displayed_cause_changed": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.8842966917779722,
+      "k": 30,
+      "method": "Clopper-Pearson exact",
+      "n": 30,
+      "prop": 1.0
+     }
+    },
+    "non_admin": {
+     "after": {
+      "user:Home Owner": 30
+     },
+     "before": {
+      "integration:lock": 30
+     },
+     "displayed_cause_changed": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.8842966917779722,
+      "k": 30,
+      "method": "Clopper-Pearson exact",
+      "n": 30,
+      "prop": 1.0
+     }
+    }
+   },
+   "n_committed_rows": 30,
+   "recorder": {
+    "appended_events_by_type": {
+     "automation_triggered": 2,
+     "call_service": 4,
+     "entity_registry_updated": 1
+    },
+    "appended_states_by_entity": {
+     "automation.hallway_motion_light": 3,
+     "automation.kitchen_motion_light": 1,
+     "binary_sensor.hallway_motion": 4,
+     "light.hallway_light": 2,
+     "light.kitchen_light": 1,
+     "person.home_owner": 1
+    },
+    "changed_columns": [
+     "last_reported_ts"
+    ],
+    "committed_rows_changed": {
+     "event_data": 0,
+     "event_types": 0,
+     "events": 0,
+     "state_attributes": 0,
+     "states": 6,
+     "states_meta": 0
+    },
+    "committed_rows_removed": {
+     "event_data": 0,
+     "event_types": 0,
+     "events": 0,
+     "state_attributes": 0,
+     "states": 0,
+     "states_meta": 0
+    },
+    "rows_appended": {
+     "event_data": 1,
+     "event_types": 1,
+     "events": 7,
+     "state_attributes": 1,
+     "states": 12,
+     "states_meta": 0
+    },
+    "tables_sha256_after": {
+     "event_data": "3331910ea9d813348e031bd0d935bf20800f494987fedd888b8922bd4624ed97",
+     "event_types": "bcc65a87f39b159c6f154e1d423588888527a33afdd7082a4db6a820150d299d",
+     "events": "0b56de81f100afa9ad638caf21897675cfc38e53265a142865ac62326ffd7918",
+     "state_attributes": "95e1590b83ed33a2857c355a9b24c4f79d347646e6d77452c065a8833f98e3a9",
+     "states": "bdfab08b5852c1e8c01638a8cad1bffeb3af7c7c5afe7d5cb937714b1db854b7",
+     "states_meta": "2d2748fac0b4af7a11f7146454569c1b06c51bd2658796b720b9ada6257f68d6"
+    }
+   },
+   "trial_rows_changed": 0
+  },
+  "iv_automation_rename": {
+   "acks": [
+    {
+     "after": {
+      "name": "Front door auto-unlock",
+      "original_name": "Porch motion light"
+     },
+     "before": {
+      "name": null,
+      "original_name": "Porch motion light"
+     },
+     "entity_id": "automation.porch_motion_light",
+     "err": null,
+     "ok": true,
+     "op": "entity_rename"
+    }
+   ],
+   "after_revert_displayed_cause_vs_baseline": {
+    "admin": 0,
+    "non_admin": 0
+   },
+   "api": "er.async_get(hass).async_update_entity('automation.porch_motion_light', name='Front door auto-unlock')",
+   "browser": {
+    "after_as_run": {
+     "agree": 40,
+     "total": 46
+    },
+    "after_with_state_mapping": {
+     "agree": 46,
+     "total": 46
+    },
+    "before_as_run": {
+     "agree": 40,
+     "total": 46
+    },
+    "before_with_state_mapping": {
+     "agree": 46,
+     "total": 46
+    },
+    "mapping_note": "the as-run matcher lacked the 'state' type; 'By state change: Front Door' vs rule 'state:Front Door' was counted as disagreement; raw strings are in the work files",
+    "rendered_after": {
+     "admin": [
+      "By automation: Front door auto-unlock",
+      "By state change: Front Door"
+     ],
+     "non_admin": [
+      "By automation: Front door auto-unlock",
+      "By state change: Front Door"
+     ]
+    },
+    "rendered_before": {
+     "admin": [
+      "By automation: Porch motion light",
+      "By state change: Front Door"
+     ],
+     "non_admin": [
+      "By automation: Porch motion light",
+      "By state change: Front Door"
+     ]
+    },
+    "rendered_trials": {
+     "admin": 23,
+     "non_admin": 23
+    }
+   },
+   "configuration": "A, batch 2 (30 member unlocks laundered onto automation.porch_motion_light as arm PU does)",
+   "description": "(iv) rename the automation a laundered unlock was re-attached to (entity registry name)",
+   "displayed_cause_rule": {
+    "admin": {
+     "after": {
+      "automation:Front door auto-unlock": 20,
+      "state:Front Door": 10
+     },
+     "before": {
+      "automation:Porch motion light": 20,
+      "state:Front Door": 10
+     },
+     "displayed_cause_changed": {
+      "ci_hi": 0.8271257784739607,
+      "ci_lo": 0.47187995521011944,
+      "k": 20,
+      "method": "Clopper-Pearson exact",
+      "n": 30,
+      "prop": 0.6666666666666666
+     }
+    },
+    "non_admin": {
+     "after": {
+      "automation:Front door auto-unlock": 20,
+      "state:Front Door": 10
+     },
+     "before": {
+      "automation:Porch motion light": 20,
+      "state:Front Door": 10
+     },
+     "displayed_cause_changed": {
+      "ci_hi": 0.8271257784739607,
+      "ci_lo": 0.47187995521011944,
+      "k": 20,
+      "method": "Clopper-Pearson exact",
+      "n": 30,
+      "prop": 0.6666666666666666
+     }
+    }
+   },
+   "launder_ops": [
+    {
+     "cover_precedes_target": true,
+     "delete": 1,
+     "err": null,
+     "reattach": 2,
+     "trial": 0
+    },
+    {
+     "cover_precedes_target": true,
+     "delete": 1,
+     "err": null,
+     "reattach": 1,
+     "trial": 1
+    },
+    {
+     "cover_precedes_target": true,
+     "delete": 1,
+     "err": null,
+     "reattach": 1,
+     "trial": 2
+    },
+    {
+     "cover_precedes_target": true,
+     "delete": 1,
+     "err": null,
+     "reattach": 1,
+     "trial": 3
+    },
+    {
+     "cover_precedes_target": true,
+     "delete": 1,
+     "err": null,
+     "reattach": 1,
+     "trial": 4
+    },
+    {
+     "cover_precedes_target": true,
+     "delete": 1,
+     "err": null,
+     "reattach": 1,
+     "trial": 5
+    },
+    {
+     "cover_precedes_target": true,
+     "delete": 1,
+     "err": null,
+     "reattach": 1,
+     "trial": 6
+    },
+    {
+     "cover_precedes_target": true,
+     "delete": 1,
+     "err": null,
+     "reattach": 1,
+     "trial": 7
+    },
+    {
+     "cover_precedes_target": true,
+     "delete": 1,
+     "err": null,
+     "reattach": 1,
+     "trial": 8
+    },
+    {
+     "cover_precedes_target": true,
+     "delete": 1,
+     "err": null,
+     "reattach": 1,
+     "trial": 9
+    },
+    {
+     "cover_precedes_target": true,
+     "delete": 1,
+     "err": null,
+     "reattach": 1,
+     "trial": 10
+    },
+    {
+     "cover_precedes_target": true,
+     "delete": 1,
+     "err": null,
+     "reattach": 1,
+     "trial": 11
+    },
+    {
+     "cover_precedes_target": true,
+     "delete": 1,
+     "err": null,
+     "reattach": 1,
+     "trial": 12
+    },
+    {
+     "cover_precedes_target": true,
+     "delete": 1,
+     "err": null,
+     "reattach": 1,
+     "trial": 13
+    },
+    {
+     "cover_precedes_target": true,
+     "delete": 1,
+     "err": null,
+     "reattach": 1,
+     "trial": 14
+    },
+    {
+     "cover_precedes_target": true,
+     "delete": 1,
+     "err": null,
+     "reattach": 1,
+     "trial": 15
+    },
+    {
+     "cover_precedes_target": true,
+     "delete": 1,
+     "err": null,
+     "reattach": 1,
+     "trial": 16
+    },
+    {
+     "cover_precedes_target": true,
+     "delete": 1,
+     "err": null,
+     "reattach": 1,
+     "trial": 17
+    },
+    {
+     "cover_precedes_target": true,
+     "delete": 1,
+     "err": null,
+     "reattach": 1,
+     "trial": 18
+    },
+    {
+     "cover_precedes_target": true,
+     "delete": 1,
+     "err": null,
+     "reattach": 1,
+     "trial": 19
+    },
+    {
+     "cover_precedes_target": true,
+     "delete": 1,
+     "err": null,
+     "reattach": 1,
+     "trial": 20
+    },
+    {
+     "cover_precedes_target": true,
+     "delete": 1,
+     "err": null,
+     "reattach": 1,
+     "trial": 21
+    },
+    {
+     "cover_precedes_target": true,
+     "delete": 1,
+     "err": null,
+     "reattach": 1,
+     "trial": 22
+    },
+    {
+     "cover_precedes_target": true,
+     "delete": 1,
+     "err": null,
+     "reattach": 1,
+     "trial": 23
+    },
+    {
+     "cover_precedes_target": true,
+     "delete": 1,
+     "err": null,
+     "reattach": 1,
+     "trial": 24
+    },
+    {
+     "cover_precedes_target": true,
+     "delete": 1,
+     "err": null,
+     "reattach": 1,
+     "trial": 25
+    },
+    {
+     "cover_precedes_target": true,
+     "delete": 1,
+     "err": null,
+     "reattach": 1,
+     "trial": 26
+    },
+    {
+     "cover_precedes_target": true,
+     "delete": 1,
+     "err": null,
+     "reattach": 1,
+     "trial": 27
+    },
+    {
+     "cover_precedes_target": true,
+     "delete": 1,
+     "err": null,
+     "reattach": 1,
+     "trial": 28
+    },
+    {
+     "cover_precedes_target": true,
+     "delete": 1,
+     "err": null,
+     "reattach": 1,
+     "trial": 29
+    }
+   ],
+   "laundering_vs_clean": {
+    "admin": {
+     "after": {
+      "automation:Porch motion light": 20,
+      "state:Front Door": 10
+     },
+     "before": {
+      "user:Alex Rivera (household)": 30
+     },
+     "displayed_cause_changed": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.8842966917779722,
+      "k": 30,
+      "method": "Clopper-Pearson exact",
+      "n": 30,
+      "prop": 1.0
+     }
+    },
+    "non_admin": {
+     "after": {
+      "automation:Porch motion light": 20,
+      "state:Front Door": 10
+     },
+     "before": {
+      "integration:lock": 30
+     },
+     "displayed_cause_changed": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.8842966917779722,
+      "k": 30,
+      "method": "Clopper-Pearson exact",
+      "n": 30,
+      "prop": 1.0
+     }
+    }
+   },
+   "n_committed_rows": 30,
+   "recorder": {
+    "appended_events_by_type": {
+     "automation_triggered": 2,
+     "call_service": 5,
+     "entity_registry_updated": 1
+    },
+    "appended_states_by_entity": {
+     "automation.kitchen_motion_light": 3,
+     "automation.porch_motion_light": 3,
+     "binary_sensor.kitchen_motion": 2,
+     "binary_sensor.porch_motion": 2,
+     "light.kitchen_light": 3,
+     "light.porch_light": 2
+    },
+    "changed_columns": [
+     "last_reported_ts"
+    ],
+    "committed_rows_changed": {
+     "event_data": 0,
+     "event_types": 0,
+     "events": 0,
+     "state_attributes": 0,
+     "states": 6,
+     "states_meta": 0
+    },
+    "committed_rows_removed": {
+     "event_data": 0,
+     "event_types": 0,
+     "events": 0,
+     "state_attributes": 0,
+     "states": 0,
+     "states_meta": 0
+    },
+    "rows_appended": {
+     "event_data": 1,
+     "event_types": 0,
+     "events": 8,
+     "state_attributes": 1,
+     "states": 15,
+     "states_meta": 0
+    },
+    "tables_sha256_after": {
+     "event_data": "d10a9cdbfe0511eae75f03d2fe1e6524c7b467dc79b8077ff2b9dffc30cf1a9f",
+     "event_types": "bcc65a87f39b159c6f154e1d423588888527a33afdd7082a4db6a820150d299d",
+     "events": "5811ff7ea73dd83c61fef5fdbd8e76ed5ca1cb4f46fb43161be5b8a062488062",
+     "state_attributes": "fa41793c748960855b9e65138a6a1ad065e7580fee8845b738f07cb8c3baff27",
+     "states": "6401a51578b3f23f8670824457e1143a961a376df8fd068f231c4bd3fe2a4de0",
+     "states_meta": "23c68858435cd71d89ac499d061148ff03b2e8a404141893af2a276ffcbc263e"
+    }
+   },
+   "trial_rows_changed": 0
+  }
+ }
+}

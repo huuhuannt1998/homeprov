@@ -1,0 +1,26 @@
+{
+ "amends": "exp/out/e7_preregistration.json",
+ "amends_sha256": "85593490b5f7a78249a421138450d2e6fbc7825fd40fd268d4f0a93490c41e9c",
+ "amendment": 1,
+ "written_at": "2026-10-08T18:20:38.848120+00:00",
+ "written_before": "any trial of the main run (tag e7_main)",
+ "reason": "The smoke run (tag e7_smoke, one trial per arm, porch) showed that the benign-floor scoring counted the laundering trials' own deletions of the author's events as untouched removals (3 rows, each first observed in its trial's edited second). Fix: the harness records deleted_event_ids and deleted_event_seconds per trial, and the verifier counts a removed or changed keylog row as touched when its current or first-observed second is touched. No parameter, arm, trial count, outcome or exclusion rule changed; per-arm detection of the smoke run was unchanged by the fix.",
+ "code_sha256_changed": {
+  "exp/stages/e7_verify.py": {
+   "registered": "7fef951fd5e6ffedc54ef09209ec7af1e189ccd4cf1c7349927cc375d278420d",
+   "now": "cb3e63de635223521daef8db6fbfd88e841215759df0726e5fb77f1c22069bc5"
+  },
+  "testbed/real/ha-config/custom_components/homeprov_e7/__init__.py": {
+   "registered": "19154b0f8ed4392f4ac25794c65872968d392bacfbb7ff85b4df9bcf1b1cf3dd",
+   "now": "26d1d472e8331909cee0f69a16c4eee96ddaf383954d5bd79eba914fa847e707"
+  },
+  "monitor/test_coverage.py": {
+   "registered": "4a0cf6a0f1dc382604936d95318457787c41e01928bdaa938c68cd6984655f17",
+   "now": "d2ace60e38f61e1d0e6a15ebb670589597148cc6807d8986484f21a24e19507a"
+  }
+ },
+ "smoke_run": {
+  "tag": "e7_smoke",
+  "note": "a test of the final code on the real deployment; its outputs are moved to the run directory and are not results"
+ }
+}

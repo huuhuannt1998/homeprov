@@ -1,0 +1,5612 @@
+{
+ "experiment": "E7 anchor hardening: stall unit test (two slow-client scenarios against the earlier and the hardened anchor daemon)",
+ "date_utc": "2026-10-08T14:57:52+00:00",
+ "finished_utc": "2026-10-08T15:07:50+00:00",
+ "command": "python3 testbed/anchord/test_anchor_stall.py record --out exp/out/e7_anchor_stall_unit.json --reps 3 --stall 30 --per-kind 4 --period 1",
+ "environment": {
+  "python": "3.13.11",
+  "platform": "macOS-26.6.2",
+  "address": "127.0.0.1, one daemon process per run, fresh random HMAC key per run",
+  "serving_limits": "defaults (HOMEPROV_ANCHOR_IO_TIMEOUT_S, HOMEPROV_ANCHOR_REQUEST_DEADLINE_S and HOMEPROV_ANCHOR_MAX_BODY unset: 5 s, 10 s, 16 MiB)"
+ },
+ "daemons": {
+  "original": {
+   "file": "testbed/anchord/anchord_r12.py",
+   "sha256": "7b1ef9f1e11a36584eb0fde218fc6a0bb234ff33071e80990d0d354883a0c17f",
+   "identical_to_git_HEAD_anchord_py": true,
+   "served_by": "its __main__ block: socketserver.TCPServer (one thread) with its handler H; paths redirected to a temporary directory, bound to 127.0.0.1"
+  },
+  "hardened": {
+   "file": "testbed/anchord/anchord.py",
+   "sha256": "fa662e94374c46ebf4e63a8092d0a48a84ac94a32baf049076cd279f94341171",
+   "served_by": "anchord.serve(): AnchorServer (thread per connection) with H"
+  },
+  "hardened_linked": {
+   "file": "testbed/anchord/anchord_linked.py",
+   "sha256": "84e8663c78fb378564fac2ff9877b6ea4e50fb3a397fecd7096b4dbb9ec8cacb",
+   "uses": "testbed/anchord/anchord.py",
+   "uses_sha256": "fa662e94374c46ebf4e63a8092d0a48a84ac94a32baf049076cd279f94341171",
+   "served_by": "anchord_linked.serve(): AnchorServer with H, HOMEPROV_ANCHOR_LINK=v2"
+  }
+ },
+ "harness": {
+  "file": "testbed/anchord/test_anchor_stall.py",
+  "sha256": "236793dc3b577261cef493407de5c5597ef619df1438268e2d2b813818e4c9f3"
+ },
+ "workload": {
+  "stall_s": 30.0,
+  "scenarios": {
+   "flood": "16 slow clients, 4 of each kind silent, slow_headers, partial_body, trickle_body",
+   "one_silent_client": "one silent client (connects, sends nothing)"
+  },
+  "trickle_period_s": 0.5,
+  "reopen": "each slow client reopens its connection whenever the daemon closes it",
+  "authenticated_append_period_s": 1.0,
+  "client_timeout_s": 5.0,
+  "attempt_window": "first attempt 1 s after the slow clients start; every attempt ends before the stall ends",
+  "failed_at": "connect: the connection was never accepted within the client timeout; response: the request was sent and no reply came within the client timeout",
+  "late_commit": "an attempt whose client saw no HTTP 200 but whose record is in the chain at the end (the daemon read and appended it after the client had given up)",
+  "after_stall": "3 appends, 3 s after the slow clients stop",
+  "bound_s": 2.0,
+  "bound_meaning": "an authenticated append counts as accepted within the bound when it is answered HTTP 200 within bound_s of the request"
+ },
+ "summary": {
+  "flood": {
+   "original": {
+    "repetitions": 3,
+    "appends_attempted_during_stall": 72,
+    "appends_accepted_during_stall": 0,
+    "appends_accepted_within_bound_during_stall": 0,
+    "appends_failed_during_stall": {
+     "TimeoutError at connect": 72
+    },
+    "max_latency_accepted_s": null,
+    "max_latency_all_attempts_s": 5.0029,
+    "late_commits": 0,
+    "appends_accepted_after_stall": 9,
+    "appends_attempted_after_stall": 9,
+    "chains_verify": true
+   },
+   "hardened": {
+    "repetitions": 3,
+    "appends_attempted_during_stall": 72,
+    "appends_accepted_during_stall": 72,
+    "appends_accepted_within_bound_during_stall": 72,
+    "appends_failed_during_stall": {},
+    "max_latency_accepted_s": 0.0065,
+    "max_latency_all_attempts_s": 0.0065,
+    "late_commits": 0,
+    "appends_accepted_after_stall": 9,
+    "appends_attempted_after_stall": 9,
+    "chains_verify": true
+   },
+   "hardened_linked": {
+    "repetitions": 3,
+    "appends_attempted_during_stall": 72,
+    "appends_accepted_during_stall": 72,
+    "appends_accepted_within_bound_during_stall": 72,
+    "appends_failed_during_stall": {},
+    "max_latency_accepted_s": 0.0046,
+    "max_latency_all_attempts_s": 0.0046,
+    "late_commits": 0,
+    "appends_accepted_after_stall": 9,
+    "appends_attempted_after_stall": 9,
+    "chains_verify": true
+   }
+  },
+  "one_silent_client": {
+   "original": {
+    "repetitions": 3,
+    "appends_attempted_during_stall": 72,
+    "appends_accepted_during_stall": 0,
+    "appends_accepted_within_bound_during_stall": 0,
+    "appends_failed_during_stall": {
+     "TimeoutError at response": 15,
+     "TimeoutError at connect": 57
+    },
+    "max_latency_accepted_s": null,
+    "max_latency_all_attempts_s": 5.0042,
+    "late_commits": 15,
+    "appends_accepted_after_stall": 9,
+    "appends_attempted_after_stall": 9,
+    "chains_verify": true
+   },
+   "hardened": {
+    "repetitions": 3,
+    "appends_attempted_during_stall": 72,
+    "appends_accepted_during_stall": 72,
+    "appends_accepted_within_bound_during_stall": 72,
+    "appends_failed_during_stall": {},
+    "max_latency_accepted_s": 0.0038,
+    "max_latency_all_attempts_s": 0.0038,
+    "late_commits": 0,
+    "appends_accepted_after_stall": 9,
+    "appends_attempted_after_stall": 9,
+    "chains_verify": true
+   },
+   "hardened_linked": {
+    "repetitions": 3,
+    "appends_attempted_during_stall": 72,
+    "appends_accepted_during_stall": 72,
+    "appends_accepted_within_bound_during_stall": 72,
+    "appends_failed_during_stall": {},
+    "max_latency_accepted_s": 0.0045,
+    "max_latency_all_attempts_s": 0.0045,
+    "late_commits": 0,
+    "appends_accepted_after_stall": 9,
+    "appends_attempted_after_stall": 9,
+    "chains_verify": true
+   }
+  }
+ },
+ "runs": [
+  {
+   "daemon": "original",
+   "stall_s": 30.0,
+   "slow_client_kinds": [
+    "silent",
+    "slow_headers",
+    "partial_body",
+    "trickle_body"
+   ],
+   "slow_clients_per_kind": 4,
+   "attempt_period_s": 1.0,
+   "attempts_during_stall": 24,
+   "accepted_during_stall": 0,
+   "accepted_within_bound_during_stall": 0,
+   "failed_during_stall": {
+    "TimeoutError at connect": 24
+   },
+   "max_latency_accepted_s": null,
+   "median_latency_accepted_s": null,
+   "max_latency_all_attempts_s": 5.0026,
+   "late_commits": {
+    "count": 0,
+    "attempts": [],
+    "committed_at_s_after_stall_start": []
+   },
+   "after_stall": {
+    "attempts": 3,
+    "accepted": 3,
+    "max_latency_s": 0.0041
+   },
+   "slow_connections": {
+    "silent": {
+     "connections": 4,
+     "connect_failures": 0,
+     "ended_by_daemon": 0,
+     "held_to_stall_end": 4,
+     "max_hold_when_ended_by_daemon_s": 0.0,
+     "statuses_seen": {}
+    },
+    "slow_headers": {
+     "connections": 1,
+     "connect_failures": 75,
+     "ended_by_daemon": 0,
+     "held_to_stall_end": 1,
+     "max_hold_when_ended_by_daemon_s": 0.0,
+     "statuses_seen": {}
+    },
+    "partial_body": {
+     "connections": 1,
+     "connect_failures": 75,
+     "ended_by_daemon": 0,
+     "held_to_stall_end": 1,
+     "max_hold_when_ended_by_daemon_s": 0.0,
+     "statuses_seen": {}
+    },
+    "trickle_body": {
+     "connections": 0,
+     "connect_failures": 100,
+     "ended_by_daemon": 0,
+     "held_to_stall_end": 0,
+     "max_hold_when_ended_by_daemon_s": 0.0,
+     "statuses_seen": {}
+    }
+   },
+   "chain": {
+    "records": 3,
+    "seq_consecutive": true,
+    "attempt_order": [
+     25,
+     26,
+     27
+    ],
+    "chainverify_ok": true,
+    "link": "v1"
+   },
+   "refusals_by_reason": {
+    "missing_signature": 1,
+    "bad_signature": 1
+   },
+   "attempt_detail": [
+    {
+     "attempt": 1,
+     "scheduled_s": 1.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0025,
+     "in_chain": false
+    },
+    {
+     "attempt": 2,
+     "scheduled_s": 2.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0015,
+     "in_chain": false
+    },
+    {
+     "attempt": 3,
+     "scheduled_s": 3.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0024,
+     "in_chain": false
+    },
+    {
+     "attempt": 4,
+     "scheduled_s": 4.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0014,
+     "in_chain": false
+    },
+    {
+     "attempt": 5,
+     "scheduled_s": 5.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0007,
+     "in_chain": false
+    },
+    {
+     "attempt": 6,
+     "scheduled_s": 6.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0025,
+     "in_chain": false
+    },
+    {
+     "attempt": 7,
+     "scheduled_s": 7.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.002,
+     "in_chain": false
+    },
+    {
+     "attempt": 8,
+     "scheduled_s": 8.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0012,
+     "in_chain": false
+    },
+    {
+     "attempt": 9,
+     "scheduled_s": 9.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0017,
+     "in_chain": false
+    },
+    {
+     "attempt": 10,
+     "scheduled_s": 10.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0007,
+     "in_chain": false
+    },
+    {
+     "attempt": 11,
+     "scheduled_s": 11.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0024,
+     "in_chain": false
+    },
+    {
+     "attempt": 12,
+     "scheduled_s": 12.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0025,
+     "in_chain": false
+    },
+    {
+     "attempt": 13,
+     "scheduled_s": 13.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0016,
+     "in_chain": false
+    },
+    {
+     "attempt": 14,
+     "scheduled_s": 14.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0025,
+     "in_chain": false
+    },
+    {
+     "attempt": 15,
+     "scheduled_s": 15.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0023,
+     "in_chain": false
+    },
+    {
+     "attempt": 16,
+     "scheduled_s": 16.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0022,
+     "in_chain": false
+    },
+    {
+     "attempt": 17,
+     "scheduled_s": 17.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0022,
+     "in_chain": false
+    },
+    {
+     "attempt": 18,
+     "scheduled_s": 18.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0025,
+     "in_chain": false
+    },
+    {
+     "attempt": 19,
+     "scheduled_s": 19.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0023,
+     "in_chain": false
+    },
+    {
+     "attempt": 20,
+     "scheduled_s": 20.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0024,
+     "in_chain": false
+    },
+    {
+     "attempt": 21,
+     "scheduled_s": 21.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0017,
+     "in_chain": false
+    },
+    {
+     "attempt": 22,
+     "scheduled_s": 22.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0006,
+     "in_chain": false
+    },
+    {
+     "attempt": 23,
+     "scheduled_s": 23.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0011,
+     "in_chain": false
+    },
+    {
+     "attempt": 24,
+     "scheduled_s": 24.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0026,
+     "in_chain": false
+    }
+   ],
+   "scenario": "flood",
+   "repetition": 1
+  },
+  {
+   "daemon": "hardened",
+   "stall_s": 30.0,
+   "slow_client_kinds": [
+    "silent",
+    "slow_headers",
+    "partial_body",
+    "trickle_body"
+   ],
+   "slow_clients_per_kind": 4,
+   "attempt_period_s": 1.0,
+   "attempts_during_stall": 24,
+   "accepted_during_stall": 24,
+   "accepted_within_bound_during_stall": 24,
+   "failed_during_stall": {},
+   "max_latency_accepted_s": 0.0065,
+   "median_latency_accepted_s": 0.0025,
+   "max_latency_all_attempts_s": 0.0065,
+   "late_commits": {
+    "count": 0,
+    "attempts": [],
+    "committed_at_s_after_stall_start": []
+   },
+   "after_stall": {
+    "attempts": 3,
+    "accepted": 3,
+    "max_latency_s": 0.0031
+   },
+   "slow_connections": {
+    "silent": {
+     "connections": 24,
+     "connect_failures": 0,
+     "ended_by_daemon": 24,
+     "held_to_stall_end": 0,
+     "max_hold_when_ended_by_daemon_s": 5.005,
+     "statuses_seen": {}
+    },
+    "slow_headers": {
+     "connections": 12,
+     "connect_failures": 0,
+     "ended_by_daemon": 12,
+     "held_to_stall_end": 0,
+     "max_hold_when_ended_by_daemon_s": 10.006,
+     "statuses_seen": {}
+    },
+    "partial_body": {
+     "connections": 24,
+     "connect_failures": 0,
+     "ended_by_daemon": 20,
+     "held_to_stall_end": 4,
+     "max_hold_when_ended_by_daemon_s": 5.007,
+     "statuses_seen": {
+      "408": 20
+     }
+    },
+    "trickle_body": {
+     "connections": 12,
+     "connect_failures": 0,
+     "ended_by_daemon": 8,
+     "held_to_stall_end": 4,
+     "max_hold_when_ended_by_daemon_s": 10.008,
+     "statuses_seen": {
+      "408": 8
+     }
+    }
+   },
+   "chain": {
+    "records": 27,
+    "seq_consecutive": true,
+    "attempt_order": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23,
+     24,
+     25,
+     26,
+     27
+    ],
+    "chainverify_ok": true,
+    "link": "v1"
+   },
+   "refusals_by_reason": {
+    "body_timeout": 34,
+    "short_body": 2
+   },
+   "attempt_detail": [
+    {
+     "attempt": 1,
+     "scheduled_s": 1.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0038,
+     "in_chain": true
+    },
+    {
+     "attempt": 2,
+     "scheduled_s": 2.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0034,
+     "in_chain": true
+    },
+    {
+     "attempt": 3,
+     "scheduled_s": 3.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0018,
+     "in_chain": true
+    },
+    {
+     "attempt": 4,
+     "scheduled_s": 4.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0018,
+     "in_chain": true
+    },
+    {
+     "attempt": 5,
+     "scheduled_s": 5.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0034,
+     "in_chain": true
+    },
+    {
+     "attempt": 6,
+     "scheduled_s": 6.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0025,
+     "in_chain": true
+    },
+    {
+     "attempt": 7,
+     "scheduled_s": 7.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0023,
+     "in_chain": true
+    },
+    {
+     "attempt": 8,
+     "scheduled_s": 8.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0025,
+     "in_chain": true
+    },
+    {
+     "attempt": 9,
+     "scheduled_s": 9.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.003,
+     "in_chain": true
+    },
+    {
+     "attempt": 10,
+     "scheduled_s": 10.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0065,
+     "in_chain": true
+    },
+    {
+     "attempt": 11,
+     "scheduled_s": 11.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0031,
+     "in_chain": true
+    },
+    {
+     "attempt": 12,
+     "scheduled_s": 12.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0021,
+     "in_chain": true
+    },
+    {
+     "attempt": 13,
+     "scheduled_s": 13.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0028,
+     "in_chain": true
+    },
+    {
+     "attempt": 14,
+     "scheduled_s": 14.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0023,
+     "in_chain": true
+    },
+    {
+     "attempt": 15,
+     "scheduled_s": 15.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0026,
+     "in_chain": true
+    },
+    {
+     "attempt": 16,
+     "scheduled_s": 16.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0025,
+     "in_chain": true
+    },
+    {
+     "attempt": 17,
+     "scheduled_s": 17.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0024,
+     "in_chain": true
+    },
+    {
+     "attempt": 18,
+     "scheduled_s": 18.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.003,
+     "in_chain": true
+    },
+    {
+     "attempt": 19,
+     "scheduled_s": 19.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.003,
+     "in_chain": true
+    },
+    {
+     "attempt": 20,
+     "scheduled_s": 20.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0024,
+     "in_chain": true
+    },
+    {
+     "attempt": 21,
+     "scheduled_s": 21.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0025,
+     "in_chain": true
+    },
+    {
+     "attempt": 22,
+     "scheduled_s": 22.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0036,
+     "in_chain": true
+    },
+    {
+     "attempt": 23,
+     "scheduled_s": 23.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0023,
+     "in_chain": true
+    },
+    {
+     "attempt": 24,
+     "scheduled_s": 24.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0024,
+     "in_chain": true
+    }
+   ],
+   "scenario": "flood",
+   "repetition": 1
+  },
+  {
+   "daemon": "hardened_linked",
+   "stall_s": 30.0,
+   "slow_client_kinds": [
+    "silent",
+    "slow_headers",
+    "partial_body",
+    "trickle_body"
+   ],
+   "slow_clients_per_kind": 4,
+   "attempt_period_s": 1.0,
+   "attempts_during_stall": 24,
+   "accepted_during_stall": 24,
+   "accepted_within_bound_during_stall": 24,
+   "failed_during_stall": {},
+   "max_latency_accepted_s": 0.0037,
+   "median_latency_accepted_s": 0.0026,
+   "max_latency_all_attempts_s": 0.0037,
+   "late_commits": {
+    "count": 0,
+    "attempts": [],
+    "committed_at_s_after_stall_start": []
+   },
+   "after_stall": {
+    "attempts": 3,
+    "accepted": 3,
+    "max_latency_s": 0.0028
+   },
+   "slow_connections": {
+    "silent": {
+     "connections": 24,
+     "connect_failures": 0,
+     "ended_by_daemon": 24,
+     "held_to_stall_end": 0,
+     "max_hold_when_ended_by_daemon_s": 5.004,
+     "statuses_seen": {}
+    },
+    "slow_headers": {
+     "connections": 12,
+     "connect_failures": 0,
+     "ended_by_daemon": 12,
+     "held_to_stall_end": 0,
+     "max_hold_when_ended_by_daemon_s": 10.003,
+     "statuses_seen": {}
+    },
+    "partial_body": {
+     "connections": 24,
+     "connect_failures": 0,
+     "ended_by_daemon": 20,
+     "held_to_stall_end": 4,
+     "max_hold_when_ended_by_daemon_s": 5.005,
+     "statuses_seen": {
+      "408": 20
+     }
+    },
+    "trickle_body": {
+     "connections": 12,
+     "connect_failures": 0,
+     "ended_by_daemon": 8,
+     "held_to_stall_end": 4,
+     "max_hold_when_ended_by_daemon_s": 10.005,
+     "statuses_seen": {
+      "408": 8
+     }
+    }
+   },
+   "chain": {
+    "records": 27,
+    "seq_consecutive": true,
+    "attempt_order": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23,
+     24,
+     25,
+     26,
+     27
+    ],
+    "chainverify_ok": true,
+    "link": "v2"
+   },
+   "refusals_by_reason": {
+    "body_timeout": 36
+   },
+   "attempt_detail": [
+    {
+     "attempt": 1,
+     "scheduled_s": 1.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0026,
+     "in_chain": true
+    },
+    {
+     "attempt": 2,
+     "scheduled_s": 2.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0027,
+     "in_chain": true
+    },
+    {
+     "attempt": 3,
+     "scheduled_s": 3.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0037,
+     "in_chain": true
+    },
+    {
+     "attempt": 4,
+     "scheduled_s": 4.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0026,
+     "in_chain": true
+    },
+    {
+     "attempt": 5,
+     "scheduled_s": 5.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0028,
+     "in_chain": true
+    },
+    {
+     "attempt": 6,
+     "scheduled_s": 6.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0009,
+     "in_chain": true
+    },
+    {
+     "attempt": 7,
+     "scheduled_s": 7.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0016,
+     "in_chain": true
+    },
+    {
+     "attempt": 8,
+     "scheduled_s": 8.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0026,
+     "in_chain": true
+    },
+    {
+     "attempt": 9,
+     "scheduled_s": 9.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0024,
+     "in_chain": true
+    },
+    {
+     "attempt": 10,
+     "scheduled_s": 10.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0015,
+     "in_chain": true
+    },
+    {
+     "attempt": 11,
+     "scheduled_s": 11.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0026,
+     "in_chain": true
+    },
+    {
+     "attempt": 12,
+     "scheduled_s": 12.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0011,
+     "in_chain": true
+    },
+    {
+     "attempt": 13,
+     "scheduled_s": 13.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0017,
+     "in_chain": true
+    },
+    {
+     "attempt": 14,
+     "scheduled_s": 14.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0036,
+     "in_chain": true
+    },
+    {
+     "attempt": 15,
+     "scheduled_s": 15.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0014,
+     "in_chain": true
+    },
+    {
+     "attempt": 16,
+     "scheduled_s": 16.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0026,
+     "in_chain": true
+    },
+    {
+     "attempt": 17,
+     "scheduled_s": 17.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0011,
+     "in_chain": true
+    },
+    {
+     "attempt": 18,
+     "scheduled_s": 18.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0026,
+     "in_chain": true
+    },
+    {
+     "attempt": 19,
+     "scheduled_s": 19.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0036,
+     "in_chain": true
+    },
+    {
+     "attempt": 20,
+     "scheduled_s": 20.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0013,
+     "in_chain": true
+    },
+    {
+     "attempt": 21,
+     "scheduled_s": 21.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0024,
+     "in_chain": true
+    },
+    {
+     "attempt": 22,
+     "scheduled_s": 22.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0029,
+     "in_chain": true
+    },
+    {
+     "attempt": 23,
+     "scheduled_s": 23.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0034,
+     "in_chain": true
+    },
+    {
+     "attempt": 24,
+     "scheduled_s": 24.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0032,
+     "in_chain": true
+    }
+   ],
+   "scenario": "flood",
+   "repetition": 1
+  },
+  {
+   "daemon": "original",
+   "stall_s": 30.0,
+   "slow_client_kinds": [
+    "silent",
+    "slow_headers",
+    "partial_body",
+    "trickle_body"
+   ],
+   "slow_clients_per_kind": 4,
+   "attempt_period_s": 1.0,
+   "attempts_during_stall": 24,
+   "accepted_during_stall": 0,
+   "accepted_within_bound_during_stall": 0,
+   "failed_during_stall": {
+    "TimeoutError at connect": 24
+   },
+   "max_latency_accepted_s": null,
+   "median_latency_accepted_s": null,
+   "max_latency_all_attempts_s": 5.0029,
+   "late_commits": {
+    "count": 0,
+    "attempts": [],
+    "committed_at_s_after_stall_start": []
+   },
+   "after_stall": {
+    "attempts": 3,
+    "accepted": 3,
+    "max_latency_s": 0.003
+   },
+   "slow_connections": {
+    "silent": {
+     "connections": 4,
+     "connect_failures": 0,
+     "ended_by_daemon": 0,
+     "held_to_stall_end": 4,
+     "max_hold_when_ended_by_daemon_s": 0.0,
+     "statuses_seen": {}
+    },
+    "slow_headers": {
+     "connections": 2,
+     "connect_failures": 50,
+     "ended_by_daemon": 0,
+     "held_to_stall_end": 2,
+     "max_hold_when_ended_by_daemon_s": 0.0,
+     "statuses_seen": {}
+    },
+    "partial_body": {
+     "connections": 0,
+     "connect_failures": 100,
+     "ended_by_daemon": 0,
+     "held_to_stall_end": 0,
+     "max_hold_when_ended_by_daemon_s": 0.0,
+     "statuses_seen": {}
+    },
+    "trickle_body": {
+     "connections": 0,
+     "connect_failures": 100,
+     "ended_by_daemon": 0,
+     "held_to_stall_end": 0,
+     "max_hold_when_ended_by_daemon_s": 0.0,
+     "statuses_seen": {}
+    }
+   },
+   "chain": {
+    "records": 3,
+    "seq_consecutive": true,
+    "attempt_order": [
+     25,
+     26,
+     27
+    ],
+    "chainverify_ok": true,
+    "link": "v1"
+   },
+   "refusals_by_reason": {
+    "missing_signature": 2
+   },
+   "attempt_detail": [
+    {
+     "attempt": 1,
+     "scheduled_s": 1.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0023,
+     "in_chain": false
+    },
+    {
+     "attempt": 2,
+     "scheduled_s": 2.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0022,
+     "in_chain": false
+    },
+    {
+     "attempt": 3,
+     "scheduled_s": 3.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0024,
+     "in_chain": false
+    },
+    {
+     "attempt": 4,
+     "scheduled_s": 4.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0025,
+     "in_chain": false
+    },
+    {
+     "attempt": 5,
+     "scheduled_s": 5.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0008,
+     "in_chain": false
+    },
+    {
+     "attempt": 6,
+     "scheduled_s": 6.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0027,
+     "in_chain": false
+    },
+    {
+     "attempt": 7,
+     "scheduled_s": 7.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0021,
+     "in_chain": false
+    },
+    {
+     "attempt": 8,
+     "scheduled_s": 8.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0023,
+     "in_chain": false
+    },
+    {
+     "attempt": 9,
+     "scheduled_s": 9.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0026,
+     "in_chain": false
+    },
+    {
+     "attempt": 10,
+     "scheduled_s": 10.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0024,
+     "in_chain": false
+    },
+    {
+     "attempt": 11,
+     "scheduled_s": 11.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0024,
+     "in_chain": false
+    },
+    {
+     "attempt": 12,
+     "scheduled_s": 12.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0024,
+     "in_chain": false
+    },
+    {
+     "attempt": 13,
+     "scheduled_s": 13.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0025,
+     "in_chain": false
+    },
+    {
+     "attempt": 14,
+     "scheduled_s": 14.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0009,
+     "in_chain": false
+    },
+    {
+     "attempt": 15,
+     "scheduled_s": 15.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0017,
+     "in_chain": false
+    },
+    {
+     "attempt": 16,
+     "scheduled_s": 16.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0014,
+     "in_chain": false
+    },
+    {
+     "attempt": 17,
+     "scheduled_s": 17.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0029,
+     "in_chain": false
+    },
+    {
+     "attempt": 18,
+     "scheduled_s": 18.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.002,
+     "in_chain": false
+    },
+    {
+     "attempt": 19,
+     "scheduled_s": 19.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.001,
+     "in_chain": false
+    },
+    {
+     "attempt": 20,
+     "scheduled_s": 20.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0024,
+     "in_chain": false
+    },
+    {
+     "attempt": 21,
+     "scheduled_s": 21.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0024,
+     "in_chain": false
+    },
+    {
+     "attempt": 22,
+     "scheduled_s": 22.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0013,
+     "in_chain": false
+    },
+    {
+     "attempt": 23,
+     "scheduled_s": 23.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0018,
+     "in_chain": false
+    },
+    {
+     "attempt": 24,
+     "scheduled_s": 24.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0025,
+     "in_chain": false
+    }
+   ],
+   "scenario": "flood",
+   "repetition": 2
+  },
+  {
+   "daemon": "hardened",
+   "stall_s": 30.0,
+   "slow_client_kinds": [
+    "silent",
+    "slow_headers",
+    "partial_body",
+    "trickle_body"
+   ],
+   "slow_clients_per_kind": 4,
+   "attempt_period_s": 1.0,
+   "attempts_during_stall": 24,
+   "accepted_during_stall": 24,
+   "accepted_within_bound_during_stall": 24,
+   "failed_during_stall": {},
+   "max_latency_accepted_s": 0.0047,
+   "median_latency_accepted_s": 0.0021,
+   "max_latency_all_attempts_s": 0.0047,
+   "late_commits": {
+    "count": 0,
+    "attempts": [],
+    "committed_at_s_after_stall_start": []
+   },
+   "after_stall": {
+    "attempts": 3,
+    "accepted": 3,
+    "max_latency_s": 0.0026
+   },
+   "slow_connections": {
+    "silent": {
+     "connections": 24,
+     "connect_failures": 0,
+     "ended_by_daemon": 23,
+     "held_to_stall_end": 1,
+     "max_hold_when_ended_by_daemon_s": 5.003,
+     "statuses_seen": {}
+    },
+    "slow_headers": {
+     "connections": 12,
+     "connect_failures": 0,
+     "ended_by_daemon": 12,
+     "held_to_stall_end": 0,
+     "max_hold_when_ended_by_daemon_s": 10.004,
+     "statuses_seen": {}
+    },
+    "partial_body": {
+     "connections": 24,
+     "connect_failures": 0,
+     "ended_by_daemon": 20,
+     "held_to_stall_end": 4,
+     "max_hold_when_ended_by_daemon_s": 5.004,
+     "statuses_seen": {
+      "408": 20
+     }
+    },
+    "trickle_body": {
+     "connections": 12,
+     "connect_failures": 0,
+     "ended_by_daemon": 8,
+     "held_to_stall_end": 4,
+     "max_hold_when_ended_by_daemon_s": 10.006,
+     "statuses_seen": {
+      "408": 8
+     }
+    }
+   },
+   "chain": {
+    "records": 27,
+    "seq_consecutive": true,
+    "attempt_order": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23,
+     24,
+     25,
+     26,
+     27
+    ],
+    "chainverify_ok": true,
+    "link": "v1"
+   },
+   "refusals_by_reason": {
+    "body_timeout": 35,
+    "short_body": 1
+   },
+   "attempt_detail": [
+    {
+     "attempt": 1,
+     "scheduled_s": 1.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0012,
+     "in_chain": true
+    },
+    {
+     "attempt": 2,
+     "scheduled_s": 2.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0024,
+     "in_chain": true
+    },
+    {
+     "attempt": 3,
+     "scheduled_s": 3.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0047,
+     "in_chain": true
+    },
+    {
+     "attempt": 4,
+     "scheduled_s": 4.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0022,
+     "in_chain": true
+    },
+    {
+     "attempt": 5,
+     "scheduled_s": 5.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0006,
+     "in_chain": true
+    },
+    {
+     "attempt": 6,
+     "scheduled_s": 6.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0008,
+     "in_chain": true
+    },
+    {
+     "attempt": 7,
+     "scheduled_s": 7.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0019,
+     "in_chain": true
+    },
+    {
+     "attempt": 8,
+     "scheduled_s": 8.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0023,
+     "in_chain": true
+    },
+    {
+     "attempt": 9,
+     "scheduled_s": 9.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0015,
+     "in_chain": true
+    },
+    {
+     "attempt": 10,
+     "scheduled_s": 10.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0019,
+     "in_chain": true
+    },
+    {
+     "attempt": 11,
+     "scheduled_s": 11.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0024,
+     "in_chain": true
+    },
+    {
+     "attempt": 12,
+     "scheduled_s": 12.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0026,
+     "in_chain": true
+    },
+    {
+     "attempt": 13,
+     "scheduled_s": 13.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0011,
+     "in_chain": true
+    },
+    {
+     "attempt": 14,
+     "scheduled_s": 14.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0015,
+     "in_chain": true
+    },
+    {
+     "attempt": 15,
+     "scheduled_s": 15.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0034,
+     "in_chain": true
+    },
+    {
+     "attempt": 16,
+     "scheduled_s": 16.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0017,
+     "in_chain": true
+    },
+    {
+     "attempt": 17,
+     "scheduled_s": 17.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0018,
+     "in_chain": true
+    },
+    {
+     "attempt": 18,
+     "scheduled_s": 18.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0027,
+     "in_chain": true
+    },
+    {
+     "attempt": 19,
+     "scheduled_s": 19.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0028,
+     "in_chain": true
+    },
+    {
+     "attempt": 20,
+     "scheduled_s": 20.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0036,
+     "in_chain": true
+    },
+    {
+     "attempt": 21,
+     "scheduled_s": 21.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0027,
+     "in_chain": true
+    },
+    {
+     "attempt": 22,
+     "scheduled_s": 22.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0025,
+     "in_chain": true
+    },
+    {
+     "attempt": 23,
+     "scheduled_s": 23.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0012,
+     "in_chain": true
+    },
+    {
+     "attempt": 24,
+     "scheduled_s": 24.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.001,
+     "in_chain": true
+    }
+   ],
+   "scenario": "flood",
+   "repetition": 2
+  },
+  {
+   "daemon": "hardened_linked",
+   "stall_s": 30.0,
+   "slow_client_kinds": [
+    "silent",
+    "slow_headers",
+    "partial_body",
+    "trickle_body"
+   ],
+   "slow_clients_per_kind": 4,
+   "attempt_period_s": 1.0,
+   "attempts_during_stall": 24,
+   "accepted_during_stall": 24,
+   "accepted_within_bound_during_stall": 24,
+   "failed_during_stall": {},
+   "max_latency_accepted_s": 0.0037,
+   "median_latency_accepted_s": 0.002,
+   "max_latency_all_attempts_s": 0.0037,
+   "late_commits": {
+    "count": 0,
+    "attempts": [],
+    "committed_at_s_after_stall_start": []
+   },
+   "after_stall": {
+    "attempts": 3,
+    "accepted": 3,
+    "max_latency_s": 0.0036
+   },
+   "slow_connections": {
+    "silent": {
+     "connections": 24,
+     "connect_failures": 0,
+     "ended_by_daemon": 24,
+     "held_to_stall_end": 0,
+     "max_hold_when_ended_by_daemon_s": 5.003,
+     "statuses_seen": {}
+    },
+    "slow_headers": {
+     "connections": 12,
+     "connect_failures": 0,
+     "ended_by_daemon": 12,
+     "held_to_stall_end": 0,
+     "max_hold_when_ended_by_daemon_s": 10.004,
+     "statuses_seen": {}
+    },
+    "partial_body": {
+     "connections": 24,
+     "connect_failures": 0,
+     "ended_by_daemon": 20,
+     "held_to_stall_end": 4,
+     "max_hold_when_ended_by_daemon_s": 5.005,
+     "statuses_seen": {
+      "408": 20
+     }
+    },
+    "trickle_body": {
+     "connections": 12,
+     "connect_failures": 0,
+     "ended_by_daemon": 8,
+     "held_to_stall_end": 4,
+     "max_hold_when_ended_by_daemon_s": 10.004,
+     "statuses_seen": {
+      "408": 8
+     }
+    }
+   },
+   "chain": {
+    "records": 27,
+    "seq_consecutive": true,
+    "attempt_order": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23,
+     24,
+     25,
+     26,
+     27
+    ],
+    "chainverify_ok": true,
+    "link": "v2"
+   },
+   "refusals_by_reason": {
+    "body_timeout": 35,
+    "short_body": 1
+   },
+   "attempt_detail": [
+    {
+     "attempt": 1,
+     "scheduled_s": 1.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0032,
+     "in_chain": true
+    },
+    {
+     "attempt": 2,
+     "scheduled_s": 2.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0027,
+     "in_chain": true
+    },
+    {
+     "attempt": 3,
+     "scheduled_s": 3.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0018,
+     "in_chain": true
+    },
+    {
+     "attempt": 4,
+     "scheduled_s": 4.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0031,
+     "in_chain": true
+    },
+    {
+     "attempt": 5,
+     "scheduled_s": 5.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0013,
+     "in_chain": true
+    },
+    {
+     "attempt": 6,
+     "scheduled_s": 6.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0031,
+     "in_chain": true
+    },
+    {
+     "attempt": 7,
+     "scheduled_s": 7.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0031,
+     "in_chain": true
+    },
+    {
+     "attempt": 8,
+     "scheduled_s": 8.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0037,
+     "in_chain": true
+    },
+    {
+     "attempt": 9,
+     "scheduled_s": 9.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0026,
+     "in_chain": true
+    },
+    {
+     "attempt": 10,
+     "scheduled_s": 10.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0009,
+     "in_chain": true
+    },
+    {
+     "attempt": 11,
+     "scheduled_s": 11.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0025,
+     "in_chain": true
+    },
+    {
+     "attempt": 12,
+     "scheduled_s": 12.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0009,
+     "in_chain": true
+    },
+    {
+     "attempt": 13,
+     "scheduled_s": 13.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0008,
+     "in_chain": true
+    },
+    {
+     "attempt": 14,
+     "scheduled_s": 14.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0009,
+     "in_chain": true
+    },
+    {
+     "attempt": 15,
+     "scheduled_s": 15.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0021,
+     "in_chain": true
+    },
+    {
+     "attempt": 16,
+     "scheduled_s": 16.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0025,
+     "in_chain": true
+    },
+    {
+     "attempt": 17,
+     "scheduled_s": 17.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0031,
+     "in_chain": true
+    },
+    {
+     "attempt": 18,
+     "scheduled_s": 18.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0019,
+     "in_chain": true
+    },
+    {
+     "attempt": 19,
+     "scheduled_s": 19.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0016,
+     "in_chain": true
+    },
+    {
+     "attempt": 20,
+     "scheduled_s": 20.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0027,
+     "in_chain": true
+    },
+    {
+     "attempt": 21,
+     "scheduled_s": 21.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.001,
+     "in_chain": true
+    },
+    {
+     "attempt": 22,
+     "scheduled_s": 22.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0011,
+     "in_chain": true
+    },
+    {
+     "attempt": 23,
+     "scheduled_s": 23.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.001,
+     "in_chain": true
+    },
+    {
+     "attempt": 24,
+     "scheduled_s": 24.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0009,
+     "in_chain": true
+    }
+   ],
+   "scenario": "flood",
+   "repetition": 2
+  },
+  {
+   "daemon": "original",
+   "stall_s": 30.0,
+   "slow_client_kinds": [
+    "silent",
+    "slow_headers",
+    "partial_body",
+    "trickle_body"
+   ],
+   "slow_clients_per_kind": 4,
+   "attempt_period_s": 1.0,
+   "attempts_during_stall": 24,
+   "accepted_during_stall": 0,
+   "accepted_within_bound_during_stall": 0,
+   "failed_during_stall": {
+    "TimeoutError at connect": 24
+   },
+   "max_latency_accepted_s": null,
+   "median_latency_accepted_s": null,
+   "max_latency_all_attempts_s": 5.0027,
+   "late_commits": {
+    "count": 0,
+    "attempts": [],
+    "committed_at_s_after_stall_start": []
+   },
+   "after_stall": {
+    "attempts": 3,
+    "accepted": 3,
+    "max_latency_s": 0.0016
+   },
+   "slow_connections": {
+    "silent": {
+     "connections": 4,
+     "connect_failures": 0,
+     "ended_by_daemon": 0,
+     "held_to_stall_end": 4,
+     "max_hold_when_ended_by_daemon_s": 0.0,
+     "statuses_seen": {}
+    },
+    "slow_headers": {
+     "connections": 2,
+     "connect_failures": 50,
+     "ended_by_daemon": 0,
+     "held_to_stall_end": 2,
+     "max_hold_when_ended_by_daemon_s": 0.0,
+     "statuses_seen": {}
+    },
+    "partial_body": {
+     "connections": 0,
+     "connect_failures": 100,
+     "ended_by_daemon": 0,
+     "held_to_stall_end": 0,
+     "max_hold_when_ended_by_daemon_s": 0.0,
+     "statuses_seen": {}
+    },
+    "trickle_body": {
+     "connections": 0,
+     "connect_failures": 100,
+     "ended_by_daemon": 0,
+     "held_to_stall_end": 0,
+     "max_hold_when_ended_by_daemon_s": 0.0,
+     "statuses_seen": {}
+    }
+   },
+   "chain": {
+    "records": 3,
+    "seq_consecutive": true,
+    "attempt_order": [
+     25,
+     26,
+     27
+    ],
+    "chainverify_ok": true,
+    "link": "v1"
+   },
+   "refusals_by_reason": {
+    "missing_signature": 2
+   },
+   "attempt_detail": [
+    {
+     "attempt": 1,
+     "scheduled_s": 1.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0024,
+     "in_chain": false
+    },
+    {
+     "attempt": 2,
+     "scheduled_s": 2.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0012,
+     "in_chain": false
+    },
+    {
+     "attempt": 3,
+     "scheduled_s": 3.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0027,
+     "in_chain": false
+    },
+    {
+     "attempt": 4,
+     "scheduled_s": 4.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0023,
+     "in_chain": false
+    },
+    {
+     "attempt": 5,
+     "scheduled_s": 5.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0022,
+     "in_chain": false
+    },
+    {
+     "attempt": 6,
+     "scheduled_s": 6.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0023,
+     "in_chain": false
+    },
+    {
+     "attempt": 7,
+     "scheduled_s": 7.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0024,
+     "in_chain": false
+    },
+    {
+     "attempt": 8,
+     "scheduled_s": 8.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0024,
+     "in_chain": false
+    },
+    {
+     "attempt": 9,
+     "scheduled_s": 9.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0022,
+     "in_chain": false
+    },
+    {
+     "attempt": 10,
+     "scheduled_s": 10.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0022,
+     "in_chain": false
+    },
+    {
+     "attempt": 11,
+     "scheduled_s": 11.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0023,
+     "in_chain": false
+    },
+    {
+     "attempt": 12,
+     "scheduled_s": 12.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0011,
+     "in_chain": false
+    },
+    {
+     "attempt": 13,
+     "scheduled_s": 13.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0023,
+     "in_chain": false
+    },
+    {
+     "attempt": 14,
+     "scheduled_s": 14.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0023,
+     "in_chain": false
+    },
+    {
+     "attempt": 15,
+     "scheduled_s": 15.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0024,
+     "in_chain": false
+    },
+    {
+     "attempt": 16,
+     "scheduled_s": 16.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0007,
+     "in_chain": false
+    },
+    {
+     "attempt": 17,
+     "scheduled_s": 17.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0025,
+     "in_chain": false
+    },
+    {
+     "attempt": 18,
+     "scheduled_s": 18.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0015,
+     "in_chain": false
+    },
+    {
+     "attempt": 19,
+     "scheduled_s": 19.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0021,
+     "in_chain": false
+    },
+    {
+     "attempt": 20,
+     "scheduled_s": 20.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0024,
+     "in_chain": false
+    },
+    {
+     "attempt": 21,
+     "scheduled_s": 21.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0025,
+     "in_chain": false
+    },
+    {
+     "attempt": 22,
+     "scheduled_s": 22.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0024,
+     "in_chain": false
+    },
+    {
+     "attempt": 23,
+     "scheduled_s": 23.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0004,
+     "in_chain": false
+    },
+    {
+     "attempt": 24,
+     "scheduled_s": 24.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0023,
+     "in_chain": false
+    }
+   ],
+   "scenario": "flood",
+   "repetition": 3
+  },
+  {
+   "daemon": "hardened",
+   "stall_s": 30.0,
+   "slow_client_kinds": [
+    "silent",
+    "slow_headers",
+    "partial_body",
+    "trickle_body"
+   ],
+   "slow_clients_per_kind": 4,
+   "attempt_period_s": 1.0,
+   "attempts_during_stall": 24,
+   "accepted_during_stall": 24,
+   "accepted_within_bound_during_stall": 24,
+   "failed_during_stall": {},
+   "max_latency_accepted_s": 0.0043,
+   "median_latency_accepted_s": 0.0021,
+   "max_latency_all_attempts_s": 0.0043,
+   "late_commits": {
+    "count": 0,
+    "attempts": [],
+    "committed_at_s_after_stall_start": []
+   },
+   "after_stall": {
+    "attempts": 3,
+    "accepted": 3,
+    "max_latency_s": 0.0028
+   },
+   "slow_connections": {
+    "silent": {
+     "connections": 24,
+     "connect_failures": 0,
+     "ended_by_daemon": 24,
+     "held_to_stall_end": 0,
+     "max_hold_when_ended_by_daemon_s": 5.003,
+     "statuses_seen": {}
+    },
+    "slow_headers": {
+     "connections": 12,
+     "connect_failures": 0,
+     "ended_by_daemon": 12,
+     "held_to_stall_end": 0,
+     "max_hold_when_ended_by_daemon_s": 10.004,
+     "statuses_seen": {}
+    },
+    "partial_body": {
+     "connections": 24,
+     "connect_failures": 0,
+     "ended_by_daemon": 20,
+     "held_to_stall_end": 4,
+     "max_hold_when_ended_by_daemon_s": 5.004,
+     "statuses_seen": {
+      "408": 20
+     }
+    },
+    "trickle_body": {
+     "connections": 12,
+     "connect_failures": 0,
+     "ended_by_daemon": 8,
+     "held_to_stall_end": 4,
+     "max_hold_when_ended_by_daemon_s": 10.005,
+     "statuses_seen": {
+      "408": 8
+     }
+    }
+   },
+   "chain": {
+    "records": 27,
+    "seq_consecutive": true,
+    "attempt_order": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23,
+     24,
+     25,
+     26,
+     27
+    ],
+    "chainverify_ok": true,
+    "link": "v1"
+   },
+   "refusals_by_reason": {
+    "body_timeout": 36
+   },
+   "attempt_detail": [
+    {
+     "attempt": 1,
+     "scheduled_s": 1.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0016,
+     "in_chain": true
+    },
+    {
+     "attempt": 2,
+     "scheduled_s": 2.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0014,
+     "in_chain": true
+    },
+    {
+     "attempt": 3,
+     "scheduled_s": 3.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0022,
+     "in_chain": true
+    },
+    {
+     "attempt": 4,
+     "scheduled_s": 4.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0021,
+     "in_chain": true
+    },
+    {
+     "attempt": 5,
+     "scheduled_s": 5.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.003,
+     "in_chain": true
+    },
+    {
+     "attempt": 6,
+     "scheduled_s": 6.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.002,
+     "in_chain": true
+    },
+    {
+     "attempt": 7,
+     "scheduled_s": 7.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0017,
+     "in_chain": true
+    },
+    {
+     "attempt": 8,
+     "scheduled_s": 8.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0012,
+     "in_chain": true
+    },
+    {
+     "attempt": 9,
+     "scheduled_s": 9.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0012,
+     "in_chain": true
+    },
+    {
+     "attempt": 10,
+     "scheduled_s": 10.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0015,
+     "in_chain": true
+    },
+    {
+     "attempt": 11,
+     "scheduled_s": 11.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0025,
+     "in_chain": true
+    },
+    {
+     "attempt": 12,
+     "scheduled_s": 12.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0032,
+     "in_chain": true
+    },
+    {
+     "attempt": 13,
+     "scheduled_s": 13.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0027,
+     "in_chain": true
+    },
+    {
+     "attempt": 14,
+     "scheduled_s": 14.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0027,
+     "in_chain": true
+    },
+    {
+     "attempt": 15,
+     "scheduled_s": 15.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0016,
+     "in_chain": true
+    },
+    {
+     "attempt": 16,
+     "scheduled_s": 16.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0028,
+     "in_chain": true
+    },
+    {
+     "attempt": 17,
+     "scheduled_s": 17.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0016,
+     "in_chain": true
+    },
+    {
+     "attempt": 18,
+     "scheduled_s": 18.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0025,
+     "in_chain": true
+    },
+    {
+     "attempt": 19,
+     "scheduled_s": 19.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0012,
+     "in_chain": true
+    },
+    {
+     "attempt": 20,
+     "scheduled_s": 20.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0043,
+     "in_chain": true
+    },
+    {
+     "attempt": 21,
+     "scheduled_s": 21.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0015,
+     "in_chain": true
+    },
+    {
+     "attempt": 22,
+     "scheduled_s": 22.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0037,
+     "in_chain": true
+    },
+    {
+     "attempt": 23,
+     "scheduled_s": 23.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0011,
+     "in_chain": true
+    },
+    {
+     "attempt": 24,
+     "scheduled_s": 24.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0024,
+     "in_chain": true
+    }
+   ],
+   "scenario": "flood",
+   "repetition": 3
+  },
+  {
+   "daemon": "hardened_linked",
+   "stall_s": 30.0,
+   "slow_client_kinds": [
+    "silent",
+    "slow_headers",
+    "partial_body",
+    "trickle_body"
+   ],
+   "slow_clients_per_kind": 4,
+   "attempt_period_s": 1.0,
+   "attempts_during_stall": 24,
+   "accepted_during_stall": 24,
+   "accepted_within_bound_during_stall": 24,
+   "failed_during_stall": {},
+   "max_latency_accepted_s": 0.0046,
+   "median_latency_accepted_s": 0.0025,
+   "max_latency_all_attempts_s": 0.0046,
+   "late_commits": {
+    "count": 0,
+    "attempts": [],
+    "committed_at_s_after_stall_start": []
+   },
+   "after_stall": {
+    "attempts": 3,
+    "accepted": 3,
+    "max_latency_s": 0.0012
+   },
+   "slow_connections": {
+    "silent": {
+     "connections": 24,
+     "connect_failures": 0,
+     "ended_by_daemon": 24,
+     "held_to_stall_end": 0,
+     "max_hold_when_ended_by_daemon_s": 5.003,
+     "statuses_seen": {}
+    },
+    "slow_headers": {
+     "connections": 12,
+     "connect_failures": 0,
+     "ended_by_daemon": 12,
+     "held_to_stall_end": 0,
+     "max_hold_when_ended_by_daemon_s": 10.004,
+     "statuses_seen": {}
+    },
+    "partial_body": {
+     "connections": 24,
+     "connect_failures": 0,
+     "ended_by_daemon": 20,
+     "held_to_stall_end": 4,
+     "max_hold_when_ended_by_daemon_s": 5.005,
+     "statuses_seen": {
+      "408": 20
+     }
+    },
+    "trickle_body": {
+     "connections": 12,
+     "connect_failures": 0,
+     "ended_by_daemon": 8,
+     "held_to_stall_end": 4,
+     "max_hold_when_ended_by_daemon_s": 10.005,
+     "statuses_seen": {
+      "408": 8
+     }
+    }
+   },
+   "chain": {
+    "records": 27,
+    "seq_consecutive": true,
+    "attempt_order": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23,
+     24,
+     25,
+     26,
+     27
+    ],
+    "chainverify_ok": true,
+    "link": "v2"
+   },
+   "refusals_by_reason": {
+    "body_timeout": 35,
+    "short_body": 1
+   },
+   "attempt_detail": [
+    {
+     "attempt": 1,
+     "scheduled_s": 1.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0042,
+     "in_chain": true
+    },
+    {
+     "attempt": 2,
+     "scheduled_s": 2.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0024,
+     "in_chain": true
+    },
+    {
+     "attempt": 3,
+     "scheduled_s": 3.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0023,
+     "in_chain": true
+    },
+    {
+     "attempt": 4,
+     "scheduled_s": 4.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0018,
+     "in_chain": true
+    },
+    {
+     "attempt": 5,
+     "scheduled_s": 5.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0046,
+     "in_chain": true
+    },
+    {
+     "attempt": 6,
+     "scheduled_s": 6.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0035,
+     "in_chain": true
+    },
+    {
+     "attempt": 7,
+     "scheduled_s": 7.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0025,
+     "in_chain": true
+    },
+    {
+     "attempt": 8,
+     "scheduled_s": 8.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0035,
+     "in_chain": true
+    },
+    {
+     "attempt": 9,
+     "scheduled_s": 9.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0033,
+     "in_chain": true
+    },
+    {
+     "attempt": 10,
+     "scheduled_s": 10.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0017,
+     "in_chain": true
+    },
+    {
+     "attempt": 11,
+     "scheduled_s": 11.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0017,
+     "in_chain": true
+    },
+    {
+     "attempt": 12,
+     "scheduled_s": 12.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0026,
+     "in_chain": true
+    },
+    {
+     "attempt": 13,
+     "scheduled_s": 13.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0009,
+     "in_chain": true
+    },
+    {
+     "attempt": 14,
+     "scheduled_s": 14.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0012,
+     "in_chain": true
+    },
+    {
+     "attempt": 15,
+     "scheduled_s": 15.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0017,
+     "in_chain": true
+    },
+    {
+     "attempt": 16,
+     "scheduled_s": 16.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0037,
+     "in_chain": true
+    },
+    {
+     "attempt": 17,
+     "scheduled_s": 17.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0037,
+     "in_chain": true
+    },
+    {
+     "attempt": 18,
+     "scheduled_s": 18.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0014,
+     "in_chain": true
+    },
+    {
+     "attempt": 19,
+     "scheduled_s": 19.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0015,
+     "in_chain": true
+    },
+    {
+     "attempt": 20,
+     "scheduled_s": 20.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0037,
+     "in_chain": true
+    },
+    {
+     "attempt": 21,
+     "scheduled_s": 21.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0027,
+     "in_chain": true
+    },
+    {
+     "attempt": 22,
+     "scheduled_s": 22.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0018,
+     "in_chain": true
+    },
+    {
+     "attempt": 23,
+     "scheduled_s": 23.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0025,
+     "in_chain": true
+    },
+    {
+     "attempt": 24,
+     "scheduled_s": 24.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0025,
+     "in_chain": true
+    }
+   ],
+   "scenario": "flood",
+   "repetition": 3
+  },
+  {
+   "daemon": "original",
+   "stall_s": 30.0,
+   "slow_client_kinds": [
+    "silent"
+   ],
+   "slow_clients_per_kind": 1,
+   "attempt_period_s": 1.0,
+   "attempts_during_stall": 24,
+   "accepted_during_stall": 0,
+   "accepted_within_bound_during_stall": 0,
+   "failed_during_stall": {
+    "TimeoutError at response": 5,
+    "TimeoutError at connect": 19
+   },
+   "max_latency_accepted_s": null,
+   "median_latency_accepted_s": null,
+   "max_latency_all_attempts_s": 5.0027,
+   "late_commits": {
+    "count": 5,
+    "attempts": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "committed_at_s_after_stall_start": [
+     30.034,
+     30.035,
+     30.036,
+     30.036,
+     30.037
+    ]
+   },
+   "after_stall": {
+    "attempts": 3,
+    "accepted": 3,
+    "max_latency_s": 0.0028
+   },
+   "slow_connections": {
+    "silent": {
+     "connections": 1,
+     "connect_failures": 0,
+     "ended_by_daemon": 0,
+     "held_to_stall_end": 1,
+     "max_hold_when_ended_by_daemon_s": 0.0,
+     "statuses_seen": {}
+    }
+   },
+   "chain": {
+    "records": 8,
+    "seq_consecutive": true,
+    "attempt_order": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     25,
+     26,
+     27
+    ],
+    "chainverify_ok": true,
+    "link": "v1"
+   },
+   "refusals_by_reason": {},
+   "attempt_detail": [
+    {
+     "attempt": 1,
+     "scheduled_s": 1.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "response",
+     "latency_s": 5.001,
+     "in_chain": true
+    },
+    {
+     "attempt": 2,
+     "scheduled_s": 2.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "response",
+     "latency_s": 5.0025,
+     "in_chain": true
+    },
+    {
+     "attempt": 3,
+     "scheduled_s": 3.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "response",
+     "latency_s": 5.0021,
+     "in_chain": true
+    },
+    {
+     "attempt": 4,
+     "scheduled_s": 4.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "response",
+     "latency_s": 5.0026,
+     "in_chain": true
+    },
+    {
+     "attempt": 5,
+     "scheduled_s": 5.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "response",
+     "latency_s": 5.0012,
+     "in_chain": true
+    },
+    {
+     "attempt": 6,
+     "scheduled_s": 6.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.002,
+     "in_chain": false
+    },
+    {
+     "attempt": 7,
+     "scheduled_s": 7.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0022,
+     "in_chain": false
+    },
+    {
+     "attempt": 8,
+     "scheduled_s": 8.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0022,
+     "in_chain": false
+    },
+    {
+     "attempt": 9,
+     "scheduled_s": 9.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.002,
+     "in_chain": false
+    },
+    {
+     "attempt": 10,
+     "scheduled_s": 10.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0022,
+     "in_chain": false
+    },
+    {
+     "attempt": 11,
+     "scheduled_s": 11.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0022,
+     "in_chain": false
+    },
+    {
+     "attempt": 12,
+     "scheduled_s": 12.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0027,
+     "in_chain": false
+    },
+    {
+     "attempt": 13,
+     "scheduled_s": 13.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0022,
+     "in_chain": false
+    },
+    {
+     "attempt": 14,
+     "scheduled_s": 14.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0022,
+     "in_chain": false
+    },
+    {
+     "attempt": 15,
+     "scheduled_s": 15.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0022,
+     "in_chain": false
+    },
+    {
+     "attempt": 16,
+     "scheduled_s": 16.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0022,
+     "in_chain": false
+    },
+    {
+     "attempt": 17,
+     "scheduled_s": 17.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0024,
+     "in_chain": false
+    },
+    {
+     "attempt": 18,
+     "scheduled_s": 18.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0023,
+     "in_chain": false
+    },
+    {
+     "attempt": 19,
+     "scheduled_s": 19.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0019,
+     "in_chain": false
+    },
+    {
+     "attempt": 20,
+     "scheduled_s": 20.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0022,
+     "in_chain": false
+    },
+    {
+     "attempt": 21,
+     "scheduled_s": 21.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0022,
+     "in_chain": false
+    },
+    {
+     "attempt": 22,
+     "scheduled_s": 22.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0004,
+     "in_chain": false
+    },
+    {
+     "attempt": 23,
+     "scheduled_s": 23.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0022,
+     "in_chain": false
+    },
+    {
+     "attempt": 24,
+     "scheduled_s": 24.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0022,
+     "in_chain": false
+    }
+   ],
+   "scenario": "one_silent_client",
+   "repetition": 1
+  },
+  {
+   "daemon": "hardened",
+   "stall_s": 30.0,
+   "slow_client_kinds": [
+    "silent"
+   ],
+   "slow_clients_per_kind": 1,
+   "attempt_period_s": 1.0,
+   "attempts_during_stall": 24,
+   "accepted_during_stall": 24,
+   "accepted_within_bound_during_stall": 24,
+   "failed_during_stall": {},
+   "max_latency_accepted_s": 0.0038,
+   "median_latency_accepted_s": 0.0022,
+   "max_latency_all_attempts_s": 0.0038,
+   "late_commits": {
+    "count": 0,
+    "attempts": [],
+    "committed_at_s_after_stall_start": []
+   },
+   "after_stall": {
+    "attempts": 3,
+    "accepted": 3,
+    "max_latency_s": 0.0019
+   },
+   "slow_connections": {
+    "silent": {
+     "connections": 6,
+     "connect_failures": 0,
+     "ended_by_daemon": 6,
+     "held_to_stall_end": 0,
+     "max_hold_when_ended_by_daemon_s": 5.005,
+     "statuses_seen": {}
+    }
+   },
+   "chain": {
+    "records": 27,
+    "seq_consecutive": true,
+    "attempt_order": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23,
+     24,
+     25,
+     26,
+     27
+    ],
+    "chainverify_ok": true,
+    "link": "v1"
+   },
+   "refusals_by_reason": {},
+   "attempt_detail": [
+    {
+     "attempt": 1,
+     "scheduled_s": 1.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0015,
+     "in_chain": true
+    },
+    {
+     "attempt": 2,
+     "scheduled_s": 2.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0013,
+     "in_chain": true
+    },
+    {
+     "attempt": 3,
+     "scheduled_s": 3.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0008,
+     "in_chain": true
+    },
+    {
+     "attempt": 4,
+     "scheduled_s": 4.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0012,
+     "in_chain": true
+    },
+    {
+     "attempt": 5,
+     "scheduled_s": 5.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.001,
+     "in_chain": true
+    },
+    {
+     "attempt": 6,
+     "scheduled_s": 6.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0018,
+     "in_chain": true
+    },
+    {
+     "attempt": 7,
+     "scheduled_s": 7.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0022,
+     "in_chain": true
+    },
+    {
+     "attempt": 8,
+     "scheduled_s": 8.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0032,
+     "in_chain": true
+    },
+    {
+     "attempt": 9,
+     "scheduled_s": 9.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0023,
+     "in_chain": true
+    },
+    {
+     "attempt": 10,
+     "scheduled_s": 10.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0022,
+     "in_chain": true
+    },
+    {
+     "attempt": 11,
+     "scheduled_s": 11.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0026,
+     "in_chain": true
+    },
+    {
+     "attempt": 12,
+     "scheduled_s": 12.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0024,
+     "in_chain": true
+    },
+    {
+     "attempt": 13,
+     "scheduled_s": 13.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0026,
+     "in_chain": true
+    },
+    {
+     "attempt": 14,
+     "scheduled_s": 14.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0025,
+     "in_chain": true
+    },
+    {
+     "attempt": 15,
+     "scheduled_s": 15.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0021,
+     "in_chain": true
+    },
+    {
+     "attempt": 16,
+     "scheduled_s": 16.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0033,
+     "in_chain": true
+    },
+    {
+     "attempt": 17,
+     "scheduled_s": 17.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0038,
+     "in_chain": true
+    },
+    {
+     "attempt": 18,
+     "scheduled_s": 18.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0023,
+     "in_chain": true
+    },
+    {
+     "attempt": 19,
+     "scheduled_s": 19.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.001,
+     "in_chain": true
+    },
+    {
+     "attempt": 20,
+     "scheduled_s": 20.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0017,
+     "in_chain": true
+    },
+    {
+     "attempt": 21,
+     "scheduled_s": 21.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0026,
+     "in_chain": true
+    },
+    {
+     "attempt": 22,
+     "scheduled_s": 22.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0015,
+     "in_chain": true
+    },
+    {
+     "attempt": 23,
+     "scheduled_s": 23.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0025,
+     "in_chain": true
+    },
+    {
+     "attempt": 24,
+     "scheduled_s": 24.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0021,
+     "in_chain": true
+    }
+   ],
+   "scenario": "one_silent_client",
+   "repetition": 1
+  },
+  {
+   "daemon": "hardened_linked",
+   "stall_s": 30.0,
+   "slow_client_kinds": [
+    "silent"
+   ],
+   "slow_clients_per_kind": 1,
+   "attempt_period_s": 1.0,
+   "attempts_during_stall": 24,
+   "accepted_during_stall": 24,
+   "accepted_within_bound_during_stall": 24,
+   "failed_during_stall": {},
+   "max_latency_accepted_s": 0.0037,
+   "median_latency_accepted_s": 0.0024,
+   "max_latency_all_attempts_s": 0.0037,
+   "late_commits": {
+    "count": 0,
+    "attempts": [],
+    "committed_at_s_after_stall_start": []
+   },
+   "after_stall": {
+    "attempts": 3,
+    "accepted": 3,
+    "max_latency_s": 0.0035
+   },
+   "slow_connections": {
+    "silent": {
+     "connections": 6,
+     "connect_failures": 0,
+     "ended_by_daemon": 6,
+     "held_to_stall_end": 0,
+     "max_hold_when_ended_by_daemon_s": 5.003,
+     "statuses_seen": {}
+    }
+   },
+   "chain": {
+    "records": 27,
+    "seq_consecutive": true,
+    "attempt_order": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23,
+     24,
+     25,
+     26,
+     27
+    ],
+    "chainverify_ok": true,
+    "link": "v2"
+   },
+   "refusals_by_reason": {},
+   "attempt_detail": [
+    {
+     "attempt": 1,
+     "scheduled_s": 1.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0031,
+     "in_chain": true
+    },
+    {
+     "attempt": 2,
+     "scheduled_s": 2.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0021,
+     "in_chain": true
+    },
+    {
+     "attempt": 3,
+     "scheduled_s": 3.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0015,
+     "in_chain": true
+    },
+    {
+     "attempt": 4,
+     "scheduled_s": 4.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0014,
+     "in_chain": true
+    },
+    {
+     "attempt": 5,
+     "scheduled_s": 5.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.003,
+     "in_chain": true
+    },
+    {
+     "attempt": 6,
+     "scheduled_s": 6.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0009,
+     "in_chain": true
+    },
+    {
+     "attempt": 7,
+     "scheduled_s": 7.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0014,
+     "in_chain": true
+    },
+    {
+     "attempt": 8,
+     "scheduled_s": 8.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0012,
+     "in_chain": true
+    },
+    {
+     "attempt": 9,
+     "scheduled_s": 9.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0017,
+     "in_chain": true
+    },
+    {
+     "attempt": 10,
+     "scheduled_s": 10.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.003,
+     "in_chain": true
+    },
+    {
+     "attempt": 11,
+     "scheduled_s": 11.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0022,
+     "in_chain": true
+    },
+    {
+     "attempt": 12,
+     "scheduled_s": 12.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0033,
+     "in_chain": true
+    },
+    {
+     "attempt": 13,
+     "scheduled_s": 13.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0037,
+     "in_chain": true
+    },
+    {
+     "attempt": 14,
+     "scheduled_s": 14.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0028,
+     "in_chain": true
+    },
+    {
+     "attempt": 15,
+     "scheduled_s": 15.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0023,
+     "in_chain": true
+    },
+    {
+     "attempt": 16,
+     "scheduled_s": 16.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0026,
+     "in_chain": true
+    },
+    {
+     "attempt": 17,
+     "scheduled_s": 17.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0012,
+     "in_chain": true
+    },
+    {
+     "attempt": 18,
+     "scheduled_s": 18.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.001,
+     "in_chain": true
+    },
+    {
+     "attempt": 19,
+     "scheduled_s": 19.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0031,
+     "in_chain": true
+    },
+    {
+     "attempt": 20,
+     "scheduled_s": 20.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0014,
+     "in_chain": true
+    },
+    {
+     "attempt": 21,
+     "scheduled_s": 21.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0027,
+     "in_chain": true
+    },
+    {
+     "attempt": 22,
+     "scheduled_s": 22.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0025,
+     "in_chain": true
+    },
+    {
+     "attempt": 23,
+     "scheduled_s": 23.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0034,
+     "in_chain": true
+    },
+    {
+     "attempt": 24,
+     "scheduled_s": 24.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0031,
+     "in_chain": true
+    }
+   ],
+   "scenario": "one_silent_client",
+   "repetition": 1
+  },
+  {
+   "daemon": "original",
+   "stall_s": 30.0,
+   "slow_client_kinds": [
+    "silent"
+   ],
+   "slow_clients_per_kind": 1,
+   "attempt_period_s": 1.0,
+   "attempts_during_stall": 24,
+   "accepted_during_stall": 0,
+   "accepted_within_bound_during_stall": 0,
+   "failed_during_stall": {
+    "TimeoutError at response": 5,
+    "TimeoutError at connect": 19
+   },
+   "max_latency_accepted_s": null,
+   "median_latency_accepted_s": null,
+   "max_latency_all_attempts_s": 5.003,
+   "late_commits": {
+    "count": 5,
+    "attempts": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "committed_at_s_after_stall_start": [
+     30.091,
+     30.092,
+     30.092,
+     30.093,
+     30.093
+    ]
+   },
+   "after_stall": {
+    "attempts": 3,
+    "accepted": 3,
+    "max_latency_s": 0.0015
+   },
+   "slow_connections": {
+    "silent": {
+     "connections": 1,
+     "connect_failures": 0,
+     "ended_by_daemon": 0,
+     "held_to_stall_end": 1,
+     "max_hold_when_ended_by_daemon_s": 0.0,
+     "statuses_seen": {}
+    }
+   },
+   "chain": {
+    "records": 8,
+    "seq_consecutive": true,
+    "attempt_order": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     25,
+     26,
+     27
+    ],
+    "chainverify_ok": true,
+    "link": "v1"
+   },
+   "refusals_by_reason": {},
+   "attempt_detail": [
+    {
+     "attempt": 1,
+     "scheduled_s": 1.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "response",
+     "latency_s": 5.0028,
+     "in_chain": true
+    },
+    {
+     "attempt": 2,
+     "scheduled_s": 2.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "response",
+     "latency_s": 5.001,
+     "in_chain": true
+    },
+    {
+     "attempt": 3,
+     "scheduled_s": 3.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "response",
+     "latency_s": 5.0018,
+     "in_chain": true
+    },
+    {
+     "attempt": 4,
+     "scheduled_s": 4.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "response",
+     "latency_s": 5.0028,
+     "in_chain": true
+    },
+    {
+     "attempt": 5,
+     "scheduled_s": 5.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "response",
+     "latency_s": 5.0014,
+     "in_chain": true
+    },
+    {
+     "attempt": 6,
+     "scheduled_s": 6.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.003,
+     "in_chain": false
+    },
+    {
+     "attempt": 7,
+     "scheduled_s": 7.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0026,
+     "in_chain": false
+    },
+    {
+     "attempt": 8,
+     "scheduled_s": 8.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0005,
+     "in_chain": false
+    },
+    {
+     "attempt": 9,
+     "scheduled_s": 9.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0029,
+     "in_chain": false
+    },
+    {
+     "attempt": 10,
+     "scheduled_s": 10.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0023,
+     "in_chain": false
+    },
+    {
+     "attempt": 11,
+     "scheduled_s": 11.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0011,
+     "in_chain": false
+    },
+    {
+     "attempt": 12,
+     "scheduled_s": 12.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0013,
+     "in_chain": false
+    },
+    {
+     "attempt": 13,
+     "scheduled_s": 13.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0023,
+     "in_chain": false
+    },
+    {
+     "attempt": 14,
+     "scheduled_s": 14.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0014,
+     "in_chain": false
+    },
+    {
+     "attempt": 15,
+     "scheduled_s": 15.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0027,
+     "in_chain": false
+    },
+    {
+     "attempt": 16,
+     "scheduled_s": 16.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0025,
+     "in_chain": false
+    },
+    {
+     "attempt": 17,
+     "scheduled_s": 17.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0025,
+     "in_chain": false
+    },
+    {
+     "attempt": 18,
+     "scheduled_s": 18.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0022,
+     "in_chain": false
+    },
+    {
+     "attempt": 19,
+     "scheduled_s": 19.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0012,
+     "in_chain": false
+    },
+    {
+     "attempt": 20,
+     "scheduled_s": 20.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0011,
+     "in_chain": false
+    },
+    {
+     "attempt": 21,
+     "scheduled_s": 21.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0022,
+     "in_chain": false
+    },
+    {
+     "attempt": 22,
+     "scheduled_s": 22.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0023,
+     "in_chain": false
+    },
+    {
+     "attempt": 23,
+     "scheduled_s": 23.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0023,
+     "in_chain": false
+    },
+    {
+     "attempt": 24,
+     "scheduled_s": 24.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0005,
+     "in_chain": false
+    }
+   ],
+   "scenario": "one_silent_client",
+   "repetition": 2
+  },
+  {
+   "daemon": "hardened",
+   "stall_s": 30.0,
+   "slow_client_kinds": [
+    "silent"
+   ],
+   "slow_clients_per_kind": 1,
+   "attempt_period_s": 1.0,
+   "attempts_during_stall": 24,
+   "accepted_during_stall": 24,
+   "accepted_within_bound_during_stall": 24,
+   "failed_during_stall": {},
+   "max_latency_accepted_s": 0.0019,
+   "median_latency_accepted_s": 0.0011,
+   "max_latency_all_attempts_s": 0.0019,
+   "late_commits": {
+    "count": 0,
+    "attempts": [],
+    "committed_at_s_after_stall_start": []
+   },
+   "after_stall": {
+    "attempts": 3,
+    "accepted": 3,
+    "max_latency_s": 0.0013
+   },
+   "slow_connections": {
+    "silent": {
+     "connections": 6,
+     "connect_failures": 0,
+     "ended_by_daemon": 6,
+     "held_to_stall_end": 0,
+     "max_hold_when_ended_by_daemon_s": 5.002,
+     "statuses_seen": {}
+    }
+   },
+   "chain": {
+    "records": 27,
+    "seq_consecutive": true,
+    "attempt_order": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23,
+     24,
+     25,
+     26,
+     27
+    ],
+    "chainverify_ok": true,
+    "link": "v1"
+   },
+   "refusals_by_reason": {},
+   "attempt_detail": [
+    {
+     "attempt": 1,
+     "scheduled_s": 1.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0019,
+     "in_chain": true
+    },
+    {
+     "attempt": 2,
+     "scheduled_s": 2.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0011,
+     "in_chain": true
+    },
+    {
+     "attempt": 3,
+     "scheduled_s": 3.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0015,
+     "in_chain": true
+    },
+    {
+     "attempt": 4,
+     "scheduled_s": 4.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0011,
+     "in_chain": true
+    },
+    {
+     "attempt": 5,
+     "scheduled_s": 5.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0011,
+     "in_chain": true
+    },
+    {
+     "attempt": 6,
+     "scheduled_s": 6.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0011,
+     "in_chain": true
+    },
+    {
+     "attempt": 7,
+     "scheduled_s": 7.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0013,
+     "in_chain": true
+    },
+    {
+     "attempt": 8,
+     "scheduled_s": 8.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0012,
+     "in_chain": true
+    },
+    {
+     "attempt": 9,
+     "scheduled_s": 9.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0013,
+     "in_chain": true
+    },
+    {
+     "attempt": 10,
+     "scheduled_s": 10.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0011,
+     "in_chain": true
+    },
+    {
+     "attempt": 11,
+     "scheduled_s": 11.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0011,
+     "in_chain": true
+    },
+    {
+     "attempt": 12,
+     "scheduled_s": 12.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.001,
+     "in_chain": true
+    },
+    {
+     "attempt": 13,
+     "scheduled_s": 13.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0008,
+     "in_chain": true
+    },
+    {
+     "attempt": 14,
+     "scheduled_s": 14.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0009,
+     "in_chain": true
+    },
+    {
+     "attempt": 15,
+     "scheduled_s": 15.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0014,
+     "in_chain": true
+    },
+    {
+     "attempt": 16,
+     "scheduled_s": 16.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0007,
+     "in_chain": true
+    },
+    {
+     "attempt": 17,
+     "scheduled_s": 17.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0014,
+     "in_chain": true
+    },
+    {
+     "attempt": 18,
+     "scheduled_s": 18.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0014,
+     "in_chain": true
+    },
+    {
+     "attempt": 19,
+     "scheduled_s": 19.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0009,
+     "in_chain": true
+    },
+    {
+     "attempt": 20,
+     "scheduled_s": 20.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0009,
+     "in_chain": true
+    },
+    {
+     "attempt": 21,
+     "scheduled_s": 21.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0009,
+     "in_chain": true
+    },
+    {
+     "attempt": 22,
+     "scheduled_s": 22.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.001,
+     "in_chain": true
+    },
+    {
+     "attempt": 23,
+     "scheduled_s": 23.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0011,
+     "in_chain": true
+    },
+    {
+     "attempt": 24,
+     "scheduled_s": 24.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0011,
+     "in_chain": true
+    }
+   ],
+   "scenario": "one_silent_client",
+   "repetition": 2
+  },
+  {
+   "daemon": "hardened_linked",
+   "stall_s": 30.0,
+   "slow_client_kinds": [
+    "silent"
+   ],
+   "slow_clients_per_kind": 1,
+   "attempt_period_s": 1.0,
+   "attempts_during_stall": 24,
+   "accepted_during_stall": 24,
+   "accepted_within_bound_during_stall": 24,
+   "failed_during_stall": {},
+   "max_latency_accepted_s": 0.0045,
+   "median_latency_accepted_s": 0.0025,
+   "max_latency_all_attempts_s": 0.0045,
+   "late_commits": {
+    "count": 0,
+    "attempts": [],
+    "committed_at_s_after_stall_start": []
+   },
+   "after_stall": {
+    "attempts": 3,
+    "accepted": 3,
+    "max_latency_s": 0.0037
+   },
+   "slow_connections": {
+    "silent": {
+     "connections": 6,
+     "connect_failures": 0,
+     "ended_by_daemon": 6,
+     "held_to_stall_end": 0,
+     "max_hold_when_ended_by_daemon_s": 5.003,
+     "statuses_seen": {}
+    }
+   },
+   "chain": {
+    "records": 27,
+    "seq_consecutive": true,
+    "attempt_order": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23,
+     24,
+     25,
+     26,
+     27
+    ],
+    "chainverify_ok": true,
+    "link": "v2"
+   },
+   "refusals_by_reason": {},
+   "attempt_detail": [
+    {
+     "attempt": 1,
+     "scheduled_s": 1.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0045,
+     "in_chain": true
+    },
+    {
+     "attempt": 2,
+     "scheduled_s": 2.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0029,
+     "in_chain": true
+    },
+    {
+     "attempt": 3,
+     "scheduled_s": 3.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0035,
+     "in_chain": true
+    },
+    {
+     "attempt": 4,
+     "scheduled_s": 4.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0025,
+     "in_chain": true
+    },
+    {
+     "attempt": 5,
+     "scheduled_s": 5.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0027,
+     "in_chain": true
+    },
+    {
+     "attempt": 6,
+     "scheduled_s": 6.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0015,
+     "in_chain": true
+    },
+    {
+     "attempt": 7,
+     "scheduled_s": 7.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0015,
+     "in_chain": true
+    },
+    {
+     "attempt": 8,
+     "scheduled_s": 8.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0017,
+     "in_chain": true
+    },
+    {
+     "attempt": 9,
+     "scheduled_s": 9.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0021,
+     "in_chain": true
+    },
+    {
+     "attempt": 10,
+     "scheduled_s": 10.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0014,
+     "in_chain": true
+    },
+    {
+     "attempt": 11,
+     "scheduled_s": 11.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0027,
+     "in_chain": true
+    },
+    {
+     "attempt": 12,
+     "scheduled_s": 12.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0036,
+     "in_chain": true
+    },
+    {
+     "attempt": 13,
+     "scheduled_s": 13.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0033,
+     "in_chain": true
+    },
+    {
+     "attempt": 14,
+     "scheduled_s": 14.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0025,
+     "in_chain": true
+    },
+    {
+     "attempt": 15,
+     "scheduled_s": 15.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0017,
+     "in_chain": true
+    },
+    {
+     "attempt": 16,
+     "scheduled_s": 16.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0026,
+     "in_chain": true
+    },
+    {
+     "attempt": 17,
+     "scheduled_s": 17.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0024,
+     "in_chain": true
+    },
+    {
+     "attempt": 18,
+     "scheduled_s": 18.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0024,
+     "in_chain": true
+    },
+    {
+     "attempt": 19,
+     "scheduled_s": 19.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0025,
+     "in_chain": true
+    },
+    {
+     "attempt": 20,
+     "scheduled_s": 20.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0032,
+     "in_chain": true
+    },
+    {
+     "attempt": 21,
+     "scheduled_s": 21.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0031,
+     "in_chain": true
+    },
+    {
+     "attempt": 22,
+     "scheduled_s": 22.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0026,
+     "in_chain": true
+    },
+    {
+     "attempt": 23,
+     "scheduled_s": 23.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0022,
+     "in_chain": true
+    },
+    {
+     "attempt": 24,
+     "scheduled_s": 24.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0016,
+     "in_chain": true
+    }
+   ],
+   "scenario": "one_silent_client",
+   "repetition": 2
+  },
+  {
+   "daemon": "original",
+   "stall_s": 30.0,
+   "slow_client_kinds": [
+    "silent"
+   ],
+   "slow_clients_per_kind": 1,
+   "attempt_period_s": 1.0,
+   "attempts_during_stall": 24,
+   "accepted_during_stall": 0,
+   "accepted_within_bound_during_stall": 0,
+   "failed_during_stall": {
+    "TimeoutError at response": 5,
+    "TimeoutError at connect": 19
+   },
+   "max_latency_accepted_s": null,
+   "median_latency_accepted_s": null,
+   "max_latency_all_attempts_s": 5.0042,
+   "late_commits": {
+    "count": 5,
+    "attempts": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "committed_at_s_after_stall_start": [
+     30.082,
+     30.083,
+     30.083,
+     30.083,
+     30.083
+    ]
+   },
+   "after_stall": {
+    "attempts": 3,
+    "accepted": 3,
+    "max_latency_s": 0.0015
+   },
+   "slow_connections": {
+    "silent": {
+     "connections": 1,
+     "connect_failures": 0,
+     "ended_by_daemon": 0,
+     "held_to_stall_end": 1,
+     "max_hold_when_ended_by_daemon_s": 0.0,
+     "statuses_seen": {}
+    }
+   },
+   "chain": {
+    "records": 8,
+    "seq_consecutive": true,
+    "attempt_order": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     25,
+     26,
+     27
+    ],
+    "chainverify_ok": true,
+    "link": "v1"
+   },
+   "refusals_by_reason": {},
+   "attempt_detail": [
+    {
+     "attempt": 1,
+     "scheduled_s": 1.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "response",
+     "latency_s": 5.0032,
+     "in_chain": true
+    },
+    {
+     "attempt": 2,
+     "scheduled_s": 2.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "response",
+     "latency_s": 5.0042,
+     "in_chain": true
+    },
+    {
+     "attempt": 3,
+     "scheduled_s": 3.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "response",
+     "latency_s": 5.0008,
+     "in_chain": true
+    },
+    {
+     "attempt": 4,
+     "scheduled_s": 4.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "response",
+     "latency_s": 5.0028,
+     "in_chain": true
+    },
+    {
+     "attempt": 5,
+     "scheduled_s": 5.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "response",
+     "latency_s": 5.0026,
+     "in_chain": true
+    },
+    {
+     "attempt": 6,
+     "scheduled_s": 6.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0025,
+     "in_chain": false
+    },
+    {
+     "attempt": 7,
+     "scheduled_s": 7.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0022,
+     "in_chain": false
+    },
+    {
+     "attempt": 8,
+     "scheduled_s": 8.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0015,
+     "in_chain": false
+    },
+    {
+     "attempt": 9,
+     "scheduled_s": 9.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0025,
+     "in_chain": false
+    },
+    {
+     "attempt": 10,
+     "scheduled_s": 10.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0024,
+     "in_chain": false
+    },
+    {
+     "attempt": 11,
+     "scheduled_s": 11.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0006,
+     "in_chain": false
+    },
+    {
+     "attempt": 12,
+     "scheduled_s": 12.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0015,
+     "in_chain": false
+    },
+    {
+     "attempt": 13,
+     "scheduled_s": 13.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0024,
+     "in_chain": false
+    },
+    {
+     "attempt": 14,
+     "scheduled_s": 14.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.001,
+     "in_chain": false
+    },
+    {
+     "attempt": 15,
+     "scheduled_s": 15.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0024,
+     "in_chain": false
+    },
+    {
+     "attempt": 16,
+     "scheduled_s": 16.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0016,
+     "in_chain": false
+    },
+    {
+     "attempt": 17,
+     "scheduled_s": 17.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0018,
+     "in_chain": false
+    },
+    {
+     "attempt": 18,
+     "scheduled_s": 18.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0012,
+     "in_chain": false
+    },
+    {
+     "attempt": 19,
+     "scheduled_s": 19.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0026,
+     "in_chain": false
+    },
+    {
+     "attempt": 20,
+     "scheduled_s": 20.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0026,
+     "in_chain": false
+    },
+    {
+     "attempt": 21,
+     "scheduled_s": 21.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0025,
+     "in_chain": false
+    },
+    {
+     "attempt": 22,
+     "scheduled_s": 22.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0023,
+     "in_chain": false
+    },
+    {
+     "attempt": 23,
+     "scheduled_s": 23.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.0016,
+     "in_chain": false
+    },
+    {
+     "attempt": 24,
+     "scheduled_s": 24.0,
+     "status": null,
+     "error": "TimeoutError",
+     "failed_at": "connect",
+     "latency_s": 5.002,
+     "in_chain": false
+    }
+   ],
+   "scenario": "one_silent_client",
+   "repetition": 3
+  },
+  {
+   "daemon": "hardened",
+   "stall_s": 30.0,
+   "slow_client_kinds": [
+    "silent"
+   ],
+   "slow_clients_per_kind": 1,
+   "attempt_period_s": 1.0,
+   "attempts_during_stall": 24,
+   "accepted_during_stall": 24,
+   "accepted_within_bound_during_stall": 24,
+   "failed_during_stall": {},
+   "max_latency_accepted_s": 0.0034,
+   "median_latency_accepted_s": 0.0021,
+   "max_latency_all_attempts_s": 0.0034,
+   "late_commits": {
+    "count": 0,
+    "attempts": [],
+    "committed_at_s_after_stall_start": []
+   },
+   "after_stall": {
+    "attempts": 3,
+    "accepted": 3,
+    "max_latency_s": 0.0025
+   },
+   "slow_connections": {
+    "silent": {
+     "connections": 6,
+     "connect_failures": 0,
+     "ended_by_daemon": 6,
+     "held_to_stall_end": 0,
+     "max_hold_when_ended_by_daemon_s": 5.002,
+     "statuses_seen": {}
+    }
+   },
+   "chain": {
+    "records": 27,
+    "seq_consecutive": true,
+    "attempt_order": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23,
+     24,
+     25,
+     26,
+     27
+    ],
+    "chainverify_ok": true,
+    "link": "v1"
+   },
+   "refusals_by_reason": {},
+   "attempt_detail": [
+    {
+     "attempt": 1,
+     "scheduled_s": 1.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0018,
+     "in_chain": true
+    },
+    {
+     "attempt": 2,
+     "scheduled_s": 2.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0015,
+     "in_chain": true
+    },
+    {
+     "attempt": 3,
+     "scheduled_s": 3.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0011,
+     "in_chain": true
+    },
+    {
+     "attempt": 4,
+     "scheduled_s": 4.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0013,
+     "in_chain": true
+    },
+    {
+     "attempt": 5,
+     "scheduled_s": 5.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0021,
+     "in_chain": true
+    },
+    {
+     "attempt": 6,
+     "scheduled_s": 6.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0034,
+     "in_chain": true
+    },
+    {
+     "attempt": 7,
+     "scheduled_s": 7.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0014,
+     "in_chain": true
+    },
+    {
+     "attempt": 8,
+     "scheduled_s": 8.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0027,
+     "in_chain": true
+    },
+    {
+     "attempt": 9,
+     "scheduled_s": 9.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0028,
+     "in_chain": true
+    },
+    {
+     "attempt": 10,
+     "scheduled_s": 10.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0022,
+     "in_chain": true
+    },
+    {
+     "attempt": 11,
+     "scheduled_s": 11.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0033,
+     "in_chain": true
+    },
+    {
+     "attempt": 12,
+     "scheduled_s": 12.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0013,
+     "in_chain": true
+    },
+    {
+     "attempt": 13,
+     "scheduled_s": 13.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0027,
+     "in_chain": true
+    },
+    {
+     "attempt": 14,
+     "scheduled_s": 14.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0021,
+     "in_chain": true
+    },
+    {
+     "attempt": 15,
+     "scheduled_s": 15.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0021,
+     "in_chain": true
+    },
+    {
+     "attempt": 16,
+     "scheduled_s": 16.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0025,
+     "in_chain": true
+    },
+    {
+     "attempt": 17,
+     "scheduled_s": 17.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0025,
+     "in_chain": true
+    },
+    {
+     "attempt": 18,
+     "scheduled_s": 18.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0033,
+     "in_chain": true
+    },
+    {
+     "attempt": 19,
+     "scheduled_s": 19.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.001,
+     "in_chain": true
+    },
+    {
+     "attempt": 20,
+     "scheduled_s": 20.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0031,
+     "in_chain": true
+    },
+    {
+     "attempt": 21,
+     "scheduled_s": 21.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0015,
+     "in_chain": true
+    },
+    {
+     "attempt": 22,
+     "scheduled_s": 22.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0032,
+     "in_chain": true
+    },
+    {
+     "attempt": 23,
+     "scheduled_s": 23.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0025,
+     "in_chain": true
+    },
+    {
+     "attempt": 24,
+     "scheduled_s": 24.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0013,
+     "in_chain": true
+    }
+   ],
+   "scenario": "one_silent_client",
+   "repetition": 3
+  },
+  {
+   "daemon": "hardened_linked",
+   "stall_s": 30.0,
+   "slow_client_kinds": [
+    "silent"
+   ],
+   "slow_clients_per_kind": 1,
+   "attempt_period_s": 1.0,
+   "attempts_during_stall": 24,
+   "accepted_during_stall": 24,
+   "accepted_within_bound_during_stall": 24,
+   "failed_during_stall": {},
+   "max_latency_accepted_s": 0.0037,
+   "median_latency_accepted_s": 0.0024,
+   "max_latency_all_attempts_s": 0.0037,
+   "late_commits": {
+    "count": 0,
+    "attempts": [],
+    "committed_at_s_after_stall_start": []
+   },
+   "after_stall": {
+    "attempts": 3,
+    "accepted": 3,
+    "max_latency_s": 0.0031
+   },
+   "slow_connections": {
+    "silent": {
+     "connections": 6,
+     "connect_failures": 0,
+     "ended_by_daemon": 6,
+     "held_to_stall_end": 0,
+     "max_hold_when_ended_by_daemon_s": 5.003,
+     "statuses_seen": {}
+    }
+   },
+   "chain": {
+    "records": 27,
+    "seq_consecutive": true,
+    "attempt_order": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23,
+     24,
+     25,
+     26,
+     27
+    ],
+    "chainverify_ok": true,
+    "link": "v2"
+   },
+   "refusals_by_reason": {},
+   "attempt_detail": [
+    {
+     "attempt": 1,
+     "scheduled_s": 1.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0029,
+     "in_chain": true
+    },
+    {
+     "attempt": 2,
+     "scheduled_s": 2.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0027,
+     "in_chain": true
+    },
+    {
+     "attempt": 3,
+     "scheduled_s": 3.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0031,
+     "in_chain": true
+    },
+    {
+     "attempt": 4,
+     "scheduled_s": 4.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0036,
+     "in_chain": true
+    },
+    {
+     "attempt": 5,
+     "scheduled_s": 5.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0024,
+     "in_chain": true
+    },
+    {
+     "attempt": 6,
+     "scheduled_s": 6.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0024,
+     "in_chain": true
+    },
+    {
+     "attempt": 7,
+     "scheduled_s": 7.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0029,
+     "in_chain": true
+    },
+    {
+     "attempt": 8,
+     "scheduled_s": 8.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.002,
+     "in_chain": true
+    },
+    {
+     "attempt": 9,
+     "scheduled_s": 9.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0024,
+     "in_chain": true
+    },
+    {
+     "attempt": 10,
+     "scheduled_s": 10.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0024,
+     "in_chain": true
+    },
+    {
+     "attempt": 11,
+     "scheduled_s": 11.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0023,
+     "in_chain": true
+    },
+    {
+     "attempt": 12,
+     "scheduled_s": 12.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0024,
+     "in_chain": true
+    },
+    {
+     "attempt": 13,
+     "scheduled_s": 13.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0011,
+     "in_chain": true
+    },
+    {
+     "attempt": 14,
+     "scheduled_s": 14.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0012,
+     "in_chain": true
+    },
+    {
+     "attempt": 15,
+     "scheduled_s": 15.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0013,
+     "in_chain": true
+    },
+    {
+     "attempt": 16,
+     "scheduled_s": 16.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0008,
+     "in_chain": true
+    },
+    {
+     "attempt": 17,
+     "scheduled_s": 17.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0013,
+     "in_chain": true
+    },
+    {
+     "attempt": 18,
+     "scheduled_s": 18.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0011,
+     "in_chain": true
+    },
+    {
+     "attempt": 19,
+     "scheduled_s": 19.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0012,
+     "in_chain": true
+    },
+    {
+     "attempt": 20,
+     "scheduled_s": 20.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0023,
+     "in_chain": true
+    },
+    {
+     "attempt": 21,
+     "scheduled_s": 21.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0023,
+     "in_chain": true
+    },
+    {
+     "attempt": 22,
+     "scheduled_s": 22.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0037,
+     "in_chain": true
+    },
+    {
+     "attempt": 23,
+     "scheduled_s": 23.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0032,
+     "in_chain": true
+    },
+    {
+     "attempt": 24,
+     "scheduled_s": 24.0,
+     "status": 200,
+     "error": null,
+     "failed_at": null,
+     "latency_s": 0.0027,
+     "in_chain": true
+    }
+   ],
+   "scenario": "one_silent_client",
+   "repetition": 3
+  }
+ ]
+}

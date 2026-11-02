@@ -1,0 +1,56 @@
+{
+ "result_file": "exp/out/r2_2026.10.0b2_laundering_render.json",
+ "ha_version": "2026.10.0b2",
+ "frontend": "20260930.1",
+ "agreement": "116/120",
+ "n_disagreements": 4,
+ "method": "recomputed from the retained /tmp/r2_laundering_render_2026.10.0b2.json per-trial rendered top line and rule output; no re-run",
+ "normalizer": "By automation*->automation; By X->user:X; Via X->integration:x; None/''->none; rule automation:*->automation",
+ "disagreements": [
+  {
+   "room": "kitchen",
+   "trial": 1,
+   "viewer": "admin",
+   "phase": "before",
+   "rendered_text": "Via Lock",
+   "rendered_norm": "integration:lock",
+   "rule_output": "none",
+   "rule_norm": "none",
+   "cause": "rule-side logbook-REST read lag: rule row resolved to 'none' while the DB/render showed the cause (timing artifact, not a frontend or wording change)"
+  },
+  {
+   "room": "kitchen",
+   "trial": 1,
+   "viewer": "admin",
+   "phase": "after",
+   "rendered_text": "By automation: Kitchen motion light",
+   "rendered_norm": "automation",
+   "rule_output": "none",
+   "rule_norm": "none",
+   "cause": "rule-side logbook-REST read lag: rule row resolved to 'none' while the DB/render showed the cause (timing artifact, not a frontend or wording change)"
+  },
+  {
+   "room": "kitchen",
+   "trial": 1,
+   "viewer": "non_admin",
+   "phase": "before",
+   "rendered_text": "Via Lock",
+   "rendered_norm": "integration:lock",
+   "rule_output": "none",
+   "rule_norm": "none",
+   "cause": "rule-side logbook-REST read lag: rule row resolved to 'none' while the DB/render showed the cause (timing artifact, not a frontend or wording change)"
+  },
+  {
+   "room": "kitchen",
+   "trial": 1,
+   "viewer": "non_admin",
+   "phase": "after",
+   "rendered_text": "By automation: Kitchen motion light",
+   "rendered_norm": "automation",
+   "rule_output": "none",
+   "rule_norm": "none",
+   "cause": "rule-side logbook-REST read lag: rule row resolved to 'none' while the DB/render showed the cause (timing artifact, not a frontend or wording change)"
+  }
+ ],
+ "summary": "all 4 disagreements are rule-side logbook-REST read-timing artifacts on the BASELINE phase: the rule reads the unlock row via GET /api/logbook which can briefly lag the just-written DB state, resolving to 'none' for that capture, while the rendered Activity top line correctly showed 'Via Lock'. No surface wording the normalizer misses, and no 20260930.1 frontend change: the rendered strings are identical in form to 2026.9.4 ('Via Lock' / 'By automation: <room> motion light'). The rendered laundering result is 30/30."
+}

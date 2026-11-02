@@ -1,0 +1,6960 @@
+{
+ "experiment": "E-DZ",
+ "arm": "laundering",
+ "what": "laundering analogue: a household member's app unlock rewritten post-commit so its displayed User is the configuration's motion-light automation (EventSystem/<configuration>_motion_light)",
+ "substrate": "Domoticz 2026.3 (build f734fde31) in container dz-domoticz on an internal network, TZ=UTC, three motion-light configurations (porch, hallway, kitchen)",
+ "oracle": "the platform's own renderer, json.htm?type=command&param=getlightlog (the API behind the device Log page's Text log table), read per viewer role (owner/Admin, member/User, guest/Viewer); plus the web UI's Text log table rendered in a browser per role",
+ "monitor_scheme_live": "closure",
+ "node_encoding": "v2",
+ "counting_rule": "a trial is detected when the one-second segment of the row it edited is a violation and the late-row test finds it attributable (delta_n <= 0); ambiguous (delta_n > 0) counts as not detected; a trial touches every second holding a row it wrote or named; benign floor = failing untouched anchored one-second segments over all untouched anchored one-second segments",
+ "rooms": [
+  "porch",
+  "hallway",
+  "kitchen"
+ ],
+ "per_room_reports": [
+  {
+   "room": "porch",
+   "lock_device_idx": 4,
+   "light_device_idx": 1,
+   "n_trials": 20,
+   "host_minus_vm_s": -0.04386544227600098
+  },
+  {
+   "room": "hallway",
+   "lock_device_idx": 4,
+   "light_device_idx": 2,
+   "n_trials": 20,
+   "host_minus_vm_s": -0.05474042892456055
+  },
+  {
+   "room": "kitchen",
+   "lock_device_idx": 4,
+   "light_device_idx": 3,
+   "n_trials": 20,
+   "host_minus_vm_s": -0.04761481285095215
+  }
+ ],
+ "result": {
+  "n_trials": 30,
+  "n_valid": 30,
+  "failures": [],
+  "renderer_confirmed_misattribution_all_roles": {
+   "k": 30,
+   "n": 30,
+   "prop": 1.0,
+   "ci_lo": 0.8842966917779722,
+   "ci_hi": 1.0,
+   "method": "Clopper-Pearson exact"
+  },
+  "misattribution_per_role": {
+   "owner": {
+    "rights": "Admin",
+    "k": 30,
+    "n": 30,
+    "prop": 1.0,
+    "ci_lo": 0.8842966917779722,
+    "ci_hi": 1.0,
+    "method": "Clopper-Pearson exact"
+   },
+   "member": {
+    "rights": "User",
+    "k": 30,
+    "n": 30,
+    "prop": 1.0,
+    "ci_lo": 0.8842966917779722,
+    "ci_hi": 1.0,
+    "method": "Clopper-Pearson exact"
+   },
+   "guest": {
+    "rights": "Viewer",
+    "k": 30,
+    "n": 30,
+    "prop": 1.0,
+    "ci_lo": 0.8842966917779722,
+    "ci_hi": 1.0,
+    "method": "Clopper-Pearson exact"
+   }
+  },
+  "principal_moved_per_role": {
+   "owner": {
+    "k": 30,
+    "n": 30,
+    "prop": 1.0,
+    "ci_lo": 0.8842966917779722,
+    "ci_hi": 1.0,
+    "method": "Clopper-Pearson exact"
+   },
+   "member": {
+    "k": 30,
+    "n": 30,
+    "prop": 1.0,
+    "ci_lo": 0.8842966917779722,
+    "ci_hi": 1.0,
+    "method": "Clopper-Pearson exact"
+   },
+   "guest": {
+    "k": 30,
+    "n": 30,
+    "prop": 1.0,
+    "ci_lo": 0.8842966917779722,
+    "ci_hi": 1.0,
+    "method": "Clopper-Pearson exact"
+   }
+  },
+  "clean_user_was_true_author": {
+   "k": 30,
+   "n": 30,
+   "prop": 1.0,
+   "ci_lo": 0.8842966917779722,
+   "ci_hi": 1.0,
+   "method": "Clopper-Pearson exact"
+  },
+  "clean_users": [
+   "member (IP: 192.168.96.3)"
+  ],
+  "users_after_edit": [
+   "EventSystem/hallway_motion_light",
+   "EventSystem/kitchen_motion_light",
+   "EventSystem/porch_motion_light"
+  ],
+  "date_and_data_unchanged_all_roles": {
+   "k": 30,
+   "n": 30,
+   "prop": 1.0,
+   "ci_lo": 0.8842966917779722,
+   "ci_hi": 1.0,
+   "method": "Clopper-Pearson exact"
+  },
+  "same_render_for_every_role": {
+   "k": 60,
+   "n": 60,
+   "what": "trial renderings (before and after each edit) identical for all roles"
+  },
+  "ui_rendering": {
+   "renderings": 180,
+   "agree_with_api": 180,
+   "ui_after_shows_written_label": 90,
+   "what": "per trial, phase (before/after) and viewer role: the browser-rendered Text log cell User of the trial's row equals the API's User"
+  },
+  "edit_delay_s": {
+   "min": 142.08478546142578,
+   "median": 158.08563804626465,
+   "max": 176.07377910614014,
+   "n_at_least_130": 30,
+   "n": 30
+  },
+  "segment_sealed_before_edit": {
+   "k": 30,
+   "n": 30
+  },
+  "db_writes_per_trial": [
+   1
+  ],
+  "per_room": {
+   "porch": {
+    "n": 10,
+    "misattributed_all_roles": 10
+   },
+   "hallway": {
+    "n": 10,
+    "misattributed_all_roles": 10
+   },
+   "kitchen": {
+    "n": 10,
+    "misattributed_all_roles": 10
+   }
+  },
+  "detection": {
+   "closure": {
+    "second": {
+     "k": 30,
+     "n": 30,
+     "prop": 1.0,
+     "ci_lo": 0.8842966917779722,
+     "ci_hi": 1.0,
+     "method": "Clopper-Pearson exact",
+     "detected_attributable": 30,
+     "raw_violation_hits": 30,
+     "hits_explained_by_late_rows": 0,
+     "n_trials_whose_segment_was_sealed": 30,
+     "n_trials_segment_not_available": 0,
+     "flagged_ci": {
+      "k": 30,
+      "n": 30,
+      "prop": 1.0,
+      "ci_lo": 0.8842966917779722,
+      "ci_hi": 1.0,
+      "method": "Clopper-Pearson exact"
+     },
+     "hit_detail": [
+      {
+       "room": "porch",
+       "trial": 0,
+       "segment": "1791429767",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "porch",
+       "trial": 1,
+       "segment": "1791429771",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "porch",
+       "trial": 2,
+       "segment": "1791429775",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "porch",
+       "trial": 3,
+       "segment": "1791429779",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "porch",
+       "trial": 4,
+       "segment": "1791429783",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "porch",
+       "trial": 5,
+       "segment": "1791429787",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "porch",
+       "trial": 6,
+       "segment": "1791429792",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "porch",
+       "trial": 7,
+       "segment": "1791429796",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "porch",
+       "trial": 8,
+       "segment": "1791429800",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "porch",
+       "trial": 9,
+       "segment": "1791429804",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "hallway",
+       "trial": 0,
+       "segment": "1791430160",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "hallway",
+       "trial": 1,
+       "segment": "1791430165",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "hallway",
+       "trial": 2,
+       "segment": "1791430169",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "hallway",
+       "trial": 3,
+       "segment": "1791430174",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "hallway",
+       "trial": 4,
+       "segment": "1791430179",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "hallway",
+       "trial": 5,
+       "segment": "1791430184",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "hallway",
+       "trial": 6,
+       "segment": "1791430189",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "hallway",
+       "trial": 7,
+       "segment": "1791430194",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "hallway",
+       "trial": 8,
+       "segment": "1791430198",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "hallway",
+       "trial": 9,
+       "segment": "1791430203",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 0,
+       "segment": "1791430559",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 1,
+       "segment": "1791430564",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 2,
+       "segment": "1791430568",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 3,
+       "segment": "1791430572",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 4,
+       "segment": "1791430577",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 5,
+       "segment": "1791430582",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 6,
+       "segment": "1791430587",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 7,
+       "segment": "1791430591",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 8,
+       "segment": "1791430595",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 9,
+       "segment": "1791430600",
+       "violation": true,
+       "delta_n": 0
+      }
+     ]
+    },
+    "minute": {
+     "k": 30,
+     "n": 30,
+     "prop": 1.0,
+     "ci_lo": 0.8842966917779722,
+     "ci_hi": 1.0,
+     "method": "Clopper-Pearson exact",
+     "detected_attributable": 30,
+     "raw_violation_hits": 30,
+     "hits_explained_by_late_rows": 0,
+     "n_trials_whose_segment_was_sealed": 30,
+     "n_trials_segment_not_available": 0,
+     "flagged_ci": {
+      "k": 30,
+      "n": 30,
+      "prop": 1.0,
+      "ci_lo": 0.8842966917779722,
+      "ci_hi": 1.0,
+      "method": "Clopper-Pearson exact"
+     },
+     "hit_detail": 30
+    }
+   },
+   "logrows": {
+    "second": {
+     "k": 30,
+     "n": 30,
+     "prop": 1.0,
+     "ci_lo": 0.8842966917779722,
+     "ci_hi": 1.0,
+     "method": "Clopper-Pearson exact",
+     "detected_attributable": 30,
+     "raw_violation_hits": 30,
+     "hits_explained_by_late_rows": 0,
+     "n_trials_whose_segment_was_sealed": 30,
+     "n_trials_segment_not_available": 0,
+     "flagged_ci": {
+      "k": 30,
+      "n": 30,
+      "prop": 1.0,
+      "ci_lo": 0.8842966917779722,
+      "ci_hi": 1.0,
+      "method": "Clopper-Pearson exact"
+     },
+     "hit_detail": [
+      {
+       "room": "porch",
+       "trial": 0,
+       "segment": "1791429767",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "porch",
+       "trial": 1,
+       "segment": "1791429771",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "porch",
+       "trial": 2,
+       "segment": "1791429775",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "porch",
+       "trial": 3,
+       "segment": "1791429779",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "porch",
+       "trial": 4,
+       "segment": "1791429783",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "porch",
+       "trial": 5,
+       "segment": "1791429787",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "porch",
+       "trial": 6,
+       "segment": "1791429792",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "porch",
+       "trial": 7,
+       "segment": "1791429796",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "porch",
+       "trial": 8,
+       "segment": "1791429800",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "porch",
+       "trial": 9,
+       "segment": "1791429804",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "hallway",
+       "trial": 0,
+       "segment": "1791430160",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "hallway",
+       "trial": 1,
+       "segment": "1791430165",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "hallway",
+       "trial": 2,
+       "segment": "1791430169",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "hallway",
+       "trial": 3,
+       "segment": "1791430174",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "hallway",
+       "trial": 4,
+       "segment": "1791430179",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "hallway",
+       "trial": 5,
+       "segment": "1791430184",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "hallway",
+       "trial": 6,
+       "segment": "1791430189",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "hallway",
+       "trial": 7,
+       "segment": "1791430194",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "hallway",
+       "trial": 8,
+       "segment": "1791430198",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "hallway",
+       "trial": 9,
+       "segment": "1791430203",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 0,
+       "segment": "1791430559",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 1,
+       "segment": "1791430564",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 2,
+       "segment": "1791430568",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 3,
+       "segment": "1791430572",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 4,
+       "segment": "1791430577",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 5,
+       "segment": "1791430582",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 6,
+       "segment": "1791430587",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 7,
+       "segment": "1791430591",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 8,
+       "segment": "1791430595",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 9,
+       "segment": "1791430600",
+       "violation": true,
+       "delta_n": 0
+      }
+     ]
+    },
+    "minute": {
+     "k": 30,
+     "n": 30,
+     "prop": 1.0,
+     "ci_lo": 0.8842966917779722,
+     "ci_hi": 1.0,
+     "method": "Clopper-Pearson exact",
+     "detected_attributable": 30,
+     "raw_violation_hits": 30,
+     "hits_explained_by_late_rows": 0,
+     "n_trials_whose_segment_was_sealed": 30,
+     "n_trials_segment_not_available": 0,
+     "flagged_ci": {
+      "k": 30,
+      "n": 30,
+      "prop": 1.0,
+      "ci_lo": 0.8842966917779722,
+      "ci_hi": 1.0,
+      "method": "Clopper-Pearson exact"
+     },
+     "hit_detail": 30
+    }
+   },
+   "wholerow": {
+    "second": {
+     "k": 30,
+     "n": 30,
+     "prop": 1.0,
+     "ci_lo": 0.8842966917779722,
+     "ci_hi": 1.0,
+     "method": "Clopper-Pearson exact",
+     "detected_attributable": 30,
+     "raw_violation_hits": 30,
+     "hits_explained_by_late_rows": 0,
+     "n_trials_whose_segment_was_sealed": 30,
+     "n_trials_segment_not_available": 0,
+     "flagged_ci": {
+      "k": 30,
+      "n": 30,
+      "prop": 1.0,
+      "ci_lo": 0.8842966917779722,
+      "ci_hi": 1.0,
+      "method": "Clopper-Pearson exact"
+     },
+     "hit_detail": [
+      {
+       "room": "porch",
+       "trial": 0,
+       "segment": "1791429767",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "porch",
+       "trial": 1,
+       "segment": "1791429771",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "porch",
+       "trial": 2,
+       "segment": "1791429775",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "porch",
+       "trial": 3,
+       "segment": "1791429779",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "porch",
+       "trial": 4,
+       "segment": "1791429783",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "porch",
+       "trial": 5,
+       "segment": "1791429787",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "porch",
+       "trial": 6,
+       "segment": "1791429792",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "porch",
+       "trial": 7,
+       "segment": "1791429796",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "porch",
+       "trial": 8,
+       "segment": "1791429800",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "porch",
+       "trial": 9,
+       "segment": "1791429804",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "hallway",
+       "trial": 0,
+       "segment": "1791430160",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "hallway",
+       "trial": 1,
+       "segment": "1791430165",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "hallway",
+       "trial": 2,
+       "segment": "1791430169",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "hallway",
+       "trial": 3,
+       "segment": "1791430174",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "hallway",
+       "trial": 4,
+       "segment": "1791430179",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "hallway",
+       "trial": 5,
+       "segment": "1791430184",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "hallway",
+       "trial": 6,
+       "segment": "1791430189",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "hallway",
+       "trial": 7,
+       "segment": "1791430194",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "hallway",
+       "trial": 8,
+       "segment": "1791430198",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "hallway",
+       "trial": 9,
+       "segment": "1791430203",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 0,
+       "segment": "1791430559",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 1,
+       "segment": "1791430564",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 2,
+       "segment": "1791430568",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 3,
+       "segment": "1791430572",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 4,
+       "segment": "1791430577",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 5,
+       "segment": "1791430582",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 6,
+       "segment": "1791430587",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 7,
+       "segment": "1791430591",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 8,
+       "segment": "1791430595",
+       "violation": true,
+       "delta_n": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 9,
+       "segment": "1791430600",
+       "violation": true,
+       "delta_n": 0
+      }
+     ]
+    },
+    "minute": {
+     "k": 30,
+     "n": 30,
+     "prop": 1.0,
+     "ci_lo": 0.8842966917779722,
+     "ci_hi": 1.0,
+     "method": "Clopper-Pearson exact",
+     "detected_attributable": 30,
+     "raw_violation_hits": 30,
+     "hits_explained_by_late_rows": 0,
+     "n_trials_whose_segment_was_sealed": 30,
+     "n_trials_segment_not_available": 0,
+     "flagged_ci": {
+      "k": 30,
+      "n": 30,
+      "prop": 1.0,
+      "ci_lo": 0.8842966917779722,
+      "ci_hi": 1.0,
+      "method": "Clopper-Pearson exact"
+     },
+     "hit_detail": 30
+    }
+   },
+   "row": {
+    "second": {
+     "k": 0,
+     "n": 30,
+     "prop": 0.0,
+     "ci_lo": 0.0,
+     "ci_hi": 0.11570330822202778,
+     "method": "Clopper-Pearson exact",
+     "detected_attributable": 0,
+     "raw_violation_hits": 0,
+     "hits_explained_by_late_rows": 0,
+     "n_trials_whose_segment_was_sealed": 30,
+     "n_trials_segment_not_available": 0,
+     "flagged_ci": {
+      "k": 0,
+      "n": 30,
+      "prop": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.11570330822202778,
+      "method": "Clopper-Pearson exact"
+     },
+     "hit_detail": []
+    },
+    "minute": {
+     "k": 0,
+     "n": 30,
+     "prop": 0.0,
+     "ci_lo": 0.0,
+     "ci_hi": 0.11570330822202778,
+     "method": "Clopper-Pearson exact",
+     "detected_attributable": 0,
+     "raw_violation_hits": 0,
+     "hits_explained_by_late_rows": 0,
+     "n_trials_whose_segment_was_sealed": 30,
+     "n_trials_segment_not_available": 0,
+     "flagged_ci": {
+      "k": 0,
+      "n": 30,
+      "prop": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.11570330822202778,
+      "method": "Clopper-Pearson exact"
+     },
+     "hit_detail": 0
+    }
+   }
+  }
+ },
+ "run": {
+  "window": {
+   "t_start": 1791429765.3216584,
+   "t_end": 1791430955.439168,
+   "duration_s": 1190.1,
+   "recorder_snapshot_at": 1791431045.656288
+  },
+  "recorder_snapshot": {
+   "path": "HOMEPROV-P13-exp/dz/runs/dz/verify/domoticz.db",
+   "sha256": "823089ccf7100a45ff2f20e7b933f30172d04e1927e6b51881fc6fc7f2d3d2e5",
+   "valid": true,
+   "reason": "ok",
+   "lighting_log_rows": 590
+  },
+  "anchor_chain": {
+   "records": 196,
+   "sha256": "6004fd767c5eba62bba84917978ee80afbba424056787fcc33d8012ea39d646c",
+   "schemes": {
+    "closure": 196
+   },
+   "encodings_in_window": [
+    "v2"
+   ],
+   "link_check": {
+    "ok": true,
+    "link": "v1",
+    "linked_records": 0,
+    "integrity": "unlinked (v1): records parse and are numbered consecutively; their order, presence and content rest on the anchor host"
+   }
+  },
+  "anchored_segments_in_window": {
+   "second": 294,
+   "minute": 22,
+   "hour": 0
+  },
+  "violating_segments_in_window": {
+   "second": 60,
+   "minute": 11,
+   "hour": 0
+  },
+  "touched_seconds": 125,
+  "untouched_anchored_segments": {
+   "second": 169,
+   "minute": 10
+  },
+  "benign_floor": {
+   "closure": {
+    "second": {
+     "k": 0,
+     "n": 169,
+     "prop": 0.0,
+     "ci_lo": 0.0,
+     "ci_hi": 0.021591188948230824,
+     "method": "Clopper-Pearson exact",
+     "late_row_failures": 0,
+     "in_place_or_removal_failures": 0
+    },
+    "minute": {
+     "k": 0,
+     "n": 10,
+     "prop": 0.0,
+     "ci_lo": 0.0,
+     "ci_hi": 0.3084971078187608,
+     "method": "Clopper-Pearson exact",
+     "late_row_failures": 0,
+     "in_place_or_removal_failures": 0
+    },
+    "untouched_second_segments_available": 169
+   },
+   "logrows": {
+    "second": {
+     "k": 0,
+     "n": 169,
+     "prop": 0.0,
+     "ci_lo": 0.0,
+     "ci_hi": 0.021591188948230824,
+     "method": "Clopper-Pearson exact",
+     "late_row_failures": 0,
+     "in_place_or_removal_failures": 0
+    },
+    "minute": {
+     "k": 0,
+     "n": 10,
+     "prop": 0.0,
+     "ci_lo": 0.0,
+     "ci_hi": 0.3084971078187608,
+     "method": "Clopper-Pearson exact",
+     "late_row_failures": 0,
+     "in_place_or_removal_failures": 0
+    },
+    "untouched_second_segments_available": 169
+   },
+   "wholerow": {
+    "second": {
+     "k": 169,
+     "n": 169,
+     "prop": 1.0,
+     "ci_lo": 0.9784088110517691,
+     "ci_hi": 1.0,
+     "method": "Clopper-Pearson exact",
+     "late_row_failures": 0,
+     "in_place_or_removal_failures": 169
+    },
+    "minute": {
+     "k": 10,
+     "n": 10,
+     "prop": 1.0,
+     "ci_lo": 0.6915028921812392,
+     "ci_hi": 1.0,
+     "method": "Clopper-Pearson exact",
+     "late_row_failures": 0,
+     "in_place_or_removal_failures": 10
+    },
+    "untouched_second_segments_available": 169
+   },
+   "row": {
+    "second": {
+     "k": 0,
+     "n": 169,
+     "prop": 0.0,
+     "ci_lo": 0.0,
+     "ci_hi": 0.021591188948230824,
+     "method": "Clopper-Pearson exact",
+     "late_row_failures": 0,
+     "in_place_or_removal_failures": 0
+    },
+    "minute": {
+     "k": 0,
+     "n": 10,
+     "prop": 0.0,
+     "ci_lo": 0.0,
+     "ci_hi": 0.3084971078187608,
+     "method": "Clopper-Pearson exact",
+     "late_row_failures": 0,
+     "in_place_or_removal_failures": 0
+    },
+    "untouched_second_segments_available": 169
+   }
+  },
+  "wholerow_floor_mechanism": {
+   "failing_untouched_second_segments": 169,
+   "reproduced_by_restoring_in_place_devicestatus_columns": 169,
+   "columns": [
+    "nValue",
+    "sValue",
+    "LastUpdate",
+    "LastLevel"
+   ],
+   "what": "a failing untouched whole-row segment is reproduced exactly when the seal-time values of the DeviceStatus columns Domoticz rewrites in place are put back into the final snapshot"
+  },
+  "offline_reconstruction": {
+   "chain_records": {
+    "records_matched": 184
+   },
+   "live_segments_reconstructed": {
+    "second": [
+     294,
+     294
+    ],
+    "minute": [
+     22,
+     22
+    ]
+   },
+   "closure_verdicts_equal_live": true,
+   "method": "rows each poll read (adapter archive), validated by reproducing the anchored closure roots exactly"
+  },
+  "monitor_py_sha256": "2eb8f872bb9e40452b353a507229e1502fff1ed81e2d772f5de4fe4bb30fc48b",
+  "monitor_py_repo_sha256": "2eb8f872bb9e40452b353a507229e1502fff1ed81e2d772f5de4fe4bb30fc48b",
+  "adapter_sha256": "18b404e92e8a0bc5ca83e6ffe8256d210fe57ba252f422f999283b42f4472d26",
+  "verifier": "reproduce/verify_all.py anchored_roots()/verify_window() (sha256 131c70c0e3e9c82bd21fa27643da91150cdd307ee7808bf1ae026c3320ddba13)",
+  "script_sha256": "3b94b5962c6c6455574c875f33d33cc8315b8c43af84a9df4d30a0fd03aeea95"
+ },
+ "trials": [
+  {
+   "arm": "laundering",
+   "room": "porch",
+   "trial": 0,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 41,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:22:46"
+    },
+    "op": "lock",
+    "t_ack": 1791429766.1027908
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 44,
+     "Date": "2026-10-08 03:22:47",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 44,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:22:47",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:22:47",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:22:47",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791429938.102884,
+    "before": {
+     "rowid": 44,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:22:47"
+    },
+    "after": {
+     "rowid": 44,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/porch_motion_light",
+     "Date": "2026-10-08 03:22:47"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 43,
+     "device_row_id": 1,
+     "User": "EventSystem/porch_motion_light",
+     "Date": "2026-10-08 03:22:47"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791429938.1584792
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:22:47",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/porch_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:22:47",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/porch_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:22:47",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/porch_motion_light"
+    }
+   },
+   "row_ts": 1791429767.0,
+   "edit_delay_s": 171.10288405418396,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/porch_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/porch_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/porch_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 43,
+     "device_row_id": 1,
+     "User": "EventSystem/porch_motion_light",
+     "Date": "2026-10-08 03:22:47"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/porch_motion_light"
+     ],
+     "api_user": "EventSystem/porch_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/porch_motion_light"
+     ],
+     "api_user": "EventSystem/porch_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/porch_motion_light"
+     ],
+     "api_user": "EventSystem/porch_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "porch",
+   "trial": 1,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 45,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:22:50"
+    },
+    "op": "lock",
+    "t_ack": 1791429770.1096544
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 46,
+     "Date": "2026-10-08 03:22:51",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 46,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:22:51",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:22:51",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:22:51",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791429939.0751061,
+    "before": {
+     "rowid": 46,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:22:51"
+    },
+    "after": {
+     "rowid": 46,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/porch_motion_light",
+     "Date": "2026-10-08 03:22:51"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 43,
+     "device_row_id": 1,
+     "User": "EventSystem/porch_motion_light",
+     "Date": "2026-10-08 03:22:47"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791429939.0769436
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:22:51",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/porch_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:22:51",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/porch_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:22:51",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/porch_motion_light"
+    }
+   },
+   "row_ts": 1791429771.0,
+   "edit_delay_s": 168.07510614395142,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/porch_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/porch_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/porch_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 43,
+     "device_row_id": 1,
+     "User": "EventSystem/porch_motion_light",
+     "Date": "2026-10-08 03:22:47"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/porch_motion_light"
+     ],
+     "api_user": "EventSystem/porch_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/porch_motion_light"
+     ],
+     "api_user": "EventSystem/porch_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/porch_motion_light"
+     ],
+     "api_user": "EventSystem/porch_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "porch",
+   "trial": 2,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 47,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:22:54"
+    },
+    "op": "lock",
+    "t_ack": 1791429774.0788178
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 48,
+     "Date": "2026-10-08 03:22:55",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 48,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:22:55",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:22:55",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:22:55",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791429940.0994027,
+    "before": {
+     "rowid": 48,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:22:55"
+    },
+    "after": {
+     "rowid": 48,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/porch_motion_light",
+     "Date": "2026-10-08 03:22:55"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 43,
+     "device_row_id": 1,
+     "User": "EventSystem/porch_motion_light",
+     "Date": "2026-10-08 03:22:47"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791429940.104929
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:22:55",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/porch_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:22:55",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/porch_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:22:55",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/porch_motion_light"
+    }
+   },
+   "row_ts": 1791429775.0,
+   "edit_delay_s": 165.09940266609192,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/porch_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/porch_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/porch_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 43,
+     "device_row_id": 1,
+     "User": "EventSystem/porch_motion_light",
+     "Date": "2026-10-08 03:22:47"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/porch_motion_light"
+     ],
+     "api_user": "EventSystem/porch_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/porch_motion_light"
+     ],
+     "api_user": "EventSystem/porch_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/porch_motion_light"
+     ],
+     "api_user": "EventSystem/porch_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "porch",
+   "trial": 3,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 49,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:22:58"
+    },
+    "op": "lock",
+    "t_ack": 1791429778.0713913
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 50,
+     "Date": "2026-10-08 03:22:59",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 50,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:22:59",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:22:59",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:22:59",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791429941.0818512,
+    "before": {
+     "rowid": 50,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:22:59"
+    },
+    "after": {
+     "rowid": 50,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/porch_motion_light",
+     "Date": "2026-10-08 03:22:59"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 43,
+     "device_row_id": 1,
+     "User": "EventSystem/porch_motion_light",
+     "Date": "2026-10-08 03:22:47"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791429941.0828931
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:22:59",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/porch_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:22:59",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/porch_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:22:59",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/porch_motion_light"
+    }
+   },
+   "row_ts": 1791429779.0,
+   "edit_delay_s": 162.08185124397278,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/porch_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/porch_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/porch_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 43,
+     "device_row_id": 1,
+     "User": "EventSystem/porch_motion_light",
+     "Date": "2026-10-08 03:22:47"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/porch_motion_light"
+     ],
+     "api_user": "EventSystem/porch_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/porch_motion_light"
+     ],
+     "api_user": "EventSystem/porch_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/porch_motion_light"
+     ],
+     "api_user": "EventSystem/porch_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "porch",
+   "trial": 4,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 51,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:23:02"
+    },
+    "op": "lock",
+    "t_ack": 1791429782.0710762
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 52,
+     "Date": "2026-10-08 03:23:03",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 52,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:23:03",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:23:03",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:23:03",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791429942.0921948,
+    "before": {
+     "rowid": 52,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:23:03"
+    },
+    "after": {
+     "rowid": 52,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/porch_motion_light",
+     "Date": "2026-10-08 03:23:03"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 43,
+     "device_row_id": 1,
+     "User": "EventSystem/porch_motion_light",
+     "Date": "2026-10-08 03:22:47"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791429942.0932498
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:23:03",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/porch_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:23:03",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/porch_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:23:03",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/porch_motion_light"
+    }
+   },
+   "row_ts": 1791429783.0,
+   "edit_delay_s": 159.09219479560852,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/porch_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/porch_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/porch_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 43,
+     "device_row_id": 1,
+     "User": "EventSystem/porch_motion_light",
+     "Date": "2026-10-08 03:22:47"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/porch_motion_light"
+     ],
+     "api_user": "EventSystem/porch_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/porch_motion_light"
+     ],
+     "api_user": "EventSystem/porch_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/porch_motion_light"
+     ],
+     "api_user": "EventSystem/porch_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "porch",
+   "trial": 5,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 55,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:23:06"
+    },
+    "op": "lock",
+    "t_ack": 1791429786.0918088
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 56,
+     "Date": "2026-10-08 03:23:07",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 56,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:23:07",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:23:07",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:23:07",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791429943.063836,
+    "before": {
+     "rowid": 56,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:23:07"
+    },
+    "after": {
+     "rowid": 56,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/porch_motion_light",
+     "Date": "2026-10-08 03:23:07"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 43,
+     "device_row_id": 1,
+     "User": "EventSystem/porch_motion_light",
+     "Date": "2026-10-08 03:22:47"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791429943.0663495
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:23:07",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/porch_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:23:07",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/porch_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:23:07",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/porch_motion_light"
+    }
+   },
+   "row_ts": 1791429787.0,
+   "edit_delay_s": 156.06383609771729,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/porch_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/porch_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/porch_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 43,
+     "device_row_id": 1,
+     "User": "EventSystem/porch_motion_light",
+     "Date": "2026-10-08 03:22:47"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/porch_motion_light"
+     ],
+     "api_user": "EventSystem/porch_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/porch_motion_light"
+     ],
+     "api_user": "EventSystem/porch_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/porch_motion_light"
+     ],
+     "api_user": "EventSystem/porch_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "porch",
+   "trial": 6,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 59,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:23:11"
+    },
+    "op": "lock",
+    "t_ack": 1791429791.0697231
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 62,
+     "Date": "2026-10-08 03:23:12",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 62,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:23:12",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:23:12",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:23:12",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791429944.082584,
+    "before": {
+     "rowid": 62,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:23:12"
+    },
+    "after": {
+     "rowid": 62,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/porch_motion_light",
+     "Date": "2026-10-08 03:23:12"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 43,
+     "device_row_id": 1,
+     "User": "EventSystem/porch_motion_light",
+     "Date": "2026-10-08 03:22:47"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791429944.0869675
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:23:12",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/porch_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:23:12",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/porch_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:23:12",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/porch_motion_light"
+    }
+   },
+   "row_ts": 1791429792.0,
+   "edit_delay_s": 152.08258390426636,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/porch_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/porch_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/porch_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 43,
+     "device_row_id": 1,
+     "User": "EventSystem/porch_motion_light",
+     "Date": "2026-10-08 03:22:47"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/porch_motion_light"
+     ],
+     "api_user": "EventSystem/porch_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/porch_motion_light"
+     ],
+     "api_user": "EventSystem/porch_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/porch_motion_light"
+     ],
+     "api_user": "EventSystem/porch_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "porch",
+   "trial": 7,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 63,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:23:15"
+    },
+    "op": "lock",
+    "t_ack": 1791429795.0802517
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 64,
+     "Date": "2026-10-08 03:23:16",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 64,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:23:16",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:23:16",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:23:16",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791429945.0811613,
+    "before": {
+     "rowid": 64,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:23:16"
+    },
+    "after": {
+     "rowid": 64,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/porch_motion_light",
+     "Date": "2026-10-08 03:23:16"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 43,
+     "device_row_id": 1,
+     "User": "EventSystem/porch_motion_light",
+     "Date": "2026-10-08 03:22:47"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791429945.0886273
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:23:16",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/porch_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:23:16",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/porch_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:23:16",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/porch_motion_light"
+    }
+   },
+   "row_ts": 1791429796.0,
+   "edit_delay_s": 149.08116126060486,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/porch_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/porch_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/porch_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 43,
+     "device_row_id": 1,
+     "User": "EventSystem/porch_motion_light",
+     "Date": "2026-10-08 03:22:47"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/porch_motion_light"
+     ],
+     "api_user": "EventSystem/porch_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/porch_motion_light"
+     ],
+     "api_user": "EventSystem/porch_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/porch_motion_light"
+     ],
+     "api_user": "EventSystem/porch_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "porch",
+   "trial": 8,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 67,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:23:19"
+    },
+    "op": "lock",
+    "t_ack": 1791429799.077057
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 68,
+     "Date": "2026-10-08 03:23:20",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 68,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:23:20",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:23:20",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:23:20",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791429946.0834377,
+    "before": {
+     "rowid": 68,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:23:20"
+    },
+    "after": {
+     "rowid": 68,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/porch_motion_light",
+     "Date": "2026-10-08 03:23:20"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 43,
+     "device_row_id": 1,
+     "User": "EventSystem/porch_motion_light",
+     "Date": "2026-10-08 03:22:47"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791429946.085335
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:23:20",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/porch_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:23:20",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/porch_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:23:20",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/porch_motion_light"
+    }
+   },
+   "row_ts": 1791429800.0,
+   "edit_delay_s": 146.08343768119812,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/porch_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/porch_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/porch_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 43,
+     "device_row_id": 1,
+     "User": "EventSystem/porch_motion_light",
+     "Date": "2026-10-08 03:22:47"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/porch_motion_light"
+     ],
+     "api_user": "EventSystem/porch_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/porch_motion_light"
+     ],
+     "api_user": "EventSystem/porch_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/porch_motion_light"
+     ],
+     "api_user": "EventSystem/porch_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "porch",
+   "trial": 9,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 69,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:23:23"
+    },
+    "op": "lock",
+    "t_ack": 1791429803.0752716
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 70,
+     "Date": "2026-10-08 03:23:24",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 70,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:23:24",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:23:24",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:23:24",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791429947.0678575,
+    "before": {
+     "rowid": 70,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:23:24"
+    },
+    "after": {
+     "rowid": 70,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/porch_motion_light",
+     "Date": "2026-10-08 03:23:24"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 43,
+     "device_row_id": 1,
+     "User": "EventSystem/porch_motion_light",
+     "Date": "2026-10-08 03:22:47"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791429947.0700452
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:23:24",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/porch_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:23:24",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/porch_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:23:24",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/porch_motion_light"
+    }
+   },
+   "row_ts": 1791429804.0,
+   "edit_delay_s": 143.067857503891,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/porch_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/porch_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/porch_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 43,
+     "device_row_id": 1,
+     "User": "EventSystem/porch_motion_light",
+     "Date": "2026-10-08 03:22:47"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/porch_motion_light"
+     ],
+     "api_user": "EventSystem/porch_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/porch_motion_light"
+     ],
+     "api_user": "EventSystem/porch_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/porch_motion_light"
+     ],
+     "api_user": "EventSystem/porch_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "hallway",
+   "trial": 0,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 213,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:29:19"
+    },
+    "op": "lock",
+    "t_ack": 1791430159.1120195
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 218,
+     "Date": "2026-10-08 03:29:20",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 218,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:29:20",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:20",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:20",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791430336.073779,
+    "before": {
+     "rowid": 218,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:29:20"
+    },
+    "after": {
+     "rowid": 218,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791430336.0805416
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:29:20",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:20",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:20",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    }
+   },
+   "row_ts": 1791430160.0,
+   "edit_delay_s": 176.07377910614014,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "hallway",
+   "trial": 1,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 221,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:29:24"
+    },
+    "op": "lock",
+    "t_ack": 1791430164.0776176
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 222,
+     "Date": "2026-10-08 03:29:25",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 222,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:29:25",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:25",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:25",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791430337.0687695,
+    "before": {
+     "rowid": 222,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:29:25"
+    },
+    "after": {
+     "rowid": 222,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:25"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791430337.0744994
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:29:25",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:25",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:25",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    }
+   },
+   "row_ts": 1791430165.0,
+   "edit_delay_s": 172.06876945495605,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "hallway",
+   "trial": 2,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 223,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:29:28"
+    },
+    "op": "lock",
+    "t_ack": 1791430168.0809197
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 224,
+     "Date": "2026-10-08 03:29:29",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 224,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:29:29",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:29",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:29",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791430338.07269,
+    "before": {
+     "rowid": 224,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:29:29"
+    },
+    "after": {
+     "rowid": 224,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:29"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791430338.0767303
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:29:29",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:29",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:29",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    }
+   },
+   "row_ts": 1791430169.0,
+   "edit_delay_s": 169.0726900100708,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "hallway",
+   "trial": 3,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 225,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:29:33"
+    },
+    "op": "lock",
+    "t_ack": 1791430173.1097999
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 226,
+     "Date": "2026-10-08 03:29:34",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 226,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:29:34",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:34",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:34",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791430339.0877612,
+    "before": {
+     "rowid": 226,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:29:34"
+    },
+    "after": {
+     "rowid": 226,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:34"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791430339.0894585
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:29:34",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:34",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:34",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    }
+   },
+   "row_ts": 1791430174.0,
+   "edit_delay_s": 165.08776116371155,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "hallway",
+   "trial": 4,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 227,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:29:38"
+    },
+    "op": "lock",
+    "t_ack": 1791430178.0667834
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 228,
+     "Date": "2026-10-08 03:29:39",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 228,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:29:39",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:39",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:39",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791430340.0918086,
+    "before": {
+     "rowid": 228,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:29:39"
+    },
+    "after": {
+     "rowid": 228,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:39"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791430340.0945632
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:29:39",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:39",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:39",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    }
+   },
+   "row_ts": 1791430179.0,
+   "edit_delay_s": 161.09180855751038,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "hallway",
+   "trial": 5,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 231,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:29:43"
+    },
+    "op": "lock",
+    "t_ack": 1791430183.0992272
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 232,
+     "Date": "2026-10-08 03:29:44",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 232,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:29:44",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:44",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:44",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791430341.0678082,
+    "before": {
+     "rowid": 232,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:29:44"
+    },
+    "after": {
+     "rowid": 232,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:44"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791430341.0708191
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:29:44",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:44",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:44",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    }
+   },
+   "row_ts": 1791430184.0,
+   "edit_delay_s": 157.06780815124512,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "hallway",
+   "trial": 6,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 237,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:29:48"
+    },
+    "op": "lock",
+    "t_ack": 1791430188.1052966
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 238,
+     "Date": "2026-10-08 03:29:49",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 238,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:29:49",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:49",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:49",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791430342.0973396,
+    "before": {
+     "rowid": 238,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:29:49"
+    },
+    "after": {
+     "rowid": 238,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:49"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791430342.1020918
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:29:49",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:49",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:49",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    }
+   },
+   "row_ts": 1791430189.0,
+   "edit_delay_s": 153.09733963012695,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "hallway",
+   "trial": 7,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 241,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:29:53"
+    },
+    "op": "lock",
+    "t_ack": 1791430193.0794492
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 242,
+     "Date": "2026-10-08 03:29:54",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 242,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:29:54",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:54",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:54",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791430343.0804615,
+    "before": {
+     "rowid": 242,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:29:54"
+    },
+    "after": {
+     "rowid": 242,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:54"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791430343.0873113
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:29:54",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:54",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:54",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    }
+   },
+   "row_ts": 1791430194.0,
+   "edit_delay_s": 149.0804615020752,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "hallway",
+   "trial": 8,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 243,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:29:57"
+    },
+    "op": "lock",
+    "t_ack": 1791430197.0856583
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 244,
+     "Date": "2026-10-08 03:29:58",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 244,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:29:58",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:58",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:58",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791430344.080148,
+    "before": {
+     "rowid": 244,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:29:58"
+    },
+    "after": {
+     "rowid": 244,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:58"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791430344.0814342
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:29:58",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:29:58",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:29:58",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    }
+   },
+   "row_ts": 1791430198.0,
+   "edit_delay_s": 146.08014798164368,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 217,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:29:20"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "hallway",
+   "trial": 9,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 247,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:30:02"
+    },
+    "op": "lock",
+    "t_ack": 1791430202.1086943
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 248,
+     "Date": "2026-10-08 03:30:03",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 248,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:30:03",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:30:03",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:30:03",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791430345.0847855,
+    "before": {
+     "rowid": 248,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:30:03"
+    },
+    "after": {
+     "rowid": 248,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:30:03"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 246,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:30:02"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791430345.0858662
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:30:03",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:30:03",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:30:03",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/hallway_motion_light"
+    }
+   },
+   "row_ts": 1791430203.0,
+   "edit_delay_s": 142.08478546142578,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/hallway_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 246,
+     "device_row_id": 2,
+     "User": "EventSystem/hallway_motion_light",
+     "Date": "2026-10-08 03:30:02"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/hallway_motion_light"
+     ],
+     "api_user": "EventSystem/hallway_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "kitchen",
+   "trial": 0,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 399,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:35:58"
+    },
+    "op": "lock",
+    "t_ack": 1791430558.0661545
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 400,
+     "Date": "2026-10-08 03:35:59",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 400,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:35:59",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:35:59",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:35:59",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791430734.0943732,
+    "before": {
+     "rowid": 400,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:35:59"
+    },
+    "after": {
+     "rowid": 400,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/kitchen_motion_light",
+     "Date": "2026-10-08 03:35:59"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 396,
+     "device_row_id": 3,
+     "User": "EventSystem/kitchen_motion_light",
+     "Date": "2026-10-08 03:35:53"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791430734.0964057
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:35:59",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/kitchen_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:35:59",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/kitchen_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:35:59",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/kitchen_motion_light"
+    }
+   },
+   "row_ts": 1791430559.0,
+   "edit_delay_s": 175.09437322616577,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/kitchen_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/kitchen_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/kitchen_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 396,
+     "device_row_id": 3,
+     "User": "EventSystem/kitchen_motion_light",
+     "Date": "2026-10-08 03:35:53"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/kitchen_motion_light"
+     ],
+     "api_user": "EventSystem/kitchen_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/kitchen_motion_light"
+     ],
+     "api_user": "EventSystem/kitchen_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/kitchen_motion_light"
+     ],
+     "api_user": "EventSystem/kitchen_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "kitchen",
+   "trial": 1,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 401,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:36:03"
+    },
+    "op": "lock",
+    "t_ack": 1791430563.0752096
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 402,
+     "Date": "2026-10-08 03:36:04",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 402,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:36:04",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:36:04",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:36:04",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791430735.0935946,
+    "before": {
+     "rowid": 402,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:36:04"
+    },
+    "after": {
+     "rowid": 402,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/kitchen_motion_light",
+     "Date": "2026-10-08 03:36:04"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 396,
+     "device_row_id": 3,
+     "User": "EventSystem/kitchen_motion_light",
+     "Date": "2026-10-08 03:35:53"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791430735.0946379
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:36:04",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/kitchen_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:36:04",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/kitchen_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:36:04",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/kitchen_motion_light"
+    }
+   },
+   "row_ts": 1791430564.0,
+   "edit_delay_s": 171.09359455108643,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/kitchen_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/kitchen_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/kitchen_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 396,
+     "device_row_id": 3,
+     "User": "EventSystem/kitchen_motion_light",
+     "Date": "2026-10-08 03:35:53"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/kitchen_motion_light"
+     ],
+     "api_user": "EventSystem/kitchen_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/kitchen_motion_light"
+     ],
+     "api_user": "EventSystem/kitchen_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/kitchen_motion_light"
+     ],
+     "api_user": "EventSystem/kitchen_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "kitchen",
+   "trial": 2,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 403,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:36:07"
+    },
+    "op": "lock",
+    "t_ack": 1791430567.060639
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 404,
+     "Date": "2026-10-08 03:36:08",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 404,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:36:08",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:36:08",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:36:08",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791430736.0835874,
+    "before": {
+     "rowid": 404,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:36:08"
+    },
+    "after": {
+     "rowid": 404,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/kitchen_motion_light",
+     "Date": "2026-10-08 03:36:08"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 396,
+     "device_row_id": 3,
+     "User": "EventSystem/kitchen_motion_light",
+     "Date": "2026-10-08 03:35:53"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791430736.084862
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:36:08",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/kitchen_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:36:08",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/kitchen_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:36:08",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/kitchen_motion_light"
+    }
+   },
+   "row_ts": 1791430568.0,
+   "edit_delay_s": 168.0835874080658,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/kitchen_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/kitchen_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/kitchen_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 396,
+     "device_row_id": 3,
+     "User": "EventSystem/kitchen_motion_light",
+     "Date": "2026-10-08 03:35:53"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/kitchen_motion_light"
+     ],
+     "api_user": "EventSystem/kitchen_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/kitchen_motion_light"
+     ],
+     "api_user": "EventSystem/kitchen_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/kitchen_motion_light"
+     ],
+     "api_user": "EventSystem/kitchen_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "kitchen",
+   "trial": 3,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 407,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:36:11"
+    },
+    "op": "lock",
+    "t_ack": 1791430571.0577216
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 408,
+     "Date": "2026-10-08 03:36:12",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 408,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:36:12",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:36:12",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:36:12",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791430737.066338,
+    "before": {
+     "rowid": 408,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:36:12"
+    },
+    "after": {
+     "rowid": 408,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/kitchen_motion_light",
+     "Date": "2026-10-08 03:36:12"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 406,
+     "device_row_id": 3,
+     "User": "EventSystem/kitchen_motion_light",
+     "Date": "2026-10-08 03:36:09"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791430737.0697799
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:36:12",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/kitchen_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:36:12",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/kitchen_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:36:12",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/kitchen_motion_light"
+    }
+   },
+   "row_ts": 1791430572.0,
+   "edit_delay_s": 165.06633806228638,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/kitchen_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/kitchen_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/kitchen_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 406,
+     "device_row_id": 3,
+     "User": "EventSystem/kitchen_motion_light",
+     "Date": "2026-10-08 03:36:09"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/kitchen_motion_light"
+     ],
+     "api_user": "EventSystem/kitchen_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/kitchen_motion_light"
+     ],
+     "api_user": "EventSystem/kitchen_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/kitchen_motion_light"
+     ],
+     "api_user": "EventSystem/kitchen_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "kitchen",
+   "trial": 4,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 409,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:36:16"
+    },
+    "op": "lock",
+    "t_ack": 1791430576.116197
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 412,
+     "Date": "2026-10-08 03:36:17",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 412,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:36:17",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:36:17",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:36:17",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791430738.0984223,
+    "before": {
+     "rowid": 412,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:36:17"
+    },
+    "after": {
+     "rowid": 412,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/kitchen_motion_light",
+     "Date": "2026-10-08 03:36:17"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 411,
+     "device_row_id": 3,
+     "User": "EventSystem/kitchen_motion_light",
+     "Date": "2026-10-08 03:36:17"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791430738.1013963
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:36:17",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/kitchen_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:36:17",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/kitchen_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:36:17",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/kitchen_motion_light"
+    }
+   },
+   "row_ts": 1791430577.0,
+   "edit_delay_s": 161.09842228889465,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/kitchen_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/kitchen_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/kitchen_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 411,
+     "device_row_id": 3,
+     "User": "EventSystem/kitchen_motion_light",
+     "Date": "2026-10-08 03:36:17"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/kitchen_motion_light"
+     ],
+     "api_user": "EventSystem/kitchen_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/kitchen_motion_light"
+     ],
+     "api_user": "EventSystem/kitchen_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/kitchen_motion_light"
+     ],
+     "api_user": "EventSystem/kitchen_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "kitchen",
+   "trial": 5,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 413,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:36:21"
+    },
+    "op": "lock",
+    "t_ack": 1791430581.0969617
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 414,
+     "Date": "2026-10-08 03:36:22",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 414,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:36:22",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:36:22",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:36:22",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791430739.0790813,
+    "before": {
+     "rowid": 414,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:36:22"
+    },
+    "after": {
+     "rowid": 414,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/kitchen_motion_light",
+     "Date": "2026-10-08 03:36:22"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 411,
+     "device_row_id": 3,
+     "User": "EventSystem/kitchen_motion_light",
+     "Date": "2026-10-08 03:36:17"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791430739.0856369
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:36:22",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/kitchen_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:36:22",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/kitchen_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:36:22",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/kitchen_motion_light"
+    }
+   },
+   "row_ts": 1791430582.0,
+   "edit_delay_s": 157.07908129692078,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/kitchen_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/kitchen_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/kitchen_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 411,
+     "device_row_id": 3,
+     "User": "EventSystem/kitchen_motion_light",
+     "Date": "2026-10-08 03:36:17"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/kitchen_motion_light"
+     ],
+     "api_user": "EventSystem/kitchen_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/kitchen_motion_light"
+     ],
+     "api_user": "EventSystem/kitchen_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/kitchen_motion_light"
+     ],
+     "api_user": "EventSystem/kitchen_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "kitchen",
+   "trial": 6,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 419,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:36:26"
+    },
+    "op": "lock",
+    "t_ack": 1791430586.1062932
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 420,
+     "Date": "2026-10-08 03:36:27",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 420,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:36:27",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:36:27",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:36:27",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791430740.0730624,
+    "before": {
+     "rowid": 420,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:36:27"
+    },
+    "after": {
+     "rowid": 420,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/kitchen_motion_light",
+     "Date": "2026-10-08 03:36:27"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 411,
+     "device_row_id": 3,
+     "User": "EventSystem/kitchen_motion_light",
+     "Date": "2026-10-08 03:36:17"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791430740.0751166
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:36:27",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/kitchen_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:36:27",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/kitchen_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:36:27",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/kitchen_motion_light"
+    }
+   },
+   "row_ts": 1791430587.0,
+   "edit_delay_s": 153.07306241989136,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/kitchen_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/kitchen_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/kitchen_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 411,
+     "device_row_id": 3,
+     "User": "EventSystem/kitchen_motion_light",
+     "Date": "2026-10-08 03:36:17"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/kitchen_motion_light"
+     ],
+     "api_user": "EventSystem/kitchen_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/kitchen_motion_light"
+     ],
+     "api_user": "EventSystem/kitchen_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/kitchen_motion_light"
+     ],
+     "api_user": "EventSystem/kitchen_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "kitchen",
+   "trial": 7,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 421,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:36:30"
+    },
+    "op": "lock",
+    "t_ack": 1791430590.0726902
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 424,
+     "Date": "2026-10-08 03:36:31",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 424,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:36:31",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:36:31",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:36:31",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791430741.1151512,
+    "before": {
+     "rowid": 424,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:36:31"
+    },
+    "after": {
+     "rowid": 424,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/kitchen_motion_light",
+     "Date": "2026-10-08 03:36:31"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 411,
+     "device_row_id": 3,
+     "User": "EventSystem/kitchen_motion_light",
+     "Date": "2026-10-08 03:36:17"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791430741.1209257
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:36:31",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/kitchen_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:36:31",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/kitchen_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:36:31",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/kitchen_motion_light"
+    }
+   },
+   "row_ts": 1791430591.0,
+   "edit_delay_s": 150.1151511669159,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/kitchen_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/kitchen_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/kitchen_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 411,
+     "device_row_id": 3,
+     "User": "EventSystem/kitchen_motion_light",
+     "Date": "2026-10-08 03:36:17"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/kitchen_motion_light"
+     ],
+     "api_user": "EventSystem/kitchen_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/kitchen_motion_light"
+     ],
+     "api_user": "EventSystem/kitchen_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/kitchen_motion_light"
+     ],
+     "api_user": "EventSystem/kitchen_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "kitchen",
+   "trial": 8,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 427,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:36:34"
+    },
+    "op": "lock",
+    "t_ack": 1791430594.1062467
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 428,
+     "Date": "2026-10-08 03:36:35",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 428,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:36:35",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:36:35",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:36:35",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791430742.0935712,
+    "before": {
+     "rowid": 428,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:36:35"
+    },
+    "after": {
+     "rowid": 428,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/kitchen_motion_light",
+     "Date": "2026-10-08 03:36:35"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 411,
+     "device_row_id": 3,
+     "User": "EventSystem/kitchen_motion_light",
+     "Date": "2026-10-08 03:36:17"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791430742.0948534
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:36:35",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/kitchen_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:36:35",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/kitchen_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:36:35",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/kitchen_motion_light"
+    }
+   },
+   "row_ts": 1791430595.0,
+   "edit_delay_s": 147.09357118606567,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/kitchen_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/kitchen_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/kitchen_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 411,
+     "device_row_id": 3,
+     "User": "EventSystem/kitchen_motion_light",
+     "Date": "2026-10-08 03:36:17"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/kitchen_motion_light"
+     ],
+     "api_user": "EventSystem/kitchen_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/kitchen_motion_light"
+     ],
+     "api_user": "EventSystem/kitchen_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/kitchen_motion_light"
+     ],
+     "api_user": "EventSystem/kitchen_motion_light",
+     "agrees": true
+    }
+   }
+  },
+  {
+   "arm": "laundering",
+   "room": "kitchen",
+   "trial": 9,
+   "relock": {
+    "ok": true,
+    "row": {
+     "rowid": 429,
+     "device_row_id": 4,
+     "nValue": 1,
+     "sValue": "On",
+     "User": "LockBridge",
+     "Date": "2026-10-08 03:36:39"
+    },
+    "op": "lock",
+    "t_ack": 1791430599.0940714
+   },
+   "unlock": {
+    "ok": true,
+    "api": {
+     "status": "OK",
+     "title": "SwitchLight"
+    },
+    "row": {
+     "rowid": 430,
+     "Date": "2026-10-08 03:36:40",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "target_rowid": 430,
+   "before": {
+    "owner": {
+     "Date": "2026-10-08 03:36:40",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "member": {
+     "Date": "2026-10-08 03:36:40",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:36:40",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "member (IP: 192.168.96.3)"
+    }
+   },
+   "clean_user": "member (IP: 192.168.96.3)",
+   "clean_is_true_author": true,
+   "edit": {
+    "ok": true,
+    "how": "launder",
+    "rows_updated": 1,
+    "t_edit": 1791430743.0839226,
+    "before": {
+     "rowid": 430,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "member (IP: 192.168.96.3)",
+     "Date": "2026-10-08 03:36:40"
+    },
+    "after": {
+     "rowid": 430,
+     "device_row_id": 4,
+     "nValue": 0,
+     "sValue": "Off",
+     "User": "EventSystem/kitchen_motion_light",
+     "Date": "2026-10-08 03:36:40"
+    },
+    "db_writes": 1,
+    "cover_row": {
+     "rowid": 411,
+     "device_row_id": 3,
+     "User": "EventSystem/kitchen_motion_light",
+     "Date": "2026-10-08 03:36:17"
+    },
+    "cover_precedes_target": true,
+    "op": "launder",
+    "t_ack": 1791430743.0853026
+   },
+   "after": {
+    "owner": {
+     "Date": "2026-10-08 03:36:40",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/kitchen_motion_light"
+    },
+    "member": {
+     "Date": "2026-10-08 03:36:40",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/kitchen_motion_light"
+    },
+    "guest": {
+     "Date": "2026-10-08 03:36:40",
+     "Data": "Unlocked",
+     "Status": "Off",
+     "Level": 0,
+     "User": "EventSystem/kitchen_motion_light"
+    }
+   },
+   "row_ts": 1791430600.0,
+   "edit_delay_s": 143.083922624588,
+   "per_role": {
+    "owner": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/kitchen_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "member": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/kitchen_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    },
+    "guest": {
+     "before_user": "member (IP: 192.168.96.3)",
+     "after_user": "EventSystem/kitchen_motion_light",
+     "principal_moved": true,
+     "misattributed": true,
+     "date_and_data_unchanged": true
+    }
+   },
+   "renderer_confirmed_misattribution": true,
+   "named_rows": [
+    {
+     "rowid": 411,
+     "device_row_id": 3,
+     "User": "EventSystem/kitchen_motion_light",
+     "Date": "2026-10-08 03:36:17"
+    }
+   ],
+   "ui_agreement": {
+    "before_owner": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_member": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "before_guest": {
+     "ui_users": [
+      "member (IP: 192.168.96.3)"
+     ],
+     "api_user": "member (IP: 192.168.96.3)",
+     "agrees": true
+    },
+    "after_owner": {
+     "ui_users": [
+      "EventSystem/kitchen_motion_light"
+     ],
+     "api_user": "EventSystem/kitchen_motion_light",
+     "agrees": true
+    },
+    "after_member": {
+     "ui_users": [
+      "EventSystem/kitchen_motion_light"
+     ],
+     "api_user": "EventSystem/kitchen_motion_light",
+     "agrees": true
+    },
+    "after_guest": {
+     "ui_users": [
+      "EventSystem/kitchen_motion_light"
+     ],
+     "api_user": "EventSystem/kitchen_motion_light",
+     "agrees": true
+    }
+   }
+  }
+ ],
+ "versions": {
+  "domoticz": {
+   "version": "2026.3",
+   "build_hash": "f734fde31",
+   "build_time": "2026-08-02 09:10:11",
+   "dzvents_version": "3.1.11",
+   "python_version": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+   "image": "domoticz/domoticz:stable",
+   "image_id": "sha256:ddb77ad45f169f823c75093ffab8a31b7c59c504970a30d3fa8f69ad651def38",
+   "repo_digests": "[\"domoticz/domoticz@sha256:ddb77ad45f169f823c75093ffab8a31b7c59c504970a30d3fa8f69ad651def38\"]"
+  },
+  "images": {
+   "domoticz": "sha256:ddb77ad45f169f823c75093ffab8a31b7c59c504970a30d3fa8f69ad651def38 [\"domoticz/domoticz@sha256:ddb77ad45f169f823c75093ffab8a31b7c59c504970a30d3fa8f69ad651def38\"] created=2026-08-02T10:25:59.183766019Z arch=arm64",
+   "anchor": "sha256:196961946d8bf9f70830065c17f1e0f84f27d4c69ac28a6ada5079f9ad59776d created=2026-09-08T13:10:44.743271638Z",
+   "python": "sha256:9d2e5553305c7c7b0097999bb17187c69b921ccd6bc9d40e4bb5ebe652c00285 [\"python@sha256:9d2e5553305c7c7b0097999bb17187c69b921ccd6bc9d40e4bb5ebe652c00285\"]"
+  },
+  "anchor": {
+   "image": "hpr-anchord:sig",
+   "anchord_py_sha256": "repo 7b1ef9f1e11a36584eb0fde218fc6a0bb234ff33071e80990d0d354883a0c17f image 7b1ef9f1e11a36584eb0fde218fc6a0bb234ff33071e80990d0d354883a0c17f",
+   "authenticated": true,
+   "key_fingerprint_sha256_16": "2d7895703c47f65e",
+   "key_recorded": false
+  },
+  "monitor": {
+   "monitor_py_sha256": "repo 2eb8f872bb9e40452b353a507229e1502fff1ed81e2d772f5de4fe4bb30fc48b run_copy 2eb8f872bb9e40452b353a507229e1502fff1ed81e2d772f5de4fe4bb30fc48b",
+   "adapter_sha256": "18b404e92e8a0bc5ca83e6ffe8256d210fe57ba252f422f999283b42f4472d26",
+   "scheme": "closure",
+   "period_s": 5,
+   "encoding": "v2",
+   "replaced_in_monitor_py": [
+    "load()",
+    "the Home Assistant schema probe of validate_copy()"
+   ]
+  }
+ },
+ "generated_at": "2026-10-08T03:44:08Z",
+ "seconds": 1.6
+}

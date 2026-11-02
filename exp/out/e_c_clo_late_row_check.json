@@ -1,0 +1,45 @@
+{
+ "tag": "e_c_clo",
+ "scheme": "closure",
+ "snapshot": "<scratch>/hp-clo/e_c_clo/ec_verify/recorder.db",
+ "chain": "<scratch>/hp-clo/e_c_clo/chain.jsonl",
+ "per_arm": {
+  "W1": {
+   "n_valid": 30,
+   "flagged": 0,
+   "late_row": 0,
+   "attributable": 0,
+   "late_detail": []
+  },
+  "W2": {
+   "n_valid": 30,
+   "flagged": 0,
+   "late_row": 0,
+   "attributable": 0,
+   "late_detail": []
+  },
+  "W2b": {
+   "n_valid": 30,
+   "flagged": 0,
+   "late_row": 0,
+   "attributable": 0,
+   "late_detail": []
+  },
+  "W3": {
+   "n_valid": 30,
+   "flagged": 0,
+   "late_row": 0,
+   "attributable": 0,
+   "late_detail": []
+  },
+  "P": {
+   "n_valid": 30,
+   "flagged": 30,
+   "late_row": 0,
+   "attributable": 30,
+   "late_detail": []
+  }
+ },
+ "rule": "delta_n > 0: rows arrived after seal, not attributable; otherwise attributable",
+ "how": "Per-trial late-row test for an E-C/E-D aggregate (same test as used for E-C auth\nand E-PS). For every trial whose second-segment the aggregator flagged, recompute\nthat segment from the verifier's OWN saved recorder snapshot and the saved anchor\nchain with the shipped monitor (scheme from HOMEPROV_SCHEME), and classify:\ndelta_n > 0 -> rows arrived after the seal (not attributable to the arm);\ndelta_n <= 0 or segment vanished -> attributable. Read-only; writes one new file.\nUsage: late_row_check.py TAG SNAPSHOT_DB CHAIN_JSONL\n"
+}

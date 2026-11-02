@@ -1,0 +1,6515 @@
+{
+ "what": "R14: benign failure rates per hour and per day for every real-deployment run with a benign floor, per-run counts and settings, a block bootstrap over consecutive untouched one-second segments, and the pooled floor decomposed so that no pool mixes schemes",
+ "answers": [
+  "R3 W3: 'Report benign rates per hour or day, with per-run counts and a block bootstrap'",
+  "R3 W3: 'The 13/4,733 pool mixes schemes and authentication settings across nine runs'"
+ ],
+ "definitions": {
+  "untouched_segment": "an anchored one-second segment that holds no row any trial wrote, edited or named (the paper's counting rule; reproduce/verify_all.py touched_segments and, for E7/E8, e7_verify's benign floor with the trials' deleted events)",
+  "k": "untouched one-second segments that fail verification (the benign floor's numerator)",
+  "per_untouched_hour": "k / n x 3600: failures per hour of untouched anchored seconds (seconds that held rows, were sealed and were not touched by a trial)",
+  "per_wallclock_hour": "k / window duration x 3600: failures per hour of the run window",
+  "exact_interval": "Clopper-Pearson 95% interval of k/n (exp/rig/stats.py), scaled like the rate",
+  "block_bootstrap": {
+   "method": "circular block bootstrap over the run's untouched one-second segments in time order; replicate statistic = failure proportion; percentile interval",
+   "primary_block_length": 60,
+   "block_lengths_reported": [
+    1,
+    10,
+    30,
+    60,
+    120
+   ],
+   "block_length_unit": "consecutive untouched one-second segments (each a distinct second; L = 60 spans at least 60 s of wall-clock time, i.e. at least twelve 5 s monitor polls)",
+   "replicates": 10000,
+   "seed": 20261012,
+   "rng": "numpy PCG64, SeedSequence([seed, run index in FLOOR_RUNS, L])",
+   "pools": "stratified by run (blocks never cross runs)",
+   "k_zero": "degenerate (every replicate is 0); exact interval reported instead"
+  }
+ },
+ "runs": {
+  "e_c_write_time": {
+   "label": "Write-time strategies",
+   "date": "2026-09-09",
+   "group": "nine-run pool",
+   "scheme": "row",
+   "authenticated_append_path": false,
+   "coverage": false,
+   "markers": false,
+   "record_signatures": false,
+   "linked_anchor": false,
+   "placement": "lab installation (single host, unprivileged container)",
+   "node_encoding_named_by_chain_records": [
+    "absent (earlier encoding)"
+   ],
+   "sealing_grace_s": 0,
+   "window": {
+    "t_start": 1788917684.0,
+    "t_end": 1788919908.0,
+    "duration_s": 2224.0,
+    "recorder_snapshot_at": 1788919999.159368,
+    "chain_upper_bound": "the recorder snapshot time; roots anchored after it are excluded because the snapshot cannot account for them"
+   },
+   "anchored_one_second_segments_in_window": 959,
+   "failing_segments": [
+    "1788918013",
+    "1788918899",
+    "1788919198"
+   ],
+   "failure_mechanisms": {
+    "rows_arrived_after_seal": 3
+   },
+   "failing_positions_in_untouched_series": [
+    124,
+    428,
+    501
+   ],
+   "untouched_set_check": "rebuilt from the saved chain, the result file and the floor file; size equals the floor file's n and every failing segment lies in it (asserted)",
+   "floor_file": "exp/out/e_c_write_time_floor_rescore.json",
+   "result_file": "exp/out/e_c_write_time.json",
+   "chain_file": "<snapshot-set>/hp_d2/live/default_chain.jsonl",
+   "k": 3,
+   "n_untouched_anchored_one_second_segments": 744,
+   "window_duration_s": 2224.0,
+   "proportion": 0.004032258064516129,
+   "exact_interval": [
+    0.0008323217378151986,
+    0.011738373398678779
+   ],
+   "per_untouched_hour": {
+    "rate": 14.516129032258064,
+    "exact_interval": [
+     2.996358256134715,
+     42.258144235243606
+    ]
+   },
+   "per_untouched_day": {
+    "rate": 348.38709677419354,
+    "exact_interval": [
+     71.91259814723315,
+     1014.1954616458465
+    ]
+   },
+   "per_wallclock_hour": {
+    "rate": 4.856115107913669,
+    "exact_interval": [
+     1.0023788410810377,
+     14.136717316106672
+    ]
+   },
+   "per_wallclock_day": {
+    "rate": 116.54676258992805,
+    "exact_interval": [
+     24.057092185944903,
+     339.28121558656017
+    ]
+   },
+   "block_bootstrap": {
+    "primary_block_length": 60,
+    "by_block_length": {
+     "1": {
+      "block_length": 1,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.009408602150537635
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       33.87096774193549
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       812.9032258064516
+      ],
+      "replicate_mean_proportion": 0.004028763440860215,
+      "share_of_replicates_with_zero_failures": 0.0533,
+      "per_wallclock_hour_interval": [
+       0.0,
+       11.33093525179856
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       271.94244604316543
+      ]
+     },
+     "10": {
+      "block_length": 10,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.009408602150537635
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       33.87096774193549
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       812.9032258064516
+      ],
+      "replicate_mean_proportion": 0.004050134408602151,
+      "share_of_replicates_with_zero_failures": 0.0445,
+      "per_wallclock_hour_interval": [
+       0.0,
+       11.33093525179856
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       271.94244604316543
+      ]
+     },
+     "30": {
+      "block_length": 30,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.008064516129032258
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       29.032258064516128
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       696.7741935483871
+      ],
+      "replicate_mean_proportion": 0.004029166666666666,
+      "share_of_replicates_with_zero_failures": 0.0412,
+      "per_wallclock_hour_interval": [
+       0.0,
+       9.712230215827336
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       233.0935251798561
+      ]
+     },
+     "60": {
+      "block_length": 60,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.008064516129032258
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       29.032258064516128
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       696.7741935483871
+      ],
+      "replicate_mean_proportion": 0.004036827956989247,
+      "share_of_replicates_with_zero_failures": 0.0323,
+      "per_wallclock_hour_interval": [
+       0.0,
+       9.712230215827336
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       233.0935251798561
+      ]
+     },
+     "120": {
+      "block_length": 120,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.008064516129032258
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       29.032258064516128
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       696.7741935483871
+      ],
+      "replicate_mean_proportion": 0.004021908602150537,
+      "share_of_replicates_with_zero_failures": 0.0335,
+      "per_wallclock_hour_interval": [
+       0.0,
+       9.712230215827336
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       233.0935251798561
+      ]
+     }
+    }
+   }
+  },
+  "e_d_other_principal_real": {
+   "label": "Other principal",
+   "date": "2026-09-18",
+   "group": "nine-run pool",
+   "scheme": "row",
+   "authenticated_append_path": false,
+   "coverage": false,
+   "markers": false,
+   "record_signatures": false,
+   "linked_anchor": false,
+   "placement": "lab installation (single host, unprivileged container)",
+   "node_encoding_named_by_chain_records": [
+    "absent (earlier encoding)"
+   ],
+   "sealing_grace_s": 0,
+   "window": {
+    "t_start": 1789703864.0,
+    "t_end": 1789706022.0,
+    "duration_s": 2158.0,
+    "recorder_snapshot_at": 1789706114.019326,
+    "chain_upper_bound": "the recorder snapshot time; roots anchored after it are excluded because the snapshot cannot account for them"
+   },
+   "anchored_one_second_segments_in_window": 738,
+   "failing_segments": [
+    "1789705496"
+   ],
+   "failure_mechanisms": {
+    "rows_arrived_after_seal": 1
+   },
+   "failing_positions_in_untouched_series": [
+    430
+   ],
+   "untouched_set_check": "rebuilt from the saved chain, the result file and the floor file; size equals the floor file's n and every failing segment lies in it (asserted)",
+   "floor_file": "exp/out/e_d_other_principal_real_floor_rescore.json",
+   "result_file": "exp/out/e_d_other_principal_real.json",
+   "chain_file": "<snapshot-set>/hp_d2/live/default_chain.jsonl",
+   "k": 1,
+   "n_untouched_anchored_one_second_segments": 558,
+   "window_duration_s": 2158.0,
+   "proportion": 0.0017921146953405018,
+   "exact_interval": [
+    4.537138642996735e-05,
+    0.009944216687682092
+   ],
+   "per_untouched_hour": {
+    "rate": 6.451612903225806,
+    "exact_interval": [
+     0.16333699114788244,
+     35.799180075655535
+    ]
+   },
+   "per_untouched_day": {
+    "rate": 154.83870967741936,
+    "exact_interval": [
+     3.920087787549179,
+     859.1803218157328
+    ]
+   },
+   "per_wallclock_hour": {
+    "rate": 1.6682113067655235,
+    "exact_interval": [
+     0.042234495394123446,
+     9.25669253114726
+    ]
+   },
+   "per_wallclock_day": {
+    "rate": 40.037071362372565,
+    "exact_interval": [
+     1.0136278894589628,
+     222.1606207475342
+    ]
+   },
+   "block_bootstrap": {
+    "primary_block_length": 60,
+    "by_block_length": {
+     "1": {
+      "block_length": 1,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.005376344086021506
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       19.35483870967742
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       464.5161290322581
+      ],
+      "replicate_mean_proportion": 0.0018080645161290324,
+      "share_of_replicates_with_zero_failures": 0.357,
+      "per_wallclock_hour_interval": [
+       0.0,
+       5.004633920296571
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       120.1112140871177
+      ]
+     },
+     "10": {
+      "block_length": 10,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.005376344086021506
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       19.35483870967742
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       464.5161290322581
+      ],
+      "replicate_mean_proportion": 0.0017827956989247312,
+      "share_of_replicates_with_zero_failures": 0.3661,
+      "per_wallclock_hour_interval": [
+       0.0,
+       5.004633920296571
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       120.1112140871177
+      ]
+     },
+     "30": {
+      "block_length": 30,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.005376344086021506
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       19.35483870967742
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       464.5161290322581
+      ],
+      "replicate_mean_proportion": 0.0017876344086021503,
+      "share_of_replicates_with_zero_failures": 0.3556,
+      "per_wallclock_hour_interval": [
+       0.0,
+       5.004633920296571
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       120.1112140871177
+      ]
+     },
+     "60": {
+      "block_length": 60,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.005376344086021506
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       19.35483870967742
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       464.5161290322581
+      ],
+      "replicate_mean_proportion": 0.001801075268817204,
+      "share_of_replicates_with_zero_failures": 0.3476,
+      "per_wallclock_hour_interval": [
+       0.0,
+       5.004633920296571
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       120.1112140871177
+      ]
+     },
+     "120": {
+      "block_length": 120,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.005376344086021506
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       19.35483870967742
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       464.5161290322581
+      ],
+      "replicate_mean_proportion": 0.001781899641577061,
+      "share_of_replicates_with_zero_failures": 0.3315,
+      "per_wallclock_hour_interval": [
+       0.0,
+       5.004633920296571
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       120.1112140871177
+      ]
+     }
+    }
+   }
+  },
+  "e_d_auth": {
+   "label": "Other principal",
+   "date": "2026-09-26",
+   "group": "nine-run pool",
+   "scheme": "row",
+   "authenticated_append_path": true,
+   "coverage": false,
+   "markers": false,
+   "record_signatures": false,
+   "linked_anchor": false,
+   "placement": "lab installation (single host, unprivileged container)",
+   "node_encoding_named_by_chain_records": [
+    "absent (earlier encoding)"
+   ],
+   "sealing_grace_s": 0,
+   "window": {
+    "t_start": 1790410030.0,
+    "t_end": 1790412186.0,
+    "duration_s": 2156.0,
+    "recorder_snapshot_at": 1790412277.278847,
+    "chain_upper_bound": "the recorder snapshot time; roots anchored after it are excluded because the snapshot cannot account for them"
+   },
+   "anchored_one_second_segments_in_window": 723,
+   "failing_segments": [
+    "1790410223"
+   ],
+   "failure_mechanisms": {
+    "rows_arrived_after_seal": 1
+   },
+   "failing_positions_in_untouched_series": [
+    46
+   ],
+   "untouched_set_check": "rebuilt from the saved chain, the result file and the floor file; size equals the floor file's n and every failing segment lies in it (asserted)",
+   "floor_file": "exp/out/e_d_auth_floor_rescore.json",
+   "result_file": "exp/out/e_d_auth_other_principal_real.json",
+   "chain_file": "exp/out/e_d_auth_anchor_chain.jsonl.gz",
+   "k": 1,
+   "n_untouched_anchored_one_second_segments": 527,
+   "window_duration_s": 2156.0,
+   "proportion": 0.0018975332068311196,
+   "exact_interval": [
+    4.8040227405681404e-05,
+    0.010526635290779336
+   ],
+   "per_untouched_hour": {
+    "rate": 6.83111954459203,
+    "exact_interval": [
+     0.17294481866045305,
+     37.89588704680561
+    ]
+   },
+   "per_untouched_day": {
+    "rate": 163.94686907020872,
+    "exact_interval": [
+     4.150675647850873,
+     909.5012891233346
+    ]
+   },
+   "per_wallclock_hour": {
+    "rate": 1.6697588126159555,
+    "exact_interval": [
+     0.04227361754826473,
+     9.263048457173728
+    ]
+   },
+   "per_wallclock_day": {
+    "rate": 40.07421150278293,
+    "exact_interval": [
+     1.0145668211583534,
+     222.31316297216944
+    ]
+   },
+   "block_bootstrap": {
+    "primary_block_length": 60,
+    "by_block_length": {
+     "1": {
+      "block_length": 1,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.0056925996204933585
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       20.49335863377609
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       491.84060721062616
+      ],
+      "replicate_mean_proportion": 0.0019426944971537002,
+      "share_of_replicates_with_zero_failures": 0.3548,
+      "per_wallclock_hour_interval": [
+       0.0,
+       5.009276437847866
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       120.22263450834878
+      ]
+     },
+     "10": {
+      "block_length": 10,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.0056925996204933585
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       20.49335863377609
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       491.84060721062616
+      ],
+      "replicate_mean_proportion": 0.0018948766603415557,
+      "share_of_replicates_with_zero_failures": 0.3653,
+      "per_wallclock_hour_interval": [
+       0.0,
+       5.009276437847866
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       120.22263450834878
+      ]
+     },
+     "30": {
+      "block_length": 30,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.0056925996204933585
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       20.49335863377609
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       491.84060721062616
+      ],
+      "replicate_mean_proportion": 0.0018984819734345346,
+      "share_of_replicates_with_zero_failures": 0.3555,
+      "per_wallclock_hour_interval": [
+       0.0,
+       5.009276437847866
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       120.22263450834878
+      ]
+     },
+     "60": {
+      "block_length": 60,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.0056925996204933585
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       20.49335863377609
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       491.84060721062616
+      ],
+      "replicate_mean_proportion": 0.0019216318785578747,
+      "share_of_replicates_with_zero_failures": 0.3372,
+      "per_wallclock_hour_interval": [
+       0.0,
+       5.009276437847866
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       120.22263450834878
+      ]
+     },
+     "120": {
+      "block_length": 120,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.0056925996204933585
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       20.49335863377609
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       491.84060721062616
+      ],
+      "replicate_mean_proportion": 0.0018880455407969637,
+      "share_of_replicates_with_zero_failures": 0.3284,
+      "per_wallclock_hour_interval": [
+       0.0,
+       5.009276437847866
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       120.22263450834878
+      ]
+     }
+    }
+   }
+  },
+  "e_c_auth": {
+   "label": "Write-time strategies",
+   "date": "2026-10-02",
+   "group": "nine-run pool",
+   "scheme": "row",
+   "authenticated_append_path": true,
+   "coverage": false,
+   "markers": false,
+   "record_signatures": false,
+   "linked_anchor": false,
+   "placement": "lab installation (single host, unprivileged container)",
+   "node_encoding_named_by_chain_records": [
+    "absent (earlier encoding)"
+   ],
+   "sealing_grace_s": 0,
+   "window": {
+    "t_start": 1790933227.0,
+    "t_end": 1790935444.0,
+    "duration_s": 2217.0,
+    "recorder_snapshot_at": 1790935535.411951,
+    "chain_upper_bound": "the recorder snapshot time; roots anchored after it are excluded because the snapshot cannot account for them"
+   },
+   "anchored_one_second_segments_in_window": 929,
+   "failing_segments": [
+    "1790933665",
+    "1790933713",
+    "1790934889"
+   ],
+   "failure_mechanisms": {
+    "rows_arrived_after_seal": 3
+   },
+   "failing_positions_in_untouched_series": [
+    158,
+    175,
+    541
+   ],
+   "untouched_set_check": "rebuilt from the saved chain, the result file and the floor file; size equals the floor file's n and every failing segment lies in it (asserted)",
+   "floor_file": "exp/out/e_c_auth_floor_rescore.json",
+   "result_file": "exp/out/e_c_auth_other_principal_real.json",
+   "chain_file": "exp/out/e_c_auth_anchor_chain.jsonl.gz",
+   "k": 3,
+   "n_untouched_anchored_one_second_segments": 711,
+   "window_duration_s": 2217.0,
+   "proportion": 0.004219409282700422,
+   "exact_interval": [
+    0.0008709903200195857,
+    0.012280981850714596
+   ],
+   "per_untouched_hour": {
+    "rate": 15.189873417721518,
+    "exact_interval": [
+     3.1355651520705083,
+     44.21153466257255
+    ]
+   },
+   "per_untouched_day": {
+    "rate": 364.55696202531647,
+    "exact_interval": [
+     75.2535636496922,
+     1061.0768319017411
+    ]
+   },
+   "per_wallclock_hour": {
+    "rate": 4.871447902571042,
+    "exact_interval": [
+     1.0055872003257247,
+     14.178800696927867
+    ]
+   },
+   "per_wallclock_day": {
+    "rate": 116.914749661705,
+    "exact_interval": [
+     24.134092807817392,
+     340.29121672626883
+    ]
+   },
+   "block_bootstrap": {
+    "primary_block_length": 60,
+    "by_block_length": {
+     "1": {
+      "block_length": 1,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.009845288326300985
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       35.44303797468355
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       850.6329113924052
+      ],
+      "replicate_mean_proportion": 0.004245147679324894,
+      "share_of_replicates_with_zero_failures": 0.0475,
+      "per_wallclock_hour_interval": [
+       0.0,
+       11.366711772665766
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       272.8010825439784
+      ]
+     },
+     "10": {
+      "block_length": 10,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.009845288326300985
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       35.44303797468355
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       850.6329113924052
+      ],
+      "replicate_mean_proportion": 0.004201265822784811,
+      "share_of_replicates_with_zero_failures": 0.0473,
+      "per_wallclock_hour_interval": [
+       0.0,
+       11.366711772665766
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       272.8010825439784
+      ]
+     },
+     "30": {
+      "block_length": 30,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.009845288326300985
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       35.44303797468355
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       850.6329113924052
+      ],
+      "replicate_mean_proportion": 0.004216596343178621,
+      "share_of_replicates_with_zero_failures": 0.0674,
+      "per_wallclock_hour_interval": [
+       0.0,
+       11.366711772665766
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       272.8010825439784
+      ]
+     },
+     "60": {
+      "block_length": 60,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.009845288326300985
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       35.44303797468355
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       850.6329113924052
+      ],
+      "replicate_mean_proportion": 0.004226019690576652,
+      "share_of_replicates_with_zero_failures": 0.0787,
+      "per_wallclock_hour_interval": [
+       0.0,
+       11.366711772665766
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       272.8010825439784
+      ]
+     },
+     "120": {
+      "block_length": 120,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.009845288326300985
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       35.44303797468355
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       850.6329113924052
+      ],
+      "replicate_mean_proportion": 0.00419676511954993,
+      "share_of_replicates_with_zero_failures": 0.0664,
+      "per_wallclock_hour_interval": [
+       0.0,
+       11.366711772665766
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       272.8010825439784
+      ]
+     }
+    }
+   }
+  },
+  "e_ps_auth": {
+   "label": "Random-id swap",
+   "date": "2026-10-02",
+   "group": "nine-run pool",
+   "scheme": "row",
+   "authenticated_append_path": true,
+   "coverage": false,
+   "markers": false,
+   "record_signatures": false,
+   "linked_anchor": false,
+   "placement": "lab installation (single host, unprivileged container)",
+   "node_encoding_named_by_chain_records": [
+    "absent (earlier encoding)"
+   ],
+   "sealing_grace_s": 0,
+   "window": {
+    "t_start": 1790948889.0,
+    "t_end": 1790950091.0,
+    "duration_s": 1202.0,
+    "recorder_snapshot_at": 1790950199.520383
+   },
+   "anchored_one_second_segments_in_window": 399,
+   "failing_segments": [
+    "1790949888"
+   ],
+   "failure_mechanisms": {
+    "rows_arrived_after_seal": 1
+   },
+   "failing_positions_in_untouched_series": [
+    261
+   ],
+   "untouched_set_check": "rebuilt from the saved chain, the result file and the floor file; size equals the floor file's n and every failing segment lies in it (asserted)",
+   "floor_file": "exp/out/e_ps_auth_floor_rescore.json",
+   "result_file": "exp/out/e_ps_auth_detection.json",
+   "chain_file": "exp/out/e_ps_auth_anchor_chain.jsonl.gz",
+   "k": 1,
+   "n_untouched_anchored_one_second_segments": 308,
+   "window_duration_s": 1202.0,
+   "proportion": 0.003246753246753247,
+   "exact_interval": [
+    8.21972968907298e-05,
+    0.017956067587781004
+   ],
+   "per_untouched_hour": {
+    "rate": 11.688311688311689,
+    "exact_interval": [
+     0.2959102688066273,
+     64.64184331601162
+    ]
+   },
+   "per_untouched_day": {
+    "rate": 280.5194805194805,
+    "exact_interval": [
+     7.101846451359055,
+     1551.4042395842787
+    ]
+   },
+   "per_wallclock_hour": {
+    "rate": 2.995008319467554,
+    "exact_interval": [
+     0.07582392911184792,
+     16.563800117580346
+    ]
+   },
+   "per_wallclock_day": {
+    "rate": 71.88019966722129,
+    "exact_interval": [
+     1.8197742986843501,
+     397.53120282192833
+    ]
+   },
+   "block_bootstrap": {
+    "primary_block_length": 60,
+    "by_block_length": {
+     "1": {
+      "block_length": 1,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.00974025974025974
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       35.064935064935064
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       841.5584415584416
+      ],
+      "replicate_mean_proportion": 0.0032548701298701303,
+      "share_of_replicates_with_zero_failures": 0.3677,
+      "per_wallclock_hour_interval": [
+       0.0,
+       8.985024958402661
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       215.6405990016639
+      ]
+     },
+     "10": {
+      "block_length": 10,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.00974025974025974
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       35.064935064935064
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       841.5584415584416
+      ],
+      "replicate_mean_proportion": 0.0032587662337662335,
+      "share_of_replicates_with_zero_failures": 0.3578,
+      "per_wallclock_hour_interval": [
+       0.0,
+       8.985024958402661
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       215.6405990016639
+      ]
+     },
+     "30": {
+      "block_length": 30,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.00974025974025974
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       35.064935064935064
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       841.5584415584416
+      ],
+      "replicate_mean_proportion": 0.0032688311688311694,
+      "share_of_replicates_with_zero_failures": 0.3455,
+      "per_wallclock_hour_interval": [
+       0.0,
+       8.985024958402661
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       215.6405990016639
+      ]
+     },
+     "60": {
+      "block_length": 60,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.00974025974025974
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       35.064935064935064
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       841.5584415584416
+      ],
+      "replicate_mean_proportion": 0.0032383116883116883,
+      "share_of_replicates_with_zero_failures": 0.3316,
+      "per_wallclock_hour_interval": [
+       0.0,
+       8.985024958402661
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       215.6405990016639
+      ]
+     },
+     "120": {
+      "block_length": 120,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.00974025974025974
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       35.064935064935064
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       841.5584415584416
+      ],
+      "replicate_mean_proportion": 0.0032477272727272732,
+      "share_of_replicates_with_zero_failures": 0.291,
+      "per_wallclock_hour_interval": [
+       0.0,
+       8.985024958402661
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       215.6405990016639
+      ]
+     }
+    }
+   }
+  },
+  "e_ps_clo": {
+   "label": "Random-id swap",
+   "date": "2026-10-02",
+   "group": "nine-run pool",
+   "scheme": "closure",
+   "authenticated_append_path": true,
+   "coverage": false,
+   "markers": false,
+   "record_signatures": false,
+   "linked_anchor": false,
+   "placement": "lab installation (single host, unprivileged container)",
+   "node_encoding_named_by_chain_records": [
+    "absent (earlier encoding)"
+   ],
+   "sealing_grace_s": 0,
+   "window": {
+    "t_start": 1790966773.0,
+    "t_end": 1790967973.0,
+    "duration_s": 1200.0,
+    "recorder_snapshot_at": 1790968086.368844
+   },
+   "anchored_one_second_segments_in_window": 402,
+   "failing_segments": [
+    "1790967289"
+   ],
+   "failure_mechanisms": {
+    "rows_arrived_after_seal": 1
+   },
+   "failing_positions_in_untouched_series": [
+    136
+   ],
+   "untouched_set_check": "rebuilt from the saved chain, the result file and the floor file; size equals the floor file's n and every failing segment lies in it (asserted)",
+   "floor_file": "exp/out/e_ps_clo_floor_rescore.json",
+   "result_file": "exp/out/e_ps_clo_detection.json",
+   "chain_file": "reproduce/snapshots/e_ps_clo.chain.jsonl",
+   "k": 1,
+   "n_untouched_anchored_one_second_segments": 312,
+   "window_duration_s": 1200.0,
+   "proportion": 0.003205128205128205,
+   "exact_interval": [
+    8.114352814828618e-05,
+    0.017727546421299402
+   ],
+   "per_untouched_hour": {
+    "rate": 11.538461538461538,
+    "exact_interval": [
+     0.2921167013338302,
+     63.819167116677846
+    ]
+   },
+   "per_untouched_day": {
+    "rate": 276.9230769230769,
+    "exact_interval": [
+     7.010800832011926,
+     1531.6600108002683
+    ]
+   },
+   "per_wallclock_hour": {
+    "rate": 3.0,
+    "exact_interval": [
+     0.07595034234679586,
+     16.59298345033624
+    ]
+   },
+   "per_wallclock_day": {
+    "rate": 72.0,
+    "exact_interval": [
+     1.8228082163231007,
+     398.2316028080698
+    ]
+   },
+   "block_bootstrap": {
+    "primary_block_length": 60,
+    "by_block_length": {
+     "1": {
+      "block_length": 1,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.009615384615384616
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       34.61538461538462
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       830.7692307692308
+      ],
+      "replicate_mean_proportion": 0.0031711538461538465,
+      "share_of_replicates_with_zero_failures": 0.3734,
+      "per_wallclock_hour_interval": [
+       0.0,
+       9.000000000000002
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       216.00000000000003
+      ]
+     },
+     "10": {
+      "block_length": 10,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.009615384615384616
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       34.61538461538462
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       830.7692307692308
+      ],
+      "replicate_mean_proportion": 0.0031910256410256407,
+      "share_of_replicates_with_zero_failures": 0.362,
+      "per_wallclock_hour_interval": [
+       0.0,
+       9.000000000000002
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       216.00000000000003
+      ]
+     },
+     "30": {
+      "block_length": 30,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.009615384615384616
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       34.61538461538462
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       830.7692307692308
+      ],
+      "replicate_mean_proportion": 0.003128846153846154,
+      "share_of_replicates_with_zero_failures": 0.363,
+      "per_wallclock_hour_interval": [
+       0.0,
+       9.000000000000002
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       216.00000000000003
+      ]
+     },
+     "60": {
+      "block_length": 60,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.009615384615384616
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       34.61538461538462
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       830.7692307692308
+      ],
+      "replicate_mean_proportion": 0.003208974358974359,
+      "share_of_replicates_with_zero_failures": 0.3323,
+      "per_wallclock_hour_interval": [
+       0.0,
+       9.000000000000002
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       216.00000000000003
+      ]
+     },
+     "120": {
+      "block_length": 120,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.009615384615384616
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       34.61538461538462
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       830.7692307692308
+      ],
+      "replicate_mean_proportion": 0.0031541666666666667,
+      "share_of_replicates_with_zero_failures": 0.2987,
+      "per_wallclock_hour_interval": [
+       0.0,
+       9.000000000000002
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       216.00000000000003
+      ]
+     }
+    }
+   }
+  },
+  "e_d_clo": {
+   "label": "Other principal",
+   "date": "2026-10-02",
+   "group": "nine-run pool",
+   "scheme": "closure",
+   "authenticated_append_path": true,
+   "coverage": false,
+   "markers": false,
+   "record_signatures": false,
+   "linked_anchor": false,
+   "placement": "lab installation (single host, unprivileged container)",
+   "node_encoding_named_by_chain_records": [
+    "absent (earlier encoding)"
+   ],
+   "sealing_grace_s": 0,
+   "window": {
+    "t_start": 1790968169.0,
+    "t_end": 1790970350.0,
+    "duration_s": 2181.0,
+    "recorder_snapshot_at": 1790970444.5623932,
+    "chain_upper_bound": "the recorder snapshot time; roots anchored after it are excluded because the snapshot cannot account for them"
+   },
+   "anchored_one_second_segments_in_window": 744,
+   "failing_segments": [
+    "1790968174"
+   ],
+   "failure_mechanisms": {
+    "rows_arrived_after_seal": 1
+   },
+   "failing_positions_in_untouched_series": [
+    3
+   ],
+   "untouched_set_check": "rebuilt from the saved chain, the result file and the floor file; size equals the floor file's n and every failing segment lies in it (asserted)",
+   "floor_file": "exp/out/e_d_clo_floor_rescore.json",
+   "result_file": "exp/out/e_d_clo_other_principal_real.json",
+   "chain_file": "reproduce/snapshots/e_d_clo.chain.jsonl",
+   "k": 1,
+   "n_untouched_anchored_one_second_segments": 560,
+   "window_duration_s": 2181.0,
+   "proportion": 0.0017857142857142857,
+   "exact_interval": [
+    4.5209349427077876e-05,
+    0.009908846508542292
+   ],
+   "per_untouched_hour": {
+    "rate": 6.428571428571429,
+    "exact_interval": [
+     0.16275365793748037,
+     35.67184743075225
+    ]
+   },
+   "per_untouched_day": {
+    "rate": 154.28571428571428,
+    "exact_interval": [
+     3.9060877904995284,
+     856.124338338054
+    ]
+   },
+   "per_wallclock_hour": {
+    "rate": 1.6506189821182944,
+    "exact_interval": [
+     0.041789109786790006,
+     9.159208877222035
+    ]
+   },
+   "per_wallclock_day": {
+    "rate": 39.61485557083906,
+    "exact_interval": [
+     1.00293863488296,
+     219.82101305332887
+    ]
+   },
+   "block_bootstrap": {
+    "primary_block_length": 60,
+    "by_block_length": {
+     "1": {
+      "block_length": 1,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.005357142857142857
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       19.285714285714285
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       462.8571428571429
+      ],
+      "replicate_mean_proportion": 0.0018105357142857144,
+      "share_of_replicates_with_zero_failures": 0.3628,
+      "per_wallclock_hour_interval": [
+       0.0,
+       4.951856946354883
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       118.84456671251719
+      ]
+     },
+     "10": {
+      "block_length": 10,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.005357142857142857
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       19.285714285714285
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       462.8571428571429
+      ],
+      "replicate_mean_proportion": 0.0017825000000000002,
+      "share_of_replicates_with_zero_failures": 0.3663,
+      "per_wallclock_hour_interval": [
+       0.0,
+       4.951856946354883
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       118.84456671251719
+      ]
+     },
+     "30": {
+      "block_length": 30,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.005357142857142857
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       19.285714285714285
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       462.8571428571429
+      ],
+      "replicate_mean_proportion": 0.0018282142857142859,
+      "share_of_replicates_with_zero_failures": 0.3481,
+      "per_wallclock_hour_interval": [
+       0.0,
+       4.951856946354883
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       118.84456671251719
+      ]
+     },
+     "60": {
+      "block_length": 60,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.005357142857142857
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       19.285714285714285
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       462.8571428571429
+      ],
+      "replicate_mean_proportion": 0.0017730357142857144,
+      "share_of_replicates_with_zero_failures": 0.3516,
+      "per_wallclock_hour_interval": [
+       0.0,
+       4.951856946354883
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       118.84456671251719
+      ]
+     },
+     "120": {
+      "block_length": 120,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.005357142857142857
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       19.285714285714285
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       462.8571428571429
+      ],
+      "replicate_mean_proportion": 0.0017935714285714287,
+      "share_of_replicates_with_zero_failures": 0.3228,
+      "per_wallclock_hour_interval": [
+       0.0,
+       4.951856946354883
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       118.84456671251719
+      ]
+     }
+    }
+   }
+  },
+  "e_c_clo": {
+   "label": "Write-time strategies",
+   "date": "2026-10-02",
+   "group": "nine-run pool",
+   "scheme": "closure",
+   "authenticated_append_path": true,
+   "coverage": false,
+   "markers": false,
+   "record_signatures": false,
+   "linked_anchor": false,
+   "placement": "lab installation (single host, unprivileged container)",
+   "node_encoding_named_by_chain_records": [
+    "absent (earlier encoding)"
+   ],
+   "sealing_grace_s": 0,
+   "window": {
+    "t_start": 1790970526.0,
+    "t_end": 1790972744.0,
+    "duration_s": 2218.0,
+    "recorder_snapshot_at": 1790972837.367859,
+    "chain_upper_bound": "the recorder snapshot time; roots anchored after it are excluded because the snapshot cannot account for them"
+   },
+   "anchored_one_second_segments_in_window": 922,
+   "failing_segments": [
+    "1790971503"
+   ],
+   "failure_mechanisms": {
+    "rows_arrived_after_seal": 1
+   },
+   "failing_positions_in_untouched_series": [
+    330
+   ],
+   "untouched_set_check": "rebuilt from the saved chain, the result file and the floor file; size equals the floor file's n and every failing segment lies in it (asserted)",
+   "floor_file": "exp/out/e_c_clo_floor_rescore.json",
+   "result_file": "exp/out/e_c_clo_other_principal_real.json",
+   "chain_file": "reproduce/snapshots/e_c_clo.chain.jsonl",
+   "k": 1,
+   "n_untouched_anchored_one_second_segments": 714,
+   "window_duration_s": 2218.0,
+   "proportion": 0.0014005602240896359,
+   "exact_interval": [
+    3.5458486156954034e-05,
+    0.007778485785124849
+   ],
+   "per_untouched_hour": {
+    "rate": 5.042016806722689,
+    "exact_interval": [
+     0.12765055016503452,
+     28.002548826449456
+    ]
+   },
+   "per_untouched_day": {
+    "rate": 121.00840336134453,
+    "exact_interval": [
+     3.0636132039608284,
+     672.0611718347869
+    ]
+   },
+   "per_wallclock_hour": {
+    "rate": 1.6230838593327321,
+    "exact_interval": [
+     0.0410921969422158,
+     9.01434619571006
+    ]
+   },
+   "per_wallclock_day": {
+    "rate": 38.95401262398557,
+    "exact_interval": [
+     0.9862127266131792,
+     216.3443086970414
+    ]
+   },
+   "block_bootstrap": {
+    "primary_block_length": 60,
+    "by_block_length": {
+     "1": {
+      "block_length": 1,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.004201680672268907
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       15.126050420168067
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       363.0252100840336
+      ],
+      "replicate_mean_proportion": 0.0014277310924369745,
+      "share_of_replicates_with_zero_failures": 0.3578,
+      "per_wallclock_hour_interval": [
+       0.0,
+       4.869251577998196
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       116.8620378719567
+      ]
+     },
+     "10": {
+      "block_length": 10,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.004201680672268907
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       15.126050420168067
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       363.0252100840336
+      ],
+      "replicate_mean_proportion": 0.0013904761904761902,
+      "share_of_replicates_with_zero_failures": 0.3696,
+      "per_wallclock_hour_interval": [
+       0.0,
+       4.869251577998196
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       116.8620378719567
+      ]
+     },
+     "30": {
+      "block_length": 30,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.004201680672268907
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       15.126050420168067
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       363.0252100840336
+      ],
+      "replicate_mean_proportion": 0.0013707282913165266,
+      "share_of_replicates_with_zero_failures": 0.3717,
+      "per_wallclock_hour_interval": [
+       0.0,
+       4.869251577998196
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       116.8620378719567
+      ]
+     },
+     "60": {
+      "block_length": 60,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.004201680672268907
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       15.126050420168067
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       363.0252100840336
+      ],
+      "replicate_mean_proportion": 0.0013921568627450979,
+      "share_of_replicates_with_zero_failures": 0.3541,
+      "per_wallclock_hour_interval": [
+       0.0,
+       4.869251577998196
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       116.8620378719567
+      ]
+     },
+     "120": {
+      "block_length": 120,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.004201680672268907
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       15.126050420168067
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       363.0252100840336
+      ],
+      "replicate_mean_proportion": 0.0013931372549019607,
+      "share_of_replicates_with_zero_failures": 0.3398,
+      "per_wallclock_hour_interval": [
+       0.0,
+       4.869251577998196
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       116.8620378719567
+      ]
+     }
+    }
+   }
+  },
+  "e_psr_clo": {
+   "label": "Member-account swap",
+   "date": "2026-10-03",
+   "group": "nine-run pool",
+   "scheme": "closure",
+   "authenticated_append_path": true,
+   "coverage": false,
+   "markers": false,
+   "record_signatures": false,
+   "linked_anchor": false,
+   "placement": "lab installation (single host, unprivileged container)",
+   "node_encoding_named_by_chain_records": [
+    "absent (earlier encoding)"
+   ],
+   "sealing_grace_s": 0,
+   "window": {
+    "t_start": 1790987124.0,
+    "t_end": 1790988313.0,
+    "duration_s": 1189.0,
+    "recorder_snapshot_at": 1790988416.464202
+   },
+   "anchored_one_second_segments_in_window": 396,
+   "failing_segments": [
+    "1790987279"
+   ],
+   "failure_mechanisms": {
+    "rows_arrived_after_seal": 1
+   },
+   "failing_positions_in_untouched_series": [
+    38
+   ],
+   "untouched_set_check": "rebuilt from the saved chain, the result file and the floor file; size equals the floor file's n and every failing segment lies in it (asserted)",
+   "floor_file": "exp/out/e_psr_clo_floor_rescore.json",
+   "result_file": "exp/out/e_psr_clo_detection.json",
+   "chain_file": "reproduce/snapshots/e_psr_clo.chain.jsonl",
+   "k": 1,
+   "n_untouched_anchored_one_second_segments": 299,
+   "window_duration_s": 1189.0,
+   "proportion": 0.0033444816053511705,
+   "exact_interval": [
+    8.467135826945898e-05,
+    0.01849242431064522
+   ],
+   "per_untouched_hour": {
+    "rate": 12.040133779264215,
+    "exact_interval": [
+     0.30481688977005233,
+     66.5727275183228
+    ]
+   },
+   "per_untouched_day": {
+    "rate": 288.96321070234114,
+    "exact_interval": [
+     7.3156053544812565,
+     1597.7454604397471
+    ]
+   },
+   "per_wallclock_hour": {
+    "rate": 3.027754415475189,
+    "exact_interval": [
+     0.07665285958052619,
+     16.74116528845964
+    ]
+   },
+   "per_wallclock_day": {
+    "rate": 72.66610597140455,
+    "exact_interval": [
+     1.8396686299326286,
+     401.78796692303143
+    ]
+   },
+   "block_bootstrap": {
+    "primary_block_length": 60,
+    "by_block_length": {
+     "1": {
+      "block_length": 1,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.010033444816053512
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       36.12040133779264
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       866.8896321070234
+      ],
+      "replicate_mean_proportion": 0.0033558528428093643,
+      "share_of_replicates_with_zero_failures": 0.3633,
+      "per_wallclock_hour_interval": [
+       0.0,
+       9.083263246425567
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       217.9983179142136
+      ]
+     },
+     "10": {
+      "block_length": 10,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.010033444816053512
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       36.12040133779264
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       866.8896321070234
+      ],
+      "replicate_mean_proportion": 0.0033364548494983276,
+      "share_of_replicates_with_zero_failures": 0.3618,
+      "per_wallclock_hour_interval": [
+       0.0,
+       9.083263246425567
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       217.9983179142136
+      ]
+     },
+     "30": {
+      "block_length": 30,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.010033444816053512
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       36.12040133779264
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       866.8896321070234
+      ],
+      "replicate_mean_proportion": 0.00337324414715719,
+      "share_of_replicates_with_zero_failures": 0.3437,
+      "per_wallclock_hour_interval": [
+       0.0,
+       9.083263246425567
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       217.9983179142136
+      ]
+     },
+     "60": {
+      "block_length": 60,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.010033444816053512
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       36.12040133779264
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       866.8896321070234
+      ],
+      "replicate_mean_proportion": 0.003360200668896321,
+      "share_of_replicates_with_zero_failures": 0.3223,
+      "per_wallclock_hour_interval": [
+       0.0,
+       9.083263246425567
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       217.9983179142136
+      ]
+     },
+     "120": {
+      "block_length": 120,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0,
+       0.010033444816053512
+      ],
+      "per_untouched_hour_interval": [
+       0.0,
+       36.12040133779264
+      ],
+      "per_untouched_day_interval": [
+       0.0,
+       866.8896321070234
+      ],
+      "replicate_mean_proportion": 0.0033230769230769234,
+      "share_of_replicates_with_zero_failures": 0.2882,
+      "per_wallclock_hour_interval": [
+       0.0,
+       9.083263246425567
+      ],
+      "per_wallclock_day_interval": [
+       0.0,
+       217.9983179142136
+      ]
+     }
+    }
+   }
+  },
+  "e_ps_whr": {
+   "label": "Random-id swap",
+   "date": "2026-10-04",
+   "group": "whole-row runs",
+   "scheme": "wholerow",
+   "authenticated_append_path": true,
+   "coverage": false,
+   "markers": false,
+   "record_signatures": false,
+   "linked_anchor": false,
+   "placement": "lab installation (single host, unprivileged container)",
+   "node_encoding_named_by_chain_records": [
+    "absent (earlier encoding)"
+   ],
+   "sealing_grace_s": 0,
+   "window": {
+    "t_start": 1791098825.0,
+    "t_end": 1791100011.0,
+    "duration_s": 1186.0,
+    "recorder_snapshot_at": 1791100122.218403
+   },
+   "anchored_one_second_segments_in_window": 370,
+   "failing_segments": [
+    "1791098828",
+    "1791098829",
+    "1791098834",
+    "1791098837",
+    "1791098843",
+    "1791098851",
+    "1791098854",
+    "1791098859",
+    "1791098860",
+    "1791098862",
+    "1791098866",
+    "1791098872",
+    "1791098873",
+    "1791098877",
+    "1791098879",
+    "1791098889",
+    "1791098893",
+    "1791098903",
+    "1791098909",
+    "1791098913",
+    "1791098915",
+    "1791098921",
+    "1791098923",
+    "1791098927",
+    "1791098932",
+    "1791098953",
+    "1791098957",
+    "1791098962",
+    "1791098963",
+    "1791098968",
+    "1791098969",
+    "1791098970",
+    "1791098975",
+    "1791098980",
+    "1791098981",
+    "1791098997",
+    "1791098999",
+    "1791099009",
+    "1791099018",
+    "1791099024",
+    "1791099030",
+    "1791099036",
+    "1791099038",
+    "1791099043",
+    "1791099044",
+    "1791099047",
+    "1791099057",
+    "1791099060",
+    "1791099064",
+    "1791099069",
+    "1791099073",
+    "1791099079",
+    "1791099086",
+    "1791099088",
+    "1791099098",
+    "1791099108",
+    "1791099110",
+    "1791099120",
+    "1791099123",
+    "1791099133",
+    "1791099142",
+    "1791099144",
+    "1791099153",
+    "1791099160",
+    "1791099178",
+    "1791099199",
+    "1791099224",
+    "1791099234",
+    "1791099237",
+    "1791099243",
+    "1791099255",
+    "1791099267",
+    "1791099284",
+    "1791099285",
+    "1791099291",
+    "1791099297",
+    "1791099303",
+    "1791099316",
+    "1791099324",
+    "1791099334",
+    "1791099340",
+    "1791099346",
+    "1791099352",
+    "1791099353",
+    "1791099356",
+    "1791099358",
+    "1791099362",
+    "1791099366",
+    "1791099370",
+    "1791099376",
+    "1791099382",
+    "1791099386",
+    "1791099388",
+    "1791099392",
+    "1791099396",
+    "1791099400",
+    "1791099402",
+    "1791099406",
+    "1791099412",
+    "1791099423",
+    "1791099432",
+    "1791099435",
+    "1791099442",
+    "1791099445",
+    "1791099452",
+    "1791099453",
+    "1791099468",
+    "1791099470",
+    "1791099478",
+    "1791099480",
+    "1791099481",
+    "1791099489",
+    "1791099498",
+    "1791099500",
+    "1791099508",
+    "1791099510",
+    "1791099512",
+    "1791099522",
+    "1791099529",
+    "1791099551",
+    "1791099554",
+    "1791099558",
+    "1791099574",
+    "1791099590",
+    "1791099593",
+    "1791099602",
+    "1791099619",
+    "1791099621",
+    "1791099623",
+    "1791099629",
+    "1791099633",
+    "1791099635",
+    "1791099646",
+    "1791099650",
+    "1791099655",
+    "1791099657",
+    "1791099659",
+    "1791099663",
+    "1791099667",
+    "1791099669",
+    "1791099675",
+    "1791099681",
+    "1791099682",
+    "1791099685",
+    "1791099693",
+    "1791099697",
+    "1791099699",
+    "1791099705",
+    "1791099707",
+    "1791099711",
+    "1791099715",
+    "1791099717",
+    "1791099723",
+    "1791099729",
+    "1791099731",
+    "1791099734",
+    "1791099740",
+    "1791099753",
+    "1791099755",
+    "1791099759",
+    "1791099761",
+    "1791099763",
+    "1791099765",
+    "1791099769",
+    "1791099770",
+    "1791099771",
+    "1791099778",
+    "1791099784",
+    "1791099792",
+    "1791099794",
+    "1791099802",
+    "1791099807",
+    "1791099809",
+    "1791099820",
+    "1791099822",
+    "1791099826",
+    "1791099836",
+    "1791099843",
+    "1791099845",
+    "1791099855",
+    "1791099860",
+    "1791099863",
+    "1791099873",
+    "1791099878",
+    "1791099882",
+    "1791099888",
+    "1791099895",
+    "1791099896",
+    "1791099902",
+    "1791099915",
+    "1791099918",
+    "1791099926",
+    "1791099930",
+    "1791099943",
+    "1791099946",
+    "1791099952",
+    "1791099956",
+    "1791099969",
+    "1791099975",
+    "1791099976",
+    "1791099986",
+    "1791100007",
+    "1791100011"
+   ],
+   "failure_mechanisms": {
+    "content_changed_in_place": 203
+   },
+   "failing_positions_in_untouched_series": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    16,
+    18,
+    20,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    30,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    47,
+    48,
+    50,
+    53,
+    55,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    82,
+    88,
+    90,
+    95,
+    97,
+    98,
+    99,
+    100,
+    102,
+    106,
+    107,
+    108,
+    109,
+    110,
+    112,
+    114,
+    116,
+    117,
+    118,
+    119,
+    120,
+    121,
+    122,
+    123,
+    125,
+    126,
+    127,
+    128,
+    129,
+    130,
+    131,
+    133,
+    134,
+    135,
+    136,
+    137,
+    139,
+    141,
+    142,
+    143,
+    144,
+    145,
+    146,
+    150,
+    151,
+    152,
+    153,
+    154,
+    155,
+    156,
+    157,
+    158,
+    159,
+    160,
+    161,
+    162,
+    165,
+    166,
+    167,
+    172,
+    173,
+    174,
+    176,
+    181,
+    182,
+    183,
+    185,
+    186,
+    187,
+    188,
+    189,
+    190,
+    191,
+    192,
+    193,
+    194,
+    195,
+    196,
+    197,
+    198,
+    199,
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210,
+    211,
+    212,
+    214,
+    217,
+    218,
+    219,
+    220,
+    221,
+    222,
+    223,
+    224,
+    225,
+    227,
+    228,
+    230,
+    231,
+    233,
+    234,
+    236,
+    238,
+    239,
+    240,
+    241,
+    242,
+    243,
+    244,
+    246,
+    247,
+    248,
+    249,
+    250,
+    251,
+    253,
+    254,
+    256,
+    258,
+    259,
+    260,
+    261,
+    264,
+    265,
+    266,
+    267,
+    273,
+    274,
+    275,
+    276,
+    279,
+    280
+   ],
+   "untouched_set_check": "rebuilt from the saved chain, the result file and the floor file; size equals the floor file's n and every failing segment lies in it (asserted)",
+   "floor_file": "exp/out/e_ps_whr_floor_rescore.json",
+   "result_file": "exp/out/e_ps_whr_detection.json",
+   "chain_file": "reproduce/snapshots/e_ps_whr.chain.jsonl",
+   "k": 203,
+   "n_untouched_anchored_one_second_segments": 281,
+   "window_duration_s": 1186.0,
+   "proportion": 0.7224199288256228,
+   "exact_interval": [
+    0.6661162377075927,
+    0.7739640542731022
+   ],
+   "per_untouched_hour": {
+    "rate": 2600.711743772242,
+    "exact_interval": [
+     2398.0184557473335,
+     2786.270595383168
+    ]
+   },
+   "per_untouched_day": {
+    "rate": 62417.08185053381,
+    "exact_interval": [
+     57552.44293793601,
+     66870.49428919604
+    ]
+   },
+   "per_wallclock_hour": {
+    "rate": 616.1888701517706,
+    "exact_interval": [
+     568.1645750969652,
+     660.153488450818
+    ]
+   },
+   "per_wallclock_day": {
+    "rate": 14788.532883642496,
+    "exact_interval": [
+     13635.949802327166,
+     15843.683722819635
+    ]
+   },
+   "block_bootstrap": {
+    "primary_block_length": 60,
+    "by_block_length": {
+     "1": {
+      "block_length": 1,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.6690391459074733,
+       0.7758007117437722
+      ],
+      "per_untouched_hour_interval": [
+       2408.5409252669037,
+       2792.88256227758
+      ],
+      "per_untouched_day_interval": [
+       57804.98220640569,
+       67029.18149466191
+      ],
+      "replicate_mean_proportion": 0.7228316725978647,
+      "share_of_replicates_with_zero_failures": 0.0,
+      "per_wallclock_hour_interval": [
+       570.6576728499157,
+       661.7200674536256
+      ],
+      "per_wallclock_day_interval": [
+       13695.784148397977,
+       15881.281618887013
+      ]
+     },
+     "10": {
+      "block_length": 10,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.6548042704626335,
+       0.7900355871886121
+      ],
+      "per_untouched_hour_interval": [
+       2357.2953736654804,
+       2844.1281138790036
+      ],
+      "per_untouched_day_interval": [
+       56575.08896797153,
+       68259.07473309609
+      ],
+      "replicate_mean_proportion": 0.7229124555160144,
+      "share_of_replicates_with_zero_failures": 0.0,
+      "per_wallclock_hour_interval": [
+       558.5160202360877,
+       673.8617200674537
+      ],
+      "per_wallclock_day_interval": [
+       13404.384485666105,
+       16172.681281618889
+      ]
+     },
+     "30": {
+      "block_length": 30,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.6548042704626335,
+       0.7829181494661922
+      ],
+      "per_untouched_hour_interval": [
+       2357.2953736654804,
+       2818.505338078292
+      ],
+      "per_untouched_day_interval": [
+       56575.08896797153,
+       67644.12811387901
+      ],
+      "replicate_mean_proportion": 0.7222879003558718,
+      "share_of_replicates_with_zero_failures": 0.0,
+      "per_wallclock_hour_interval": [
+       558.5160202360877,
+       667.7908937605397
+      ],
+      "per_wallclock_day_interval": [
+       13404.384485666105,
+       16026.981450252952
+      ]
+     },
+     "60": {
+      "block_length": 60,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.6761565836298933,
+       0.7686832740213523
+      ],
+      "per_untouched_hour_interval": [
+       2434.163701067616,
+       2767.259786476868
+      ],
+      "per_untouched_day_interval": [
+       58419.92882562278,
+       66414.23487544483
+      ],
+      "replicate_mean_proportion": 0.722188256227758,
+      "share_of_replicates_with_zero_failures": 0.0,
+      "per_wallclock_hour_interval": [
+       576.7284991568298,
+       655.6492411467116
+      ],
+      "per_wallclock_day_interval": [
+       13841.483979763914,
+       15735.581787521078
+      ]
+     },
+     "120": {
+      "block_length": 120,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.6797153024911032,
+       0.7651245551601423
+      ],
+      "per_untouched_hour_interval": [
+       2446.9750889679717,
+       2754.4483985765123
+      ],
+      "per_untouched_day_interval": [
+       58727.40213523132,
+       66106.76156583629
+      ],
+      "replicate_mean_proportion": 0.722561209964413,
+      "share_of_replicates_with_zero_failures": 0.0,
+      "per_wallclock_hour_interval": [
+       579.7639123102867,
+       652.6138279932546
+      ],
+      "per_wallclock_day_interval": [
+       13914.333895446882,
+       15662.73187183811
+      ]
+     }
+    }
+   }
+  },
+  "e_d_whr": {
+   "label": "Other principal",
+   "date": "2026-10-04",
+   "group": "whole-row runs",
+   "scheme": "wholerow",
+   "authenticated_append_path": true,
+   "coverage": false,
+   "markers": false,
+   "record_signatures": false,
+   "linked_anchor": false,
+   "placement": "lab installation (single host, unprivileged container)",
+   "node_encoding_named_by_chain_records": [
+    "absent (earlier encoding)"
+   ],
+   "sealing_grace_s": 0,
+   "window": {
+    "t_start": 1791100203.0,
+    "t_end": 1791102358.0,
+    "duration_s": 2155.0,
+    "recorder_snapshot_at": 1791102450.317405,
+    "chain_upper_bound": "the recorder snapshot time; roots anchored after it are excluded because the snapshot cannot account for them"
+   },
+   "anchored_one_second_segments_in_window": 735,
+   "failing_segments": [
+    "1791100206",
+    "1791100207",
+    "1791100225",
+    "1791100227",
+    "1791100235",
+    "1791100238",
+    "1791100244",
+    "1791100245",
+    "1791100249",
+    "1791100250",
+    "1791100255",
+    "1791100256",
+    "1791100258",
+    "1791100261",
+    "1791100263",
+    "1791100269",
+    "1791100270",
+    "1791100271",
+    "1791100276",
+    "1791100288",
+    "1791100299",
+    "1791100305",
+    "1791100307",
+    "1791100311",
+    "1791100317",
+    "1791100321",
+    "1791100323",
+    "1791100329",
+    "1791100331",
+    "1791100338",
+    "1791100341",
+    "1791100349",
+    "1791100360",
+    "1791100361",
+    "1791100364",
+    "1791100366",
+    "1791100372",
+    "1791100378",
+    "1791100380",
+    "1791100384",
+    "1791100392",
+    "1791100396",
+    "1791100407",
+    "1791100414",
+    "1791100420",
+    "1791100426",
+    "1791100435",
+    "1791100438",
+    "1791100444",
+    "1791100446",
+    "1791100456",
+    "1791100457",
+    "1791100462",
+    "1791100465",
+    "1791100475",
+    "1791100480",
+    "1791100483",
+    "1791100489",
+    "1791100494",
+    "1791100497",
+    "1791100505",
+    "1791100511",
+    "1791100513",
+    "1791100523",
+    "1791100529",
+    "1791100533",
+    "1791100541",
+    "1791100550",
+    "1791100551",
+    "1791100552",
+    "1791100558",
+    "1791100562",
+    "1791100564",
+    "1791100570",
+    "1791100577",
+    "1791100583",
+    "1791100589",
+    "1791100593",
+    "1791100599",
+    "1791100600",
+    "1791100601",
+    "1791100606",
+    "1791100611",
+    "1791100612",
+    "1791100618",
+    "1791100624",
+    "1791100628",
+    "1791100630",
+    "1791100634",
+    "1791100635",
+    "1791100638",
+    "1791100644",
+    "1791100659",
+    "1791100661",
+    "1791100665",
+    "1791100667",
+    "1791100671",
+    "1791100673",
+    "1791100674",
+    "1791100679",
+    "1791100680",
+    "1791100685",
+    "1791100687",
+    "1791100689",
+    "1791100699",
+    "1791100709",
+    "1791100713",
+    "1791100721",
+    "1791100723",
+    "1791100727",
+    "1791100732",
+    "1791100733",
+    "1791100742",
+    "1791100751",
+    "1791100754",
+    "1791100761",
+    "1791100764",
+    "1791100772",
+    "1791100784",
+    "1791100788",
+    "1791100793",
+    "1791100796",
+    "1791100804",
+    "1791100810",
+    "1791100818",
+    "1791100821",
+    "1791100827",
+    "1791100829",
+    "1791100833",
+    "1791100838",
+    "1791100839",
+    "1791100840",
+    "1791100850",
+    "1791100877",
+    "1791100878",
+    "1791100884",
+    "1791100901",
+    "1791100918",
+    "1791100924",
+    "1791100925",
+    "1791100934",
+    "1791100936",
+    "1791100941",
+    "1791100943",
+    "1791100949",
+    "1791100956",
+    "1791100958",
+    "1791100961",
+    "1791100962",
+    "1791100967",
+    "1791100969",
+    "1791100975",
+    "1791100981",
+    "1791100982",
+    "1791100992",
+    "1791100995",
+    "1791101001",
+    "1791101005",
+    "1791101011",
+    "1791101013",
+    "1791101016",
+    "1791101017",
+    "1791101023",
+    "1791101028",
+    "1791101029",
+    "1791101030",
+    "1791101035",
+    "1791101036",
+    "1791101045",
+    "1791101047",
+    "1791101053",
+    "1791101054",
+    "1791101057",
+    "1791101065",
+    "1791101066",
+    "1791101068",
+    "1791101071",
+    "1791101072",
+    "1791101078",
+    "1791101079",
+    "1791101082",
+    "1791101084",
+    "1791101090",
+    "1791101098",
+    "1791101101",
+    "1791101107",
+    "1791101108",
+    "1791101110",
+    "1791101120",
+    "1791101126",
+    "1791101128",
+    "1791101132",
+    "1791101142",
+    "1791101144",
+    "1791101152",
+    "1791101162",
+    "1791101164",
+    "1791101165",
+    "1791101175",
+    "1791101185",
+    "1791101187",
+    "1791101198",
+    "1791101202",
+    "1791101206",
+    "1791101208",
+    "1791101212",
+    "1791101214",
+    "1791101227",
+    "1791101231",
+    "1791101241",
+    "1791101244",
+    "1791101246",
+    "1791101254",
+    "1791101262",
+    "1791101264",
+    "1791101269",
+    "1791101272",
+    "1791101280",
+    "1791101284",
+    "1791101294",
+    "1791101306",
+    "1791101312",
+    "1791101313",
+    "1791101317",
+    "1791101318",
+    "1791101324",
+    "1791101325",
+    "1791101335",
+    "1791101337",
+    "1791101343",
+    "1791101348",
+    "1791101352",
+    "1791101354",
+    "1791101355",
+    "1791101360",
+    "1791101361",
+    "1791101366",
+    "1791101371",
+    "1791101372",
+    "1791101375",
+    "1791101383",
+    "1791101385",
+    "1791101386",
+    "1791101409",
+    "1791101415",
+    "1791101419",
+    "1791101421",
+    "1791101426",
+    "1791101427",
+    "1791101431",
+    "1791101433",
+    "1791101438",
+    "1791101445",
+    "1791101457",
+    "1791101461",
+    "1791101469",
+    "1791101471",
+    "1791101472",
+    "1791101478",
+    "1791101488",
+    "1791101491",
+    "1791101500",
+    "1791101503",
+    "1791101511",
+    "1791101522",
+    "1791101523",
+    "1791101531",
+    "1791101539",
+    "1791101559",
+    "1791101561",
+    "1791101567",
+    "1791101579",
+    "1791101597",
+    "1791101599",
+    "1791101603",
+    "1791101609",
+    "1791101614",
+    "1791101625",
+    "1791101643",
+    "1791101644",
+    "1791101648",
+    "1791101650",
+    "1791101658",
+    "1791101663",
+    "1791101665",
+    "1791101671",
+    "1791101683",
+    "1791101686",
+    "1791101687",
+    "1791101692",
+    "1791101693",
+    "1791101698",
+    "1791101699",
+    "1791101701",
+    "1791101705",
+    "1791101706",
+    "1791101711",
+    "1791101716",
+    "1791101717",
+    "1791101730",
+    "1791101738",
+    "1791101749",
+    "1791101752",
+    "1791101754",
+    "1791101760",
+    "1791101762",
+    "1791101766",
+    "1791101767",
+    "1791101770",
+    "1791101772",
+    "1791101776",
+    "1791101778",
+    "1791101789",
+    "1791101792",
+    "1791101800",
+    "1791101806",
+    "1791101810",
+    "1791101815",
+    "1791101820",
+    "1791101821",
+    "1791101827",
+    "1791101828",
+    "1791101832",
+    "1791101833",
+    "1791101850",
+    "1791101853",
+    "1791101861",
+    "1791101867",
+    "1791101870",
+    "1791101876",
+    "1791101883",
+    "1791101884",
+    "1791101888",
+    "1791101894",
+    "1791101901",
+    "1791101904",
+    "1791101910",
+    "1791101912",
+    "1791101916",
+    "1791101924",
+    "1791101934",
+    "1791101936",
+    "1791101944",
+    "1791101954",
+    "1791101956",
+    "1791101962",
+    "1791101966",
+    "1791101969",
+    "1791101977",
+    "1791101980",
+    "1791101981",
+    "1791101987",
+    "1791101992",
+    "1791101996",
+    "1791102000",
+    "1791102002",
+    "1791102004",
+    "1791102008",
+    "1791102010",
+    "1791102014",
+    "1791102024",
+    "1791102025",
+    "1791102033",
+    "1791102044",
+    "1791102045",
+    "1791102046",
+    "1791102050",
+    "1791102056",
+    "1791102057",
+    "1791102062",
+    "1791102067",
+    "1791102068",
+    "1791102076",
+    "1791102086",
+    "1791102088",
+    "1791102104",
+    "1791102105",
+    "1791102106",
+    "1791102111",
+    "1791102116",
+    "1791102117",
+    "1791102119",
+    "1791102122",
+    "1791102123",
+    "1791102129",
+    "1791102133",
+    "1791102141",
+    "1791102146",
+    "1791102149",
+    "1791102153",
+    "1791102155",
+    "1791102159",
+    "1791102160",
+    "1791102162",
+    "1791102166",
+    "1791102171",
+    "1791102172",
+    "1791102173",
+    "1791102180",
+    "1791102182",
+    "1791102190",
+    "1791102201",
+    "1791102204",
+    "1791102212",
+    "1791102213",
+    "1791102216",
+    "1791102222",
+    "1791102231",
+    "1791102235",
+    "1791102240",
+    "1791102241",
+    "1791102244",
+    "1791102252",
+    "1791102254",
+    "1791102264",
+    "1791102266",
+    "1791102276",
+    "1791102279",
+    "1791102296",
+    "1791102315",
+    "1791102316",
+    "1791102318",
+    "1791102323",
+    "1791102325",
+    "1791102329",
+    "1791102331",
+    "1791102332",
+    "1791102340",
+    "1791102342",
+    "1791102343",
+    "1791102351",
+    "1791102357"
+   ],
+   "failure_mechanisms": {
+    "content_changed_in_place": 431,
+    "rows_arrived_after_seal": 1
+   },
+   "failing_positions_in_untouched_series": [
+    2,
+    3,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    22,
+    25,
+    27,
+    28,
+    29,
+    30,
+    31,
+    33,
+    34,
+    35,
+    36,
+    38,
+    39,
+    42,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    53,
+    54,
+    56,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    87,
+    88,
+    89,
+    90,
+    92,
+    94,
+    96,
+    97,
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    112,
+    114,
+    117,
+    118,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    128,
+    129,
+    132,
+    134,
+    135,
+    137,
+    138,
+    139,
+    140,
+    141,
+    142,
+    143,
+    144,
+    145,
+    146,
+    147,
+    148,
+    149,
+    150,
+    151,
+    152,
+    153,
+    155,
+    157,
+    158,
+    159,
+    160,
+    161,
+    162,
+    163,
+    164,
+    170,
+    171,
+    172,
+    175,
+    178,
+    182,
+    183,
+    185,
+    186,
+    187,
+    188,
+    189,
+    190,
+    191,
+    192,
+    193,
+    194,
+    195,
+    196,
+    197,
+    198,
+    200,
+    202,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210,
+    211,
+    212,
+    213,
+    214,
+    215,
+    217,
+    218,
+    219,
+    220,
+    221,
+    223,
+    224,
+    225,
+    226,
+    227,
+    228,
+    229,
+    230,
+    231,
+    232,
+    234,
+    235,
+    237,
+    238,
+    239,
+    241,
+    242,
+    243,
+    244,
+    245,
+    246,
+    247,
+    248,
+    249,
+    250,
+    251,
+    252,
+    253,
+    255,
+    256,
+    257,
+    258,
+    259,
+    260,
+    261,
+    262,
+    263,
+    264,
+    265,
+    266,
+    267,
+    268,
+    269,
+    270,
+    272,
+    274,
+    275,
+    276,
+    278,
+    279,
+    280,
+    281,
+    282,
+    283,
+    285,
+    287,
+    289,
+    290,
+    291,
+    292,
+    293,
+    294,
+    295,
+    296,
+    297,
+    298,
+    299,
+    301,
+    302,
+    303,
+    308,
+    310,
+    311,
+    312,
+    313,
+    314,
+    315,
+    316,
+    317,
+    319,
+    321,
+    322,
+    323,
+    324,
+    325,
+    326,
+    327,
+    328,
+    330,
+    331,
+    332,
+    333,
+    334,
+    335,
+    336,
+    339,
+    340,
+    341,
+    343,
+    349,
+    350,
+    351,
+    352,
+    353,
+    355,
+    360,
+    361,
+    362,
+    363,
+    364,
+    365,
+    366,
+    367,
+    370,
+    371,
+    372,
+    373,
+    374,
+    375,
+    376,
+    377,
+    378,
+    379,
+    381,
+    382,
+    383,
+    385,
+    387,
+    390,
+    391,
+    392,
+    393,
+    394,
+    395,
+    396,
+    397,
+    398,
+    399,
+    400,
+    402,
+    404,
+    406,
+    408,
+    410,
+    411,
+    412,
+    413,
+    414,
+    415,
+    416,
+    417,
+    420,
+    422,
+    423,
+    424,
+    425,
+    426,
+    427,
+    428,
+    429,
+    430,
+    431,
+    432,
+    433,
+    434,
+    435,
+    436,
+    437,
+    438,
+    439,
+    440,
+    441,
+    442,
+    443,
+    444,
+    445,
+    446,
+    447,
+    448,
+    450,
+    451,
+    452,
+    453,
+    454,
+    455,
+    456,
+    457,
+    459,
+    460,
+    463,
+    465,
+    466,
+    467,
+    468,
+    469,
+    470,
+    471,
+    472,
+    473,
+    475,
+    477,
+    479,
+    482,
+    483,
+    484,
+    485,
+    486,
+    487,
+    488,
+    489,
+    490,
+    491,
+    492,
+    494,
+    495,
+    497,
+    498,
+    499,
+    500,
+    501,
+    502,
+    503,
+    505,
+    506,
+    507,
+    508,
+    509,
+    510,
+    511,
+    512,
+    513,
+    514,
+    515,
+    516,
+    517,
+    518,
+    519,
+    520,
+    521,
+    522,
+    523,
+    527,
+    528,
+    529,
+    530,
+    533,
+    539,
+    540,
+    541,
+    542,
+    543,
+    544,
+    545,
+    546,
+    547,
+    548,
+    549,
+    550,
+    551
+   ],
+   "untouched_set_check": "rebuilt from the saved chain, the result file and the floor file; size equals the floor file's n and every failing segment lies in it (asserted)",
+   "floor_file": "exp/out/e_d_whr_floor_rescore.json",
+   "result_file": "exp/out/e_d_whr_other_principal_real.json",
+   "chain_file": "reproduce/snapshots/e_d_whr.chain.jsonl",
+   "k": 432,
+   "n_untouched_anchored_one_second_segments": 552,
+   "window_duration_s": 2155.0,
+   "proportion": 0.782608695652174,
+   "exact_interval": [
+    0.7458263343305866,
+    0.8163335624314034
+   ],
+   "per_untouched_hour": {
+    "rate": 2817.391304347826,
+    "exact_interval": [
+     2684.974803590112,
+     2938.8008247530524
+    ]
+   },
+   "per_untouched_day": {
+    "rate": 67617.39130434782,
+    "exact_interval": [
+     64439.39528616269,
+     70531.21979407326
+    ]
+   },
+   "per_wallclock_hour": {
+    "rate": 721.6705336426915,
+    "exact_interval": [
+     687.7522466736622,
+     752.7693991942854
+    ]
+   },
+   "per_wallclock_day": {
+    "rate": 17320.092807424593,
+    "exact_interval": [
+     16506.05392016789,
+     18066.465580662847
+    ]
+   },
+   "block_bootstrap": {
+    "primary_block_length": 60,
+    "by_block_length": {
+     "1": {
+      "block_length": 1,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.7481884057971014,
+       0.8170289855072463
+      ],
+      "per_untouched_hour_interval": [
+       2693.478260869565,
+       2941.304347826087
+      ],
+      "per_untouched_day_interval": [
+       64643.47826086957,
+       70591.30434782608
+      ],
+      "replicate_mean_proportion": 0.7825574275362319,
+      "share_of_replicates_with_zero_failures": 0.0,
+      "per_wallclock_hour_interval": [
+       689.9303944315544,
+       753.4106728538284
+      ],
+      "per_wallclock_day_interval": [
+       16558.32946635731,
+       18081.85614849188
+      ]
+     },
+     "10": {
+      "block_length": 10,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.7373188405797102,
+       0.8242753623188406
+      ],
+      "per_untouched_hour_interval": [
+       2654.3478260869565,
+       2967.391304347826
+      ],
+      "per_untouched_day_interval": [
+       63704.34782608696,
+       71217.39130434782
+      ],
+      "replicate_mean_proportion": 0.7820394927536232,
+      "share_of_replicates_with_zero_failures": 0.0,
+      "per_wallclock_hour_interval": [
+       679.907192575406,
+       760.092807424594
+      ],
+      "per_wallclock_day_interval": [
+       16317.772621809745,
+       18242.227378190255
+      ]
+     },
+     "30": {
+      "block_length": 30,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.7391304347826086,
+       0.8242753623188406
+      ],
+      "per_untouched_hour_interval": [
+       2660.869565217391,
+       2967.391304347826
+      ],
+      "per_untouched_day_interval": [
+       63860.869565217385,
+       71217.39130434782
+      ],
+      "replicate_mean_proportion": 0.7824858695652174,
+      "share_of_replicates_with_zero_failures": 0.0,
+      "per_wallclock_hour_interval": [
+       681.5777262180974,
+       760.092807424594
+      ],
+      "per_wallclock_day_interval": [
+       16357.865429234336,
+       18242.227378190255
+      ]
+     },
+     "60": {
+      "block_length": 60,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.7445652173913043,
+       0.8188405797101449
+      ],
+      "per_untouched_hour_interval": [
+       2680.4347826086955,
+       2947.8260869565215
+      ],
+      "per_untouched_day_interval": [
+       64330.434782608696,
+       70747.82608695651
+      ],
+      "replicate_mean_proportion": 0.7829215579710145,
+      "share_of_replicates_with_zero_failures": 0.0,
+      "per_wallclock_hour_interval": [
+       686.5893271461716,
+       755.0812064965197
+      ],
+      "per_wallclock_day_interval": [
+       16478.14385150812,
+       18121.948955916472
+      ]
+     },
+     "120": {
+      "block_length": 120,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.7518115942028986,
+       0.8115942028985508
+      ],
+      "per_untouched_hour_interval": [
+       2706.521739130435,
+       2921.739130434783
+      ],
+      "per_untouched_day_interval": [
+       64956.52173913043,
+       70121.73913043478
+      ],
+      "replicate_mean_proportion": 0.782659963768116,
+      "share_of_replicates_with_zero_failures": 0.0,
+      "per_wallclock_hour_interval": [
+       693.2714617169374,
+       748.3990719257541
+      ],
+      "per_wallclock_day_interval": [
+       16638.515081206497,
+       17961.577726218096
+      ]
+     }
+    }
+   }
+  },
+  "e_psr_whr": {
+   "label": "Member-account swap",
+   "date": "2026-10-04",
+   "group": "whole-row runs",
+   "scheme": "wholerow",
+   "authenticated_append_path": true,
+   "coverage": false,
+   "markers": false,
+   "record_signatures": false,
+   "linked_anchor": false,
+   "placement": "lab installation (single host, unprivileged container)",
+   "node_encoding_named_by_chain_records": [
+    "absent (earlier encoding)"
+   ],
+   "sealing_grace_s": 0,
+   "window": {
+    "t_start": 1791102531.0,
+    "t_end": 1791103718.0,
+    "duration_s": 1187.0,
+    "recorder_snapshot_at": 1791103829.366865
+   },
+   "anchored_one_second_segments_in_window": 390,
+   "failing_segments": [
+    "1791102534",
+    "1791102540",
+    "1791102542",
+    "1791102552",
+    "1791102559",
+    "1791102563",
+    "1791102570",
+    "1791102571",
+    "1791102572",
+    "1791102577",
+    "1791102578",
+    "1791102583",
+    "1791102590",
+    "1791102591",
+    "1791102592",
+    "1791102594",
+    "1791102596",
+    "1791102602",
+    "1791102609",
+    "1791102612",
+    "1791102620",
+    "1791102631",
+    "1791102632",
+    "1791102638",
+    "1791102643",
+    "1791102644",
+    "1791102650",
+    "1791102651",
+    "1791102655",
+    "1791102656",
+    "1791102667",
+    "1791102670",
+    "1791102678",
+    "1791102682",
+    "1791102685",
+    "1791102693",
+    "1791102694",
+    "1791102699",
+    "1791102700",
+    "1791102705",
+    "1791102709",
+    "1791102711",
+    "1791102717",
+    "1791102719",
+    "1791102721",
+    "1791102725",
+    "1791102734",
+    "1791102742",
+    "1791102744",
+    "1791102746",
+    "1791102752",
+    "1791102765",
+    "1791102768",
+    "1791102774",
+    "1791102780",
+    "1791102782",
+    "1791102787",
+    "1791102789",
+    "1791102792",
+    "1791102795",
+    "1791102805",
+    "1791102807",
+    "1791102815",
+    "1791102816",
+    "1791102828",
+    "1791102832",
+    "1791102838",
+    "1791102848",
+    "1791102871",
+    "1791102884",
+    "1791102888",
+    "1791102907",
+    "1791102916",
+    "1791102929",
+    "1791102932",
+    "1791102934",
+    "1791102940",
+    "1791102943",
+    "1791102946",
+    "1791102956",
+    "1791102966",
+    "1791102967",
+    "1791102969",
+    "1791102973",
+    "1791102975",
+    "1791102979",
+    "1791102985",
+    "1791102991",
+    "1791102997",
+    "1791103008",
+    "1791103016",
+    "1791103020",
+    "1791103028",
+    "1791103034",
+    "1791103040",
+    "1791103042",
+    "1791103046",
+    "1791103052",
+    "1791103058",
+    "1791103060",
+    "1791103064",
+    "1791103068",
+    "1791103075",
+    "1791103084",
+    "1791103086",
+    "1791103094",
+    "1791103099",
+    "1791103101",
+    "1791103107",
+    "1791103113",
+    "1791103117",
+    "1791103119",
+    "1791103127",
+    "1791103132",
+    "1791103138",
+    "1791103151",
+    "1791103154",
+    "1791103160",
+    "1791103168",
+    "1791103172",
+    "1791103177",
+    "1791103181",
+    "1791103187",
+    "1791103196",
+    "1791103198",
+    "1791103206",
+    "1791103218",
+    "1791103220",
+    "1791103226",
+    "1791103232",
+    "1791103238",
+    "1791103242",
+    "1791103248",
+    "1791103254",
+    "1791103257",
+    "1791103263",
+    "1791103279",
+    "1791103280",
+    "1791103285",
+    "1791103307",
+    "1791103325",
+    "1791103331",
+    "1791103333",
+    "1791103343",
+    "1791103352",
+    "1791103355",
+    "1791103361",
+    "1791103363",
+    "1791103367",
+    "1791103369",
+    "1791103371",
+    "1791103375",
+    "1791103381",
+    "1791103385",
+    "1791103387",
+    "1791103388",
+    "1791103393",
+    "1791103394",
+    "1791103399",
+    "1791103405",
+    "1791103407",
+    "1791103409",
+    "1791103421",
+    "1791103428",
+    "1791103430",
+    "1791103438",
+    "1791103442",
+    "1791103443",
+    "1791103447",
+    "1791103448",
+    "1791103454",
+    "1791103458",
+    "1791103460",
+    "1791103462",
+    "1791103466",
+    "1791103468",
+    "1791103471",
+    "1791103472",
+    "1791103477",
+    "1791103483",
+    "1791103497",
+    "1791103500",
+    "1791103503",
+    "1791103508",
+    "1791103509",
+    "1791103515",
+    "1791103519",
+    "1791103521",
+    "1791103527",
+    "1791103529",
+    "1791103535",
+    "1791103538",
+    "1791103544",
+    "1791103554",
+    "1791103558",
+    "1791103565",
+    "1791103568",
+    "1791103573",
+    "1791103576",
+    "1791103584",
+    "1791103589",
+    "1791103591",
+    "1791103596",
+    "1791103599",
+    "1791103607",
+    "1791103609",
+    "1791103615",
+    "1791103627",
+    "1791103646",
+    "1791103666",
+    "1791103676",
+    "1791103686",
+    "1791103689",
+    "1791103694",
+    "1791103697",
+    "1791103707",
+    "1791103710",
+    "1791103718"
+   ],
+   "failure_mechanisms": {
+    "content_changed_in_place": 217,
+    "rows_arrived_after_seal": 1
+   },
+   "failing_positions_in_untouched_series": [
+    3,
+    5,
+    6,
+    7,
+    8,
+    9,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    25,
+    27,
+    29,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    41,
+    43,
+    45,
+    47,
+    48,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    61,
+    63,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    83,
+    84,
+    85,
+    86,
+    89,
+    94,
+    95,
+    98,
+    101,
+    106,
+    108,
+    109,
+    111,
+    112,
+    113,
+    114,
+    116,
+    117,
+    118,
+    119,
+    120,
+    121,
+    122,
+    123,
+    125,
+    127,
+    129,
+    130,
+    132,
+    133,
+    134,
+    135,
+    136,
+    137,
+    138,
+    139,
+    140,
+    141,
+    143,
+    147,
+    148,
+    150,
+    151,
+    152,
+    153,
+    155,
+    156,
+    157,
+    159,
+    161,
+    162,
+    163,
+    164,
+    165,
+    166,
+    168,
+    169,
+    170,
+    171,
+    172,
+    173,
+    174,
+    176,
+    177,
+    178,
+    179,
+    181,
+    183,
+    184,
+    185,
+    186,
+    187,
+    191,
+    192,
+    193,
+    196,
+    200,
+    203,
+    204,
+    205,
+    206,
+    207,
+    209,
+    210,
+    211,
+    212,
+    213,
+    214,
+    215,
+    216,
+    217,
+    218,
+    219,
+    220,
+    221,
+    222,
+    223,
+    224,
+    227,
+    230,
+    231,
+    233,
+    234,
+    235,
+    236,
+    237,
+    238,
+    239,
+    240,
+    241,
+    242,
+    243,
+    244,
+    245,
+    246,
+    248,
+    252,
+    253,
+    254,
+    255,
+    256,
+    258,
+    259,
+    260,
+    261,
+    262,
+    263,
+    264,
+    265,
+    266,
+    267,
+    268,
+    269,
+    270,
+    271,
+    272,
+    273,
+    274,
+    275,
+    276,
+    277,
+    278,
+    279,
+    280,
+    283,
+    286,
+    291,
+    292,
+    293,
+    294,
+    295,
+    297,
+    298,
+    299
+   ],
+   "untouched_set_check": "rebuilt from the saved chain, the result file and the floor file; size equals the floor file's n and every failing segment lies in it (asserted)",
+   "floor_file": "exp/out/e_psr_whr_floor_rescore.json",
+   "result_file": "exp/out/e_psr_whr_detection.json",
+   "chain_file": "reproduce/snapshots/e_psr_whr.chain.jsonl",
+   "k": 218,
+   "n_untouched_anchored_one_second_segments": 300,
+   "window_duration_s": 1187.0,
+   "proportion": 0.7266666666666667,
+   "exact_interval": [
+    0.6724897252242379,
+    0.7763040405497257
+   ],
+   "per_untouched_hour": {
+    "rate": 2616.0,
+    "exact_interval": [
+     2420.9630108072565,
+     2794.6945459790127
+    ]
+   },
+   "per_untouched_day": {
+    "rate": 62784.0,
+    "exact_interval": [
+     58103.11225937415,
+     67072.6691034963
+    ]
+   },
+   "per_wallclock_hour": {
+    "rate": 661.162594776748,
+    "exact_interval": [
+     611.8693371880175,
+     706.3254960351337
+    ]
+   },
+   "per_wallclock_day": {
+    "rate": 15867.902274641954,
+    "exact_interval": [
+     14684.864092512422,
+     16951.81190484321
+    ]
+   },
+   "block_bootstrap": {
+    "primary_block_length": 60,
+    "by_block_length": {
+     "1": {
+      "block_length": 1,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.6766666666666666,
+       0.7766666666666666
+      ],
+      "per_untouched_hour_interval": [
+       2436.0,
+       2796.0
+      ],
+      "per_untouched_day_interval": [
+       58464.0,
+       67104.0
+      ],
+      "replicate_mean_proportion": 0.7266546666666667,
+      "share_of_replicates_with_zero_failures": 0.0,
+      "per_wallclock_hour_interval": [
+       615.6697556866048,
+       706.6554338668913
+      ],
+      "per_wallclock_day_interval": [
+       14776.074136478515,
+       16959.73041280539
+      ]
+     },
+     "10": {
+      "block_length": 10,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.6566666666666666,
+       0.7966666666666666
+      ],
+      "per_untouched_hour_interval": [
+       2364.0,
+       2868.0
+      ],
+      "per_untouched_day_interval": [
+       56735.99999999999,
+       68832.0
+      ],
+      "replicate_mean_proportion": 0.7271146666666667,
+      "share_of_replicates_with_zero_failures": 0.0,
+      "per_wallclock_hour_interval": [
+       597.4726200505476,
+       724.8525695029485
+      ],
+      "per_wallclock_day_interval": [
+       14339.342881213139,
+       17396.461668070766
+      ]
+     },
+     "30": {
+      "block_length": 30,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.66,
+       0.7866666666666666
+      ],
+      "per_untouched_hour_interval": [
+       2376.0,
+       2832.0
+      ],
+      "per_untouched_day_interval": [
+       57024.0,
+       67968.0
+      ],
+      "replicate_mean_proportion": 0.7269196666666666,
+      "share_of_replicates_with_zero_failures": 0.0,
+      "per_wallclock_hour_interval": [
+       600.5054759898904,
+       715.7540016849199
+      ],
+      "per_wallclock_day_interval": [
+       14412.13142375737,
+       17178.09604043808
+      ]
+     },
+     "60": {
+      "block_length": 60,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.68,
+       0.7733333333333333
+      ],
+      "per_untouched_hour_interval": [
+       2448.0,
+       2784.0
+      ],
+      "per_untouched_day_interval": [
+       58752.00000000001,
+       66816.0
+      ],
+      "replicate_mean_proportion": 0.7269396666666668,
+      "share_of_replicates_with_zero_failures": 0.0,
+      "per_wallclock_hour_interval": [
+       618.7026116259477,
+       703.6225779275484
+      ],
+      "per_wallclock_day_interval": [
+       14848.862679022746,
+       16886.941870261162
+      ]
+     },
+     "120": {
+      "block_length": 120,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.6833333333333333,
+       0.7666666666666667
+      ],
+      "per_untouched_hour_interval": [
+       2460.0,
+       2760.0
+      ],
+      "per_untouched_day_interval": [
+       59040.0,
+       66240.0
+      ],
+      "replicate_mean_proportion": 0.7265383333333333,
+      "share_of_replicates_with_zero_failures": 0.0,
+      "per_wallclock_hour_interval": [
+       621.7354675652906,
+       697.5568660488626
+      ],
+      "per_wallclock_day_interval": [
+       14921.651221566974,
+       16741.364785172704
+      ]
+     }
+    }
+   }
+  },
+  "e3_g0_clo": {
+   "label": "Other principal, grace 0 s",
+   "date": "2026-10-07",
+   "group": "E3 paired grace runs",
+   "scheme": "closure",
+   "authenticated_append_path": true,
+   "coverage": false,
+   "markers": false,
+   "record_signatures": false,
+   "linked_anchor": false,
+   "placement": "lab installation (single host, unprivileged container)",
+   "node_encoding_named_by_chain_records": [
+    "v2"
+   ],
+   "sealing_grace_s": 0.0,
+   "window": {
+    "t_start": 1791410164.0,
+    "t_end": 1791412625.0,
+    "duration_s": 2461.0
+   },
+   "source_file": "exp/out/e3_grace_sealing.json",
+   "k": 2,
+   "n_untouched_anchored_one_second_segments": 540,
+   "window_duration_s": 2461.0,
+   "proportion": 0.003703703703703704,
+   "exact_interval": [
+    0.00044885084142854233,
+    0.013314483921104157
+   ],
+   "per_untouched_hour": {
+    "rate": 13.333333333333334,
+    "exact_interval": [
+     1.6158630291427525,
+     47.93214211597496
+    ]
+   },
+   "per_untouched_day": {
+    "rate": 320.0,
+    "exact_interval": [
+     38.780712699426054,
+     1150.3714107833991
+    ]
+   },
+   "per_wallclock_hour": {
+    "rate": 2.9256399837464446,
+    "exact_interval": [
+     0.35455751147382625,
+     10.517414361083494
+    ]
+   },
+   "per_wallclock_day": {
+    "rate": 70.21535960991467,
+    "exact_interval": [
+     8.509380275371829,
+     252.41794466600388
+    ]
+   },
+   "block_bootstrap": "not computed: exp/out/e3_grace_sealing.json saves k and n but not the failing segment ids, so their positions are not in a saved file",
+   "authenticated_append_path_evidence": [
+    "2026-10-07T21:55:23Z probe_from_hub: {\"untagged\": 401, \"forged_tag\": 401}"
+   ]
+  },
+  "e3_g2_clo": {
+   "label": "Other principal, grace 2 s",
+   "date": "2026-10-07",
+   "group": "E3 paired grace runs",
+   "scheme": "closure",
+   "authenticated_append_path": true,
+   "coverage": false,
+   "markers": false,
+   "record_signatures": false,
+   "linked_anchor": false,
+   "placement": "lab installation (single host, unprivileged container)",
+   "node_encoding_named_by_chain_records": [
+    "v2"
+   ],
+   "sealing_grace_s": 2.0,
+   "window": {
+    "t_start": 1791412909.0,
+    "t_end": 1791415065.0,
+    "duration_s": 2156.0
+   },
+   "source_file": "exp/out/e3_grace_sealing.json",
+   "k": 0,
+   "n_untouched_anchored_one_second_segments": 559,
+   "window_duration_s": 2156.0,
+   "proportion": 0.0,
+   "exact_interval": [
+    0.0,
+    0.00657734275325648
+   ],
+   "per_untouched_hour": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     23.678433911723328
+    ]
+   },
+   "per_untouched_day": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     568.2824138813598
+    ]
+   },
+   "per_wallclock_hour": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     6.139259998447746
+    ]
+   },
+   "per_wallclock_day": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     147.3422399627459
+    ]
+   },
+   "block_bootstrap": "degenerate: k = 0, so every block resample of the all-zero series is 0; no bootstrap interval is reported and the exact interval is the informative one",
+   "authenticated_append_path_evidence": [
+    "2026-10-07T22:41:09Z probe_from_hub: {\"untagged\": 401, \"forged_tag\": 401}"
+   ]
+  },
+  "e1_psr_clo": {
+   "label": "Member-account swap, two hosts",
+   "date": "2026-10-08",
+   "group": "two-host placement (HA OS VM, privileged core)",
+   "scheme": "closure",
+   "authenticated_append_path": true,
+   "coverage": false,
+   "markers": false,
+   "record_signatures": false,
+   "linked_anchor": false,
+   "placement": "two hosts: Home Assistant OS VM with a privileged core; monitor and anchor on another VM",
+   "node_encoding_named_by_chain_records": [
+    "v2"
+   ],
+   "sealing_grace_s": 0,
+   "window": {
+    "t_start": 1791421223.0,
+    "t_end": 1791423561.0,
+    "duration_s": 2338.0,
+    "recorder_snapshot_at": 1791423651.7787368
+   },
+   "source_file": "exp/out/e1_psr_clo_two_host.json",
+   "failure_mechanisms": {
+    "rows_arrived_after_seal": 2
+   },
+   "k": 2,
+   "n_untouched_anchored_one_second_segments": 530,
+   "window_duration_s": 2338.0,
+   "proportion": 0.0037735849056603774,
+   "exact_interval": [
+    0.00045732579173691,
+    0.013564462414841218
+   ],
+   "per_untouched_hour": {
+    "rate": 13.584905660377359,
+    "exact_interval": [
+     1.646372850252876,
+     48.832064693428386
+    ]
+   },
+   "per_untouched_day": {
+    "rate": 326.0377358490566,
+    "exact_interval": [
+     39.51294840606902,
+     1171.9695526422813
+    ]
+   },
+   "per_wallclock_hour": {
+    "rate": 3.0795551753635584,
+    "exact_interval": [
+     0.3732154023242191,
+     11.069715264121918
+    ]
+   },
+   "per_wallclock_day": {
+    "rate": 73.90932420872541,
+    "exact_interval": [
+     8.957169655781257,
+     265.673166338926
+    ]
+   },
+   "block_bootstrap": "not computed: exp/out/e1_psr_clo_two_host.json saves k, n and the mechanisms but not the failing segment ids"
+  },
+  "e5_psr_lnk": {
+   "label": "Member-account swap, linked anchor, two hosts",
+   "date": "2026-10-08",
+   "group": "two-host placement (HA OS VM, privileged core)",
+   "scheme": "closure",
+   "authenticated_append_path": true,
+   "coverage": false,
+   "markers": false,
+   "record_signatures": false,
+   "linked_anchor": true,
+   "placement": "two hosts: Home Assistant OS VM with a privileged core; monitor and anchor on another VM",
+   "node_encoding_named_by_chain_records": [
+    "v2"
+   ],
+   "sealing_grace_s": 0,
+   "window": {
+    "t_start": 1791427978.0,
+    "t_end": 1791429177.0,
+    "duration_s": 1199.0,
+    "recorder_snapshot_at": 1791429278.161657
+   },
+   "source_file": "exp/out/e5_psr_lnk_paper_rule.json",
+   "failure_mechanisms": {
+    "rows_arrived_after_seal": 2
+   },
+   "k": 2,
+   "n_untouched_anchored_one_second_segments": 291,
+   "window_duration_s": 1199.0,
+   "proportion": 0.006872852233676976,
+   "exact_interval": [
+    0.0008334207262318725,
+    0.024605225673387382
+   ],
+   "per_untouched_hour": {
+    "rate": 24.742268041237114,
+    "exact_interval": [
+     3.000314614434741,
+     88.57881242419458
+    ]
+   },
+   "per_untouched_day": {
+    "rate": 593.8144329896908,
+    "exact_interval": [
+     72.00755074643378,
+     2125.8914981806697
+    ]
+   },
+   "per_wallclock_hour": {
+    "rate": 6.005004170141785,
+    "exact_interval": [
+     0.7281831132614759,
+     21.49827724390377
+    ]
+   },
+   "per_wallclock_day": {
+    "rate": 144.12010008340283,
+    "exact_interval": [
+     17.476394718275422,
+     515.9586538536905
+    ]
+   },
+   "block_bootstrap": "not computed: exp/out/e5_psr_lnk_paper_rule.json saves k, n and the mechanisms but not the failing segment ids"
+  },
+  "e7_main_closure": {
+   "label": "E7, nine arms (closure monitor)",
+   "date": "2026-10-08",
+   "group": "deployed configuration (coverage)",
+   "scheme": "closure",
+   "authenticated_append_path": true,
+   "authenticated_append_path_evidence": [
+    "2026-10-08T18:21:28Z probe_from_hub: {\"anchor-clo\": {\"untagged\": 401, \"forged\": 401}, \"anchor-stb\": {\"untagged\": 401, \"forged\": 401}}"
+   ],
+   "coverage": true,
+   "markers": false,
+   "record_signatures": false,
+   "linked_anchor": false,
+   "placement": "lab installation (single host, unprivileged container)",
+   "sealing_grace_s": 0,
+   "node_encoding_named_by_chain_records": [
+    "v2"
+   ],
+   "window": {
+    "t_start": 1791483728.0,
+    "t_end": 1791491140.0,
+    "duration_s": 7412.0,
+    "recorder_snapshot_at": 1791491231.0
+   },
+   "source_file": "exp/out/e7_main_closure_verify.json",
+   "counting_rule": "verify_all.touched_segments + the trials' deleted_event_seconds and deleted_event_ids",
+   "k": 0,
+   "n_untouched_anchored_one_second_segments": 1212,
+   "window_duration_s": 7412.0,
+   "proportion": 0.0,
+   "exact_interval": [
+    0.0,
+    0.0030390027667430352
+   ],
+   "per_untouched_hour": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     10.940409960274927
+    ]
+   },
+   "per_untouched_day": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     262.56983904659825
+    ]
+   },
+   "per_wallclock_hour": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     1.788960722052511
+    ]
+   },
+   "per_wallclock_day": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     42.93505732926027
+    ]
+   },
+   "block_bootstrap": "degenerate: k = 0, so every block resample of the all-zero series is 0; no bootstrap interval is reported and the exact interval is the informative one",
+   "note": "both E7 monitors observed the same run and the same untouched seconds"
+  },
+  "e8_main_closure_main": {
+   "label": "E8 main window (closure monitor)",
+   "date": "2026-10-09",
+   "group": "deployed configuration (coverage)",
+   "scheme": "closure",
+   "authenticated_append_path": true,
+   "authenticated_append_path_evidence": [
+    "2026-10-09T05:32:09Z probe_from_hub: {\"anchor-stb\": {\"record_untagged\": 401, \"record_forged\": 401, \"marker_untagged\": 401, \"marker_forged\": 401}, \"anchor-clo\": {\"record_untagged\": 401, \"record_forged\": 401, \"marker_untagged\": 401, \"marker_forged\": 401}, \"witness_from_hub\": {\"19970\": \"URLError(gaierror(-3, 'Try again'))\", \"19971\": \"URLError(gaierror(-3, 'Try again'))\"}}"
+   ],
+   "coverage": true,
+   "markers": false,
+   "record_signatures": true,
+   "linked_anchor": true,
+   "placement": "lab installation (single host, unprivileged container)",
+   "sealing_grace_s": 0,
+   "node_encoding_named_by_chain_records": [
+    "v2"
+   ],
+   "window": {
+    "t_start": 1791523970.0,
+    "t_end": 1791530123.0,
+    "duration_s": 6153.0
+   },
+   "source_file": "exp/out/e8_main_closure_verify_main.json",
+   "counting_rule": "verify_all.touched_segments + the trials' deleted_event_seconds and deleted_event_ids",
+   "k": 0,
+   "n_untouched_anchored_one_second_segments": 1435,
+   "window_duration_s": 6153.0,
+   "proportion": 0.0,
+   "exact_interval": [
+    0.0,
+    0.002567346417828049
+   ],
+   "per_untouched_hour": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     9.242447104180977
+    ]
+   },
+   "per_untouched_day": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     221.81873050034343
+    ]
+   },
+   "per_wallclock_hour": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     2.1555195180399322
+    ]
+   },
+   "per_wallclock_day": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     51.73246843295837
+    ]
+   },
+   "block_bootstrap": "degenerate: k = 0, so every block resample of the all-zero series is 0; no bootstrap interval is reported and the exact interval is the informative one",
+   "note": "both E8 monitors observed the same run and the same untouched seconds"
+  },
+  "e8_main_closure_base": {
+   "label": "E8 base window (closure monitor)",
+   "date": "2026-10-09",
+   "group": "deployed configuration (coverage)",
+   "scheme": "closure",
+   "authenticated_append_path": true,
+   "authenticated_append_path_evidence": [
+    "2026-10-09T05:32:09Z probe_from_hub: {\"anchor-stb\": {\"record_untagged\": 401, \"record_forged\": 401, \"marker_untagged\": 401, \"marker_forged\": 401}, \"anchor-clo\": {\"record_untagged\": 401, \"record_forged\": 401, \"marker_untagged\": 401, \"marker_forged\": 401}, \"witness_from_hub\": {\"19970\": \"URLError(gaierror(-3, 'Try again'))\", \"19971\": \"URLError(gaierror(-3, 'Try again'))\"}}"
+   ],
+   "coverage": true,
+   "markers": false,
+   "record_signatures": true,
+   "linked_anchor": true,
+   "placement": "lab installation (single host, unprivileged container)",
+   "sealing_grace_s": 0,
+   "node_encoding_named_by_chain_records": [
+    "v2"
+   ],
+   "window": {
+    "t_start": 1791530213.0,
+    "t_end": 1791530813.0,
+    "duration_s": 600.0
+   },
+   "source_file": "exp/out/e8_main_closure_verify_base.json",
+   "counting_rule": "no trials given: every segment untouched",
+   "k": 0,
+   "n_untouched_anchored_one_second_segments": 124,
+   "window_duration_s": 600.0,
+   "proportion": 0.0,
+   "exact_interval": [
+    0.0,
+    0.02931088108977493
+   ],
+   "per_untouched_hour": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     105.51917192318975
+    ]
+   },
+   "per_untouched_day": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     2532.460126156554
+    ]
+   },
+   "per_wallclock_hour": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     21.807295530792548
+    ]
+   },
+   "per_wallclock_day": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     523.3750927390212
+    ]
+   },
+   "block_bootstrap": "degenerate: k = 0, so every block resample of the all-zero series is 0; no bootstrap interval is reported and the exact interval is the informative one",
+   "note": "both E8 monitors observed the same run and the same untouched seconds"
+  },
+  "e8_main_closure_stress": {
+   "label": "E8 stress window (closure monitor)",
+   "date": "2026-10-09",
+   "group": "deployed configuration (coverage)",
+   "scheme": "closure",
+   "authenticated_append_path": true,
+   "authenticated_append_path_evidence": [
+    "2026-10-09T05:32:09Z probe_from_hub: {\"anchor-stb\": {\"record_untagged\": 401, \"record_forged\": 401, \"marker_untagged\": 401, \"marker_forged\": 401}, \"anchor-clo\": {\"record_untagged\": 401, \"record_forged\": 401, \"marker_untagged\": 401, \"marker_forged\": 401}, \"witness_from_hub\": {\"19970\": \"URLError(gaierror(-3, 'Try again'))\", \"19971\": \"URLError(gaierror(-3, 'Try again'))\"}}"
+   ],
+   "coverage": true,
+   "markers": false,
+   "record_signatures": true,
+   "linked_anchor": true,
+   "placement": "lab installation (single host, unprivileged container)",
+   "sealing_grace_s": 0,
+   "node_encoding_named_by_chain_records": [
+    "v2"
+   ],
+   "window": {
+    "t_start": 1791530814.0,
+    "t_end": 1791532617.0,
+    "duration_s": 1803.0
+   },
+   "source_file": "exp/out/e8_main_closure_verify_stress.json",
+   "counting_rule": "verify_all.touched_segments",
+   "k": 0,
+   "n_untouched_anchored_one_second_segments": 1201,
+   "window_duration_s": 1803.0,
+   "proportion": 0.0,
+   "exact_interval": [
+    0.0,
+    0.0030667943722462463
+   ],
+   "per_untouched_hour": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     11.040459740086487
+    ]
+   },
+   "per_untouched_day": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     264.9710337620757
+    ]
+   },
+   "per_wallclock_hour": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     7.354183110285008
+    ]
+   },
+   "per_wallclock_day": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     176.50039464684022
+    ]
+   },
+   "block_bootstrap": "degenerate: k = 0, so every block resample of the all-zero series is 0; no bootstrap interval is reported and the exact interval is the informative one",
+   "note": "both E8 monitors observed the same run and the same untouched seconds"
+  },
+  "e7_main_stable": {
+   "label": "E7, nine arms (stable monitor)",
+   "date": "2026-10-08",
+   "group": "deployed configuration (coverage)",
+   "scheme": "stable columns",
+   "authenticated_append_path": true,
+   "authenticated_append_path_evidence": [
+    "2026-10-08T18:21:28Z probe_from_hub: {\"anchor-clo\": {\"untagged\": 401, \"forged\": 401}, \"anchor-stb\": {\"untagged\": 401, \"forged\": 401}}"
+   ],
+   "coverage": true,
+   "markers": false,
+   "record_signatures": false,
+   "linked_anchor": false,
+   "placement": "lab installation (single host, unprivileged container)",
+   "sealing_grace_s": 0,
+   "node_encoding_named_by_chain_records": [
+    "v2"
+   ],
+   "window": {
+    "t_start": 1791483728.0,
+    "t_end": 1791491140.0,
+    "duration_s": 7412.0,
+    "recorder_snapshot_at": 1791491231.0
+   },
+   "source_file": "exp/out/e7_main_stable_verify.json",
+   "counting_rule": "verify_all.touched_segments + the trials' deleted_event_seconds and deleted_event_ids",
+   "k": 0,
+   "n_untouched_anchored_one_second_segments": 1212,
+   "window_duration_s": 7412.0,
+   "proportion": 0.0,
+   "exact_interval": [
+    0.0,
+    0.0030390027667430352
+   ],
+   "per_untouched_hour": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     10.940409960274927
+    ]
+   },
+   "per_untouched_day": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     262.56983904659825
+    ]
+   },
+   "per_wallclock_hour": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     1.788960722052511
+    ]
+   },
+   "per_wallclock_day": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     42.93505732926027
+    ]
+   },
+   "block_bootstrap": "degenerate: k = 0, so every block resample of the all-zero series is 0; no bootstrap interval is reported and the exact interval is the informative one",
+   "note": "both E7 monitors observed the same run and the same untouched seconds"
+  },
+  "e8_main_stable_main": {
+   "label": "E8 main window (stable monitor)",
+   "date": "2026-10-09",
+   "group": "deployed configuration (coverage)",
+   "scheme": "stable columns",
+   "authenticated_append_path": true,
+   "authenticated_append_path_evidence": [
+    "2026-10-09T05:32:09Z probe_from_hub: {\"anchor-stb\": {\"record_untagged\": 401, \"record_forged\": 401, \"marker_untagged\": 401, \"marker_forged\": 401}, \"anchor-clo\": {\"record_untagged\": 401, \"record_forged\": 401, \"marker_untagged\": 401, \"marker_forged\": 401}, \"witness_from_hub\": {\"19970\": \"URLError(gaierror(-3, 'Try again'))\", \"19971\": \"URLError(gaierror(-3, 'Try again'))\"}}"
+   ],
+   "coverage": true,
+   "markers": false,
+   "record_signatures": true,
+   "linked_anchor": true,
+   "placement": "lab installation (single host, unprivileged container)",
+   "sealing_grace_s": 0,
+   "node_encoding_named_by_chain_records": [
+    "v2"
+   ],
+   "window": {
+    "t_start": 1791523970.0,
+    "t_end": 1791530123.0,
+    "duration_s": 6153.0
+   },
+   "source_file": "exp/out/e8_main_stable_verify_main.json",
+   "counting_rule": "verify_all.touched_segments + the trials' deleted_event_seconds and deleted_event_ids",
+   "k": 0,
+   "n_untouched_anchored_one_second_segments": 1435,
+   "window_duration_s": 6153.0,
+   "proportion": 0.0,
+   "exact_interval": [
+    0.0,
+    0.002567346417828049
+   ],
+   "per_untouched_hour": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     9.242447104180977
+    ]
+   },
+   "per_untouched_day": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     221.81873050034343
+    ]
+   },
+   "per_wallclock_hour": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     2.1555195180399322
+    ]
+   },
+   "per_wallclock_day": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     51.73246843295837
+    ]
+   },
+   "block_bootstrap": "degenerate: k = 0, so every block resample of the all-zero series is 0; no bootstrap interval is reported and the exact interval is the informative one",
+   "note": "both E8 monitors observed the same run and the same untouched seconds"
+  },
+  "e8_main_stable_base": {
+   "label": "E8 base window (stable monitor)",
+   "date": "2026-10-09",
+   "group": "deployed configuration (coverage)",
+   "scheme": "stable columns",
+   "authenticated_append_path": true,
+   "authenticated_append_path_evidence": [
+    "2026-10-09T05:32:09Z probe_from_hub: {\"anchor-stb\": {\"record_untagged\": 401, \"record_forged\": 401, \"marker_untagged\": 401, \"marker_forged\": 401}, \"anchor-clo\": {\"record_untagged\": 401, \"record_forged\": 401, \"marker_untagged\": 401, \"marker_forged\": 401}, \"witness_from_hub\": {\"19970\": \"URLError(gaierror(-3, 'Try again'))\", \"19971\": \"URLError(gaierror(-3, 'Try again'))\"}}"
+   ],
+   "coverage": true,
+   "markers": false,
+   "record_signatures": true,
+   "linked_anchor": true,
+   "placement": "lab installation (single host, unprivileged container)",
+   "sealing_grace_s": 0,
+   "node_encoding_named_by_chain_records": [
+    "v2"
+   ],
+   "window": {
+    "t_start": 1791530213.0,
+    "t_end": 1791530813.0,
+    "duration_s": 600.0
+   },
+   "source_file": "exp/out/e8_main_stable_verify_base.json",
+   "counting_rule": "no trials given: every segment untouched",
+   "k": 0,
+   "n_untouched_anchored_one_second_segments": 124,
+   "window_duration_s": 600.0,
+   "proportion": 0.0,
+   "exact_interval": [
+    0.0,
+    0.02931088108977493
+   ],
+   "per_untouched_hour": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     105.51917192318975
+    ]
+   },
+   "per_untouched_day": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     2532.460126156554
+    ]
+   },
+   "per_wallclock_hour": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     21.807295530792548
+    ]
+   },
+   "per_wallclock_day": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     523.3750927390212
+    ]
+   },
+   "block_bootstrap": "degenerate: k = 0, so every block resample of the all-zero series is 0; no bootstrap interval is reported and the exact interval is the informative one",
+   "note": "both E8 monitors observed the same run and the same untouched seconds"
+  },
+  "e8_main_stable_stress": {
+   "label": "E8 stress window (stable monitor)",
+   "date": "2026-10-09",
+   "group": "deployed configuration (coverage)",
+   "scheme": "stable columns",
+   "authenticated_append_path": true,
+   "authenticated_append_path_evidence": [
+    "2026-10-09T05:32:09Z probe_from_hub: {\"anchor-stb\": {\"record_untagged\": 401, \"record_forged\": 401, \"marker_untagged\": 401, \"marker_forged\": 401}, \"anchor-clo\": {\"record_untagged\": 401, \"record_forged\": 401, \"marker_untagged\": 401, \"marker_forged\": 401}, \"witness_from_hub\": {\"19970\": \"URLError(gaierror(-3, 'Try again'))\", \"19971\": \"URLError(gaierror(-3, 'Try again'))\"}}"
+   ],
+   "coverage": true,
+   "markers": false,
+   "record_signatures": true,
+   "linked_anchor": true,
+   "placement": "lab installation (single host, unprivileged container)",
+   "sealing_grace_s": 0,
+   "node_encoding_named_by_chain_records": [
+    "v2"
+   ],
+   "window": {
+    "t_start": 1791530814.0,
+    "t_end": 1791532617.0,
+    "duration_s": 1803.0
+   },
+   "source_file": "exp/out/e8_main_stable_verify_stress.json",
+   "counting_rule": "verify_all.touched_segments",
+   "k": 0,
+   "n_untouched_anchored_one_second_segments": 1201,
+   "window_duration_s": 1803.0,
+   "proportion": 0.0,
+   "exact_interval": [
+    0.0,
+    0.0030667943722462463
+   ],
+   "per_untouched_hour": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     11.040459740086487
+    ]
+   },
+   "per_untouched_day": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     264.9710337620757
+    ]
+   },
+   "per_wallclock_hour": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     7.354183110285008
+    ]
+   },
+   "per_wallclock_day": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     176.50039464684022
+    ]
+   },
+   "block_bootstrap": "degenerate: k = 0, so every block resample of the all-zero series is 0; no bootstrap interval is reported and the exact interval is the informative one",
+   "note": "both E8 monitors observed the same run and the same untouched seconds"
+  }
+ },
+ "pools": {
+  "nine_run_pool_as_published": {
+   "what": "the published pool (Table 5 last row, Appendix B): mixes the row and closure schemes and two authentication settings; reference only",
+   "runs": [
+    "e_c_write_time",
+    "e_d_other_principal_real",
+    "e_d_auth",
+    "e_c_auth",
+    "e_ps_auth",
+    "e_ps_clo",
+    "e_d_clo",
+    "e_c_clo",
+    "e_psr_clo"
+   ],
+   "n_runs": 9,
+   "schemes": [
+    "closure",
+    "row"
+   ],
+   "authenticated_append_path": [
+    "False",
+    "True"
+   ],
+   "mixes_schemes": true,
+   "mixes_authentication_settings": true,
+   "k": 13,
+   "n_untouched_anchored_one_second_segments": 4733,
+   "window_duration_s": 16745.0,
+   "proportion": 0.002746672300866258,
+   "exact_interval": [
+    0.001463272718670187,
+    0.0046923133528567074
+   ],
+   "per_untouched_hour": {
+    "rate": 9.888020283118529,
+    "exact_interval": [
+     5.267781787212673,
+     16.892328070284147
+    ]
+   },
+   "per_untouched_day": {
+    "rate": 237.31248679484472,
+    "exact_interval": [
+     126.42676289310415,
+     405.4158736868195
+    ]
+   },
+   "per_wallclock_hour": {
+    "rate": 2.7948641385488204,
+    "exact_interval": [
+     1.488946622805469,
+     4.7746425056228645
+    ]
+   },
+   "per_wallclock_day": {
+    "rate": 67.07673932517169,
+    "exact_interval": [
+     35.73471894733126,
+     114.59142013494873
+    ]
+   },
+   "block_bootstrap": {
+    "primary_block_length": 60,
+    "by_block_length": {
+     "1": {
+      "block_length": 1,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.001478977392774139,
+       0.004436932178322417
+      ],
+      "per_untouched_hour_interval": [
+       5.3243186139869,
+       15.972955841960701
+      ],
+      "per_untouched_day_interval": [
+       127.78364673568561,
+       383.35094020705685
+      ],
+      "replicate_mean_proportion": 0.0027629410521867732,
+      "share_of_replicates_with_zero_failures": 0.0,
+      "per_wallclock_hour_interval": [
+       1.5049268438339802,
+       4.51478053150194
+      ],
+      "per_wallclock_day_interval": [
+       36.11824425201552,
+       108.35473275604657
+      ]
+     },
+     "10": {
+      "block_length": 10,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.001267694908092119,
+       0.0042256496936403974
+      ],
+      "per_untouched_hour_interval": [
+       4.563701669131628,
+       15.21233889710543
+      ],
+      "per_untouched_day_interval": [
+       109.52884005915908,
+       365.0961335305303
+      ],
+      "replicate_mean_proportion": 0.0027428058313965775,
+      "share_of_replicates_with_zero_failures": 0.0,
+      "per_wallclock_hour_interval": [
+       1.28993729471484,
+       4.299790982382801
+      ],
+      "per_wallclock_day_interval": [
+       30.95849507315616,
+       103.19498357718722
+      ]
+     },
+     "30": {
+      "block_length": 30,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.001478977392774139,
+       0.0042256496936403974
+      ],
+      "per_untouched_hour_interval": [
+       5.3243186139869,
+       15.21233889710543
+      ],
+      "per_untouched_day_interval": [
+       127.78364673568561,
+       365.0961335305303
+      ],
+      "replicate_mean_proportion": 0.0027440946545531377,
+      "share_of_replicates_with_zero_failures": 0.0,
+      "per_wallclock_hour_interval": [
+       1.5049268438339802,
+       4.299790982382801
+      ],
+      "per_wallclock_day_interval": [
+       36.11824425201552,
+       103.19498357718722
+      ]
+     },
+     "60": {
+      "block_length": 60,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.001478977392774139,
+       0.0042256496936403974
+      ],
+      "per_untouched_hour_interval": [
+       5.3243186139869,
+       15.21233889710543
+      ],
+      "per_untouched_day_interval": [
+       127.78364673568561,
+       365.0961335305303
+      ],
+      "replicate_mean_proportion": 0.0027500528206211706,
+      "share_of_replicates_with_zero_failures": 0.0,
+      "per_wallclock_hour_interval": [
+       1.5049268438339802,
+       4.299790982382801
+      ],
+      "per_wallclock_day_interval": [
+       36.11824425201552,
+       103.19498357718722
+      ]
+     },
+     "120": {
+      "block_length": 120,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.001478977392774139,
+       0.004014367208958377
+      ],
+      "per_untouched_hour_interval": [
+       5.3243186139869,
+       14.451721952250157
+      ],
+      "per_untouched_day_interval": [
+       127.78364673568561,
+       346.8413268540038
+      ],
+      "replicate_mean_proportion": 0.0027345446862455103,
+      "share_of_replicates_with_zero_failures": 0.0,
+      "per_wallclock_hour_interval": [
+       1.5049268438339802,
+       4.08480143326366
+      ],
+      "per_wallclock_day_interval": [
+       36.11824425201552,
+       98.03523439832784
+      ]
+     }
+    },
+    "how": "stratified: each run resampled within itself (its own replicates, the per-run seeds above); pool replicate = sum of run failures / sum of n"
+   }
+  },
+  "nine_run_pool_row_scheme": {
+   "what": "row scheme, both authentication settings",
+   "runs": [
+    "e_c_write_time",
+    "e_d_other_principal_real",
+    "e_d_auth",
+    "e_c_auth",
+    "e_ps_auth"
+   ],
+   "n_runs": 5,
+   "schemes": [
+    "row"
+   ],
+   "authenticated_append_path": [
+    "False",
+    "True"
+   ],
+   "mixes_schemes": false,
+   "mixes_authentication_settings": true,
+   "k": 9,
+   "n_untouched_anchored_one_second_segments": 2848,
+   "window_duration_s": 9957.0,
+   "proportion": 0.0031601123595505617,
+   "exact_interval": [
+    0.0014459913414609986,
+    0.005990364794287744
+   ],
+   "per_untouched_hour": {
+    "rate": 11.376404494382022,
+    "exact_interval": [
+     5.205568829259595,
+     21.56531325943588
+    ]
+   },
+   "per_untouched_day": {
+    "rate": 273.03370786516854,
+    "exact_interval": [
+     124.93365190223028,
+     517.5675182264611
+    ]
+   },
+   "per_wallclock_hour": {
+    "rate": 3.253992166315155,
+    "exact_interval": [
+     1.4889484810416116,
+     6.16832501384688
+    ]
+   },
+   "per_wallclock_day": {
+    "rate": 78.09581199156372,
+    "exact_interval": [
+     35.73476354499868,
+     148.03980033232511
+    ]
+   },
+   "block_bootstrap": {
+    "primary_block_length": 60,
+    "by_block_length": {
+     "1": {
+      "block_length": 1,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0014044943820224719,
+       0.0052668539325842695
+      ],
+      "per_untouched_hour_interval": [
+       5.056179775280898,
+       18.96067415730337
+      ],
+      "per_untouched_day_interval": [
+       121.34831460674157,
+       455.0561797752809
+      ],
+      "replicate_mean_proportion": 0.0031779845505617976,
+      "share_of_replicates_with_zero_failures": 0.0,
+      "per_wallclock_hour_interval": [
+       1.4462187405845133,
+       5.423320277191925
+      ],
+      "per_wallclock_day_interval": [
+       34.70924977402832,
+       130.1596866526062
+      ]
+     },
+     "10": {
+      "block_length": 10,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0014044943820224719,
+       0.0052668539325842695
+      ],
+      "per_untouched_hour_interval": [
+       5.056179775280898,
+       18.96067415730337
+      ],
+      "per_untouched_day_interval": [
+       121.34831460674157,
+       455.0561797752809
+      ],
+      "replicate_mean_proportion": 0.003159234550561798,
+      "share_of_replicates_with_zero_failures": 0.0,
+      "per_wallclock_hour_interval": [
+       1.4462187405845133,
+       5.423320277191925
+      ],
+      "per_wallclock_day_interval": [
+       34.70924977402832,
+       130.1596866526062
+      ]
+     },
+     "30": {
+      "block_length": 30,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0014044943820224719,
+       0.0052668539325842695
+      ],
+      "per_untouched_hour_interval": [
+       5.056179775280898,
+       18.96067415730337
+      ],
+      "per_untouched_day_interval": [
+       121.34831460674157,
+       455.0561797752809
+      ],
+      "replicate_mean_proportion": 0.003160287921348315,
+      "share_of_replicates_with_zero_failures": 0.0001,
+      "per_wallclock_hour_interval": [
+       1.4462187405845133,
+       5.423320277191925
+      ],
+      "per_wallclock_day_interval": [
+       34.70924977402832,
+       130.1596866526062
+      ]
+     },
+     "60": {
+      "block_length": 60,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0014044943820224719,
+       0.0052668539325842695
+      ],
+      "per_untouched_hour_interval": [
+       5.056179775280898,
+       18.96067415730337
+      ],
+      "per_untouched_day_interval": [
+       121.34831460674157,
+       455.0561797752809
+      ],
+      "replicate_mean_proportion": 0.0031682584269662924,
+      "share_of_replicates_with_zero_failures": 0.0,
+      "per_wallclock_hour_interval": [
+       1.4462187405845133,
+       5.423320277191925
+      ],
+      "per_wallclock_day_interval": [
+       34.70924977402832,
+       130.1596866526062
+      ]
+     },
+     "120": {
+      "block_length": 120,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0014044943820224719,
+       0.0052668539325842695
+      ],
+      "per_untouched_hour_interval": [
+       5.056179775280898,
+       18.96067415730337
+      ],
+      "per_untouched_day_interval": [
+       121.34831460674157,
+       455.0561797752809
+      ],
+      "replicate_mean_proportion": 0.0031481039325842695,
+      "share_of_replicates_with_zero_failures": 0.0,
+      "per_wallclock_hour_interval": [
+       1.4462187405845133,
+       5.423320277191925
+      ],
+      "per_wallclock_day_interval": [
+       34.70924977402832,
+       130.1596866526062
+      ]
+     }
+    },
+    "how": "stratified: each run resampled within itself (its own replicates, the per-run seeds above); pool replicate = sum of run failures / sum of n"
+   }
+  },
+  "nine_run_pool_row_scheme_unauthenticated": {
+   "what": "row scheme, unauthenticated anchor",
+   "runs": [
+    "e_c_write_time",
+    "e_d_other_principal_real"
+   ],
+   "n_runs": 2,
+   "schemes": [
+    "row"
+   ],
+   "authenticated_append_path": [
+    "False"
+   ],
+   "mixes_schemes": false,
+   "mixes_authentication_settings": false,
+   "k": 4,
+   "n_untouched_anchored_one_second_segments": 1302,
+   "window_duration_s": 4382.0,
+   "proportion": 0.0030721966205837174,
+   "exact_interval": [
+    0.0008376849813690471,
+    0.007847206402067682
+   ],
+   "per_untouched_hour": {
+    "rate": 11.059907834101383,
+    "exact_interval": [
+     3.0156659329285698,
+     28.249943047443654
+    ]
+   },
+   "per_untouched_day": {
+    "rate": 265.4377880184332,
+    "exact_interval": [
+     72.37598239028567,
+     677.9986331386477
+    ]
+   },
+   "per_wallclock_hour": {
+    "rate": 3.2861706983112735,
+    "exact_interval": [
+     0.8960285359819712,
+     8.393753046045559
+    ]
+   },
+   "per_wallclock_day": {
+    "rate": 78.86809675947056,
+    "exact_interval": [
+     21.504684863567306,
+     201.4500731050934
+    ]
+   },
+   "block_bootstrap": {
+    "primary_block_length": 60,
+    "by_block_length": {
+     "1": {
+      "block_length": 1,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0007680491551459293,
+       0.006144393241167435
+      ],
+      "per_untouched_hour_interval": [
+       2.7649769585253456,
+       22.119815668202765
+      ],
+      "per_untouched_day_interval": [
+       66.3594470046083,
+       530.8755760368664
+      ],
+      "replicate_mean_proportion": 0.0030770353302611367,
+      "share_of_replicates_with_zero_failures": 0.019,
+      "per_wallclock_hour_interval": [
+       0.8215426745778183,
+       6.572341396622546
+      ],
+      "per_wallclock_day_interval": [
+       19.71702418986764,
+       157.73619351894112
+      ]
+     },
+     "10": {
+      "block_length": 10,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0007680491551459293,
+       0.006144393241167435
+      ],
+      "per_untouched_hour_interval": [
+       2.7649769585253456,
+       22.119815668202765
+      ],
+      "per_untouched_day_interval": [
+       66.3594470046083,
+       530.8755760368664
+      ],
+      "replicate_mean_proportion": 0.0030784178187403992,
+      "share_of_replicates_with_zero_failures": 0.0168,
+      "per_wallclock_hour_interval": [
+       0.8215426745778183,
+       6.572341396622546
+      ],
+      "per_wallclock_day_interval": [
+       19.71702418986764,
+       157.73619351894112
+      ]
+     },
+     "30": {
+      "block_length": 30,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0007680491551459293,
+       0.006144393241167435
+      ],
+      "per_untouched_hour_interval": [
+       2.7649769585253456,
+       22.119815668202765
+      ],
+      "per_untouched_day_interval": [
+       66.3594470046083,
+       530.8755760368664
+      ],
+      "replicate_mean_proportion": 0.0030685099846390167,
+      "share_of_replicates_with_zero_failures": 0.0139,
+      "per_wallclock_hour_interval": [
+       0.8215426745778183,
+       6.572341396622546
+      ],
+      "per_wallclock_day_interval": [
+       19.71702418986764,
+       157.73619351894112
+      ]
+     },
+     "60": {
+      "block_length": 60,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0007680491551459293,
+       0.006144393241167435
+      ],
+      "per_untouched_hour_interval": [
+       2.7649769585253456,
+       22.119815668202765
+      ],
+      "per_untouched_day_interval": [
+       66.3594470046083,
+       530.8755760368664
+      ],
+      "replicate_mean_proportion": 0.003078648233486943,
+      "share_of_replicates_with_zero_failures": 0.0104,
+      "per_wallclock_hour_interval": [
+       0.8215426745778183,
+       6.572341396622546
+      ],
+      "per_wallclock_day_interval": [
+       19.71702418986764,
+       157.73619351894112
+      ]
+     },
+     "120": {
+      "block_length": 120,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0007680491551459293,
+       0.006144393241167435
+      ],
+      "per_untouched_hour_interval": [
+       2.7649769585253456,
+       22.119815668202765
+      ],
+      "per_untouched_day_interval": [
+       66.3594470046083,
+       530.8755760368664
+      ],
+      "replicate_mean_proportion": 0.003061904761904762,
+      "share_of_replicates_with_zero_failures": 0.0105,
+      "per_wallclock_hour_interval": [
+       0.8215426745778183,
+       6.572341396622546
+      ],
+      "per_wallclock_day_interval": [
+       19.71702418986764,
+       157.73619351894112
+      ]
+     }
+    },
+    "how": "stratified: each run resampled within itself (its own replicates, the per-run seeds above); pool replicate = sum of run failures / sum of n"
+   }
+  },
+  "nine_run_pool_row_scheme_authenticated": {
+   "what": "row scheme, authenticated append path",
+   "runs": [
+    "e_d_auth",
+    "e_c_auth",
+    "e_ps_auth"
+   ],
+   "n_runs": 3,
+   "schemes": [
+    "row"
+   ],
+   "authenticated_append_path": [
+    "True"
+   ],
+   "mixes_schemes": false,
+   "mixes_authentication_settings": false,
+   "k": 5,
+   "n_untouched_anchored_one_second_segments": 1546,
+   "window_duration_s": 5575.0,
+   "proportion": 0.003234152652005175,
+   "exact_interval": [
+    0.0010509287701852745,
+    0.007531167873432429
+   ],
+   "per_untouched_hour": {
+    "rate": 11.64294954721863,
+    "exact_interval": [
+     3.7833435726669884,
+     27.112204344356744
+    ]
+   },
+   "per_untouched_day": {
+    "rate": 279.4307891332471,
+    "exact_interval": [
+     90.80024574400773,
+     650.6929042645619
+    ]
+   },
+   "per_wallclock_hour": {
+    "rate": 3.2286995515695067,
+    "exact_interval": [
+     1.0491568005996705,
+     7.51846958141265
+    ]
+   },
+   "per_wallclock_day": {
+    "rate": 77.48878923766816,
+    "exact_interval": [
+     25.179763214392096,
+     180.4432699539036
+    ]
+   },
+   "block_bootstrap": {
+    "primary_block_length": 60,
+    "by_block_length": {
+     "1": {
+      "block_length": 1,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.000646830530401035,
+       0.00646830530401035
+      ],
+      "per_untouched_hour_interval": [
+       2.328589909443726,
+       23.28589909443726
+      ],
+      "per_untouched_day_interval": [
+       55.88615782664942,
+       558.8615782664942
+      ],
+      "replicate_mean_proportion": 0.0032630012936610614,
+      "share_of_replicates_with_zero_failures": 0.007,
+      "per_wallclock_hour_interval": [
+       0.6457399103139014,
+       6.457399103139013
+      ],
+      "per_wallclock_day_interval": [
+       15.497757847533633,
+       154.97757847533632
+      ]
+     },
+     "10": {
+      "block_length": 10,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.000646830530401035,
+       0.00646830530401035
+      ],
+      "per_untouched_hour_interval": [
+       2.328589909443726,
+       23.28589909443726
+      ],
+      "per_untouched_day_interval": [
+       55.88615782664942,
+       558.8615782664942
+      ],
+      "replicate_mean_proportion": 0.0032272962483829246,
+      "share_of_replicates_with_zero_failures": 0.0068,
+      "per_wallclock_hour_interval": [
+       0.6457399103139014,
+       6.457399103139013
+      ],
+      "per_wallclock_day_interval": [
+       15.497757847533633,
+       154.97757847533632
+      ]
+     },
+     "30": {
+      "block_length": 30,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.000646830530401035,
+       0.00646830530401035
+      ],
+      "per_untouched_hour_interval": [
+       2.328589909443726,
+       23.28589909443726
+      ],
+      "per_untouched_day_interval": [
+       55.88615782664942,
+       558.8615782664942
+      ],
+      "replicate_mean_proportion": 0.0032375808538163,
+      "share_of_replicates_with_zero_failures": 0.0081,
+      "per_wallclock_hour_interval": [
+       0.6457399103139014,
+       6.457399103139013
+      ],
+      "per_wallclock_day_interval": [
+       15.497757847533633,
+       154.97757847533632
+      ]
+     },
+     "60": {
+      "block_length": 60,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.000646830530401035,
+       0.00646830530401035
+      ],
+      "per_untouched_hour_interval": [
+       2.328589909443726,
+       23.28589909443726
+      ],
+      "per_untouched_day_interval": [
+       55.88615782664942,
+       558.8615782664942
+      ],
+      "replicate_mean_proportion": 0.00324372574385511,
+      "share_of_replicates_with_zero_failures": 0.0058,
+      "per_wallclock_hour_interval": [
+       0.6457399103139014,
+       6.457399103139013
+      ],
+      "per_wallclock_day_interval": [
+       15.497757847533633,
+       154.97757847533632
+      ]
+     },
+     "120": {
+      "block_length": 120,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.000646830530401035,
+       0.005821474773609315
+      ],
+      "per_untouched_hour_interval": [
+       2.328589909443726,
+       20.957309184993534
+      ],
+      "per_untouched_day_interval": [
+       55.88615782664942,
+       502.9754204398448
+      ],
+      "replicate_mean_proportion": 0.0032206985769728334,
+      "share_of_replicates_with_zero_failures": 0.0074,
+      "per_wallclock_hour_interval": [
+       0.6457399103139014,
+       5.811659192825112
+      ],
+      "per_wallclock_day_interval": [
+       15.497757847533633,
+       139.4798206278027
+      ]
+     }
+    },
+    "how": "stratified: each run resampled within itself (its own replicates, the per-run seeds above); pool replicate = sum of run failures / sum of n"
+   }
+  },
+  "nine_run_pool_closure_scheme": {
+   "what": "closure scheme without coverage, authenticated append path",
+   "runs": [
+    "e_ps_clo",
+    "e_d_clo",
+    "e_c_clo",
+    "e_psr_clo"
+   ],
+   "n_runs": 4,
+   "schemes": [
+    "closure"
+   ],
+   "authenticated_append_path": [
+    "True"
+   ],
+   "mixes_schemes": false,
+   "mixes_authentication_settings": false,
+   "k": 4,
+   "n_untouched_anchored_one_second_segments": 1885,
+   "window_duration_s": 6788.0,
+   "proportion": 0.002122015915119363,
+   "exact_interval": [
+    0.0005784711171754548,
+    0.0054242140252257634
+   ],
+   "per_untouched_hour": {
+    "rate": 7.639257294429708,
+    "exact_interval": [
+     2.0824960218316373,
+     19.527170490812747
+    ]
+   },
+   "per_untouched_day": {
+    "rate": 183.342175066313,
+    "exact_interval": [
+     49.97990452395929,
+     468.65209177950595
+    ]
+   },
+   "per_wallclock_hour": {
+    "rate": 2.121390689451974,
+    "exact_interval": [
+     0.5783006778362753,
+     5.422615847846497
+    ]
+   },
+   "per_wallclock_day": {
+    "rate": 50.91337654684738,
+    "exact_interval": [
+     13.879216268070603,
+     130.14278034831594
+    ]
+   },
+   "block_bootstrap": {
+    "primary_block_length": 60,
+    "by_block_length": {
+     "1": {
+      "block_length": 1,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0005305039787798408,
+       0.004244031830238726
+      ],
+      "per_untouched_hour_interval": [
+       1.909814323607427,
+       15.278514588859416
+      ],
+      "per_untouched_day_interval": [
+       45.83554376657825,
+       366.684350132626
+      ],
+      "replicate_mean_proportion": 0.0021358620689655174,
+      "share_of_replicates_with_zero_failures": 0.0179,
+      "per_wallclock_hour_interval": [
+       0.5303476723629935,
+       4.242781378903948
+      ],
+      "per_wallclock_day_interval": [
+       12.728344136711844,
+       101.82675309369475
+      ]
+     },
+     "10": {
+      "block_length": 10,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0005305039787798408,
+       0.004244031830238726
+      ],
+      "per_untouched_hour_interval": [
+       1.909814323607427,
+       15.278514588859416
+      ],
+      "per_untouched_day_interval": [
+       45.83554376657825,
+       366.684350132626
+      ],
+      "replicate_mean_proportion": 0.0021136339522546416,
+      "share_of_replicates_with_zero_failures": 0.0185,
+      "per_wallclock_hour_interval": [
+       0.5303476723629935,
+       4.242781378903948
+      ],
+      "per_wallclock_day_interval": [
+       12.728344136711844,
+       101.82675309369475
+      ]
+     },
+     "30": {
+      "block_length": 30,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0005305039787798408,
+       0.004244031830238726
+      ],
+      "per_untouched_hour_interval": [
+       1.909814323607427,
+       15.278514588859416
+      ],
+      "per_untouched_day_interval": [
+       45.83554376657825,
+       366.684350132626
+      ],
+      "replicate_mean_proportion": 0.002115278514588859,
+      "share_of_replicates_with_zero_failures": 0.017,
+      "per_wallclock_hour_interval": [
+       0.5303476723629935,
+       4.242781378903948
+      ],
+      "per_wallclock_day_interval": [
+       12.728344136711844,
+       101.82675309369475
+      ]
+     },
+     "60": {
+      "block_length": 60,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0005305039787798408,
+       0.004244031830238726
+      ],
+      "per_untouched_hour_interval": [
+       1.909814323607427,
+       15.278514588859416
+      ],
+      "per_untouched_day_interval": [
+       45.83554376657825,
+       366.684350132626
+      ],
+      "replicate_mean_proportion": 0.0021181962864721487,
+      "share_of_replicates_with_zero_failures": 0.0121,
+      "per_wallclock_hour_interval": [
+       0.5303476723629935,
+       4.242781378903948
+      ],
+      "per_wallclock_day_interval": [
+       12.728344136711844,
+       101.82675309369475
+      ]
+     },
+     "120": {
+      "block_length": 120,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.0005305039787798408,
+       0.004244031830238726
+      ],
+      "per_untouched_hour_interval": [
+       1.909814323607427,
+       15.278514588859416
+      ],
+      "per_untouched_day_interval": [
+       45.83554376657825,
+       366.684350132626
+      ],
+      "replicate_mean_proportion": 0.0021097082228116707,
+      "share_of_replicates_with_zero_failures": 0.0102,
+      "per_wallclock_hour_interval": [
+       0.5303476723629935,
+       4.242781378903948
+      ],
+      "per_wallclock_day_interval": [
+       12.728344136711844,
+       101.82675309369475
+      ]
+     }
+    },
+    "how": "stratified: each run resampled within itself (its own replicates, the per-run seeds above); pool replicate = sum of run failures / sum of n"
+   }
+  },
+  "whole_row_scheme": {
+   "what": "whole-row scheme without coverage, authenticated append path (in-place rewrites of last_reported_ts fail sealed segments)",
+   "runs": [
+    "e_ps_whr",
+    "e_d_whr",
+    "e_psr_whr"
+   ],
+   "n_runs": 3,
+   "schemes": [
+    "wholerow"
+   ],
+   "authenticated_append_path": [
+    "True"
+   ],
+   "mixes_schemes": false,
+   "mixes_authentication_settings": false,
+   "k": 853,
+   "n_untouched_anchored_one_second_segments": 1133,
+   "window_duration_s": 4528.0,
+   "proportion": 0.7528684907325685,
+   "exact_interval": [
+    0.7266737907388492,
+    0.7777431190204785
+   ],
+   "per_untouched_hour": {
+    "rate": 2710.3265666372463,
+    "exact_interval": [
+     2616.025646659857,
+     2799.875228473723
+    ]
+   },
+   "per_untouched_day": {
+    "rate": 65047.83759929391,
+    "exact_interval": [
+     62784.61551983657,
+     67197.00548336934
+    ]
+   },
+   "per_wallclock_hour": {
+    "rate": 678.1802120141343,
+    "exact_interval": [
+     654.5841558448803,
+     700.5871541211856
+    ]
+   },
+   "per_wallclock_day": {
+    "rate": 16276.325088339223,
+    "exact_interval": [
+     15710.019740277126,
+     16814.09169890845
+    ]
+   },
+   "block_bootstrap": {
+    "primary_block_length": 60,
+    "by_block_length": {
+     "1": {
+      "block_length": 1,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.7272727272727273,
+       0.7775816416593115
+      ],
+      "per_untouched_hour_interval": [
+       2618.1818181818185,
+       2799.2939099735217
+      ],
+      "per_untouched_day_interval": [
+       62836.36363636364,
+       67183.05383936451
+      ],
+      "replicate_mean_proportion": 0.7529424536628421,
+      "share_of_replicates_with_zero_failures": 0.0,
+      "per_wallclock_hour_interval": [
+       655.1236749116608,
+       700.4416961130743
+      ],
+      "per_wallclock_day_interval": [
+       15722.96819787986,
+       16810.60070671378
+      ]
+     },
+     "10": {
+      "block_length": 10,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.7193292144748455,
+       0.7855251544571933
+      ],
+      "per_untouched_hour_interval": [
+       2589.585172109444,
+       2827.8905560458957
+      ],
+      "per_untouched_day_interval": [
+       62150.04413062666,
+       67869.3733451015
+      ],
+      "replicate_mean_proportion": 0.7528319505736981,
+      "share_of_replicates_with_zero_failures": 0.0,
+      "per_wallclock_hour_interval": [
+       647.9681978798587,
+       707.5971731448763
+      ],
+      "per_wallclock_day_interval": [
+       15551.23674911661,
+       16982.33215547703
+      ]
+     },
+     "30": {
+      "block_length": 30,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.7210944395410415,
+       0.7828773168578994
+      ],
+      "per_untouched_hour_interval": [
+       2595.9399823477493,
+       2818.3583406884377
+      ],
+      "per_untouched_day_interval": [
+       62302.559576345986,
+       67640.60017652251
+      ],
+      "replicate_mean_proportion": 0.7528428949691086,
+      "share_of_replicates_with_zero_failures": 0.0,
+      "per_wallclock_hour_interval": [
+       649.5583038869257,
+       705.2120141342756
+      ],
+      "per_wallclock_day_interval": [
+       15589.39929328622,
+       16925.088339222617
+      ]
+     },
+     "60": {
+      "block_length": 60,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.7272727272727273,
+       0.7775816416593115
+      ],
+      "per_untouched_hour_interval": [
+       2618.1818181818185,
+       2799.2939099735217
+      ],
+      "per_untouched_day_interval": [
+       62836.36363636364,
+       67183.05383936451
+      ],
+      "replicate_mean_proportion": 0.7530357458075905,
+      "share_of_replicates_with_zero_failures": 0.0,
+      "per_wallclock_hour_interval": [
+       655.1236749116608,
+       700.4416961130743
+      ],
+      "per_wallclock_day_interval": [
+       15722.96819787986,
+       16810.60070671378
+      ]
+     },
+     "120": {
+      "block_length": 120,
+      "replicates": 10000,
+      "proportion_interval": [
+       0.7316857899382171,
+       0.7740511915269197
+      ],
+      "per_untouched_hour_interval": [
+       2634.0688437775816,
+       2786.584289496911
+      ],
+      "per_untouched_day_interval": [
+       63217.65225066196,
+       66878.02294792586
+      ],
+      "replicate_mean_proportion": 0.7528945278022947,
+      "share_of_replicates_with_zero_failures": 0.0,
+      "per_wallclock_hour_interval": [
+       659.0989399293286,
+       697.26148409894
+      ],
+      "per_wallclock_day_interval": [
+       15818.374558303887,
+       16734.27561837456
+      ]
+     }
+    },
+    "how": "stratified: each run resampled within itself (its own replicates, the per-run seeds above); pool replicate = sum of run failures / sum of n"
+   }
+  },
+  "closure_with_coverage_E7_E8": {
+   "what": "closure scheme with coverage (E7 and the three E8 windows)",
+   "runs": [
+    "e7_main_closure",
+    "e8_main_closure_main",
+    "e8_main_closure_base",
+    "e8_main_closure_stress"
+   ],
+   "n_runs": 4,
+   "schemes": [
+    "closure"
+   ],
+   "authenticated_append_path": [
+    "True"
+   ],
+   "mixes_schemes": false,
+   "mixes_authentication_settings": false,
+   "k": 0,
+   "n_untouched_anchored_one_second_segments": 3972,
+   "window_duration_s": 15968.0,
+   "proportion": 0.0,
+   "exact_interval": [
+    0.0,
+    0.0009282897821096535
+   ],
+   "per_untouched_hour": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     3.3418432155947526
+    ]
+   },
+   "per_untouched_day": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     80.20423717427407
+    ]
+   },
+   "per_wallclock_hour": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     0.8312751285284543
+    ]
+   },
+   "per_wallclock_day": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     19.950603084682903
+    ]
+   },
+   "block_bootstrap": "degenerate: k = 0, so every block resample of the all-zero series is 0; no bootstrap interval is reported and the exact interval is the informative one"
+  },
+  "stable_columns_with_coverage_E7_E8": {
+   "what": "stable-columns scheme with coverage, the deployed scheme (E7 and the three E8 windows)",
+   "runs": [
+    "e7_main_stable",
+    "e8_main_stable_main",
+    "e8_main_stable_base",
+    "e8_main_stable_stress"
+   ],
+   "n_runs": 4,
+   "schemes": [
+    "stable columns"
+   ],
+   "authenticated_append_path": [
+    "True"
+   ],
+   "mixes_schemes": false,
+   "mixes_authentication_settings": false,
+   "k": 0,
+   "n_untouched_anchored_one_second_segments": 3972,
+   "window_duration_s": 15968.0,
+   "proportion": 0.0,
+   "exact_interval": [
+    0.0,
+    0.0009282897821096535
+   ],
+   "per_untouched_hour": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     3.3418432155947526
+    ]
+   },
+   "per_untouched_day": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     80.20423717427407
+    ]
+   },
+   "per_wallclock_hour": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     0.8312751285284543
+    ]
+   },
+   "per_wallclock_day": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     19.950603084682903
+    ]
+   },
+   "block_bootstrap": "degenerate: k = 0, so every block resample of the all-zero series is 0; no bootstrap interval is reported and the exact interval is the informative one"
+  },
+  "stable_columns_with_coverage_E8_only": {
+   "what": "the deployed configuration as evaluated in E8 (signed records, linked anchors): main, baseline and stress windows",
+   "runs": [
+    "e8_main_stable_main",
+    "e8_main_stable_base",
+    "e8_main_stable_stress"
+   ],
+   "n_runs": 3,
+   "schemes": [
+    "stable columns"
+   ],
+   "authenticated_append_path": [
+    "True"
+   ],
+   "mixes_schemes": false,
+   "mixes_authentication_settings": false,
+   "k": 0,
+   "n_untouched_anchored_one_second_segments": 2760,
+   "window_duration_s": 8556.0,
+   "proportion": 0.0,
+   "exact_interval": [
+    0.0,
+    0.001335657740992894
+   ],
+   "per_untouched_hour": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     4.808367867574419
+    ]
+   },
+   "per_untouched_day": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     115.40082882178605
+    ]
+   },
+   "per_wallclock_hour": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     1.5510864088949738
+    ]
+   },
+   "per_wallclock_day": {
+    "rate": 0.0,
+    "exact_interval": [
+     0.0,
+     37.22607381347937
+    ]
+   },
+   "block_bootstrap": "degenerate: k = 0, so every block resample of the all-zero series is 0; no bootstrap interval is reported and the exact interval is the informative one"
+  },
+  "closure_without_coverage_E3": {
+   "what": "closure scheme, authenticated, E3 grace 0 s and 2 s (encoding v2)",
+   "runs": [
+    "e3_g0_clo",
+    "e3_g2_clo"
+   ],
+   "n_runs": 2,
+   "schemes": [
+    "closure"
+   ],
+   "authenticated_append_path": [
+    "True"
+   ],
+   "mixes_schemes": false,
+   "mixes_authentication_settings": false,
+   "k": 2,
+   "n_untouched_anchored_one_second_segments": 1099,
+   "window_duration_s": 4617.0,
+   "proportion": 0.0018198362147406734,
+   "exact_interval": [
+    0.0002204666410036046,
+    0.006558266449090304
+   ],
+   "per_untouched_hour": {
+    "rate": 6.551410373066424,
+    "exact_interval": [
+     0.7936799076129766,
+     23.609759216725095
+    ]
+   },
+   "per_untouched_day": {
+    "rate": 157.2338489535942,
+    "exact_interval": [
+     19.04831778271144,
+     566.6342212014023
+    ]
+   },
+   "per_wallclock_hour": {
+    "rate": 1.5594541910331383,
+    "exact_interval": [
+     0.1889222911991902,
+     5.6199101969202685
+    ]
+   },
+   "per_wallclock_day": {
+    "rate": 37.42690058479532,
+    "exact_interval": [
+     4.534134988780566,
+     134.87784472608644
+    ]
+   },
+   "block_bootstrap": "not computed: at least one member run's failing segment ids are not saved"
+  },
+  "closure_two_host_E1_E5": {
+   "what": "closure scheme, authenticated, two-host placement (E1, E5)",
+   "runs": [
+    "e1_psr_clo",
+    "e5_psr_lnk"
+   ],
+   "n_runs": 2,
+   "schemes": [
+    "closure"
+   ],
+   "authenticated_append_path": [
+    "True"
+   ],
+   "mixes_schemes": false,
+   "mixes_authentication_settings": false,
+   "k": 4,
+   "n_untouched_anchored_one_second_segments": 821,
+   "window_duration_s": 3537.0,
+   "proportion": 0.0048721071863581,
+   "exact_interval": [
+    0.0013290325983312354,
+    0.012427179594862866
+   ],
+   "per_untouched_hour": {
+    "rate": 17.53958587088916,
+    "exact_interval": [
+     4.784517353992448,
+     44.737846541506315
+    ]
+   },
+   "per_untouched_day": {
+    "rate": 420.95006090133984,
+    "exact_interval": [
+     114.82841649581874,
+     1073.7083169961516
+    ]
+   },
+   "per_wallclock_hour": {
+    "rate": 4.071246819338422,
+    "exact_interval": [
+     1.1105707513790781,
+     10.384442185630954
+    ]
+   },
+   "per_wallclock_day": {
+    "rate": 97.70992366412214,
+    "exact_interval": [
+     26.653698033097875,
+     249.22661245514288
+    ]
+   },
+   "block_bootstrap": "not computed: at least one member run's failing segment ids are not saved"
+  }
+ },
+ "nine_run_pool_decomposition": {
+  "published": "13/4,733 [Table 5, Appendix B]",
+  "by_scheme": {
+   "row": {
+    "k": 9,
+    "n": 2848
+   },
+   "closure": {
+    "k": 4,
+    "n": 1885
+   }
+  },
+  "by_scheme_and_authentication": {
+   "row, unauthenticated": [
+    4,
+    1302
+   ],
+   "row, authenticated": [
+    5,
+    1546
+   ],
+   "closure, authenticated": [
+    4,
+    1885
+   ]
+  },
+  "every_failure_mechanism": [
+   "rows_arrived_after_seal"
+  ]
+ },
+ "not_included": {
+  "Domoticz run": "a different hub (exp/out/dz_summary.json), not a Home Assistant real-deployment run",
+  "E2 real purge (night 3)": "a purge evaluation, not an untouched-segment floor (exp/out/e2_scoped_markers_real_night_2026-10-10.json)",
+  "E9": "running until 2026-10-19; its files are not read"
+ },
+ "inputs_sha256": {
+  "exp/out/e_c_write_time_floor_rescore.json": "c4b20df2755e97cba06c693740be6305238e5800be2dd4f9060514d012c8bc76",
+  "exp/out/e_c_write_time.json": "377a335091ce38a86ceb0e0f814a34152030d9ad450ac5d6efbb41a0ed495a15",
+  "<snapshot-set>/hp_d2/live/default_chain.jsonl": "c7781fb664d607b287129d0e7f7f2b0173b829c30f84c06f6eb8dd987f9f8c7f",
+  "exp/out/e_d_other_principal_real_floor_rescore.json": "c2bb7a637094e732d532ce5dda155aafc58d5414a8f9d8447bcc4ccccdf2a6e6",
+  "exp/out/e_d_other_principal_real.json": "644574c60e6bcb7b1c90c70c3bedc79af0c96b2dbddacf14a17e828372da6d46",
+  "exp/out/e_d_auth_floor_rescore.json": "78347878fe3415104e999c13f568f6b3c9e574d7988361b97f9e225f72b139ac",
+  "exp/out/e_d_auth_other_principal_real.json": "a3b42023dd7f9035b9cd3fc7fc3bfa7e571bfbd21fa3462bf910d2b58fecb1dc",
+  "exp/out/e_d_auth_anchor_chain.jsonl.gz": "d7df26bd3ac59dff119a303545495731de3f60b21106fef1a0e0a5d90102cbc2",
+  "exp/out/e_c_auth_floor_rescore.json": "e488bd80755dc95a1ced2c228cbc242a379e508bd217c53c3baf7ade82881b99",
+  "exp/out/e_c_auth_other_principal_real.json": "7c8bf5df715c8e1aad7408048ef7b1e8530caf409276ac31930111ecae0fa3f5",
+  "exp/out/e_c_auth_anchor_chain.jsonl.gz": "d7b2535b0f16a8ccce146ec6c0b2c4263fcf6007bcec6b85678aa0fa2713344a",
+  "exp/out/e_ps_auth_floor_rescore.json": "bd5d7fc1dcba769ef3cc506420af194977e357658365cb230adbb18c8929e29c",
+  "exp/out/e_ps_auth_detection.json": "df2e535ffee172615e9d9c7ebd14fee69dfb617a6117e0c1067db9cb46458fac",
+  "exp/out/e_ps_auth_anchor_chain.jsonl.gz": "706168f8dc6af261b70edc37c7c8368540f9dbc994cbe80a3d9d91d5e2f2012b",
+  "exp/out/e_ps_clo_floor_rescore.json": "bed92df26d09399754b85f587f19b0fb4784418b25cbaa54ef2dee55cd56379d",
+  "exp/out/e_ps_clo_detection.json": "bf8dc6895a33e88a82e27e4175c0b01bef796f2d69026beff6534c219173bbf9",
+  "reproduce/snapshots/e_ps_clo.chain.jsonl": "779aa39e020d51d9e65015da65768dae56848fd2c0170440d568d0be45239cc4",
+  "exp/out/e_d_clo_floor_rescore.json": "a781f6c300edd95fc6b971a4a8d5a1be1601fd291eee7feab1eed3c4b1b244a1",
+  "exp/out/e_d_clo_other_principal_real.json": "5f09fb1900268a067b111d853f5d4163397fcb76302064c2c7863e5d47ebf9c6",
+  "reproduce/snapshots/e_d_clo.chain.jsonl": "f177af7fe874c45e00d13d95893350914c17dd77674a97b083f99a4bb799b3ba",
+  "exp/out/e_c_clo_floor_rescore.json": "8d2de389b9d1066258857973ea798a7ebe004329f64b8e0c4c69e2b1240cf928",
+  "exp/out/e_c_clo_other_principal_real.json": "8239953b65a9268f516422de37bc76b6b1923375833b9209d829b9056e4bc86a",
+  "reproduce/snapshots/e_c_clo.chain.jsonl": "17b5b3cece50b3c2f06c3981ac6138b8a102eda1b8011111ac44ec5ffb01fd75",
+  "exp/out/e_psr_clo_floor_rescore.json": "a9dc3e34b836e1dc0e171af489bd31c7b34a76a272aa50cfef616a660f9261a1",
+  "exp/out/e_psr_clo_detection.json": "220d8e24248c2ca9fe009ebc17582194c4a6904cf9e8f219c39b3fe9270d4d71",
+  "reproduce/snapshots/e_psr_clo.chain.jsonl": "49af63ecd4c43ae6b0e4baf7f69a3de4108a3cbdd9f1e53a85ddb1e3551a47b9",
+  "exp/out/e_ps_whr_floor_rescore.json": "7a9b3ab13a6e8b466faf22dcf79b03d714cb844e1c55da7bd5a041e3b3a0e2d3",
+  "exp/out/e_ps_whr_detection.json": "88e948fd980b7d79d4c88d3f38ff14ef8f081ea9708b5f18fc4d1405d377e94b",
+  "reproduce/snapshots/e_ps_whr.chain.jsonl": "57cedb8eef4e112ab175327ba222325a3c237ae20aa5fd6acbca2018f4d38819",
+  "exp/out/e_d_whr_floor_rescore.json": "905588c520091d896b0b0850759ce5037b89c3540f9835f10dada98edf6a4f22",
+  "exp/out/e_d_whr_other_principal_real.json": "9b5d81446ed33b00abd3bed04ad7d6eead44e9065e65b1f8ceb4dc1f419995a5",
+  "reproduce/snapshots/e_d_whr.chain.jsonl": "89c7ad42b0970225362e7ca448b8724cb9410db98ae16ef26771b7a4283fd5be",
+  "exp/out/e_psr_whr_floor_rescore.json": "cd131759242223f34b7323c2d931c14cfff5e1f968eb74ebad466698ae8f8eae",
+  "exp/out/e_psr_whr_detection.json": "d048c791aeae911b1fa10c6179676cace886c80360c5de62ee19de0295c98ae2",
+  "reproduce/snapshots/e_psr_whr.chain.jsonl": "aa818081bfa9d9b5f6370268c1cfd365cfb8567a1678c46c89b63712a4337831",
+  "exp/out/e3_grace_sealing.json": "d41b0329f53d007a68f73ce33ca2cad955610712a5fde0b685e4be024f9dcb0e",
+  "exp/out/e3_g0_clo_config.json": "4856abaa1a112e4ab92902003a32225c04f985d0f59f911cfe261418afadba9e",
+  "exp/out/e3_g2_clo_config.json": "be345547a7bf7e91537221efdf94cacf945f454124d7290b264ba4cfb180d8d1",
+  "exp/out/e1_psr_clo_detection.json": "d822a788f0a3cd54179f97f6c6c478dc7368e0730c2b2a47ded50f10810abed7",
+  "exp/out/e1_psr_clo_two_host.json": "4b4a1a5f4b5ba5c5e696a5505402328231ad1a6578c9a6d1b4c0410bf23d843a",
+  "exp/out/e5_psr_lnk_detection.json": "b504587ffff6261d330790d3dd56e1422f0b511110f3b7f7f51a5f91b043ed76",
+  "exp/out/e5_psr_lnk_paper_rule.json": "553fc510bf2c975223b597d9eb354541832585817336bed0f846104e10ae2455",
+  "exp/out/e7_main_score.json": "3a4a356007a614910e5e91d711ee6d3d4faa786835e2c306529278ed30dc4b13",
+  "exp/out/e8_main_score_rescored.json": "175e6acf11c3b628dc10251175795b5825cbb99255fe77680f268517e4edd0a7",
+  "exp/out/e7_main_config.json": "3a168e4db5d028a1113805c2db103e1cf376adcfd2445a06114b752a1de22c3d",
+  "exp/out/e8_main_config.json": "90cf6fff762f5edb6a31d63168ab7ff31a90dbbcb228db67d90e0e49542cf17c",
+  "exp/out/e7_main_closure_verify.json": "d2e1319c5242d9b20a6471cf3b1b20119ba6f87509e9df759cc16bf1c1ff5f6d",
+  "exp/out/e7_main_closure_chain.jsonl.gz": "9d46808b4112622e1f60df6a4ef1fcb30eb2a9a25565f9bfe56683d39ff6ab31",
+  "exp/out/e8_main_closure_chain.jsonl.gz": "177f21623f280470d4f8fefd50ea5c567f58b948f66da4bd6e37f71a4cbb55f1",
+  "exp/out/e8_main_closure_verify_main.json": "94fddbc47f179429c779309852ec88a20d3cdb73adeb22bc5301939ab907f9dc",
+  "exp/out/e8_main_closure_verify_base.json": "e912e04e09a5657ddbef92a296692e75055b1c946d5dd4f15be36146ac19408a",
+  "exp/out/e8_main_closure_verify_stress.json": "b684c606a5b2a3f94639886fda96f8ca10c383dfea7812d16c52612ac3153966",
+  "exp/out/e7_main_stable_verify.json": "5502f25e203402fcccc47c33900c2ff9e2740d3b62598fc5123760c6e81a075d",
+  "exp/out/e7_main_stable_chain.jsonl.gz": "f18df81e7ae7ea13a4149d1807208ad6255fe92a948ae3153311412685b8432c",
+  "exp/out/e8_main_stable_chain.jsonl.gz": "f4a3a0c86b1a522c91b9c5e73eb317dd8438d1b21785c83484e20f33a9dc9145",
+  "exp/out/e8_main_stable_verify_main.json": "bdb297898ae1ff9360f84b6638a169e18342b518f75561be1e5292f6a1b4b679",
+  "exp/out/e8_main_stable_verify_base.json": "b8f19dd231963b791618850f023afa01631658ed2b8f34f29745607ce54e550e",
+  "exp/out/e8_main_stable_verify_stress.json": "94f286afd101867e2258064f0b73a471380894c9c72ca269f7469b3cf556e3d5"
+ },
+ "script": "exp/sp2027/r14_benign_rates.py",
+ "script_sha256": "1caaac72560211498df2a2bab21550389227026f87843954f81fb9ad93414f32",
+ "python": "3.9.6",
+ "numpy": "2.0.2",
+ "generated_at": "2026-10-12T04:22:38Z"
+}

@@ -1,0 +1,85 @@
+# HomeProv realistic testbed.
+#
+# Replaces Home Assistant's synthetic `demo` platform with a real deployment:
+# a real MQTT broker, devices that announce themselves over real MQTT discovery
+# exactly as commodity hardware does, and automations instantiated from the
+# blueprint Home Assistant itself ships. Nothing here is invented except that the
+# device firmware runs in Python rather than on a microcontroller -- at the
+# protocol level the broker cannot tell the difference.
+#
+# The network is INTERNAL: no route off the host. Two reasons. It satisfies the
+# project's standing constraint that no experiment may touch anyone's real
+# home, and it keeps the adversary's declared "no network egress" capability
+# true by construction rather than by promise.
+name: homeprov-real
+
+networks:
+  hp-real:
+    driver: bridge
+    internal: true
+
+services:
+  broker:
+    image: eclipse-mosquitto:2
+    container_name: hpr-broker
+    networks: [hp-real]
+    volumes:
+      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - hpr-mosquitto-data:/mosquitto/data
+
+  hass:
+    image: homeassistant/home-assistant:2026.7.4
+    container_name: hpr-hass
+    networks: [hp-real]
+    depends_on: [broker]
+    environment:
+      - TZ=UTC
+    volumes:
+      - hpr-config:/config
+
+  devices:
+    build: ./devices
+    image: hpr-devices:1
+    container_name: hpr-devices
+    networks: [hp-real]
+    depends_on: [broker]
+
+  # The ANCHOR, in its own container on its own volume. The hub never mounts
+  # that volume and cannot enter that container; its only reach is one socket
+  # implementing exactly one verb. This is placement P2 from the anchor study,
+  # the one that survives --privileged, and it is what the paper recommends.
+  anchor:
+    build: ../anchord
+    image: hpr-anchord:1
+    container_name: hpr-anchord
+    networks: [hp-real]
+    volumes:
+      - hpr-anchor-chain:/anchor
+      - hpr-anchor-pub:/published
+
+  # The EXTERNAL MONITOR. It reads the recorder read-only from OUTSIDE the hub
+  # process and outside the hub container, which is the whole point of E2: a
+  # defender sharing the interpreter can be fed a censored view. Mounting the
+  # config volume read-only here is stricter than the original testbed, where
+  # the monitor merely ran in a separate process.
+  monitor:
+    build: ../../monitor
+    image: hpr-monitor:1
+    container_name: hpr-monitor
+    networks: [hp-real]
+    depends_on: [hass, anchor]
+    environment:
+      - HOMEPROV_DB=/cfg/home-assistant_v2.db
+      - HOMEPROV_ANCHOR=http://hpr-anchord:9900/append
+      - HOMEPROV_PERIOD=5
+      - HOMEPROV_SCRATCH=/scratch
+    volumes:
+      - hpr-config:/cfg:ro
+      - hpr-monitor-scratch:/scratch
+
+volumes:
+  hpr-config:
+  hpr-mosquitto-data:
+  hpr-anchor-chain:
+  hpr-anchor-pub:
+  hpr-monitor-scratch:

@@ -1,0 +1,145 @@
+{
+ "experiment": "E3 grace-period sealing, paired real-deployment runs (other-principal arms PU and PI)",
+ "runs": [
+  {
+   "tag": "e3_g0_clo",
+   "grace_s": 0.0,
+   "window": [
+    1791410164.0,
+    1791412625.0,
+    1791412777.141026
+   ],
+   "arms": {
+    "PU": {
+     "n": 90,
+     "flagged": 90,
+     "attributable": 90,
+     "ambiguous": 0
+    },
+    "PI": {
+     "n": 90,
+     "flagged": 90,
+     "attributable": 90,
+     "ambiguous": 0
+    }
+   },
+   "pooled": {
+    "n": 180,
+    "attributable": 180,
+    "ambiguous": 0,
+    "attributable_ci": [
+     0.98,
+     1.0
+    ],
+    "ambiguous_ci": [
+     0.0,
+     0.02
+    ]
+   },
+   "benign_floor": {
+    "second": {
+     "k": 2,
+     "n": 540,
+     "ci": [
+      0.0,
+      0.013
+     ]
+    },
+    "minute": {
+     "k": 1,
+     "n": 14,
+     "ci": [
+      0.002,
+      0.339
+     ]
+    }
+   },
+   "sealing_delay_s": {
+    "n": 763,
+    "median": 5.465,
+    "p90": 20.633,
+    "max": 66.07
+   },
+   "inputs": {
+    "recorder_db_sha256": "6206b95cdce1c6a6f3cdc7306fd19c73ad9336f8eec2b0d6c5c3d2b3fdaf01f5",
+    "chain_sha256": "65a1debaf5bd43fedb78aa25fe36868e2ee5e9c8c8add7cf435b6e5fe058c996",
+    "result_sha256": "c021b12c7a41a90d150cdb3edab4d25817ea5898bc60d5f6fdb700f213c11adc",
+    "config_sha256": "4856abaa1a112e4ab92902003a32225c04f985d0f59f911cfe261418afadba9e"
+   },
+   "node_hash_encoding": "v2"
+  },
+  {
+   "tag": "e3_g2_clo",
+   "grace_s": 2.0,
+   "window": [
+    1791412909.0,
+    1791415065.0,
+    1791415156.699142
+   ],
+   "arms": {
+    "PU": {
+     "n": 90,
+     "flagged": 90,
+     "attributable": 90,
+     "ambiguous": 0
+    },
+    "PI": {
+     "n": 90,
+     "flagged": 90,
+     "attributable": 90,
+     "ambiguous": 0
+    }
+   },
+   "pooled": {
+    "n": 180,
+    "attributable": 180,
+    "ambiguous": 0,
+    "attributable_ci": [
+     0.98,
+     1.0
+    ],
+    "ambiguous_ci": [
+     0.0,
+     0.02
+    ]
+   },
+   "benign_floor": {
+    "second": {
+     "k": 0,
+     "n": 559,
+     "ci": [
+      0.0,
+      0.007
+     ]
+    },
+    "minute": {
+     "k": 0,
+     "n": 14,
+     "ci": [
+      0.0,
+      0.232
+     ]
+    }
+   },
+   "sealing_delay_s": {
+    "n": 741,
+    "median": 5.029,
+    "p90": 7.31,
+    "max": 8.333
+   },
+   "inputs": {
+    "recorder_db_sha256": "8bc33524ea5e3f7bca9cd05a3307800bb2dd8dc1002119393c513f55b60b6c57",
+    "chain_sha256": "28cacfb4b07a8cd51bb2689252a2fbd62a5dd996f740cd9bb747fea9ddf3d8e3",
+    "result_sha256": "82f255fdeaba8f5eb62ef3099b81c98f63043e3d2c61d5fc96dcdfeec19b77cf",
+    "config_sha256": "be345547a7bf7e91537221efdf94cacf945f454124d7290b264ba4cfb180d8d1"
+   },
+   "node_hash_encoding": "v2"
+  }
+ ],
+ "counting_rule": "reproduce/verify_all.py run_one (flagged; attributable delta_n<=0; ambiguous delta_n>0); benign floor over untouched anchored segments (touched_segments)",
+ "versions": {
+  "generated_at": "2026-10-07T23:19:47Z",
+  "verify_all_py_sha256": "131c70c0e3e9c82bd21fa27643da91150cdd307ee7808bf1ae026c3320ddba13",
+  "monitor_py_sha256": "d1ed61cfa0a0d101c42e7bf0441f089352cca189bf7b57c8662a901482dacbb9"
+ }
+}

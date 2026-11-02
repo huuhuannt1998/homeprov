@@ -1,0 +1,29 @@
+== E5 renderer-backed attack evaluation, rooms: porch hallway kitchen ==
+-- configuration: porch --
+{"ok": true, "n_instances": 360, "aborted": false, "misattribution_rate": 0.16666666666666666}
+  -> exp/out/e5_real_renderer_porch.json
+-- configuration: hallway --
+{"ok": true, "n_instances": 360, "aborted": false, "misattribution_rate": 0.2}
+  -> exp/out/e5_real_renderer_hallway.json
+-- configuration: kitchen --
+{"ok": true, "n_instances": 336, "aborted": false, "misattribution_rate": 0.3333333333333333}
+  -> exp/out/e5_real_renderer_kitchen.json
+-- pooled across configurations --
+  porch     innocent=automation.porch_motion_light bound=True targets=30 rate=0.167
+  hallway   innocent=automation.hallway_motion_light bound=True targets=30 rate=0.200
+  kitchen   innocent=automation.kitchen_motion_light bound=True targets=28 rate=0.333
+
+  variant                 n   chg   mis    rate   95% CI
+  principal_swap         88    88    88   1.000   [0.959, 1.000]
+  delete_reparent        88    88    52   0.591   [0.481, 0.695]
+  full_laundering        88    88    52   0.591   [0.481, 0.695]
+  duplicate_context      88    88    52   0.591   [0.481, 0.695]
+  delete_only            88    88     0   0.000   [0.000, 0.041]
+  reparent_only          88     0     0   0.000   [0.000, 0.041]
+  inject_only            88     0     0   0.000   [0.000, 0.041]
+  delete_inject          88    88     0   0.000   [0.000, 0.041]
+  inject_reparent        88     0     0   0.000   [0.000, 0.041]
+  dangling_parent        88     0     0   0.000   [0.000, 0.041]
+  timestamp_shift        88    88     0   0.000   [0.000, 0.041]
+  retention_edge         88    88     0   0.000   [0.000, 0.041]
+  -> exp/out/e5_real_multiconfig.json

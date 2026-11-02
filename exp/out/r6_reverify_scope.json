@@ -1,0 +1,383 @@
+{
+ "item": "R7: scope and composition of the typed-encoding re-verification, per Table 13 run",
+ "generated": "2026-10-07T02:43:41.558281+00:00",
+ "script": "exp/sp2027/r6_reverify_scope.py",
+ "script_sha256": "4011f885a648556b4ae359c794e92a1bbdc3a9a72b74a3d5be1800c9e97d3a4e",
+ "inputs_sha256": {
+  "exp/out/r6_reverify_v2.json": "020344bc1f223b025f3d239f91b24c9d25395022dc31d547fdbec0fca4d2b485",
+  "exp/out/r6_e2_seal_v2.json": "f46b380d35b1c8a318f07a35b611b8b75e7ecadb4a45ab1759186f3a77242a7f"
+ },
+ "definitions": {
+  "edited_rows_at_risk_0x7C": "edited rows with a 0x7C byte in a context field the run's scheme hashes (context, parent; plus user for closure and whole-row), before or after the edit: the rows a crafted splice could have targeted",
+  "edited_rows_v1_hash_unchanged": "edited rows whose old-encoding node hash was the same before and after the edit (the collision class)"
+ },
+ "table13_runs": 14,
+ "trial_verdicts_reverified": {
+  "runs": 10,
+  "trials": 1290,
+  "edited_rows": 1046,
+  "edited_rows_at_risk_0x7C": 86,
+  "edited_rows_v1_hash_unchanged": 0,
+  "trial_verdict_changes": 0
+ },
+ "not_in_the_1290": [
+  {
+   "date": "2026-09-03",
+   "run": "In-process blinding",
+   "why": "verifier snapshot not kept (pre-authentication run on the earlier stack; its recorder and anchor chain are not in the snapshot set)"
+  },
+  {
+   "date": "2026-09-09",
+   "run": "Write-time strategies",
+   "why": "verifier snapshot not kept (unauthenticated run; its recorder copy is not in the snapshot set)"
+  },
+  {
+   "date": "2026-09-18",
+   "run": "Other principal",
+   "why": "verifier snapshot not kept (unauthenticated run; its recorder copy is not in the snapshot set)"
+  },
+  {
+   "date": "2026-10-02",
+   "run": "In-process blinding",
+   "why": "seal check only, both encodings (r6_e2_seal_v2.json); not a trial verdict, not in the 1,290"
+  }
+ ],
+ "runs": [
+  {
+   "run": "In-process blinding",
+   "date": "2026-09-03",
+   "scheme": "row",
+   "authenticated": false,
+   "result_file": "exp/out/e2_real_boundary.json",
+   "result_sha256_prefix": "0b921ed2ad58",
+   "reverified_typed": "no",
+   "reason": "verifier snapshot not kept (pre-authentication run on the earlier stack; its recorder and anchor chain are not in the snapshot set)",
+   "numbers_the_body_uses": "section 7.4's 133,087 of 133,088 rows",
+   "what_would_settle_it": "a re-run of that arm with the v2 monitor image, keeping the verifier snapshot; its flagged trials stand under v2 by refinement (a v1 root mismatch implies distinct field tuples)"
+  },
+  {
+   "run": "Write-time strategies",
+   "date": "2026-09-09",
+   "scheme": "row",
+   "authenticated": false,
+   "result_file": "exp/out/e_c_write_time.json",
+   "result_sha256_prefix": "377a335091ce",
+   "reverified_typed": "no",
+   "reason": "verifier snapshot not kept (unauthenticated run; its recorder copy is not in the snapshot set)",
+   "numbers_the_body_uses": "App. A 'Row, no authentication' block and the benign floor 3/744",
+   "what_would_settle_it": "a re-run of that arm with the v2 monitor image, keeping the verifier snapshot; its flagged trials stand under v2 by refinement (a v1 root mismatch implies distinct field tuples)"
+  },
+  {
+   "run": "Other principal",
+   "date": "2026-09-18",
+   "scheme": "row",
+   "authenticated": false,
+   "result_file": "exp/out/e_d_other_principal_real.json",
+   "result_sha256_prefix": "644574c60e6b",
+   "reverified_typed": "no",
+   "reason": "verifier snapshot not kept (unauthenticated run; its recorder copy is not in the snapshot set)",
+   "numbers_the_body_uses": "the benign floor 1/558, part of the pooled 13/4,733",
+   "what_would_settle_it": "a re-run of that arm with the v2 monitor image, keeping the verifier snapshot; its flagged trials stand under v2 by refinement (a v1 root mismatch implies distinct field tuples)"
+  },
+  {
+   "run": "Other principal",
+   "date": "2026-09-26",
+   "scheme": "row",
+   "authenticated": true,
+   "result_file": "exp/out/e_d_auth_other_principal_real.json",
+   "result_sha256_prefix": "a3b42023dd7f",
+   "reverified_typed": "yes, trial verdicts (r6_reverify_v2.json run e_d_auth)",
+   "trials": 180,
+   "arms": {
+    "PU": 90,
+    "PI": 90
+   },
+   "edited_rows": 180,
+   "edited_rows_at_risk_0x7C": 21,
+   "edited_rows_v1_hash_unchanged": 0,
+   "trial_verdict_changes": 0,
+   "benign_floor_v1_v2": {
+    "v1": [
+     1,
+     527
+    ],
+    "v2": [
+     1,
+     527
+    ]
+   }
+  },
+  {
+   "run": "Write-time strategies",
+   "date": "2026-10-02",
+   "scheme": "row",
+   "authenticated": true,
+   "result_file": "exp/out/e_c_auth_other_principal_real.json",
+   "result_sha256_prefix": "7c8bf5df715c",
+   "reverified_typed": "yes, trial verdicts (r6_reverify_v2.json run e_c_auth)",
+   "trials": 150,
+   "arms": {
+    "W1": 30,
+    "W2": 30,
+    "W2b": 30,
+    "W3": 30,
+    "P": 30
+   },
+   "edited_rows": 30,
+   "edited_rows_at_risk_0x7C": 0,
+   "edited_rows_v1_hash_unchanged": 0,
+   "trial_verdict_changes": 0,
+   "benign_floor_v1_v2": {
+    "v1": [
+     3,
+     711
+    ],
+    "v2": [
+     3,
+     711
+    ]
+   }
+  },
+  {
+   "run": "Random-id swap",
+   "date": "2026-10-02",
+   "scheme": "row",
+   "authenticated": true,
+   "result_file": "exp/out/e_ps_auth_detection.json",
+   "result_sha256_prefix": "df2e535ffee1",
+   "reverified_typed": "yes, trial verdicts (r6_reverify_v2.json run e_ps_auth)",
+   "trials": 90,
+   "arms": {
+    "PS": 90
+   },
+   "edited_rows": 90,
+   "edited_rows_at_risk_0x7C": 7,
+   "edited_rows_v1_hash_unchanged": 0,
+   "trial_verdict_changes": 0,
+   "benign_floor_v1_v2": {
+    "v1": [
+     1,
+     308
+    ],
+    "v2": [
+     1,
+     308
+    ]
+   }
+  },
+  {
+   "run": "In-process blinding",
+   "date": "2026-10-02",
+   "scheme": "row",
+   "authenticated": true,
+   "result_file": "exp/out/e2_auth_seal_check.json",
+   "result_sha256_prefix": "786ed2005163",
+   "reverified_typed": "seal check only, both encodings (r6_e2_seal_v2.json); not a trial verdict, not in the 1,290",
+   "seal_check": {
+    "adversary_seconds": [
+     1790950375
+    ],
+    "v1_root_reproduced": true,
+    "rows": 2,
+    "rows_with_0x7C_in_ctx_or_par": 0,
+    "published_answer_reproduced": true
+   }
+  },
+  {
+   "run": "Random-id swap",
+   "date": "2026-10-02",
+   "scheme": "closure",
+   "authenticated": true,
+   "result_file": "exp/out/e_ps_clo_detection.json",
+   "result_sha256_prefix": "bf8dc6895a33",
+   "reverified_typed": "yes, trial verdicts (r6_reverify_v2.json run e_ps_clo)",
+   "trials": 90,
+   "arms": {
+    "PS": 90
+   },
+   "edited_rows": 90,
+   "edited_rows_at_risk_0x7C": 7,
+   "edited_rows_v1_hash_unchanged": 0,
+   "trial_verdict_changes": 0,
+   "benign_floor_v1_v2": {
+    "v1": [
+     1,
+     312
+    ],
+    "v2": [
+     1,
+     312
+    ]
+   }
+  },
+  {
+   "run": "Other principal",
+   "date": "2026-10-02",
+   "scheme": "closure",
+   "authenticated": true,
+   "result_file": "exp/out/e_d_clo_other_principal_real.json",
+   "result_sha256_prefix": "5f09fb190026",
+   "reverified_typed": "yes, trial verdicts (r6_reverify_v2.json run e_d_clo)",
+   "trials": 180,
+   "arms": {
+    "PU": 90,
+    "PI": 90
+   },
+   "edited_rows": 180,
+   "edited_rows_at_risk_0x7C": 9,
+   "edited_rows_v1_hash_unchanged": 0,
+   "trial_verdict_changes": 0,
+   "benign_floor_v1_v2": {
+    "v1": [
+     1,
+     560
+    ],
+    "v2": [
+     1,
+     560
+    ]
+   }
+  },
+  {
+   "run": "Write-time strategies",
+   "date": "2026-10-02",
+   "scheme": "closure",
+   "authenticated": true,
+   "result_file": "exp/out/e_c_clo_other_principal_real.json",
+   "result_sha256_prefix": "8239953b65a9",
+   "reverified_typed": "yes, trial verdicts (r6_reverify_v2.json run e_c_clo)",
+   "trials": 150,
+   "arms": {
+    "W1": 30,
+    "W2": 30,
+    "W2b": 30,
+    "W3": 30,
+    "P": 30
+   },
+   "edited_rows": 27,
+   "edited_rows_at_risk_0x7C": 0,
+   "edited_rows_v1_hash_unchanged": 0,
+   "trial_verdict_changes": 0,
+   "benign_floor_v1_v2": {
+    "v1": [
+     1,
+     714
+    ],
+    "v2": [
+     1,
+     714
+    ]
+   }
+  },
+  {
+   "run": "Member-account swap",
+   "date": "2026-10-03",
+   "scheme": "closure",
+   "authenticated": true,
+   "result_file": "exp/out/e_psr_clo_detection.json",
+   "result_sha256_prefix": "220d8e24248c",
+   "reverified_typed": "yes, trial verdicts (r6_reverify_v2.json run e_psr_clo)",
+   "trials": 90,
+   "arms": {
+    "PSR": 90
+   },
+   "edited_rows": 90,
+   "edited_rows_at_risk_0x7C": 1,
+   "edited_rows_v1_hash_unchanged": 0,
+   "trial_verdict_changes": 0,
+   "benign_floor_v1_v2": {
+    "v1": [
+     1,
+     299
+    ],
+    "v2": [
+     1,
+     299
+    ]
+   }
+  },
+  {
+   "run": "Random-id swap",
+   "date": "2026-10-04",
+   "scheme": "whole-row",
+   "authenticated": true,
+   "result_file": "exp/out/e_ps_whr_detection.json",
+   "result_sha256_prefix": "88e948fd980b",
+   "reverified_typed": "yes, trial verdicts (r6_reverify_v2.json run e_ps_whr)",
+   "trials": 90,
+   "arms": {
+    "PS": 90
+   },
+   "edited_rows": 89,
+   "edited_rows_at_risk_0x7C": 10,
+   "edited_rows_v1_hash_unchanged": 0,
+   "trial_verdict_changes": 0,
+   "benign_floor_v1_v2": {
+    "v1": [
+     203,
+     281
+    ],
+    "v2": [
+     203,
+     281
+    ]
+   }
+  },
+  {
+   "run": "Other principal",
+   "date": "2026-10-04",
+   "scheme": "whole-row",
+   "authenticated": true,
+   "result_file": "exp/out/e_d_whr_other_principal_real.json",
+   "result_sha256_prefix": "9b5d81446ed3",
+   "reverified_typed": "yes, trial verdicts (r6_reverify_v2.json run e_d_whr)",
+   "trials": 180,
+   "arms": {
+    "PU": 90,
+    "PI": 90
+   },
+   "edited_rows": 180,
+   "edited_rows_at_risk_0x7C": 25,
+   "edited_rows_v1_hash_unchanged": 0,
+   "trial_verdict_changes": 0,
+   "benign_floor_v1_v2": {
+    "v1": [
+     432,
+     552
+    ],
+    "v2": [
+     432,
+     552
+    ]
+   }
+  },
+  {
+   "run": "Member-account swap",
+   "date": "2026-10-04",
+   "scheme": "whole-row",
+   "authenticated": true,
+   "result_file": "exp/out/e_psr_whr_detection.json",
+   "result_sha256_prefix": "d048c791aeae",
+   "reverified_typed": "yes, trial verdicts (r6_reverify_v2.json run e_psr_whr)",
+   "trials": 90,
+   "arms": {
+    "PSR": 90
+   },
+   "edited_rows": 90,
+   "edited_rows_at_risk_0x7C": 6,
+   "edited_rows_v1_hash_unchanged": 0,
+   "trial_verdict_changes": 0,
+   "benign_floor_v1_v2": {
+    "v1": [
+     218,
+     300
+    ],
+    "v2": [
+     218,
+     300
+    ]
+   }
+  }
+ ],
+ "statement": "Ten runs, 1,290 trials and 1,046 edited rows were re-verified with the typed encoding; no verdict changed. 86 of the 1,046 edited rows were in the at-risk class, and the number of edits that left a row's old-encoding node hash unchanged is 0. Of the other four Table 13 runs, the authenticated in-process blinding run's seal check was recomputed under both encodings and three runs could not be re-verified because their verifier snapshots were not kept."
+}

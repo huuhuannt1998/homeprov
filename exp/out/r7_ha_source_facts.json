@@ -1,0 +1,262 @@
+{
+ "what": "Round 7 source verification (HOMEPROV S&P review round 2, items N4, N6, N12): Home Assistant recorder purge defaults, trace retention and storage, Marketplace presence. Read from the source inside the local images with docker run --network none (no hub started).",
+ "checked_at": "2026-10-07T02:48:50+00:00",
+ "method": "docker run --rm --network none --entrypoint sh IMAGE r7_src.sh: sed -n of each quoted line under /usr/src/homeassistant/homeassistant/components",
+ "images": {
+  "2026.7.4": {
+   "image": "homeassistant/home-assistant:2026.7.4",
+   "image_id": "sha256:5a531753cea96444200158fc2b0ac7ccd739291ec50414877b396de6e0bb29b3",
+   "version": "2026.7.4",
+   "quotes": [
+    {
+     "file": "recorder/__init__.py",
+     "line": 103,
+     "text": "                    vol.Optional(CONF_AUTO_PURGE, default=True): cv.boolean,"
+    },
+    {
+     "file": "recorder/__init__.py",
+     "line": 105,
+     "text": "                    vol.Optional(CONF_PURGE_KEEP_DAYS, default=10): vol.All("
+    },
+    {
+     "file": "recorder/core.py",
+     "line": 644,
+     "text": "        # Run nightly tasks at 4:12am"
+    },
+    {
+     "file": "recorder/core.py",
+     "line": 646,
+     "text": "            self.hass, self.async_nightly_tasks, hour=4, minute=12, second=0"
+    },
+    {
+     "file": "recorder/core.py",
+     "line": 510,
+     "text": "            purge_before = dt_util.utcnow() - timedelta(days=self.keep_days)"
+    },
+    {
+     "file": "recorder/services.py",
+     "line": 30,
+     "text": "SERVICE_PURGE = \"purge\""
+    },
+    {
+     "file": "trace/const.py",
+     "line": 17,
+     "text": "DEFAULT_STORED_TRACES = 5  # Stored traces per script or automation"
+    },
+    {
+     "file": "trace/__init__.py",
+     "line": 29,
+     "text": "STORAGE_KEY = \"trace.saved_traces\""
+    },
+    {
+     "file": "trace/__init__.py",
+     "line": 48,
+     "text": "    hass.data[DATA_TRACE] = {}"
+    },
+    {
+     "file": "trace/__init__.py",
+     "line": 68,
+     "text": "    # Store traces when stopping hass"
+    }
+   ],
+   "marketplace_component_present": false
+  },
+  "2026.9.4": {
+   "image": "homeassistant/home-assistant:2026.9.4",
+   "image_id": "sha256:3e6710a7ab2a61311d9d899b719f6c3657791c63e8f4942cec4ebc42401d6b76",
+   "version": "2026.9.4",
+   "quotes": [
+    {
+     "file": "recorder/__init__.py",
+     "line": 103,
+     "text": "                    vol.Optional(CONF_AUTO_PURGE, default=True): cv.boolean,"
+    },
+    {
+     "file": "recorder/__init__.py",
+     "line": 105,
+     "text": "                    vol.Optional(CONF_PURGE_KEEP_DAYS, default=10): vol.All("
+    },
+    {
+     "file": "recorder/core.py",
+     "line": 644,
+     "text": "        # Run nightly tasks at 4:12am"
+    },
+    {
+     "file": "recorder/core.py",
+     "line": 646,
+     "text": "            self.hass, self.async_nightly_tasks, hour=4, minute=12, second=0"
+    },
+    {
+     "file": "recorder/core.py",
+     "line": 510,
+     "text": "            purge_before = dt_util.utcnow() - timedelta(days=self.keep_days)"
+    },
+    {
+     "file": "recorder/services.py",
+     "line": 30,
+     "text": "SERVICE_PURGE = \"purge\""
+    },
+    {
+     "file": "trace/const.py",
+     "line": 17,
+     "text": "DEFAULT_STORED_TRACES = 5  # Stored traces per script or automation"
+    },
+    {
+     "file": "trace/__init__.py",
+     "line": 29,
+     "text": "STORAGE_KEY = \"trace.saved_traces\""
+    },
+    {
+     "file": "trace/__init__.py",
+     "line": 48,
+     "text": "    hass.data[DATA_TRACE] = {}"
+    },
+    {
+     "file": "trace/__init__.py",
+     "line": 68,
+     "text": "    # Store traces when stopping hass"
+    }
+   ],
+   "marketplace_component_present": false
+  },
+  "2026.10.0b2": {
+   "image": "homeassistant/home-assistant:2026.10.0b2",
+   "image_id": "sha256:2c21ccd2682c7f27b674196303e3fa680ad1710c6d1f0ff3a1c2416f4950669d",
+   "version": "2026.10.0b2",
+   "quotes": [
+    {
+     "file": "recorder/__init__.py",
+     "line": 107,
+     "text": "                    probatio.Optional(CONF_AUTO_PURGE, default=True): cv.boolean,"
+    },
+    {
+     "file": "recorder/__init__.py",
+     "line": 109,
+     "text": "                    probatio.Optional(CONF_PURGE_KEEP_DAYS, default=10): probatio.All("
+    },
+    {
+     "file": "recorder/core.py",
+     "line": 644,
+     "text": "        # Run nightly tasks at 4:12am"
+    },
+    {
+     "file": "recorder/core.py",
+     "line": 646,
+     "text": "            self.hass, self.async_nightly_tasks, hour=4, minute=12, second=0"
+    },
+    {
+     "file": "recorder/core.py",
+     "line": 510,
+     "text": "            purge_before = dt_util.utcnow() - timedelta(days=self.keep_days)"
+    },
+    {
+     "file": "recorder/services.py",
+     "line": 30,
+     "text": "SERVICE_PURGE = \"purge\""
+    },
+    {
+     "file": "trace/const.py",
+     "line": 17,
+     "text": "DEFAULT_STORED_TRACES = 5  # Stored traces per script or automation"
+    },
+    {
+     "file": "trace/__init__.py",
+     "line": 29,
+     "text": "STORAGE_KEY = \"trace.saved_traces\""
+    },
+    {
+     "file": "trace/__init__.py",
+     "line": 50,
+     "text": "    hass.data[DATA_TRACE] = {}"
+    },
+    {
+     "file": "trace/__init__.py",
+     "line": 70,
+     "text": "    # Store traces when stopping hass"
+    }
+   ],
+   "marketplace_component_present": false
+  },
+  "dev": {
+   "image": "homeassistant/home-assistant:dev",
+   "image_id": "sha256:a3bee19085ba2afc9e7e2daee7f3f621b1686856ca28b64c657aaf8212e54e8e",
+   "version": "2026.11.0.dev202610060230",
+   "quotes": [
+    {
+     "file": "recorder/__init__.py",
+     "line": 107,
+     "text": "                    probatio.Optional(CONF_AUTO_PURGE, default=True): cv.boolean,"
+    },
+    {
+     "file": "recorder/__init__.py",
+     "line": 109,
+     "text": "                    probatio.Optional(CONF_PURGE_KEEP_DAYS, default=10): probatio.All("
+    },
+    {
+     "file": "recorder/core.py",
+     "line": 644,
+     "text": "        # Run nightly tasks at 4:12am"
+    },
+    {
+     "file": "recorder/core.py",
+     "line": 646,
+     "text": "            self.hass, self.async_nightly_tasks, hour=4, minute=12, second=0"
+    },
+    {
+     "file": "recorder/core.py",
+     "line": 510,
+     "text": "            purge_before = dt_util.utcnow() - timedelta(days=self.keep_days)"
+    },
+    {
+     "file": "recorder/services.py",
+     "line": 30,
+     "text": "SERVICE_PURGE = \"purge\""
+    },
+    {
+     "file": "trace/const.py",
+     "line": 17,
+     "text": "DEFAULT_STORED_TRACES = 5  # Stored traces per script or automation"
+    },
+    {
+     "file": "trace/__init__.py",
+     "line": 29,
+     "text": "STORAGE_KEY = \"trace.saved_traces\""
+    },
+    {
+     "file": "trace/__init__.py",
+     "line": 50,
+     "text": "    hass.data[DATA_TRACE] = {}"
+    },
+    {
+     "file": "trace/__init__.py",
+     "line": 70,
+     "text": "    # Store traces when stopping hass"
+    }
+   ],
+   "marketplace_component_present": true
+  }
+ },
+ "docs": {
+  "https://www.home-assistant.io/integrations/recorder/": [
+   "Automatically purge the database every night at 04:12 local time.",
+   "auto_purge boolean (Optional, default: true)",
+   "purge_keep_days integer (Optional, default: 10)",
+   "recorder.purge: Cleans up old data from the recorder database."
+  ]
+ },
+ "findings": {
+  "auto_purge_default": true,
+  "purge_keep_days_default": 10,
+  "nightly_purge_time_local": "04:12",
+  "purge_service": "recorder.purge, registered by the recorder; callable by any code in the hub process",
+  "stored_traces_default": 5,
+  "stored_traces_scope": "per script or automation (configurable: stored_traces)",
+  "trace_storage": "in memory in hass.data[DATA_TRACE] in the hub process; written at hub stop to <config>/.storage/trace.saved_traces",
+  "marketplace_component": {
+   "2026.7.4": false,
+   "2026.9.4": false,
+   "2026.10.0b2": false,
+   "dev (2026.11.0.dev202610060230)": true
+  }
+ }
+}

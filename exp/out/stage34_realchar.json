@@ -1,0 +1,139 @@
+{
+  "stage": 34,
+  "real": {
+    "n_nodes": 3229,
+    "n_states": 784,
+    "parent_context_fraction": 0.3227040816326531,
+    "mean_causal_run": 1.1507483962936564,
+    "median_causal_run": 1.0,
+    "max_causal_run": 6,
+    "n_contexts": 2806,
+    "median_inter_arrival_s": 0.00010144710540771484,
+    "actuation_share": 0.05264787860018581
+  },
+  "generated_arm": {
+    "seeds": [
+      81,
+      82,
+      83,
+      84,
+      85,
+      86
+    ],
+    "per_seed": [
+      {
+        "n_nodes": 2142,
+        "n_states": 673,
+        "parent_context_fraction": 0.09361069836552749,
+        "mean_causal_run": 1.0408163265306123,
+        "median_causal_run": 1.0,
+        "max_causal_run": 5,
+        "n_contexts": 2058,
+        "median_inter_arrival_s": 0.5539791584014893,
+        "actuation_share": 0.6760037348272643
+      },
+      {
+        "n_nodes": 2142,
+        "n_states": 698,
+        "parent_context_fraction": 0.09025787965616046,
+        "mean_causal_run": 1.0408163265306123,
+        "median_causal_run": 1.0,
+        "max_causal_run": 5,
+        "n_contexts": 2058,
+        "median_inter_arrival_s": 0.5488920211791992,
+        "actuation_share": 0.6643323996265172
+      },
+      {
+        "n_nodes": 2142,
+        "n_states": 690,
+        "parent_context_fraction": 0.09130434782608696,
+        "mean_causal_run": 1.0408163265306123,
+        "median_causal_run": 1.0,
+        "max_causal_run": 5,
+        "n_contexts": 2058,
+        "median_inter_arrival_s": 0.5403344631195068,
+        "actuation_share": 0.6680672268907563
+      },
+      {
+        "n_nodes": 2142,
+        "n_states": 677,
+        "parent_context_fraction": 0.0930576070901034,
+        "mean_causal_run": 1.0408163265306123,
+        "median_causal_run": 1.0,
+        "max_causal_run": 5,
+        "n_contexts": 2058,
+        "median_inter_arrival_s": 0.5790717601776123,
+        "actuation_share": 0.6741363211951448
+      },
+      {
+        "n_nodes": 2142,
+        "n_states": 705,
+        "parent_context_fraction": 0.08936170212765958,
+        "mean_causal_run": 1.0408163265306123,
+        "median_causal_run": 1.0,
+        "max_causal_run": 5,
+        "n_contexts": 2058,
+        "median_inter_arrival_s": 0.5409882068634033,
+        "actuation_share": 0.6610644257703081
+      },
+      {
+        "n_nodes": 2142,
+        "n_states": 676,
+        "parent_context_fraction": 0.09319526627218935,
+        "mean_causal_run": 1.0408163265306123,
+        "median_causal_run": 1.0,
+        "max_causal_run": 5,
+        "n_contexts": 2058,
+        "median_inter_arrival_s": 0.5662639141082764,
+        "actuation_share": 0.6746031746031746
+      }
+    ]
+  },
+  "comparison": {
+    "parent_context_fraction": {
+      "real": 0.3227040816326531,
+      "generated_mean": 0.0917979168896212,
+      "generated_sd": 0.0016008356591098844,
+      "ratio_real_over_generated": 3.5153747771932116,
+      "log_ratio": 0.5459716323403258
+    },
+    "mean_causal_run": {
+      "real": 1.1507483962936564,
+      "generated_mean": 1.0408163265306123,
+      "generated_sd": 0.0,
+      "ratio_real_over_generated": 1.105621008203709,
+      "log_ratio": 0.043606282255397776
+    },
+    "median_causal_run": {
+      "real": 1.0,
+      "generated_mean": 1.0,
+      "generated_sd": 0.0,
+      "ratio_real_over_generated": 1.0,
+      "log_ratio": 0.0
+    },
+    "median_inter_arrival_s": {
+      "real": 0.00010144710540771484,
+      "generated_mean": 0.5549215873082479,
+      "generated_sd": 0.013880720139376931,
+      "ratio_real_over_generated": 0.00018281340594407798,
+      "log_ratio": -3.737991960056999
+    },
+    "actuation_share": {
+      "real": 0.05264787860018581,
+      "generated_mean": 0.6697012138188609,
+      "generated_sd": 0.005620043815668986,
+      "ratio_real_over_generated": 0.07861398115134054,
+      "log_ratio": -1.1045002097250682
+    }
+  },
+  "largest_divergence": {
+    "dimension": "median_inter_arrival_s",
+    "real": 0.00010144710540771484,
+    "generated_mean": 0.5549215873082479,
+    "generated_sd": 0.013880720139376931,
+    "ratio_real_over_generated": 0.00018281340594407798,
+    "log_ratio": -3.737991960056999
+  },
+  "interpretation": "Reported per dimension and deliberately NOT collapsed into a single fidelity score. A scalar would hide which dimension diverges, and which one diverges is the entire use of the measurement: E15 established that the parent-context fraction is the only swept parameter that moves the quarantine, so a divergence there bounds the transferability of the reconstruction results, while a divergence in inter-arrival timing bounds the localisation results instead.",
+  "scope": "The real arm is a real DEPLOYMENT -- real broker, real MQTT discovery, real shipped blueprint -- not a real HOUSEHOLD. It calibrates the generator against something the platform produced rather than something we produced, which the paper has never had, but it does not establish transfer to homes."
+}

@@ -1,0 +1,117 @@
+{
+  "stage": 6,
+  "rows": [
+    {
+      "target": 1000,
+      "nodes": 1343,
+      "full_recompute_ms": 3.73512483201921,
+      "incremental_ms": 2.6086659636348486,
+      "speedup": 1.4318141471876231,
+      "AB1_prop2": {
+        "testable": true,
+        "greedy": 3,
+        "ilp_diagnostic": 1,
+        "greedy_LR": 1.0,
+        "greedy_sound": true,
+        "ilp_LR": 0.3333333333333333,
+        "ilp_sound": false,
+        "ilp_unsound_demo": true,
+        "minimal_among_sound": true,
+        "basis": "aggregate segment commitment gives no intra-segment discrimination",
+        "detected": true
+      }
+    },
+    {
+      "target": 10000,
+      "nodes": 10343,
+      "full_recompute_ms": 19.526083022356033,
+      "incremental_ms": 21.6111671179533,
+      "speedup": 0.9035182096266748,
+      "AB1_prop2": {
+        "testable": true,
+        "greedy": 6085,
+        "ilp_diagnostic": 1,
+        "greedy_LR": 1.0,
+        "greedy_sound": true,
+        "ilp_LR": 0.0,
+        "ilp_sound": false,
+        "ilp_unsound_demo": true,
+        "minimal_among_sound": true,
+        "basis": "aggregate segment commitment gives no intra-segment discrimination",
+        "detected": true
+      }
+    },
+    {
+      "target": 50000,
+      "nodes": 50343,
+      "full_recompute_ms": 99.31495785713196,
+      "incremental_ms": 100.18999991007149,
+      "speedup": 0.9912661737326585,
+      "AB1_prop2": {
+        "testable": true,
+        "greedy": 6054,
+        "ilp_diagnostic": 1,
+        "greedy_LR": 1.0,
+        "greedy_sound": true,
+        "ilp_LR": 0.0,
+        "ilp_sound": false,
+        "ilp_unsound_demo": true,
+        "minimal_among_sound": true,
+        "basis": "aggregate segment commitment gives no intra-segment discrimination",
+        "detected": true
+      }
+    }
+  ],
+  "AB1_greedy_sound": true,
+  "GATE_PASS": true,
+  "falsifier_note": "AB-1 CORRECTED: tests soundness + minimality-among-sound. The original greedy==ILP test was falsified because the ILP optimised consistency, not trust.",
+  "capability": {
+    "capability_record": {
+      "schema_version": 1,
+      "actor_id": "none",
+      "actor_position": "in_process_integration",
+      "powers": {
+        "db_read": true,
+        "db_write": true,
+        "fs_read_as_ha_uid": true,
+        "fs_write_as_ha_uid": true,
+        "python_exec_in_core": true,
+        "event_bus_listen": true,
+        "event_bus_emit": true,
+        "service_call": true,
+        "network_egress": false
+      },
+      "knowledge": {
+        "deployment_topology": "full",
+        "automation_configs": "full",
+        "anchor_schedule_known": false,
+        "anchor_key_known": false,
+        "victim_routine_model": "coarse"
+      },
+      "budget": {
+        "db_writes_max": 0,
+        "wallclock_window_s": 5,
+        "cpu_seconds_max": null
+      },
+      "constraints": {
+        "host_root": false,
+        "cross_uid_write": false,
+        "anchor_key_access": false,
+        "external_anchor_retraction": false,
+        "clock_control": false,
+        "cap_linux_immutable": false,
+        "cap_bpf": false
+      },
+      "substrate": {
+        "kind": "native_aarch64_container",
+        "envelope": "Pi-shaped cgroup (cpus/memory/blkio)",
+        "note": "NOT a Raspberry Pi; absolute latency is not claimed as Pi latency"
+      },
+      "provenance": {
+        "rka_mission": null,
+        "seed": 0
+      }
+    }
+  },
+  "_digest": "5f955df881e538af0e178d3de58e7b2ae10f0b4dd349aa66157361333bf6a501"
+}

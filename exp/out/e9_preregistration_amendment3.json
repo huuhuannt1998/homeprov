@@ -1,0 +1,87 @@
+{
+ "title": "HOMEPROV E9 seven-day run: pre-registration amendment 3 (relaunch under the smoke-tested interpreter)",
+ "status": "REGISTERED",
+ "registered_at": "2026-10-12T13:27:13.478986+00:00",
+ "amends": {
+  "file": "exp/out/e9_preregistration.json",
+  "sha256": "3d64b2e5288479bd06dfada94402ffa53359b51c84a074de62986d9d58a0a16f",
+  "and": [
+   {
+    "file": "exp/out/e9_preregistration_amendment1.json",
+    "sha256": "cad4f5eb504a7731f611509ab000ab6d20af400177398732b4dbe5a261fdd085"
+   },
+   {
+    "file": "exp/out/e9_preregistration_amendment2.json",
+    "sha256": "38ba4f474c02e76723973e24a147cf8d1418de0a6fa13dcfef655f75b8bed920"
+   }
+  ],
+  "note": "none of the three files is modified; amendment 1's code edit stands; amendment 2's START, end and run tag are replaced"
+ },
+ "defect": {
+  "what": "testbed/e9/run_e9.sh resolves its host interpreter as PY=$(command -v python3) (line 116). The amendment-2 launcher inherited a PATH on which python3 is /usr/bin/python3 (Python 3.9.6, the macOS system build), whereas every smoke run used <home>/miniconda3/bin/python3 (Python 3.13.11): e9s_smoke1, e9s_smoke2, e9s_smoke3, e9s_move and e9s_final each log 'python=Python 3.13.11'. The recorder snapshots are WAL-mode copies (SQLite header bytes 18-19 = 2, 2); the system interpreter could not open them read-only ('sqlite3.OperationalError: unable to open database file', reproduced on a copy of the start snapshot, which the 3.13.11 interpreter opens).",
+  "effects": [
+   "the start snapshot's event (events.jsonl line 13) has an empty 'db' field and is not valid JSON; exp/stages/e9_score.py skips lines that do not parse, so every snapshot (day ends, nights, backup, final) would have been missing at scoring",
+   "the day-4 backup step (run_e9.sh, after snapshot_db restore_backup) parses that event and opens the backup copy with the same interpreter, so the backup and the restore session would have failed",
+   "the snapshot files themselves were correct (taken in a container with the monitor image; quick_check ok; sha256 recorded)"
+  ],
+  "found": "2026-10-12, about 09:20 UTC, by the lead, reading the run log after the 07:00 start event"
+ },
+ "first_launch": {
+  "tag": "e9_main",
+  "start_utc": "2026-10-12T07:00:00Z",
+  "stopped_utc": "2026-10-12T13:25:27Z (SIGTERM to run_e9.sh; its EXIT trap tore down)",
+  "pi_decision": {
+   "verbatim": "Stop and relaunch (Recommended)",
+   "question": "E9 launched with the system Python 3.9, not the Python 3.13 every smoke run used; that Python cannot read the recorder snapshots ... How should I proceed?",
+   "at": "2026-10-12 about 13:24 UTC"
+  },
+  "teardown": "E9 containers removed; signing-key and operator volumes destroyed; the hub's configuration.yaml restored (sha256 0ac1834b72c92c93..., the original); hub restarted; stock monitor and anchor restored. The anchors' chains are not collected on an interrupted run.",
+  "kept_not_results": {
+   "run_directory": "<research-dir>/HOMEPROV-P13-exp/e9/e9_main",
+   "events_jsonl_sha256": "ff8e300238875a39354ee2e47ab560f3494a91272f27aa7fb9db310283439f42",
+   "log": {
+    "file": "<research-dir>/HOMEPROV-P13-exp/e9/e9_main.out",
+    "sha256": "a99f8668547b521ff932ae099ef23115375ea2efefed032402db09b843c69efb"
+   },
+   "day1_reports": {
+    "e9_main_d1_report_ec_porch.json": "1256301684f346f14ae56c1079553a047a886c5c5503bf8465fb0be69020bb20",
+    "e9_main_d1_report_e7_porch.json": "e126327860a9e96092644accaa807d50f465a08e8ce485001b04b18870953f3b"
+   },
+   "statement": "nothing from the first launch is scored or reported as an E9 result; this amendment is its only account"
+  }
+ },
+ "relaunch": {
+  "tag": "e9_main2 (run_e9.sh refuses an existing run directory and existing outputs; e9_main's are kept)",
+  "new_start_utc": "2026-10-12T16:00:00Z",
+  "new_end_utc": "2026-10-19T16:01:00Z (end event; the freeze and scoring follow)",
+  "day_window": "day d = [START + (d-1) x 24 h, START + d x 24 h), 16:00 to 16:00 UTC",
+  "schedule": {
+   "generated_by": "testbed/e9/e9ops.py schedule --start 2026-10-12T16:00:00Z --days 7 --trials 5 --ec-arms PU PSR --e7-arms INS-L BD-S --keep-days 30 (the amendment-1 code, run with the pinned interpreter)",
+   "file": "<research-dir>/HOMEPROV-P13-exp/e9/amendment3/schedule_start_2026-10-12T1600Z.json",
+   "sha256": "788fa0af6a4e0e8b90074fc2d0c08d691de3cdfcfa586385d204ce16c65dd402",
+   "events": 48,
+   "times_utc": {
+    "attack_batch": "18:00 daily (START + 2 h)",
+    "planned_restart": "2026-10-13 20:00",
+    "namemap_session": "2026-10-14 17:00",
+    "backup": "2026-10-15 20:00",
+    "restore": "2026-10-15 20:30",
+    "nights": "03:40 sleep guard, 03:55 snapshot, 04:07 PURGE issuer (marker 04:10), 04:12 the hub's purge, 04:45 snapshot; first night 2026-10-13"
+   }
+  },
+  "choice": [
+   "16:00 UTC is outside the refused START window (03:40, 04:45].",
+   "The batch at 18:00 follows the 17:00 name-map session (about 6 min in the smoke runs) and precedes the 20:00 events; the harness runs events in order, so a collision would only delay one.",
+   "The special events keep amendment 2's dates and times; the nights are the same seven.",
+   "The hub restarted at 13:25 UTC in the teardown, so its next purge is 2026-10-13 04:12 (night 1), after the full-history seal, under its operator marker.",
+   "Launch at 14:45 UTC (MIN_SETUP_S 3600 s unchanged)."
+  ],
+  "interpreter": {
+   "pinned": "<home>/miniconda3/bin/python3",
+   "version": "3.13.11",
+   "binary_sha256": "78221c097fd0e0a2c1907b3f0762955b53c8e91037fe5a8e87437ebd69fc7e9b",
+   "how": "the launcher (HOMEPROV-P13-exp/e9/launch_e9_amend3.sh, outside the frozen set) prepends <home>/miniconda3/bin to PATH, so run_e9.sh's command -v python3 resolves to it, and refuses to start unless that python3 is version 3.13.11 and opens a WAL-mode SQLite copy read-only"
+  },
+  "unchanged": "the 36 frozen files at their registered digests (testbed/e9/e9ops.py at amendment 1's), parameters, arms, benign events, outcomes, exclusions and the scoring; checked at registration (all match)"
+ }
+}

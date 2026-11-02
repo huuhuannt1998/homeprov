@@ -1,0 +1,4229 @@
+{
+ "item": "R6/T7: rows whose v1 node hash admits a rewrite that changes stored fields but no root",
+ "generated": "2026-10-06T23:36:09.283752+00:00",
+ "script": "exp/sp2027/r6_node_hash_exposure.py",
+ "script_sha256": "acabfde22a4038860f04bdc7a8f6296b9f2f94d307700b1f840b427f067ee297",
+ "inputs_mode": "snapshots",
+ "snapshot_set": "verifier-recorder-snapshots-2026-10, 16 recorder copies (SHA256SUMS checked)",
+ "reference_rate_random_16_bytes_contains_0x7C": 0.0607,
+ "definitions": {
+  "row_splice": "ctx or par contains 0x7C: another (ctx', par') has the same v1 Row-scheme bytes",
+  "closure_splice": "ctx, par or usr contains 0x7C: another (ctx', par', usr') has the same v1 Closure bytes",
+  "par_usr_splice": "par or usr contains 0x7C: the parent/user boundary can move (the triage's case)",
+  "ctx_par_splice": "ctx or par contains 0x7C: the context/parent boundary can move",
+  "user_erasable": "usr not NULL and par_usr_splice: the user id can be replaced by an unresolvable value",
+  "null_alias_closure": "some of ctx/par/usr is NULL: NULL <-> empty BLOB is invisible to v1",
+  "natural_alt_closure": "the row's v1 bytes also parse as a different tuple whose BLOBs are all 0 or 16 bytes",
+  "unnatural": "some context BLOB is non-NULL and not 16 bytes long",
+  "rates": "k/n with exact Clopper-Pearson 95% intervals (exp/rig/stats.py)"
+ },
+ "union_distinct_rows": {
+  "states": {
+   "rows": 688088,
+   "counts": {
+    "row_splice": 46643,
+    "closure_splice": 46651,
+    "par_usr_splice": 16436,
+    "ctx_par_splice": 46643,
+    "user_erasable": 9,
+    "null_alias_row": 355909,
+    "null_alias_closure": 688088,
+    "natural_alt_row": 0,
+    "natural_alt_closure": 2,
+    "unnatural": 0,
+    "ctx_has_7c": 34149,
+    "par_has_7c": 16427,
+    "usr_has_7c": 9,
+    "usr_present": 541,
+    "par_present": 332179,
+    "prev_text": 0,
+    "chg_text": 0
+   },
+   "rates": {
+    "row_splice": {
+     "k": 46643,
+     "n": 688088,
+     "rate": 0.06779,
+     "ci95": [
+      0.06719,
+      0.06838
+     ]
+    },
+    "closure_splice": {
+     "k": 46651,
+     "n": 688088,
+     "rate": 0.0678,
+     "ci95": [
+      0.06721,
+      0.06839
+     ]
+    },
+    "par_usr_splice": {
+     "k": 16436,
+     "n": 688088,
+     "rate": 0.02389,
+     "ci95": [
+      0.02353,
+      0.02425
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 46643,
+     "n": 688088,
+     "rate": 0.06779,
+     "ci95": [
+      0.06719,
+      0.06838
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 2,
+     "n": 688088,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      1e-05
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 688088,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      1e-05
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 9,
+     "n": 541,
+     "rate": 0.01664
+    }
+   }
+  },
+  "events": {
+   "rows": 402677,
+   "counts": {
+    "row_splice": 33319,
+    "closure_splice": 33319,
+    "par_usr_splice": 17812,
+    "ctx_par_splice": 33319,
+    "user_erasable": 0,
+    "null_alias_row": 43036,
+    "null_alias_closure": 402677,
+    "natural_alt_row": 0,
+    "natural_alt_closure": 0,
+    "unnatural": 0,
+    "ctx_has_7c": 19753,
+    "par_has_7c": 17812,
+    "usr_has_7c": 0,
+    "usr_present": 103,
+    "par_present": 359641,
+    "prev_text": 0,
+    "chg_text": 0
+   },
+   "rates": {
+    "row_splice": {
+     "k": 33319,
+     "n": 402677,
+     "rate": 0.08274,
+     "ci95": [
+      0.08189,
+      0.0836
+     ]
+    },
+    "closure_splice": {
+     "k": 33319,
+     "n": 402677,
+     "rate": 0.08274,
+     "ci95": [
+      0.08189,
+      0.0836
+     ]
+    },
+    "par_usr_splice": {
+     "k": 17812,
+     "n": 402677,
+     "rate": 0.04423,
+     "ci95": [
+      0.0436,
+      0.04487
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 33319,
+     "n": 402677,
+     "rate": 0.08274,
+     "ci95": [
+      0.08189,
+      0.0836
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 0,
+     "n": 402677,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      1e-05
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 402677,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      1e-05
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 0,
+     "n": 103,
+     "rate": 0.0
+    }
+   }
+  },
+  "both": {
+   "rows": 1090765,
+   "counts": {
+    "row_splice": 79962,
+    "closure_splice": 79970,
+    "par_usr_splice": 34248,
+    "ctx_par_splice": 79962,
+    "user_erasable": 9,
+    "null_alias_row": 398945,
+    "null_alias_closure": 1090765,
+    "natural_alt_row": 0,
+    "natural_alt_closure": 2,
+    "unnatural": 0,
+    "ctx_has_7c": 53902,
+    "par_has_7c": 34239,
+    "usr_has_7c": 9,
+    "usr_present": 644,
+    "par_present": 691820,
+    "prev_text": 0,
+    "chg_text": 0
+   },
+   "rates": {
+    "row_splice": {
+     "k": 79962,
+     "n": 1090765,
+     "rate": 0.07331,
+     "ci95": [
+      0.07282,
+      0.0738
+     ]
+    },
+    "closure_splice": {
+     "k": 79970,
+     "n": 1090765,
+     "rate": 0.07332,
+     "ci95": [
+      0.07283,
+      0.07381
+     ]
+    },
+    "par_usr_splice": {
+     "k": 34248,
+     "n": 1090765,
+     "rate": 0.0314,
+     "ci95": [
+      0.03107,
+      0.03173
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 79962,
+     "n": 1090765,
+     "rate": 0.07331,
+     "ci95": [
+      0.07282,
+      0.0738
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 2,
+     "n": 1090765,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      1e-05
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 1090765,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 9,
+     "n": 644,
+     "rate": 0.01398
+    }
+   }
+  }
+ },
+ "per_run_window": {
+  "e_d_clo": {
+   "db": "hp-clo/e_d_clo/ec_verify/recorder.db",
+   "rows_folded_by_verifier": [
+    1790964000.0,
+    1790970444.5623932
+   ],
+   "states": {
+    "rows": 3556,
+    "counts": {
+     "row_splice": 209,
+     "closure_splice": 212,
+     "par_usr_splice": 61,
+     "ctx_par_splice": 209,
+     "user_erasable": 3,
+     "null_alias_row": 2333,
+     "null_alias_closure": 3556,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 154,
+     "par_has_7c": 58,
+     "usr_has_7c": 3,
+     "usr_present": 90,
+     "par_present": 1223,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 692388,
+       "ts": 1790966831.7514257,
+       "ctx": "01a0fdf11a83b3958e49843cbd155b36",
+       "par": null,
+       "usr": "111c7b72d453dd7c8683f4c6149af502"
+      },
+      {
+       "id": 692654,
+       "ts": 1790967179.9283507,
+       "ctx": "01a0fdf66a9815b219132c2cb024aef9",
+       "par": null,
+       "usr": "9c2e9a34a87c96c07d282048a77652a6"
+      },
+      {
+       "id": 692976,
+       "ts": 1790967619.0817187,
+       "ctx": "01a0fdfd1e062eed62d115fd5285e0b7",
+       "par": null,
+       "usr": "702e0abc752d0e1f7c8a799de3de664c"
+      }
+     ],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 5324,
+    "counts": {
+     "row_splice": 287,
+     "closure_splice": 287,
+     "par_usr_splice": 59,
+     "ctx_par_splice": 287,
+     "user_erasable": 0,
+     "null_alias_row": 4057,
+     "null_alias_closure": 5324,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 231,
+     "par_has_7c": 59,
+     "usr_has_7c": 0,
+     "usr_present": 0,
+     "par_present": 1267,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 496,
+     "n": 8880,
+     "rate": 0.05586,
+     "ci95": [
+      0.05117,
+      0.06084
+     ]
+    },
+    "closure_splice": {
+     "k": 499,
+     "n": 8880,
+     "rate": 0.05619,
+     "ci95": [
+      0.05149,
+      0.06119
+     ]
+    },
+    "par_usr_splice": {
+     "k": 120,
+     "n": 8880,
+     "rate": 0.01351,
+     "ci95": [
+      0.01122,
+      0.01614
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 496,
+     "n": 8880,
+     "rate": 0.05586,
+     "ci95": [
+      0.05117,
+      0.06084
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 0,
+     "n": 8880,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00042
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 8880,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00042
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 3,
+     "n": 90,
+     "rate": 0.03333
+    }
+   }
+  },
+  "e_c_clo": {
+   "db": "hp-clo/e_c_clo/ec_verify/recorder.db",
+   "rows_folded_by_verifier": [
+    1790964000.0,
+    1790972837.367859
+   ],
+   "states": {
+    "rows": 5237,
+    "counts": {
+     "row_splice": 289,
+     "closure_splice": 292,
+     "par_usr_splice": 82,
+     "ctx_par_splice": 289,
+     "user_erasable": 3,
+     "null_alias_row": 3549,
+     "null_alias_closure": 5237,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 213,
+     "par_has_7c": 79,
+     "usr_has_7c": 3,
+     "usr_present": 120,
+     "par_present": 1688,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 692388,
+       "ts": 1790966831.7514257,
+       "ctx": "01a0fdf11a83b3958e49843cbd155b36",
+       "par": null,
+       "usr": "111c7b72d453dd7c8683f4c6149af502"
+      },
+      {
+       "id": 692654,
+       "ts": 1790967179.9283507,
+       "ctx": "01a0fdf66a9815b219132c2cb024aef9",
+       "par": null,
+       "usr": "9c2e9a34a87c96c07d282048a77652a6"
+      },
+      {
+       "id": 692976,
+       "ts": 1790967619.0817187,
+       "ctx": "01a0fdfd1e062eed62d115fd5285e0b7",
+       "par": null,
+       "usr": "702e0abc752d0e1f7c8a799de3de664c"
+      }
+     ],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 8191,
+    "counts": {
+     "row_splice": 442,
+     "closure_splice": 442,
+     "par_usr_splice": 80,
+     "ctx_par_splice": 442,
+     "user_erasable": 0,
+     "null_alias_row": 6442,
+     "null_alias_closure": 8191,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 365,
+     "par_has_7c": 80,
+     "usr_has_7c": 0,
+     "usr_present": 30,
+     "par_present": 1749,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 731,
+     "n": 13428,
+     "rate": 0.05444,
+     "ci95": [
+      0.05066,
+      0.05841
+     ]
+    },
+    "closure_splice": {
+     "k": 734,
+     "n": 13428,
+     "rate": 0.05466,
+     "ci95": [
+      0.05088,
+      0.05864
+     ]
+    },
+    "par_usr_splice": {
+     "k": 162,
+     "n": 13428,
+     "rate": 0.01206,
+     "ci95": [
+      0.01029,
+      0.01406
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 731,
+     "n": 13428,
+     "rate": 0.05444,
+     "ci95": [
+      0.05066,
+      0.05841
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 0,
+     "n": 13428,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00027
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 13428,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00027
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 3,
+     "n": 150,
+     "rate": 0.02
+    }
+   }
+  },
+  "e_ps_clo": {
+   "db": "hp-clo/e_ps_clo/ps_verify/recorder.db",
+   "rows_folded_by_verifier": [
+    1790960400.0,
+    1790968086.368844
+   ],
+   "states": {
+    "rows": 3449,
+    "counts": {
+     "row_splice": 213,
+     "closure_splice": 216,
+     "par_usr_splice": 62,
+     "ctx_par_splice": 213,
+     "user_erasable": 3,
+     "null_alias_row": 1988,
+     "null_alias_closure": 3449,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 170,
+     "par_has_7c": 59,
+     "usr_has_7c": 3,
+     "usr_present": 90,
+     "par_present": 1461,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 692388,
+       "ts": 1790966831.7514257,
+       "ctx": "01a0fdf11a83b3958e49843cbd155b36",
+       "par": null,
+       "usr": "111c7b72d453dd7c8683f4c6149af502"
+      },
+      {
+       "id": 692654,
+       "ts": 1790967179.9283507,
+       "ctx": "01a0fdf66a9815b219132c2cb024aef9",
+       "par": null,
+       "usr": "9c2e9a34a87c96c07d282048a77652a6"
+      },
+      {
+       "id": 692976,
+       "ts": 1790967619.0817187,
+       "ctx": "01a0fdfd1e062eed62d115fd5285e0b7",
+       "par": null,
+       "usr": "702e0abc752d0e1f7c8a799de3de664c"
+      }
+     ],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 3550,
+    "counts": {
+     "row_splice": 221,
+     "closure_splice": 221,
+     "par_usr_splice": 61,
+     "ctx_par_splice": 221,
+     "user_erasable": 0,
+     "null_alias_row": 2039,
+     "null_alias_closure": 3550,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 177,
+     "par_has_7c": 61,
+     "usr_has_7c": 0,
+     "usr_present": 0,
+     "par_present": 1511,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 434,
+     "n": 6999,
+     "rate": 0.06201,
+     "ci95": [
+      0.05647,
+      0.06792
+     ]
+    },
+    "closure_splice": {
+     "k": 437,
+     "n": 6999,
+     "rate": 0.06244,
+     "ci95": [
+      0.05688,
+      0.06836
+     ]
+    },
+    "par_usr_splice": {
+     "k": 123,
+     "n": 6999,
+     "rate": 0.01757,
+     "ci95": [
+      0.01463,
+      0.02093
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 434,
+     "n": 6999,
+     "rate": 0.06201,
+     "ci95": [
+      0.05647,
+      0.06792
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 0,
+     "n": 6999,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00053
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 6999,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00053
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 3,
+     "n": 90,
+     "rate": 0.03333
+    }
+   }
+  },
+  "e_psr_clo": {
+   "db": "hp-clo/e_psr_clo/ps_verify/recorder.db",
+   "rows_folded_by_verifier": [
+    1790982000.0,
+    1790988416.464202
+   ],
+   "states": {
+    "rows": 2918,
+    "counts": {
+     "row_splice": 168,
+     "closure_splice": 168,
+     "par_usr_splice": 54,
+     "ctx_par_splice": 168,
+     "user_erasable": 0,
+     "null_alias_row": 1693,
+     "null_alias_closure": 2918,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 120,
+     "par_has_7c": 54,
+     "usr_has_7c": 0,
+     "usr_present": 90,
+     "par_present": 1225,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 3292,
+    "counts": {
+     "row_splice": 220,
+     "closure_splice": 220,
+     "par_usr_splice": 56,
+     "ctx_par_splice": 220,
+     "user_erasable": 0,
+     "null_alias_row": 2034,
+     "null_alias_closure": 3292,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 170,
+     "par_has_7c": 56,
+     "usr_has_7c": 0,
+     "usr_present": 0,
+     "par_present": 1258,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 388,
+     "n": 6210,
+     "rate": 0.06248,
+     "ci95": [
+      0.05659,
+      0.06879
+     ]
+    },
+    "closure_splice": {
+     "k": 388,
+     "n": 6210,
+     "rate": 0.06248,
+     "ci95": [
+      0.05659,
+      0.06879
+     ]
+    },
+    "par_usr_splice": {
+     "k": 110,
+     "n": 6210,
+     "rate": 0.01771,
+     "ci95": [
+      0.01458,
+      0.02131
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 388,
+     "n": 6210,
+     "rate": 0.06248,
+     "ci95": [
+      0.05659,
+      0.06879
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 0,
+     "n": 6210,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00059
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 6210,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00059
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 0,
+     "n": 90,
+     "rate": 0.0
+    }
+   }
+  },
+  "e_d_auth": {
+   "db": "hp_d2/live/recorder.db",
+   "rows_folded_by_verifier": [
+    1790406000.0,
+    1790412277.278847
+   ],
+   "states": {
+    "rows": 3047,
+    "counts": {
+     "row_splice": 139,
+     "closure_splice": 139,
+     "par_usr_splice": 31,
+     "ctx_par_splice": 139,
+     "user_erasable": 0,
+     "null_alias_row": 1860,
+     "null_alias_closure": 3047,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 118,
+     "par_has_7c": 31,
+     "usr_has_7c": 0,
+     "usr_present": 0,
+     "par_present": 1187,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 3269,
+    "counts": {
+     "row_splice": 148,
+     "closure_splice": 148,
+     "par_usr_splice": 32,
+     "ctx_par_splice": 148,
+     "user_erasable": 0,
+     "null_alias_row": 2053,
+     "null_alias_closure": 3269,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 127,
+     "par_has_7c": 32,
+     "usr_has_7c": 0,
+     "usr_present": 7,
+     "par_present": 1216,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 287,
+     "n": 6316,
+     "rate": 0.04544,
+     "ci95": [
+      0.04044,
+      0.05087
+     ]
+    },
+    "closure_splice": {
+     "k": 287,
+     "n": 6316,
+     "rate": 0.04544,
+     "ci95": [
+      0.04044,
+      0.05087
+     ]
+    },
+    "par_usr_splice": {
+     "k": 63,
+     "n": 6316,
+     "rate": 0.00997,
+     "ci95": [
+      0.00767,
+      0.01274
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 287,
+     "n": 6316,
+     "rate": 0.04544,
+     "ci95": [
+      0.04044,
+      0.05087
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 0,
+     "n": 6316,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00058
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 6316,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00058
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 0,
+     "n": 7,
+     "rate": 0.0
+    }
+   }
+  },
+  "e_c_auth": {
+   "db": "hp-ec-auth/ec_verify/recorder.db",
+   "rows_folded_by_verifier": [
+    1790928000.0,
+    1790935535.411951
+   ],
+   "states": {
+    "rows": 3440,
+    "counts": {
+     "row_splice": 201,
+     "closure_splice": 201,
+     "par_usr_splice": 74,
+     "ctx_par_splice": 201,
+     "user_erasable": 0,
+     "null_alias_row": 2109,
+     "null_alias_closure": 3440,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 141,
+     "par_has_7c": 74,
+     "usr_has_7c": 0,
+     "usr_present": 30,
+     "par_present": 1331,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 3766,
+    "counts": {
+     "row_splice": 202,
+     "closure_splice": 202,
+     "par_usr_splice": 76,
+     "ctx_par_splice": 202,
+     "user_erasable": 0,
+     "null_alias_row": 2399,
+     "null_alias_closure": 3766,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 141,
+     "par_has_7c": 76,
+     "usr_has_7c": 0,
+     "usr_present": 30,
+     "par_present": 1367,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 403,
+     "n": 7206,
+     "rate": 0.05593,
+     "ci95": [
+      0.05073,
+      0.06148
+     ]
+    },
+    "closure_splice": {
+     "k": 403,
+     "n": 7206,
+     "rate": 0.05593,
+     "ci95": [
+      0.05073,
+      0.06148
+     ]
+    },
+    "par_usr_splice": {
+     "k": 150,
+     "n": 7206,
+     "rate": 0.02082,
+     "ci95": [
+      0.01765,
+      0.02438
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 403,
+     "n": 7206,
+     "rate": 0.05593,
+     "ci95": [
+      0.05073,
+      0.06148
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 0,
+     "n": 7206,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00051
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 7206,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00051
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 0,
+     "n": 60,
+     "rate": 0.0
+    }
+   }
+  },
+  "e_ps_auth": {
+   "db": "hp-ps-auth/ps_verify/recorder.db",
+   "rows_folded_by_verifier": [
+    1790942400.0,
+    1790950199.520383
+   ],
+   "states": {
+    "rows": 3463,
+    "counts": {
+     "row_splice": 201,
+     "closure_splice": 203,
+     "par_usr_splice": 73,
+     "ctx_par_splice": 201,
+     "user_erasable": 3,
+     "null_alias_row": 1981,
+     "null_alias_closure": 3463,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 1,
+     "unnatural": 0,
+     "ctx_has_7c": 148,
+     "par_has_7c": 70,
+     "usr_has_7c": 3,
+     "usr_present": 90,
+     "par_present": 1482,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 684943,
+       "ts": 1790949042.8551216,
+       "ctx": "01a0fce1aaa6d85535cb4c3e7e1b8f0b",
+       "par": null,
+       "usr": "83c8c76d7c86cc9837cef55c4d11b1b0"
+      },
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      },
+      {
+       "id": 685257,
+       "ts": 1790949476.759459,
+       "ctx": "01a0fce84991702abd7cf2b8887e8486",
+       "par": null,
+       "usr": "11051d9d52e8cd43eb9c7cbde9cc8506"
+      }
+     ],
+     "natural_alt_closure": [
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      }
+     ],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 3567,
+    "counts": {
+     "row_splice": 200,
+     "closure_splice": 200,
+     "par_usr_splice": 73,
+     "ctx_par_splice": 200,
+     "user_erasable": 0,
+     "null_alias_row": 2039,
+     "null_alias_closure": 3567,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 145,
+     "par_has_7c": 73,
+     "usr_has_7c": 0,
+     "usr_present": 0,
+     "par_present": 1528,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 401,
+     "n": 7030,
+     "rate": 0.05704,
+     "ci95": [
+      0.05173,
+      0.06272
+     ]
+    },
+    "closure_splice": {
+     "k": 403,
+     "n": 7030,
+     "rate": 0.05733,
+     "ci95": [
+      0.05201,
+      0.06302
+     ]
+    },
+    "par_usr_splice": {
+     "k": 146,
+     "n": 7030,
+     "rate": 0.02077,
+     "ci95": [
+      0.01756,
+      0.02438
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 401,
+     "n": 7030,
+     "rate": 0.05704,
+     "ci95": [
+      0.05173,
+      0.06272
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 1,
+     "n": 7030,
+     "rate": 0.00014,
+     "ci95": [
+      0.0,
+      0.00079
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 7030,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00052
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 3,
+     "n": 90,
+     "rate": 0.03333
+    }
+   }
+  },
+  "e_d_whr": {
+   "db": "hp-whr/e_d_whr/ec_verify/recorder.db",
+   "rows_folded_by_verifier": [
+    1791093600.0,
+    1791102450.317405
+   ],
+   "states": {
+    "rows": 4401,
+    "counts": {
+     "row_splice": 297,
+     "closure_splice": 300,
+     "par_usr_splice": 89,
+     "ctx_par_splice": 297,
+     "user_erasable": 3,
+     "null_alias_row": 2773,
+     "null_alias_closure": 4401,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 1,
+     "unnatural": 0,
+     "ctx_has_7c": 226,
+     "par_has_7c": 86,
+     "usr_has_7c": 3,
+     "usr_present": 89,
+     "par_present": 1628,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 746510,
+       "ts": 1791098830.642857,
+       "ctx": "01a105cf3f32098c0d103c4510695142",
+       "par": null,
+       "usr": "567a80fda9707c041120e4daca316025"
+      },
+      {
+       "id": 746587,
+       "ts": 1791098960.6906445,
+       "ctx": "01a105d13b3171922b9128fdd9b00627",
+       "par": null,
+       "usr": "347604ffa6ab48eab19487c4c95fe97c"
+      },
+      {
+       "id": 746913,
+       "ts": 1791099415.6188195,
+       "ctx": "01a105d82c42be84e9fef7a9fd23fd30",
+       "par": null,
+       "usr": "107c10c75b2970d9bf1c11aee4e592dd"
+      }
+     ],
+     "natural_alt_closure": [
+      {
+       "id": 746587,
+       "ts": 1791098960.6906445,
+       "ctx": "01a105d13b3171922b9128fdd9b00627",
+       "par": null,
+       "usr": "347604ffa6ab48eab19487c4c95fe97c"
+      }
+     ],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 5753,
+    "counts": {
+     "row_splice": 329,
+     "closure_splice": 329,
+     "par_usr_splice": 89,
+     "ctx_par_splice": 329,
+     "user_erasable": 0,
+     "null_alias_row": 4067,
+     "null_alias_closure": 5753,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 255,
+     "par_has_7c": 89,
+     "usr_has_7c": 0,
+     "usr_present": 0,
+     "par_present": 1686,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 626,
+     "n": 10154,
+     "rate": 0.06165,
+     "ci95": [
+      0.05705,
+      0.06651
+     ]
+    },
+    "closure_splice": {
+     "k": 629,
+     "n": 10154,
+     "rate": 0.06195,
+     "ci95": [
+      0.05733,
+      0.06681
+     ]
+    },
+    "par_usr_splice": {
+     "k": 178,
+     "n": 10154,
+     "rate": 0.01753,
+     "ci95": [
+      0.01507,
+      0.02027
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 626,
+     "n": 10154,
+     "rate": 0.06165,
+     "ci95": [
+      0.05705,
+      0.06651
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 1,
+     "n": 10154,
+     "rate": 0.0001,
+     "ci95": [
+      0.0,
+      0.00055
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 10154,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00036
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 3,
+     "n": 89,
+     "rate": 0.03371
+    }
+   }
+  },
+  "e_ps_whr": {
+   "db": "hp-whr/e_ps_whr/ps_verify/recorder.db",
+   "rows_folded_by_verifier": [
+    1791093600.0,
+    1791100122.218403
+   ],
+   "states": {
+    "rows": 2927,
+    "counts": {
+     "row_splice": 172,
+     "closure_splice": 175,
+     "par_usr_splice": 60,
+     "ctx_par_splice": 172,
+     "user_erasable": 3,
+     "null_alias_row": 1717,
+     "null_alias_closure": 2927,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 1,
+     "unnatural": 0,
+     "ctx_has_7c": 124,
+     "par_has_7c": 57,
+     "usr_has_7c": 3,
+     "usr_present": 89,
+     "par_present": 1210,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 746510,
+       "ts": 1791098830.642857,
+       "ctx": "01a105cf3f32098c0d103c4510695142",
+       "par": null,
+       "usr": "567a80fda9707c041120e4daca316025"
+      },
+      {
+       "id": 746587,
+       "ts": 1791098960.6906445,
+       "ctx": "01a105d13b3171922b9128fdd9b00627",
+       "par": null,
+       "usr": "347604ffa6ab48eab19487c4c95fe97c"
+      },
+      {
+       "id": 746913,
+       "ts": 1791099415.6188195,
+       "ctx": "01a105d82c42be84e9fef7a9fd23fd30",
+       "par": null,
+       "usr": "107c10c75b2970d9bf1c11aee4e592dd"
+      }
+     ],
+     "natural_alt_closure": [
+      {
+       "id": 746587,
+       "ts": 1791098960.6906445,
+       "ctx": "01a105d13b3171922b9128fdd9b00627",
+       "par": null,
+       "usr": "347604ffa6ab48eab19487c4c95fe97c"
+      }
+     ],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 3290,
+    "counts": {
+     "row_splice": 183,
+     "closure_splice": 183,
+     "par_usr_splice": 59,
+     "ctx_par_splice": 183,
+     "user_erasable": 0,
+     "null_alias_row": 2034,
+     "null_alias_closure": 3290,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 133,
+     "par_has_7c": 59,
+     "usr_has_7c": 0,
+     "usr_present": 0,
+     "par_present": 1256,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 355,
+     "n": 6217,
+     "rate": 0.0571,
+     "ci95": [
+      0.05146,
+      0.06316
+     ]
+    },
+    "closure_splice": {
+     "k": 358,
+     "n": 6217,
+     "rate": 0.05758,
+     "ci95": [
+      0.05192,
+      0.06367
+     ]
+    },
+    "par_usr_splice": {
+     "k": 119,
+     "n": 6217,
+     "rate": 0.01914,
+     "ci95": [
+      0.01588,
+      0.02286
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 355,
+     "n": 6217,
+     "rate": 0.0571,
+     "ci95": [
+      0.05146,
+      0.06316
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 1,
+     "n": 6217,
+     "rate": 0.00016,
+     "ci95": [
+      0.0,
+      0.0009
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 6217,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00059
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 3,
+     "n": 89,
+     "rate": 0.03371
+    }
+   }
+  },
+  "e_psr_whr": {
+   "db": "hp-whr/e_psr_whr/ps_verify/recorder.db",
+   "rows_folded_by_verifier": [
+    1791097200.0,
+    1791103829.366865
+   ],
+   "states": {
+    "rows": 3960,
+    "counts": {
+     "row_splice": 279,
+     "closure_splice": 282,
+     "par_usr_splice": 70,
+     "ctx_par_splice": 279,
+     "user_erasable": 3,
+     "null_alias_row": 2747,
+     "null_alias_closure": 3960,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 1,
+     "unnatural": 0,
+     "ctx_has_7c": 221,
+     "par_has_7c": 67,
+     "usr_has_7c": 3,
+     "usr_present": 179,
+     "par_present": 1213,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 746510,
+       "ts": 1791098830.642857,
+       "ctx": "01a105cf3f32098c0d103c4510695142",
+       "par": null,
+       "usr": "567a80fda9707c041120e4daca316025"
+      },
+      {
+       "id": 746587,
+       "ts": 1791098960.6906445,
+       "ctx": "01a105d13b3171922b9128fdd9b00627",
+       "par": null,
+       "usr": "347604ffa6ab48eab19487c4c95fe97c"
+      },
+      {
+       "id": 746913,
+       "ts": 1791099415.6188195,
+       "ctx": "01a105d82c42be84e9fef7a9fd23fd30",
+       "par": null,
+       "usr": "107c10c75b2970d9bf1c11aee4e592dd"
+      }
+     ],
+     "natural_alt_closure": [
+      {
+       "id": 746587,
+       "ts": 1791098960.6906445,
+       "ctx": "01a105d13b3171922b9128fdd9b00627",
+       "par": null,
+       "usr": "347604ffa6ab48eab19487c4c95fe97c"
+      }
+     ],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 7323,
+    "counts": {
+     "row_splice": 385,
+     "closure_splice": 385,
+     "par_usr_splice": 71,
+     "ctx_par_splice": 385,
+     "user_erasable": 0,
+     "null_alias_row": 6069,
+     "null_alias_closure": 7323,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 323,
+     "par_has_7c": 71,
+     "usr_has_7c": 0,
+     "usr_present": 0,
+     "par_present": 1254,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 664,
+     "n": 11283,
+     "rate": 0.05885,
+     "ci95": [
+      0.05458,
+      0.06335
+     ]
+    },
+    "closure_splice": {
+     "k": 667,
+     "n": 11283,
+     "rate": 0.05912,
+     "ci95": [
+      0.05483,
+      0.06363
+     ]
+    },
+    "par_usr_splice": {
+     "k": 141,
+     "n": 11283,
+     "rate": 0.0125,
+     "ci95": [
+      0.01053,
+      0.01472
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 664,
+     "n": 11283,
+     "rate": 0.05885,
+     "ci95": [
+      0.05458,
+      0.06335
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 1,
+     "n": 11283,
+     "rate": 9e-05,
+     "ci95": [
+      0.0,
+      0.00049
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 11283,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00033
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 3,
+     "n": 179,
+     "rate": 0.01676
+    }
+   }
+  }
+ },
+ "per_snapshot": {
+  "hp-ec-auth/ec_verify/recorder.db": {
+   "sha256": "28483c797e44ad0780148dcbc3b65a85b9636f155ac6e34e7a1d8212cebcb725",
+   "states": {
+    "rows": 612341,
+    "counts": {
+     "row_splice": 41690,
+     "closure_splice": 41690,
+     "par_usr_splice": 14732,
+     "ctx_par_splice": 41690,
+     "user_erasable": 0,
+     "null_alias_row": 315131,
+     "null_alias_closure": 612341,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 30489,
+     "par_has_7c": 14732,
+     "usr_has_7c": 0,
+     "usr_present": 62,
+     "par_present": 297210,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 348931,
+    "counts": {
+     "row_splice": 29450,
+     "closure_splice": 29450,
+     "par_usr_splice": 16063,
+     "ctx_par_splice": 29450,
+     "user_erasable": 0,
+     "null_alias_row": 25294,
+     "null_alias_closure": 348931,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 17222,
+     "par_has_7c": 16063,
+     "usr_has_7c": 0,
+     "usr_present": 73,
+     "par_present": 323637,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 71140,
+     "n": 961272,
+     "rate": 0.07401,
+     "ci95": [
+      0.07348,
+      0.07453
+     ]
+    },
+    "closure_splice": {
+     "k": 71140,
+     "n": 961272,
+     "rate": 0.07401,
+     "ci95": [
+      0.07348,
+      0.07453
+     ]
+    },
+    "par_usr_splice": {
+     "k": 30795,
+     "n": 961272,
+     "rate": 0.03204,
+     "ci95": [
+      0.03168,
+      0.03239
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 71140,
+     "n": 961272,
+     "rate": 0.07401,
+     "ci95": [
+      0.07348,
+      0.07453
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 0,
+     "n": 961272,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 961272,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 0,
+     "n": 135,
+     "rate": 0.0
+    }
+   }
+  },
+  "hp-ps-auth/ec_verify/recorder.db": {
+   "sha256": "c238611b2e3dbecc1e349e008a15077f66264091359641e7f2e5b113c305d918",
+   "states": {
+    "rows": 618508,
+    "counts": {
+     "row_splice": 42080,
+     "closure_splice": 42082,
+     "par_usr_splice": 14874,
+     "ctx_par_splice": 42080,
+     "user_erasable": 3,
+     "null_alias_row": 318497,
+     "null_alias_closure": 618508,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 1,
+     "unnatural": 0,
+     "ctx_has_7c": 30782,
+     "par_has_7c": 14871,
+     "usr_has_7c": 3,
+     "usr_present": 152,
+     "par_present": 300011,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 684943,
+       "ts": 1790949042.8551216,
+       "ctx": "01a0fce1aaa6d85535cb4c3e7e1b8f0b",
+       "par": null,
+       "usr": "83c8c76d7c86cc9837cef55c4d11b1b0"
+      },
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      },
+      {
+       "id": 685257,
+       "ts": 1790949476.759459,
+       "ctx": "01a0fce84991702abd7cf2b8887e8486",
+       "par": null,
+       "usr": "11051d9d52e8cd43eb9c7cbde9cc8506"
+      }
+     ],
+     "natural_alt_closure": [
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      }
+     ],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 353876,
+    "counts": {
+     "row_splice": 29774,
+     "closure_splice": 29774,
+     "par_usr_splice": 16206,
+     "ctx_par_splice": 29774,
+     "user_erasable": 0,
+     "null_alias_row": 27356,
+     "null_alias_closure": 353876,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 17446,
+     "par_has_7c": 16206,
+     "usr_has_7c": 0,
+     "usr_present": 73,
+     "par_present": 326520,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 71854,
+     "n": 972384,
+     "rate": 0.07389,
+     "ci95": [
+      0.07338,
+      0.07442
+     ]
+    },
+    "closure_splice": {
+     "k": 71856,
+     "n": 972384,
+     "rate": 0.0739,
+     "ci95": [
+      0.07338,
+      0.07442
+     ]
+    },
+    "par_usr_splice": {
+     "k": 31080,
+     "n": 972384,
+     "rate": 0.03196,
+     "ci95": [
+      0.03161,
+      0.03231
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 71854,
+     "n": 972384,
+     "rate": 0.07389,
+     "ci95": [
+      0.07338,
+      0.07442
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 1,
+     "n": 972384,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      1e-05
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 972384,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 3,
+     "n": 225,
+     "rate": 0.01333
+    }
+   }
+  },
+  "hp-ps-auth/ps_verify/recorder.db": {
+   "sha256": "01070609b0851bc93c7296186ed1b4a5ec440bbe5baf1dcd0d0d56480fe78aea",
+   "states": {
+    "rows": 618516,
+    "counts": {
+     "row_splice": 42083,
+     "closure_splice": 42085,
+     "par_usr_splice": 14876,
+     "ctx_par_splice": 42083,
+     "user_erasable": 3,
+     "null_alias_row": 318501,
+     "null_alias_closure": 618516,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 1,
+     "unnatural": 0,
+     "ctx_has_7c": 30783,
+     "par_has_7c": 14873,
+     "usr_has_7c": 3,
+     "usr_present": 152,
+     "par_present": 300015,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 684943,
+       "ts": 1790949042.8551216,
+       "ctx": "01a0fce1aaa6d85535cb4c3e7e1b8f0b",
+       "par": null,
+       "usr": "83c8c76d7c86cc9837cef55c4d11b1b0"
+      },
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      },
+      {
+       "id": 685257,
+       "ts": 1790949476.759459,
+       "ctx": "01a0fce84991702abd7cf2b8887e8486",
+       "par": null,
+       "usr": "11051d9d52e8cd43eb9c7cbde9cc8506"
+      }
+     ],
+     "natural_alt_closure": [
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      }
+     ],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 353880,
+    "counts": {
+     "row_splice": 29776,
+     "closure_splice": 29776,
+     "par_usr_splice": 16208,
+     "ctx_par_splice": 29776,
+     "user_erasable": 0,
+     "null_alias_row": 27356,
+     "null_alias_closure": 353880,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 17446,
+     "par_has_7c": 16208,
+     "usr_has_7c": 0,
+     "usr_present": 73,
+     "par_present": 326524,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 71859,
+     "n": 972396,
+     "rate": 0.0739,
+     "ci95": [
+      0.07338,
+      0.07442
+     ]
+    },
+    "closure_splice": {
+     "k": 71861,
+     "n": 972396,
+     "rate": 0.0739,
+     "ci95": [
+      0.07338,
+      0.07442
+     ]
+    },
+    "par_usr_splice": {
+     "k": 31084,
+     "n": 972396,
+     "rate": 0.03197,
+     "ci95": [
+      0.03162,
+      0.03232
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 71859,
+     "n": 972396,
+     "rate": 0.0739,
+     "ci95": [
+      0.07338,
+      0.07442
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 1,
+     "n": 972396,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      1e-05
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 972396,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 3,
+     "n": 225,
+     "rate": 0.01333
+    }
+   }
+  },
+  "hp-e2-auth/seal_verify/recorder.db": {
+   "sha256": "8a7016a012ce3ce09043093041b5cce5708cb6cff348001ccfecbbf8262fa021",
+   "states": {
+    "rows": 618704,
+    "counts": {
+     "row_splice": 42089,
+     "closure_splice": 42091,
+     "par_usr_splice": 14877,
+     "ctx_par_splice": 42089,
+     "user_erasable": 3,
+     "null_alias_row": 318639,
+     "null_alias_closure": 618704,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 1,
+     "unnatural": 0,
+     "ctx_has_7c": 30788,
+     "par_has_7c": 14874,
+     "usr_has_7c": 3,
+     "usr_present": 152,
+     "par_present": 300065,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 684943,
+       "ts": 1790949042.8551216,
+       "ctx": "01a0fce1aaa6d85535cb4c3e7e1b8f0b",
+       "par": null,
+       "usr": "83c8c76d7c86cc9837cef55c4d11b1b0"
+      },
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      },
+      {
+       "id": 685257,
+       "ts": 1790949476.759459,
+       "ctx": "01a0fce84991702abd7cf2b8887e8486",
+       "par": null,
+       "usr": "11051d9d52e8cd43eb9c7cbde9cc8506"
+      }
+     ],
+     "natural_alt_closure": [
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      }
+     ],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 354545,
+    "counts": {
+     "row_splice": 29800,
+     "closure_splice": 29800,
+     "par_usr_splice": 16209,
+     "ctx_par_splice": 29800,
+     "user_erasable": 0,
+     "null_alias_row": 27969,
+     "null_alias_closure": 354545,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 17469,
+     "par_has_7c": 16209,
+     "usr_has_7c": 0,
+     "usr_present": 73,
+     "par_present": 326576,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 71889,
+     "n": 973249,
+     "rate": 0.07386,
+     "ci95": [
+      0.07335,
+      0.07439
+     ]
+    },
+    "closure_splice": {
+     "k": 71891,
+     "n": 973249,
+     "rate": 0.07387,
+     "ci95": [
+      0.07335,
+      0.07439
+     ]
+    },
+    "par_usr_splice": {
+     "k": 31086,
+     "n": 973249,
+     "rate": 0.03194,
+     "ci95": [
+      0.03159,
+      0.03229
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 71889,
+     "n": 973249,
+     "rate": 0.07386,
+     "ci95": [
+      0.07335,
+      0.07439
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 1,
+     "n": 973249,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      1e-05
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 973249,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 3,
+     "n": 225,
+     "rate": 0.01333
+    }
+   }
+  },
+  "hp-clo/e_ps_clo/ec_verify/recorder.db": {
+   "sha256": "5e5afc10f99dc8d8e1b246e09aabbf625fce5906f1676fc394667121c8ff9c99",
+   "states": {
+    "rows": 626044,
+    "counts": {
+     "row_splice": 42620,
+     "closure_splice": 42625,
+     "par_usr_splice": 15060,
+     "ctx_par_splice": 42620,
+     "user_erasable": 6,
+     "null_alias_row": 322624,
+     "null_alias_closure": 626044,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 1,
+     "unnatural": 0,
+     "ctx_has_7c": 31192,
+     "par_has_7c": 15054,
+     "usr_has_7c": 6,
+     "usr_present": 242,
+     "par_present": 303420,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 684943,
+       "ts": 1790949042.8551216,
+       "ctx": "01a0fce1aaa6d85535cb4c3e7e1b8f0b",
+       "par": null,
+       "usr": "83c8c76d7c86cc9837cef55c4d11b1b0"
+      },
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      },
+      {
+       "id": 685257,
+       "ts": 1790949476.759459,
+       "ctx": "01a0fce84991702abd7cf2b8887e8486",
+       "par": null,
+       "usr": "11051d9d52e8cd43eb9c7cbde9cc8506"
+      },
+      {
+       "id": 692388,
+       "ts": 1790966831.7514257,
+       "ctx": "01a0fdf11a83b3958e49843cbd155b36",
+       "par": null,
+       "usr": "111c7b72d453dd7c8683f4c6149af502"
+      },
+      {
+       "id": 692654,
+       "ts": 1790967179.9283507,
+       "ctx": "01a0fdf66a9815b219132c2cb024aef9",
+       "par": null,
+       "usr": "9c2e9a34a87c96c07d282048a77652a6"
+      }
+     ],
+     "natural_alt_closure": [
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      }
+     ],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 360086,
+    "counts": {
+     "row_splice": 30229,
+     "closure_splice": 30229,
+     "par_usr_splice": 16395,
+     "ctx_par_splice": 30229,
+     "user_erasable": 0,
+     "null_alias_row": 30043,
+     "null_alias_closure": 360086,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 17767,
+     "par_has_7c": 16395,
+     "usr_has_7c": 0,
+     "usr_present": 73,
+     "par_present": 330043,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 72849,
+     "n": 986130,
+     "rate": 0.07387,
+     "ci95": [
+      0.07336,
+      0.07439
+     ]
+    },
+    "closure_splice": {
+     "k": 72854,
+     "n": 986130,
+     "rate": 0.07388,
+     "ci95": [
+      0.07336,
+      0.0744
+     ]
+    },
+    "par_usr_splice": {
+     "k": 31455,
+     "n": 986130,
+     "rate": 0.0319,
+     "ci95": [
+      0.03155,
+      0.03225
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 72849,
+     "n": 986130,
+     "rate": 0.07387,
+     "ci95": [
+      0.07336,
+      0.07439
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 1,
+     "n": 986130,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      1e-05
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 986130,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 6,
+     "n": 315,
+     "rate": 0.01905
+    }
+   }
+  },
+  "hp-clo/e_ps_clo/ps_verify/recorder.db": {
+   "sha256": "2e73df08f5d0933fdef0e865794c0fe293e7bc4ce9e9f09d64f542b4cf1b3677",
+   "states": {
+    "rows": 626058,
+    "counts": {
+     "row_splice": 42623,
+     "closure_splice": 42628,
+     "par_usr_splice": 15062,
+     "ctx_par_splice": 42623,
+     "user_erasable": 6,
+     "null_alias_row": 322631,
+     "null_alias_closure": 626058,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 1,
+     "unnatural": 0,
+     "ctx_has_7c": 31193,
+     "par_has_7c": 15056,
+     "usr_has_7c": 6,
+     "usr_present": 242,
+     "par_present": 303427,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 684943,
+       "ts": 1790949042.8551216,
+       "ctx": "01a0fce1aaa6d85535cb4c3e7e1b8f0b",
+       "par": null,
+       "usr": "83c8c76d7c86cc9837cef55c4d11b1b0"
+      },
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      },
+      {
+       "id": 685257,
+       "ts": 1790949476.759459,
+       "ctx": "01a0fce84991702abd7cf2b8887e8486",
+       "par": null,
+       "usr": "11051d9d52e8cd43eb9c7cbde9cc8506"
+      },
+      {
+       "id": 692388,
+       "ts": 1790966831.7514257,
+       "ctx": "01a0fdf11a83b3958e49843cbd155b36",
+       "par": null,
+       "usr": "111c7b72d453dd7c8683f4c6149af502"
+      },
+      {
+       "id": 692654,
+       "ts": 1790967179.9283507,
+       "ctx": "01a0fdf66a9815b219132c2cb024aef9",
+       "par": null,
+       "usr": "9c2e9a34a87c96c07d282048a77652a6"
+      }
+     ],
+     "natural_alt_closure": [
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      }
+     ],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 360093,
+    "counts": {
+     "row_splice": 30231,
+     "closure_splice": 30231,
+     "par_usr_splice": 16397,
+     "ctx_par_splice": 30231,
+     "user_erasable": 0,
+     "null_alias_row": 30043,
+     "null_alias_closure": 360093,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 17767,
+     "par_has_7c": 16397,
+     "usr_has_7c": 0,
+     "usr_present": 73,
+     "par_present": 330050,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 72854,
+     "n": 986151,
+     "rate": 0.07388,
+     "ci95": [
+      0.07336,
+      0.0744
+     ]
+    },
+    "closure_splice": {
+     "k": 72859,
+     "n": 986151,
+     "rate": 0.07388,
+     "ci95": [
+      0.07337,
+      0.0744
+     ]
+    },
+    "par_usr_splice": {
+     "k": 31459,
+     "n": 986151,
+     "rate": 0.0319,
+     "ci95": [
+      0.03155,
+      0.03225
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 72854,
+     "n": 986151,
+     "rate": 0.07388,
+     "ci95": [
+      0.07336,
+      0.0744
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 1,
+     "n": 986151,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      1e-05
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 986151,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 6,
+     "n": 315,
+     "rate": 0.01905
+    }
+   }
+  },
+  "hp-clo/e_d_clo/ec_verify/recorder.db": {
+   "sha256": "3db4f0d354973eda689dad5b241689aa18474b641eac951a9af730d82934d192",
+   "states": {
+    "rows": 627575,
+    "counts": {
+     "row_splice": 42695,
+     "closure_splice": 42700,
+     "par_usr_splice": 15083,
+     "ctx_par_splice": 42695,
+     "user_erasable": 6,
+     "null_alias_row": 323708,
+     "null_alias_closure": 627575,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 1,
+     "unnatural": 0,
+     "ctx_has_7c": 31244,
+     "par_has_7c": 15077,
+     "usr_has_7c": 6,
+     "usr_present": 242,
+     "par_present": 303867,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 684943,
+       "ts": 1790949042.8551216,
+       "ctx": "01a0fce1aaa6d85535cb4c3e7e1b8f0b",
+       "par": null,
+       "usr": "83c8c76d7c86cc9837cef55c4d11b1b0"
+      },
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      },
+      {
+       "id": 685257,
+       "ts": 1790949476.759459,
+       "ctx": "01a0fce84991702abd7cf2b8887e8486",
+       "par": null,
+       "usr": "11051d9d52e8cd43eb9c7cbde9cc8506"
+      },
+      {
+       "id": 692388,
+       "ts": 1790966831.7514257,
+       "ctx": "01a0fdf11a83b3958e49843cbd155b36",
+       "par": null,
+       "usr": "111c7b72d453dd7c8683f4c6149af502"
+      },
+      {
+       "id": 692654,
+       "ts": 1790967179.9283507,
+       "ctx": "01a0fdf66a9815b219132c2cb024aef9",
+       "par": null,
+       "usr": "9c2e9a34a87c96c07d282048a77652a6"
+      }
+     ],
+     "natural_alt_closure": [
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      }
+     ],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 362582,
+    "counts": {
+     "row_splice": 30342,
+     "closure_splice": 30342,
+     "par_usr_splice": 16418,
+     "ctx_par_splice": 30342,
+     "user_erasable": 0,
+     "null_alias_row": 32074,
+     "null_alias_closure": 362582,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 17857,
+     "par_has_7c": 16418,
+     "usr_has_7c": 0,
+     "usr_present": 73,
+     "par_present": 330508,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 73037,
+     "n": 990157,
+     "rate": 0.07376,
+     "ci95": [
+      0.07325,
+      0.07428
+     ]
+    },
+    "closure_splice": {
+     "k": 73042,
+     "n": 990157,
+     "rate": 0.07377,
+     "ci95": [
+      0.07325,
+      0.07428
+     ]
+    },
+    "par_usr_splice": {
+     "k": 31501,
+     "n": 990157,
+     "rate": 0.03181,
+     "ci95": [
+      0.03147,
+      0.03216
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 73037,
+     "n": 990157,
+     "rate": 0.07376,
+     "ci95": [
+      0.07325,
+      0.07428
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 1,
+     "n": 990157,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      1e-05
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 990157,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 6,
+     "n": 315,
+     "rate": 0.01905
+    }
+   }
+  },
+  "hp-clo/e_c_clo/ec_verify/recorder.db": {
+   "sha256": "334004f6a9db8d90dbf9a6bdf5ac908f4654d7c67c878cb034cc7f98e8bcaada",
+   "states": {
+    "rows": 629256,
+    "counts": {
+     "row_splice": 42775,
+     "closure_splice": 42780,
+     "par_usr_splice": 15104,
+     "ctx_par_splice": 42775,
+     "user_erasable": 6,
+     "null_alias_row": 324924,
+     "null_alias_closure": 629256,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 1,
+     "unnatural": 0,
+     "ctx_has_7c": 31303,
+     "par_has_7c": 15098,
+     "usr_has_7c": 6,
+     "usr_present": 272,
+     "par_present": 304332,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 684943,
+       "ts": 1790949042.8551216,
+       "ctx": "01a0fce1aaa6d85535cb4c3e7e1b8f0b",
+       "par": null,
+       "usr": "83c8c76d7c86cc9837cef55c4d11b1b0"
+      },
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      },
+      {
+       "id": 685257,
+       "ts": 1790949476.759459,
+       "ctx": "01a0fce84991702abd7cf2b8887e8486",
+       "par": null,
+       "usr": "11051d9d52e8cd43eb9c7cbde9cc8506"
+      },
+      {
+       "id": 692388,
+       "ts": 1790966831.7514257,
+       "ctx": "01a0fdf11a83b3958e49843cbd155b36",
+       "par": null,
+       "usr": "111c7b72d453dd7c8683f4c6149af502"
+      },
+      {
+       "id": 692654,
+       "ts": 1790967179.9283507,
+       "ctx": "01a0fdf66a9815b219132c2cb024aef9",
+       "par": null,
+       "usr": "9c2e9a34a87c96c07d282048a77652a6"
+      }
+     ],
+     "natural_alt_closure": [
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      }
+     ],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 365449,
+    "counts": {
+     "row_splice": 30497,
+     "closure_splice": 30497,
+     "par_usr_splice": 16439,
+     "ctx_par_splice": 30497,
+     "user_erasable": 0,
+     "null_alias_row": 34459,
+     "null_alias_closure": 365449,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 17991,
+     "par_has_7c": 16439,
+     "usr_has_7c": 0,
+     "usr_present": 103,
+     "par_present": 330990,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 73272,
+     "n": 994705,
+     "rate": 0.07366,
+     "ci95": [
+      0.07315,
+      0.07418
+     ]
+    },
+    "closure_splice": {
+     "k": 73277,
+     "n": 994705,
+     "rate": 0.07367,
+     "ci95": [
+      0.07315,
+      0.07418
+     ]
+    },
+    "par_usr_splice": {
+     "k": 31543,
+     "n": 994705,
+     "rate": 0.03171,
+     "ci95": [
+      0.03137,
+      0.03206
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 73272,
+     "n": 994705,
+     "rate": 0.07366,
+     "ci95": [
+      0.07315,
+      0.07418
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 1,
+     "n": 994705,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      1e-05
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 994705,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 6,
+     "n": 375,
+     "rate": 0.016
+    }
+   }
+  },
+  "hp-clo/e_psr_clo/ec_verify/recorder.db": {
+   "sha256": "4f4bc6135aba10c13a46362c67b1a3b6e7ac6e7f9757cd3c8c7a1a65d1fc819e",
+   "states": {
+    "rows": 635775,
+    "counts": {
+     "row_splice": 43195,
+     "closure_splice": 43200,
+     "par_usr_splice": 15251,
+     "ctx_par_splice": 43195,
+     "user_erasable": 6,
+     "null_alias_row": 328448,
+     "null_alias_closure": 635775,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 1,
+     "unnatural": 0,
+     "ctx_has_7c": 31600,
+     "par_has_7c": 15245,
+     "usr_has_7c": 6,
+     "usr_present": 362,
+     "par_present": 307327,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 684943,
+       "ts": 1790949042.8551216,
+       "ctx": "01a0fce1aaa6d85535cb4c3e7e1b8f0b",
+       "par": null,
+       "usr": "83c8c76d7c86cc9837cef55c4d11b1b0"
+      },
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      },
+      {
+       "id": 685257,
+       "ts": 1790949476.759459,
+       "ctx": "01a0fce84991702abd7cf2b8887e8486",
+       "par": null,
+       "usr": "11051d9d52e8cd43eb9c7cbde9cc8506"
+      },
+      {
+       "id": 692388,
+       "ts": 1790966831.7514257,
+       "ctx": "01a0fdf11a83b3958e49843cbd155b36",
+       "par": null,
+       "usr": "111c7b72d453dd7c8683f4c6149af502"
+      },
+      {
+       "id": 692654,
+       "ts": 1790967179.9283507,
+       "ctx": "01a0fdf66a9815b219132c2cb024aef9",
+       "par": null,
+       "usr": "9c2e9a34a87c96c07d282048a77652a6"
+      }
+     ],
+     "natural_alt_closure": [
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      }
+     ],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 370597,
+    "counts": {
+     "row_splice": 30875,
+     "closure_splice": 30875,
+     "par_usr_splice": 16590,
+     "ctx_par_splice": 30875,
+     "user_erasable": 0,
+     "null_alias_row": 36525,
+     "null_alias_closure": 370597,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 18242,
+     "par_has_7c": 16590,
+     "usr_has_7c": 0,
+     "usr_present": 103,
+     "par_present": 334072,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 74070,
+     "n": 1006372,
+     "rate": 0.0736,
+     "ci95": [
+      0.07309,
+      0.07411
+     ]
+    },
+    "closure_splice": {
+     "k": 74075,
+     "n": 1006372,
+     "rate": 0.07361,
+     "ci95": [
+      0.0731,
+      0.07412
+     ]
+    },
+    "par_usr_splice": {
+     "k": 31841,
+     "n": 1006372,
+     "rate": 0.03164,
+     "ci95": [
+      0.0313,
+      0.03198
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 74070,
+     "n": 1006372,
+     "rate": 0.0736,
+     "ci95": [
+      0.07309,
+      0.07411
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 1,
+     "n": 1006372,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      1e-05
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 1006372,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 6,
+     "n": 465,
+     "rate": 0.0129
+    }
+   }
+  },
+  "hp-clo/e_psr_clo/ps_verify/recorder.db": {
+   "sha256": "dbbb9f40fb816324b2c8f7de7932508baa34cc8c102e2e862839168acc7df78c",
+   "states": {
+    "rows": 635781,
+    "counts": {
+     "row_splice": 43195,
+     "closure_splice": 43200,
+     "par_usr_splice": 15251,
+     "ctx_par_splice": 43195,
+     "user_erasable": 6,
+     "null_alias_row": 328451,
+     "null_alias_closure": 635781,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 1,
+     "unnatural": 0,
+     "ctx_has_7c": 31600,
+     "par_has_7c": 15245,
+     "usr_has_7c": 6,
+     "usr_present": 362,
+     "par_present": 307330,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 684943,
+       "ts": 1790949042.8551216,
+       "ctx": "01a0fce1aaa6d85535cb4c3e7e1b8f0b",
+       "par": null,
+       "usr": "83c8c76d7c86cc9837cef55c4d11b1b0"
+      },
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      },
+      {
+       "id": 685257,
+       "ts": 1790949476.759459,
+       "ctx": "01a0fce84991702abd7cf2b8887e8486",
+       "par": null,
+       "usr": "11051d9d52e8cd43eb9c7cbde9cc8506"
+      },
+      {
+       "id": 692388,
+       "ts": 1790966831.7514257,
+       "ctx": "01a0fdf11a83b3958e49843cbd155b36",
+       "par": null,
+       "usr": "111c7b72d453dd7c8683f4c6149af502"
+      },
+      {
+       "id": 692654,
+       "ts": 1790967179.9283507,
+       "ctx": "01a0fdf66a9815b219132c2cb024aef9",
+       "par": null,
+       "usr": "9c2e9a34a87c96c07d282048a77652a6"
+      }
+     ],
+     "natural_alt_closure": [
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      }
+     ],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 370600,
+    "counts": {
+     "row_splice": 30875,
+     "closure_splice": 30875,
+     "par_usr_splice": 16590,
+     "ctx_par_splice": 30875,
+     "user_erasable": 0,
+     "null_alias_row": 36525,
+     "null_alias_closure": 370600,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 18242,
+     "par_has_7c": 16590,
+     "usr_has_7c": 0,
+     "usr_present": 103,
+     "par_present": 334075,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 74070,
+     "n": 1006381,
+     "rate": 0.0736,
+     "ci95": [
+      0.07309,
+      0.07411
+     ]
+    },
+    "closure_splice": {
+     "k": 74075,
+     "n": 1006381,
+     "rate": 0.07361,
+     "ci95": [
+      0.0731,
+      0.07412
+     ]
+    },
+    "par_usr_splice": {
+     "k": 31841,
+     "n": 1006381,
+     "rate": 0.03164,
+     "ci95": [
+      0.0313,
+      0.03198
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 74070,
+     "n": 1006381,
+     "rate": 0.0736,
+     "ci95": [
+      0.07309,
+      0.07411
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 1,
+     "n": 1006381,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      1e-05
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 1006381,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 6,
+     "n": 465,
+     "rate": 0.0129
+    }
+   }
+  },
+  "hp-whr/e_ps_whr/ec_verify/recorder.db": {
+   "sha256": "9afc781ca3b46f250ba4c628fc50389cbc156309d6a600bf18ebe6c19ef6f270",
+   "states": {
+    "rows": 633967,
+    "counts": {
+     "row_splice": 43014,
+     "closure_splice": 43022,
+     "par_usr_splice": 15208,
+     "ctx_par_splice": 43014,
+     "user_erasable": 9,
+     "null_alias_row": 327477,
+     "null_alias_closure": 633967,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 2,
+     "unnatural": 0,
+     "ctx_has_7c": 31430,
+     "par_has_7c": 15199,
+     "usr_has_7c": 9,
+     "usr_present": 451,
+     "par_present": 306490,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 684943,
+       "ts": 1790949042.8551216,
+       "ctx": "01a0fce1aaa6d85535cb4c3e7e1b8f0b",
+       "par": null,
+       "usr": "83c8c76d7c86cc9837cef55c4d11b1b0"
+      },
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      },
+      {
+       "id": 685257,
+       "ts": 1790949476.759459,
+       "ctx": "01a0fce84991702abd7cf2b8887e8486",
+       "par": null,
+       "usr": "11051d9d52e8cd43eb9c7cbde9cc8506"
+      },
+      {
+       "id": 692388,
+       "ts": 1790966831.7514257,
+       "ctx": "01a0fdf11a83b3958e49843cbd155b36",
+       "par": null,
+       "usr": "111c7b72d453dd7c8683f4c6149af502"
+      },
+      {
+       "id": 692654,
+       "ts": 1790967179.9283507,
+       "ctx": "01a0fdf66a9815b219132c2cb024aef9",
+       "par": null,
+       "usr": "9c2e9a34a87c96c07d282048a77652a6"
+      }
+     ],
+     "natural_alt_closure": [
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      },
+      {
+       "id": 746587,
+       "ts": 1791098960.6906445,
+       "ctx": "01a105d13b3171922b9128fdd9b00627",
+       "par": null,
+       "usr": "347604ffa6ab48eab19487c4c95fe97c"
+      }
+     ],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 350332,
+    "counts": {
+     "row_splice": 29042,
+     "closure_splice": 29042,
+     "par_usr_splice": 15644,
+     "ctx_par_splice": 29042,
+     "user_erasable": 0,
+     "null_alias_row": 34662,
+     "null_alias_closure": 350332,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 17138,
+     "par_has_7c": 15644,
+     "usr_has_7c": 0,
+     "usr_present": 103,
+     "par_present": 315670,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 72056,
+     "n": 984299,
+     "rate": 0.07321,
+     "ci95": [
+      0.07269,
+      0.07372
+     ]
+    },
+    "closure_splice": {
+     "k": 72064,
+     "n": 984299,
+     "rate": 0.07321,
+     "ci95": [
+      0.0727,
+      0.07373
+     ]
+    },
+    "par_usr_splice": {
+     "k": 30852,
+     "n": 984299,
+     "rate": 0.03134,
+     "ci95": [
+      0.031,
+      0.03169
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 72056,
+     "n": 984299,
+     "rate": 0.07321,
+     "ci95": [
+      0.07269,
+      0.07372
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 2,
+     "n": 984299,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      1e-05
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 984299,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 9,
+     "n": 554,
+     "rate": 0.01625
+    }
+   }
+  },
+  "hp-whr/e_ps_whr/ps_verify/recorder.db": {
+   "sha256": "1a469e3c7411e272c371454cd419c60d27ded31f440c5c31633be22c08ea502a",
+   "states": {
+    "rows": 633972,
+    "counts": {
+     "row_splice": 43014,
+     "closure_splice": 43022,
+     "par_usr_splice": 15208,
+     "ctx_par_splice": 43014,
+     "user_erasable": 9,
+     "null_alias_row": 327479,
+     "null_alias_closure": 633972,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 2,
+     "unnatural": 0,
+     "ctx_has_7c": 31430,
+     "par_has_7c": 15199,
+     "usr_has_7c": 9,
+     "usr_present": 451,
+     "par_present": 306493,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 684943,
+       "ts": 1790949042.8551216,
+       "ctx": "01a0fce1aaa6d85535cb4c3e7e1b8f0b",
+       "par": null,
+       "usr": "83c8c76d7c86cc9837cef55c4d11b1b0"
+      },
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      },
+      {
+       "id": 685257,
+       "ts": 1790949476.759459,
+       "ctx": "01a0fce84991702abd7cf2b8887e8486",
+       "par": null,
+       "usr": "11051d9d52e8cd43eb9c7cbde9cc8506"
+      },
+      {
+       "id": 692388,
+       "ts": 1790966831.7514257,
+       "ctx": "01a0fdf11a83b3958e49843cbd155b36",
+       "par": null,
+       "usr": "111c7b72d453dd7c8683f4c6149af502"
+      },
+      {
+       "id": 692654,
+       "ts": 1790967179.9283507,
+       "ctx": "01a0fdf66a9815b219132c2cb024aef9",
+       "par": null,
+       "usr": "9c2e9a34a87c96c07d282048a77652a6"
+      }
+     ],
+     "natural_alt_closure": [
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      },
+      {
+       "id": 746587,
+       "ts": 1791098960.6906445,
+       "ctx": "01a105d13b3171922b9128fdd9b00627",
+       "par": null,
+       "usr": "347604ffa6ab48eab19487c4c95fe97c"
+      }
+     ],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 350335,
+    "counts": {
+     "row_splice": 29042,
+     "closure_splice": 29042,
+     "par_usr_splice": 15644,
+     "ctx_par_splice": 29042,
+     "user_erasable": 0,
+     "null_alias_row": 34662,
+     "null_alias_closure": 350335,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 17138,
+     "par_has_7c": 15644,
+     "usr_has_7c": 0,
+     "usr_present": 103,
+     "par_present": 315673,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 72056,
+     "n": 984307,
+     "rate": 0.0732,
+     "ci95": [
+      0.07269,
+      0.07372
+     ]
+    },
+    "closure_splice": {
+     "k": 72064,
+     "n": 984307,
+     "rate": 0.07321,
+     "ci95": [
+      0.0727,
+      0.07373
+     ]
+    },
+    "par_usr_splice": {
+     "k": 30852,
+     "n": 984307,
+     "rate": 0.03134,
+     "ci95": [
+      0.031,
+      0.03169
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 72056,
+     "n": 984307,
+     "rate": 0.0732,
+     "ci95": [
+      0.07269,
+      0.07372
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 2,
+     "n": 984307,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      1e-05
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 984307,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 9,
+     "n": 554,
+     "rate": 0.01625
+    }
+   }
+  },
+  "hp-whr/e_d_whr/ec_verify/recorder.db": {
+   "sha256": "035483d497217d468d69115431ad51442b8a11bcdceef768e51fa4c4263bd500",
+   "states": {
+    "rows": 635446,
+    "counts": {
+     "row_splice": 43139,
+     "closure_splice": 43147,
+     "par_usr_splice": 15237,
+     "ctx_par_splice": 43139,
+     "user_erasable": 9,
+     "null_alias_row": 328535,
+     "null_alias_closure": 635446,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 2,
+     "unnatural": 0,
+     "ctx_has_7c": 31532,
+     "par_has_7c": 15228,
+     "usr_has_7c": 9,
+     "usr_present": 451,
+     "par_present": 306911,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 684943,
+       "ts": 1790949042.8551216,
+       "ctx": "01a0fce1aaa6d85535cb4c3e7e1b8f0b",
+       "par": null,
+       "usr": "83c8c76d7c86cc9837cef55c4d11b1b0"
+      },
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      },
+      {
+       "id": 685257,
+       "ts": 1790949476.759459,
+       "ctx": "01a0fce84991702abd7cf2b8887e8486",
+       "par": null,
+       "usr": "11051d9d52e8cd43eb9c7cbde9cc8506"
+      },
+      {
+       "id": 692388,
+       "ts": 1790966831.7514257,
+       "ctx": "01a0fdf11a83b3958e49843cbd155b36",
+       "par": null,
+       "usr": "111c7b72d453dd7c8683f4c6149af502"
+      },
+      {
+       "id": 692654,
+       "ts": 1790967179.9283507,
+       "ctx": "01a0fdf66a9815b219132c2cb024aef9",
+       "par": null,
+       "usr": "9c2e9a34a87c96c07d282048a77652a6"
+      }
+     ],
+     "natural_alt_closure": [
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      },
+      {
+       "id": 746587,
+       "ts": 1791098960.6906445,
+       "ctx": "01a105d13b3171922b9128fdd9b00627",
+       "par": null,
+       "usr": "347604ffa6ab48eab19487c4c95fe97c"
+      }
+     ],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 352798,
+    "counts": {
+     "row_splice": 29188,
+     "closure_splice": 29188,
+     "par_usr_splice": 15674,
+     "ctx_par_splice": 29188,
+     "user_erasable": 0,
+     "null_alias_row": 36695,
+     "null_alias_closure": 352798,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 17260,
+     "par_has_7c": 15674,
+     "usr_has_7c": 0,
+     "usr_present": 103,
+     "par_present": 316103,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 72327,
+     "n": 988244,
+     "rate": 0.07319,
+     "ci95": [
+      0.07267,
+      0.0737
+     ]
+    },
+    "closure_splice": {
+     "k": 72335,
+     "n": 988244,
+     "rate": 0.0732,
+     "ci95": [
+      0.07268,
+      0.07371
+     ]
+    },
+    "par_usr_splice": {
+     "k": 30911,
+     "n": 988244,
+     "rate": 0.03128,
+     "ci95": [
+      0.03094,
+      0.03162
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 72327,
+     "n": 988244,
+     "rate": 0.07319,
+     "ci95": [
+      0.07267,
+      0.0737
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 2,
+     "n": 988244,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      1e-05
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 988244,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 9,
+     "n": 554,
+     "rate": 0.01625
+    }
+   }
+  },
+  "hp-whr/e_psr_whr/ec_verify/recorder.db": {
+   "sha256": "9a588962e1234b037198af967799fdbdafd84f5ae7029b3a7bead4dd3a95c832",
+   "states": {
+    "rows": 636374,
+    "counts": {
+     "row_splice": 43192,
+     "closure_splice": 43200,
+     "par_usr_splice": 15245,
+     "ctx_par_splice": 43192,
+     "user_erasable": 9,
+     "null_alias_row": 329218,
+     "null_alias_closure": 636374,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 2,
+     "unnatural": 0,
+     "ctx_has_7c": 31577,
+     "par_has_7c": 15236,
+     "usr_has_7c": 9,
+     "usr_present": 541,
+     "par_present": 307156,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 684943,
+       "ts": 1790949042.8551216,
+       "ctx": "01a0fce1aaa6d85535cb4c3e7e1b8f0b",
+       "par": null,
+       "usr": "83c8c76d7c86cc9837cef55c4d11b1b0"
+      },
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      },
+      {
+       "id": 685257,
+       "ts": 1790949476.759459,
+       "ctx": "01a0fce84991702abd7cf2b8887e8486",
+       "par": null,
+       "usr": "11051d9d52e8cd43eb9c7cbde9cc8506"
+      },
+      {
+       "id": 692388,
+       "ts": 1790966831.7514257,
+       "ctx": "01a0fdf11a83b3958e49843cbd155b36",
+       "par": null,
+       "usr": "111c7b72d453dd7c8683f4c6149af502"
+      },
+      {
+       "id": 692654,
+       "ts": 1790967179.9283507,
+       "ctx": "01a0fdf66a9815b219132c2cb024aef9",
+       "par": null,
+       "usr": "9c2e9a34a87c96c07d282048a77652a6"
+      }
+     ],
+     "natural_alt_closure": [
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      },
+      {
+       "id": 746587,
+       "ts": 1791098960.6906445,
+       "ctx": "01a105d13b3171922b9128fdd9b00627",
+       "par": null,
+       "usr": "347604ffa6ab48eab19487c4c95fe97c"
+      }
+     ],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 355066,
+    "counts": {
+     "row_splice": 29289,
+     "closure_splice": 29289,
+     "par_usr_splice": 15683,
+     "ctx_par_splice": 29289,
+     "user_erasable": 0,
+     "null_alias_row": 38709,
+     "null_alias_closure": 355066,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 17352,
+     "par_has_7c": 15683,
+     "usr_has_7c": 0,
+     "usr_present": 103,
+     "par_present": 316357,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 72481,
+     "n": 991440,
+     "rate": 0.07311,
+     "ci95": [
+      0.0726,
+      0.07362
+     ]
+    },
+    "closure_splice": {
+     "k": 72489,
+     "n": 991440,
+     "rate": 0.07311,
+     "ci95": [
+      0.0726,
+      0.07363
+     ]
+    },
+    "par_usr_splice": {
+     "k": 30928,
+     "n": 991440,
+     "rate": 0.0312,
+     "ci95": [
+      0.03085,
+      0.03154
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 72481,
+     "n": 991440,
+     "rate": 0.07311,
+     "ci95": [
+      0.0726,
+      0.07362
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 2,
+     "n": 991440,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      1e-05
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 991440,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 9,
+     "n": 644,
+     "rate": 0.01398
+    }
+   }
+  },
+  "hp-whr/e_psr_whr/ps_verify/recorder.db": {
+   "sha256": "87a5eaa557a6d20ebeba6275e3e4588daabbd0c19c2d07e0ea21c2cd71ff25d0",
+   "states": {
+    "rows": 636384,
+    "counts": {
+     "row_splice": 43192,
+     "closure_splice": 43200,
+     "par_usr_splice": 15245,
+     "ctx_par_splice": 43192,
+     "user_erasable": 9,
+     "null_alias_row": 329223,
+     "null_alias_closure": 636384,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 2,
+     "unnatural": 0,
+     "ctx_has_7c": 31577,
+     "par_has_7c": 15236,
+     "usr_has_7c": 9,
+     "usr_present": 541,
+     "par_present": 307161,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 684943,
+       "ts": 1790949042.8551216,
+       "ctx": "01a0fce1aaa6d85535cb4c3e7e1b8f0b",
+       "par": null,
+       "usr": "83c8c76d7c86cc9837cef55c4d11b1b0"
+      },
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      },
+      {
+       "id": 685257,
+       "ts": 1790949476.759459,
+       "ctx": "01a0fce84991702abd7cf2b8887e8486",
+       "par": null,
+       "usr": "11051d9d52e8cd43eb9c7cbde9cc8506"
+      },
+      {
+       "id": 692388,
+       "ts": 1790966831.7514257,
+       "ctx": "01a0fdf11a83b3958e49843cbd155b36",
+       "par": null,
+       "usr": "111c7b72d453dd7c8683f4c6149af502"
+      },
+      {
+       "id": 692654,
+       "ts": 1790967179.9283507,
+       "ctx": "01a0fdf66a9815b219132c2cb024aef9",
+       "par": null,
+       "usr": "9c2e9a34a87c96c07d282048a77652a6"
+      }
+     ],
+     "natural_alt_closure": [
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      },
+      {
+       "id": 746587,
+       "ts": 1791098960.6906445,
+       "ctx": "01a105d13b3171922b9128fdd9b00627",
+       "par": null,
+       "usr": "347604ffa6ab48eab19487c4c95fe97c"
+      }
+     ],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 355072,
+    "counts": {
+     "row_splice": 29289,
+     "closure_splice": 29289,
+     "par_usr_splice": 15683,
+     "ctx_par_splice": 29289,
+     "user_erasable": 0,
+     "null_alias_row": 38710,
+     "null_alias_closure": 355072,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 17352,
+     "par_has_7c": 15683,
+     "usr_has_7c": 0,
+     "usr_present": 103,
+     "par_present": 316362,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 72481,
+     "n": 991456,
+     "rate": 0.07311,
+     "ci95": [
+      0.07259,
+      0.07362
+     ]
+    },
+    "closure_splice": {
+     "k": 72489,
+     "n": 991456,
+     "rate": 0.07311,
+     "ci95": [
+      0.0726,
+      0.07363
+     ]
+    },
+    "par_usr_splice": {
+     "k": 30928,
+     "n": 991456,
+     "rate": 0.03119,
+     "ci95": [
+      0.03085,
+      0.03154
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 72481,
+     "n": 991456,
+     "rate": 0.07311,
+     "ci95": [
+      0.07259,
+      0.07362
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 2,
+     "n": 991456,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      1e-05
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 991456,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 9,
+     "n": 644,
+     "rate": 0.01398
+    }
+   }
+  },
+  "hp_d2/live/recorder.db": {
+   "sha256": "f98d18e43e916bb161aa8c932ea08c292f881373c11a73a8bd607d5300c78349",
+   "states": {
+    "rows": 641909,
+    "counts": {
+     "row_splice": 43513,
+     "closure_splice": 43521,
+     "par_usr_splice": 15359,
+     "ctx_par_splice": 43513,
+     "user_erasable": 9,
+     "null_alias_row": 332048,
+     "null_alias_closure": 641909,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 2,
+     "unnatural": 0,
+     "ctx_has_7c": 31802,
+     "par_has_7c": 15350,
+     "usr_has_7c": 9,
+     "usr_present": 541,
+     "par_present": 309861,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 684943,
+       "ts": 1790949042.8551216,
+       "ctx": "01a0fce1aaa6d85535cb4c3e7e1b8f0b",
+       "par": null,
+       "usr": "83c8c76d7c86cc9837cef55c4d11b1b0"
+      },
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      },
+      {
+       "id": 685257,
+       "ts": 1790949476.759459,
+       "ctx": "01a0fce84991702abd7cf2b8887e8486",
+       "par": null,
+       "usr": "11051d9d52e8cd43eb9c7cbde9cc8506"
+      },
+      {
+       "id": 692388,
+       "ts": 1790966831.7514257,
+       "ctx": "01a0fdf11a83b3958e49843cbd155b36",
+       "par": null,
+       "usr": "111c7b72d453dd7c8683f4c6149af502"
+      },
+      {
+       "id": 692654,
+       "ts": 1790967179.9283507,
+       "ctx": "01a0fdf66a9815b219132c2cb024aef9",
+       "par": null,
+       "usr": "9c2e9a34a87c96c07d282048a77652a6"
+      }
+     ],
+     "natural_alt_closure": [
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      },
+      {
+       "id": 746587,
+       "ts": 1791098960.6906445,
+       "ctx": "01a105d13b3171922b9128fdd9b00627",
+       "par": null,
+       "usr": "347604ffa6ab48eab19487c4c95fe97c"
+      }
+     ],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 357890,
+    "counts": {
+     "row_splice": 29485,
+     "closure_splice": 29485,
+     "par_usr_splice": 15797,
+     "ctx_par_splice": 29485,
+     "user_erasable": 0,
+     "null_alias_row": 38760,
+     "null_alias_closure": 357890,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 17452,
+     "par_has_7c": 15797,
+     "usr_has_7c": 0,
+     "usr_present": 103,
+     "par_present": 319130,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 72998,
+     "n": 999799,
+     "rate": 0.07301,
+     "ci95": [
+      0.0725,
+      0.07352
+     ]
+    },
+    "closure_splice": {
+     "k": 73006,
+     "n": 999799,
+     "rate": 0.07302,
+     "ci95": [
+      0.07251,
+      0.07353
+     ]
+    },
+    "par_usr_splice": {
+     "k": 31156,
+     "n": 999799,
+     "rate": 0.03116,
+     "ci95": [
+      0.03082,
+      0.0315
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 72998,
+     "n": 999799,
+     "rate": 0.07301,
+     "ci95": [
+      0.0725,
+      0.07352
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 2,
+     "n": 999799,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      1e-05
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 999799,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 9,
+     "n": 644,
+     "rate": 0.01398
+    }
+   }
+  }
+ }
+}

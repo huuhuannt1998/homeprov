@@ -1,0 +1,448 @@
+{
+ "experiment": "E11 (RQ4): does HOMEPROV's principle carry to a third hub family? openHAB 5.2.3 with JDBC persistence on SQLite: renderer closure, the two failure directions of schema-chosen and whole-row commitments, and the shipped monitor with only its read path replaced",
+ "status": "REGISTERED",
+ "registered_at": "2026-10-24T11:53:41.451334+00:00",
+ "registered_before": "any event of the real run (tag e11_main; run directory on the external SSD); smoke runs precede it and are not results",
+ "approval": {
+  "pi": "2026-10-14, verbatim option label: 'Reframe + openHAB (E11)' (SP2027_ACCEPT_PLAN.md, decision log)",
+  "framing": "PI 2026-10-14, verbatim: \"We are doing research and finding a scientific contribution, not a pentester\". The instrument only creates the post-commit rewrites to detect: the smallest edits of the persisted history, through openHAB's documented persistence extensions, on one item; no other openHAB weakness is explored."
+ },
+ "research_question": {
+  "RQ4": "Does HOMEPROV's principle carry across hubs? (SP2027_ACCEPT_PLAN.md section 0)",
+  "a": "Can the evidence openHAB shows be measured as a renderer closure?",
+  "b": "Do a schema-chosen commitment and a whole-row commitment fail there in the same two directions as on Home Assistant and Domoticz (missing fields the renderer reads; breaking on fields the renderer does not read)?",
+  "c": "Does the out-of-process monitor with a closure-checked commitment, ported by replacing only its read path, detect post-commit rewrites of the persisted history, at a low benign floor and a feasible cost?",
+  "framing": "PI 2026-10-14, verbatim: \"We are doing research and finding a scientific contribution, not a pentester\". The instrument only creates the post-commit rewrites to detect: the smallest edits of the persisted history, through openHAB's documented persistence extensions, on one item; no other openHAB weakness is explored."
+ },
+ "design": {
+  "file": "drafts/round13/E11_DESIGN.md",
+  "sha256": "9d021130c7b1bf03a6af8b287006ae9fe89e155d640a50fc68a252a4d89470a6"
+ },
+ "hub": {
+  "image": "openhab/openhab:5.2.3@sha256:fa50a6934dfd5bcbf21db18af66f2558f58c6c493ba23bdeb7a894e764507a99",
+  "arm64_manifest": "sha256:1423029b751dba9432a0052d009b5ce47ef959ea1576464931020e42e5fc7a93",
+  "release": "openHAB 5.2.3 (2026-10-10)",
+  "persistence": "JDBC (org.openhab.persistence.jdbc 5.2.3) on SQLite (org.xerial sqlite-jdbc 3.53.1.0, feature openhab-persistence-jdbc-sqlite), default settings, database in the userdata volume; time zone UTC; implicit user role off; Basic auth on",
+  "accounts": "owner (administrator), member (user); per-run passwords, fingerprints only"
+ },
+ "monitor": {
+  "code": "monitor/monitor.py unchanged, run with testbed/e11/monitor/oh_monitor.py as entry point",
+  "settings": {
+   "HOMEPROV_SCHEME": "closure",
+   "HOMEPROV_COVERAGE": 1,
+   "HOMEPROV_KEYLOG": 0,
+   "HOMEPROV_READ": "copy (SQLite backup API)",
+   "HOMEPROV_QUICK_CHECK_EVERY": 1,
+   "HOMEPROV_PERIOD": 5,
+   "record signatures": "Ed25519",
+   "reply tags": 1,
+   "anchor": "linked (v2) with a head witness on the host outside Docker's VM",
+   "archive": "rows of the last 180 s per poll, for the offline schemes"
+  },
+  "mounts": "hub userdata volume read-only; no write path to the hub"
+ },
+ "parameters": {
+  "late_bound_s": 30.0,
+  "seal_wait_s": 130.0,
+  "arm_n": 30,
+  "arm_spacing_s": 3.0,
+  "seed": 20261021
+ },
+ "plan": {
+  "generated_by": "testbed/e11/e11ops.py plan --seed 20261021",
+  "sha256": "141a9fc7d8a2d88b4ba67e405a4ea6f8815c08142295620a75905bc6cb119af3",
+  "plan": {
+   "seed": 20261021,
+   "smoke": false,
+   "late_bound_s": 30.0,
+   "warmup_s": 600,
+   "window1_s": 1500,
+   "window2_s": 1800,
+   "settle_s": 90,
+   "arms": [
+    {
+     "arm": "A-BD",
+     "n": 30,
+     "spacing_s": 3.0,
+     "seal_wait_s": 130.0,
+     "mark_ms_offsets": [
+      594,
+      872,
+      994,
+      11,
+      390,
+      414,
+      321,
+      653,
+      658,
+      238,
+      493,
+      408,
+      415,
+      0,
+      930,
+      224,
+      18,
+      55,
+      697,
+      639,
+      600,
+      644,
+      63,
+      123,
+      472,
+      418,
+      92,
+      111,
+      315,
+      770
+     ]
+    },
+    {
+     "arm": "A-RM",
+     "n": 30,
+     "spacing_s": 3.0,
+     "seal_wait_s": 130.0,
+     "mark_ms_offsets": null
+    },
+    {
+     "arm": "A-CHG",
+     "n": 30,
+     "spacing_s": 3.0,
+     "seal_wait_s": 130.0,
+     "mark_ms_offsets": null
+    }
+   ],
+   "replace": {
+    "item": "Price_Forecast",
+    "step_s": 300,
+    "future_points": 12,
+    "past_window_s": 1800,
+    "new_delta": 1.0
+   },
+   "backfill": {
+    "item": "Energy_Backfill",
+    "points": 10,
+    "span_s": 600,
+    "offset_s": 30.25
+   },
+   "retain": {
+    "item": "Retention_Probe",
+    "older_than_s": 1200
+   },
+   "label": {
+    "item": "Label_Probe",
+    "new_label": "Label probe (renamed by the owner)"
+   },
+   "benign": [
+    "B-REPLACE-SAME",
+    "B-BACKFILL",
+    "B-LABEL",
+    "B-RESTART",
+    "B-REPLACE-NEW",
+    "B-BACKFILL",
+    "B-CLEAN",
+    "B-RESTART",
+    "B-BACKFILL",
+    "B-RETAIN"
+   ],
+   "benign_gap_s": 120,
+   "schedule": {
+    "Kitchen_Temp": {
+     "period_s": 10,
+     "kind": "walk",
+     "lo": 19.0,
+     "hi": 24.0,
+     "unit": "°C"
+    },
+    "Hallway_Temp": {
+     "period_s": 10,
+     "kind": "walk",
+     "lo": 18.0,
+     "hi": 22.0,
+     "unit": "°C"
+    },
+    "Power_Meter": {
+     "period_s": 3,
+     "kind": "walk",
+     "lo": 80.0,
+     "hi": 900.0,
+     "unit": "W"
+    },
+    "Porch_Motion": {
+     "period_s": 75,
+     "kind": "choice",
+     "values": [
+      "OPEN",
+      "CLOSED",
+      "CLOSED"
+     ]
+    },
+    "Hallway_Motion": {
+     "period_s": 60,
+     "kind": "choice",
+     "values": [
+      "OPEN",
+      "CLOSED",
+      "CLOSED"
+     ]
+    },
+    "Kitchen_Motion": {
+     "period_s": 90,
+     "kind": "choice",
+     "values": [
+      "OPEN",
+      "CLOSED",
+      "CLOSED"
+     ]
+    },
+    "Retention_Probe": {
+     "period_s": 30,
+     "kind": "counter",
+     "lo": 0.0,
+     "step": 1.0
+    },
+    "Energy_Backfill": {
+     "period_s": 60,
+     "kind": "counter",
+     "lo": 1000.0,
+     "step": 0.05,
+     "unit": "kWh"
+    },
+    "Label_Probe": {
+     "period_s": 420,
+     "kind": "toggle",
+     "values": [
+      "ON",
+      "OFF"
+     ]
+    }
+   },
+   "schedule_seed": 20261021
+  }
+ },
+ "hypotheses": {
+  "H1_closure_measurable": "(a) Per-field mutation on a closure instance yields a deterministic closure of the rendered history (REST /rest/persistence/items/{item}, the request behind Main UI's Analyze view): the determinism and positive controls hold, every restore equals the baseline, and the measured set is {items.ItemId, items.ItemName (both only after the index reload), <table>.time, <table>.value (Number values only to 3 decimals), <table> (name), registry.itemType, registry.meta.unit, registry (item entry)}; <table>.rowid, registry.label/category/tags/groupNames are outside it.",
+  "H2_no_attribution": "(a) The rendered history and the persisted rows carry no field naming a cause, user or source (rendered fields: name, datapoints, unit, data[time, state]): on openHAB the closure protects the integrity of a history without attribution. (events.log lines carry a sender-set '(source: ...)' string outside the persisted history; characterised, not protected.)",
+  "H3_schema_chosen_misses": "(b) A commitment chosen from the persistence schema (every stored column of every item table, nothing joined: `rows`) changes 0 one-second roots under single writes of items.ItemName, items.ItemId, registry.itemType, registry.meta.unit and the deletion of a registry entry, each of which changes the rendered history and changes every closure root holding a row of that item.",
+  "H4_whole_row_over_commits_but_no_in_place_rewrite": "(b) openHAB rewrites no persisted field in place (in-place probe: no column of an item table or the index changed for an existing row; registry entries unchanged across benign traffic and a restart), so the untouched floor of the whole-row scheme is 0, unlike Home Assistant (last_reported_ts) and Domoticz (DeviceStatus): that direction is conditional on in-place rewrites. Whole-row still over-commits: a rowid or label write changes its roots and not the rendered history, and B-LABEL and B-REPLACE-SAME (a past point removed and stored again unchanged) produce whole-row (and, for B-REPLACE-SAME, `rows`) violations and no closure violation.",
+  "H5_detection": "(c) The closure monitor detects every instrument trial: 30 of 30 per arm (A-BD back-dated state, A-RM removal, A-CHG value change), at the one-second and one-minute segment, as attributable under the registered rule; the instrument's effect is rendered for both accounts in 30 of 30 trials per arm with every other point of the window unchanged.",
+  "H6_benign_floor": "(c) No attributable violation on any untouched anchored second (closure scheme) over the session, which includes two hub restarts and the index clean; benign late rows are counted and expected rare.",
+  "H7_operations_needing_a_declaration": "(c) B-BACKFILL (TimeSeries ADD of past states: the documented 'persisting historic state' use), B-REPLACE-NEW (a forecast's past points re-sent with new values) and B-RETAIN (housekeeping removal of old states) produce attributable violations on exactly the seconds they change, and a B-BACKFILL row is indistinguishable from an A-BD row under the rule; B-REPLACE-SAME, B-LABEL, B-RESTART and B-CLEAN produce none under the closure.",
+  "H8_port_feasible": "(c) monitor.py runs unchanged (0 lines changed); the reader is one module replacing five functions (snapshot, validate_copy for a failed snapshot only, check_connection, watermark, load); median per-poll time below 1 s and no gap between observable polls above 30 s; no hub write failure ('SQLITE_BUSY' or 'database is locked' in openhab.log) during the session."
+ },
+ "instrument_arms": [
+  {
+   "id": "A-BD",
+   "n": 30,
+   "what": "instrument: PersistenceExtensions.persist(FrontDoor_Lock, t, OFF, 'jdbc') with t a moment of phase 1 (no lock row then), at least 130 s later (the second and its minute sealed and anchored)",
+   "expected": {
+    "rendered": "a new OFF point at t, both accounts, every other point unchanged: 30/30",
+    "closure": "attributable 30/30 (late row after seal, or rows in a second sealed empty; lag >= 130 s)",
+    "rows": "attributable 30/30",
+    "wholerow": "attributable 30/30"
+   }
+  },
+  {
+   "id": "A-RM",
+   "n": 30,
+   "what": "phase 1: the instrument relocks (state ON), the member unlocks through REST (command OFF); after 130 s: removeAllStatesBetween(lock, floor(t), floor(t)+1 s, 'jdbc') on the unlock's second",
+   "expected": {
+    "rendered": "the OFF point at t gone, both accounts: 30/30",
+    "closure": "attributable 30/30 (a sealed row removed)",
+    "rows": "attributable 30/30",
+    "wholerow": "attributable 30/30"
+   }
+  },
+  {
+   "id": "A-CHG",
+   "n": 30,
+   "what": "phase 1 as A-RM; after 130 s: removeAllStatesBetween over the unlock's second, then persist(lock, t, ON, 'jdbc') at the unlock's exact time (the extensions have no update)",
+   "expected": {
+    "rendered": "the point at t shows ON instead of OFF, both accounts: 30/30",
+    "closure": "attributable 30/30 (a sealed row changed)",
+    "rows": "attributable 30/30",
+    "wholerow": "attributable 30/30"
+   }
+  }
+ ],
+ "benign_operations": [
+  {
+   "id": "B-STRAT",
+   "what": "the persistence strategies running all session: everyChange (locks, lights, motion, Label_Probe), everyUpdate (temperatures, Retention_Probe, Energy_Backfill), the cron everyMinute (Power_Meter), restoreOnStartup, forecast (Price_Forecast); six motion-light rules",
+   "expected": "no attributable violation (H6)"
+  },
+  {
+   "id": "B-REPLACE-SETUP",
+   "what": "a REPLACE TimeSeries of 12 future 5-min points on Price_Forecast at t_start",
+   "expected": "no past point affected"
+  },
+  {
+   "id": "B-REPLACE-SAME",
+   "what": "REPLACE over the last 30 min and the next hour, past points re-sent unchanged",
+   "expected": {
+    "closure": "no violation",
+    "rows": "attributable on each re-sent past point (rowid changed)",
+    "wholerow": "attributable on each re-sent past point"
+   }
+  },
+  {
+   "id": "B-REPLACE-NEW",
+   "what": "the same with each past point's value + 1.0",
+   "expected": {
+    "closure": "attributable on each changed past point",
+    "rows": "same",
+    "wholerow": "same"
+   }
+  },
+  {
+   "id": "B-BACKFILL",
+   "n": 3,
+   "what": "an ADD TimeSeries of up to 10 past states (1 per minute, the last 10 min, at +30.25 s) on Energy_Backfill",
+   "expected": {
+    "closure": "attributable on every backfilled second",
+    "rows": "same",
+    "wholerow": "same"
+   }
+  },
+  {
+   "id": "B-LABEL",
+   "what": "the owner renames Label_Probe's label through REST",
+   "expected": {
+    "closure": "no violation",
+    "rows": "no violation",
+    "wholerow": "attributable on every sealed second holding a Label_Probe row written before the rename"
+   }
+  },
+  {
+   "id": "B-RESTART",
+   "n": 2,
+   "what": "docker restart of the hub (the household resumes)",
+   "expected": "no violation"
+  },
+  {
+   "id": "B-CLEAN",
+   "what": "Karaf console 'openhab:jdbc tables clean'",
+   "expected": "no violation (no orphan)"
+  },
+  {
+   "id": "B-RETAIN",
+   "what": "housekeeping removal of Retention_Probe states older than 20 min (removeAllStatesBetween, whole-second bound)",
+   "expected": {
+    "closure": "attributable on every second holding a removed row",
+    "rows": "same",
+    "wholerow": "same"
+   }
+  }
+ ],
+ "outcomes": {
+  "O1_closure": "fields changing the rendered history (default request and the UI's request), immediately and after the index reload; controls; rendered-history fields (attribution present or not); in-place probe",
+  "O2_schemes": "per scheme (closure live; rows and wholerow from the per-poll archive, validated against the anchored closure roots): detection per arm, untouched floor, benign-operation verdicts; single-write checks (changed one-second roots per scheme for value, time, rowid, ItemName, ItemId, itemType, unit, label, registry-entry deletion)",
+  "O3_detection": "per arm: detected (attributable at the one-second segment of the edited row) k/n with exact 95% intervals, and at the minute; instrument effect rendered (both accounts); UI agreement (secondary)",
+  "O4_floor": "attributable violations over untouched anchored seconds (and minutes), benign-late segments, per benign operation the verdict classes of the seconds it changed",
+  "O5_port": "monitor.py lines changed, reader size and functions replaced, per-poll cost (median, p90, max), gaps between observable polls, hub write failures"
+ },
+ "scoring": {
+  "verification_rule": "exp/stages/e11_score.py module docstring (coverage records, per-table rowid watermark, late-row test with L = 30 s); detected = attributable",
+  "touched": "a second is touched when it holds a row an arm wrote, edited or named (relock, unlock, mark) or a row a benign operation changed (re-sent, backfilled, removed points; every Label_Probe second for B-LABEL); the floor is over untouched seconds only, as in the Domoticz run",
+  "closure_gate": "after E11-CLO and before E11-DET: every measured closure field must be one the reader commits (e11_score.py --closure-gate), else the run stops for a registered amendment"
+ },
+ "exclusions": [
+  "a trial the harness or the instrument reports with err: listed, not scored",
+  "polls a hub restart makes unobservable are reported, not excluded",
+  "smoke runs (prefixes e11cs/e11ss, outputs under HOMEPROV-P13-exp/e11/smoke) are not results"
+ ],
+ "analysis_plan": [
+  "No hypothesis test beyond exact intervals; every prediction above is per trial or per count and is confirmed only if every non-excluded trial agrees; an unpredicted outcome is reported with its trial",
+  "Schemes are scored separately; nothing is pooled across them",
+  "Results are compared side by side with the saved Domoticz files (exp/out/dz_*.json) and the Home Assistant closure results, never merged",
+  "Every deviation from this registration is written to an amendment before it is used"
+ ],
+ "known_limits_stated_in_advance": [
+  "One release (openHAB 5.2.3), one persistence service (JDBC on SQLite, default settings), one Mac, virtual devices driven by a fixture bundle, compressed time (about two hours of session)",
+  "rrd4j, the persistence the openHAB tutorial suggests, replaces older readings by averages by design; E11 does not measure it",
+  "The reader reads managed items (the JSON database), not items defined in .items files",
+  "The keylog is not ported: segments are sealed with coverage records, and attacks the keylog closes on Home Assistant (a row parked in the future, an unjoinable row) are not exercised",
+  "The verification rule is E11's own (unit-tested), not exp/stages/e7_verify.py, which reads Home Assistant tables",
+  "The hub runs in UTC; 'localtime' text in a zone with daylight saving is ambiguous in the fall-back hour"
+ ],
+ "registered_alternatives": [
+  {
+   "if": "the image has no /openhab/dist to initialise the volumes from",
+   "then": "the stack lets the image's entrypoint initialise empty volumes at a first start, stops, and installs the E11 configuration; registered before --final"
+  },
+  {
+   "if": "the registry files' layout differs from the reader's assumption (smoke)",
+   "then": "the reader's read_registry() is amended and re-tested before --final"
+  },
+  {
+   "if": "Main UI's Analyze view requests the history with parameters other than the REST defaults (smoke uicapture)",
+   "then": "E11_RENDER_PARAMS is set to them for E11-CLO and the arms, registered before --final"
+  },
+  {
+   "if": "the JDBC SQLite add-on cannot be installed from the remote repository during provisioning",
+   "then": "the offline add-ons archive of the same release is used; registered before --final"
+  },
+  {
+   "if": "the measured closure contains a field the reader does not commit (closure gate)",
+   "then": "the run stops after E11-CLO; the reader is amended (HP_OH_CLOSURE_REGISTRY or code), re-tested, the amendment registered and stamped, then E11-DET runs"
+  }
+ ],
+ "render_params": {
+  "used_by_E11_CLO_and_the_arms": {
+   "boundary": "true"
+  },
+  "main_ui_analyze_request": {
+   "starttime": "now - 24 h",
+   "endtime": "now",
+   "boundary": "true",
+   "itemState": "true"
+  },
+  "why": "the registered alternative on Main UI's request was triggered (smoke uicapture, 2026-10-24): boundary=true is used; itemState=true is left out of E11-CLO and the arms because it appends the hub's live item state stamped with the query time (not a stored row; renders 2.5 s apart differ only in that point); uicapture replays Main UI's own request and compares bodies without that point"
+ },
+ "amendments_before_registration": {
+  "log": "<artifact-root>/[READY] (TDSC) HOMEPROV - P13/drafts/round13/E11_DECISIONS.md (entries dated 2026-10-23 and 2026-10-24)",
+  "log_sha256_at_registration": "7602d0c74c613d1465ed9187ef8e3e38195e4e3dcec360b8b1b23d2c1ad07e6b",
+  "smoke_runs": "e11_smoke1 to e11_smoke6 (2026-10-24; outputs outside exp/out; not results)",
+  "harness_changes": [
+   "Karaf console: commands on stdin with a 60 s limit (5.2.3 closes an argument command); outputs of commands carrying a password are discarded",
+   "hub restart: the removed provisioning network is recreated INTERNAL for the restart, then removed; the hub stays on its internal network only; the in-place probe fails if its restart fails",
+   "JDBC persistence at a first start: openHAB 5.2.3 left the bundle Resolved or its feature half installed in many starts; the harness starts the bundle or reinstalls the feature (at most 3 kicks), logs each and reports jdbc_bundle_started_by_harness; E11's bundles are deployed after JDBC is up",
+   "uicapture signs in through openHAB's own form (Main UI ignores HTTP basic credentials)",
+   "the stack guard also refuses while E12 runs; the hardened-monitor unit test no longer re-applies an applied patch"
+  ],
+  "hypotheses_arms_benign_operations_outcomes_scoring": "unchanged"
+ },
+ "code_sha256": {
+  "computed_at": "2026-10-24T11:53:41Z",
+  "files": {
+   "monitor/monitor.py": "4b9931cb7d1cffae6485fb2b660b68d733da9f73e5c22c22ca7265d49ceaa9b7",
+   "monitor/Dockerfile.sign": "5a6dcec0d93012a5dae13ba72b5ccf1d772623baaa54c07b38c19be701d94d18",
+   "monitor/requirements-sign.txt": "d09f4bcea9d366d767affccde58418307c974bf5c358fb6a09b057b1c8d0922c",
+   "testbed/anchord/anchord.py": "8b35448dcf86df8bd1291b6fec6ff39e045bacbc3b083b09f61d035c1f251421",
+   "testbed/anchord/anchord_linked.py": "f6252e245b0f963fbefd4c511b51187985386870c745b8321c917152486ee1e1",
+   "testbed/anchord/headwitness.py": "0d8a83c8e0c4cb09e4a5097045e3d1ae91ae7ed264d4b491712256f0602781f5",
+   "testbed/anchord/chainverify.py": "38cfa5e9d99e8ece7ee53d4401e6a97d6e16b7dac02e19088b11d13b547f9d0e",
+   "testbed/e8/anchord-e8.Dockerfile": "84191c7adf8fc8a74b75f6603d7850841d8a9428c905622af4a6dc22ca811ebe",
+   "testbed/domoticz/harness/tunnel.py": "ee5ab264e3c4636472420e8a3f1a18e3cbc1d943f4f0d8b988056365884bfe39",
+   "testbed/domoticz/harness/relay.py": "8f606c69c687b62ce6333bf27a0abbaef3c195833b119bfe06e7aba7f10ef20b",
+   "testbed/e11/monitor/oh_monitor.py": "4e0ad7465b753bddcc8dbafda16e6e75d3508e0fd1f8c70b3a3fac2f85e15503",
+   "testbed/e11/run_e11.sh": "2fb8241158fe9433b8991bbd4b4cd021526b9c7301b7d0bdc38217366f0b85e3",
+   "testbed/e11/e11_stack.sh": "b4469d1f5084e2971e52b5acb6497aa1dfc709b4655fbac1e170db56beecdc02",
+   "testbed/e11/e11ops.py": "48a27a1d5821ab96e719c3a55648a8f053123df93ce21e500d81ba82bfb47251",
+   "testbed/e11/build_bundles.sh": "5f24da4adf950f0580655514fde3b1c371b991f6ee5d0456058580f878401dcd",
+   "testbed/e11/e11_prereg.py": "67765531a88f6ac87626ce57cae98bcff09eb1da5840e431426ba40f17709a6c",
+   "testbed/e11/test_e11.py": "a5da38b838e8203b32eda972606472b3b238ee08682eda88af4af7e08b84fc72",
+   "testbed/e11/conf/services/addons.cfg": "289d9b27c032e33752da371116668bda100b03143cdaf428f4a49f9b6a54db19",
+   "testbed/e11/conf/services/jdbc.cfg": "93e48a3f6b87a9125874730a3779b5a218af14d536252daabd94ac45dc3e30d5",
+   "testbed/e11/conf/services/runtime.cfg": "77304b2f67d6f48b7a65db9461a9380c5def380f07b67dffad479150e5972736",
+   "testbed/e11/conf/persistence/jdbc.persist": "962f2932610ebfd8c03b457a9211eb732032217721dd272266ba1476dd931174",
+   "testbed/e11/fixture/src/org/homeprov/e11/fixture/Activator.java": "8f9f7da95813e37e5158ea8e2e95853eae987a79d1b382a78a78b5c7aed28d47",
+   "testbed/e11/fixture/META-INF/MANIFEST.MF": "a24da942cdb9156490e10a6ac7f913a0b48a47e732e15f5802eacea6e6520d7d",
+   "testbed/e11/attack/src/org/homeprov/e11/lockbridge/Activator.java": "3820e3bc128b4ce732e6bff185b398ea93ce0fc2214c2e36e570fa8fe3a6ff7e",
+   "testbed/e11/attack/META-INF/MANIFEST.MF": "34e7d4f180f5f37e91e13f067306d6758b37ef57a6ff453b93c792183a1136b1",
+   "exp/stages/e11_score.py": "94d58da534eabe16857bd6b16737c15e55bc72ad4fe8e4446aea4f38a1267112",
+   "exp/rig/stats.py": "156075624fa11245fcd993e64925f258f6ca1e4ae69227b1eed9b7a31758baeb"
+  }
+ }
+}

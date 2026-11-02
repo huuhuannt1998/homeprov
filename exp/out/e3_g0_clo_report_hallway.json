@@ -1,0 +1,4249 @@
+{
+  "experiment": "E-C",
+  "substrate": "real (mosquitto + MQTT discovery + shipped blueprint)",
+  "room": "hallway",
+  "target": "lock.front_door",
+  "innocent_party": "automation.hallway_motion_light",
+  "household_member_user_id": "90b6f1f5983443c2b47f563e8f652752",
+  "household_member_name": "Alex Rivera (household)",
+  "n_trials_requested": 30,
+  "arms": [
+    "PU",
+    "PI"
+  ],
+  "t_start": 1791410982.1932092,
+  "trials": [
+    {
+      "arm": "PU",
+      "trial": 0,
+      "strategy": "post-commit laundering of an ANCHORED row authored by user:Alex Rivera (household)",
+      "authored_by": "user:Alex Rivera (household)",
+      "author_context": "01M4C6P9R8Q8DWN0AZQBSVSCXQ",
+      "row_before": {
+        "state_id": 850073,
+        "ts": 1791411038.0412216,
+        "context_id_bin": "01a1186b2708ba1bca815fbaf3bcb3b7",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850073,
+        "ts": 1791411038.0412216,
+        "context_id_bin": "01a1186b2708ba1bca815fbaf3bcb3b7",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:10:38.041222+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:10:38.041222+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850073
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a1186b07189e1f",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:10:38.041222+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PU",
+      "trial": 1,
+      "strategy": "post-commit laundering of an ANCHORED row authored by user:Alex Rivera (household)",
+      "authored_by": "user:Alex Rivera (household)",
+      "author_context": "01M4C6Q0KZS468SA0MF7GCS2FV",
+      "row_before": {
+        "state_id": 850073,
+        "ts": 1791411038.0412216,
+        "context_id_bin": "01a1186b2708ba1bca815fbaf3bcb3b7",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850083,
+        "ts": 1791411061.609317,
+        "context_id_bin": "01a1186b827fc90c8ca81479e0cc89fb",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:11:01.609317+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:11:01.609317+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850073,
+        850083
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 0,
+        "reattach": 2,
+        "inject": 0
+      },
+      "cover_context": "01a1186b07189e1f",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:11:01.609317+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PU",
+      "trial": 2,
+      "strategy": "post-commit laundering of an ANCHORED row authored by user:Alex Rivera (household)",
+      "authored_by": "user:Alex Rivera (household)",
+      "author_context": "01M4C6QR87P6S9S3E8Z73R5TRQ",
+      "row_before": {
+        "state_id": 850092,
+        "ts": 1791411085.9964845,
+        "context_id_bin": "01a1186be107b1b29c8dc8f9c782eb17",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850092,
+        "ts": 1791411085.9964845,
+        "context_id_bin": "01a1186be107b1b29c8dc8f9c782eb17",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:11:25.996485+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:11:25.996485+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850092
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a1186b07189e1f",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:11:25.996485+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PU",
+      "trial": 3,
+      "strategy": "post-commit laundering of an ANCHORED row authored by user:Alex Rivera (household)",
+      "authored_by": "user:Alex Rivera (household)",
+      "author_context": "01M4C6QZEF9KC6HQ35B3C1DP7H",
+      "row_before": {
+        "state_id": 850097,
+        "ts": 1791411092.9685462,
+        "context_id_bin": "01a1186bfdcf4cd868dc6558d816d8f1",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850097,
+        "ts": 1791411092.9685462,
+        "context_id_bin": "01a1186bfdcf4cd868dc6558d816d8f1",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:11:32.968546+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:11:32.968546+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850097
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a1186bf944d14d",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:11:32.968546+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PU",
+      "trial": 4,
+      "strategy": "post-commit laundering of an ANCHORED row authored by user:Alex Rivera (household)",
+      "authored_by": "user:Alex Rivera (household)",
+      "author_context": "01M4C6R5MT5XFNCTGJFJ7DHWAV",
+      "row_before": {
+        "state_id": 850100,
+        "ts": 1791411099.3169572,
+        "context_id_bin": "01a1186c169a2f5f566a127c8ed8f15b",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850100,
+        "ts": 1791411099.3169572,
+        "context_id_bin": "01a1186c169a2f5f566a127c8ed8f15b",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:11:39.316957+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:11:39.316957+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850100
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a1186bf944d14d",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:11:39.316957+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PU",
+      "trial": 5,
+      "strategy": "post-commit laundering of an ANCHORED row authored by user:Alex Rivera (household)",
+      "authored_by": "user:Alex Rivera (household)",
+      "author_context": "01M4C6RBZ4CT19VQJ6QXK6A8J2",
+      "row_before": {
+        "state_id": 850104,
+        "ts": 1791411105.9064078,
+        "context_id_bin": "01a1186c2fe466829dde46bf66652242",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850104,
+        "ts": 1791411105.9064078,
+        "context_id_bin": "01a1186c2fe466829dde46bf66652242",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:11:45.906408+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:11:45.906408+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850104
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a1186bf944d14d",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:11:45.906408+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PU",
+      "trial": 6,
+      "strategy": "post-commit laundering of an ANCHORED row authored by user:Alex Rivera (household)",
+      "authored_by": "user:Alex Rivera (household)",
+      "author_context": "01M4C6RN3V6Q1NKGGH3P54CF4Q",
+      "row_before": {
+        "state_id": 850108,
+        "ts": 1791411115.2363076,
+        "context_id_bin": "01a1186c547b35c359c2111d8a463c97",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850108,
+        "ts": 1791411115.2363076,
+        "context_id_bin": "01a1186c547b35c359c2111d8a463c97",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:11:55.236308+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:11:55.236308+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850108
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a1186bf944d14d",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:11:55.236308+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PU",
+      "trial": 7,
+      "strategy": "post-commit laundering of an ANCHORED row authored by user:Alex Rivera (household)",
+      "authored_by": "user:Alex Rivera (household)",
+      "author_context": "01M4C6RVBRZ18FG3ZV1VF0QMMQ",
+      "row_before": {
+        "state_id": 850111,
+        "ts": 1791411121.5624175,
+        "context_id_bin": "01a1186c6d78f850f80ffb0ede0bd297",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850111,
+        "ts": 1791411121.5624175,
+        "context_id_bin": "01a1186c6d78f850f80ffb0ede0bd297",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:12:01.562418+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:12:01.562418+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850111
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a1186bf944d14d",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:12:01.562418+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PU",
+      "trial": 8,
+      "strategy": "post-commit laundering of an ANCHORED row authored by user:Alex Rivera (household)",
+      "authored_by": "user:Alex Rivera (household)",
+      "author_context": "01M4C6S1MPSYP8GSMH5B2A9J3J",
+      "row_before": {
+        "state_id": 850118,
+        "ts": 1791411127.9616327,
+        "context_id_bin": "01a1186c8696cfac8866912ac4a4c872",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850118,
+        "ts": 1791411127.9616327,
+        "context_id_bin": "01a1186c8696cfac8866912ac4a4c872",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:12:07.961633+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:12:07.961633+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850118
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a1186bf944d14d",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:12:07.961633+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PU",
+      "trial": 9,
+      "strategy": "post-commit laundering of an ANCHORED row authored by user:Alex Rivera (household)",
+      "authored_by": "user:Alex Rivera (household)",
+      "author_context": "01M4C6SAMR0C8B7AQRQ18P2XP1",
+      "row_before": {
+        "state_id": 850121,
+        "ts": 1791411137.2306602,
+        "context_id_bin": "01a1186caa980310b3aaf8b8516176c1",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850121,
+        "ts": 1791411137.2306602,
+        "context_id_bin": "01a1186caa980310b3aaf8b8516176c1",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:12:17.230660+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:12:17.230660+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850121
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a1186bf944d14d",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:12:17.230660+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PU",
+      "trial": 10,
+      "strategy": "post-commit laundering of an ANCHORED row authored by user:Alex Rivera (household)",
+      "authored_by": "user:Alex Rivera (household)",
+      "author_context": "01M4C6SGRDB7W7KYCDFF6S7B43",
+      "row_before": {
+        "state_id": 850128,
+        "ts": 1791411143.4829082,
+        "context_id_bin": "01a1186cc30d59f879f98d7bcd93ac83",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850128,
+        "ts": 1791411143.4829082,
+        "context_id_bin": "01a1186cc30d59f879f98d7bcd93ac83",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:12:23.482908+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:12:23.482908+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850128
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a1186cc069e493",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:12:23.482908+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PU",
+      "trial": 11,
+      "strategy": "post-commit laundering of an ANCHORED row authored by user:Alex Rivera (household)",
+      "authored_by": "user:Alex Rivera (household)",
+      "author_context": "01M4C6SQ99A49WTKPWG42WVFMZ",
+      "row_before": {
+        "state_id": 850131,
+        "ts": 1791411150.1434731,
+        "context_id_bin": "01a1186cdd295113cd4edc8105cdbe9f",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850131,
+        "ts": 1791411150.1434731,
+        "context_id_bin": "01a1186cdd295113cd4edc8105cdbe9f",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:12:30.143473+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:12:30.143473+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850131
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a1186cc069e493",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:12:30.143473+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PU",
+      "trial": 12,
+      "strategy": "post-commit laundering of an ANCHORED row authored by user:Alex Rivera (household)",
+      "authored_by": "user:Alex Rivera (household)",
+      "author_context": "01M4C6SXE04CCBEYM5GV4P0VC4",
+      "row_before": {
+        "state_id": 850139,
+        "ts": 1791411156.4341588,
+        "context_id_bin": "01a1186cf5c02318b77a8586c9606d84",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850139,
+        "ts": 1791411156.4341588,
+        "context_id_bin": "01a1186cf5c02318b77a8586c9606d84",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:12:36.434159+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:12:36.434159+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850139
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a1186cea52c266",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:12:36.434159+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PU",
+      "trial": 13,
+      "strategy": "post-commit laundering of an ANCHORED row authored by user:Alex Rivera (household)",
+      "authored_by": "user:Alex Rivera (household)",
+      "author_context": "01M4C6T3FECFJHFB2N73PWFP6T",
+      "row_before": {
+        "state_id": 850141,
+        "ts": 1791411162.6245797,
+        "context_id_bin": "01a1186d0dee63e517ac5538edc7d8da",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850141,
+        "ts": 1791411162.6245797,
+        "context_id_bin": "01a1186d0dee63e517ac5538edc7d8da",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:12:42.624580+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:12:42.624580+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850141
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a1186cea52c266",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:12:42.624580+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PU",
+      "trial": 14,
+      "strategy": "post-commit laundering of an ANCHORED row authored by user:Alex Rivera (household)",
+      "authored_by": "user:Alex Rivera (household)",
+      "author_context": "01M4C6T9RD5PYC22YNYKJVKA5A",
+      "row_before": {
+        "state_id": 850145,
+        "ts": 1791411169.066924,
+        "context_id_bin": "01a1186d270d2dbcc10bd5f4e5b9a8aa",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850145,
+        "ts": 1791411169.066924,
+        "context_id_bin": "01a1186d270d2dbcc10bd5f4e5b9a8aa",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:12:49.066924+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:12:49.066924+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850145
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a1186cea52c266",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:12:49.066924+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PU",
+      "trial": 15,
+      "strategy": "post-commit laundering of an ANCHORED row authored by user:Alex Rivera (household)",
+      "authored_by": "user:Alex Rivera (household)",
+      "author_context": "01M4C6TFW0SW8DRABZCY8V16WE",
+      "row_before": {
+        "state_id": 850150,
+        "ts": 1791411175.309361,
+        "context_id_bin": "01a1186d3f80cf10dc297f6791b09b8e",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850150,
+        "ts": 1791411175.309361,
+        "context_id_bin": "01a1186d3f80cf10dc297f6791b09b8e",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:12:55.309361+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:12:55.309361+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850150
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a1186cea52c266",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:12:55.309361+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PU",
+      "trial": 16,
+      "strategy": "post-commit laundering of an ANCHORED row authored by user:Alex Rivera (household)",
+      "authored_by": "user:Alex Rivera (household)",
+      "author_context": "01M4C6TNX0NYBNDP2HGEA1S96P",
+      "row_before": {
+        "state_id": 850153,
+        "ts": 1791411181.5070403,
+        "context_id_bin": "01a1186d57a0af9756d85183941ca4d6",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850153,
+        "ts": 1791411181.5070403,
+        "context_id_bin": "01a1186d57a0af9756d85183941ca4d6",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:13:01.507040+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:13:01.507040+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850153
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a1186cea52c266",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:13:01.507040+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PU",
+      "trial": 17,
+      "strategy": "post-commit laundering of an ANCHORED row authored by user:Alex Rivera (household)",
+      "authored_by": "user:Alex Rivera (household)",
+      "author_context": "01M4C6TW3H0J68NVA8Y6YTD849",
+      "row_before": {
+        "state_id": 850157,
+        "ts": 1791411187.8601382,
+        "context_id_bin": "01a1186d7071048c8aed48f1bda6a089",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850157,
+        "ts": 1791411187.8601382,
+        "context_id_bin": "01a1186d7071048c8aed48f1bda6a089",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:13:07.860138+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:13:07.860138+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850157
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a1186cea52c266",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:13:07.860138+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PU",
+      "trial": 18,
+      "strategy": "post-commit laundering of an ANCHORED row authored by user:Alex Rivera (household)",
+      "authored_by": "user:Alex Rivera (household)",
+      "author_context": "01M4C6V26ESWMSH8XF2T8XQPJ0",
+      "row_before": {
+        "state_id": 850163,
+        "ts": 1791411194.077816,
+        "context_id_bin": "01a1186d88cecf2998a3af1691dbda40",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850163,
+        "ts": 1791411194.077816,
+        "context_id_bin": "01a1186d88cecf2998a3af1691dbda40",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:13:14.077816+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:13:14.077816+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850163
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a1186d78590594",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:13:14.077816+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PU",
+      "trial": 19,
+      "strategy": "post-commit laundering of an ANCHORED row authored by user:Alex Rivera (household)",
+      "authored_by": "user:Alex Rivera (household)",
+      "author_context": "01M4C6V8AWJ5AZQ32RPW6AKXM7",
+      "row_before": {
+        "state_id": 850165,
+        "ts": 1791411200.5193193,
+        "context_id_bin": "01a1186da15c9155fb8c58b70ca9f687",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850165,
+        "ts": 1791411200.5193193,
+        "context_id_bin": "01a1186da15c9155fb8c58b70ca9f687",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:13:20.519319+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:13:20.519319+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850165
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a1186d78590594",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:13:20.519319+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PU",
+      "trial": 20,
+      "strategy": "post-commit laundering of an ANCHORED row authored by user:Alex Rivera (household)",
+      "authored_by": "user:Alex Rivera (household)",
+      "author_context": "01M4C6VEFSDM7ZDHGS6WP3T4FD",
+      "row_before": {
+        "state_id": 850173,
+        "ts": 1791411206.6818411,
+        "context_id_bin": "01a1186db9f96d0ff6c619372c3d11ed",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850173,
+        "ts": 1791411206.6818411,
+        "context_id_bin": "01a1186db9f96d0ff6c619372c3d11ed",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:13:26.681841+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:13:26.681841+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850173
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a1186d78590594",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:13:26.681841+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PU",
+      "trial": 21,
+      "strategy": "post-commit laundering of an ANCHORED row authored by user:Alex Rivera (household)",
+      "authored_by": "user:Alex Rivera (household)",
+      "author_context": "01M4C6VMFHYBCNDBQ048ND59KC",
+      "row_before": {
+        "state_id": 850175,
+        "ts": 1791411212.8223782,
+        "context_id_bin": "01a1186dd1f1f2d956aee0222ad2a66c",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850175,
+        "ts": 1791411212.8223782,
+        "context_id_bin": "01a1186dd1f1f2d956aee0222ad2a66c",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:13:32.822378+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:13:32.822378+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850175
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a1186d78590594",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:13:32.822378+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PU",
+      "trial": 22,
+      "strategy": "post-commit laundering of an ANCHORED row authored by user:Alex Rivera (household)",
+      "authored_by": "user:Alex Rivera (household)",
+      "author_context": "01M4C6VTGDQDEZSYEVPMBHEWJD",
+      "row_before": {
+        "state_id": 850183,
+        "ts": 1791411218.9958272,
+        "context_id_bin": "01a1186dea0dbb5dfcf9dbb51717724d",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850183,
+        "ts": 1791411218.9958272,
+        "context_id_bin": "01a1186dea0dbb5dfcf9dbb51717724d",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:13:38.995827+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:13:38.995827+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850183
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a1186d78590594",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:13:38.995827+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PU",
+      "trial": 23,
+      "strategy": "post-commit laundering of an ANCHORED row authored by user:Alex Rivera (household)",
+      "authored_by": "user:Alex Rivera (household)",
+      "author_context": "01M4C6W0H1468H2DH7DPQWBMB1",
+      "row_before": {
+        "state_id": 850187,
+        "ts": 1791411225.1449218,
+        "context_id_bin": "01a1186e022121911136276dafc5d161",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850187,
+        "ts": 1791411225.1449218,
+        "context_id_bin": "01a1186e022121911136276dafc5d161",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:13:45.144922+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:13:45.144922+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850187
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a1186d78590594",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:13:45.144922+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PU",
+      "trial": 24,
+      "strategy": "post-commit laundering of an ANCHORED row authored by user:Alex Rivera (household)",
+      "authored_by": "user:Alex Rivera (household)",
+      "author_context": "01M4C6W6H02QT5DDF909N7TSQ6",
+      "row_before": {
+        "state_id": 850189,
+        "ts": 1791411231.283966,
+        "context_id_bin": "01a1186e1a2015f456b5e9026a7d66e6",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850189,
+        "ts": 1791411231.283966,
+        "context_id_bin": "01a1186e1a2015f456b5e9026a7d66e6",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:13:51.283966+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:13:51.283966+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850189
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a1186d78590594",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:13:51.283966+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PU",
+      "trial": 25,
+      "strategy": "post-commit laundering of an ANCHORED row authored by user:Alex Rivera (household)",
+      "authored_by": "user:Alex Rivera (household)",
+      "author_context": "01M4C6WCS3065F1KNXY70REEBY",
+      "row_before": {
+        "state_id": 850195,
+        "ts": 1791411237.694322,
+        "context_id_bin": "01a1186e3323018af0cebdf1c187397e",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850195,
+        "ts": 1791411237.694322,
+        "context_id_bin": "01a1186e3323018af0cebdf1c187397e",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:13:57.694322+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:13:57.694322+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850195
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a1186d78590594",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:13:57.694322+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PU",
+      "trial": 26,
+      "strategy": "post-commit laundering of an ANCHORED row authored by user:Alex Rivera (household)",
+      "authored_by": "user:Alex Rivera (household)",
+      "author_context": "01M4C6WJS18R4YXAFC6V45TTTV",
+      "row_before": {
+        "state_id": 850201,
+        "ts": 1791411243.8195353,
+        "context_id_bin": "01a1186e4b214609eea9ec36c85d6b5b",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850201,
+        "ts": 1791411243.8195353,
+        "context_id_bin": "01a1186e4b214609eea9ec36c85d6b5b",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:14:03.819535+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:14:03.819535+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850201
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a1186e3cd865e0",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:14:03.819535+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PU",
+      "trial": 27,
+      "strategy": "post-commit laundering of an ANCHORED row authored by user:Alex Rivera (household)",
+      "authored_by": "user:Alex Rivera (household)",
+      "author_context": "01M4C6WRRNRWR3FA997BXRGV38",
+      "row_before": {
+        "state_id": 850205,
+        "ts": 1791411249.9688644,
+        "context_id_bin": "01a1186e6315c73037a9293afb886c68",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850205,
+        "ts": 1791411249.9688644,
+        "context_id_bin": "01a1186e6315c73037a9293afb886c68",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:14:09.968864+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:14:09.968864+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850205
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a1186e3cd865e0",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:14:09.968864+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PU",
+      "trial": 28,
+      "strategy": "post-commit laundering of an ANCHORED row authored by user:Alex Rivera (household)",
+      "authored_by": "user:Alex Rivera (household)",
+      "author_context": "01M4C6WYQZ4D0D59XKRX0CK2A8",
+      "row_before": {
+        "state_id": 850209,
+        "ts": 1791411256.0802498,
+        "context_id_bin": "01a1186e7aff2340d2a7b3c740c98948",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850209,
+        "ts": 1791411256.0802498,
+        "context_id_bin": "01a1186e7aff2340d2a7b3c740c98948",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:14:16.080250+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:14:16.080250+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850209
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a1186e3cd865e0",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:14:16.080250+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PU",
+      "trial": 29,
+      "strategy": "post-commit laundering of an ANCHORED row authored by user:Alex Rivera (household)",
+      "authored_by": "user:Alex Rivera (household)",
+      "author_context": "01M4C6X4RBNHNX49957NE8PT63",
+      "row_before": {
+        "state_id": 850214,
+        "ts": 1791411262.2356749,
+        "context_id_bin": "01a1186e930bac6bd225253d5c8b68c3",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850214,
+        "ts": 1791411262.2356749,
+        "context_id_bin": "01a1186e930bac6bd225253d5c8b68c3",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:14:22.235675+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:14:22.235675+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850214
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a1186e89edc407",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:14:22.235675+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PI",
+      "trial": 0,
+      "strategy": "post-commit laundering of an ANCHORED row authored by second integration",
+      "authored_by": "second integration",
+      "author_context": "01M4C71J8KD4PQXQTB48NPF567",
+      "row_before": {
+        "state_id": 850267,
+        "ts": 1791411407.128283,
+        "context_id_bin": "01a11870c913692d7edf4b222b6794c7",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850267,
+        "ts": 1791411407.128283,
+        "context_id_bin": "01a11870c913692d7edf4b222b6794c7",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:16:47.128283+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:16:47.128283+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850267
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a11870910f62b0",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:16:47.128283+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PI",
+      "trial": 1,
+      "strategy": "post-commit laundering of an ANCHORED row authored by second integration",
+      "authored_by": "second integration",
+      "author_context": "01M4C71R71M404KS3NQ5KS7ZY5",
+      "row_before": {
+        "state_id": 850272,
+        "ts": 1791411413.2273285,
+        "context_id_bin": "01a11870e0e1a10049e475b96793ffc5",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850272,
+        "ts": 1791411413.2273285,
+        "context_id_bin": "01a11870e0e1a10049e475b96793ffc5",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:16:53.227329+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:16:53.227329+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850272
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a11870910f62b0",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:16:53.227329+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PI",
+      "trial": 2,
+      "strategy": "post-commit laundering of an ANCHORED row authored by second integration",
+      "authored_by": "second integration",
+      "author_context": "01M4C71Y4QR395C8NCE3YR4YRJ",
+      "row_before": {
+        "state_id": 850274,
+        "ts": 1791411419.2885807,
+        "context_id_bin": "01a11870f897c0d25622ac70fd827b12",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850274,
+        "ts": 1791411419.2885807,
+        "context_id_bin": "01a11870f897c0d25622ac70fd827b12",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:16:59.288581+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:16:59.288581+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850274
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a11870910f62b0",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:16:59.288581+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PI",
+      "trial": 3,
+      "strategy": "post-commit laundering of an ANCHORED row authored by second integration",
+      "authored_by": "second integration",
+      "author_context": "01M4C72411MG2ZW1953ADQ423A",
+      "row_before": {
+        "state_id": 850278,
+        "ts": 1791411425.3179755,
+        "context_id_bin": "01a118711021a405fe05251a9b72086a",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850278,
+        "ts": 1791411425.3179755,
+        "context_id_bin": "01a118711021a405fe05251a9b72086a",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:17:05.317976+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:17:05.317976+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850278
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a11870910f62b0",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:17:05.317976+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PI",
+      "trial": 4,
+      "strategy": "post-commit laundering of an ANCHORED row authored by second integration",
+      "authored_by": "second integration",
+      "author_context": "01M4C729XVRXSY979K3BT6S9KS",
+      "row_before": {
+        "state_id": 850283,
+        "ts": 1791411431.356761,
+        "context_id_bin": "01a1187127bbc773e49d331af46ca679",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850283,
+        "ts": 1791411431.356761,
+        "context_id_bin": "01a1187127bbc773e49d331af46ca679",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:17:11.356761+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:17:11.356761+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850283
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a11870910f62b0",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:17:11.356761+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PI",
+      "trial": 5,
+      "strategy": "post-commit laundering of an ANCHORED row authored by second integration",
+      "authored_by": "second integration",
+      "author_context": "01M4C72FTQ2AKCKYQDH0VGBE9Z",
+      "row_before": {
+        "state_id": 850286,
+        "ts": 1791411437.4005044,
+        "context_id_bin": "01a118713f5712a6c9faed883705b93f",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850286,
+        "ts": 1791411437.4005044,
+        "context_id_bin": "01a118713f5712a6c9faed883705b93f",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:17:17.400504+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:17:17.400504+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850286
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a11870910f62b0",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:17:17.400504+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PI",
+      "trial": 6,
+      "strategy": "post-commit laundering of an ANCHORED row authored by second integration",
+      "authored_by": "second integration",
+      "author_context": "01M4C72NQKH5VBSFQ6B5RQAPM0",
+      "row_before": {
+        "state_id": 850290,
+        "ts": 1791411443.445655,
+        "context_id_bin": "01a1187156f38976bcbee65971755a80",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850290,
+        "ts": 1791411443.445655,
+        "context_id_bin": "01a1187156f38976bcbee65971755a80",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:17:23.445655+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:17:23.445655+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850290
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a11870910f62b0",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:17:23.445655+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PI",
+      "trial": 7,
+      "strategy": "post-commit laundering of an ANCHORED row authored by second integration",
+      "authored_by": "second integration",
+      "author_context": "01M4C72VMJ465QT3XP922RCZ4G",
+      "row_before": {
+        "state_id": 850292,
+        "ts": 1791411449.4916532,
+        "context_id_bin": "01a118716e92218b7d0fb64885867c90",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850292,
+        "ts": 1791411449.4916532,
+        "context_id_bin": "01a118716e92218b7d0fb64885867c90",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:17:29.491653+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:17:29.491653+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850292
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a11870910f62b0",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:17:29.491653+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PI",
+      "trial": 8,
+      "strategy": "post-commit laundering of an ANCHORED row authored by second integration",
+      "authored_by": "second integration",
+      "author_context": "01M4C731GY0QVXF9XEKQCWTZME",
+      "row_before": {
+        "state_id": 850298,
+        "ts": 1791411455.5194516,
+        "context_id_bin": "01a11871861e05f7d7a7ae9dd9cd7e8e",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850298,
+        "ts": 1791411455.5194516,
+        "context_id_bin": "01a11871861e05f7d7a7ae9dd9cd7e8e",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:17:35.519452+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:17:35.519452+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850298
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a11870910f62b0",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:17:35.519452+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PI",
+      "trial": 9,
+      "strategy": "post-commit laundering of an ANCHORED row authored by second integration",
+      "authored_by": "second integration",
+      "author_context": "01M4C737DJEQ18C67KA2VGHQH5",
+      "row_before": {
+        "state_id": 850302,
+        "ts": 1791411461.5555792,
+        "context_id_bin": "01a118719db275c28618f350b708de25",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850302,
+        "ts": 1791411461.5555792,
+        "context_id_bin": "01a118719db275c28618f350b708de25",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:17:41.555579+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:17:41.555579+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850302
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a11870910f62b0",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:17:41.555579+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PI",
+      "trial": 10,
+      "strategy": "post-commit laundering of an ANCHORED row authored by second integration",
+      "authored_by": "second integration",
+      "author_context": "01M4C73DAE55HG3911B6TG5N0C",
+      "row_before": {
+        "state_id": 850304,
+        "ts": 1791411467.6165025,
+        "context_id_bin": "01a11871b54e296301a42159b502d40c",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850304,
+        "ts": 1791411467.6165025,
+        "context_id_bin": "01a11871b54e296301a42159b502d40c",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:17:47.616503+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:17:47.616503+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850304
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a11870910f62b0",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:17:47.616503+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PI",
+      "trial": 11,
+      "strategy": "post-commit laundering of an ANCHORED row authored by second integration",
+      "authored_by": "second integration",
+      "author_context": "01M4C73K7H8PR6AP7ZQ9HT3S8B",
+      "row_before": {
+        "state_id": 850310,
+        "ts": 1791411473.6503263,
+        "context_id_bin": "01a11871ccf145b06558ffba63a1e50b",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850310,
+        "ts": 1791411473.6503263,
+        "context_id_bin": "01a11871ccf145b06558ffba63a1e50b",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:17:53.650326+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:17:53.650326+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850310
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a11870910f62b0",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:17:53.650326+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PI",
+      "trial": 12,
+      "strategy": "post-commit laundering of an ANCHORED row authored by second integration",
+      "authored_by": "second integration",
+      "author_context": "01M4C73S4TZK6R3KPG39V6PKB1",
+      "row_before": {
+        "state_id": 850312,
+        "ts": 1791411479.7096472,
+        "context_id_bin": "01a11871e49afccd81ced01a766b4d61",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850312,
+        "ts": 1791411479.7096472,
+        "context_id_bin": "01a11871e49afccd81ced01a766b4d61",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:17:59.709647+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:17:59.709647+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850312
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a11870910f62b0",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:17:59.709647+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PI",
+      "trial": 13,
+      "strategy": "post-commit laundering of an ANCHORED row authored by second integration",
+      "authored_by": "second integration",
+      "author_context": "01M4C73Z1KXYVXV8AZ0S0ZMQAS",
+      "row_before": {
+        "state_id": 850316,
+        "ts": 1791411485.7486613,
+        "context_id_bin": "01a11871fc33efb7dda15f0641fa5d59",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850316,
+        "ts": 1791411485.7486613,
+        "context_id_bin": "01a11871fc33efb7dda15f0641fa5d59",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:18:05.748661+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:18:05.748661+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850316
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a11870910f62b0",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:18:05.748661+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PI",
+      "trial": 14,
+      "strategy": "post-commit laundering of an ANCHORED row authored by second integration",
+      "authored_by": "second integration",
+      "author_context": "01M4C745G13EFETXGK30HF31EV",
+      "row_before": {
+        "state_id": 850322,
+        "ts": 1791411492.3555543,
+        "context_id_bin": "01a1187216011b9eed76131822f185db",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850322,
+        "ts": 1791411492.3555543,
+        "context_id_bin": "01a1187216011b9eed76131822f185db",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:18:12.355554+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:18:12.355554+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850322
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a11872062eb20c",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:18:12.355554+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PI",
+      "trial": 15,
+      "strategy": "post-commit laundering of an ANCHORED row authored by second integration",
+      "authored_by": "second integration",
+      "author_context": "01M4C74BD3YY78NJEP06ZVEPAW",
+      "row_before": {
+        "state_id": 850324,
+        "ts": 1791411498.4047046,
+        "context_id_bin": "01a118722da3f78e8ac9d601bfb7595c",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850324,
+        "ts": 1791411498.4047046,
+        "context_id_bin": "01a118722da3f78e8ac9d601bfb7595c",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:18:18.404705+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:18:18.404705+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850324
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a11872062eb20c",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:18:18.404705+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PI",
+      "trial": 16,
+      "strategy": "post-commit laundering of an ANCHORED row authored by second integration",
+      "authored_by": "second integration",
+      "author_context": "01M4C74HA0ZZNHE6W8RWNK68FQ",
+      "row_before": {
+        "state_id": 850332,
+        "ts": 1791411504.4498775,
+        "context_id_bin": "01a118724540ffeb171b88c72b3321f7",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850332,
+        "ts": 1791411504.4498775,
+        "context_id_bin": "01a118724540ffeb171b88c72b3321f7",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:18:24.449878+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:18:24.449878+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850332
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a11872062eb20c",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:18:24.449878+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PI",
+      "trial": 17,
+      "strategy": "post-commit laundering of an ANCHORED row authored by second integration",
+      "authored_by": "second integration",
+      "author_context": "01M4C74Q7CB116JE7RS23CMZEN",
+      "row_before": {
+        "state_id": 850334,
+        "ts": 1791411510.511183,
+        "context_id_bin": "01a118725cec58426938f8c886ca7dd5",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850334,
+        "ts": 1791411510.511183,
+        "context_id_bin": "01a118725cec58426938f8c886ca7dd5",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:18:30.511183+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:18:30.511183+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850334
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a11872062eb20c",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:18:30.511183+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PI",
+      "trial": 18,
+      "strategy": "post-commit laundering of an ANCHORED row authored by second integration",
+      "authored_by": "second integration",
+      "author_context": "01M4C74X4ZHME30HKRDQXCQD6Y",
+      "row_before": {
+        "state_id": 850338,
+        "ts": 1791411516.5784159,
+        "context_id_bin": "01a11872749f8d1c3046786dfacbb4de",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850338,
+        "ts": 1791411516.5784159,
+        "context_id_bin": "01a11872749f8d1c3046786dfacbb4de",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:18:36.578416+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:18:36.578416+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850338
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a11872062eb20c",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:18:36.578416+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PI",
+      "trial": 19,
+      "strategy": "post-commit laundering of an ANCHORED row authored by second integration",
+      "authored_by": "second integration",
+      "author_context": "01M4C7531RTAFB08YCXG73NY18",
+      "row_before": {
+        "state_id": 850344,
+        "ts": 1791411522.6173368,
+        "context_id_bin": "01a118728c38d29eb023ccec0e3af828",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850344,
+        "ts": 1791411522.6173368,
+        "context_id_bin": "01a118728c38d29eb023ccec0e3af828",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:18:42.617337+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:18:42.617337+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850344
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a11872774774d6",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:18:42.617337+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PI",
+      "trial": 20,
+      "strategy": "post-commit laundering of an ANCHORED row authored by second integration",
+      "authored_by": "second integration",
+      "author_context": "01M4C758YZHY7WYA4KBE7PGZEE",
+      "row_before": {
+        "state_id": 850348,
+        "ts": 1791411528.6735172,
+        "context_id_bin": "01a11872a3df8f8fcf28935b8f687dce",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850348,
+        "ts": 1791411528.6735172,
+        "context_id_bin": "01a11872a3df8f8fcf28935b8f687dce",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:18:48.673517+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:18:48.673517+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850348
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a11872774774d6",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:18:48.673517+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PI",
+      "trial": 21,
+      "strategy": "post-commit laundering of an ANCHORED row authored by second integration",
+      "authored_by": "second integration",
+      "author_context": "01M4C75EVBR4CK4AYKTDFRJPVA",
+      "row_before": {
+        "state_id": 850350,
+        "ts": 1791411534.7011569,
+        "context_id_bin": "01a11872bb6bc119322bd3d35f895b6a",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850350,
+        "ts": 1791411534.7011569,
+        "context_id_bin": "01a11872bb6bc119322bd3d35f895b6a",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:18:54.701157+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:18:54.701157+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850350
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a11872774774d6",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:18:54.701157+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PI",
+      "trial": 22,
+      "strategy": "post-commit laundering of an ANCHORED row authored by second integration",
+      "authored_by": "second integration",
+      "author_context": "01M4C75MR55PDEDEHSNBQ1KVPJ",
+      "row_before": {
+        "state_id": 850355,
+        "ts": 1791411540.7482493,
+        "context_id_bin": "01a11872d3052d9ae6ba39aaee19eed2",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850355,
+        "ts": 1791411540.7482493,
+        "context_id_bin": "01a11872d3052d9ae6ba39aaee19eed2",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:19:00.748249+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:19:00.748249+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850355
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a11872774774d6",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:19:00.748249+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PI",
+      "trial": 23,
+      "strategy": "post-commit laundering of an ANCHORED row authored by second integration",
+      "authored_by": "second integration",
+      "author_context": "01M4C75TPSE8EYGA18Q3JCXS7R",
+      "row_before": {
+        "state_id": 850358,
+        "ts": 1791411546.8425262,
+        "context_id_bin": "01a11872ead9721de82828b8e4cee4f8",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850358,
+        "ts": 1791411546.8425262,
+        "context_id_bin": "01a11872ead9721de82828b8e4cee4f8",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:19:06.842526+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:19:06.842526+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850358
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a11872774774d6",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:19:06.842526+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PI",
+      "trial": 24,
+      "strategy": "post-commit laundering of an ANCHORED row authored by second integration",
+      "authored_by": "second integration",
+      "author_context": "01M4C760KV21NXSAYA409CR9AR",
+      "row_before": {
+        "state_id": 850360,
+        "ts": 1791411552.8930922,
+        "context_id_bin": "01a11873027b106bdcabca2012cc2558",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850360,
+        "ts": 1791411552.8930922,
+        "context_id_bin": "01a11873027b106bdcabca2012cc2558",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:19:12.893092+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:19:12.893092+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850360
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a11872774774d6",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:19:12.893092+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PI",
+      "trial": 25,
+      "strategy": "post-commit laundering of an ANCHORED row authored by second integration",
+      "authored_by": "second integration",
+      "author_context": "01M4C766HN2NS2H1SX81Z3AY89",
+      "row_before": {
+        "state_id": 850367,
+        "ts": 1791411558.9680386,
+        "context_id_bin": "01a118731a35157228873d407e357909",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850367,
+        "ts": 1791411558.9680386,
+        "context_id_bin": "01a118731a35157228873d407e357909",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:19:18.968039+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:19:18.968039+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850367
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a11872774774d6",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:19:18.968039+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PI",
+      "trial": 26,
+      "strategy": "post-commit laundering of an ANCHORED row authored by second integration",
+      "authored_by": "second integration",
+      "author_context": "01M4C76CF9S7R3HX22ZQ8ZK4T2",
+      "row_before": {
+        "state_id": 850370,
+        "ts": 1791411565.0389886,
+        "context_id_bin": "01a1187331e9c9f038f442fdd1f99342",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850370,
+        "ts": 1791411565.0389886,
+        "context_id_bin": "01a1187331e9c9f038f442fdd1f99342",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:19:25.038989+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:19:25.038989+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850370
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a11872774774d6",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:19:25.038989+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PI",
+      "trial": 27,
+      "strategy": "post-commit laundering of an ANCHORED row authored by second integration",
+      "authored_by": "second integration",
+      "author_context": "01M4C76JCJ59HNF6QK32ZCZQGC",
+      "row_before": {
+        "state_id": 850377,
+        "ts": 1791411571.0944037,
+        "context_id_bin": "01a1187349922a63579af318becfde0c",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850377,
+        "ts": 1791411571.0944037,
+        "context_id_bin": "01a1187349922a63579af318becfde0c",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:19:31.094404+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:19:31.094404+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850377
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a11872774774d6",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:19:31.094404+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PI",
+      "trial": 28,
+      "strategy": "post-commit laundering of an ANCHORED row authored by second integration",
+      "authored_by": "second integration",
+      "author_context": "01M4C76RAP81QSZ38D5TKJT5S7",
+      "row_before": {
+        "state_id": 850380,
+        "ts": 1791411577.177261,
+        "context_id_bin": "01a118736156406f9f8d0d2ea72d1727",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850380,
+        "ts": 1791411577.177261,
+        "context_id_bin": "01a118736156406f9f8d0d2ea72d1727",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:19:37.177261+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:19:37.177261+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850380
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a11872774774d6",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:19:37.177261+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    },
+    {
+      "arm": "PI",
+      "trial": 29,
+      "strategy": "post-commit laundering of an ANCHORED row authored by second integration",
+      "authored_by": "second integration",
+      "author_context": "01M4C76Y8QP1RNH688QSRBY5NJ",
+      "row_before": {
+        "state_id": 850384,
+        "ts": 1791411583.2575998,
+        "context_id_bin": "01a118737917b071589908be70bf16b2",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 850384,
+        "ts": 1791411583.2575998,
+        "context_id_bin": "01a118737917b071589908be70bf16b2",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-07T22:19:43.257600+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-07T22:19:43.257600+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        850384
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a11872774774d6",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-10-07T22:19:43.257600+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true
+    }
+  ],
+  "t_end": 1791411717.5140574
+}

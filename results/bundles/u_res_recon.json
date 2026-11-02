@@ -1,0 +1,4451 @@
+{
+ "data": {
+  "exp/out/stage10_final.json": {
+   "BFP_b2": {
+    "ci_hi": 0.47585764806044584,
+    "ci_lo": 0.38223447492597584,
+    "k": 192,
+    "method": "Clopper-Pearson exact",
+    "n": 448,
+    "prop": 0.42857142857142855
+   },
+   "BFP_homeprov": {
+    "ci_hi": 0.008200298529035463,
+    "ci_lo": 0.0,
+    "k": 0,
+    "method": "Clopper-Pearson exact",
+    "n": 448,
+    "prop": 0.0
+   },
+   "GATE_PASS": true,
+   "capability": {
+    "capability_record": {
+     "actor_id": "none",
+     "actor_position": "in_process_integration",
+     "budget": {
+      "cpu_seconds_max": null,
+      "db_writes_max": 0,
+      "wallclock_window_s": 5
+     },
+     "constraints": {
+      "anchor_key_access": false,
+      "cap_bpf": false,
+      "cap_linux_immutable": false,
+      "clock_control": false,
+      "cross_uid_write": false,
+      "external_anchor_retraction": false,
+      "host_root": false
+     },
+     "knowledge": {
+      "anchor_key_known": false,
+      "anchor_schedule_known": false,
+      "automation_configs": "full",
+      "deployment_topology": "full",
+      "victim_routine_model": "coarse"
+     },
+     "powers": {
+      "db_read": true,
+      "db_write": true,
+      "event_bus_emit": true,
+      "event_bus_listen": true,
+      "fs_read_as_ha_uid": true,
+      "fs_write_as_ha_uid": true,
+      "network_egress": false,
+      "python_exec_in_core": true,
+      "service_call": true
+     },
+     "provenance": {
+      "rka_mission": null,
+      "seed": 0
+     },
+     "schema_version": 1,
+     "substrate": {
+      "envelope": "Pi-shaped cgroup (cpus/memory/blkio)",
+      "kind": "native_aarch64_container",
+      "note": "NOT a Raspberry Pi; absolute latency is not claimed as Pi latency"
+     }
+    }
+   },
+   "n_trials": 448,
+   "per_benign_event": {
+    "BE-11": {
+     "b2": 0,
+     "hp": 0,
+     "n": 64
+    },
+    "BE-2": {
+     "b2": 64,
+     "hp": 0,
+     "n": 64
+    },
+    "BE-3": {
+     "b2": 0,
+     "hp": 0,
+     "n": 64
+    },
+    "BE-4": {
+     "b2": 64,
+     "hp": 0,
+     "n": 64
+    },
+    "BE-5b": {
+     "b2": 64,
+     "hp": 0,
+     "n": 64
+    },
+    "BE-5f": {
+     "b2": 0,
+     "hp": 0,
+     "n": 64
+    },
+    "BE-7": {
+     "b2": 0,
+     "hp": 0,
+     "n": 64
+    }
+   },
+   "rule_of_three_note": "zero events in n trials bounds the rate at ~3/n",
+   "stage": 10,
+   "threshold_cleared": true
+  },
+  "exp/out/stage14_final.json": {
+   "by_age": {
+    "age_200000s": {
+     "detected": 3,
+     "innermost": [
+      "hour"
+     ],
+     "mean_OQ": 0.013180827886710239,
+     "mean_Q": 82.66666666666667,
+     "min_LR": 1.0,
+     "n": 3
+    },
+    "age_3000s": {
+     "detected": 3,
+     "innermost": [
+      "minute"
+     ],
+     "mean_OQ": 0.0008714596949891067,
+     "mean_Q": 7.333333333333333,
+     "min_LR": 1.0,
+     "n": 3
+    },
+    "age_40000s": {
+     "detected": 3,
+     "innermost": [
+      "minute"
+     ],
+     "mean_OQ": 0.0007625272331154685,
+     "mean_Q": 6.666666666666667,
+     "min_LR": 1.0,
+     "n": 3
+    },
+    "age_60s": {
+     "detected": 3,
+     "innermost": [
+      "minute"
+     ],
+     "mean_OQ": 0.0008714596949891067,
+     "mean_Q": 7.333333333333333,
+     "min_LR": 1.0,
+     "n": 3
+    },
+    "age_7200s": {
+     "detected": 3,
+     "innermost": [
+      "minute"
+     ],
+     "mean_OQ": 0.0008714596949891067,
+     "mean_Q": 7.333333333333333,
+     "min_LR": 1.0,
+     "n": 3
+    },
+    "age_900s": {
+     "detected": 3,
+     "innermost": [
+      "minute"
+     ],
+     "mean_OQ": 0.0008714596949891067,
+     "mean_Q": 7.333333333333333,
+     "min_LR": 1.0,
+     "n": 3
+    }
+   },
+   "capability": {
+    "capability_record": {
+     "actor_id": "mal_integration_v1",
+     "actor_position": "in_process_integration",
+     "budget": {
+      "cpu_seconds_max": null,
+      "db_writes_max": 2,
+      "wallclock_window_s": 5
+     },
+     "constraints": {
+      "anchor_key_access": false,
+      "cap_bpf": false,
+      "cap_linux_immutable": false,
+      "clock_control": false,
+      "cross_uid_write": false,
+      "external_anchor_retraction": false,
+      "host_root": false
+     },
+     "knowledge": {
+      "anchor_key_known": false,
+      "anchor_schedule_known": false,
+      "automation_configs": "full",
+      "deployment_topology": "full",
+      "victim_routine_model": "coarse"
+     },
+     "powers": {
+      "db_read": true,
+      "db_write": true,
+      "event_bus_emit": true,
+      "event_bus_listen": true,
+      "fs_read_as_ha_uid": true,
+      "fs_write_as_ha_uid": true,
+      "network_egress": false,
+      "python_exec_in_core": true,
+      "service_call": true
+     },
+     "provenance": {
+      "rka_mission": null,
+      "seed": 0
+     },
+     "schema_version": 1,
+     "substrate": {
+      "envelope": "Pi-shaped cgroup (cpus/memory/blkio)",
+      "kind": "native_aarch64_container",
+      "note": "NOT a Raspberry Pi; absolute latency is not claimed as Pi latency"
+     }
+    }
+   },
+   "prediction": "staircase: OQ steps up as finer granularities are pruned",
+   "retention_policy": {
+    "hour": 7776000.0,
+    "minute": 86400.0,
+    "second": 3600.0
+   },
+   "rows": [
+    {
+     "LR": 1.0,
+     "OQ": 0.000980392156862745,
+     "Q": 8,
+     "T": 2,
+     "age_s": 60.0,
+     "detected": true,
+     "innermost_gran": "minute",
+     "seed": 71,
+     "surviving_segments": {
+      "hour": 85,
+      "minute": 1000,
+      "second": 68
+     }
+    },
+    {
+     "LR": 1.0,
+     "OQ": 0.000980392156862745,
+     "Q": 8,
+     "T": 2,
+     "age_s": 900.0,
+     "detected": true,
+     "innermost_gran": "minute",
+     "seed": 71,
+     "surviving_segments": {
+      "hour": 85,
+      "minute": 1000,
+      "second": 68
+     }
+    },
+    {
+     "LR": 1.0,
+     "OQ": 0.000980392156862745,
+     "Q": 8,
+     "T": 2,
+     "age_s": 3000.0,
+     "detected": true,
+     "innermost_gran": "minute",
+     "seed": 71,
+     "surviving_segments": {
+      "hour": 85,
+      "minute": 1000,
+      "second": 68
+     }
+    },
+    {
+     "LR": 1.0,
+     "OQ": 0.000980392156862745,
+     "Q": 8,
+     "T": 2,
+     "age_s": 7200.0,
+     "detected": true,
+     "innermost_gran": "minute",
+     "seed": 71,
+     "surviving_segments": {
+      "hour": 85,
+      "minute": 1000,
+      "second": 68
+     }
+    },
+    {
+     "LR": 1.0,
+     "OQ": 0.0008169934640522876,
+     "Q": 7,
+     "T": 2,
+     "age_s": 40000.0,
+     "detected": true,
+     "innermost_gran": "minute",
+     "seed": 71,
+     "surviving_segments": {
+      "hour": 85,
+      "minute": 1000,
+      "second": 68
+     }
+    },
+    {
+     "LR": 1.0,
+     "OQ": 0.01258169934640523,
+     "Q": 79,
+     "T": 2,
+     "age_s": 200000.0,
+     "detected": true,
+     "innermost_gran": "hour",
+     "seed": 71,
+     "surviving_segments": {
+      "hour": 85,
+      "minute": 1000,
+      "second": 68
+     }
+    },
+    {
+     "LR": 1.0,
+     "OQ": 0.000980392156862745,
+     "Q": 8,
+     "T": 2,
+     "age_s": 60.0,
+     "detected": true,
+     "innermost_gran": "minute",
+     "seed": 72,
+     "surviving_segments": {
+      "hour": 85,
+      "minute": 998,
+      "second": 61
+     }
+    },
+    {
+     "LR": 1.0,
+     "OQ": 0.000980392156862745,
+     "Q": 8,
+     "T": 2,
+     "age_s": 900.0,
+     "detected": true,
+     "innermost_gran": "minute",
+     "seed": 72,
+     "surviving_segments": {
+      "hour": 85,
+      "minute": 998,
+      "second": 61
+     }
+    },
+    {
+     "LR": 1.0,
+     "OQ": 0.000980392156862745,
+     "Q": 8,
+     "T": 2,
+     "age_s": 3000.0,
+     "detected": true,
+     "innermost_gran": "minute",
+     "seed": 72,
+     "surviving_segments": {
+      "hour": 85,
+      "minute": 998,
+      "second": 61
+     }
+    },
+    {
+     "LR": 1.0,
+     "OQ": 0.000980392156862745,
+     "Q": 8,
+     "T": 2,
+     "age_s": 7200.0,
+     "detected": true,
+     "innermost_gran": "minute",
+     "seed": 72,
+     "surviving_segments": {
+      "hour": 85,
+      "minute": 998,
+      "second": 61
+     }
+    },
+    {
+     "LR": 1.0,
+     "OQ": 0.00065359477124183,
+     "Q": 6,
+     "T": 2,
+     "age_s": 40000.0,
+     "detected": true,
+     "innermost_gran": "minute",
+     "seed": 72,
+     "surviving_segments": {
+      "hour": 85,
+      "minute": 998,
+      "second": 61
+     }
+    },
+    {
+     "LR": 1.0,
+     "OQ": 0.012745098039215686,
+     "Q": 80,
+     "T": 2,
+     "age_s": 200000.0,
+     "detected": true,
+     "innermost_gran": "hour",
+     "seed": 72,
+     "surviving_segments": {
+      "hour": 85,
+      "minute": 998,
+      "second": 61
+     }
+    },
+    {
+     "LR": 1.0,
+     "OQ": 0.00065359477124183,
+     "Q": 6,
+     "T": 2,
+     "age_s": 60.0,
+     "detected": true,
+     "innermost_gran": "minute",
+     "seed": 73,
+     "surviving_segments": {
+      "hour": 85,
+      "minute": 1015,
+      "second": 76
+     }
+    },
+    {
+     "LR": 1.0,
+     "OQ": 0.00065359477124183,
+     "Q": 6,
+     "T": 2,
+     "age_s": 900.0,
+     "detected": true,
+     "innermost_gran": "minute",
+     "seed": 73,
+     "surviving_segments": {
+      "hour": 85,
+      "minute": 1015,
+      "second": 76
+     }
+    },
+    {
+     "LR": 1.0,
+     "OQ": 0.00065359477124183,
+     "Q": 6,
+     "T": 2,
+     "age_s": 3000.0,
+     "detected": true,
+     "innermost_gran": "minute",
+     "seed": 73,
+     "surviving_segments": {
+      "hour": 85,
+      "minute": 1015,
+      "second": 76
+     }
+    },
+    {
+     "LR": 1.0,
+     "OQ": 0.00065359477124183,
+     "Q": 6,
+     "T": 2,
+     "age_s": 7200.0,
+     "detected": true,
+     "innermost_gran": "minute",
+     "seed": 73,
+     "surviving_segments": {
+      "hour": 85,
+      "minute": 1015,
+      "second": 76
+     }
+    },
+    {
+     "LR": 1.0,
+     "OQ": 0.0008169934640522876,
+     "Q": 7,
+     "T": 2,
+     "age_s": 40000.0,
+     "detected": true,
+     "innermost_gran": "minute",
+     "seed": 73,
+     "surviving_segments": {
+      "hour": 85,
+      "minute": 1015,
+      "second": 76
+     }
+    },
+    {
+     "LR": 1.0,
+     "OQ": 0.014215686274509804,
+     "Q": 89,
+     "T": 2,
+     "age_s": 200000.0,
+     "detected": true,
+     "innermost_gran": "hour",
+     "seed": 73,
+     "surviving_segments": {
+      "hour": 85,
+      "minute": 1015,
+      "second": 76
+     }
+    }
+   ],
+   "stage": 14
+  },
+  "exp/out/stage18_corrected.json": {
+   "BFP_b2_livehub": {
+    "ci_hi": 0.5218237501049814,
+    "ci_lo": 0.0,
+    "k": 0,
+    "method": "Clopper-Pearson exact",
+    "n": 5,
+    "prop": 0.0
+   },
+   "BFP_homeprov_livehub": {
+    "ci_hi": 0.5218237501049814,
+    "ci_lo": 0.0,
+    "k": 0,
+    "method": "Clopper-Pearson exact",
+    "n": 5,
+    "prop": 0.0
+   },
+   "GATE_PASS": true,
+   "capability": {
+    "capability_record": {
+     "actor_id": "none",
+     "actor_position": "in_process_integration",
+     "budget": {
+      "cpu_seconds_max": null,
+      "db_writes_max": 0,
+      "wallclock_window_s": 5
+     },
+     "constraints": {
+      "anchor_key_access": false,
+      "cap_bpf": false,
+      "cap_linux_immutable": false,
+      "clock_control": false,
+      "cross_uid_write": false,
+      "external_anchor_retraction": false,
+      "host_root": false
+     },
+     "knowledge": {
+      "anchor_key_known": false,
+      "anchor_schedule_known": false,
+      "automation_configs": "full",
+      "deployment_topology": "full",
+      "victim_routine_model": "coarse"
+     },
+     "powers": {
+      "db_read": true,
+      "db_write": true,
+      "event_bus_emit": true,
+      "event_bus_listen": true,
+      "fs_read_as_ha_uid": true,
+      "fs_write_as_ha_uid": true,
+      "network_egress": false,
+      "python_exec_in_core": true,
+      "service_call": true
+     },
+     "provenance": {
+      "rka_mission": null,
+      "seed": 0
+     },
+     "schema_version": 1,
+     "substrate": {
+      "envelope": "Pi-shaped cgroup (cpus/memory/blkio)",
+      "kind": "native_aarch64_container",
+      "note": "NOT a Raspberry Pi; absolute latency is not claimed as Pi latency"
+     }
+    }
+   },
+   "n": 5,
+   "rows": [
+    {
+     "ack": {
+      "cmd": "reload",
+      "did": "automation.reload",
+      "ok": true
+     },
+     "b2_alarm": 0.0,
+     "be": "BE-6",
+     "hp_alarm": 0.0,
+     "new_nodes": 4,
+     "note": "automation/YAML integration reload",
+     "raw": 0
+    },
+    {
+     "ack": {
+      "cmd": "interleave",
+      "did": "8 concurrent service calls",
+      "ok": true
+     },
+     "b2_alarm": 0.0,
+     "be": "BE-8",
+     "hp_alarm": 0.0,
+     "new_nodes": 32,
+     "note": "8 concurrent service calls, live hub",
+     "raw": 0
+    },
+    {
+     "ack": {
+      "ok": true,
+      "probe": "BUSY OperationalError"
+     },
+     "b2_alarm": 0.0,
+     "be": "BE-10",
+     "hp_alarm": 0.0,
+     "new_nodes": 34,
+     "note": "transient write failure (exclusive lock)",
+     "raw": 0
+    },
+    {
+     "ack": null,
+     "b2_alarm": 0.0,
+     "be": "BE-1",
+     "hp_alarm": 0.0,
+     "new_nodes": 532,
+     "note": "full HA restart",
+     "raw": 0
+    },
+    {
+     "ack": null,
+     "b2_alarm": 0.0,
+     "be": "BE-9",
+     "hp_alarm": 0.0,
+     "new_nodes": 1038,
+     "note": "clean shutdown then start",
+     "raw": 0
+    }
+   ],
+   "stage": 18
+  },
+  "exp/out/stage19_final.json": {
+   "C1_vs_B2": {
+    "arm_a": {
+     "ci_hi": 1.0,
+     "ci_lo": 0.6305833524471807,
+     "k": 8,
+     "method": "Clopper-Pearson exact",
+     "n": 8,
+     "prop": 1.0
+    },
+    "arm_b": {
+     "ci_hi": 0.3694166475528192,
+     "ci_lo": 0.0,
+     "k": 0,
+     "method": "Clopper-Pearson exact",
+     "n": 8,
+     "prop": 0.0
+    },
+    "discordant_pairs": 8,
+    "n_pairs": 8,
+    "note": "outcome is CONSTANT in both arms; a bootstrap CI on the difference would be zero-width by construction"
+   },
+   "C2_OQ_vs_B3": {
+    "ci_hi": 0.9993423004330323,
+    "ci_lo": 0.998914120359613,
+    "degenerate": false,
+    "excludes_zero": true,
+    "mean_diff": 0.9991462563139213,
+    "n_pairs": 24,
+    "warning": null
+   },
+   "C3_vs_B4": {
+    "arm_a": {
+     "ci_hi": 1.0,
+     "ci_lo": 0.6305833524471807,
+     "k": 8,
+     "method": "Clopper-Pearson exact",
+     "n": 8,
+     "prop": 1.0
+    },
+    "arm_b": {
+     "ci_hi": 0.3694166475528192,
+     "ci_lo": 0.0,
+     "k": 0,
+     "method": "Clopper-Pearson exact",
+     "n": 8,
+     "prop": 0.0
+    },
+    "discordant_pairs": 8,
+    "n_pairs": 8,
+    "note": "outcome is CONSTANT in both arms; a bootstrap CI on the difference would be zero-width by construction"
+   },
+   "GATE_PASS": true,
+   "LR_exact": {
+    "ci_hi": 1.0,
+    "ci_lo": 0.8575264022774743,
+    "k": 24,
+    "method": "Clopper-Pearson exact",
+    "n": 24,
+    "prop": 1.0
+   },
+   "MissRassert_exact": {
+    "ci_hi": 1.0,
+    "ci_lo": 0.8575264022774743,
+    "k": 24,
+    "method": "Clopper-Pearson exact",
+    "n": 24,
+    "prop": 1.0
+   },
+   "OQ": {
+    "ci_hi": 0.0008734852272452605,
+    "ci_lo": 0.0005249187051454608,
+    "mean": 0.0006849201247821875,
+    "n": 24
+   },
+   "RA": {
+    "ci_hi": 1.0,
+    "ci_lo": 1.0,
+    "mean": 1.0,
+    "n": 24
+   },
+   "capability": {
+    "capability_record": {
+     "actor_id": "mal_integration_v1",
+     "actor_position": "in_process_integration",
+     "budget": {
+      "cpu_seconds_max": null,
+      "db_writes_max": 7,
+      "wallclock_window_s": 5
+     },
+     "constraints": {
+      "anchor_key_access": false,
+      "cap_bpf": false,
+      "cap_linux_immutable": false,
+      "clock_control": false,
+      "cross_uid_write": false,
+      "external_anchor_retraction": false,
+      "host_root": false
+     },
+     "knowledge": {
+      "anchor_key_known": false,
+      "anchor_schedule_known": false,
+      "automation_configs": "full",
+      "deployment_topology": "full",
+      "victim_routine_model": "coarse"
+     },
+     "powers": {
+      "db_read": true,
+      "db_write": true,
+      "event_bus_emit": true,
+      "event_bus_listen": true,
+      "fs_read_as_ha_uid": true,
+      "fs_write_as_ha_uid": true,
+      "network_egress": false,
+      "python_exec_in_core": true,
+      "service_call": true
+     },
+     "provenance": {
+      "rka_mission": null,
+      "seed": 0
+     },
+     "schema_version": 1,
+     "substrate": {
+      "envelope": "Pi-shaped cgroup (cpus/memory/blkio)",
+      "kind": "native_aarch64_container",
+      "note": "NOT a Raspberry Pi; absolute latency is not claimed as Pi latency"
+     }
+    }
+   },
+   "held_ids": [
+    "dep_100_05_05_01_10_7d",
+    "dep_10_05_10_06_100_1d",
+    "dep_25_40_20_03_1000_90d",
+    "dep_50_05_10_01_100_90d",
+    "dep_50_05_10_06_10_1d",
+    "dep_50_15_10_03_100_7d",
+    "dep_50_40_05_01_100_90d",
+    "dep_50_40_10_06_1000_90d"
+   ],
+   "n_holdout_deployments": 8,
+   "n_rows": 24,
+   "stage": 19
+  },
+  "exp/out/stage24_final.json": {
+   "capability": {
+    "capability_record": {
+     "actor_id": "mal_integration_v1",
+     "actor_position": "in_process_integration",
+     "budget": {
+      "cpu_seconds_max": null,
+      "db_writes_max": 0,
+      "wallclock_window_s": 5
+     },
+     "constraints": {
+      "anchor_key_access": false,
+      "cap_bpf": false,
+      "cap_linux_immutable": false,
+      "clock_control": false,
+      "cross_uid_write": false,
+      "external_anchor_retraction": false,
+      "host_root": false
+     },
+     "knowledge": {
+      "anchor_key_known": false,
+      "anchor_schedule_known": false,
+      "automation_configs": "full",
+      "deployment_topology": "full",
+      "victim_routine_model": "coarse"
+     },
+     "powers": {
+      "db_read": true,
+      "db_write": true,
+      "event_bus_emit": true,
+      "event_bus_listen": true,
+      "fs_read_as_ha_uid": true,
+      "fs_write_as_ha_uid": true,
+      "network_egress": false,
+      "python_exec_in_core": true,
+      "service_call": true
+     },
+     "provenance": {
+      "rka_mission": null,
+      "seed": 0
+     },
+     "schema_version": 1,
+     "substrate": {
+      "envelope": "Pi-shaped cgroup (cpus/memory/blkio)",
+      "kind": "native_aarch64_container",
+      "note": "NOT a Raspberry Pi; absolute latency is not claimed as Pi latency"
+     }
+    }
+   },
+   "n_detected": 16,
+   "n_rows": 16,
+   "rows": [
+    {
+     "R0_void": {
+      "OQ": 1.0,
+      "Q": 2650,
+      "recall": 1.0
+     },
+     "R1_1h": {
+      "OQ": 1.0,
+      "Q": 2650,
+      "recall": 1.0
+     },
+     "R1_1min": {
+      "OQ": 0.08113207547169811,
+      "Q": 215,
+      "recall": 1.0
+     },
+     "R1_1s": {
+      "OQ": 0.03811320754716981,
+      "Q": 101,
+      "recall": 1.0
+     },
+     "R2_segments": {
+      "OQ": 0.0369811320754717,
+      "Q": 98,
+      "recall": 1.0
+     },
+     "R3_ceiling": {
+      "OQ": 0.0,
+      "Q": 2,
+      "recall": 1.0
+     },
+     "R4_component": {
+      "OQ": 0.0022641509433962265,
+      "Q": 6,
+      "recall": 1.0
+     },
+     "R5_homeprov": {
+      "OQ": 0.0022641509433962265,
+      "Q": 6,
+      "recall": 1.0
+     },
+     "T": 2,
+     "U": 2650,
+     "detected": true,
+     "ft": "FT-1",
+     "seed": 201
+    },
+    {
+     "R0_void": {
+      "OQ": 0.9992458521870287,
+      "Q": 2652,
+      "recall": 1.0
+     },
+     "R1_1h": {
+      "OQ": 0.9992458521870287,
+      "Q": 2652,
+      "recall": 1.0
+     },
+     "R1_1min": {
+      "OQ": 0.08107088989441931,
+      "Q": 217,
+      "recall": 1.0
+     },
+     "R1_1s": {
+      "OQ": 0.03808446455505279,
+      "Q": 103,
+      "recall": 1.0
+     },
+     "R2_segments": {
+      "OQ": 0.03695324283559578,
+      "Q": 100,
+      "recall": 1.0
+     },
+     "R3_ceiling": {
+      "OQ": 0.0,
+      "Q": 2,
+      "recall": 1.0
+     },
+     "R4_component": {
+      "OQ": 0.0022624434389140274,
+      "Q": 8,
+      "recall": 1.0
+     },
+     "R5_homeprov": {
+      "OQ": 0.0022624434389140274,
+      "Q": 8,
+      "recall": 1.0
+     },
+     "T": 2,
+     "U": 2652,
+     "detected": true,
+     "ft": "FT-4",
+     "seed": 201
+    },
+    {
+     "R0_void": {
+      "OQ": 1.0,
+      "Q": 2650,
+      "recall": 1.0
+     },
+     "R1_1h": {
+      "OQ": 1.0,
+      "Q": 2650,
+      "recall": 1.0
+     },
+     "R1_1min": {
+      "OQ": 0.06792452830188679,
+      "Q": 180,
+      "recall": 1.0
+     },
+     "R1_1s": {
+      "OQ": 0.027169811320754716,
+      "Q": 72,
+      "recall": 1.0
+     },
+     "R2_segments": {
+      "OQ": 0.027169811320754716,
+      "Q": 72,
+      "recall": 1.0
+     },
+     "R3_ceiling": {
+      "OQ": 0.0,
+      "Q": 2,
+      "recall": 1.0
+     },
+     "R4_component": {
+      "OQ": 0.0022641509433962265,
+      "Q": 6,
+      "recall": 1.0
+     },
+     "R5_homeprov": {
+      "OQ": 0.0022641509433962265,
+      "Q": 6,
+      "recall": 1.0
+     },
+     "T": 2,
+     "U": 2650,
+     "detected": true,
+     "ft": "FT-1",
+     "seed": 202
+    },
+    {
+     "R0_void": {
+      "OQ": 0.9992458521870287,
+      "Q": 2652,
+      "recall": 1.0
+     },
+     "R1_1h": {
+      "OQ": 0.9992458521870287,
+      "Q": 2652,
+      "recall": 1.0
+     },
+     "R1_1min": {
+      "OQ": 0.06787330316742081,
+      "Q": 182,
+      "recall": 1.0
+     },
+     "R1_1s": {
+      "OQ": 0.027149321266968326,
+      "Q": 74,
+      "recall": 1.0
+     },
+     "R2_segments": {
+      "OQ": 0.027149321266968326,
+      "Q": 74,
+      "recall": 1.0
+     },
+     "R3_ceiling": {
+      "OQ": 0.0,
+      "Q": 2,
+      "recall": 1.0
+     },
+     "R4_component": {
+      "OQ": 0.0022624434389140274,
+      "Q": 8,
+      "recall": 1.0
+     },
+     "R5_homeprov": {
+      "OQ": 0.0022624434389140274,
+      "Q": 8,
+      "recall": 1.0
+     },
+     "T": 2,
+     "U": 2652,
+     "detected": true,
+     "ft": "FT-4",
+     "seed": 202
+    },
+    {
+     "R0_void": {
+      "OQ": 1.0,
+      "Q": 2650,
+      "recall": 1.0
+     },
+     "R1_1h": {
+      "OQ": 1.0,
+      "Q": 2650,
+      "recall": 1.0
+     },
+     "R1_1min": {
+      "OQ": 0.08339622641509434,
+      "Q": 221,
+      "recall": 1.0
+     },
+     "R1_1s": {
+      "OQ": 0.03547169811320755,
+      "Q": 94,
+      "recall": 1.0
+     },
+     "R2_segments": {
+      "OQ": 0.033962264150943396,
+      "Q": 90,
+      "recall": 1.0
+     },
+     "R3_ceiling": {
+      "OQ": 0.0,
+      "Q": 2,
+      "recall": 1.0
+     },
+     "R4_component": {
+      "OQ": 0.0022641509433962265,
+      "Q": 6,
+      "recall": 1.0
+     },
+     "R5_homeprov": {
+      "OQ": 0.0018867924528301887,
+      "Q": 5,
+      "recall": 1.0
+     },
+     "T": 2,
+     "U": 2650,
+     "detected": true,
+     "ft": "FT-1",
+     "seed": 203
+    },
+    {
+     "R0_void": {
+      "OQ": 0.9992458521870287,
+      "Q": 2652,
+      "recall": 1.0
+     },
+     "R1_1h": {
+      "OQ": 0.9992458521870287,
+      "Q": 2652,
+      "recall": 1.0
+     },
+     "R1_1min": {
+      "OQ": 0.08333333333333333,
+      "Q": 223,
+      "recall": 1.0
+     },
+     "R1_1s": {
+      "OQ": 0.03544494720965309,
+      "Q": 96,
+      "recall": 1.0
+     },
+     "R2_segments": {
+      "OQ": 0.033936651583710405,
+      "Q": 92,
+      "recall": 1.0
+     },
+     "R3_ceiling": {
+      "OQ": 0.0,
+      "Q": 2,
+      "recall": 1.0
+     },
+     "R4_component": {
+      "OQ": 0.001885369532428356,
+      "Q": 7,
+      "recall": 1.0
+     },
+     "R5_homeprov": {
+      "OQ": 0.001885369532428356,
+      "Q": 7,
+      "recall": 1.0
+     },
+     "T": 2,
+     "U": 2652,
+     "detected": true,
+     "ft": "FT-4",
+     "seed": 203
+    },
+    {
+     "R0_void": {
+      "OQ": 1.0,
+      "Q": 2650,
+      "recall": 1.0
+     },
+     "R1_1h": {
+      "OQ": 1.0,
+      "Q": 2650,
+      "recall": 1.0
+     },
+     "R1_1min": {
+      "OQ": 0.06264150943396227,
+      "Q": 166,
+      "recall": 1.0
+     },
+     "R1_1s": {
+      "OQ": 0.025283018867924528,
+      "Q": 67,
+      "recall": 1.0
+     },
+     "R2_segments": {
+      "OQ": 0.02490566037735849,
+      "Q": 66,
+      "recall": 1.0
+     },
+     "R3_ceiling": {
+      "OQ": 0.0,
+      "Q": 2,
+      "recall": 1.0
+     },
+     "R4_component": {
+      "OQ": 0.0015094339622641509,
+      "Q": 4,
+      "recall": 1.0
+     },
+     "R5_homeprov": {
+      "OQ": 0.0015094339622641509,
+      "Q": 4,
+      "recall": 1.0
+     },
+     "T": 2,
+     "U": 2650,
+     "detected": true,
+     "ft": "FT-1",
+     "seed": 204
+    },
+    {
+     "R0_void": {
+      "OQ": 0.9992458521870287,
+      "Q": 2652,
+      "recall": 1.0
+     },
+     "R1_1h": {
+      "OQ": 0.9992458521870287,
+      "Q": 2652,
+      "recall": 1.0
+     },
+     "R1_1min": {
+      "OQ": 0.06259426847662142,
+      "Q": 168,
+      "recall": 1.0
+     },
+     "R1_1s": {
+      "OQ": 0.02526395173453997,
+      "Q": 69,
+      "recall": 1.0
+     },
+     "R2_segments": {
+      "OQ": 0.024886877828054297,
+      "Q": 68,
+      "recall": 1.0
+     },
+     "R3_ceiling": {
+      "OQ": 0.0,
+      "Q": 2,
+      "recall": 1.0
+     },
+     "R4_component": {
+      "OQ": 0.0015082956259426848,
+      "Q": 6,
+      "recall": 1.0
+     },
+     "R5_homeprov": {
+      "OQ": 0.0015082956259426848,
+      "Q": 6,
+      "recall": 1.0
+     },
+     "T": 2,
+     "U": 2652,
+     "detected": true,
+     "ft": "FT-4",
+     "seed": 204
+    },
+    {
+     "R0_void": {
+      "OQ": 1.0,
+      "Q": 2650,
+      "recall": 1.0
+     },
+     "R1_1h": {
+      "OQ": 1.0,
+      "Q": 2650,
+      "recall": 1.0
+     },
+     "R1_1min": {
+      "OQ": 0.07924528301886792,
+      "Q": 210,
+      "recall": 1.0
+     },
+     "R1_1s": {
+      "OQ": 0.03547169811320755,
+      "Q": 94,
+      "recall": 1.0
+     },
+     "R2_segments": {
+      "OQ": 0.03471698113207547,
+      "Q": 92,
+      "recall": 1.0
+     },
+     "R3_ceiling": {
+      "OQ": 0.0,
+      "Q": 2,
+      "recall": 1.0
+     },
+     "R4_component": {
+      "OQ": 0.0026415094339622643,
+      "Q": 7,
+      "recall": 1.0
+     },
+     "R5_homeprov": {
+      "OQ": 0.0018867924528301887,
+      "Q": 5,
+      "recall": 1.0
+     },
+     "T": 2,
+     "U": 2650,
+     "detected": true,
+     "ft": "FT-1",
+     "seed": 205
+    },
+    {
+     "R0_void": {
+      "OQ": 0.9992458521870287,
+      "Q": 2652,
+      "recall": 1.0
+     },
+     "R1_1h": {
+      "OQ": 0.9992458521870287,
+      "Q": 2652,
+      "recall": 1.0
+     },
+     "R1_1min": {
+      "OQ": 0.07918552036199095,
+      "Q": 212,
+      "recall": 1.0
+     },
+     "R1_1s": {
+      "OQ": 0.03544494720965309,
+      "Q": 96,
+      "recall": 1.0
+     },
+     "R2_segments": {
+      "OQ": 0.03469079939668175,
+      "Q": 94,
+      "recall": 1.0
+     },
+     "R3_ceiling": {
+      "OQ": 0.0,
+      "Q": 2,
+      "recall": 1.0
+     },
+     "R4_component": {
+      "OQ": 0.0015082956259426848,
+      "Q": 6,
+      "recall": 1.0
+     },
+     "R5_homeprov": {
+      "OQ": 0.0003770739064856712,
+      "Q": 3,
+      "recall": 1.0
+     },
+     "T": 2,
+     "U": 2652,
+     "detected": true,
+     "ft": "FT-4",
+     "seed": 205
+    },
+    {
+     "R0_void": {
+      "OQ": 1.0,
+      "Q": 2650,
+      "recall": 1.0
+     },
+     "R1_1h": {
+      "OQ": 1.0,
+      "Q": 2650,
+      "recall": 1.0
+     },
+     "R1_1min": {
+      "OQ": 0.0860377358490566,
+      "Q": 228,
+      "recall": 1.0
+     },
+     "R1_1s": {
+      "OQ": 0.03811320754716981,
+      "Q": 101,
+      "recall": 1.0
+     },
+     "R2_segments": {
+      "OQ": 0.03773584905660377,
+      "Q": 100,
+      "recall": 1.0
+     },
+     "R3_ceiling": {
+      "OQ": 0.0,
+      "Q": 2,
+      "recall": 1.0
+     },
+     "R4_component": {
+      "OQ": 0.0018867924528301887,
+      "Q": 5,
+      "recall": 1.0
+     },
+     "R5_homeprov": {
+      "OQ": 0.0018867924528301887,
+      "Q": 5,
+      "recall": 1.0
+     },
+     "T": 2,
+     "U": 2650,
+     "detected": true,
+     "ft": "FT-1",
+     "seed": 206
+    },
+    {
+     "R0_void": {
+      "OQ": 0.9992458521870287,
+      "Q": 2652,
+      "recall": 1.0
+     },
+     "R1_1h": {
+      "OQ": 0.9992458521870287,
+      "Q": 2652,
+      "recall": 1.0
+     },
+     "R1_1min": {
+      "OQ": 0.08597285067873303,
+      "Q": 230,
+      "recall": 1.0
+     },
+     "R1_1s": {
+      "OQ": 0.03808446455505279,
+      "Q": 103,
+      "recall": 1.0
+     },
+     "R2_segments": {
+      "OQ": 0.03770739064856712,
+      "Q": 102,
+      "recall": 1.0
+     },
+     "R3_ceiling": {
+      "OQ": 0.0,
+      "Q": 2,
+      "recall": 1.0
+     },
+     "R4_component": {
+      "OQ": 0.001885369532428356,
+      "Q": 7,
+      "recall": 1.0
+     },
+     "R5_homeprov": {
+      "OQ": 0.001885369532428356,
+      "Q": 7,
+      "recall": 1.0
+     },
+     "T": 2,
+     "U": 2652,
+     "detected": true,
+     "ft": "FT-4",
+     "seed": 206
+    },
+    {
+     "R0_void": {
+      "OQ": 1.0,
+      "Q": 2650,
+      "recall": 1.0
+     },
+     "R1_1h": {
+      "OQ": 1.0,
+      "Q": 2650,
+      "recall": 1.0
+     },
+     "R1_1min": {
+      "OQ": 0.07886792452830188,
+      "Q": 209,
+      "recall": 1.0
+     },
+     "R1_1s": {
+      "OQ": 0.03245283018867925,
+      "Q": 86,
+      "recall": 1.0
+     },
+     "R2_segments": {
+      "OQ": 0.030943396226415093,
+      "Q": 82,
+      "recall": 1.0
+     },
+     "R3_ceiling": {
+      "OQ": 0.0,
+      "Q": 2,
+      "recall": 1.0
+     },
+     "R4_component": {
+      "OQ": 0.0015094339622641509,
+      "Q": 4,
+      "recall": 1.0
+     },
+     "R5_homeprov": {
+      "OQ": 0.0015094339622641509,
+      "Q": 4,
+      "recall": 1.0
+     },
+     "T": 2,
+     "U": 2650,
+     "detected": true,
+     "ft": "FT-1",
+     "seed": 207
+    },
+    {
+     "R0_void": {
+      "OQ": 0.9992458521870287,
+      "Q": 2652,
+      "recall": 1.0
+     },
+     "R1_1h": {
+      "OQ": 0.9992458521870287,
+      "Q": 2652,
+      "recall": 1.0
+     },
+     "R1_1min": {
+      "OQ": 0.07880844645550528,
+      "Q": 211,
+      "recall": 1.0
+     },
+     "R1_1s": {
+      "OQ": 0.032428355957767725,
+      "Q": 88,
+      "recall": 1.0
+     },
+     "R2_segments": {
+      "OQ": 0.03092006033182504,
+      "Q": 84,
+      "recall": 1.0
+     },
+     "R3_ceiling": {
+      "OQ": 0.0,
+      "Q": 2,
+      "recall": 1.0
+     },
+     "R4_component": {
+      "OQ": 0.0015082956259426848,
+      "Q": 6,
+      "recall": 1.0
+     },
+     "R5_homeprov": {
+      "OQ": 0.0015082956259426848,
+      "Q": 6,
+      "recall": 1.0
+     },
+     "T": 2,
+     "U": 2652,
+     "detected": true,
+     "ft": "FT-4",
+     "seed": 207
+    },
+    {
+     "R0_void": {
+      "OQ": 1.0,
+      "Q": 2650,
+      "recall": 1.0
+     },
+     "R1_1h": {
+      "OQ": 1.0,
+      "Q": 2650,
+      "recall": 1.0
+     },
+     "R1_1min": {
+      "OQ": 0.08188679245283019,
+      "Q": 217,
+      "recall": 1.0
+     },
+     "R1_1s": {
+      "OQ": 0.035849056603773584,
+      "Q": 95,
+      "recall": 1.0
+     },
+     "R2_segments": {
+      "OQ": 0.03509433962264151,
+      "Q": 93,
+      "recall": 1.0
+     },
+     "R3_ceiling": {
+      "OQ": 0.0,
+      "Q": 2,
+      "recall": 1.0
+     },
+     "R4_component": {
+      "OQ": 0.0018867924528301887,
+      "Q": 5,
+      "recall": 1.0
+     },
+     "R5_homeprov": {
+      "OQ": 0.0018867924528301887,
+      "Q": 5,
+      "recall": 1.0
+     },
+     "T": 2,
+     "U": 2650,
+     "detected": true,
+     "ft": "FT-1",
+     "seed": 208
+    },
+    {
+     "R0_void": {
+      "OQ": 0.9992458521870287,
+      "Q": 2652,
+      "recall": 1.0
+     },
+     "R1_1h": {
+      "OQ": 0.9992458521870287,
+      "Q": 2652,
+      "recall": 1.0
+     },
+     "R1_1min": {
+      "OQ": 0.08182503770739065,
+      "Q": 219,
+      "recall": 1.0
+     },
+     "R1_1s": {
+      "OQ": 0.03582202111613876,
+      "Q": 97,
+      "recall": 1.0
+     },
+     "R2_segments": {
+      "OQ": 0.03506787330316742,
+      "Q": 95,
+      "recall": 1.0
+     },
+     "R3_ceiling": {
+      "OQ": 0.0,
+      "Q": 2,
+      "recall": 1.0
+     },
+     "R4_component": {
+      "OQ": 0.001885369532428356,
+      "Q": 7,
+      "recall": 1.0
+     },
+     "R5_homeprov": {
+      "OQ": 0.001885369532428356,
+      "Q": 7,
+      "recall": 1.0
+     },
+     "T": 2,
+     "U": 2652,
+     "detected": true,
+     "ft": "FT-4",
+     "seed": 208
+    }
+   ],
+   "stage": 24,
+   "summary": {
+    "R0_void": {
+     "mean_OQ": 0.9996229260935143,
+     "mean_Q": 2651.0,
+     "mean_recall": 1.0,
+     "min_recall": 1.0,
+     "n": 16,
+     "sound_always": true
+    },
+    "R1_1h": {
+     "mean_OQ": 0.9996229260935143,
+     "mean_Q": 2651.0,
+     "mean_recall": 1.0,
+     "min_recall": 1.0,
+     "n": 16,
+     "sound_always": true
+    },
+    "R1_1min": {
+     "mean_OQ": 0.07761223284669455,
+     "mean_Q": 206.75,
+     "mean_recall": 1.0,
+     "min_recall": 1.0,
+     "n": 16,
+     "sound_always": true
+    },
+    "R1_1s": {
+     "mean_OQ": 0.03347793761916958,
+     "mean_Q": 89.75,
+     "mean_recall": 1.0,
+     "min_recall": 1.0,
+     "n": 16,
+     "sound_always": true
+    },
+    "R2_segments": {
+     "mean_OQ": 0.032676353197302145,
+     "mean_Q": 87.625,
+     "mean_recall": 1.0,
+     "min_recall": 1.0,
+     "n": 16,
+     "sound_always": true
+    },
+    "R3_ceiling": {
+     "mean_OQ": 0.0,
+     "mean_Q": 2.0,
+     "mean_recall": 1.0,
+     "min_recall": 1.0,
+     "n": 16,
+     "sound_always": true
+    },
+    "R4_component": {
+     "mean_OQ": 0.00193326859045505,
+     "mean_Q": 6.125,
+     "mean_recall": 1.0,
+     "min_recall": 1.0,
+     "n": 16,
+     "sound_always": true
+    },
+    "R5_homeprov": {
+     "mean_OQ": 0.0017918125160078545,
+     "mean_Q": 5.75,
+     "mean_recall": 1.0,
+     "min_recall": 1.0,
+     "n": 16,
+     "sound_always": true
+    }
+   }
+  },
+  "exp/out/stage25_final.json": {
+   "E11_fuzz": {
+    "cross_parent": {
+     "crash": 0,
+     "n": 27,
+     "timeout": 0,
+     "undetected_committed": 0
+    },
+    "ctx_swap": {
+     "crash": 0,
+     "n": 27,
+     "timeout": 0,
+     "undetected_committed": 0
+    },
+    "cycle2": {
+     "crash": 0,
+     "n": 27,
+     "timeout": 0,
+     "undetected_committed": 0
+    },
+    "cycle_n": {
+     "crash": 0,
+     "n": 27,
+     "timeout": 0,
+     "undetected_committed": 0
+    },
+    "dangling": {
+     "crash": 0,
+     "n": 26,
+     "timeout": 0,
+     "undetected_committed": 0
+    },
+    "deep_chain": {
+     "crash": 0,
+     "n": 27,
+     "timeout": 0,
+     "undetected_committed": 0
+    },
+    "dup_context": {
+     "crash": 0,
+     "n": 27,
+     "timeout": 0,
+     "undetected_committed": 6
+    },
+    "dup_identity": {
+     "crash": 0,
+     "n": 26,
+     "timeout": 0,
+     "undetected_committed": 0
+    },
+    "fan_out": {
+     "crash": 0,
+     "n": 27,
+     "timeout": 0,
+     "undetected_committed": 0
+    },
+    "future_parent": {
+     "crash": 0,
+     "n": 27,
+     "timeout": 0,
+     "undetected_committed": 0
+    },
+    "orphan_storm": {
+     "crash": 0,
+     "n": 27,
+     "timeout": 0,
+     "undetected_committed": 0
+    },
+    "parent_after_child": {
+     "crash": 0,
+     "n": 26,
+     "timeout": 0,
+     "undetected_committed": 0
+    },
+    "repeat_reparent": {
+     "crash": 0,
+     "n": 26,
+     "timeout": 0,
+     "undetected_committed": 0
+    },
+    "self_parent": {
+     "crash": 0,
+     "n": 27,
+     "timeout": 0,
+     "undetected_committed": 0
+    },
+    "ts_inversion": {
+     "crash": 0,
+     "n": 26,
+     "timeout": 0,
+     "undetected_committed": 0
+    }
+   },
+   "E13_exhaustive": {
+    "instances": 480,
+    "minimal_checked": 480,
+    "proper_subset_sound": [
+     {
+      "dropped": "e:2",
+      "n": 3,
+      "tampered": [
+       "e:0"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 3,
+      "tampered": [
+       "e:0",
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:1",
+      "n": 3,
+      "tampered": [
+       "e:0",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 3,
+      "tampered": [
+       "e:0"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 3,
+      "tampered": [
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 3,
+      "tampered": [
+       "e:0",
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:1",
+      "n": 3,
+      "tampered": [
+       "e:0",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 3,
+      "tampered": [
+       "e:0"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 3,
+      "tampered": [
+       "e:0",
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:1",
+      "n": 3,
+      "tampered": [
+       "e:0",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 3,
+      "tampered": [
+       "e:0"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 3,
+      "tampered": [
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 3,
+      "tampered": [
+       "e:0",
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:1",
+      "n": 3,
+      "tampered": [
+       "e:0",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 3,
+      "tampered": [
+       "e:0"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 3,
+      "tampered": [
+       "e:0",
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:1",
+      "n": 3,
+      "tampered": [
+       "e:0",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 4,
+      "tampered": [
+       "e:0"
+      ]
+     },
+     {
+      "dropped": "e:3",
+      "n": 4,
+      "tampered": [
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 4,
+      "tampered": [
+       "e:0",
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:1",
+      "n": 4,
+      "tampered": [
+       "e:0",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 4,
+      "tampered": [
+       "e:0",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:3",
+      "n": 4,
+      "tampered": [
+       "e:1",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 4,
+      "tampered": [
+       "e:0"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 4,
+      "tampered": [
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 4,
+      "tampered": [
+       "e:0",
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:1",
+      "n": 4,
+      "tampered": [
+       "e:0",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 4,
+      "tampered": [
+       "e:0",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 4,
+      "tampered": [
+       "e:1",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 4,
+      "tampered": [
+       "e:0"
+      ]
+     },
+     {
+      "dropped": "e:3",
+      "n": 4,
+      "tampered": [
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 4,
+      "tampered": [
+       "e:0",
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:1",
+      "n": 4,
+      "tampered": [
+       "e:0",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 4,
+      "tampered": [
+       "e:0",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:3",
+      "n": 4,
+      "tampered": [
+       "e:1",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 4,
+      "tampered": [
+       "e:0"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 4,
+      "tampered": [
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 4,
+      "tampered": [
+       "e:0",
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:1",
+      "n": 4,
+      "tampered": [
+       "e:0",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 4,
+      "tampered": [
+       "e:0",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:3",
+      "n": 4,
+      "tampered": [
+       "e:1",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 4,
+      "tampered": [
+       "e:1",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 4,
+      "tampered": [
+       "e:0"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 4,
+      "tampered": [
+       "e:0",
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:1",
+      "n": 4,
+      "tampered": [
+       "e:0",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 4,
+      "tampered": [
+       "e:0",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 5,
+      "tampered": [
+       "e:0"
+      ]
+     },
+     {
+      "dropped": "e:3",
+      "n": 5,
+      "tampered": [
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 5,
+      "tampered": [
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 5,
+      "tampered": [
+       "e:0",
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 5,
+      "tampered": [
+       "e:0",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 5,
+      "tampered": [
+       "e:0",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 5,
+      "tampered": [
+       "e:0",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 5,
+      "tampered": [
+       "e:1",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:3",
+      "n": 5,
+      "tampered": [
+       "e:1",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 5,
+      "tampered": [
+       "e:2",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 5,
+      "tampered": [
+       "e:0"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 5,
+      "tampered": [
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 5,
+      "tampered": [
+       "e:0",
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 5,
+      "tampered": [
+       "e:0",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 5,
+      "tampered": [
+       "e:0",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 5,
+      "tampered": [
+       "e:0",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 5,
+      "tampered": [
+       "e:1",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 5,
+      "tampered": [
+       "e:1",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 5,
+      "tampered": [
+       "e:1",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 5,
+      "tampered": [
+       "e:0"
+      ]
+     },
+     {
+      "dropped": "e:3",
+      "n": 5,
+      "tampered": [
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 5,
+      "tampered": [
+       "e:0",
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 5,
+      "tampered": [
+       "e:0",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 5,
+      "tampered": [
+       "e:0",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 5,
+      "tampered": [
+       "e:0",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:3",
+      "n": 5,
+      "tampered": [
+       "e:1",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:3",
+      "n": 5,
+      "tampered": [
+       "e:2",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 5,
+      "tampered": [
+       "e:0"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 5,
+      "tampered": [
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 5,
+      "tampered": [
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 5,
+      "tampered": [
+       "e:0",
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 5,
+      "tampered": [
+       "e:0",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 5,
+      "tampered": [
+       "e:0",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 5,
+      "tampered": [
+       "e:0",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 5,
+      "tampered": [
+       "e:1",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 5,
+      "tampered": [
+       "e:1",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 5,
+      "tampered": [
+       "e:1",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 5,
+      "tampered": [
+       "e:2",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 5,
+      "tampered": [
+       "e:0"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 5,
+      "tampered": [
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 5,
+      "tampered": [
+       "e:0",
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 5,
+      "tampered": [
+       "e:0",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 5,
+      "tampered": [
+       "e:0",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 5,
+      "tampered": [
+       "e:0",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 5,
+      "tampered": [
+       "e:1",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 5,
+      "tampered": [
+       "e:2",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:0"
+      ]
+     },
+     {
+      "dropped": "e:3",
+      "n": 6,
+      "tampered": [
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:5",
+      "n": 6,
+      "tampered": [
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:0",
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:0",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:0",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 6,
+      "tampered": [
+       "e:0",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:0",
+       "e:5"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:1",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:5",
+      "n": 6,
+      "tampered": [
+       "e:1",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:3",
+      "n": 6,
+      "tampered": [
+       "e:1",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:3",
+      "n": 6,
+      "tampered": [
+       "e:1",
+       "e:5"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:2",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:2",
+       "e:5"
+      ]
+     },
+     {
+      "dropped": "e:5",
+      "n": 6,
+      "tampered": [
+       "e:3",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:0"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:5",
+      "n": 6,
+      "tampered": [
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:0",
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:0",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:0",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 6,
+      "tampered": [
+       "e:0",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:0",
+       "e:5"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:1",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:1",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 6,
+      "tampered": [
+       "e:1",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:1",
+       "e:5"
+      ]
+     },
+     {
+      "dropped": "e:5",
+      "n": 6,
+      "tampered": [
+       "e:2",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:5",
+      "n": 6,
+      "tampered": [
+       "e:2",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:0"
+      ]
+     },
+     {
+      "dropped": "e:5",
+      "n": 6,
+      "tampered": [
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:3",
+      "n": 6,
+      "tampered": [
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:0",
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:0",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:0",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 6,
+      "tampered": [
+       "e:0",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:0",
+       "e:5"
+      ]
+     },
+     {
+      "dropped": "e:5",
+      "n": 6,
+      "tampered": [
+       "e:1",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:5",
+      "n": 6,
+      "tampered": [
+       "e:1",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:5",
+      "n": 6,
+      "tampered": [
+       "e:1",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:3",
+      "n": 6,
+      "tampered": [
+       "e:2",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:3",
+      "n": 6,
+      "tampered": [
+       "e:2",
+       "e:5"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:0"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:0",
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:0",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:0",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 6,
+      "tampered": [
+       "e:0",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:0",
+       "e:5"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:1",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:1",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 6,
+      "tampered": [
+       "e:1",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:1",
+       "e:5"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:2",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:3",
+       "e:5"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:0"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:5",
+      "n": 6,
+      "tampered": [
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:0",
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:0",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:0",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 6,
+      "tampered": [
+       "e:0",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:0",
+       "e:5"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:1",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:5",
+      "n": 6,
+      "tampered": [
+       "e:1",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:2",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:5",
+      "n": 6,
+      "tampered": [
+       "e:2",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 6,
+      "tampered": [
+       "e:2",
+       "e:5"
+      ]
+     },
+     {
+      "dropped": "e:5",
+      "n": 6,
+      "tampered": [
+       "e:3",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:0"
+      ]
+     },
+     {
+      "dropped": "e:3",
+      "n": 7,
+      "tampered": [
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:5",
+      "n": 7,
+      "tampered": [
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:6",
+      "n": 7,
+      "tampered": [
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:0",
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:0",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:0",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 7,
+      "tampered": [
+       "e:0",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:0",
+       "e:5"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:0",
+       "e:6"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:1",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:5",
+      "n": 7,
+      "tampered": [
+       "e:1",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:3",
+      "n": 7,
+      "tampered": [
+       "e:1",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:3",
+      "n": 7,
+      "tampered": [
+       "e:1",
+       "e:5"
+      ]
+     },
+     {
+      "dropped": "e:3",
+      "n": 7,
+      "tampered": [
+       "e:1",
+       "e:6"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:2",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:6",
+      "n": 7,
+      "tampered": [
+       "e:2",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:2",
+       "e:5"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:2",
+       "e:6"
+      ]
+     },
+     {
+      "dropped": "e:5",
+      "n": 7,
+      "tampered": [
+       "e:3",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:5",
+      "n": 7,
+      "tampered": [
+       "e:3",
+       "e:6"
+      ]
+     },
+     {
+      "dropped": "e:6",
+      "n": 7,
+      "tampered": [
+       "e:4",
+       "e:5"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:0"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:5",
+      "n": 7,
+      "tampered": [
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:6",
+      "n": 7,
+      "tampered": [
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:0",
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:0",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:0",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 7,
+      "tampered": [
+       "e:0",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:0",
+       "e:5"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:0",
+       "e:6"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:1",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:1",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 7,
+      "tampered": [
+       "e:1",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:1",
+       "e:5"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:1",
+       "e:6"
+      ]
+     },
+     {
+      "dropped": "e:5",
+      "n": 7,
+      "tampered": [
+       "e:2",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:5",
+      "n": 7,
+      "tampered": [
+       "e:2",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:5",
+      "n": 7,
+      "tampered": [
+       "e:2",
+       "e:6"
+      ]
+     },
+     {
+      "dropped": "e:6",
+      "n": 7,
+      "tampered": [
+       "e:3",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:6",
+      "n": 7,
+      "tampered": [
+       "e:3",
+       "e:5"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:0"
+      ]
+     },
+     {
+      "dropped": "e:5",
+      "n": 7,
+      "tampered": [
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:6",
+      "n": 7,
+      "tampered": [
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:0",
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:0",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:0",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 7,
+      "tampered": [
+       "e:0",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:0",
+       "e:5"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:0",
+       "e:6"
+      ]
+     },
+     {
+      "dropped": "e:5",
+      "n": 7,
+      "tampered": [
+       "e:1",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:5",
+      "n": 7,
+      "tampered": [
+       "e:1",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:5",
+      "n": 7,
+      "tampered": [
+       "e:1",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:5",
+      "n": 7,
+      "tampered": [
+       "e:1",
+       "e:6"
+      ]
+     },
+     {
+      "dropped": "e:6",
+      "n": 7,
+      "tampered": [
+       "e:2",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:6",
+      "n": 7,
+      "tampered": [
+       "e:2",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:6",
+      "n": 7,
+      "tampered": [
+       "e:2",
+       "e:5"
+      ]
+     },
+     {
+      "dropped": "e:3",
+      "n": 7,
+      "tampered": [
+       "e:2",
+       "e:6"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:0"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:0",
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:0",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:0",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 7,
+      "tampered": [
+       "e:0",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:0",
+       "e:5"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:0",
+       "e:6"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:1",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:1",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 7,
+      "tampered": [
+       "e:1",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:1",
+       "e:5"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:1",
+       "e:6"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:2",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:3",
+       "e:5"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:3",
+       "e:6"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:0"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:5",
+      "n": 7,
+      "tampered": [
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:0",
+       "e:1"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:0",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:0",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:2",
+      "n": 7,
+      "tampered": [
+       "e:0",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:0",
+       "e:5"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:0",
+       "e:6"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:1",
+       "e:2"
+      ]
+     },
+     {
+      "dropped": "e:5",
+      "n": 7,
+      "tampered": [
+       "e:1",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:2",
+       "e:3"
+      ]
+     },
+     {
+      "dropped": "e:5",
+      "n": 7,
+      "tampered": [
+       "e:2",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:2",
+       "e:5"
+      ]
+     },
+     {
+      "dropped": "e:4",
+      "n": 7,
+      "tampered": [
+       "e:2",
+       "e:6"
+      ]
+     },
+     {
+      "dropped": "e:5",
+      "n": 7,
+      "tampered": [
+       "e:3",
+       "e:4"
+      ]
+     },
+     {
+      "dropped": "e:5",
+      "n": 7,
+      "tampered": [
+       "e:4",
+       "e:6"
+      ]
+     }
+    ],
+    "sound": 480,
+    "unsound": []
+   },
+   "E15_sensitivity": {
+    "measured_testbed_parent_ctx_fraction": 0.012,
+    "rows": [
+     {
+      "OQ": 0.002273760800363802,
+      "Q": 5,
+      "commit_s": 0.0061,
+      "detected": true,
+      "n_nodes": 2200,
+      "param": "bg_ratio",
+      "parent_ctx_fraction": 0.2273,
+      "phi_bytes": 93827,
+      "value": 4.0,
+      "verify_s": 0.0052
+     },
+     {
+      "OQ": 0.0019502681618722574,
+      "Q": 4,
+      "commit_s": 0.0045,
+      "detected": true,
+      "n_nodes": 2052,
+      "param": "bg_ratio",
+      "parent_ctx_fraction": 0.0926,
+      "phi_bytes": 99968,
+      "value": 12.0,
+      "verify_s": 0.0045
+     },
+     {
+      "OQ": 0.0029426189308484553,
+      "Q": 6,
+      "commit_s": 0.0044,
+      "detected": true,
+      "n_nodes": 2040,
+      "param": "bg_ratio",
+      "parent_ctx_fraction": 0.049,
+      "phi_bytes": 101130,
+      "value": 24.0,
+      "verify_s": 0.0049
+     },
+     {
+      "OQ": 0.0035371399696816574,
+      "Q": 7,
+      "commit_s": 0.0043,
+      "detected": true,
+      "n_nodes": 1980,
+      "param": "bg_ratio",
+      "parent_ctx_fraction": 0.0253,
+      "phi_bytes": 101462,
+      "value": 48.0,
+      "verify_s": 0.0045
+     },
+     {
+      "OQ": 0.0030785017957927143,
+      "Q": 6,
+      "commit_s": 0.0042,
+      "detected": true,
+      "n_nodes": 1950,
+      "param": "bg_ratio",
+      "parent_ctx_fraction": 0.0128,
+      "phi_bytes": 101213,
+      "value": 96.0,
+      "verify_s": 0.0044
+     },
+     {
+      "OQ": 0.0024521824423737125,
+      "Q": 5,
+      "commit_s": 0.0045,
+      "detected": true,
+      "n_nodes": 2040,
+      "param": "n_aut",
+      "parent_ctx_fraction": 0.049,
+      "phi_bytes": 101628,
+      "value": 3,
+      "verify_s": 0.0054
+     },
+     {
+      "OQ": 0.0029426189308484553,
+      "Q": 6,
+      "commit_s": 0.0046,
+      "detected": true,
+      "n_nodes": 2040,
+      "param": "n_aut",
+      "parent_ctx_fraction": 0.049,
+      "phi_bytes": 101960,
+      "value": 8,
+      "verify_s": 0.0047
+     },
+     {
+      "OQ": 0.0029426189308484553,
+      "Q": 6,
+      "commit_s": 0.0044,
+      "detected": true,
+      "n_nodes": 2040,
+      "param": "n_aut",
+      "parent_ctx_fraction": 0.049,
+      "phi_bytes": 101130,
+      "value": 15,
+      "verify_s": 0.0047
+     },
+     {
+      "OQ": 0.0029426189308484553,
+      "Q": 6,
+      "commit_s": 0.0044,
+      "detected": true,
+      "n_nodes": 2040,
+      "param": "n_aut",
+      "parent_ctx_fraction": 0.049,
+      "phi_bytes": 100051,
+      "value": 30,
+      "verify_s": 0.0047
+     },
+     {
+      "OQ": 0.0024521824423737125,
+      "Q": 5,
+      "commit_s": 0.0043,
+      "detected": true,
+      "n_nodes": 2040,
+      "param": "n_dev",
+      "parent_ctx_fraction": 0.049,
+      "phi_bytes": 102126,
+      "value": 5,
+      "verify_s": 0.0047
+     },
+     {
+      "OQ": 0.0029426189308484553,
+      "Q": 6,
+      "commit_s": 0.0046,
+      "detected": true,
+      "n_nodes": 2040,
+      "param": "n_dev",
+      "parent_ctx_fraction": 0.049,
+      "phi_bytes": 101130,
+      "value": 25,
+      "verify_s": 0.0046
+     },
+     {
+      "OQ": 0.0029426189308484553,
+      "Q": 6,
+      "commit_s": 0.0044,
+      "detected": true,
+      "n_nodes": 2040,
+      "param": "n_dev",
+      "parent_ctx_fraction": 0.049,
+      "phi_bytes": 101130,
+      "value": 60,
+      "verify_s": 0.0048
+     },
+     {
+      "OQ": 0.0029426189308484553,
+      "Q": 6,
+      "commit_s": 0.0042,
+      "detected": true,
+      "n_nodes": 2040,
+      "param": "rate_hr",
+      "parent_ctx_fraction": 0.049,
+      "phi_bytes": 101130,
+      "value": 20,
+      "verify_s": 0.0046
+     },
+     {
+      "OQ": 0.0029426189308484553,
+      "Q": 6,
+      "commit_s": 0.0042,
+      "detected": true,
+      "n_nodes": 2040,
+      "param": "rate_hr",
+      "parent_ctx_fraction": 0.049,
+      "phi_bytes": 101130,
+      "value": 100,
+      "verify_s": 0.0047
+     },
+     {
+      "OQ": 0.0029426189308484553,
+      "Q": 6,
+      "commit_s": 0.0043,
+      "detected": true,
+      "n_nodes": 2040,
+      "param": "rate_hr",
+      "parent_ctx_fraction": 0.049,
+      "phi_bytes": 101130,
+      "value": 400,
+      "verify_s": 0.0045
+     },
+     {
+      "OQ": 0.0029426189308484553,
+      "Q": 6,
+      "commit_s": 0.0045,
+      "detected": true,
+      "n_nodes": 2040,
+      "param": "interlock",
+      "parent_ctx_fraction": 0.049,
+      "phi_bytes": 100964,
+      "value": 0.0,
+      "verify_s": 0.0047
+     },
+     {
+      "OQ": 0.0029426189308484553,
+      "Q": 6,
+      "commit_s": 0.0044,
+      "detected": true,
+      "n_nodes": 2040,
+      "param": "interlock",
+      "parent_ctx_fraction": 0.049,
+      "phi_bytes": 101130,
+      "value": 0.3,
+      "verify_s": 0.0046
+     },
+     {
+      "OQ": 0.0029426189308484553,
+      "Q": 6,
+      "commit_s": 0.0044,
+      "detected": true,
+      "n_nodes": 2040,
+      "param": "interlock",
+      "parent_ctx_fraction": 0.049,
+      "phi_bytes": 101047,
+      "value": 0.7,
+      "verify_s": 0.0046
+     }
+    ]
+   },
+   "stage": 25
+  },
+  "exp/out/stage7_final.json": {
+   "GATE_PASS": true,
+   "HARD_GATE_LR": true,
+   "HARD_GATE_MISS_R_ASSERT": true,
+   "_digest": "08a90b2a245322a23d16f9847af55ad549c8fd72487d1e727c44cf9ae474a7de",
+   "_elapsed_s": 31.0,
+   "capability": {
+    "capability_record": {
+     "actor_id": "mal_integration_v1",
+     "actor_position": "in_process_integration",
+     "budget": {
+      "cpu_seconds_max": null,
+      "db_writes_max": 7,
+      "wallclock_window_s": 5
+     },
+     "constraints": {
+      "anchor_key_access": false,
+      "cap_bpf": false,
+      "cap_linux_immutable": false,
+      "clock_control": false,
+      "cross_uid_write": false,
+      "external_anchor_retraction": false,
+      "host_root": false
+     },
+     "knowledge": {
+      "anchor_key_known": false,
+      "anchor_schedule_known": false,
+      "automation_configs": "full",
+      "deployment_topology": "full",
+      "victim_routine_model": "coarse"
+     },
+     "powers": {
+      "db_read": true,
+      "db_write": true,
+      "event_bus_emit": true,
+      "event_bus_listen": true,
+      "fs_read_as_ha_uid": true,
+      "fs_write_as_ha_uid": true,
+      "network_egress": false,
+      "python_exec_in_core": true,
+      "service_call": true
+     },
+     "provenance": {
+      "rka_mission": null,
+      "seed": 0
+     },
+     "schema_version": 1,
+     "substrate": {
+      "envelope": "Pi-shaped cgroup (cpus/memory/blkio)",
+      "kind": "native_aarch64_container",
+      "note": "NOT a Raspberry Pi; absolute latency is not claimed as Pi latency"
+     }
+    }
+   },
+   "confound_check": {
+    "nominal_rates": [
+     10,
+     100,
+     1000
+    ],
+    "note": "if node counts cluster despite varied rates, the max_nodes cap flattened the rate variable and OQ-vs-rate is uninformative",
+    "realised_node_counts": [
+     6118,
+     6120,
+     6122,
+     20398,
+     20400,
+     20402
+    ]
+   },
+   "contrasts": {
+    "C1 HOMEPROV vs B2 on F_rep detection": {
+     "arm_a": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.8146980318621477,
+      "k": 18,
+      "method": "Clopper-Pearson exact",
+      "n": 18,
+      "prop": 1.0
+     },
+     "arm_b": {
+      "ci_hi": 0.1853019681378522,
+      "ci_lo": 0.0,
+      "k": 0,
+      "method": "Clopper-Pearson exact",
+      "n": 18,
+      "prop": 0.0
+     },
+     "discordant_pairs": 18,
+     "n_pairs": 18,
+     "note": "outcome is CONSTANT in both arms; a bootstrap CI on the difference would be zero-width by construction"
+    },
+    "C2 OQ: HOMEPROV vs B3": {
+     "ci_hi": 0.9992571473336284,
+     "ci_lo": 0.9990054445397925,
+     "degenerate": false,
+     "excludes_zero": true,
+     "mean_diff": 0.9991394507323844,
+     "n_pairs": 54,
+     "warning": null
+    },
+    "C3 HOMEPROV vs B4 on F_rep detection": {
+     "arm_a": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.8146980318621477,
+      "k": 18,
+      "method": "Clopper-Pearson exact",
+      "n": 18,
+      "prop": 1.0
+     },
+     "arm_b": {
+      "ci_hi": 0.1853019681378522,
+      "ci_lo": 0.0,
+      "k": 0,
+      "method": "Clopper-Pearson exact",
+      "n": 18,
+      "prop": 0.0
+     },
+     "discordant_pairs": 18,
+     "n_pairs": 18,
+     "note": "outcome is CONSTANT in both arms; a bootstrap CI on the difference would be zero-width by construction"
+    }
+   },
+   "failures": [],
+   "generator": {
+    "bg_ratio": 24.0,
+    "calibration_note": "structural error 0.066 vs the real deployment; residual gap with_parent 0.049 generated vs 0.012 real"
+   },
+   "holdout": {
+    "holdout": 8,
+    "tune": 10
+   },
+   "mixed_effects": {
+    "OQ_vs_rate": {
+     "available": true,
+     "params": {
+      "Group Var": 56.73537231467587,
+      "Intercept": 0.0007292433573513217,
+      "rate_hr": -2.1433487399525457e-08,
+      "scenario[T.FT-10]": -0.00013639395054280883,
+      "scenario[T.FT-4]": -1.2711866372417048e-07
+     },
+     "pvalues": {
+      "Group Var": 0.020407020169184716,
+      "Intercept": 9.910304273402583e-12,
+      "rate_hr": 0.9336463509428543,
+      "scenario[T.FT-10]": 7.634116500872649e-16,
+      "scenario[T.FT-4]": 0.9940064905094383
+     },
+     "summary": "           Mixed Linear Model Regression Results\n============================================================\nModel:              MixedLM   Dependent Variable:   OQ      \nNo. Observations:   54        Method:               REML    \nNo. Groups:         18        Scale:                0.0000  \nMin. group size:    3         Log-Likelihood:       370.1316\nMax. group size:    3         Converged:            Yes     \nMean group size:    3.0                                     \n------------------------------------------------------------\n                  Coef.  Std.Err.   z    P>|z| [0.025 0.975]\n------------------------------------------------------------\nIntercept          0.001    0.000  6.808 0.000  0.001  0.001\nscenario[T.FT-10] -0.000    0.000 -8.060 0.000 -0.000 -0.000\nscenario[T.FT-4]  -0.000    0.000 -0.008 0.994 -0.000  0.000\nrate_hr           -0.000    0.000 -0.083 0.934 -0.000  0.000\nGroup Var          0.000    0.001                           \n============================================================\n"
+    },
+    "detection": {
+     "available": true,
+     "params": {
+      "Group Var": 4.7016117983357965e-05,
+      "Intercept": 0.8888888888888852,
+      "scenario[T.FT-10]": 2.220446049250313e-15,
+      "scenario[T.FT-4]": -0.6666666666666649,
+      "system[T.b4]": 2.4260429056623775e-15,
+      "system[T.homeprov]": 0.33333333333333615
+     },
+     "pvalues": {
+      "Group Var": NaN,
+      "Intercept": 2.917637402121782e-111,
+      "scenario[T.FT-10]": 0.9999999999999593,
+      "scenario[T.FT-4]": 3.7665557716490987e-53,
+      "system[T.b4]": 0.9999999999999555,
+      "system[T.homeprov]": 1.6801342649448723e-14
+     },
+     "summary": "            Mixed Linear Model Regression Results\n==============================================================\nModel:                MixedLM    Dependent Variable:    detect\nNo. Observations:     162        Method:                REML  \nNo. Groups:           18         Scale:                 0.0510\nMin. group size:      9          Log-Likelihood:        1.4790\nMax. group size:      9          Converged:             No    \nMean group size:      9.0                                     \n--------------------------------------------------------------\n                   Coef.  Std.Err.    z    P>|z| [0.025 0.975]\n--------------------------------------------------------------\nIntercept           0.889    0.040  22.413 0.000  0.811  0.967\nsystem[T.b4]        0.000    0.043   0.000 1.000 -0.085  0.085\nsystem[T.homeprov]  0.333    0.043   7.673 0.000  0.248  0.418\nscenario[T.FT-10]   0.000    0.043   0.000 1.000 -0.085  0.085\nscenario[T.FT-4]   -0.667    0.043 -15.346 0.000 -0.752 -0.582\nGroup Var           0.000                                     \n==============================================================\n"
+    }
+   },
+   "n_deployments": 18,
+   "n_rows": 54,
+   "stage": 7,
+   "summary_ci": {
+    "LR": {
+     "ci_hi": 1.0,
+     "ci_lo": 1.0,
+     "mean": 1.0,
+     "n": 54
+    },
+    "LR_exact": {
+     "ci_hi": 1.0,
+     "ci_lo": 0.9339684857555782,
+     "k": 54,
+     "method": "Clopper-Pearson exact",
+     "n": 54,
+     "prop": 1.0
+    },
+    "MissRassert_exact": {
+     "ci_hi": 1.0,
+     "ci_lo": 0.9339684857555782,
+     "k": 54,
+     "method": "Clopper-Pearson exact",
+     "n": 54,
+     "prop": 1.0
+    },
+    "OQ": {
+     "ci_hi": 0.0007819722406823304,
+     "ci_lo": 0.000586416223499781,
+     "mean": 0.0006790209670545748,
+     "n": 54
+    },
+    "RA": {
+     "ci_hi": 1.0,
+     "ci_lo": 1.0,
+     "mean": 1.0,
+     "n": 54
+    }
+   }
+  },
+  "exp/out/stage9_final.json": {
+   "C2_OQ_vs_B3": {
+    "ci_hi": 0.9892906061447355,
+    "ci_lo": 0.9817555146670448,
+    "degenerate": false,
+    "excludes_zero": true,
+    "mean_diff": 0.9856614073174145,
+    "n_pairs": 45,
+    "warning": null
+   },
+   "C5_W_of_f": {
+    "period_15s": {
+     "mean_W": {
+      "ci_hi": 7.806686434750334,
+      "ci_lo": 7.409870241784755,
+      "mean": 7.609430458352847,
+      "n": 9
+     },
+     "ratio_to_theory": {
+      "ci_hi": 1.0408915246333779,
+      "ci_lo": 0.9879826989046339,
+      "mean": 1.0145907277803794,
+      "n": 9
+     }
+    },
+    "period_1s": {
+     "mean_W": {
+      "ci_hi": 0.5075744507716632,
+      "ci_lo": 0.49495287889488904,
+      "mean": 0.5014738497834926,
+      "n": 9
+     },
+     "ratio_to_theory": {
+      "ci_hi": 1.0151489015433264,
+      "ci_lo": 0.9899057577897781,
+      "mean": 1.0029476995669853,
+      "n": 9
+     }
+    },
+    "period_5s": {
+     "mean_W": {
+      "ci_hi": 2.5899417257830555,
+      "ci_lo": 2.466565304706732,
+      "mean": 2.529183544772599,
+      "n": 9
+     },
+     "ratio_to_theory": {
+      "ci_hi": 1.0359766903132221,
+      "ci_lo": 0.9866261218826929,
+      "mean": 1.0116734179090399,
+      "n": 9
+     }
+    },
+    "period_60s": {
+     "mean_W": {
+      "ci_hi": 30.806009774367794,
+      "ci_lo": 29.875178396279775,
+      "mean": 30.34247784397376,
+      "n": 9
+     },
+     "ratio_to_theory": {
+      "ci_hi": 1.0268669924789267,
+      "ci_lo": 0.9958392798759925,
+      "mean": 1.0114159281324586,
+      "n": 9
+     }
+    }
+   },
+   "C6_BFP": {
+    "b2": {
+     "ci_hi": 0.6707782005422898,
+     "ci_lo": 0.3292217994577103,
+     "k": 18,
+     "method": "Clopper-Pearson exact",
+     "n": 36,
+     "prop": 0.5
+    },
+    "homeprov": {
+     "ci_hi": 0.09739375591449193,
+     "ci_lo": 0.0,
+     "k": 0,
+     "method": "Clopper-Pearson exact",
+     "n": 36,
+     "prop": 0.0
+    }
+   },
+   "GATE_PASS": true,
+   "LR_exact": {
+    "ci_hi": 1.0,
+    "ci_lo": 0.9212948995931569,
+    "k": 45,
+    "method": "Clopper-Pearson exact",
+    "n": 45,
+    "prop": 1.0
+   },
+   "MissRassert_exact": {
+    "ci_hi": 1.0,
+    "ci_lo": 0.9212948995931569,
+    "k": 45,
+    "method": "Clopper-Pearson exact",
+    "n": 45,
+    "prop": 1.0
+   },
+   "capability": {
+    "capability_record": {
+     "actor_id": "mal_integration_v1",
+     "actor_position": "in_process_integration",
+     "budget": {
+      "cpu_seconds_max": null,
+      "db_writes_max": 7,
+      "wallclock_window_s": 5
+     },
+     "constraints": {
+      "anchor_key_access": false,
+      "cap_bpf": false,
+      "cap_linux_immutable": false,
+      "clock_control": false,
+      "cross_uid_write": false,
+      "external_anchor_retraction": false,
+      "host_root": false
+     },
+     "knowledge": {
+      "anchor_key_known": false,
+      "anchor_schedule_known": false,
+      "automation_configs": "full",
+      "deployment_topology": "full",
+      "victim_routine_model": "coarse"
+     },
+     "powers": {
+      "db_read": true,
+      "db_write": true,
+      "event_bus_emit": true,
+      "event_bus_listen": true,
+      "fs_read_as_ha_uid": true,
+      "fs_write_as_ha_uid": true,
+      "network_egress": false,
+      "python_exec_in_core": true,
+      "service_call": true
+     },
+     "provenance": {
+      "rka_mission": null,
+      "seed": 0
+     },
+     "schema_version": 1,
+     "substrate": {
+      "envelope": "Pi-shaped cgroup (cpus/memory/blkio)",
+      "kind": "native_aarch64_container",
+      "note": "NOT a Raspberry Pi; absolute latency is not claimed as Pi latency"
+     }
+    }
+   },
+   "n_bfp_rows": 36,
+   "n_scenario_rows": 45,
+   "n_w_rows": 36,
+   "per_scenario": {
+    "S1": {
+     "OQ": {
+      "ci_hi": 0.022869460797044782,
+      "ci_lo": 0.006197702567055115,
+      "mean": 0.013941684459722504,
+      "n": 9
+     },
+     "detected": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.6637328831200572,
+      "k": 9,
+      "method": "Clopper-Pearson exact",
+      "n": 9,
+      "prop": 1.0
+     },
+     "n": 9
+    },
+    "S2": {
+     "OQ": {
+      "ci_hi": 0.023312554768983664,
+      "ci_lo": 0.00649179019450626,
+      "mean": 0.014305099246868383,
+      "n": 9
+     },
+     "detected": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.6637328831200572,
+      "k": 9,
+      "method": "Clopper-Pearson exact",
+      "n": 9,
+      "prop": 1.0
+     },
+     "n": 9
+    },
+    "S3": {
+     "OQ": {
+      "ci_hi": 0.021020074321152576,
+      "ci_lo": 0.005466861155523833,
+      "mean": 0.01271124986960871,
+      "n": 9
+     },
+     "detected": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.6637328831200572,
+      "k": 9,
+      "method": "Clopper-Pearson exact",
+      "n": 9,
+      "prop": 1.0
+     },
+     "n": 9
+    },
+    "S4": {
+     "OQ": {
+      "ci_hi": 0.023318104218150518,
+      "ci_lo": 0.0064930217066145775,
+      "mean": 0.014308275478031278,
+      "n": 9
+     },
+     "detected": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.6637328831200572,
+      "k": 9,
+      "method": "Clopper-Pearson exact",
+      "n": 9,
+      "prop": 1.0
+     },
+     "n": 9
+    },
+    "S5": {
+     "OQ": {
+      "ci_hi": 0.023307007988380538,
+      "ci_lo": 0.0064905591866376185,
+      "mean": 0.0143019244734931,
+      "n": 9
+     },
+     "detected": {
+      "ci_hi": 1.0,
+      "ci_lo": 0.6637328831200572,
+      "k": 9,
+      "method": "Clopper-Pearson exact",
+      "n": 9,
+      "prop": 1.0
+     },
+     "n": 9
+    }
+   },
+   "scenario_ci": {
+    "LR": {
+     "ci_hi": 1.0,
+     "ci_lo": 1.0,
+     "mean": 1.0,
+     "n": 45
+    },
+    "OQ": {
+     "ci_hi": 0.017798335113971643,
+     "ci_lo": 0.010313752986878227,
+     "mean": 0.013913646705544794,
+     "n": 45
+    },
+    "RA": {
+     "ci_hi": 1.0,
+     "ci_lo": 1.0,
+     "mean": 1.0,
+     "n": 45
+    }
+   },
+   "stage": 9
+  }
+ },
+ "schema": "homeprov.result-bundle/v1",
+ "sources": {
+  "exp/out/stage10_final.json": "d82da253b6b715638c085f64bb5119e808376fa9ac5555171d3fe3048868ef80",
+  "exp/out/stage14_final.json": "b27b1b0c5bbe94b53c5c34a07b6f47e9bdb526c1b46af63960754dcf67aeaa76",
+  "exp/out/stage18_corrected.json": "b203ff867520d25a80ab11fcdbc7eb03ebb74f04e9c5ed0d334b918fe4541dcf",
+  "exp/out/stage19_final.json": "212b230856a21d8c6afd24008c96641c8c70c6a579a5528eacd9e6ded66c53ab",
+  "exp/out/stage24_final.json": "b369e92874cd436191fbe418fa3e5f1e6eb23eba2c67247f652013beffbf69ed",
+  "exp/out/stage25_final.json": "f667e091f8662cf624e8cd369fca644761ab3290ea32a42adc6d84c835cb251e",
+  "exp/out/stage7_final.json": "b6bf147b3d40692d4a8a337656a035c81e6aab8c032ac78b9ee998c0b5b9fb0e",
+  "exp/out/stage9_final.json": "e0119e04da9e785c86ea194d8d8f0927ff6f798b7c40eff9f2dab145d6898b03"
+ },
+ "unit": "u_res_recon"
+}

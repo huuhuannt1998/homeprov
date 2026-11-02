@@ -1,0 +1,212 @@
+{
+  "stage": 7,
+  "n_deployments": 18,
+  "n_rows": 54,
+  "failures": [],
+  "holdout": {
+    "tune": 10,
+    "holdout": 8
+  },
+  "generator": {
+    "bg_ratio": 24.0,
+    "calibration_note": "structural error 0.066 vs the real deployment; residual gap with_parent 0.049 generated vs 0.012 real"
+  },
+  "summary_ci": {
+    "LR": {
+      "mean": 1.0,
+      "ci_lo": 1.0,
+      "ci_hi": 1.0,
+      "n": 54
+    },
+    "OQ": {
+      "mean": 0.0006790209670545748,
+      "ci_lo": 0.000586416223499781,
+      "ci_hi": 0.0007819722406823304,
+      "n": 54
+    },
+    "RA": {
+      "mean": 1.0,
+      "ci_lo": 1.0,
+      "ci_hi": 1.0,
+      "n": 54
+    },
+    "LR_exact": {
+      "k": 54,
+      "n": 54,
+      "prop": 1.0,
+      "ci_lo": 0.9339684857555782,
+      "ci_hi": 1.0,
+      "method": "Clopper-Pearson exact"
+    },
+    "MissRassert_exact": {
+      "k": 54,
+      "n": 54,
+      "prop": 1.0,
+      "ci_lo": 0.9339684857555782,
+      "ci_hi": 1.0,
+      "method": "Clopper-Pearson exact"
+    }
+  },
+  "contrasts": {
+    "C1 HOMEPROV vs B2 on F_rep detection": {
+      "arm_a": {
+        "k": 18,
+        "n": 18,
+        "prop": 1.0,
+        "ci_lo": 0.8146980318621477,
+        "ci_hi": 1.0,
+        "method": "Clopper-Pearson exact"
+      },
+      "arm_b": {
+        "k": 0,
+        "n": 18,
+        "prop": 0.0,
+        "ci_lo": 0.0,
+        "ci_hi": 0.1853019681378522,
+        "method": "Clopper-Pearson exact"
+      },
+      "discordant_pairs": 18,
+      "n_pairs": 18,
+      "note": "outcome is CONSTANT in both arms; a bootstrap CI on the difference would be zero-width by construction"
+    },
+    "C3 HOMEPROV vs B4 on F_rep detection": {
+      "arm_a": {
+        "k": 18,
+        "n": 18,
+        "prop": 1.0,
+        "ci_lo": 0.8146980318621477,
+        "ci_hi": 1.0,
+        "method": "Clopper-Pearson exact"
+      },
+      "arm_b": {
+        "k": 0,
+        "n": 18,
+        "prop": 0.0,
+        "ci_lo": 0.0,
+        "ci_hi": 0.1853019681378522,
+        "method": "Clopper-Pearson exact"
+      },
+      "discordant_pairs": 18,
+      "n_pairs": 18,
+      "note": "outcome is CONSTANT in both arms; a bootstrap CI on the difference would be zero-width by construction"
+    },
+    "C2 OQ: HOMEPROV vs B3": {
+      "mean_diff": 0.9991394507323844,
+      "ci_lo": 0.9990054445397925,
+      "ci_hi": 0.9992571473336284,
+      "n_pairs": 54,
+      "excludes_zero": true,
+      "degenerate": false,
+      "warning": null
+    }
+  },
+  "mixed_effects": {
+    "detection": {
+      "available": true,
+      "summary": "            Mixed Linear Model Regression Results\n==============================================================\nModel:                MixedLM    Dependent Variable:    detect\nNo. Observations:     162        Method:                REML  \nNo. Groups:           18         Scale:                 0.0510\nMin. group size:      9          Log-Likelihood:        1.4790\nMax. group size:      9          Converged:             No    \nMean group size:      9.0                                     \n--------------------------------------------------------------\n                   Coef.  Std.Err.    z    P>|z| [0.025 0.975]\n--------------------------------------------------------------\nIntercept           0.889    0.040  22.413 0.000  0.811  0.967\nsystem[T.b4]        0.000    0.043   0.000 1.000 -0.085  0.085\nsystem[T.homeprov]  0.333    0.043   7.673 0.000  0.248  0.418\nscenario[T.FT-10]   0.000    0.043   0.000 1.000 -0.085  0.085\nscenario[T.FT-4]   -0.667    0.043 -15.346 0.000 -0.752 -0.582\nGroup Var           0.000                                     \n==============================================================\n",
+      "params": {
+        "Intercept": 0.8888888888888852,
+        "system[T.b4]": 2.4260429056623775e-15,
+        "system[T.homeprov]": 0.33333333333333615,
+        "scenario[T.FT-10]": 2.220446049250313e-15,
+        "scenario[T.FT-4]": -0.6666666666666649,
+        "Group Var": 4.7016117983357965e-05
+      },
+      "pvalues": {
+        "Intercept": 2.917637402121782e-111,
+        "system[T.b4]": 0.9999999999999555,
+        "system[T.homeprov]": 1.6801342649448723e-14,
+        "scenario[T.FT-10]": 0.9999999999999593,
+        "scenario[T.FT-4]": 3.7665557716490987e-53,
+        "Group Var": NaN
+      }
+    },
+    "OQ_vs_rate": {
+      "available": true,
+      "summary": "           Mixed Linear Model Regression Results\n============================================================\nModel:              MixedLM   Dependent Variable:   OQ      \nNo. Observations:   54        Method:               REML    \nNo. Groups:         18        Scale:                0.0000  \nMin. group size:    3         Log-Likelihood:       370.1316\nMax. group size:    3         Converged:            Yes     \nMean group size:    3.0                                     \n------------------------------------------------------------\n                  Coef.  Std.Err.   z    P>|z| [0.025 0.975]\n------------------------------------------------------------\nIntercept          0.001    0.000  6.808 0.000  0.001  0.001\nscenario[T.FT-10] -0.000    0.000 -8.060 0.000 -0.000 -0.000\nscenario[T.FT-4]  -0.000    0.000 -0.008 0.994 -0.000  0.000\nrate_hr           -0.000    0.000 -0.083 0.934 -0.000  0.000\nGroup Var          0.000    0.001                           \n============================================================\n",
+      "params": {
+        "Intercept": 0.0007292433573513217,
+        "scenario[T.FT-10]": -0.00013639395054280883,
+        "scenario[T.FT-4]": -1.2711866372417048e-07,
+        "rate_hr": -2.1433487399525457e-08,
+        "Group Var": 56.73537231467587
+      },
+      "pvalues": {
+        "Intercept": 9.910304273402583e-12,
+        "scenario[T.FT-10]": 7.634116500872649e-16,
+        "scenario[T.FT-4]": 0.9940064905094383,
+        "rate_hr": 0.9336463509428543,
+        "Group Var": 0.020407020169184716
+      }
+    }
+  },
+  "confound_check": {
+    "realised_node_counts": [
+      6118,
+      6120,
+      6122,
+      20398,
+      20400,
+      20402
+    ],
+    "nominal_rates": [
+      10,
+      100,
+      1000
+    ],
+    "note": "if node counts cluster despite varied rates, the max_nodes cap flattened the rate variable and OQ-vs-rate is uninformative"
+  },
+  "HARD_GATE_LR": true,
+  "HARD_GATE_MISS_R_ASSERT": true,
+  "GATE_PASS": true,
+  "capability": {
+    "capability_record": {
+      "schema_version": 1,
+      "actor_id": "mal_integration_v1",
+      "actor_position": "in_process_integration",
+      "powers": {
+        "db_read": true,
+        "db_write": true,
+        "fs_read_as_ha_uid": true,
+        "fs_write_as_ha_uid": true,
+        "python_exec_in_core": true,
+        "event_bus_listen": true,
+        "event_bus_emit": true,
+        "service_call": true,
+        "network_egress": false
+      },
+      "knowledge": {
+        "deployment_topology": "full",
+        "automation_configs": "full",
+        "anchor_schedule_known": false,
+        "anchor_key_known": false,
+        "victim_routine_model": "coarse"
+      },
+      "budget": {
+        "db_writes_max": 7,
+        "wallclock_window_s": 5,
+        "cpu_seconds_max": null
+      },
+      "constraints": {
+        "host_root": false,
+        "cross_uid_write": false,
+        "anchor_key_access": false,
+        "external_anchor_retraction": false,
+        "clock_control": false,
+        "cap_linux_immutable": false,
+        "cap_bpf": false
+      },
+      "substrate": {
+        "kind": "native_aarch64_container",
+        "envelope": "Pi-shaped cgroup (cpus/memory/blkio)",
+        "note": "NOT a Raspberry Pi; absolute latency is not claimed as Pi latency"
+      },
+      "provenance": {
+        "rka_mission": null,
+        "seed": 0
+      }
+    }
+  },
+  "_elapsed_s": 31.0,
+  "_digest": "08a90b2a245322a23d16f9847af55ad549c8fd72487d1e727c44cf9ae474a7de"
+}

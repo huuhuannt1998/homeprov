@@ -1,0 +1,226 @@
+{
+ "experiment": "E-DZ offline checks",
+ "what": "1. Single-write check (the Home Assistant paper's \"one post-commit write to one row\" check, on Domoticz): on a copy of    the snapshot, one write to one field (a LightingLog field of one committed lock row, or a DeviceStatus field of the    lock device), then, for each scheme (closure, log rows only, row-scheme analogue, whole row), the number of    one-second segments of the run window whose root differs from the unmodified copy. The displayed effect of each    field is measured in exp/out/dz_closure.json (API and UI); this check measures what each scheme commits. 2. VACUUM check: LightingLog has no INTEGER PRIMARY KEY, so its rows are keyed by the implicit ROWID, which SQLite's    VACUUM may renumber (\"The VACUUM command may change the ROWIDs of entries in any tables that do not have an explicit    INTEGER PRIMARY KEY\", sqlite.org/lang_vacuum.html). Domoticz runs VACUUM in ClearShortLog(), after a database    restore and on the admin command vacuumdatabase. On copies, inside the Domoticz image (its own libsqlite3), run    (a) VACUUM alone and (b) a retention-style DELETE of the oldest LightingLog rows followed by VACUUM, and count rows    whose ROWID-to-content binding changed and closure one-second segments of the run window whose root changed.",
+ "snapshot": {
+  "path": "HOMEPROV-P13-exp/dz/runs/dz/verify/domoticz.db",
+  "sha256": "823089ccf7100a45ff2f20e7b933f30172d04e1927e6b51881fc6fc7f2d3d2e5"
+ },
+ "window": [
+  1791429765.3216584,
+  1791430955.439168
+ ],
+ "lock_device_id": 4,
+ "lock_rows_in_window": 120,
+ "lock_seconds_in_window": 120,
+ "single_write_row": 41,
+ "single_write": [
+  {
+   "write": "LightingLog.User",
+   "target": "ROWID=41",
+   "from": "LockBridge",
+   "to": "EventSystem/porch_motion_light",
+   "segments_changed": {
+    "closure": 1,
+    "logrows": 1,
+    "row": 0,
+    "wholerow": 1
+   },
+   "segments_in_window": {
+    "closure": 294,
+    "logrows": 294,
+    "row": 294,
+    "wholerow": 294
+   }
+  },
+  {
+   "write": "LightingLog.nValue",
+   "target": "ROWID=41",
+   "from": 1,
+   "to": 0,
+   "segments_changed": {
+    "closure": 1,
+    "logrows": 1,
+    "row": 1,
+    "wholerow": 1
+   },
+   "segments_in_window": {
+    "closure": 294,
+    "logrows": 294,
+    "row": 294,
+    "wholerow": 294
+   }
+  },
+  {
+   "write": "LightingLog.sValue",
+   "target": "ROWID=41",
+   "from": "On",
+   "to": "Off-mut",
+   "segments_changed": {
+    "closure": 1,
+    "logrows": 1,
+    "row": 1,
+    "wholerow": 1
+   },
+   "segments_in_window": {
+    "closure": 294,
+    "logrows": 294,
+    "row": 294,
+    "wholerow": 294
+   }
+  },
+  {
+   "write": "DeviceStatus.SwitchType",
+   "target": "ID=4",
+   "from": 19,
+   "to": 20,
+   "segments_changed": {
+    "closure": 120,
+    "logrows": 0,
+    "row": 120,
+    "wholerow": 120
+   },
+   "segments_in_window": {
+    "closure": 294,
+    "logrows": 294,
+    "row": 294,
+    "wholerow": 294
+   }
+  },
+  {
+   "write": "DeviceStatus.Type",
+   "target": "ID=4",
+   "from": 244,
+   "to": 82,
+   "segments_changed": {
+    "closure": 120,
+    "logrows": 0,
+    "row": 120,
+    "wholerow": 120
+   },
+   "segments_in_window": {
+    "closure": 294,
+    "logrows": 294,
+    "row": 294,
+    "wholerow": 294
+   }
+  },
+  {
+   "write": "DeviceStatus.SubType",
+   "target": "ID=4",
+   "from": 73,
+   "to": 74,
+   "segments_changed": {
+    "closure": 120,
+    "logrows": 0,
+    "row": 120,
+    "wholerow": 120
+   },
+   "segments_in_window": {
+    "closure": 294,
+    "logrows": 294,
+    "row": 294,
+    "wholerow": 294
+   }
+  },
+  {
+   "write": "DeviceStatus.Options",
+   "target": "ID=4",
+   "from": null,
+   "to": "LevelNames:VW5vfERvc3xUcmVz",
+   "segments_changed": {
+    "closure": 120,
+    "logrows": 0,
+    "row": 120,
+    "wholerow": 120
+   },
+   "segments_in_window": {
+    "closure": 294,
+    "logrows": 294,
+    "row": 294,
+    "wholerow": 294
+   }
+  },
+  {
+   "write": "DeviceStatus.nValue",
+   "target": "ID=4",
+   "from": 0,
+   "to": 1,
+   "segments_changed": {
+    "closure": 0,
+    "logrows": 0,
+    "row": 0,
+    "wholerow": 120
+   },
+   "segments_in_window": {
+    "closure": 294,
+    "logrows": 294,
+    "row": 294,
+    "wholerow": 294
+   }
+  },
+  {
+   "write": "DeviceStatus.LastUpdate",
+   "target": "ID=4",
+   "from": "2026-10-08 03:40:03",
+   "to": "2026-10-07 00:00:00",
+   "segments_changed": {
+    "closure": 0,
+    "logrows": 0,
+    "row": 0,
+    "wholerow": 120
+   },
+   "segments_in_window": {
+    "closure": 294,
+    "logrows": 294,
+    "row": 294,
+    "wholerow": 294
+   }
+  }
+ ],
+ "vacuum": {
+  "sqlite_version": "3.46.1",
+  "a": {
+   "rows_before": 590,
+   "rows_deleted": 0,
+   "rows_after": 590,
+   "rows_whose_rowid_binding_changed": 0,
+   "max_rowid_before": 590,
+   "max_rowid_after": 590,
+   "closure_second_segments_changed_in_window": 0,
+   "closure_second_segments_in_window": 294,
+   "what": "VACUUM alone"
+  },
+  "b": {
+   "rows_before": 590,
+   "rows_deleted": 59,
+   "rows_after": 531,
+   "rows_whose_rowid_binding_changed": 0,
+   "max_rowid_before": 590,
+   "max_rowid_after": 590,
+   "closure_second_segments_changed_in_window": 16,
+   "closure_second_segments_in_window": 294,
+   "closure_second_segments_differing_from_delete_only": 0,
+   "what": "DELETE of the oldest 10% of LightingLog rows (by Date, as CleanupLightSceneLog deletes by date) followed by VACUUM"
+  },
+  "c": {
+   "rows_before": 590,
+   "rows_deleted": 59,
+   "rows_after": 531,
+   "rows_whose_rowid_binding_changed": 0,
+   "max_rowid_before": 590,
+   "max_rowid_after": 590,
+   "closure_second_segments_changed_in_window": 16,
+   "closure_second_segments_in_window": 294,
+   "what": "the same DELETE without VACUUM (control: separates the deletion from the VACUUM)"
+  }
+ },
+ "seal_delay": {
+  "n_segments": 293,
+  "median_s": 3.417818069458008,
+  "max_s": 6.082651615142822,
+  "min_s": 1.0165894031524658,
+  "what": "anchor receive time of a one-second segment's first root minus the segment's start; a row written in that second was anchored at most this long after its write (Date has one-second resolution, so the write lies in [start, start+1))"
+ },
+ "script_sha256": "4b6676e057ca01da282961f1aa8133ddc0ce05c7821c90af2e075d59f6c02861",
+ "generated_at": "2026-10-08T03:45:14Z"
+}

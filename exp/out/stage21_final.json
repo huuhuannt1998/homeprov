@@ -1,0 +1,142 @@
+{
+  "stage": 21,
+  "rows": [
+    {
+      "gap": "same-minute (1s)",
+      "gap_s": 1.0,
+      "tamper": "content",
+      "homeprov": true,
+      "b2b": true,
+      "levels_surviving": [
+        "hour",
+        "minute",
+        "second"
+      ],
+      "delta": false
+    },
+    {
+      "gap": "same-minute (1s)",
+      "gap_s": 1.0,
+      "tamper": "delete",
+      "homeprov": true,
+      "b2b": true,
+      "levels_surviving": [
+        "hour",
+        "minute",
+        "second"
+      ],
+      "delta": false
+    },
+    {
+      "gap": "same-hour (10min)",
+      "gap_s": 600.0,
+      "tamper": "content",
+      "homeprov": true,
+      "b2b": true,
+      "levels_surviving": [
+        "hour",
+        "minute",
+        "second"
+      ],
+      "delta": false
+    },
+    {
+      "gap": "same-hour (10min)",
+      "gap_s": 600.0,
+      "tamper": "delete",
+      "homeprov": true,
+      "b2b": true,
+      "levels_surviving": [
+        "hour",
+        "minute",
+        "second"
+      ],
+      "delta": false
+    },
+    {
+      "gap": "1 day",
+      "gap_s": 86400.0,
+      "tamper": "content",
+      "homeprov": true,
+      "b2b": true,
+      "levels_surviving": [
+        "hour",
+        "minute",
+        "second"
+      ],
+      "delta": false
+    },
+    {
+      "gap": "1 day",
+      "gap_s": 86400.0,
+      "tamper": "delete",
+      "homeprov": true,
+      "b2b": true,
+      "levels_surviving": [
+        "hour",
+        "minute",
+        "second"
+      ],
+      "delta": false
+    },
+    {
+      "gap": "30 days",
+      "gap_s": 2592000.0,
+      "tamper": "content",
+      "homeprov": true,
+      "b2b": true,
+      "levels_surviving": [
+        "hour",
+        "minute",
+        "second"
+      ],
+      "delta": false
+    },
+    {
+      "gap": "30 days",
+      "gap_s": 2592000.0,
+      "tamper": "delete",
+      "homeprov": true,
+      "b2b": true,
+      "levels_surviving": [
+        "hour",
+        "minute",
+        "second"
+      ],
+      "delta": false
+    },
+    {
+      "gap": "100 days (beyond hour retention)",
+      "gap_s": 8640000.0,
+      "tamper": "content",
+      "homeprov": true,
+      "b2b": true,
+      "levels_surviving": [
+        "hour",
+        "minute",
+        "second"
+      ],
+      "delta": false
+    },
+    {
+      "gap": "100 days (beyond hour retention)",
+      "gap_s": 8640000.0,
+      "tamper": "delete",
+      "homeprov": true,
+      "b2b": false,
+      "levels_surviving": [
+        "hour",
+        "minute",
+        "second"
+      ],
+      "delta": true
+    }
+  ],
+  "recursion_delta_exists": true,
+  "retention_policy": {
+    "second": 3600.0,
+    "minute": 86400.0,
+    "hour": 7776000.0
+  },
+  "note": "A delta requires the parent to have NO surviving commitment at any granularity while the child does, i.e. a causal edge spanning the 90-day hour horizon."
+}

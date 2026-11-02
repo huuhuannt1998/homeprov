@@ -1,0 +1,50 @@
+{
+  "ha_version": "2026.7.4",
+  "baseline_rows": 145,
+  "result": {
+    "field": "states.context_parent_id_bin@constructed-origin+resolvable",
+    "method": "constructive",
+    "state_id": 4122,
+    "parent_signatures": [
+      [
+        "call_service",
+        "{\"domain\":\"lock\",\"service\":\"lock\",\"service_data\":{\"entity_id\":\"lock.kitchen_door\"}}"
+      ],
+      [
+        "call_service",
+        "{\"domain\":\"input_boolean\",\"service\":\"turn_on\",\"service_data\":{\"entity_id\":\"input_boolean.owner_present\"}}"
+      ]
+    ],
+    "attribution_relevant": true,
+    "effect": {
+      "rows_before": 145,
+      "rows_after": 145,
+      "vanished": 0,
+      "appeared": 0,
+      "attribution_changed": 1,
+      "examples": [
+        {
+          "row": {
+            "entity_id": "input_boolean.owner_present",
+            "message": null,
+            "name": "Owner Present",
+            "state": "on",
+            "when": "2026-08-25T10:52:51.166322+00:00"
+          },
+          "was": {
+            "context_event_type": "call_service",
+            "context_domain": "lock",
+            "context_service": "lock"
+          },
+          "now": {
+            "context_event_type": "call_service",
+            "context_domain": "input_boolean",
+            "context_service": "turn_on"
+          }
+        }
+      ]
+    },
+    "restore_verified": true
+  },
+  "ts": 1787655192.274445
+}

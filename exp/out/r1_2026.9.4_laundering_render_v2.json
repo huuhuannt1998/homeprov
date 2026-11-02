@@ -1,0 +1,2058 @@
+{
+ "activity_details_chain": {
+  "after_chain_still_names_lock_action": {
+   "admin": 0,
+   "non_admin": 0
+  },
+  "example_after_admin_wh": [
+   "Porch Motion",
+   "Detected",
+   "6:07:24.687 PM",
+   "Porch motion light",
+   "View trace",
+   "Triggered",
+   "6:07:24.687 PM",
+   "Front Door",
+   "Unlocked",
+   "6:07:32.850 PM"
+  ],
+  "example_before_admin_wh": [
+   "Lock",
+   "Action used: Unlock lock",
+   "Front Door",
+   "Unlocked",
+   "6:07:32.850 PM"
+  ],
+  "exposes_laundering": false,
+  "finding": "after laundering the Details 'What happened' chain shows Motion Detected -> <room> motion light Triggered -> Front Door Unlocked, i.e. it is built from the rewritten logbook context and corroborates the laundered cause; it does NOT name the lock integration",
+  "view_trace_link_admin_after_count": 30,
+  "view_trace_link_nonadmin": "absent (trace access is admin-gated; non-admin chain has no 'View trace')"
+ },
+ "automation_trace_finding": {
+  "note": "the motion-light automation's saved execution traces contain only the motion->light actions and never a lock/unlock; following the admin 'View trace' link therefore contradicts the laundered chain -> the trace link EXPOSES the laundering",
+  "saved_traces": {
+   "automation.motion_light_hall": {
+    "mentions_light": true,
+    "mentions_lock_front_door": false,
+    "mentions_unlock": false,
+    "n": 5
+   },
+   "automation.motion_light_kitchen": {
+    "mentions_light": true,
+    "mentions_lock_front_door": false,
+    "mentions_unlock": false,
+    "n": 5
+   },
+   "automation.motion_light_porch": {
+    "mentions_light": true,
+    "mentions_lock_front_door": false,
+    "mentions_unlock": false,
+    "n": 5
+   }
+  },
+  "trace_exposes_laundering": true,
+  "trace_keys": {
+   "hallway": "automation.motion_light_hall",
+   "kitchen": "automation.motion_light_kitchen",
+   "porch": "automation.motion_light_porch"
+  }
+ },
+ "configurations": [
+  "porch",
+  "hallway",
+  "kitchen"
+ ],
+ "experiment": "R1-item2-laundering-render",
+ "ha_version": "2026.9.4",
+ "laundering_moved_displayed_top_line": {
+  "admin": {
+   "ci_hi": 1.0,
+   "ci_lo": 0.8842966917779722,
+   "k": 30,
+   "method": "Clopper-Pearson exact",
+   "n": 30,
+   "prop": 1.0
+  },
+  "non_admin": {
+   "ci_hi": 1.0,
+   "ci_lo": 0.8842966917779722,
+   "k": 30,
+   "method": "Clopper-Pearson exact",
+   "n": 30,
+   "prop": 1.0
+  }
+ },
+ "n_per_room": 10,
+ "n_total": 30,
+ "provenance": {
+  "frontend_version": "20260826.7",
+  "git_head": "b7611992393052a568df00c9ebc805f4d15ee6f5",
+  "ha_version": "2026.9.4",
+  "image_digest": "sha256:3e6710a7ab2a61311d9d899b719f6c3657791c63e8f4942cec4ebc42401d6b76",
+  "script_sha256": {
+   "r1_common.py": "c4327d9dda0170645fa91ef4d7a6e70e86dbb4a40c36a92200a60d7f70cc0375",
+   "r1_laundering_aggregate.py": "8944dd5b97bb7891f393f1cd9ef9cf71851d508b4cb19ca2f93bbd605352cea7",
+   "r1_laundering_render.py": "893423ec4f9b40092f9a1fd9ebe5fa520cb8cfc89022ee1d061abc44a5463fa8",
+   "r1_render.py": "cd4ecf13d3f3164d4236be970f164faa1e93928542e4ef382b21b178f6a7d647"
+  },
+  "timestamp_utc": "2026-10-06T22:28:00.093431+00:00"
+ },
+ "rendered_vs_rule_agreement": {
+  "agree": 120,
+  "prop": 1.0,
+  "total": 120
+ },
+ "trials": [
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "6:07:24.687 PM",
+      "Porch motion light",
+      "View trace",
+      "Triggered",
+      "6:07:24.687 PM",
+      "Front Door",
+      "Unlocked",
+      "6:07:32.850 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:07:32.850 PM"
+     ]
+    },
+    "non_admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "6:07:24.687 PM",
+      "Porch motion light",
+      "Triggered",
+      "6:07:24.687 PM",
+      "Front Door",
+      "Unlocked",
+      "6:07:32.850 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:07:32.850 PM"
+     ]
+    }
+   },
+   "room": "porch",
+   "rule": {
+    "after": {
+     "admin": "automation:automation.porch_motion_light",
+     "non_admin": "automation:automation.porch_motion_light"
+    },
+    "before": {
+     "admin": "integration:lock",
+     "non_admin": "integration:lock"
+    }
+   },
+   "trial": 0
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "6:08:15.900 PM",
+      "Porch motion light",
+      "View trace",
+      "Triggered",
+      "6:08:15.901 PM",
+      "Front Door",
+      "Unlocked",
+      "6:08:24.113 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:08:24.113 PM"
+     ]
+    },
+    "non_admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "6:08:15.900 PM",
+      "Porch motion light",
+      "Triggered",
+      "6:08:15.901 PM",
+      "Front Door",
+      "Unlocked",
+      "6:08:24.113 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:08:24.113 PM"
+     ]
+    }
+   },
+   "room": "porch",
+   "rule": {
+    "after": {
+     "admin": "automation:automation.porch_motion_light",
+     "non_admin": "automation:automation.porch_motion_light"
+    },
+    "before": {
+     "admin": "integration:lock",
+     "non_admin": "integration:lock"
+    }
+   },
+   "trial": 1
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "6:08:55.148 PM",
+      "Porch motion light",
+      "View trace",
+      "Triggered",
+      "6:08:55.155 PM",
+      "Front Door",
+      "Unlocked",
+      "6:09:03.387 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:09:03.387 PM"
+     ]
+    },
+    "non_admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "6:08:55.148 PM",
+      "Porch motion light",
+      "Triggered",
+      "6:08:55.155 PM",
+      "Front Door",
+      "Unlocked",
+      "6:09:03.387 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:09:03.387 PM"
+     ]
+    }
+   },
+   "room": "porch",
+   "rule": {
+    "after": {
+     "admin": "automation:automation.porch_motion_light",
+     "non_admin": "automation:automation.porch_motion_light"
+    },
+    "before": {
+     "admin": "integration:lock",
+     "non_admin": "integration:lock"
+    }
+   },
+   "trial": 2
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "6:09:34.388 PM",
+      "Porch motion light",
+      "View trace",
+      "Triggered",
+      "6:09:34.388 PM",
+      "Front Door",
+      "Unlocked",
+      "6:09:42.627 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:09:42.627 PM"
+     ]
+    },
+    "non_admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "6:09:34.388 PM",
+      "Porch motion light",
+      "Triggered",
+      "6:09:34.388 PM",
+      "Front Door",
+      "Unlocked",
+      "6:09:42.627 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:09:42.627 PM"
+     ]
+    }
+   },
+   "room": "porch",
+   "rule": {
+    "after": {
+     "admin": "automation:automation.porch_motion_light",
+     "non_admin": "automation:automation.porch_motion_light"
+    },
+    "before": {
+     "admin": "integration:lock",
+     "non_admin": "integration:lock"
+    }
+   },
+   "trial": 3
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "6:10:13.632 PM",
+      "Porch motion light",
+      "View trace",
+      "Triggered",
+      "6:10:13.634 PM",
+      "Front Door",
+      "Unlocked",
+      "6:10:21.863 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:10:21.863 PM"
+     ]
+    },
+    "non_admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "6:10:13.632 PM",
+      "Porch motion light",
+      "Triggered",
+      "6:10:13.634 PM",
+      "Front Door",
+      "Unlocked",
+      "6:10:21.863 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:10:21.863 PM"
+     ]
+    }
+   },
+   "room": "porch",
+   "rule": {
+    "after": {
+     "admin": "automation:automation.porch_motion_light",
+     "non_admin": "automation:automation.porch_motion_light"
+    },
+    "before": {
+     "admin": "integration:lock",
+     "non_admin": "integration:lock"
+    }
+   },
+   "trial": 4
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "6:10:52.845 PM",
+      "Porch motion light",
+      "View trace",
+      "Triggered",
+      "6:10:52.845 PM",
+      "Front Door",
+      "Unlocked",
+      "6:11:01.242 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:11:01.242 PM"
+     ]
+    },
+    "non_admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "6:10:52.845 PM",
+      "Porch motion light",
+      "Triggered",
+      "6:10:52.845 PM",
+      "Front Door",
+      "Unlocked",
+      "6:11:01.242 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:11:01.242 PM"
+     ]
+    }
+   },
+   "room": "porch",
+   "rule": {
+    "after": {
+     "admin": "automation:automation.porch_motion_light",
+     "non_admin": "automation:automation.porch_motion_light"
+    },
+    "before": {
+     "admin": "integration:lock",
+     "non_admin": "integration:lock"
+    }
+   },
+   "trial": 5
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "6:11:32.258 PM",
+      "Porch motion light",
+      "View trace",
+      "Triggered",
+      "6:11:32.259 PM",
+      "Front Door",
+      "Unlocked",
+      "6:11:40.493 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:11:40.493 PM"
+     ]
+    },
+    "non_admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "6:11:32.258 PM",
+      "Porch motion light",
+      "Triggered",
+      "6:11:32.259 PM",
+      "Front Door",
+      "Unlocked",
+      "6:11:40.493 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:11:40.493 PM"
+     ]
+    }
+   },
+   "room": "porch",
+   "rule": {
+    "after": {
+     "admin": "automation:automation.porch_motion_light",
+     "non_admin": "automation:automation.porch_motion_light"
+    },
+    "before": {
+     "admin": "integration:lock",
+     "non_admin": "integration:lock"
+    }
+   },
+   "trial": 6
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "6:12:15.121 PM",
+      "Kitchen motion light",
+      "View trace",
+      "Triggered",
+      "6:12:15.122 PM",
+      "Front Door",
+      "Unlocked",
+      "6:12:19.729 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:12:19.729 PM"
+     ]
+    },
+    "non_admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "6:12:15.121 PM",
+      "Kitchen motion light",
+      "Triggered",
+      "6:12:15.122 PM",
+      "Front Door",
+      "Unlocked",
+      "6:12:19.729 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:12:19.729 PM"
+     ]
+    }
+   },
+   "room": "porch",
+   "rule": {
+    "after": {
+     "admin": "automation:automation.kitchen_motion_light",
+     "non_admin": "automation:automation.kitchen_motion_light"
+    },
+    "before": {
+     "admin": "integration:lock",
+     "non_admin": "integration:lock"
+    }
+   },
+   "trial": 7
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "6:12:50.842 PM",
+      "Porch motion light",
+      "View trace",
+      "Triggered",
+      "6:12:50.845 PM",
+      "Front Door",
+      "Unlocked",
+      "6:12:59.100 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:12:59.100 PM"
+     ]
+    },
+    "non_admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "6:12:50.842 PM",
+      "Porch motion light",
+      "Triggered",
+      "6:12:50.845 PM",
+      "Front Door",
+      "Unlocked",
+      "6:12:59.100 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:12:59.100 PM"
+     ]
+    }
+   },
+   "room": "porch",
+   "rule": {
+    "after": {
+     "admin": "automation:automation.porch_motion_light",
+     "non_admin": "automation:automation.porch_motion_light"
+    },
+    "before": {
+     "admin": "integration:lock",
+     "non_admin": "integration:lock"
+    }
+   },
+   "trial": 8
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "6:13:34.568 PM",
+      "Hallway motion light",
+      "View trace",
+      "Triggered",
+      "6:13:34.569 PM",
+      "Front Door",
+      "Unlocked",
+      "6:13:38.497 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:13:38.497 PM"
+     ]
+    },
+    "non_admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "6:13:34.568 PM",
+      "Hallway motion light",
+      "Triggered",
+      "6:13:34.569 PM",
+      "Front Door",
+      "Unlocked",
+      "6:13:38.497 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:13:38.497 PM"
+     ]
+    }
+   },
+   "room": "porch",
+   "rule": {
+    "after": {
+     "admin": "automation:automation.hallway_motion_light",
+     "non_admin": "automation:automation.hallway_motion_light"
+    },
+    "before": {
+     "admin": "integration:lock",
+     "non_admin": "integration:lock"
+    }
+   },
+   "trial": 9
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "6:14:09.900 PM",
+      "Kitchen motion light",
+      "View trace",
+      "Triggered",
+      "6:14:09.900 PM",
+      "Front Door",
+      "Unlocked",
+      "6:14:18.079 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:14:18.079 PM"
+     ]
+    },
+    "non_admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "6:14:09.900 PM",
+      "Kitchen motion light",
+      "Triggered",
+      "6:14:09.900 PM",
+      "Front Door",
+      "Unlocked",
+      "6:14:18.079 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:14:18.079 PM"
+     ]
+    }
+   },
+   "room": "hallway",
+   "rule": {
+    "after": {
+     "admin": "automation:automation.kitchen_motion_light",
+     "non_admin": "automation:automation.kitchen_motion_light"
+    },
+    "before": {
+     "admin": "integration:lock",
+     "non_admin": "integration:lock"
+    }
+   },
+   "trial": 0
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "6:15:01.813 PM",
+      "Kitchen motion light",
+      "View trace",
+      "Triggered",
+      "6:15:01.814 PM",
+      "Front Door",
+      "Unlocked",
+      "6:15:09.472 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:15:09.472 PM"
+     ]
+    },
+    "non_admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "6:15:01.813 PM",
+      "Kitchen motion light",
+      "Triggered",
+      "6:15:01.814 PM",
+      "Front Door",
+      "Unlocked",
+      "6:15:09.472 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:15:09.472 PM"
+     ]
+    }
+   },
+   "room": "hallway",
+   "rule": {
+    "after": {
+     "admin": "automation:automation.kitchen_motion_light",
+     "non_admin": "automation:automation.kitchen_motion_light"
+    },
+    "before": {
+     "admin": "integration:lock",
+     "non_admin": "integration:lock"
+    }
+   },
+   "trial": 1
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "6:15:40.428 PM",
+      "Hallway motion light",
+      "View trace",
+      "Triggered",
+      "6:15:40.432 PM",
+      "Front Door",
+      "Unlocked",
+      "6:15:48.686 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:15:48.686 PM"
+     ]
+    },
+    "non_admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "6:15:40.428 PM",
+      "Hallway motion light",
+      "Triggered",
+      "6:15:40.432 PM",
+      "Front Door",
+      "Unlocked",
+      "6:15:48.686 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:15:48.686 PM"
+     ]
+    }
+   },
+   "room": "hallway",
+   "rule": {
+    "after": {
+     "admin": "automation:automation.hallway_motion_light",
+     "non_admin": "automation:automation.hallway_motion_light"
+    },
+    "before": {
+     "admin": "integration:lock",
+     "non_admin": "integration:lock"
+    }
+   },
+   "trial": 2
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "6:16:22.765 PM",
+      "Kitchen motion light",
+      "View trace",
+      "Triggered",
+      "6:16:22.768 PM",
+      "Front Door",
+      "Unlocked",
+      "6:16:28.102 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:16:28.102 PM"
+     ]
+    },
+    "non_admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "6:16:22.765 PM",
+      "Kitchen motion light",
+      "Triggered",
+      "6:16:22.768 PM",
+      "Front Door",
+      "Unlocked",
+      "6:16:28.102 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:16:28.102 PM"
+     ]
+    }
+   },
+   "room": "hallway",
+   "rule": {
+    "after": {
+     "admin": "automation:automation.kitchen_motion_light",
+     "non_admin": "automation:automation.kitchen_motion_light"
+    },
+    "before": {
+     "admin": "integration:lock",
+     "non_admin": "integration:lock"
+    }
+   },
+   "trial": 3
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "6:16:59.142 PM",
+      "Hallway motion light",
+      "View trace",
+      "Triggered",
+      "6:16:59.143 PM",
+      "Front Door",
+      "Unlocked",
+      "6:17:07.363 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:17:07.363 PM"
+     ]
+    },
+    "non_admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "6:16:59.142 PM",
+      "Hallway motion light",
+      "Triggered",
+      "6:16:59.143 PM",
+      "Front Door",
+      "Unlocked",
+      "6:17:07.363 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:17:07.363 PM"
+     ]
+    }
+   },
+   "room": "hallway",
+   "rule": {
+    "after": {
+     "admin": "automation:automation.hallway_motion_light",
+     "non_admin": "automation:automation.hallway_motion_light"
+    },
+    "before": {
+     "admin": "integration:lock",
+     "non_admin": "integration:lock"
+    }
+   },
+   "trial": 4
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "6:17:38.476 PM",
+      "Hallway motion light",
+      "View trace",
+      "Triggered",
+      "6:17:38.479 PM",
+      "Front Door",
+      "Unlocked",
+      "6:17:46.683 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:17:46.683 PM"
+     ]
+    },
+    "non_admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "6:17:38.476 PM",
+      "Hallway motion light",
+      "Triggered",
+      "6:17:38.479 PM",
+      "Front Door",
+      "Unlocked",
+      "6:17:46.683 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:17:46.683 PM"
+     ]
+    }
+   },
+   "room": "hallway",
+   "rule": {
+    "after": {
+     "admin": "automation:automation.hallway_motion_light",
+     "non_admin": "automation:automation.hallway_motion_light"
+    },
+    "before": {
+     "admin": "integration:lock",
+     "non_admin": "integration:lock"
+    }
+   },
+   "trial": 5
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "6:18:17.733 PM",
+      "Hallway motion light",
+      "View trace",
+      "Triggered",
+      "6:18:17.735 PM",
+      "Front Door",
+      "Unlocked",
+      "6:18:25.970 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:18:25.970 PM"
+     ]
+    },
+    "non_admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "6:18:17.733 PM",
+      "Hallway motion light",
+      "Triggered",
+      "6:18:17.735 PM",
+      "Front Door",
+      "Unlocked",
+      "6:18:25.970 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:18:25.970 PM"
+     ]
+    }
+   },
+   "room": "hallway",
+   "rule": {
+    "after": {
+     "admin": "automation:automation.hallway_motion_light",
+     "non_admin": "automation:automation.hallway_motion_light"
+    },
+    "before": {
+     "admin": "integration:lock",
+     "non_admin": "integration:lock"
+    }
+   },
+   "trial": 6
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "6:18:57.088 PM",
+      "Hallway motion light",
+      "View trace",
+      "Triggered",
+      "6:18:57.089 PM",
+      "Front Door",
+      "Unlocked",
+      "6:19:05.317 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:19:05.317 PM"
+     ]
+    },
+    "non_admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "6:18:57.088 PM",
+      "Hallway motion light",
+      "Triggered",
+      "6:18:57.089 PM",
+      "Front Door",
+      "Unlocked",
+      "6:19:05.317 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:19:05.317 PM"
+     ]
+    }
+   },
+   "room": "hallway",
+   "rule": {
+    "after": {
+     "admin": "automation:automation.hallway_motion_light",
+     "non_admin": "automation:automation.hallway_motion_light"
+    },
+    "before": {
+     "admin": "integration:lock",
+     "non_admin": "integration:lock"
+    }
+   },
+   "trial": 7
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "6:19:36.479 PM",
+      "Hallway motion light",
+      "View trace",
+      "Triggered",
+      "6:19:36.479 PM",
+      "Front Door",
+      "Unlocked",
+      "6:19:44.700 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:19:44.700 PM"
+     ]
+    },
+    "non_admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "6:19:36.479 PM",
+      "Hallway motion light",
+      "Triggered",
+      "6:19:36.479 PM",
+      "Front Door",
+      "Unlocked",
+      "6:19:44.700 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:19:44.700 PM"
+     ]
+    }
+   },
+   "room": "hallway",
+   "rule": {
+    "after": {
+     "admin": "automation:automation.hallway_motion_light",
+     "non_admin": "automation:automation.hallway_motion_light"
+    },
+    "before": {
+     "admin": "integration:lock",
+     "non_admin": "integration:lock"
+    }
+   },
+   "trial": 8
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "6:20:15.800 PM",
+      "Hallway motion light",
+      "View trace",
+      "Triggered",
+      "6:20:15.807 PM",
+      "Front Door",
+      "Unlocked",
+      "6:20:24.020 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:20:24.020 PM"
+     ]
+    },
+    "non_admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "6:20:15.800 PM",
+      "Hallway motion light",
+      "Triggered",
+      "6:20:15.807 PM",
+      "Front Door",
+      "Unlocked",
+      "6:20:24.020 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:20:24.020 PM"
+     ]
+    }
+   },
+   "room": "hallway",
+   "rule": {
+    "after": {
+     "admin": "automation:automation.hallway_motion_light",
+     "non_admin": "automation:automation.hallway_motion_light"
+    },
+    "before": {
+     "admin": "integration:lock",
+     "non_admin": "integration:lock"
+    }
+   },
+   "trial": 9
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "6:20:55.106 PM",
+      "Kitchen motion light",
+      "View trace",
+      "Triggered",
+      "6:20:55.106 PM",
+      "Front Door",
+      "Unlocked",
+      "6:21:03.425 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:21:03.425 PM"
+     ]
+    },
+    "non_admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "6:20:55.106 PM",
+      "Kitchen motion light",
+      "Triggered",
+      "6:20:55.106 PM",
+      "Front Door",
+      "Unlocked",
+      "6:21:03.425 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:21:03.425 PM"
+     ]
+    }
+   },
+   "room": "kitchen",
+   "rule": {
+    "after": {
+     "admin": "automation:automation.kitchen_motion_light",
+     "non_admin": "automation:automation.kitchen_motion_light"
+    },
+    "before": {
+     "admin": "integration:lock",
+     "non_admin": "integration:lock"
+    }
+   },
+   "trial": 0
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "6:21:47.118 PM",
+      "Kitchen motion light",
+      "View trace",
+      "Triggered",
+      "6:21:47.120 PM",
+      "Front Door",
+      "Unlocked",
+      "6:21:55.342 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:21:55.342 PM"
+     ]
+    },
+    "non_admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "6:21:47.118 PM",
+      "Kitchen motion light",
+      "Triggered",
+      "6:21:47.120 PM",
+      "Front Door",
+      "Unlocked",
+      "6:21:55.342 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:21:55.342 PM"
+     ]
+    }
+   },
+   "room": "kitchen",
+   "rule": {
+    "after": {
+     "admin": "automation:automation.kitchen_motion_light",
+     "non_admin": "automation:automation.kitchen_motion_light"
+    },
+    "before": {
+     "admin": "integration:lock",
+     "non_admin": "integration:lock"
+    }
+   },
+   "trial": 1
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "6:22:26.403 PM",
+      "Kitchen motion light",
+      "View trace",
+      "Triggered",
+      "6:22:26.404 PM",
+      "Front Door",
+      "Unlocked",
+      "6:22:34.653 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:22:34.653 PM"
+     ]
+    },
+    "non_admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "6:22:26.403 PM",
+      "Kitchen motion light",
+      "Triggered",
+      "6:22:26.404 PM",
+      "Front Door",
+      "Unlocked",
+      "6:22:34.653 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:22:34.653 PM"
+     ]
+    }
+   },
+   "room": "kitchen",
+   "rule": {
+    "after": {
+     "admin": "automation:automation.kitchen_motion_light",
+     "non_admin": "automation:automation.kitchen_motion_light"
+    },
+    "before": {
+     "admin": "integration:lock",
+     "non_admin": "integration:lock"
+    }
+   },
+   "trial": 2
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "6:23:05.599 PM",
+      "Kitchen motion light",
+      "View trace",
+      "Triggered",
+      "6:23:05.603 PM",
+      "Front Door",
+      "Unlocked",
+      "6:23:13.907 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:23:13.907 PM"
+     ]
+    },
+    "non_admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "6:23:05.599 PM",
+      "Kitchen motion light",
+      "Triggered",
+      "6:23:05.603 PM",
+      "Front Door",
+      "Unlocked",
+      "6:23:13.907 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:23:13.907 PM"
+     ]
+    }
+   },
+   "room": "kitchen",
+   "rule": {
+    "after": {
+     "admin": "automation:automation.kitchen_motion_light",
+     "non_admin": "automation:automation.kitchen_motion_light"
+    },
+    "before": {
+     "admin": "integration:lock",
+     "non_admin": "integration:lock"
+    }
+   },
+   "trial": 3
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "6:23:44.938 PM",
+      "Hallway motion light",
+      "View trace",
+      "Triggered",
+      "6:23:44.938 PM",
+      "Front Door",
+      "Unlocked",
+      "6:23:53.220 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:23:53.220 PM"
+     ]
+    },
+    "non_admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "6:23:44.938 PM",
+      "Hallway motion light",
+      "Triggered",
+      "6:23:44.938 PM",
+      "Front Door",
+      "Unlocked",
+      "6:23:53.220 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:23:53.220 PM"
+     ]
+    }
+   },
+   "room": "kitchen",
+   "rule": {
+    "after": {
+     "admin": "automation:automation.hallway_motion_light",
+     "non_admin": "automation:automation.hallway_motion_light"
+    },
+    "before": {
+     "admin": "integration:lock",
+     "non_admin": "integration:lock"
+    }
+   },
+   "trial": 4
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "6:24:28.283 PM",
+      "Porch motion light",
+      "View trace",
+      "Triggered",
+      "6:24:28.284 PM",
+      "Front Door",
+      "Unlocked",
+      "6:24:32.445 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:24:32.445 PM"
+     ]
+    },
+    "non_admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "6:24:28.283 PM",
+      "Porch motion light",
+      "Triggered",
+      "6:24:28.284 PM",
+      "Front Door",
+      "Unlocked",
+      "6:24:32.445 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:24:32.445 PM"
+     ]
+    }
+   },
+   "room": "kitchen",
+   "rule": {
+    "after": {
+     "admin": "automation:automation.porch_motion_light",
+     "non_admin": "automation:automation.porch_motion_light"
+    },
+    "before": {
+     "admin": "integration:lock",
+     "non_admin": "integration:lock"
+    }
+   },
+   "trial": 5
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "6:25:03.197 PM",
+      "Kitchen motion light",
+      "View trace",
+      "Triggered",
+      "6:25:03.198 PM",
+      "Front Door",
+      "Unlocked",
+      "6:25:11.435 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:25:11.435 PM"
+     ]
+    },
+    "non_admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "6:25:03.197 PM",
+      "Kitchen motion light",
+      "Triggered",
+      "6:25:03.198 PM",
+      "Front Door",
+      "Unlocked",
+      "6:25:11.435 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:25:11.435 PM"
+     ]
+    }
+   },
+   "room": "kitchen",
+   "rule": {
+    "after": {
+     "admin": "automation:automation.kitchen_motion_light",
+     "non_admin": "automation:automation.kitchen_motion_light"
+    },
+    "before": {
+     "admin": "integration:lock",
+     "non_admin": "integration:lock"
+    }
+   },
+   "trial": 6
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "6:25:42.310 PM",
+      "Kitchen motion light",
+      "View trace",
+      "Triggered",
+      "6:25:42.314 PM",
+      "Front Door",
+      "Unlocked",
+      "6:25:50.511 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:25:50.511 PM"
+     ]
+    },
+    "non_admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "6:25:42.310 PM",
+      "Kitchen motion light",
+      "Triggered",
+      "6:25:42.314 PM",
+      "Front Door",
+      "Unlocked",
+      "6:25:50.511 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:25:50.511 PM"
+     ]
+    }
+   },
+   "room": "kitchen",
+   "rule": {
+    "after": {
+     "admin": "automation:automation.kitchen_motion_light",
+     "non_admin": "automation:automation.kitchen_motion_light"
+    },
+    "before": {
+     "admin": "integration:lock",
+     "non_admin": "integration:lock"
+    }
+   },
+   "trial": 7
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "6:26:21.510 PM",
+      "Kitchen motion light",
+      "View trace",
+      "Triggered",
+      "6:26:21.510 PM",
+      "Front Door",
+      "Unlocked",
+      "6:26:29.722 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:26:29.722 PM"
+     ]
+    },
+    "non_admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "6:26:21.510 PM",
+      "Kitchen motion light",
+      "Triggered",
+      "6:26:21.510 PM",
+      "Front Door",
+      "Unlocked",
+      "6:26:29.722 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:26:29.722 PM"
+     ]
+    }
+   },
+   "room": "kitchen",
+   "rule": {
+    "after": {
+     "admin": "automation:automation.kitchen_motion_light",
+     "non_admin": "automation:automation.kitchen_motion_light"
+    },
+    "before": {
+     "admin": "integration:lock",
+     "non_admin": "integration:lock"
+    }
+   },
+   "trial": 8
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "6:27:02.227 PM",
+      "Hallway motion light",
+      "View trace",
+      "Triggered",
+      "6:27:02.230 PM",
+      "Front Door",
+      "Unlocked",
+      "6:27:08.793 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:27:08.793 PM"
+     ]
+    },
+    "non_admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "6:27:02.227 PM",
+      "Hallway motion light",
+      "Triggered",
+      "6:27:02.230 PM",
+      "Front Door",
+      "Unlocked",
+      "6:27:08.793 PM"
+     ],
+     "before_top": "Via Lock",
+     "before_wh": [
+      "Lock",
+      "Action used: Unlock lock",
+      "Front Door",
+      "Unlocked",
+      "6:27:08.793 PM"
+     ]
+    }
+   },
+   "room": "kitchen",
+   "rule": {
+    "after": {
+     "admin": "automation:automation.hallway_motion_light",
+     "non_admin": "automation:automation.hallway_motion_light"
+    },
+    "before": {
+     "admin": "integration:lock",
+     "non_admin": "integration:lock"
+    }
+   },
+   "trial": 9
+  }
+ ],
+ "what": "s1 laundering recipe (delete the adversary context's events; reattach the unlock state row to a genuine motion-light automation run), rendered in a real browser as an admin and a non-admin viewer, 3 configurations (porch/hallway/kitchen) x 10 trials. Captures the Activity top line and the 2026.9 Activity Details context chain (dialog-logbook-detail 'What happened', frontend PR #53362) before/after, and compares to the transcribed display() rule."
+}

@@ -1,0 +1,629 @@
+{
+  "ha_version": "2026.7.4",
+  "window_hours": 6,
+  "entities_scoped": [
+    "sun.sun",
+    "sensor.total_gas_m3",
+    "sensor.total_gas_ft3",
+    "sensor.total_energy_mwh",
+    "sensor.total_energy_kwh",
+    "camera.demo_camera_without_stream",
+    "camera.demo_camera_png",
+    "camera.demo_camera",
+    "lock.kitchen_door",
+    "input_boolean.owner_present",
+    "automation.arrive_home",
+    "sensor.sun_next_setting",
+    "zone.home",
+    "sensor.sun_next_rising",
+    "sensor.sun_next_noon",
+    "sensor.sun_next_midnight",
+    "sensor.sun_next_dusk",
+    "sensor.sun_next_dawn",
+    "sensor.backup_backup_manager_state",
+    "image_processing.demo_face",
+    "device_tracker.demo_paulus",
+    "device_tracker.demo_home_boy",
+    "device_tracker.demo_anne_therese",
+    "weather.demo_weather_south",
+    "weather.demo_weather_north"
+  ],
+  "baseline_rows": 43,
+  "picked": {
+    "state_id": 3392,
+    "event_id": 20476
+  },
+  "positive_control": {
+    "field": "states.state",
+    "method": "mutation",
+    "attribution_relevant": true,
+    "effect": {
+      "rows_before": 43,
+      "rows_after": 43,
+      "vanished": 1,
+      "appeared": 1,
+      "attribution_changed": 0,
+      "examples": []
+    },
+    "restore_verified": true
+  },
+  "static": {
+    "EVENT_COLUMNS": [
+      {
+        "label": "row_id",
+        "columns": [
+          "events.event_id"
+        ]
+      },
+      {
+        "label": "event_type",
+        "columns": [
+          "event_types.event_type"
+        ]
+      },
+      {
+        "label": "event_data",
+        "columns": [
+          "event_data.shared_data",
+          "events.event_data"
+        ]
+      },
+      {
+        "label": "time_fired_ts",
+        "columns": [
+          "events.time_fired_ts"
+        ]
+      },
+      {
+        "label": "context_id_bin",
+        "columns": [
+          "events.context_id_bin"
+        ]
+      },
+      {
+        "label": "context_user_id_bin",
+        "columns": [
+          "events.context_user_id_bin"
+        ]
+      },
+      {
+        "label": "context_parent_id_bin",
+        "columns": [
+          "events.context_parent_id_bin"
+        ]
+      }
+    ],
+    "STATE_COLUMNS": [
+      {
+        "label": "state",
+        "columns": [
+          "states.state"
+        ]
+      },
+      {
+        "label": "entity_id",
+        "columns": [
+          "states_meta.entity_id"
+        ]
+      },
+      {
+        "label": "icon",
+        "columns": [
+          "state_attributes.shared_attrs",
+          "states.attributes"
+        ]
+      },
+      {
+        "label": "attributes",
+        "columns": [
+          "state_attributes.shared_attrs",
+          "states.attributes"
+        ]
+      }
+    ],
+    "EVENT_COLUMNS_FOR_STATE_SELECT": [
+      {
+        "label": "row_id",
+        "columns": [
+          "states.state_id"
+        ]
+      },
+      {
+        "label": "event_type",
+        "columns": []
+      },
+      {
+        "label": "event_data",
+        "columns": []
+      },
+      {
+        "label": "time_fired_ts",
+        "columns": [
+          "states.last_updated_ts"
+        ]
+      },
+      {
+        "label": "context_id_bin",
+        "columns": [
+          "states.context_id_bin"
+        ]
+      },
+      {
+        "label": "context_user_id_bin",
+        "columns": [
+          "states.context_user_id_bin"
+        ]
+      },
+      {
+        "label": "context_parent_id_bin",
+        "columns": [
+          "states.context_parent_id_bin"
+        ]
+      }
+    ],
+    "STATE_CONTEXT_ONLY_COLUMNS": [
+      {
+        "label": "state",
+        "columns": [
+          "states.state"
+        ]
+      },
+      {
+        "label": "entity_id",
+        "columns": [
+          "states_meta.entity_id"
+        ]
+      },
+      {
+        "label": "icon",
+        "columns": []
+      },
+      {
+        "label": "attributes",
+        "columns": []
+      }
+    ]
+  },
+  "mutations": [
+    {
+      "field": "states.context_id_bin",
+      "method": "mutation",
+      "attribution_relevant": true,
+      "effect": {
+        "rows_before": 43,
+        "rows_after": 43,
+        "vanished": 0,
+        "appeared": 0,
+        "attribution_changed": 1,
+        "examples": [
+          {
+            "row": {
+              "entity_id": "lock.kitchen_door",
+              "message": null,
+              "name": "Kitchen Door",
+              "state": "unlocked",
+              "when": "2026-08-25T10:45:27.395464+00:00"
+            },
+            "was": {
+              "context_name": "Arrive Home",
+              "context_message": "triggered by state of input_boolean.owner_present",
+              "context_entity_id": "automation.arrive_home",
+              "context_entity_id_name": "Arrive Home",
+              "context_event_type": "automation_triggered",
+              "context_domain": "automation"
+            },
+            "now": {
+              "context_entity_id": "input_boolean.owner_present",
+              "context_entity_id_name": "Owner Present",
+              "context_state": "on"
+            }
+          }
+        ]
+      },
+      "restore_verified": true
+    },
+    {
+      "field": "states.context_parent_id_bin",
+      "method": "mutation",
+      "attribution_relevant": false,
+      "effect": {
+        "rows_before": 43,
+        "rows_after": 43,
+        "vanished": 0,
+        "appeared": 0,
+        "attribution_changed": 0,
+        "examples": []
+      },
+      "restore_verified": true
+    },
+    {
+      "field": "states.context_user_id_bin",
+      "method": "mutation",
+      "attribution_relevant": true,
+      "effect": {
+        "rows_before": 43,
+        "rows_after": 43,
+        "vanished": 0,
+        "appeared": 0,
+        "attribution_changed": 1,
+        "examples": [
+          {
+            "row": {
+              "entity_id": "lock.kitchen_door",
+              "message": null,
+              "name": "Kitchen Door",
+              "state": "unlocked",
+              "when": "2026-08-25T10:45:27.395464+00:00"
+            },
+            "was": {
+              "context_name": "Arrive Home",
+              "context_message": "triggered by state of input_boolean.owner_present",
+              "context_entity_id": "automation.arrive_home",
+              "context_entity_id_name": "Arrive Home",
+              "context_event_type": "automation_triggered",
+              "context_domain": "automation"
+            },
+            "now": {
+              "context_name": "Arrive Home",
+              "context_message": "triggered by state of input_boolean.owner_present",
+              "context_entity_id": "automation.arrive_home",
+              "context_entity_id_name": "Arrive Home",
+              "context_event_type": "automation_triggered",
+              "context_domain": "automation",
+              "context_user_id": "9b14725f8bcce98df16bbb39c72afa81"
+            }
+          }
+        ]
+      },
+      "restore_verified": true
+    },
+    {
+      "field": "states.state",
+      "method": "mutation",
+      "attribution_relevant": true,
+      "effect": {
+        "rows_before": 43,
+        "rows_after": 43,
+        "vanished": 1,
+        "appeared": 1,
+        "attribution_changed": 0,
+        "examples": []
+      },
+      "restore_verified": true
+    },
+    {
+      "field": "states.metadata_id",
+      "method": "mutation",
+      "attribution_relevant": true,
+      "effect": {
+        "rows_before": 43,
+        "rows_after": 42,
+        "vanished": 1,
+        "appeared": 0,
+        "attribution_changed": 0,
+        "examples": []
+      },
+      "restore_verified": true
+    },
+    {
+      "field": "states.attributes_id",
+      "method": "mutation",
+      "attribution_relevant": false,
+      "effect": {
+        "rows_before": 43,
+        "rows_after": 43,
+        "vanished": 0,
+        "appeared": 0,
+        "attribution_changed": 0,
+        "examples": []
+      },
+      "restore_verified": true
+    },
+    {
+      "field": "states.old_state_id",
+      "method": "mutation",
+      "attribution_relevant": true,
+      "effect": {
+        "rows_before": 43,
+        "rows_after": 42,
+        "vanished": 1,
+        "appeared": 0,
+        "attribution_changed": 0,
+        "examples": []
+      },
+      "restore_verified": true
+    },
+    {
+      "field": "states.last_updated_ts",
+      "method": "mutation",
+      "attribution_relevant": true,
+      "effect": {
+        "rows_before": 43,
+        "rows_after": 43,
+        "vanished": 1,
+        "appeared": 1,
+        "attribution_changed": 0,
+        "examples": []
+      },
+      "restore_verified": true
+    },
+    {
+      "field": "states.last_changed_ts",
+      "method": "mutation",
+      "attribution_relevant": false,
+      "effect": {
+        "rows_before": 43,
+        "rows_after": 43,
+        "vanished": 0,
+        "appeared": 0,
+        "attribution_changed": 0,
+        "examples": []
+      },
+      "restore_verified": true
+    },
+    {
+      "field": "states.state_id(row identity)",
+      "method": "static-only",
+      "attribution_relevant": null
+    },
+    {
+      "field": "events.context_id_bin",
+      "method": "mutation",
+      "attribution_relevant": true,
+      "effect": {
+        "rows_before": 43,
+        "rows_after": 43,
+        "vanished": 0,
+        "appeared": 0,
+        "attribution_changed": 2,
+        "examples": [
+          {
+            "row": {
+              "entity_id": "lock.kitchen_door",
+              "message": null,
+              "name": "Kitchen Door",
+              "state": "unlocking",
+              "when": "2026-08-25T10:45:25.392840+00:00"
+            },
+            "was": {
+              "context_name": "Arrive Home",
+              "context_message": "triggered by state of input_boolean.owner_present",
+              "context_entity_id": "automation.arrive_home",
+              "context_entity_id_name": "Arrive Home",
+              "context_event_type": "automation_triggered",
+              "context_domain": "automation"
+            },
+            "now": {
+              "context_event_type": "call_service",
+              "context_domain": "lock",
+              "context_service": "unlock"
+            }
+          },
+          {
+            "row": {
+              "entity_id": "lock.kitchen_door",
+              "message": null,
+              "name": "Kitchen Door",
+              "state": "unlocked",
+              "when": "2026-08-25T10:45:27.395464+00:00"
+            },
+            "was": {
+              "context_name": "Arrive Home",
+              "context_message": "triggered by state of input_boolean.owner_present",
+              "context_entity_id": "automation.arrive_home",
+              "context_entity_id_name": "Arrive Home",
+              "context_event_type": "automation_triggered",
+              "context_domain": "automation"
+            },
+            "now": {
+              "context_event_type": "call_service",
+              "context_domain": "lock",
+              "context_service": "unlock"
+            }
+          }
+        ]
+      },
+      "restore_verified": true
+    },
+    {
+      "field": "events.context_parent_id_bin",
+      "method": "mutation",
+      "attribution_relevant": true,
+      "effect": {
+        "rows_before": 43,
+        "rows_after": 43,
+        "vanished": 0,
+        "appeared": 0,
+        "attribution_changed": 1,
+        "examples": [
+          {
+            "row": {
+              "entity_id": "automation.arrive_home",
+              "message": "triggered by state of input_boolean.owner_present",
+              "name": "Arrive Home",
+              "state": null,
+              "when": "2026-08-25T10:45:23.892840+00:00"
+            },
+            "was": {
+              "context_entity_id": "input_boolean.owner_present",
+              "context_entity_id_name": "Owner Present",
+              "context_state": "on",
+              "source": "state of input_boolean.owner_present"
+            },
+            "now": {
+              "source": "state of input_boolean.owner_present"
+            }
+          }
+        ]
+      },
+      "restore_verified": true
+    },
+    {
+      "field": "events.context_user_id_bin",
+      "method": "mutation",
+      "attribution_relevant": true,
+      "effect": {
+        "rows_before": 43,
+        "rows_after": 43,
+        "vanished": 0,
+        "appeared": 0,
+        "attribution_changed": 1,
+        "examples": [
+          {
+            "row": {
+              "entity_id": "automation.arrive_home",
+              "message": "triggered by state of input_boolean.owner_present",
+              "name": "Arrive Home",
+              "state": null,
+              "when": "2026-08-25T10:45:23.892840+00:00"
+            },
+            "was": {
+              "context_entity_id": "input_boolean.owner_present",
+              "context_entity_id_name": "Owner Present",
+              "context_state": "on",
+              "source": "state of input_boolean.owner_present"
+            },
+            "now": {
+              "context_entity_id": "input_boolean.owner_present",
+              "context_entity_id_name": "Owner Present",
+              "context_user_id": "0bc8b792efbc693a46f1dcdbeba34a1c",
+              "context_state": "on",
+              "source": "state of input_boolean.owner_present"
+            }
+          }
+        ]
+      },
+      "restore_verified": true
+    },
+    {
+      "field": "events.event_type_id",
+      "method": "mutation",
+      "attribution_relevant": true,
+      "effect": {
+        "rows_before": 43,
+        "rows_after": 42,
+        "vanished": 1,
+        "appeared": 0,
+        "attribution_changed": 2,
+        "examples": [
+          {
+            "row": {
+              "entity_id": "lock.kitchen_door",
+              "message": null,
+              "name": "Kitchen Door",
+              "state": "unlocking",
+              "when": "2026-08-25T10:45:25.392840+00:00"
+            },
+            "was": {
+              "context_name": "Arrive Home",
+              "context_message": "triggered by state of input_boolean.owner_present",
+              "context_entity_id": "automation.arrive_home",
+              "context_entity_id_name": "Arrive Home",
+              "context_event_type": "automation_triggered",
+              "context_domain": "automation"
+            },
+            "now": {}
+          },
+          {
+            "row": {
+              "entity_id": "lock.kitchen_door",
+              "message": null,
+              "name": "Kitchen Door",
+              "state": "unlocked",
+              "when": "2026-08-25T10:45:27.395464+00:00"
+            },
+            "was": {
+              "context_name": "Arrive Home",
+              "context_message": "triggered by state of input_boolean.owner_present",
+              "context_entity_id": "automation.arrive_home",
+              "context_entity_id_name": "Arrive Home",
+              "context_event_type": "automation_triggered",
+              "context_domain": "automation"
+            },
+            "now": {}
+          }
+        ]
+      },
+      "restore_verified": true
+    },
+    {
+      "field": "events.data_id",
+      "method": "mutation",
+      "attribution_relevant": true,
+      "effect": {
+        "rows_before": 43,
+        "rows_after": 42,
+        "vanished": 1,
+        "appeared": 0,
+        "attribution_changed": 2,
+        "examples": [
+          {
+            "row": {
+              "entity_id": "lock.kitchen_door",
+              "message": null,
+              "name": "Kitchen Door",
+              "state": "unlocking",
+              "when": "2026-08-25T10:45:25.392840+00:00"
+            },
+            "was": {
+              "context_name": "Arrive Home",
+              "context_message": "triggered by state of input_boolean.owner_present",
+              "context_entity_id": "automation.arrive_home",
+              "context_entity_id_name": "Arrive Home",
+              "context_event_type": "automation_triggered",
+              "context_domain": "automation"
+            },
+            "now": {
+              "context_message": "triggered",
+              "context_event_type": "automation_triggered",
+              "context_domain": "automation"
+            }
+          },
+          {
+            "row": {
+              "entity_id": "lock.kitchen_door",
+              "message": null,
+              "name": "Kitchen Door",
+              "state": "unlocked",
+              "when": "2026-08-25T10:45:27.395464+00:00"
+            },
+            "was": {
+              "context_name": "Arrive Home",
+              "context_message": "triggered by state of input_boolean.owner_present",
+              "context_entity_id": "automation.arrive_home",
+              "context_entity_id_name": "Arrive Home",
+              "context_event_type": "automation_triggered",
+              "context_domain": "automation"
+            },
+            "now": {
+              "context_message": "triggered",
+              "context_event_type": "automation_triggered",
+              "context_domain": "automation"
+            }
+          }
+        ]
+      },
+      "restore_verified": true
+    },
+    {
+      "field": "events.time_fired_ts",
+      "method": "mutation",
+      "attribution_relevant": true,
+      "effect": {
+        "rows_before": 43,
+        "rows_after": 43,
+        "vanished": 1,
+        "appeared": 1,
+        "attribution_changed": 0,
+        "examples": []
+      },
+      "restore_verified": true
+    },
+    {
+      "field": "event_data.shared_data",
+      "method": "static-only",
+      "attribution_relevant": null
+    }
+  ],
+  "ts": 1787654744.7632444
+}

@@ -1,0 +1,301 @@
+{
+ "experiment": "E5: linked anchor with a head witness (round 13)",
+ "tag": "e5_psr_lnk",
+ "placement": {
+  "host_a": "Home Assistant OS 18.3 (generic-aarch64) in a QEMU/HVF VM on the evaluation Mac; Core run privileged by the Supervisor (as E1)",
+  "host_b": "Docker Desktop's Linux VM on the same Mac: linked anchor (hpr-anchord:linked), monitor (hpr-monitor:e1), replicator (hpr-e1-replicator:1), and E1's MQTT broker and device simulator",
+  "witness": "testbed/anchord/headwitness.py as a python3 process on the Mac itself, outside both VMs, bound to 127.0.0.1; the anchor reaches it through host.docker.internal",
+  "core_container": "image=ghcr.io/home-assistant/qemuarm-64-homeassistant:2026.10.0 digest=sha256:bac198fa74d7871d19a707013e8d620929c9e2d91ddf1c847cb3df86cb379ce1 privileged=true network=host",
+  "core_privilege_on_hostA": "CapEff: 000001ffffffffff /dev/vda8",
+  "probe_from_hub": "{\"untagged\": 401, \"forged_tag\": 401, \"witness_get_head\": 200, \"witness_push_untagged\": 401, \"witness_push_forged_tag\": 401}",
+  "witness_reachable_from_anchor_container": "200",
+  "witness_process": "pid=38147 bind=127.0.0.1:19960 python=<home>/miniconda3/bin/python3 (Python 3.13.11) log=<research-dir>/HOMEPROV-P13-exp/e5/e5_psr_lnk/witness/heads.jsonl listen=127.0.0.1:19960",
+  "key_fingerprint_sha256_16": "18041f2da21fe542 (append key; not recorded; held only by the anchor and monitor containers on host B)",
+  "witness_key_fingerprint_sha256_16": "dbbcc1e330b2abc1 (witness key; not recorded; held only by the anchor container and the witness process on the Mac)",
+  "anchor_image": "hpr-anchord:linked sha256:f3c8a97c1104fe4ed12b3c576198fba9b90f3de88c60133b82cea556826535e6 (in-image anchord.py, anchord_linked.py = repository files)",
+  "monitor_in_image_sha256_16": "f23c12707278e662",
+  "monitor_py_at_run_start_sha256_16": "2eb8f872bb9e4045",
+  "clock_skew_hostA_check": "mac=1791427910.059 hostA=1791427910.294 mac_after=1791427910.249"
+ },
+ "detection_file": {
+  "path": "exp/out/e5_psr_lnk_detection.json",
+  "sha256": "b504587ffff6261d330790d3dd56e1422f0b511110f3b7f7f51a5f91b043ed76"
+ },
+ "detection": {
+  "homeprov_detection_second": {
+   "k": 90,
+   "n": 90,
+   "prop": 1.0,
+   "ci_lo": 0.9598410803842253,
+   "ci_hi": 1.0,
+   "method": "Clopper-Pearson exact",
+   "n_trials_whose_segment_was_anchored": 90,
+   "raw_violation_hits": 90,
+   "hits_explained_by_late_rows": 0,
+   "hits_consistent_with_detection": 90
+  },
+  "homeprov_detection_minute": {
+   "k": 90,
+   "n": 90,
+   "prop": 1.0,
+   "ci_lo": 0.9598410803842253,
+   "ci_hi": 1.0,
+   "method": "Clopper-Pearson exact",
+   "n_trials_whose_segment_was_anchored": 90,
+   "raw_violation_hits": 90,
+   "hits_explained_by_late_rows": 0,
+   "hits_consistent_with_detection": 90
+  }
+ },
+ "renderer_confirmed_misattribution": {
+  "k": 3,
+  "n": 90,
+  "prop": 0.03333333333333333,
+  "ci_lo": 0.006927602731010163,
+  "ci_hi": 0.0943360934131362,
+  "method": "Clopper-Pearson exact"
+ },
+ "benign_violation_floor": {
+  "second": {
+   "k": 2,
+   "n": 291,
+   "prop": 0.006872852233676976,
+   "ci_lo": 0.0008334207262318725,
+   "ci_hi": 0.024605225673387382,
+   "method": "Clopper-Pearson exact",
+   "what": "anchored second-segments inside the run window that no PS trial touched and that fail recomputation"
+  },
+  "minute": {
+   "k": 0,
+   "n": 9,
+   "prop": 0.0,
+   "ci_lo": 0.0,
+   "ci_hi": 0.3362671168799428,
+   "method": "Clopper-Pearson exact",
+   "what": "anchored minute-segments inside the run window that no PS trial touched and that fail recomputation"
+  }
+ },
+ "n_trials": 90,
+ "n_valid": 90,
+ "chain_schemes": {
+  "closure": 225
+ },
+ "scored_chain": {
+  "chain_link_check_in_detection_file": {
+   "link": "v2",
+   "linked_records": 225,
+   "ok": true,
+   "problems": [],
+   "head": {
+    "seq": 225,
+    "head_digest": "06734cb718f5bfd91bd82ed5ba35dc1d55e3d9ca634fedac4a1c9b6fc6582fbe"
+   }
+  },
+  "same_head_as_saved_chain": true
+ },
+ "link_check": {
+  "records": 225,
+  "link": "v2",
+  "linked_records": 225,
+  "head": {
+   "seq": 225,
+   "head_digest": "06734cb718f5bfd91bd82ed5ba35dc1d55e3d9ca634fedac4a1c9b6fc6582fbe"
+  },
+  "ok": true,
+  "problems": [],
+  "integrity": "linked: reordering, deletion and rewriting of records are detectable; a truncated tail or a replaced chain is not, without an externally held head"
+ },
+ "witness_check": {
+  "rule": "headwitness.py: the latest head is the accepted head with the highest sequence number; the chain must hold at least that many records and its record at that sequence number must have that digest (chainverify.verify_chain with the external head)",
+  "witness_latest_head_from_log": {
+   "seq": 225,
+   "head_digest": "06734cb718f5bfd91bd82ed5ba35dc1d55e3d9ca634fedac4a1c9b6fc6582fbe"
+  },
+  "witness_get_head_at_freeze": {
+   "seq": 225,
+   "head_digest": "06734cb718f5bfd91bd82ed5ba35dc1d55e3d9ca634fedac4a1c9b6fc6582fbe"
+  },
+  "log_and_get_agree": true,
+  "against_latest_head": {
+   "ok": true,
+   "problems": [],
+   "external_head": {
+    "seq": 225,
+    "head_digest": "06734cb718f5bfd91bd82ed5ba35dc1d55e3d9ca634fedac4a1c9b6fc6582fbe"
+   },
+   "records_after_external_head": 0,
+   "integrity": "linked and checked against the externally held head"
+  },
+  "heads_accepted": 225,
+  "every_accepted_head_vs_chain": {
+   "match": 225,
+   "mismatch_seqs": [],
+   "beyond_chain_seqs": []
+  },
+  "chain_records_never_witnessed": {
+   "n": 0,
+   "seqs": ""
+  },
+  "anchor_recv_ts_in_head_equals_chain_record": 225,
+  "forks_refused_and_logged": 0,
+  "ok": true
+ },
+ "controls_on_copies_of_the_saved_chain": {
+  "reserialization_reproduces_every_line": true,
+  "truncated_tail": {
+   "what": "chain cut to the 224 records before the witness's latest head (seq 225)",
+   "chain_alone_ok": true,
+   "against_witness_head_ok": false,
+   "problems_against_witness_head": [
+    "chain holds 224 records but the external head is at 225: truncated or replaced"
+   ]
+  },
+  "rewritten_root_unrelinked": {
+   "what": "record 113: root of second-segment 1791428555 replaced, later links left as they were",
+   "chain_alone_ok": false,
+   "against_witness_head_ok": false,
+   "problems_against_witness_head": [
+    "prev_digest does not match the previous record"
+   ]
+  },
+  "rewritten_root_relinked": {
+   "what": "record 113: root of second-segment 1791428555 replaced and every later prev_digest recomputed (an anchor-host rewrite)",
+   "chain_alone_ok": true,
+   "against_witness_head_ok": false,
+   "problems_against_witness_head": [
+    "record does not have the externally held head digest: rewritten or replaced"
+   ]
+  }
+ },
+ "push_latency": {
+  "mode": "sync (pushed before the append is acknowledged; a failed push never refuses an append)",
+  "sync_push_ms_from_anchor_replies": {
+   "source": "the anchor's append replies as the monitor logged them (ticks 1-3 and every twelfth tick, so a sample of the appends)",
+   "monitor_ticks_logged_with_an_append": 21,
+   "ok": {
+    "n": 21,
+    "median": 4.516,
+    "mean": 7.583,
+    "p90": 13.224,
+    "p99": 28.127,
+    "max": 29.766,
+    "min": 2.957
+   },
+   "failed": []
+  },
+  "witness_receipt_minus_anchor_receipt_ms": {
+   "what": "witness_recv_ts (Mac clock) minus anchor_recv_ts (host B clock, taken before the record is written and fsynced), for every accepted head; includes the write, the fsync, the push and the clock offset below",
+   "all_heads": {
+    "n": 225,
+    "median": 7.689,
+    "mean": 9.613,
+    "p90": 13.52,
+    "p99": 59.491,
+    "max": 68.747,
+    "min": 3.68
+   },
+   "heads_in_run_window": {
+    "n": 202,
+    "median": 7.698,
+    "mean": 9.532,
+    "p90": 13.351,
+    "p99": 66.22,
+    "max": 68.747,
+    "min": 3.68
+   },
+   "negative_samples": 0,
+   "clock_hostB_vs_mac_before": {
+    "hostB_minus_mac_ms": 7.0,
+    "bracket_half_width_ms": 30.053
+   },
+   "clock_hostB_vs_mac_after": {
+    "hostB_minus_mac_ms": 25.488,
+    "bracket_half_width_ms": 46.937
+   },
+   "clock_probe_before": {
+    "mac_minus_hostB_ms": 1.439,
+    "min_rtt_ms": 1.594,
+    "n": 25
+   },
+   "clock_probe_after": {
+    "mac_minus_hostB_ms": 1.412,
+    "min_rtt_ms": 1.102,
+    "n": 25
+   },
+   "corrected_for_clock_probe": {
+    "offset_used_mac_minus_hostB_ms": 1.425,
+    "uncertainty_ms": 0.811,
+    "all_heads": {
+     "n": 225,
+     "median": 6.263,
+     "mean": 8.187,
+     "p90": 12.094,
+     "p99": 58.065,
+     "max": 67.321,
+     "min": 2.254
+    },
+    "heads_in_run_window": {
+     "n": 202,
+     "median": 6.272,
+     "mean": 8.107,
+     "p90": 11.926,
+     "p99": 64.794,
+     "max": 67.321,
+     "min": 2.254
+    }
+   }
+  }
+ },
+ "replication": {
+  "period_target_s": 2.0,
+  "cycles_in_run": 599,
+  "cycles_ok": 598,
+  "cycles_failed": 1,
+  "longest_interval_s": 4.001
+ },
+ "anchor_refusals": {
+  "n": 2,
+  "reasons": {
+   "missing_signature/401": 1,
+   "bad_signature/401": 1
+  }
+ },
+ "inputs": {
+  "chain": {
+   "file": "exp/out/e5_psr_lnk_linked_chain.jsonl.gz",
+   "sha256_uncompressed": "bd15a88ecad749a502d24e3277d03ac48dbf3e68f6dcffeffe21608fc04cc759",
+   "gz_matches_run_dir": true
+  },
+  "witness_heads": {
+   "file": "exp/out/e5_psr_lnk_witness_heads.jsonl.gz",
+   "sha256_uncompressed": "c32874309639467ec0c94449bc5dab00a34ba0d98da5a335b19b93b13ac870ef",
+   "gz_matches_run_dir": true
+  },
+  "witness_head_final_sha256": "82bc1ccb182469cb8f75866ade95fd57032b50cc0a8dc2913188f744069bbcfa",
+  "monitor_log_sha256": "f9f5bf48d463955c5c8067fcb3b11a9d9a5f65e2ea30ba9312049abe5851efa8",
+  "recorder_snapshot_sha256": "c3b0f548bffa8d56a298d47dd6843d38bfdcd48ace118bb16bf3c8fe9e2d331e",
+  "replication_log_sha256": "dbc1c7c2ceb8d2800f0ee61caefac68ab374fad491e110a49e62583ef2792e3d",
+  "run_log_sha256": "6d0005bb855d6f45ce9346d9a9ef6a7549971d259ae331ba16abcc1147b28664"
+ },
+ "code": {
+  "exp/stages/e5_linked.py": "fca055777621a1080665355facddb03efdafe0eb480f8c801956e8949c41ed60",
+  "exp/stages/e_ps_detection.py": "22d0681dd9a2e68e689d256dcb98cab1e3163f9fc05fd3754cd6b8d141aa2196",
+  "exp/stages/e_c_write_time.py": "6b052d8a303a29789d5c523b2c7a512c14ef40fd253799d8ac447d907520cc83",
+  "monitor/monitor.py": "2eb8f872bb9e40452b353a507229e1502fff1ed81e2d772f5de4fe4bb30fc48b",
+  "testbed/anchord/anchord.py": "7b1ef9f1e11a36584eb0fde218fc6a0bb234ff33071e80990d0d354883a0c17f",
+  "testbed/anchord/anchord_linked.py": "99aa18ceb8f39c568716a7cfe52218b9715299239435596d793b0f231508a6e2",
+  "testbed/anchord/headwitness.py": "cde6896535ea99d1f0dbfcd805a925a00b482d8fcab5e8d01cf2ff5c027ca3c7",
+  "testbed/anchord/chainverify.py": "0f05a5a4bad337b5a9187bb95b701c000c77d5078839b2b4b21747db292761a7",
+  "testbed/e1/replicator/replicator.py": "b45d2f202923965fc8ef3818ba725b7809902b9021981a2589d25539bd049ecb",
+  "testbed/e1/replicator/hub_backup.py": "16ac3f0d88ad391f7d35bfdd36a40bccdd916deee9e71e04be48ee4ec0433711",
+  "testbed/e5/run_e5.sh": "dbf8819eb397673eb19e5804d11237b69aab299956f2a5b65839505a7afa11b5",
+  "testbed/e5/anchord-linked.Dockerfile": "9070cac63b7a90f86dbe5766225be0e001909c8916369919ce58504357724f3d"
+ },
+ "caveats": [
+  "The monitor container runs hpr-monitor:e1's monitor.py (placement.monitor_in_image_sha256_16); the verifier imports the repository's monitor/monitor.py (code below). They are the same file only if the two hashes agree; otherwise only the commitment code they share bears on the detection result.",
+  "Witness receipt minus anchor receipt is taken on two clocks; negative samples show moments when the clocks disagreed by more than the push time, so the single-clock push times in the anchor's replies are the measurement of the push itself.",
+  "All three machine contexts (host A's VM, Docker's VM, the Mac) run on one Mac; the witness is outside the anchor host's VM but shares the physical machine and its owner.",
+  "Host A's Core can reach the witness's port through the QEMU gateway (probe_from_hub); it holds no witness key, so it cannot push a head.",
+  "The links and the witness bind the chain's records; that a first anchored root describes the rows the monitor read still rests on the anchor host being honest when it appends."
+ ]
+}

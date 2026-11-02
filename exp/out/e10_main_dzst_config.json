@@ -1,0 +1,291 @@
+{
+ "experiment": "e10_main_dzst: E10 arm C, a benign switch-type change on Domoticz with the closure monitor live (launcher copied from testbed/domoticz/run_dz.sh)",
+ "domoticz": {
+  "version": "2026.3",
+  "build_hash": "f734fde31",
+  "build_time": "2026-08-02 09:10:11",
+  "dzvents_version": "3.1.11",
+  "python_version": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "image": "domoticz/domoticz:stable",
+  "image_id": "sha256:ddb77ad45f169f823c75093ffab8a31b7c59c504970a30d3fa8f69ad651def38",
+  "repo_digests": "[\"domoticz/domoticz@sha256:ddb77ad45f169f823c75093ffab8a31b7c59c504970a30d3fa8f69ad651def38\"]"
+ },
+ "images": {
+  "domoticz": "sha256:ddb77ad45f169f823c75093ffab8a31b7c59c504970a30d3fa8f69ad651def38 [\"domoticz/domoticz@sha256:ddb77ad45f169f823c75093ffab8a31b7c59c504970a30d3fa8f69ad651def38\"] created=2026-08-02T10:25:59.183766019Z arch=arm64",
+  "anchor": "sha256:196961946d8bf9f70830065c17f1e0f84f27d4c69ac28a6ada5079f9ad59776d created=2026-09-08T13:10:44.743271638Z",
+  "python": "sha256:9d2e5553305c7c7b0097999bb17187c69b921ccd6bc9d40e4bb5ebe652c00285 [\"python@sha256:9d2e5553305c7c7b0097999bb17187c69b921ccd6bc9d40e4bb5ebe652c00285\"]"
+ },
+ "anchor": {
+  "image": "hpr-anchord:sig",
+  "anchord_py_sha256": "repo 8b35448dcf86df8bd1291b6fec6ff39e045bacbc3b083b09f61d035c1f251421 image 7b1ef9f1e11a36584eb0fde218fc6a0bb234ff33071e80990d0d354883a0c17f",
+  "authenticated": true,
+  "key_fingerprint_sha256_16": "6c7152d3f9e67832",
+  "key_recorded": false
+ },
+ "monitor": {
+  "monitor_py_sha256": "repo 4b9931cb7d1cffae6485fb2b660b68d733da9f73e5c22c22ca7265d49ceaa9b7 run_copy 4b9931cb7d1cffae6485fb2b660b68d733da9f73e5c22c22ca7265d49ceaa9b7",
+  "adapter_sha256": "969e87d3082f9f469116ea40ded323b48025df801d4cf5a2251a4e6135182b88",
+  "scheme": "closure",
+  "period_s": 5,
+  "encoding": "v2",
+  "replaced_in_monitor_py": [
+   "load()",
+   "the Home Assistant schema probe of validate_copy()"
+  ]
+ },
+ "probes": {
+  "from_hub_process": {
+   "untagged": 401,
+   "forged_tag": 401,
+   "pid": 1,
+   "uid": 0,
+   "from": "Domoticz process (Python integration)",
+   "op": "probe_anchor",
+   "t_ack": 1792604812.1163433
+  },
+  "from_hub_container_shell": {
+   "untagged": 401,
+   "forged_tag": 401
+  },
+  "refusals_logged_by_anchor": [
+   {
+    "body_len": 14,
+    "body_sha256": "d66c29af8d75ce0001a75ce8df836584e2e290670c4cf8ba6cabc634f4269b1a",
+    "http": 401,
+    "reason": "missing_signature",
+    "recv_ts": 1792604812.1061845,
+    "refusal_seq": 1
+   },
+   {
+    "body_len": 14,
+    "body_sha256": "d66c29af8d75ce0001a75ce8df836584e2e290670c4cf8ba6cabc634f4269b1a",
+    "http": 401,
+    "reason": "bad_signature",
+    "recv_ts": 1792604812.1148913,
+    "refusal_seq": 2
+   },
+   {
+    "body_len": 14,
+    "body_sha256": "d66c29af8d75ce0001a75ce8df836584e2e290670c4cf8ba6cabc634f4269b1a",
+    "http": 401,
+    "reason": "missing_signature",
+    "recv_ts": 1792604812.2180123,
+    "refusal_seq": 3
+   },
+   {
+    "body_len": 14,
+    "body_sha256": "d66c29af8d75ce0001a75ce8df836584e2e290670c4cf8ba6cabc634f4269b1a",
+    "http": 401,
+    "reason": "bad_signature",
+    "recv_ts": 1792604812.2198203,
+    "refusal_seq": 4
+   }
+  ]
+ },
+ "provision": {
+  "kind": "run",
+  "t": 1792604748.478535,
+  "steps": [
+   {
+    "idx": "2",
+    "status": "OK",
+    "title": "AddHardware"
+   },
+   {
+    "idx": "1",
+    "status": "OK",
+    "title": "CreateSensor"
+   },
+   {
+    "idx": "2",
+    "status": "OK",
+    "title": "CreateSensor"
+   },
+   {
+    "idx": "3",
+    "status": "OK",
+    "title": "CreateSensor"
+   },
+   {
+    "idx": "3",
+    "status": "OK",
+    "title": "AddHardware"
+   },
+   {
+    "idx": "4",
+    "status": "OK",
+    "title": "AddHardware"
+   },
+   {
+    "status": "OK",
+    "title": "AddUser"
+   },
+   {
+    "status": "OK",
+    "title": "AddUser"
+   }
+  ],
+  "hardware": [
+   [
+    "2",
+    "Virtual",
+    15,
+    ""
+   ],
+   [
+    "3",
+    "LockBridge",
+    94,
+    "HPLock"
+   ],
+   [
+    "4",
+    "SensorHub",
+    94,
+    "HPSensors"
+   ]
+  ],
+  "devices": [
+   [
+    "1",
+    "Porch Light",
+    "On/Off",
+    "Virtual"
+   ],
+   [
+    "2",
+    "Hallway Light",
+    "On/Off",
+    "Virtual"
+   ],
+   [
+    "3",
+    "Kitchen Light",
+    "On/Off",
+    "Virtual"
+   ],
+   [
+    "4",
+    "LockBridge - Front Door",
+    "Door Lock",
+    "LockBridge"
+   ],
+   [
+    "5",
+    "SensorHub - Porch Motion",
+    "Motion Sensor",
+    "SensorHub"
+   ],
+   [
+    "6",
+    "SensorHub - Hallway Motion",
+    "Motion Sensor",
+    "SensorHub"
+   ],
+   [
+    "7",
+    "SensorHub - Kitchen Motion",
+    "Motion Sensor",
+    "SensorHub"
+   ]
+  ],
+  "users": [
+   [
+    "1",
+    "owner",
+    2
+   ],
+   [
+    "2",
+    "member",
+    1
+   ],
+   [
+    "3",
+    "guest",
+    0
+   ]
+  ],
+  "version": {
+   "DomoticzUpdateURL": "https://www.domoticz.com/download.php?channel=stable&type=release&system=linux&machine=aarch64",
+   "HaveUpdate": false,
+   "Revision": 0,
+   "SystemName": "linux",
+   "UseUpdate": false,
+   "build_time": "2026-08-02 09:10:11",
+   "db_size": 425984,
+   "dzvents_version": "3.1.11",
+   "hash": "f734fde31",
+   "python_version": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+   "status": "OK",
+   "title": "GetVersion",
+   "version": "2026.3"
+  },
+  "complete": true
+ },
+ "configuration_log": [
+  "2026-10-21T17:45:44Z tag=e10_main_dzst pre_s=600 post_s=600 outdir=<artifact-root>/exp/out run=<research-dir>/HOMEPROV-P13-exp/dz/runs/e10_main_dzst (E10 arm C: benign switch-type change)",
+  "2026-10-21T17:45:44Z load_before: 13:45  up 9 days, 14:47, 2 users, load averages: 3.86 4.10 4.46",
+  "2026-10-21T17:45:44Z git_head: b7611992393052a568df00c9ebc805f4d15ee6f5 (working tree: monitor/monitor.py modified; testbed/domoticz and exp/stages/dz_*.py untracked)",
+  "2026-10-21T17:45:44Z monitor_py_sha256: repo 4b9931cb7d1cffae6485fb2b660b68d733da9f73e5c22c22ca7265d49ceaa9b7 run_copy 4b9931cb7d1cffae6485fb2b660b68d733da9f73e5c22c22ca7265d49ceaa9b7",
+  "2026-10-21T17:45:44Z adapter_sha256: 969e87d3082f9f469116ea40ded323b48025df801d4cf5a2251a4e6135182b88",
+  "2026-10-21T17:45:45Z anchord_py_sha256: repo 8b35448dcf86df8bd1291b6fec6ff39e045bacbc3b083b09f61d035c1f251421 image 7b1ef9f1e11a36584eb0fde218fc6a0bb234ff33071e80990d0d354883a0c17f",
+  "2026-10-21T17:45:45Z sha256 testbed/domoticz/integration/HPLock/plugin.py: a3adb8ccdd46db9ed3846aaa6fc7c9ab039ff9fc2ca90b9561970397e3a495e9",
+  "2026-10-21T17:45:45Z sha256 testbed/domoticz/integration/HPSensors/plugin.py: 1db235285a2710212d806cda0bae6c7355a328d3480ff67b49455aa0312401f8",
+  "2026-10-21T17:45:45Z sha256 testbed/domoticz/dzvents/porch_motion_light.lua: 83b1da2bf24b5969a1cf502ca38d265aab5f4acdfefce6e7bd6eb13600d637ce",
+  "2026-10-21T17:45:45Z sha256 testbed/domoticz/dzvents/hallway_motion_light.lua: 7ac6ab0788aaa67f61323e3cc901c7b3d177440cdcddbb074c6cca477b556c18",
+  "2026-10-21T17:45:45Z sha256 testbed/domoticz/dzvents/kitchen_motion_light.lua: 83e220a09d7d14e8196e8c432944a52ad0e38718213033726f50c3bb6d27d9bf",
+  "2026-10-21T17:45:45Z sha256 testbed/domoticz/harness/dz_arms.py: f3b83fc5aa0574207a87a9ebfe874f1c7e5062a5007f3a81e6690a80ee89bf98",
+  "2026-10-21T17:45:45Z sha256 testbed/domoticz/harness/dz_api.py: b63f41afa110055ffafbd42529655dc68a43107015b28a492a3ecf28394dd1f1",
+  "2026-10-21T17:45:45Z sha256 testbed/domoticz/harness/dz_ctl.py: f1611badeb321dd9bed694fd653886283a242817bf85d1864b64a48317b8e30d",
+  "2026-10-21T17:45:45Z sha256 testbed/domoticz/harness/dz_ui.py: e8ad3082ee7f7b55f184b05ed4f92117071837f1016e6a08066ebe1cc4e72a48",
+  "2026-10-21T17:45:45Z sha256 testbed/domoticz/harness/dz_provision.py: ffe3e00700ff860c930e26f35fb4a4ce93243f3bbf2f34a1fa32d668694d44d0",
+  "2026-10-21T17:45:45Z sha256 testbed/domoticz/harness/tunnel.py: ee5ab264e3c4636472420e8a3f1a18e3cbc1d943f4f0d8b988056365884bfe39",
+  "2026-10-21T17:45:45Z sha256 testbed/domoticz/harness/relay.py: 8f606c69c687b62ce6333bf27a0abbaef3c195833b119bfe06e7aba7f10ef20b",
+  "2026-10-21T17:45:45Z sha256 testbed/e10/dz_switchtype.py: cd07b332c3012110c73139035d837fa4ef645096da07a6ce929752692acfef00",
+  "2026-10-21T17:45:45Z sha256 exp/stages/e10_dz_switchtype.py: 0b26f544ed9eb61df04c46d7d90783f73ec9f037e35f59e099bdf37f8f568466",
+  "2026-10-21T17:45:45Z wrapper_sha256: b20da1c40ff2a7eb36b03995126f0aae9dee8e62422025381e3a639621287fbb",
+  "2026-10-21T17:45:45Z image domoticz: sha256:ddb77ad45f169f823c75093ffab8a31b7c59c504970a30d3fa8f69ad651def38 [\"domoticz/domoticz@sha256:ddb77ad45f169f823c75093ffab8a31b7c59c504970a30d3fa8f69ad651def38\"] created=2026-08-02T10:25:59.183766019Z arch=arm64",
+  "2026-10-21T17:45:45Z image anchor: sha256:196961946d8bf9f70830065c17f1e0f84f27d4c69ac28a6ada5079f9ad59776d created=2026-09-08T13:10:44.743271638Z",
+  "2026-10-21T17:45:45Z image python: sha256:9d2e5553305c7c7b0097999bb17187c69b921ccd6bc9d40e4bb5ebe652c00285 [\"python@sha256:9d2e5553305c7c7b0097999bb17187c69b921ccd6bc9d40e4bb5ebe652c00285\"]",
+  "2026-10-21T17:45:45Z network: dz-net internal=true 192.168.48.0/20",
+  "2026-10-21T17:46:10Z provisioning attempts: 1",
+  "2026-10-21T17:46:10Z provision: {\"hardware\": [[\"2\", \"Virtual\", 15, \"\"], [\"3\", \"LockBridge\", 94, \"HPLock\"], [\"4\", \"SensorHub\", 94, \"HPSensors\"]], \"devices\": [[\"1\", \"Porch Light\", \"On/Off\", \"Virtual\"], [\"2\", \"Hallway Light\", \"On/Off\", \"Virtual\"], [\"3\", \"Kitchen Light\", \"On/Off\", \"Virtual\"], [\"4\", \"LockBridge - Front Door\", \"Door Lock\", \"LockBridge\"], [\"5\", \"SensorHub - Porch Motion\", \"Motion Sensor\", \"SensorHub\"], [\"6\", \"SensorHub - Hallway Motion\", \"Motion Sensor\", \"SensorHub\"], [\"7\", \"SensorHub - Kitchen Motion\", \"Motion Sensor\", \"SensorHub\"]], \"users\": [[\"1\", \"owner\", 2], [\"2\", \"member\", 1], [\"3\", \"guest\", 0]]}",
+  "2026-10-21T17:46:29Z domoticz_version: {\"DomoticzUpdateURL\": \"https://www.domoticz.com/download.php?channel=stable&type=release&system=linux&machine=aarch64\", \"HaveUpdate\": false, \"Revision\": 0, \"SystemName\": \"linux\", \"UseUpdate\": false, \"build_time\": \"2026-08-02 09:10:11\", \"db_size\": 425984, \"dzvents_version\": \"3.1.11\", \"hash\": \"f734fde31\", \"python_version\": \"3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]\", \"status\": \"OK\", \"title\": \"GetVersion\", \"version\": \"2026.3\"}",
+  "2026-10-21T17:46:29Z hub_tz: UTC +0000 hub_process: /opt/domoticz/domoticz -www 8080 -noupdates -sslwww 443 -userdata /opt/domoticz/userdata  uid=0",
+  "2026-10-21T17:46:30Z integration_info: {\"pid\": 1, \"uid\": 0, \"python\": \"3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]\", \"sqlite\": \"3.46.1\", \"hardware_name\": \"LockBridge\", \"hardware_id\": 3, \"domoticz_version\": \"2026.3\", \"domoticz_hash\": \"f734fde31\", \"domoticz_build_time\": \"2026-08-02 09:10:11\", \"lock_device_row_id\": 4, \"cmdline\": \"/opt/domoticz/domoticz -www 8080 -noupdates -sslwww 443 -userdata /opt/domoticz/userdata \", \"op\": \"info\", \"t_ack\": 1792604790.066568}",
+  "2026-10-21T17:46:30Z hub_log_head: 2026-10-21 17:46:12.037  Status: Domoticz V2026.3-stable (c)2012-2026 GizMoCuz 2026-10-21 17:46:12.037  Status: Build Hash: f734fde31, Date: 2026-08-02 09:10:11 2026-10-21 17:46:12.043  Status: PluginSystem: Started, Python version '3.13.5', 2 plugin definitions loaded. ",
+  "2026-10-21T17:46:30Z key_fingerprint_sha256_16: 6c7152d3f9e67832 (key itself not recorded)",
+  "2026-10-21T17:46:31Z anchor container: hpr-anchord:sig sha256:196961946d8bf9f70830065c17f1e0f84f27d4c69ac28a6ada5079f9ad59776d",
+  "2026-10-21T17:46:31Z monitor container: python:3.13-slim sha256:9d2e5553305c7c7b0097999bb17187c69b921ccd6bc9d40e4bb5ebe652c00285 mounts: /dzm:ro /hub:ro /scratch:rw /archive:rw /hp:ro ",
+  "2026-10-21T17:46:31Z hub container mounts: /opt/domoticz/userdata:rw /hpctl:rw  networks: dz-net ",
+  "2026-10-21T17:46:52Z probe_from_hub_process: {\"untagged\": 401, \"forged_tag\": 401, \"pid\": 1, \"uid\": 0, \"from\": \"Domoticz process (Python integration)\", \"op\": \"probe_anchor\", \"t_ack\": 1792604812.1163433}",
+  "2026-10-21T17:46:52Z probe_from_hub_container_shell: {\"untagged\": 401, \"forged_tag\": 401}",
+  "2026-10-21T17:47:32Z monitor_log_head: {\"hardening\": {\"harden\": true, \"sqlite\": \"3.46.1\", \"python\": \"3.13.15\", \"applied\": {\"SQLITE_DBCONFIG_DEFENSIVE\": true, \"SQLITE_DBCONFIG_TRUSTED_SCHEMA\": false, \"SQLITE_DBCONFIG_ENABLE_VIEW\": false, \"SQLITE_DBCONFIG_ENABLE_TRIGGER\": false, \"trusted_schema\": 0, \"cell_size_check\": 1, \"mmap_size\": null} {\"tick\": 1, \"seq_local\": 1, \"copy_ms\": 0.642, \"n_nodes\": 16, \"load_ms\": 7.822, \"commit_ms\": 0.138, \"sealed_new\": {\"second\": 9, \"minute\": 1}, \"append_ms\": 11.257, \"anchor\": {\"ok\": true, \"seq\": 1, \"reply_tag\": \"missing\"}, \"parts\": 1, \"pending\": 0, \"backlog\": 0} {\"tick\": 2, \"seq_local\": 2, \"copy_ms\": 0.679, \"n_nodes\": 18, \"load_ms\": 0.995, \"commit_ms\": 0.103, \"sealed_new\": {\"second\": 1}, \"append_ms\": 3.292, \"anchor\": {\"ok\": true, \"seq\": 2, \"reply_tag\": \"missing\"}, \"parts\": 1, \"pending\": 0, \"backlog\": 0} ",
+  "2026-10-21T17:47:32Z chain_lines_before_run: 13",
+  "2026-10-21T17:47:32Z starting the switch-type arm: 600s of benign lock traffic, the change (19 -> 20), 600s more",
+  "2026-10-21T17:57:37Z pre-change snapshot at 1792605456.9001656 sha256 60127304600d5c2d3d6669d609aa14ef9af411f3315e8ee939d07e85ef208726",
+  "2026-10-21T18:07:45Z switch-type driver exit: 0 (change applied: True rendered rows changed: {'owner': 20, 'member': 20, 'guest': 20} )",
+  "2026-10-21T18:07:45Z settling 90 s so the final segments seal and anchor",
+  "2026-10-21T18:09:15Z chain_lines_after_run: 272",
+  "2026-10-21T18:09:16Z recorder_snapshot: at 1792606156.0251274 sha256 f0f333ee32e6dbc3081c6c3d662c0ebc2e74ce34f5f3fa76eb8b49e0c1bd0057",
+  "2026-10-21T18:09:16Z chain_lines final:      272; refusals:        4",
+  "2026-10-21T18:09:16Z chain_schemes: {'closure': 272}",
+  "2026-10-21T18:09:16Z monitor_errors: 0 archive_lines:      272",
+  "2026-10-21T18:09:16Z hub_errors_excluding_dzvents_location: 4",
+  "2026-10-21T18:09:16Z load_after: 14:09  up 9 days, 15:11, 2 users, load averages: 2.94 3.06 3.31",
+  "2026-10-21T18:09:16Z done"
+ ],
+ "anchor_chain": {
+  "file": "exp/out/e10_main_dzst_anchor_chain.jsonl.gz",
+  "records": 272,
+  "sha256_uncompressed": "a13aa1df161d8fada2dc02334ece789b8ae6e1a69ff1417bf4b7823748bcfc62"
+ },
+ "recorder_snapshot_sha256": "f0f333ee32e6dbc3081c6c3d662c0ebc2e74ce34f5f3fa76eb8b49e0c1bd0057",
+ "not_done_during_the_run": [
+  "Clear Short Log / vacuumdatabase (VACUUM may renumber LightingLog ROWIDs)"
+ ],
+ "the_arm": "the owner's switch-type change of the front-door lock, 19 (Door Lock) -> 20 (Door Lock Inverted)",
+ "pre_change_snapshot_sha256": "60127304600d5c2d3d6669d609aa14ef9af411f3315e8ee939d07e85ef208726",
+ "wrapper_script_sha256": "b20da1c40ff2a7eb36b03995126f0aae9dee8e62422025381e3a639621287fbb"
+}

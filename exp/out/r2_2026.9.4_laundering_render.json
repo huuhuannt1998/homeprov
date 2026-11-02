@@ -1,0 +1,1619 @@
+{
+ "activity_details_chain": {
+  "after_chain_names_lock_action": {
+   "admin": 0,
+   "non_admin": 0
+  },
+  "example_before_admin_wh": [
+   "Porch Motion",
+   "Detected",
+   "7:24:21.109 PM",
+   "Porch motion light",
+   "View trace",
+   "Triggered",
+   "7:24:21.109 PM",
+   "Front Door",
+   "Unlocked",
+   "7:24:29.278 PM"
+  ],
+  "exposes_laundering": false,
+  "view_trace_admin_after": {
+   "ci_hi": 1.0,
+   "ci_lo": 0.8842966917779722,
+   "k": 30,
+   "method": "Clopper-Pearson exact",
+   "n": 30,
+   "prop": 1.0
+  },
+  "view_trace_nonadmin_after": {
+   "ci_hi": 0.11570330822202778,
+   "ci_lo": 0.0,
+   "k": 0,
+   "method": "Clopper-Pearson exact",
+   "n": 30,
+   "prop": 0.0
+  }
+ },
+ "automation_trace": {
+  "borrowed_trace_present": {
+   "ci_hi": 1.0,
+   "ci_lo": 0.8842966917779722,
+   "k": 30,
+   "method": "Clopper-Pearson exact",
+   "n": 30,
+   "prop": 1.0
+  },
+  "definition": "trace exposes laundering = borrowed run's saved trace present AND reachable via admin 'View trace' AND contains no lock action",
+  "trace_contains_no_lock": {
+   "ci_hi": 1.0,
+   "ci_lo": 0.8842966917779722,
+   "k": 30,
+   "method": "Clopper-Pearson exact",
+   "n": 30,
+   "prop": 1.0
+  },
+  "trace_exposure_rate": {
+   "ci_hi": 1.0,
+   "ci_lo": 0.8842966917779722,
+   "k": 30,
+   "method": "Clopper-Pearson exact",
+   "n": 30,
+   "prop": 1.0
+  }
+ },
+ "configurations": [
+  "porch",
+  "hallway",
+  "kitchen"
+ ],
+ "experiment": "R2-item3-laundering-render",
+ "ha_version": "2026.9.4",
+ "integrity": {
+  "post_pass": true,
+  "post_path": "exp/out/r2_integrity/994_laundering_post_20261006T234456Z.json",
+  "pre_pass": true,
+  "pre_path": "exp/out/r2_integrity/994_laundering_pre_20261006T232416Z.json",
+  "valid": true
+ },
+ "laundering_moved_displayed_top_line": {
+  "admin": {
+   "ci_hi": 1.0,
+   "ci_lo": 0.8842966917779722,
+   "k": 30,
+   "method": "Clopper-Pearson exact",
+   "n": 30,
+   "prop": 1.0
+  },
+  "non_admin": {
+   "ci_hi": 1.0,
+   "ci_lo": 0.8842966917779722,
+   "k": 30,
+   "method": "Clopper-Pearson exact",
+   "n": 30,
+   "prop": 1.0
+  }
+ },
+ "n_per_room": 10,
+ "n_total": 30,
+ "provenance": {
+  "frontend_version": "20260826.7",
+  "git_head": "b7611992393052a568df00c9ebc805f4d15ee6f5",
+  "ha_version": "2026.9.4",
+  "image_digest": "sha256:3e6710a7ab2a61311d9d899b719f6c3657791c63e8f4942cec4ebc42401d6b76",
+  "script_sha256": {
+   "r1_common.py": "c4327d9dda0170645fa91ef4d7a6e70e86dbb4a40c36a92200a60d7f70cc0375",
+   "r1_render.py": "cd4ecf13d3f3164d4236be970f164faa1e93928542e4ef382b21b178f6a7d647",
+   "r2_laundering_aggregate.py": "13debbe918dd0ec46816cc881ffc06c5c43b22c12e39f3dbd4f946d606b8c3e4",
+   "r2_laundering_render.py": "bded1a702ed9f8864f509e815c2a239c774e735b828833683f6746a44d1c37c5"
+  },
+  "timestamp_utc": "2026-10-06T23:44:56.647210+00:00"
+ },
+ "rendered_vs_rule_agreement": {
+  "agree": 120,
+  "prop": 1.0,
+  "total": 120
+ },
+ "trials": [
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "reachable_admin": true,
+   "reachable_nonadmin": false,
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "7:24:21.109 PM",
+      "Porch motion light",
+      "View trace",
+      "Triggered",
+      "7:24:21.109 PM",
+      "Front Door",
+      "Unlocked",
+      "7:24:29.278 PM"
+     ],
+     "before_top": "Via Lock"
+    },
+    "non_admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "7:24:21.109 PM",
+      "Porch motion light",
+      "Triggered",
+      "7:24:21.109 PM",
+      "Front Door",
+      "Unlocked",
+      "7:24:29.278 PM"
+     ],
+     "before_top": "Via Lock"
+    }
+   },
+   "room": "porch",
+   "trace": {
+    "item_id": "motion_light_porch",
+    "mentions_lock": false,
+    "n": 5,
+    "present": true,
+    "run_id": "4dd013fba5f81431eec4b0437593c9ca"
+   },
+   "trial": 0
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "reachable_admin": true,
+   "reachable_nonadmin": false,
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "7:25:12.695 PM",
+      "Porch motion light",
+      "View trace",
+      "Triggered",
+      "7:25:12.696 PM",
+      "Front Door",
+      "Unlocked",
+      "7:25:20.878 PM"
+     ],
+     "before_top": "Via Lock"
+    },
+    "non_admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "7:25:12.695 PM",
+      "Porch motion light",
+      "Triggered",
+      "7:25:12.696 PM",
+      "Front Door",
+      "Unlocked",
+      "7:25:20.878 PM"
+     ],
+     "before_top": "Via Lock"
+    }
+   },
+   "room": "porch",
+   "trace": {
+    "item_id": "motion_light_porch",
+    "mentions_lock": false,
+    "n": 5,
+    "present": true,
+    "run_id": "455a5eef5b78426dc942e3c8d44242f8"
+   },
+   "trial": 1
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "reachable_admin": true,
+   "reachable_nonadmin": false,
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "7:25:52.018 PM",
+      "Porch motion light",
+      "View trace",
+      "Triggered",
+      "7:25:52.019 PM",
+      "Front Door",
+      "Unlocked",
+      "7:26:00.224 PM"
+     ],
+     "before_top": "Via Lock"
+    },
+    "non_admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "7:25:52.018 PM",
+      "Porch motion light",
+      "Triggered",
+      "7:25:52.019 PM",
+      "Front Door",
+      "Unlocked",
+      "7:26:00.224 PM"
+     ],
+     "before_top": "Via Lock"
+    }
+   },
+   "room": "porch",
+   "trace": {
+    "item_id": "motion_light_porch",
+    "mentions_lock": false,
+    "n": 5,
+    "present": true,
+    "run_id": "690cc89ab4840438a7ad5308eb3ba8e4"
+   },
+   "trial": 2
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "reachable_admin": true,
+   "reachable_nonadmin": false,
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "7:26:31.121 PM",
+      "Porch motion light",
+      "View trace",
+      "Triggered",
+      "7:26:31.121 PM",
+      "Front Door",
+      "Unlocked",
+      "7:26:39.331 PM"
+     ],
+     "before_top": "Via Lock"
+    },
+    "non_admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "7:26:31.121 PM",
+      "Porch motion light",
+      "Triggered",
+      "7:26:31.121 PM",
+      "Front Door",
+      "Unlocked",
+      "7:26:39.331 PM"
+     ],
+     "before_top": "Via Lock"
+    }
+   },
+   "room": "porch",
+   "trace": {
+    "item_id": "motion_light_porch",
+    "mentions_lock": false,
+    "n": 5,
+    "present": true,
+    "run_id": "440939c8c95642a554246c715cf7c1b3"
+   },
+   "trial": 3
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "reachable_admin": true,
+   "reachable_nonadmin": false,
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "7:27:10.507 PM",
+      "Porch motion light",
+      "View trace",
+      "Triggered",
+      "7:27:10.508 PM",
+      "Front Door",
+      "Unlocked",
+      "7:27:18.689 PM"
+     ],
+     "before_top": "Via Lock"
+    },
+    "non_admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "7:27:10.507 PM",
+      "Porch motion light",
+      "Triggered",
+      "7:27:10.508 PM",
+      "Front Door",
+      "Unlocked",
+      "7:27:18.689 PM"
+     ],
+     "before_top": "Via Lock"
+    }
+   },
+   "room": "porch",
+   "trace": {
+    "item_id": "motion_light_porch",
+    "mentions_lock": false,
+    "n": 5,
+    "present": true,
+    "run_id": "ad86962e4af2acd5fa08eec8ece2556a"
+   },
+   "trial": 4
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "reachable_admin": true,
+   "reachable_nonadmin": false,
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "7:27:49.619 PM",
+      "Porch motion light",
+      "View trace",
+      "Triggered",
+      "7:27:49.620 PM",
+      "Front Door",
+      "Unlocked",
+      "7:27:57.793 PM"
+     ],
+     "before_top": "Via Lock"
+    },
+    "non_admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "7:27:49.619 PM",
+      "Porch motion light",
+      "Triggered",
+      "7:27:49.620 PM",
+      "Front Door",
+      "Unlocked",
+      "7:27:57.793 PM"
+     ],
+     "before_top": "Via Lock"
+    }
+   },
+   "room": "porch",
+   "trace": {
+    "item_id": "motion_light_porch",
+    "mentions_lock": false,
+    "n": 5,
+    "present": true,
+    "run_id": "c322429119e0e56a6f92e77e46e6b83b"
+   },
+   "trial": 5
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "reachable_admin": true,
+   "reachable_nonadmin": false,
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "7:28:28.731 PM",
+      "Porch motion light",
+      "View trace",
+      "Triggered",
+      "7:28:28.732 PM",
+      "Front Door",
+      "Unlocked",
+      "7:28:36.909 PM"
+     ],
+     "before_top": "Via Lock"
+    },
+    "non_admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "7:28:28.731 PM",
+      "Porch motion light",
+      "Triggered",
+      "7:28:28.732 PM",
+      "Front Door",
+      "Unlocked",
+      "7:28:36.909 PM"
+     ],
+     "before_top": "Via Lock"
+    }
+   },
+   "room": "porch",
+   "trace": {
+    "item_id": "motion_light_porch",
+    "mentions_lock": false,
+    "n": 5,
+    "present": true,
+    "run_id": "14a53bb7bd01f0d57bc7bd821d948641"
+   },
+   "trial": 6
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "reachable_admin": true,
+   "reachable_nonadmin": false,
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "7:29:07.817 PM",
+      "Porch motion light",
+      "View trace",
+      "Triggered",
+      "7:29:07.817 PM",
+      "Front Door",
+      "Unlocked",
+      "7:29:15.993 PM"
+     ],
+     "before_top": "Via Lock"
+    },
+    "non_admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "7:29:07.817 PM",
+      "Porch motion light",
+      "Triggered",
+      "7:29:07.817 PM",
+      "Front Door",
+      "Unlocked",
+      "7:29:15.993 PM"
+     ],
+     "before_top": "Via Lock"
+    }
+   },
+   "room": "porch",
+   "trace": {
+    "item_id": "motion_light_porch",
+    "mentions_lock": false,
+    "n": 5,
+    "present": true,
+    "run_id": "48daf6fcd234f1d4eb428fab879be5e4"
+   },
+   "trial": 7
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "reachable_admin": true,
+   "reachable_nonadmin": false,
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "7:29:47.363 PM",
+      "Porch motion light",
+      "View trace",
+      "Triggered",
+      "7:29:47.364 PM",
+      "Front Door",
+      "Unlocked",
+      "7:29:55.825 PM"
+     ],
+     "before_top": "Via Lock"
+    },
+    "non_admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "7:29:47.363 PM",
+      "Porch motion light",
+      "Triggered",
+      "7:29:47.364 PM",
+      "Front Door",
+      "Unlocked",
+      "7:29:55.825 PM"
+     ],
+     "before_top": "Via Lock"
+    }
+   },
+   "room": "porch",
+   "trace": {
+    "item_id": "motion_light_porch",
+    "mentions_lock": false,
+    "n": 5,
+    "present": true,
+    "run_id": "4c91477a9b9e11a54a304c136d46768e"
+   },
+   "trial": 8
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "reachable_admin": true,
+   "reachable_nonadmin": false,
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "7:30:28.262 PM",
+      "Porch motion light",
+      "View trace",
+      "Triggered",
+      "7:30:28.272 PM",
+      "Front Door",
+      "Unlocked",
+      "7:30:36.537 PM"
+     ],
+     "before_top": "Via Lock"
+    },
+    "non_admin": {
+     "after_top": "By automation: Porch motion light",
+     "after_wh": [
+      "Porch Motion",
+      "Detected",
+      "7:30:28.262 PM",
+      "Porch motion light",
+      "Triggered",
+      "7:30:28.272 PM",
+      "Front Door",
+      "Unlocked",
+      "7:30:36.537 PM"
+     ],
+     "before_top": "Via Lock"
+    }
+   },
+   "room": "porch",
+   "trace": {
+    "item_id": "motion_light_porch",
+    "mentions_lock": false,
+    "n": 5,
+    "present": true,
+    "run_id": "f32246c31c1963671e442ad20ad65e5f"
+   },
+   "trial": 9
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "reachable_admin": true,
+   "reachable_nonadmin": false,
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "7:31:07.698 PM",
+      "Hallway motion light",
+      "View trace",
+      "Triggered",
+      "7:31:07.698 PM",
+      "Front Door",
+      "Unlocked",
+      "7:31:16.015 PM"
+     ],
+     "before_top": ""
+    },
+    "non_admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "7:31:07.698 PM",
+      "Hallway motion light",
+      "Triggered",
+      "7:31:07.698 PM",
+      "Front Door",
+      "Unlocked",
+      "7:31:16.015 PM"
+     ],
+     "before_top": ""
+    }
+   },
+   "room": "hallway",
+   "trace": {
+    "item_id": "motion_light_hall",
+    "mentions_lock": false,
+    "n": 5,
+    "present": true,
+    "run_id": "d0a08361f7f2ce2b506df4001a3cd646"
+   },
+   "trial": 0
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "reachable_admin": true,
+   "reachable_nonadmin": false,
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "7:31:59.325 PM",
+      "Hallway motion light",
+      "View trace",
+      "Triggered",
+      "7:31:59.325 PM",
+      "Front Door",
+      "Unlocked",
+      "7:32:07.519 PM"
+     ],
+     "before_top": "Via Lock"
+    },
+    "non_admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "7:31:59.325 PM",
+      "Hallway motion light",
+      "Triggered",
+      "7:31:59.325 PM",
+      "Front Door",
+      "Unlocked",
+      "7:32:07.519 PM"
+     ],
+     "before_top": "Via Lock"
+    }
+   },
+   "room": "hallway",
+   "trace": {
+    "item_id": "motion_light_hall",
+    "mentions_lock": false,
+    "n": 5,
+    "present": true,
+    "run_id": "74fa6618cba51e4e3f46e2433a1e6b3d"
+   },
+   "trial": 1
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "reachable_admin": true,
+   "reachable_nonadmin": false,
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "7:32:38.543 PM",
+      "Hallway motion light",
+      "View trace",
+      "Triggered",
+      "7:32:38.543 PM",
+      "Front Door",
+      "Unlocked",
+      "7:32:46.730 PM"
+     ],
+     "before_top": "Via Lock"
+    },
+    "non_admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "7:32:38.543 PM",
+      "Hallway motion light",
+      "Triggered",
+      "7:32:38.543 PM",
+      "Front Door",
+      "Unlocked",
+      "7:32:46.730 PM"
+     ],
+     "before_top": "Via Lock"
+    }
+   },
+   "room": "hallway",
+   "trace": {
+    "item_id": "motion_light_hall",
+    "mentions_lock": false,
+    "n": 5,
+    "present": true,
+    "run_id": "57e4eda8513ea46d0bc254f833ec154b"
+   },
+   "trial": 2
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "reachable_admin": true,
+   "reachable_nonadmin": false,
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "7:33:17.839 PM",
+      "Hallway motion light",
+      "View trace",
+      "Triggered",
+      "7:33:17.841 PM",
+      "Front Door",
+      "Unlocked",
+      "7:33:26.073 PM"
+     ],
+     "before_top": "Via Lock"
+    },
+    "non_admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "7:33:17.839 PM",
+      "Hallway motion light",
+      "Triggered",
+      "7:33:17.841 PM",
+      "Front Door",
+      "Unlocked",
+      "7:33:26.073 PM"
+     ],
+     "before_top": "Via Lock"
+    }
+   },
+   "room": "hallway",
+   "trace": {
+    "item_id": "motion_light_hall",
+    "mentions_lock": false,
+    "n": 5,
+    "present": true,
+    "run_id": "ab68ea4c0a3e73930e388c84e159f9ff"
+   },
+   "trial": 3
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "reachable_admin": true,
+   "reachable_nonadmin": false,
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "7:33:57.439 PM",
+      "Hallway motion light",
+      "View trace",
+      "Triggered",
+      "7:33:57.441 PM",
+      "Front Door",
+      "Unlocked",
+      "7:34:05.688 PM"
+     ],
+     "before_top": "Via Lock"
+    },
+    "non_admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "7:33:57.439 PM",
+      "Hallway motion light",
+      "Triggered",
+      "7:33:57.441 PM",
+      "Front Door",
+      "Unlocked",
+      "7:34:05.688 PM"
+     ],
+     "before_top": "Via Lock"
+    }
+   },
+   "room": "hallway",
+   "trace": {
+    "item_id": "motion_light_hall",
+    "mentions_lock": false,
+    "n": 5,
+    "present": true,
+    "run_id": "3984624e8dd8e0f9d11b5e2c131c5100"
+   },
+   "trial": 4
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "reachable_admin": true,
+   "reachable_nonadmin": false,
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "7:34:37.073 PM",
+      "Hallway motion light",
+      "View trace",
+      "Triggered",
+      "7:34:37.074 PM",
+      "Front Door",
+      "Unlocked",
+      "7:34:45.244 PM"
+     ],
+     "before_top": "Via Lock"
+    },
+    "non_admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "7:34:37.073 PM",
+      "Hallway motion light",
+      "Triggered",
+      "7:34:37.074 PM",
+      "Front Door",
+      "Unlocked",
+      "7:34:45.244 PM"
+     ],
+     "before_top": "Via Lock"
+    }
+   },
+   "room": "hallway",
+   "trace": {
+    "item_id": "motion_light_hall",
+    "mentions_lock": false,
+    "n": 5,
+    "present": true,
+    "run_id": "f0f0a1cf9d5f6845d0337a8663529cd3"
+   },
+   "trial": 5
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "reachable_admin": true,
+   "reachable_nonadmin": false,
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "7:35:16.445 PM",
+      "Hallway motion light",
+      "View trace",
+      "Triggered",
+      "7:35:16.446 PM",
+      "Front Door",
+      "Unlocked",
+      "7:35:24.719 PM"
+     ],
+     "before_top": "Via Lock"
+    },
+    "non_admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "7:35:16.445 PM",
+      "Hallway motion light",
+      "Triggered",
+      "7:35:16.446 PM",
+      "Front Door",
+      "Unlocked",
+      "7:35:24.719 PM"
+     ],
+     "before_top": "Via Lock"
+    }
+   },
+   "room": "hallway",
+   "trace": {
+    "item_id": "motion_light_hall",
+    "mentions_lock": false,
+    "n": 5,
+    "present": true,
+    "run_id": "1070c630c8a74897b77addf6311462d9"
+   },
+   "trial": 6
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "reachable_admin": true,
+   "reachable_nonadmin": false,
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "7:35:56.215 PM",
+      "Hallway motion light",
+      "View trace",
+      "Triggered",
+      "7:35:56.217 PM",
+      "Front Door",
+      "Unlocked",
+      "7:36:04.440 PM"
+     ],
+     "before_top": "Via Lock"
+    },
+    "non_admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "7:35:56.215 PM",
+      "Hallway motion light",
+      "Triggered",
+      "7:35:56.217 PM",
+      "Front Door",
+      "Unlocked",
+      "7:36:04.440 PM"
+     ],
+     "before_top": "Via Lock"
+    }
+   },
+   "room": "hallway",
+   "trace": {
+    "item_id": "motion_light_hall",
+    "mentions_lock": false,
+    "n": 5,
+    "present": true,
+    "run_id": "2527ef5a8d8c592acd60a0f29658a11e"
+   },
+   "trial": 7
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "reachable_admin": true,
+   "reachable_nonadmin": false,
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "7:36:35.582 PM",
+      "Hallway motion light",
+      "View trace",
+      "Triggered",
+      "7:36:35.583 PM",
+      "Front Door",
+      "Unlocked",
+      "7:36:43.816 PM"
+     ],
+     "before_top": "Via Lock"
+    },
+    "non_admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "7:36:35.582 PM",
+      "Hallway motion light",
+      "Triggered",
+      "7:36:35.583 PM",
+      "Front Door",
+      "Unlocked",
+      "7:36:43.816 PM"
+     ],
+     "before_top": "Via Lock"
+    }
+   },
+   "room": "hallway",
+   "trace": {
+    "item_id": "motion_light_hall",
+    "mentions_lock": false,
+    "n": 5,
+    "present": true,
+    "run_id": "74839a2c7fdb691a8bf2946ee2e5ee38"
+   },
+   "trial": 8
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "reachable_admin": true,
+   "reachable_nonadmin": false,
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "7:37:15.009 PM",
+      "Hallway motion light",
+      "View trace",
+      "Triggered",
+      "7:37:15.009 PM",
+      "Front Door",
+      "Unlocked",
+      "7:37:23.182 PM"
+     ],
+     "before_top": "Via Lock"
+    },
+    "non_admin": {
+     "after_top": "By automation: Hallway motion light",
+     "after_wh": [
+      "Hallway Motion",
+      "Detected",
+      "7:37:15.009 PM",
+      "Hallway motion light",
+      "Triggered",
+      "7:37:15.009 PM",
+      "Front Door",
+      "Unlocked",
+      "7:37:23.182 PM"
+     ],
+     "before_top": "Via Lock"
+    }
+   },
+   "room": "hallway",
+   "trace": {
+    "item_id": "motion_light_hall",
+    "mentions_lock": false,
+    "n": 5,
+    "present": true,
+    "run_id": "a9ae1cb57c6fe1b07b0a94860edce5f7"
+   },
+   "trial": 9
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "reachable_admin": true,
+   "reachable_nonadmin": false,
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "7:37:54.780 PM",
+      "Kitchen motion light",
+      "View trace",
+      "Triggered",
+      "7:37:54.782 PM",
+      "Front Door",
+      "Unlocked",
+      "7:38:02.963 PM"
+     ],
+     "before_top": "Via Lock"
+    },
+    "non_admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "7:37:54.780 PM",
+      "Kitchen motion light",
+      "Triggered",
+      "7:37:54.782 PM",
+      "Front Door",
+      "Unlocked",
+      "7:38:02.963 PM"
+     ],
+     "before_top": "Via Lock"
+    }
+   },
+   "room": "kitchen",
+   "trace": {
+    "item_id": "motion_light_kitchen",
+    "mentions_lock": false,
+    "n": 5,
+    "present": true,
+    "run_id": "46d93e320bf438d7eec1b7d0d4837e0a"
+   },
+   "trial": 0
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "reachable_admin": true,
+   "reachable_nonadmin": false,
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "7:38:46.424 PM",
+      "Kitchen motion light",
+      "View trace",
+      "Triggered",
+      "7:38:46.425 PM",
+      "Front Door",
+      "Unlocked",
+      "7:38:54.695 PM"
+     ],
+     "before_top": "Via Lock"
+    },
+    "non_admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "7:38:46.424 PM",
+      "Kitchen motion light",
+      "Triggered",
+      "7:38:46.425 PM",
+      "Front Door",
+      "Unlocked",
+      "7:38:54.695 PM"
+     ],
+     "before_top": "Via Lock"
+    }
+   },
+   "room": "kitchen",
+   "trace": {
+    "item_id": "motion_light_kitchen",
+    "mentions_lock": false,
+    "n": 5,
+    "present": true,
+    "run_id": "11f3d0ba84a4119a89baec78aabe5033"
+   },
+   "trial": 1
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "reachable_admin": true,
+   "reachable_nonadmin": false,
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "7:39:25.885 PM",
+      "Kitchen motion light",
+      "View trace",
+      "Triggered",
+      "7:39:25.886 PM",
+      "Front Door",
+      "Unlocked",
+      "7:39:34.109 PM"
+     ],
+     "before_top": "Via Lock"
+    },
+    "non_admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "7:39:25.885 PM",
+      "Kitchen motion light",
+      "Triggered",
+      "7:39:25.886 PM",
+      "Front Door",
+      "Unlocked",
+      "7:39:34.109 PM"
+     ],
+     "before_top": "Via Lock"
+    }
+   },
+   "room": "kitchen",
+   "trace": {
+    "item_id": "motion_light_kitchen",
+    "mentions_lock": false,
+    "n": 5,
+    "present": true,
+    "run_id": "c7e8bbfa0e2653849d7f502ec97fe944"
+   },
+   "trial": 2
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "reachable_admin": true,
+   "reachable_nonadmin": false,
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "7:40:05.312 PM",
+      "Kitchen motion light",
+      "View trace",
+      "Triggered",
+      "7:40:05.313 PM",
+      "Front Door",
+      "Unlocked",
+      "7:40:13.487 PM"
+     ],
+     "before_top": "Via Lock"
+    },
+    "non_admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "7:40:05.312 PM",
+      "Kitchen motion light",
+      "Triggered",
+      "7:40:05.313 PM",
+      "Front Door",
+      "Unlocked",
+      "7:40:13.487 PM"
+     ],
+     "before_top": "Via Lock"
+    }
+   },
+   "room": "kitchen",
+   "trace": {
+    "item_id": "motion_light_kitchen",
+    "mentions_lock": false,
+    "n": 5,
+    "present": true,
+    "run_id": "0a0c7fa7fcc7090ced5bc1b6dddb3190"
+   },
+   "trial": 3
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "reachable_admin": true,
+   "reachable_nonadmin": false,
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "7:40:44.587 PM",
+      "Kitchen motion light",
+      "View trace",
+      "Triggered",
+      "7:40:44.587 PM",
+      "Front Door",
+      "Unlocked",
+      "7:40:52.757 PM"
+     ],
+     "before_top": "Via Lock"
+    },
+    "non_admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "7:40:44.587 PM",
+      "Kitchen motion light",
+      "Triggered",
+      "7:40:44.587 PM",
+      "Front Door",
+      "Unlocked",
+      "7:40:52.757 PM"
+     ],
+     "before_top": "Via Lock"
+    }
+   },
+   "room": "kitchen",
+   "trace": {
+    "item_id": "motion_light_kitchen",
+    "mentions_lock": false,
+    "n": 5,
+    "present": true,
+    "run_id": "c1cdace0f725d4dd66ef1bcbcc4fe806"
+   },
+   "trial": 4
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "reachable_admin": true,
+   "reachable_nonadmin": false,
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "7:41:23.644 PM",
+      "Kitchen motion light",
+      "View trace",
+      "Triggered",
+      "7:41:23.645 PM",
+      "Front Door",
+      "Unlocked",
+      "7:41:31.848 PM"
+     ],
+     "before_top": "Via Lock"
+    },
+    "non_admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "7:41:23.644 PM",
+      "Kitchen motion light",
+      "Triggered",
+      "7:41:23.645 PM",
+      "Front Door",
+      "Unlocked",
+      "7:41:31.848 PM"
+     ],
+     "before_top": "Via Lock"
+    }
+   },
+   "room": "kitchen",
+   "trace": {
+    "item_id": "motion_light_kitchen",
+    "mentions_lock": false,
+    "n": 5,
+    "present": true,
+    "run_id": "8c752be1b368c334a545bbcf91fe95a1"
+   },
+   "trial": 5
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "reachable_admin": true,
+   "reachable_nonadmin": false,
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "7:42:03.062 PM",
+      "Kitchen motion light",
+      "View trace",
+      "Triggered",
+      "7:42:03.062 PM",
+      "Front Door",
+      "Unlocked",
+      "7:42:11.350 PM"
+     ],
+     "before_top": "Via Lock"
+    },
+    "non_admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "7:42:03.062 PM",
+      "Kitchen motion light",
+      "Triggered",
+      "7:42:03.062 PM",
+      "Front Door",
+      "Unlocked",
+      "7:42:11.350 PM"
+     ],
+     "before_top": "Via Lock"
+    }
+   },
+   "room": "kitchen",
+   "trace": {
+    "item_id": "motion_light_kitchen",
+    "mentions_lock": false,
+    "n": 5,
+    "present": true,
+    "run_id": "a737c61faaf2298db96e53bd3dd9af9d"
+   },
+   "trial": 6
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "reachable_admin": true,
+   "reachable_nonadmin": false,
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "7:42:42.573 PM",
+      "Kitchen motion light",
+      "View trace",
+      "Triggered",
+      "7:42:42.574 PM",
+      "Front Door",
+      "Unlocked",
+      "7:42:50.762 PM"
+     ],
+     "before_top": "Via Lock"
+    },
+    "non_admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "7:42:42.573 PM",
+      "Kitchen motion light",
+      "Triggered",
+      "7:42:42.574 PM",
+      "Front Door",
+      "Unlocked",
+      "7:42:50.762 PM"
+     ],
+     "before_top": "Via Lock"
+    }
+   },
+   "room": "kitchen",
+   "trace": {
+    "item_id": "motion_light_kitchen",
+    "mentions_lock": false,
+    "n": 5,
+    "present": true,
+    "run_id": "2233bc5331fa035bad3ef587590e8900"
+   },
+   "trial": 7
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "reachable_admin": true,
+   "reachable_nonadmin": false,
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "7:43:21.976 PM",
+      "Kitchen motion light",
+      "View trace",
+      "Triggered",
+      "7:43:21.977 PM",
+      "Front Door",
+      "Unlocked",
+      "7:43:30.206 PM"
+     ],
+     "before_top": "Via Lock"
+    },
+    "non_admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "7:43:21.976 PM",
+      "Kitchen motion light",
+      "Triggered",
+      "7:43:21.977 PM",
+      "Front Door",
+      "Unlocked",
+      "7:43:30.206 PM"
+     ],
+     "before_top": "Via Lock"
+    }
+   },
+   "room": "kitchen",
+   "trace": {
+    "item_id": "motion_light_kitchen",
+    "mentions_lock": false,
+    "n": 5,
+    "present": true,
+    "run_id": "4e12c2d7c74174207c43668f9fd296a5"
+   },
+   "trial": 8
+  },
+  {
+   "ops": {
+    "delete": 1,
+    "reattach": 1
+   },
+   "reachable_admin": true,
+   "reachable_nonadmin": false,
+   "rendered": {
+    "admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "7:44:01.307 PM",
+      "Kitchen motion light",
+      "View trace",
+      "Triggered",
+      "7:44:01.308 PM",
+      "Front Door",
+      "Unlocked",
+      "7:44:09.501 PM"
+     ],
+     "before_top": "Via Lock"
+    },
+    "non_admin": {
+     "after_top": "By automation: Kitchen motion light",
+     "after_wh": [
+      "Kitchen Motion",
+      "Detected",
+      "7:44:01.307 PM",
+      "Kitchen motion light",
+      "Triggered",
+      "7:44:01.308 PM",
+      "Front Door",
+      "Unlocked",
+      "7:44:09.501 PM"
+     ],
+     "before_top": "Via Lock"
+    }
+   },
+   "room": "kitchen",
+   "trace": {
+    "item_id": "motion_light_kitchen",
+    "mentions_lock": false,
+    "n": 5,
+    "present": true,
+    "run_id": "4402ef354c10906c61ef86d5ed0f7ceb"
+   },
+   "trial": 9
+  }
+ ],
+ "what": "s1 laundering re-attached to the TRIGGERED room's own motion-light run (deviation fixed), rendered admin+non-admin, 3 configurations x 10 trials; Activity top line + 2026.9/10 Details chain; per-trial automation-trace measurement; compared to display()."
+}

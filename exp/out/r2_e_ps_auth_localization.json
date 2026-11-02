@@ -1,0 +1,4642 @@
+{
+ "experiment": "R2 (S&P 2027): quarantine soundness and over-quarantine on the saved real-deployment verifier snapshots",
+ "run_id": "e_ps_auth",
+ "scheme": "row",
+ "deviation": null,
+ "window": {
+  "t_start": 1790948889.0,
+  "t_end": 1790950091.0,
+  "duration_s": 1202.0,
+  "recorder_snapshot_at": 1790950199.520383
+ },
+ "published_result_kind": "e_ps_detection",
+ "granularities": {
+  "monitor_GRAN": [
+   [
+    "second",
+    1.0
+   ],
+   [
+    "minute",
+    60.0
+   ],
+   [
+    "hour",
+    3600.0
+   ]
+  ],
+  "anchored_in_window": {
+   "second": 420,
+   "minute": 21,
+   "hour": 1
+  },
+  "verified_in_window": {
+   "second": 399,
+   "minute": 21,
+   "hour": 1
+  },
+  "violated": {
+   "second": 2,
+   "minute": 0,
+   "hour": 0
+  }
+ },
+ "chain": {
+  "chain_records_total": 208,
+  "chain_records_in_window": 197,
+  "evidence_unobservable_records": [],
+  "granularities_in_chain_records": {
+   "hour": 2,
+   "minute": 24,
+   "second": 205
+  },
+  "segments_sealed_in_window_by_granularity": {
+   "second": 420,
+   "minute": 21,
+   "hour": 1
+  },
+  "chain_schemes": {
+   "unrecorded": 208
+  }
+ },
+ "reproduction_gates": {
+  "anchored_segments_in_window": {
+   "published": {
+    "second": 420,
+    "minute": 21,
+    "hour": 1
+   },
+   "recomputed": {
+    "second": 420,
+    "minute": 21,
+    "hour": 1
+   },
+   "match": true
+  },
+  "violation_mechanisms": {
+   "published": {
+    "second": {
+     "rows_arrived_after_seal": 2
+    },
+    "minute": {}
+   },
+   "recomputed": {
+    "second": {
+     "rows_arrived_after_seal": 2
+    },
+    "minute": {}
+   },
+   "match": true
+  },
+  "floor_old_rule_vs_floor_rescore": {
+   "published": {
+    "second": [
+     1,
+     309
+    ],
+    "minute": [
+     0,
+     7
+    ]
+   },
+   "recomputed": {
+    "second": [
+     1,
+     309
+    ],
+    "minute": [
+     0,
+     7
+    ]
+   },
+   "match": true
+  },
+  "floor_new_rule_vs_floor_rescore": {
+   "published": {
+    "second": [
+     1,
+     308
+    ],
+    "minute": [
+     0,
+     7
+    ]
+   },
+   "recomputed": {
+    "second": [
+     1,
+     308
+    ],
+    "minute": [
+     0,
+     7
+    ]
+   },
+   "match": true
+  },
+  "per_trial_second_verdicts": {
+   "agree": 90,
+   "disagree": 0,
+   "match": true
+  }
+ },
+ "all_gates_pass": true,
+ "event_gap_check": {
+  "scan_range": [
+   1790947989.0,
+   1790951099.520383
+  ],
+  "events_in_scan": 2455,
+  "time_inversions_by_event_id": 0,
+  "missing_event_ids_in_scan": 0,
+  "missing_event_ids_in_[t_start,recorder_snapshot_at]": 0,
+  "missing_event_ids_outside_run": {
+   "n": 0,
+   "all_before_t_start": true,
+   "latest_bracket_end": null
+  },
+  "deletions_reported_by_trials": 0,
+  "gaps_assigned_to_exactly_one_trial": 0,
+  "gaps_assigned_to_several_trials": 0,
+  "in_run_gaps_unassigned": [],
+  "match": true
+ },
+ "deleted_event_time_bound_support": {
+  "call_service_to_state_row_lag_s": {
+   "n": 174,
+   "min": 0.0005884170532226562,
+   "max": 0.10095620155334473
+  },
+  "call_service_minus_context_ulid_s": {
+   "n": 177,
+   "min": 6.818771362304688e-05,
+   "max": 0.0032095909118652344
+  },
+  "scope": "lock-domain call_service events and lock state rows sharing their context, in [t_start, t_end]",
+  "reading": "lag >= 0 supports event <= its state row; ulid delta >= 0 supports context creation <= event"
+ },
+ "universe": {
+  "definition": "surviving snapshot nodes (states + events, the monitor's load()) with ts in [span_lo, span_hi), the time span of the verified anchored segments",
+  "span_lo": 1790946000.0,
+  "span_hi": 1790950140.0,
+  "U": 4825,
+  "nodes_in_[t_start,t_end]": 3109
+ },
+ "T": {
+  "n_keys": 90,
+  "n_surviving_in_U": 90,
+  "n_deleted": 0
+ },
+ "over_quarantine": {
+  "R0_void": {
+   "Q": 4825,
+   "Q_and_T": 90,
+   "Q_minus_T": 4735,
+   "OQ": 0.9813471502590674
+  },
+  "R1_1s": {
+   "Q": 6,
+   "Q_and_T": 1,
+   "Q_minus_T": 5,
+   "OQ": 0.0010362694300518134
+  },
+  "R1_1min": {
+   "Q": 282,
+   "Q_and_T": 33,
+   "Q_minus_T": 249,
+   "OQ": 0.05160621761658031
+  },
+  "R1_1h": {
+   "Q": 4825,
+   "Q_and_T": 90,
+   "Q_minus_T": 4735,
+   "OQ": 0.9813471502590674
+  },
+  "R2_segments": {
+   "Q": 6,
+   "Q_and_T": 1,
+   "Q_minus_T": 5,
+   "OQ": 0.0010362694300518134
+  },
+  "R3_ceiling": {
+   "Q": 90,
+   "Q_and_T": 90,
+   "Q_minus_T": 0,
+   "OQ": 0.0
+  },
+  "R4_component": {
+   "Q": 6,
+   "Q_and_T": 1,
+   "Q_minus_T": 5,
+   "OQ": 0.0010362694300518134
+  },
+  "R5_homeprov": {
+   "Q": 6,
+   "Q_and_T": 1,
+   "Q_minus_T": 5,
+   "OQ": 0.0010362694300518134
+  }
+ },
+ "R5_regions_by_width_s": {
+  "1.0": 2
+ },
+ "benign_floor": {
+  "rule": "hp_d2/floor_rescore.py NEW counting rule",
+  "floor_new_rule": {
+   "second": {
+    "k": 1,
+    "n": 308,
+    "mechanisms": {
+     "rows_arrived_after_seal": 1
+    }
+   },
+   "minute": {
+    "k": 0,
+    "n": 7,
+    "mechanisms": {}
+   }
+  },
+  "floor_old_rule": {
+   "second": {
+    "k": 1,
+    "n": 309,
+    "mechanisms": {
+     "rows_arrived_after_seal": 1
+    }
+   },
+   "minute": {
+    "k": 0,
+    "n": 7,
+    "mechanisms": {}
+   }
+  },
+  "floor_violations": {
+   "second": [
+    {
+     "segment": "1790949888",
+     "mechanism": "rows_arrived_after_seal",
+     "delta_n": 2
+    }
+   ],
+   "minute": [],
+   "hour": []
+  },
+  "contribution_by_policy": {
+   "R1_1s": {
+    "OQ_all_violations": 0.0010362694300518134,
+    "OQ_trial_touched_violations_only": 0.0004145077720207254,
+    "untampered_nodes_added_by_floor": 3,
+    "untampered_nodes_removed_by_floor_subsumption": 0
+   },
+   "R1_1min": {
+    "OQ_all_violations": 0.05160621761658031,
+    "OQ_trial_touched_violations_only": 0.027357512953367875,
+    "untampered_nodes_added_by_floor": 117,
+    "untampered_nodes_removed_by_floor_subsumption": 0
+   },
+   "R1_1h": {
+    "OQ_all_violations": 0.9813471502590674,
+    "OQ_trial_touched_violations_only": 0.9813471502590674,
+    "untampered_nodes_added_by_floor": 0,
+    "untampered_nodes_removed_by_floor_subsumption": 0
+   },
+   "R2_segments": {
+    "OQ_all_violations": 0.0010362694300518134,
+    "OQ_trial_touched_violations_only": 0.0004145077720207254,
+    "untampered_nodes_added_by_floor": 3,
+    "untampered_nodes_removed_by_floor_subsumption": 0
+   },
+   "R4_component": {
+    "OQ_all_violations": 0.0010362694300518134,
+    "OQ_trial_touched_violations_only": 0.0004145077720207254,
+    "untampered_nodes_added_by_floor": 3,
+    "untampered_nodes_removed_by_floor_subsumption": 0
+   },
+   "R5_homeprov": {
+    "OQ_all_violations": 0.0010362694300518134,
+    "OQ_trial_touched_violations_only": 0.0004145077720207254,
+    "untampered_nodes_added_by_floor": 3,
+    "untampered_nodes_removed_by_floor_subsumption": 0
+   }
+  }
+ },
+ "arms": {
+  "PS": {
+   "n_trials": 90,
+   "n_scored": 90,
+   "n_excluded_no_edit": 0,
+   "n_ground_truth_exact": 90,
+   "n_tampered_elements": 92,
+   "n_deleted_events": 0,
+   "n_detected_own_segments": 1,
+   "R5_miss_taxonomy": {
+    "Miss-D": 89
+   },
+   "per_room": {
+    "porch": {
+     "n": 30,
+     "sound_R5": 0
+    },
+    "hallway": {
+     "n": 30,
+     "sound_R5": 1
+    },
+    "kitchen": {
+     "n": 30,
+     "sound_R5": 0
+    }
+   },
+   "soundness_R5_homeprov": {
+    "k": 1,
+    "n": 90,
+    "prop": 0.011111111111111112,
+    "ci_lo": 0.00028126941394273865,
+    "ci_hi": 0.0603574805747319,
+    "method": "Clopper-Pearson exact",
+    "indeterminate": 0,
+    "unsound": 89,
+    "upper_if_indeterminate_sound": {
+     "k": 1,
+     "n": 90,
+     "prop": 0.011111111111111112,
+     "ci_lo": 0.00028126941394273865,
+     "ci_hi": 0.0603574805747319,
+     "method": "Clopper-Pearson exact"
+    }
+   },
+   "soundness_R5_homeprov_anchor_resolved": {
+    "k": 1,
+    "n": 90,
+    "prop": 0.011111111111111112,
+    "ci_lo": 0.00028126941394273865,
+    "ci_hi": 0.0603574805747319,
+    "method": "Clopper-Pearson exact",
+    "indeterminate": 0,
+    "unsound": 89,
+    "upper_if_indeterminate_sound": {
+     "k": 1,
+     "n": 90,
+     "prop": 0.011111111111111112,
+     "ci_lo": 0.00028126941394273865,
+     "ci_hi": 0.0603574805747319,
+     "method": "Clopper-Pearson exact"
+    }
+   },
+   "soundness_R5_homeprov_closed": {
+    "k": 1,
+    "n": 90,
+    "prop": 0.011111111111111112,
+    "ci_lo": 0.00028126941394273865,
+    "ci_hi": 0.0603574805747319,
+    "method": "Clopper-Pearson exact",
+    "indeterminate": 0,
+    "unsound": 89,
+    "upper_if_indeterminate_sound": {
+     "k": 1,
+     "n": 90,
+     "prop": 0.011111111111111112,
+     "ci_lo": 0.00028126941394273865,
+     "ci_hi": 0.0603574805747319,
+     "method": "Clopper-Pearson exact"
+    }
+   },
+   "soundness_R4_component": {
+    "k": 1,
+    "n": 90,
+    "prop": 0.011111111111111112,
+    "ci_lo": 0.00028126941394273865,
+    "ci_hi": 0.0603574805747319,
+    "method": "Clopper-Pearson exact",
+    "indeterminate": 0,
+    "unsound": 89,
+    "upper_if_indeterminate_sound": {
+     "k": 1,
+     "n": 90,
+     "prop": 0.011111111111111112,
+     "ci_lo": 0.00028126941394273865,
+     "ci_hi": 0.0603574805747319,
+     "method": "Clopper-Pearson exact"
+    }
+   },
+   "soundness_R2_segments": {
+    "k": 1,
+    "n": 90,
+    "prop": 0.011111111111111112,
+    "ci_lo": 0.00028126941394273865,
+    "ci_hi": 0.0603574805747319,
+    "method": "Clopper-Pearson exact",
+    "indeterminate": 0,
+    "unsound": 89,
+    "upper_if_indeterminate_sound": {
+     "k": 1,
+     "n": 90,
+     "prop": 0.011111111111111112,
+     "ci_lo": 0.00028126941394273865,
+     "ci_hi": 0.0603574805747319,
+     "method": "Clopper-Pearson exact"
+    }
+   },
+   "soundness_R1_1s": {
+    "k": 1,
+    "n": 90,
+    "prop": 0.011111111111111112,
+    "ci_lo": 0.00028126941394273865,
+    "ci_hi": 0.0603574805747319,
+    "method": "Clopper-Pearson exact",
+    "indeterminate": 0,
+    "unsound": 89,
+    "upper_if_indeterminate_sound": {
+     "k": 1,
+     "n": 90,
+     "prop": 0.011111111111111112,
+     "ci_lo": 0.00028126941394273865,
+     "ci_hi": 0.0603574805747319,
+     "method": "Clopper-Pearson exact"
+    }
+   },
+   "soundness_R1_1min": {
+    "k": 33,
+    "n": 90,
+    "prop": 0.36666666666666664,
+    "ci_lo": 0.2675215718415541,
+    "ci_hi": 0.47485120744970993,
+    "method": "Clopper-Pearson exact",
+    "indeterminate": 0,
+    "unsound": 57,
+    "upper_if_indeterminate_sound": {
+     "k": 33,
+     "n": 90,
+     "prop": 0.36666666666666664,
+     "ci_lo": 0.2675215718415541,
+     "ci_hi": 0.47485120744970993,
+     "method": "Clopper-Pearson exact"
+    }
+   },
+   "soundness_R1_1h": {
+    "k": 90,
+    "n": 90,
+    "prop": 1.0,
+    "ci_lo": 0.9598410803842253,
+    "ci_hi": 1.0,
+    "method": "Clopper-Pearson exact",
+    "indeterminate": 0,
+    "unsound": 0,
+    "upper_if_indeterminate_sound": {
+     "k": 90,
+     "n": 90,
+     "prop": 1.0,
+     "ci_lo": 0.9598410803842253,
+     "ci_hi": 1.0,
+     "method": "Clopper-Pearson exact"
+    }
+   },
+   "soundness_R0_void": {
+    "k": 90,
+    "n": 90,
+    "prop": 1.0,
+    "ci_lo": 0.9598410803842253,
+    "ci_hi": 1.0,
+    "method": "Clopper-Pearson exact",
+    "indeterminate": 0,
+    "unsound": 0,
+    "upper_if_indeterminate_sound": {
+     "k": 90,
+     "n": 90,
+     "prop": 1.0,
+     "ci_lo": 0.9598410803842253,
+     "ci_hi": 1.0,
+     "method": "Clopper-Pearson exact"
+    }
+   },
+   "per_trial_R5_quarantine": {
+    "what": "surviving nodes in the R5 regions that this trial's own tampered elements fall in (regions may be shared with other trials)",
+    "Q_mean": 0.03333333333333333,
+    "Q_median": 0.0,
+    "Q_max": 3,
+    "Q_minus_T_mean": 0.022222222222222223,
+    "Q_minus_T_median": 0.0,
+    "Q_minus_T_max": 2,
+    "region_widths_s": {
+     "1.0": 1
+    }
+   },
+   "per_trial_OQ": {
+    "what": "each policy applied to the violated segments that contain this trial's own tampered elements; mean over trials of |Q - T| / |U|",
+    "R0_void": {
+     "mean": 0.9813471502590674,
+     "max": 0.9813471502590674,
+     "n_trials_with_own_violations": 1,
+     "Q_minus_T_mean": 4735
+    },
+    "R1_1s": {
+     "mean": 0.0004145077720207254,
+     "max": 0.0004145077720207254,
+     "n_trials_with_own_violations": 1,
+     "Q_minus_T_mean": 2
+    },
+    "R1_1min": {
+     "mean": 0.027357512953367875,
+     "max": 0.027357512953367875,
+     "n_trials_with_own_violations": 1,
+     "Q_minus_T_mean": 132
+    },
+    "R1_1h": {
+     "mean": 0.9813471502590674,
+     "max": 0.9813471502590674,
+     "n_trials_with_own_violations": 1,
+     "Q_minus_T_mean": 4735
+    },
+    "R2_segments": {
+     "mean": 0.0004145077720207254,
+     "max": 0.0004145077720207254,
+     "n_trials_with_own_violations": 1,
+     "Q_minus_T_mean": 2
+    },
+    "R3_ceiling": {
+     "mean": 0.0,
+     "max": 0.0,
+     "n_trials_with_own_violations": 1,
+     "Q_minus_T_mean": 0
+    },
+    "R4_component": {
+     "mean": 0.0004145077720207254,
+     "max": 0.0004145077720207254,
+     "n_trials_with_own_violations": 1,
+     "Q_minus_T_mean": 2
+    },
+    "R5_homeprov": {
+     "mean": 0.0004145077720207254,
+     "max": 0.0004145077720207254,
+     "n_trials_with_own_violations": 1,
+     "Q_minus_T_mean": 2
+    }
+   }
+  }
+ },
+ "write_time_arms": {},
+ "trials": [
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 0,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:684847",
+     "kind": "state_update",
+     "lo": 1790948894.4906764,
+     "hi": 1790948894.4906764,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/0",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790948894",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 1,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:684860",
+     "kind": "state_update",
+     "lo": 1790948927.831206,
+     "hi": 1790948927.831206,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/1",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790948927",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 2,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:684864",
+     "kind": "state_update",
+     "lo": 1790948933.8599517,
+     "hi": 1790948933.8599517,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/2",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790948933",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 3,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:684866",
+     "kind": "state_update",
+     "lo": 1790948939.8885021,
+     "hi": 1790948939.8885021,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/3",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790948939",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 4,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:684872",
+     "kind": "state_update",
+     "lo": 1790948946.1994908,
+     "hi": 1790948946.1994908,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/4",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790948946",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 5,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:684874",
+     "kind": "state_update",
+     "lo": 1790948952.2538042,
+     "hi": 1790948952.2538042,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/5",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790948952",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 6,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:684878",
+     "kind": "state_update",
+     "lo": 1790948958.301049,
+     "hi": 1790948958.301049,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/6",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790948958",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 7,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:684884",
+     "kind": "state_update",
+     "lo": 1790948964.34247,
+     "hi": 1790948964.34247,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/7",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790948964",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 8,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:684886",
+     "kind": "state_update",
+     "lo": 1790948970.3783834,
+     "hi": 1790948970.3783834,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/8",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790948970",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 9,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:684891",
+     "kind": "state_update",
+     "lo": 1790948976.4179513,
+     "hi": 1790948976.4179513,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/9",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790948976",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 10,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:684893",
+     "kind": "state_update",
+     "lo": 1790948982.4545689,
+     "hi": 1790948982.4545689,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/10",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790948982",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 11,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:684897",
+     "kind": "state_update",
+     "lo": 1790948988.522165,
+     "hi": 1790948988.522165,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/11",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790948988",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 12,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:684903",
+     "kind": "state_update",
+     "lo": 1790948994.573528,
+     "hi": 1790948994.573528,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/12",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790948994",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 13,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:684908",
+     "kind": "state_update",
+     "lo": 1790949000.6153674,
+     "hi": 1790949000.6153674,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/13",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949000",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 14,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:684913",
+     "kind": "state_update",
+     "lo": 1790949006.647773,
+     "hi": 1790949006.647773,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/14",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949006",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 15,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:684921",
+     "kind": "state_update",
+     "lo": 1790949012.6708875,
+     "hi": 1790949012.6708875,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/15",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949012",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 16,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:684925",
+     "kind": "state_update",
+     "lo": 1790949018.7188504,
+     "hi": 1790949018.7188504,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/16",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949018",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 17,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:684931",
+     "kind": "state_update",
+     "lo": 1790949024.7547417,
+     "hi": 1790949024.7547417,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/17",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949024",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 18,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:684933",
+     "kind": "state_update",
+     "lo": 1790949030.7916958,
+     "hi": 1790949030.7916958,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/18",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949030",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 19,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:684940",
+     "kind": "state_update",
+     "lo": 1790949036.8244216,
+     "hi": 1790949036.8244216,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/19",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949036",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 20,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:684943",
+     "kind": "state_update",
+     "lo": 1790949042.8551216,
+     "hi": 1790949042.8551216,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/20",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949042",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 21,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:684948",
+     "kind": "state_update",
+     "lo": 1790949048.8712518,
+     "hi": 1790949048.8712518,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/21",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949048",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 22,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:684953",
+     "kind": "state_update",
+     "lo": 1790949055.0267184,
+     "hi": 1790949055.0267184,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/22",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949055",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 23,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:684957",
+     "kind": "state_update",
+     "lo": 1790949061.0643213,
+     "hi": 1790949061.0643213,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/23",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949061",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 24,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:684962",
+     "kind": "state_update",
+     "lo": 1790949067.100214,
+     "hi": 1790949067.100214,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/24",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949067",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 25,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:684967",
+     "kind": "state_update",
+     "lo": 1790949073.150023,
+     "hi": 1790949073.150023,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/25",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949073",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 26,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:684970",
+     "kind": "state_update",
+     "lo": 1790949079.1838162,
+     "hi": 1790949079.1838162,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/26",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949079",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 27,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:684974",
+     "kind": "state_update",
+     "lo": 1790949085.208691,
+     "hi": 1790949085.208691,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/27",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949085",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 28,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:684976",
+     "kind": "state_update",
+     "lo": 1790949091.2480226,
+     "hi": 1790949091.2480226,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/28",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949091",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 29,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:684981",
+     "kind": "state_update",
+     "lo": 1790949097.2888126,
+     "hi": 1790949097.2888126,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/29",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949097",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 0,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685138",
+     "kind": "state_update",
+     "lo": 1790949291.691608,
+     "hi": 1790949291.691608,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/0",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949291",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 1,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685150",
+     "kind": "state_update",
+     "lo": 1790949324.9584377,
+     "hi": 1790949324.9584377,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/1",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949324",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 2,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685154",
+     "kind": "state_update",
+     "lo": 1790949331.004831,
+     "hi": 1790949331.004831,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/2",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949331",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 3,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685159",
+     "kind": "state_update",
+     "lo": 1790949337.0536778,
+     "hi": 1790949337.0536778,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/3",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949337",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 4,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685162",
+     "kind": "state_update",
+     "lo": 1790949343.08424,
+     "hi": 1790949343.08424,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/4",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949343",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 5,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685166",
+     "kind": "state_update",
+     "lo": 1790949349.1500537,
+     "hi": 1790949349.1500537,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/5",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949349",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 6,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685172",
+     "kind": "state_update",
+     "lo": 1790949355.1982706,
+     "hi": 1790949355.1982706,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/6",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949355",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 7,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685174",
+     "kind": "state_update",
+     "lo": 1790949361.2453575,
+     "hi": 1790949361.2453575,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/7",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949361",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 8,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685178",
+     "kind": "state_update",
+     "lo": 1790949367.2816455,
+     "hi": 1790949367.2816455,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/8",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949367",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 9,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685184",
+     "kind": "state_update",
+     "lo": 1790949373.3125882,
+     "hi": 1790949373.3125882,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/9",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949373",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 10,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685188",
+     "kind": "state_update",
+     "lo": 1790949379.354064,
+     "hi": 1790949379.354064,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/10",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949379",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 11,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685194",
+     "kind": "state_update",
+     "lo": 1790949385.3797948,
+     "hi": 1790949385.3797948,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/11",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949385",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 12,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685198",
+     "kind": "state_update",
+     "lo": 1790949391.4305725,
+     "hi": 1790949391.4305725,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/12",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949391",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 13,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685201",
+     "kind": "state_update",
+     "lo": 1790949397.4809737,
+     "hi": 1790949397.4809737,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/13",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949397",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 14,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685205",
+     "kind": "state_update",
+     "lo": 1790949403.5899367,
+     "hi": 1790949403.5899367,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/14",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949403",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 15,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685207",
+     "kind": "state_update",
+     "lo": 1790949409.6619213,
+     "hi": 1790949409.6619213,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/15",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949409",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 16,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685213",
+     "kind": "state_update",
+     "lo": 1790949415.7027378,
+     "hi": 1790949415.7027378,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/16",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949415",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 17,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685215",
+     "kind": "state_update",
+     "lo": 1790949421.7440472,
+     "hi": 1790949421.7440472,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/17",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949421",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 18,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685219",
+     "kind": "state_update",
+     "lo": 1790949427.7852788,
+     "hi": 1790949427.7852788,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/18",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949427",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 19,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685225",
+     "kind": "state_update",
+     "lo": 1790949433.8525825,
+     "hi": 1790949433.8525825,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/19",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1790949433",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "rows_arrived_after_seal",
+       "delta_n": 2
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 20,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685229",
+     "kind": "state_update",
+     "lo": 1790949439.9176586,
+     "hi": 1790949439.9176586,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/20",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949439",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 21,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685231",
+     "kind": "state_update",
+     "lo": 1790949445.989207,
+     "hi": 1790949445.989207,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/21",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949445",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 22,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685237",
+     "kind": "state_update",
+     "lo": 1790949452.0904598,
+     "hi": 1790949452.0904598,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/22",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949452",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 23,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685239",
+     "kind": "state_update",
+     "lo": 1790949458.1586716,
+     "hi": 1790949458.1586716,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/23",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949458",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 24,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685247",
+     "kind": "state_update",
+     "lo": 1790949464.2577572,
+     "hi": 1790949464.2577572,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/24",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949464",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 25,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685255",
+     "kind": "state_update",
+     "lo": 1790949470.3221524,
+     "hi": 1790949470.3221524,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/25",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949470",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 26,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685257",
+     "kind": "state_update",
+     "lo": 1790949476.759459,
+     "hi": 1790949476.759459,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/26",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949476",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 27,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685262",
+     "kind": "state_update",
+     "lo": 1790949482.8558006,
+     "hi": 1790949482.8558006,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/27",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949482",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 28,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685264",
+     "kind": "state_update",
+     "lo": 1790949488.928913,
+     "hi": 1790949488.928913,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/28",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949488",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 29,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685272",
+     "kind": "state_update",
+     "lo": 1790949495.0276787,
+     "hi": 1790949495.0276787,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/29",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949495",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 0,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685426",
+     "kind": "state_update",
+     "lo": 1790949697.5681949,
+     "hi": 1790949697.5681949,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/0",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949697",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 1,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685437",
+     "kind": "state_update",
+     "lo": 1790949731.4485848,
+     "hi": 1790949731.4485848,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/1",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949731",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 2,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685440",
+     "kind": "state_update",
+     "lo": 1790949737.520062,
+     "hi": 1790949737.520062,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/2",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949737",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 3,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685444",
+     "kind": "state_update",
+     "lo": 1790949743.5888891,
+     "hi": 1790949743.5888891,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/3",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949743",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 4,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685450",
+     "kind": "state_update",
+     "lo": 1790949749.7036316,
+     "hi": 1790949749.7036316,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/4",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949749",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 5,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685454",
+     "kind": "state_update",
+     "lo": 1790949755.7551322,
+     "hi": 1790949755.7551322,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/5",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949755",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 6,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685460",
+     "kind": "state_update",
+     "lo": 1790949761.8154125,
+     "hi": 1790949761.8154125,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/6",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949761",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 7,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685464",
+     "kind": "state_update",
+     "lo": 1790949767.8816743,
+     "hi": 1790949767.8816743,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/7",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949767",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 8,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685466",
+     "kind": "state_update",
+     "lo": 1790949774.0781288,
+     "hi": 1790949774.0781288,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/8",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949774",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 9,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685472",
+     "kind": "state_update",
+     "lo": 1790949780.148468,
+     "hi": 1790949780.148468,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/9",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949780",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 10,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685476",
+     "kind": "state_update",
+     "lo": 1790949786.2616448,
+     "hi": 1790949786.2616448,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/10",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949786",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 11,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685481",
+     "kind": "state_update",
+     "lo": 1790949792.3298528,
+     "hi": 1790949792.3298528,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/11",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949792",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 12,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685484",
+     "kind": "state_update",
+     "lo": 1790949798.4172204,
+     "hi": 1790949798.4172204,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/12",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949798",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 13,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685488",
+     "kind": "state_update",
+     "lo": 1790949804.4614058,
+     "hi": 1790949804.4614058,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/13",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949804",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 14,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685490",
+     "kind": "state_update",
+     "lo": 1790949810.5462203,
+     "hi": 1790949810.5462203,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/14",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949810",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 15,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685495",
+     "kind": "state_update",
+     "lo": 1790949816.646129,
+     "hi": 1790949816.646129,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/15",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949816",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 16,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685501",
+     "kind": "state_update",
+     "lo": 1790949822.7342474,
+     "hi": 1790949822.7342474,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/16",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949822",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "unsound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 17,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685507",
+     "kind": "state_update",
+     "lo": 1790949828.814084,
+     "hi": 1790949828.814084,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/17",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949828",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 18,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685513",
+     "kind": "state_update",
+     "lo": 1790949834.9593837,
+     "hi": 1790949834.9593837,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/18",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949834",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 19,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685520",
+     "kind": "state_update",
+     "lo": 1790949841.660515,
+     "hi": 1790949841.660515,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/19",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949841",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 20,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685523",
+     "kind": "state_update",
+     "lo": 1790949848.2162662,
+     "hi": 1790949848.2162662,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/20",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949848",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 21,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685527",
+     "kind": "state_update",
+     "lo": 1790949854.3995647,
+     "hi": 1790949854.3995647,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/21",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949854",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 22,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685533",
+     "kind": "state_update",
+     "lo": 1790949860.5505297,
+     "hi": 1790949860.5505297,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/22",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949860",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 23,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685535",
+     "kind": "state_update",
+     "lo": 1790949866.7181349,
+     "hi": 1790949866.7181349,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 2,
+     "last_writer": "kitchen/PS/24",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949866",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 24,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685535",
+     "kind": "state_update",
+     "lo": 1790949866.7181349,
+     "hi": 1790949866.7181349,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 2,
+     "last_writer": "kitchen/PS/24",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949866",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    },
+    {
+     "key": "s:685539",
+     "kind": "state_update",
+     "lo": 1790949872.8042223,
+     "hi": 1790949872.8042223,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/24",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949872",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 25,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685545",
+     "kind": "state_update",
+     "lo": 1790949878.887424,
+     "hi": 1790949878.887424,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/25",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949878",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 26,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685552",
+     "kind": "state_update",
+     "lo": 1790949885.0027337,
+     "hi": 1790949885.0027337,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/26",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949885",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 27,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685555",
+     "kind": "state_update",
+     "lo": 1790949891.7910843,
+     "hi": 1790949891.7910843,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 2,
+     "last_writer": "kitchen/PS/28",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949891",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 28,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685555",
+     "kind": "state_update",
+     "lo": 1790949891.7910843,
+     "hi": 1790949891.7910843,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 2,
+     "last_writer": "kitchen/PS/28",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949891",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    },
+    {
+     "key": "s:685557",
+     "kind": "state_update",
+     "lo": 1790949897.853818,
+     "hi": 1790949897.853818,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/28",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949897",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 29,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:685564",
+     "kind": "state_update",
+     "lo": 1790949903.9253225,
+     "hi": 1790949903.9253225,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/29",
+     "R5_cover": "uncovered",
+     "own_second_segments": [
+      {
+       "segment": "1790949903",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": null,
+       "delta_n": null
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "unsound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "unsound",
+    "R5_homeprov": "unsound",
+    "R5_homeprov_closed": "unsound",
+    "R4_component": "unsound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "unsound"
+   },
+   "detected_own_segments": false,
+   "miss_R5": "Miss-D"
+  }
+ ],
+ "definitions": {
+  "soundness": "trial sound iff every element it tampered (updated state rows: snapshot ts; deleted events: id gap, ts interval [max(ULID(ctx), ts(prev id)), min(ts(row_before), ts(next id))]) lies inside the policy's quarantined time regions; R5 regions = localize.greedy_regions, half-open [lo,hi) as metrics.lr_regions (R5_homeprov_closed: stage24's closed-interval check); R1 = stage24 win(w) closed; R2 = stage24 innermost() (minimum-width violated segments) closed; R0 = [min ts, max ts] of U; R4 = R5 regions plus R4's node set (DEVIATION: stage24 uses one hull interval over R4's nodes, which on a multi-trial run spans the whole run and is vacuous)",
+  "indeterminate": "a deleted event whose bounding interval is only partly quarantined",
+  "over_quarantine": "metrics.oq: |Q - T| / |U|",
+  "policies": {
+   "R0_void": "stage24 pol_nodes['R0_void'] applied to U",
+   "R1_1s": "stage24 pol_nodes['R1_1s'] applied to U",
+   "R1_1min": "stage24 pol_nodes['R1_1min'] applied to U",
+   "R1_1h": "stage24 pol_nodes['R1_1h'] applied to U",
+   "R2_segments": "stage24 pol_nodes['R2_segments'] applied to U",
+   "R3_ceiling": "stage24 pol_nodes['R3_ceiling'] applied to U",
+   "R4_component": "stage24 pol_nodes['R4_component'] applied to U",
+   "R5_homeprov": "stage24 pol_nodes['R5_homeprov'] applied to U"
+  },
+  "verification": "e_c_write_time.verify_window semantics; first-write-wins roots from chain records with payload ts in [t_start, recorder_snapshot_at]; segments with start in [t_start-w, t_end+w]"
+ },
+ "provenance": {
+  "script": "<artifact-root>/exp/sp2027/r2_localize.py",
+  "script_sha256": "dc478589b9b44c4fe5d3e09600440163d21e479d295cc268bfd4871a07e7c091",
+  "python": "3.13.11 | packaged by Anaconda, Inc. | (main, Dec 10 2025, 21:21:08) [Clang 20.1.8 ]",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "git_head": "b7611992393052a568df00c9ebc805f4d15ee6f5",
+  "exp_rig_dirty": false,
+  "exp_rig_status": "",
+  "code_sha256": {
+   "exp/rig/localize.py": "a7a27433921d71e015586a63927eb382ac086c0fe7f2db0dc1fc817a5ee840c4",
+   "exp/rig/metrics.py": "657e654984ae163359fcd624df54cecfc3cc7e35245b359d40e0b0125ea51084",
+   "exp/rig/stats.py": "156075624fa11245fcd993e64925f258f6ca1e4ae69227b1eed9b7a31758baeb",
+   "exp/stages/stage24_recon_baselines.py": "a7275da3747e58ab232f292a691110fb3d542d3bc5e53455bfa99973d53c9077",
+   "exp/stages/e_c_write_time.py": "fc4c01267b3a555afdc8acbdbcceb8172f487b174fac9e4a4b6104526a9329e1"
+  },
+  "monitor_py_sha256": "903daa794d027bb97a6954ff1bfe891d5c35a1715856094e34901f097c11ed9a",
+  "inputs": {
+   "snapshot_db": {
+    "path": "<snapshots>/hp-ps-auth/ps_verify/recorder.db",
+    "sha256_listed_in_SHA256SUMS": "01070609b0851bc93c7296186ed1b4a5ec440bbe5baf1dcd0d0d56480fe78aea",
+    "sha256_at_run": "01070609b0851bc93c7296186ed1b4a5ec440bbe5baf1dcd0d0d56480fe78aea"
+   },
+   "chain": {
+    "path": "<snapshots>/hp-ps-auth/e_ps_auth_chain.jsonl",
+    "sha256_listed_in_SHA256SUMS": "8a8e7fe1773c59e4df61a1196af40d1197b8533b0b3d7c8c737ba660d0faa134",
+    "sha256_at_run": "8a8e7fe1773c59e4df61a1196af40d1197b8533b0b3d7c8c737ba660d0faa134"
+   },
+   "published_result": {
+    "path": "<artifact-root>/exp/out/e_ps_auth_detection.json",
+    "sha256_at_run": "df2e535ffee172615e9d9c7ebd14fee69dfb617a6117e0c1067db9cb46458fac"
+   },
+   "published_floor_rescore": {
+    "path": "<artifact-root>/exp/out/e_ps_auth_floor_rescore.json",
+    "sha256_at_run": "bd5d7fc1dcba769ef3cc506420af194977e357658365cb230adbb18c8929e29c"
+   }
+  },
+  "sqlite_open": "file:<path>?mode=ro&immutable=1 (uri=True) for every open, including the shipped monitor's load() via a sqlite3 shim",
+  "load_since": 1790942400.0,
+  "load_commit_seconds": 0.05,
+  "started": "2026-10-06T17:50:03.548337+00:00",
+  "finished": "2026-10-06T17:50:04.163167+00:00",
+  "loadavg_1_5_15": [
+   3.67724609375,
+   4.2333984375,
+   4.33056640625
+  ]
+ }
+}

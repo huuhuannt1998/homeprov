@@ -1,0 +1,383 @@
+--- a/monitor/monitor.py
++++ b/monitor/monitor.py
+@@ -41,6 +41,8 @@
+ import urllib.error
+ import urllib.request
+ 
++_SQ = sqlite3   # the real module (flags, exceptions): a verifier may replace `sqlite3` below by a shim
++
+ SRC = os.environ.get("HOMEPROV_DB", "/cfg/home-assistant_v2.db")
+ SCRATCH = os.environ.get("HOMEPROV_SCRATCH", "/scratch")
+ ANCHOR = os.environ.get("HOMEPROV_ANCHOR", "http://hp-anchord:9900/append")
+@@ -177,10 +179,85 @@
+         return any("\udc80" <= ch <= "\udcff" for ch in v)
+ 
+ 
++# HARDENING (round 14, E10; internal review r4 R1 W4). The recorder is written in the hub's domain, so it is a file an
++# adversary may have crafted, and SQLite's guidance for such files applies (https://www.sqlite.org/security.html,
++# Section 1.2, items 9-13; drafts/round13/r4_sources.md section 9). Every connection the monitor opens, before it reads
++# the file: PRAGMA trusted_schema=OFF (item 9b: a crafted schema -- a view, trigger, CHECK, DEFAULT or index expression
++# -- cannot run an SQL function that is not marked innocuous), PRAGMA cell_size_check=ON (item 12), PRAGMA mmap_size=0
++# (item 13), and, where this Python exposes sqlite3_db_config (3.12 and later), views and triggers disabled (item 10:
++# the monitor uses neither), the trusted-schema flag off and SQLITE_DBCONFIG_DEFENSIVE on (item 1, listed for untrusted
++# SQL; it costs nothing on a read-only connection). The OBJECT-TYPE CHECK: every recorder table the monitor reads
++# (HARDEN_TABLES) must be an ordinary table, not a view or a virtual table; otherwise the poll fails closed
++# ("schema_object_not_a_table"; a table that is missing is left to the schema probes, as before). QUICK CHECK FIRST
++# (item 11): see quick_check_due() and direct_snapshot(). These are connection settings and one read of sqlite_master,
++# so on a recorder that passes them the rows read, and every record, state file and escrow line, are unchanged
++# (testbed/e10/test_hardening_e10.py). HOMEPROV_HARDEN=0 restores the E9 behaviour exactly, for comparisons.
++_hd = os.environ.get("HOMEPROV_HARDEN", "1")
++if _hd not in ("0", "1"):
++    raise SystemExit("HOMEPROV_HARDEN must be '0' or '1', got %r" % _hd)
++HARDEN = _hd == "1"
++HARDEN_TABLES = ("states", "events", "states_meta", "event_types", "event_data", "state_attributes")
++HARDEN_DBCONFIG = (("SQLITE_DBCONFIG_DEFENSIVE", True), ("SQLITE_DBCONFIG_TRUSTED_SCHEMA", False),
++                   ("SQLITE_DBCONFIG_ENABLE_VIEW", False), ("SQLITE_DBCONFIG_ENABLE_TRIGGER", False))
++HARDEN_PRAGMAS = (("trusted_schema", 0), ("cell_size_check", 1), ("mmap_size", 0))
++# quick_check state of this process: the first poll of every monitor process quick_checks, and after a failed
++# quick_check every poll quick_checks until one passes (a file with errors is refused until it is clean again)
++_QC = {"first": True, "latched": False}
++
++
++def harden(con):
++    """Apply the untrusted-file settings to a connection that has not read the file yet. Returns what is in force,
++    {setting: value} (a db_config flag is None when this Python or SQLite cannot set it), or None with HOMEPROV_HARDEN=0.
++    Raises if a pragma cannot be set (the caller then reports the poll unobservable)."""
++    if not HARDEN:
++        return None
++    applied = {}
++    setconfig, getconfig = getattr(con, "setconfig", None), getattr(con, "getconfig", None)
++    for name, want in HARDEN_DBCONFIG:
++        op = getattr(_SQ, name, None)
++        if setconfig is None or op is None:
++            applied[name] = None
++            continue
++        try:
++            setconfig(op, want)
++            applied[name] = bool(getconfig(op)) if getconfig is not None else want
++        except Exception:                             # noqa: BLE001  (an SQLite build without this flag)
++            applied[name] = None
++    for name, val in HARDEN_PRAGMAS:
++        con.execute("PRAGMA %s=%d" % (name, val))
++        row = con.execute("PRAGMA %s" % name).fetchone()       # (an in-memory database reports no mmap_size)
++        applied[name] = row[0] if row else None
++    return applied
++
++
++def check_objects(con):
++    """None when every recorder table the monitor reads that exists is an ordinary table; else (False,
++    "schema_object_not_a_table", {"objects": {name: what}}). Reads sqlite_master only."""
++    kinds = {}
++    for name, typ, sql in con.execute(
++            "SELECT lower(name), type, sql FROM sqlite_master WHERE lower(name) IN (%s)"
++            % ",".join("?" * len(HARDEN_TABLES)), HARDEN_TABLES):
++        virtual = typ == "table" and " ".join(str(sql or "").split()).upper().startswith("CREATE VIRTUAL TABLE")
++        kinds.setdefault(name, []).append("virtual table" if virtual else typ)
++    bad = {n: "/".join(sorted(k)) for n, k in kinds.items() if k.count("table") != 1 or "view" in k}
++    return (False, "schema_object_not_a_table", {"objects": bad}) if bad else None
++
++
++def hardening_report() -> dict:
++    """What harden() puts in force with this Python and SQLite (an in-memory connection), for the start-up log."""
++    con = sqlite3.connect(":memory:")
++    try:
++        return {"harden": HARDEN, "sqlite": getattr(_SQ, "sqlite_version", None), "python": sys.version.split()[0],
++                "applied": harden(con)}
++    finally:
++        con.close()
++
++
+ def _connect(db: str, timeout: float = 30):
+     con = sqlite3.connect(db, timeout=timeout)
+     if COVERAGE:
+         con.text_factory = _lenient
++    harden(con)
+     return con
+ 
+ 
+@@ -283,9 +360,20 @@
+     """quick_check (when due) and the schema probes on an open connection; None when they pass. A failed quick_check
+     returns its (False, reason, detail); a probe that raises propagates (the caller reports schema_unreadable)."""
+     if quick:
+-        qc = con.execute("PRAGMA quick_check").fetchone()[0]
++        try:
++            qc = con.execute("PRAGMA quick_check").fetchone()[0]
++        except Exception:                             # noqa: BLE001
++            if HARDEN:
++                _QC.update(first=False, latched=True)
++            raise
++        if HARDEN:
++            _QC.update(first=False, latched=qc != "ok")
+         if qc != "ok":
+             return False, "quick_check_failed", {"quick_check": str(qc)[:80]}
++    if HARDEN:
++        bad = check_objects(con)
++        if bad:
++            return bad
+     con.execute("SELECT s.state, s.last_updated_ts, s.context_id_bin FROM states s "
+                 "JOIN states_meta sm ON sm.metadata_id=s.metadata_id LIMIT 1").fetchone()
+     con.execute("SELECT e.time_fired_ts, e.context_id_bin FROM events e "
+@@ -863,7 +951,20 @@
+     raise SystemExit("HOMEPROV_READ=direct needs HOMEPROV_COVERAGE=1 and no HOMEPROV_CLOCK_FILE")
+ 
+ 
++# QUICK CHECK FIRST (E10 hardening, SQLite item 11: quick_check as the first statement that reads the file, and a file
++# with errors refused). Copy mode: when due, quick_check is the first statement on the copy (validate_copy), and the
++# copy is private to the monitor, so the poll's later connections read a file that was checked and cannot change.
++# Direct mode opens a new connection on the live file at every poll: when quick_check is due it is that connection's
++# first read and pins the poll's snapshot; when it is not due the first read is the object-type check, which reads only
++# sqlite_master, as the earlier first read did, and cell_size_check guards every read in between. quick_check reads the
++# whole database inside the read transaction, which holds a checkpoint's backfill off (exp/out/
++# e9_cost_scale_direct_final.json, phase_direct_snapshot median: 251.585, 1227.704 and 58567.883 ms with it at the
++# 0.19, 0.96 and 2.94 GB recorders, 0.567, 0.498 and 0.633 ms without it), so the cadence stays HOMEPROV_QUICK_CHECK_EVERY, with two
++# additions under hardening: the first poll of every monitor process quick_checks, and after a failed quick_check every
++# poll quick_checks until one passes.
+ def quick_check_due(seq: int) -> bool:
++    if HARDEN and (_QC["first"] or _QC["latched"]):
++        return True
+     return QUICK_CHECK_EVERY == 1 or seq % QUICK_CHECK_EVERY == 1
+ 
+ 
+@@ -911,20 +1012,37 @@
+             fds[name] = None
+     _DIRECT["fds"] = fds
+     con = None
++    first = None
+     try:
+         con = sqlite3.connect("file:%s?mode=ro&readonly_shm=1" % urllib.parse.quote(SRC), uri=True, timeout=10,
+                               isolation_level=None, check_same_thread=False)
+         con.text_factory = _lenient
+         con.execute("PRAGMA query_only=ON")
++        harden(con)
+         copy_at = time.time()
+         con.execute("BEGIN")
+-        con.execute("SELECT count(*) FROM sqlite_master").fetchone()     # the first read: the snapshot is pinned
++        if not HARDEN:
++            con.execute("SELECT count(*) FROM sqlite_master").fetchone()     # the first read: the snapshot is pinned
++        elif quick:
++            # QUICK CHECK FIRST: quick_check is this connection's first read and pins the snapshot. An OperationalError
++            # (busy, locked, a WAL index it cannot read) is an open failure, as before; any other database error is a
++            # failed quick_check.
++            try:
++                qc = con.execute("PRAGMA quick_check").fetchone()[0]
++            except _SQ.OperationalError:
++                raise
++            except _SQ.DatabaseError as exc:
++                qc = "error: " + repr(exc)[:100]
++            _QC.update(first=False, latched=qc != "ok")
++            first = None if qc == "ok" else (False, "quick_check_failed", {"quick_check": str(qc)[:80]})
++        else:
++            first = check_objects(con)                # the first read (sqlite_master only): the snapshot is pinned
+     except Exception as exc:                          # noqa: BLE001
+         direct_close(con)
+         return None, copy_at, (False, "direct_open_failed", {"exc": repr(exc)[:160]})
+     _DIRECT["stamp"] = _read_stamp(fds)
+     try:
+-        bad = check_connection(con, quick)
++        bad = first or check_connection(con, quick and not HARDEN)
+     except Exception as exc:                          # noqa: BLE001
+         bad = (False, "schema_unreadable", {"exc": repr(exc)[:120]})
+     if bad:
+@@ -1874,6 +1992,7 @@
+     if "--once" in sys.argv:
+         print(json.dumps(tick(st)))
+         return
++    print(json.dumps({"hardening": hardening_report()}), flush=True)     # E10: the settings in force, in the log
+     n = 0
+     while True:
+         try:
+--- a/exp/stages/e7_verify.py
++++ b/exp/stages/e7_verify.py
+@@ -107,7 +107,8 @@
+            "HOMEPROV_NAMEMAP_DIR": None, "HOMEPROV_ESCROW_DIR": None, "HOMEPROV_CLOCK_FILE": None,
+            "HOMEPROV_COVERAGE": "1", "HOMEPROV_KEYLOG": "1", "HOMEPROV_MAX_RECORD_BYTES": None,
+            "HOMEPROV_MAX_PARTS": None, "HOMEPROV_SIGN_KEY": None, "HOMEPROV_ROWBIND": None, "HOMEPROV_SINCE": None,
+-           "HOMEPROV_READ": None, "HOMEPROV_QUICK_CHECK_EVERY": None}
++           "HOMEPROV_READ": None, "HOMEPROV_QUICK_CHECK_EVERY": None,
++           "HOMEPROV_HARDEN": None if VERIFY_HARDEN else "0"}    # E10: --no-harden turns the monitor's off too
+     if scheme == "wholerow":
+         sys.path.insert(0, monitor_dir)
+         WR = load_module(os.path.join(monitor_dir, "monitor_wholerow.py"), "e7_monitor_wholerow", env)
+@@ -122,14 +123,95 @@
+     return (gzip.open(path, "rt") if path.endswith(".gz") else open(path)).read().splitlines()
+ 
+ 
++# HARDENING (round 14, E10; internal review r4 R1 W4). The verifier reads a recorder the hub's adversary may have
++# crafted, so it applies SQLite's untrusted-file settings (https://www.sqlite.org/security.html Section 1.2, items 9-13)
++# on every connection it opens, as the hardened monitor does (monitor.py HARDENING; repeated here because this verifier
++# also loads earlier monitors, monitor_e8.py, that lack it): trusted_schema=OFF, cell_size_check=ON, mmap_size=0, and
++# where Python exposes sqlite3_db_config, views and triggers disabled and DEFENSIVE on. Before it reads anything else it
++# runs quick_check on the recorder copy as the first statement and refuses a copy that fails it, or whose recorder
++# tables are not ordinary tables (refuse_untrusted(); run() prints {"refused": ...} and exits 3). On a recorder that
++# passes, every verdict is unchanged. --no-harden (or HOMEPROV_VERIFY_HARDEN=0) restores the earlier behaviour.
++VERIFY_HARDEN = os.environ.get("HOMEPROV_VERIFY_HARDEN", "1") != "0"
++HARDEN_TABLES = ("states", "events", "states_meta", "event_types", "event_data", "state_attributes")
++_DBCONFIG = (("SQLITE_DBCONFIG_DEFENSIVE", True), ("SQLITE_DBCONFIG_TRUSTED_SCHEMA", False),
++             ("SQLITE_DBCONFIG_ENABLE_VIEW", False), ("SQLITE_DBCONFIG_ENABLE_TRIGGER", False))
++
++
++class RecorderRefused(Exception):
++    """The recorder copy fails the untrusted-file checks: no verdict is given."""
++
++    def __init__(self, reason, detail=None):
++        super().__init__(reason)
++        self.reason, self.detail = reason, detail or {}
++
++
++def vharden(con):
++    """trusted_schema=OFF, cell_size_check=ON, mmap_size=0 and, where available, the db_config flags; returns what is in
++    force (a flag None when it cannot be set)."""
++    applied = {}
++    setconfig, getconfig = getattr(con, "setconfig", None), getattr(con, "getconfig", None)
++    for name, want in _DBCONFIG:
++        op = getattr(sqlite3, name, None)
++        if setconfig is None or op is None:
++            applied[name] = None
++            continue
++        try:
++            setconfig(op, want)
++            applied[name] = bool(getconfig(op)) if getconfig is not None else want
++        except sqlite3.Error:
++            applied[name] = None
++    for name, val in (("trusted_schema", 0), ("cell_size_check", 1), ("mmap_size", 0)):
++        con.execute("PRAGMA %s=%d" % (name, val))
++        row = con.execute("PRAGMA %s" % name).fetchone()       # (an in-memory database reports no mmap_size)
++        applied[name] = row[0] if row else None
++    return applied
++
++
+ def vconnect(db):
+     """A connection that decodes TEXT leniently, as the coverage monitor does (re-review R2): a value that is not valid
+-    UTF-8 must not stop the verifier."""
++    UTF-8 must not stop the verifier. Hardened (E10) unless VERIFY_HARDEN is off."""
+     con = sqlite3.connect(db)
+     con.text_factory = lambda b: b.decode("utf-8", "surrogateescape")
++    if VERIFY_HARDEN:
++        vharden(con)
+     return con
++
++
++def object_kinds(con):
++    """{table name: kinds} for the recorder tables the verifier reads that are not exactly one ordinary table."""
++    kinds = {}
++    for name, typ, sql in con.execute(
++            "SELECT lower(name), type, sql FROM sqlite_master WHERE lower(name) IN (%s)"
++            % ",".join("?" * len(HARDEN_TABLES)), HARDEN_TABLES):
++        virtual = typ == "table" and " ".join(str(sql or "").split()).upper().startswith("CREATE VIRTUAL TABLE")
++        kinds.setdefault(name, []).append("virtual table" if virtual else typ)
++    return {n: "/".join(sorted(k)) for n, k in kinds.items() if k.count("table") != 1 or "view" in k}
+ 
+ 
++def refuse_untrusted(db):
++    """SQLite item 11 for the verifier: quick_check as the first statement on the recorder copy, then the object-type
++    check. Raises RecorderRefused; returns None when the copy may be read. A no-op when VERIFY_HARDEN is off."""
++    if not VERIFY_HARDEN:
++        return None
++    try:
++        con = vconnect(db)
++    except sqlite3.Error as exc:
++        raise RecorderRefused("unreadable", {"exc": repr(exc)[:160]})
++    try:
++        try:
++            qc = [r[0] for r in con.execute("PRAGMA quick_check")]
++        except sqlite3.DatabaseError as exc:
++            raise RecorderRefused("quick_check_failed", {"exc": repr(exc)[:160]})
++        if qc != ["ok"]:
++            raise RecorderRefused("quick_check_failed", {"quick_check": [str(x)[:120] for x in qc[:10]]})
++        bad = object_kinds(con)
++        if bad:
++            raise RecorderRefused("schema_object_not_a_table", {"objects": bad})
++    finally:
++        con.close()
++    return None
++
++
+ def kparse(key):
+     t, _, num = key.partition(":")
+     return ("states" if t == "s" else "events"), int(num)
+@@ -1704,8 +1786,9 @@
+            restore_out=None, sign_pubkey=None, allow_unsigned=False, operator_key=None, operator_pubkey=None,
+            purge_keep_s=None, purge_tol_s=0.0, rowbind=True, namemap_storage=None, purge_disconnect=True,
+            recovery=True, restore_tol_s=None, restore_max_age_s=RESTORE_MAX_AGE_S,
+-           restore_done_max_s=RESTORE_DONE_MAX_S):
+-    """operator_key / operator_pubkey (E9): consider lifecycle markers the operator issued (PURGE with purge_keep_s,
++           restore_done_max_s=RESTORE_DONE_MAX_S, refuse=True):
++    """refuse (E10 hardening): run refuse_untrusted() on db first (run() does it on the private copy already).
++    operator_key / operator_pubkey (E9): consider lifecycle markers the operator issued (PURGE with purge_keep_s,
+     the verifier's own retention policy; RENAME for the name map); without them no marker is considered and the result
+     is the earlier one. rowbind=False reads per-row-bound keylog entries by their prefixes (for comparison).
+     purge_disconnect=False applies the retention-scoped PURGE rule without the purge-disconnect rule (for comparison).
+@@ -1715,6 +1798,8 @@
+     escrow_lines: a list of escrow lines or an Escrow (read lazily, E9 code review R2)."""
+     if late_bound is None or gap_s is None:
+         raise ValueError("late_bound and gap_s are explicit parameters fixed before the run")
++    if refuse:
++        refuse_untrusted(db)
+     recovery_on = recovery
+     escrow_lines = as_escrow(escrow_lines)
+     lines, sigs = check_signatures(M, lines, sign_pubkey, allow_unsigned)
+@@ -2586,6 +2671,7 @@
+     for s in ("", "-wal", "-shm"):
+         if os.path.exists(src + s):
+             shutil.copy2(src + s, db + s)
++    refuse_untrusted(db)              # E10: quick_check first, before the checkpoint replays the copied WAL
+     con = vconnect(db)
+     con.execute("PRAGMA wal_checkpoint(TRUNCATE)")
+     con.close()
+@@ -2602,11 +2688,19 @@
+ 
+ 
+ def run(a):
++    global VERIFY_HARDEN
++    if getattr(a, "no_harden", False):
++        VERIFY_HARDEN = False
+     scratch = tempfile.mkdtemp(prefix="e7v_")
+     lines = read_lines(a.chain)
+     scheme = _scheme_of(lines, a.scheme)
+     M = load_monitor(scheme, scratch, a.monitor_dir)
+-    db = _private_copy(a.db, scratch)
++    try:
++        db = _private_copy(a.db, scratch)
++    except RecorderRefused as exc:
++        shutil.rmtree(scratch, ignore_errors=True)
++        return {"check": "e7_verify", "refused": {"reason": exc.reason, "detail": exc.detail,
++                                                  "db": os.path.abspath(a.db)}}
+     t0, t1 = (float(a.window[0]), float(a.window[1])) if a.window else (None, None)
+     if a.cmd == "late-delays":
+         out = {"check": "e7_verify late-delays", "params": {"scheme": scheme, "window": a.window,
+@@ -2623,7 +2717,7 @@
+                  purge_keep_s=a.purge_keep_s, purge_tol_s=a.purge_tol_s, rowbind=not a.no_rowbind,
+                  namemap_storage=a.namemap_storage, purge_disconnect=not a.no_purge_disconnect,
+                  restore_tol_s=a.restore_tol_s, restore_max_age_s=a.restore_max_age_s,
+-                 restore_done_max_s=a.restore_done_max_s)
++                 restore_done_max_s=a.restore_done_max_s, refuse=False)
+     trials = []
+     for f in a.trials or []:
+         d = json.load(open(f))
+@@ -2674,6 +2768,8 @@
+                    excused_keylog_violations=res["excused_keylog_violations"])
+     if a.no_rowbind:
+         out["params"]["rowbind"] = False
++    if getattr(a, "no_harden", False):
++        out["params"]["harden"] = False
+     if res["namemap"] is not None:
+         out["namemap"] = res["namemap"]
+     if res["unobserved_late_rows"]:
+@@ -2720,6 +2816,8 @@
+                    "the current name map with the last anchored digest")
+     d = sub.add_parser("late-delays")
+     for p in (v, d):
++        p.add_argument("--no-harden", action="store_true", help="E10: without the untrusted-file settings and the "
++                       "refusal checks (the earlier behaviour), for comparison")
+         p.add_argument("--chain", required=True)
+         p.add_argument("--db", required=True)
+         p.add_argument("--snapshot-at", type=float, default=None, help="time the recorder copy was taken")
+@@ -2735,7 +2833,7 @@
+             fh.write(text)
+     else:
+         print(text)
+-    return 0
++    return 3 if "refused" in out else 0
+ 
+ 
+ if __name__ == "__main__":

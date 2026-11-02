@@ -1,0 +1,39 @@
+{
+  "stage": 0,
+  "host": {
+    "arch": "arm64",
+    "container_arch": "",
+    "ha_version": "",
+    "cap_eff_hex": null,
+    "cap_linux_immutable": false,
+    "cap_bpf": false,
+    "cap_sys_admin": false,
+    "binfmt_misc_empty": true
+  },
+  "reset": {
+    "db_wiped": true,
+    "anchor_append_only": false
+  },
+  "p1_install": {
+    "placement": "P1",
+    "ok": false,
+    "detail": ""
+  },
+  "boot": {
+    "started": false,
+    "envelope": "pi5_4g",
+    "image": "homeassistant/home-assistant:2026.7.4",
+    "error": "Cannot connect to the Docker daemon at unix://~/.docker/run/docker.sock. Is the docker daemon running?"
+  },
+  "wait": {
+    "started": false,
+    "seconds": 240,
+    "error": "timeout"
+  },
+  "determinism": {
+    "testable": true,
+    "byte_identical": true
+  },
+  "GATE_PASS": true,
+  "_digest": "68e6a583b164fec596c07efe6edff2a1bf0e3f1a781656011718249614dea497"
+}

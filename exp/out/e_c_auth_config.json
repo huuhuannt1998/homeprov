@@ -1,0 +1,95 @@
+{
+ "experiment": "E-C on the AUTHENTICATED anchor (approved re-check, D-0001, 2026-10-02)",
+ "what": "The E-C arms W1, W2, W2b, W3 and the post-commit control P (ten trials per configuration, three configurations) re-run with the repository's own runner (testbed/real/run_experiments.sh EC) and aggregator (exp/stages/e_c_write_time.py), unmodified, with ONE change: the anchor and monitor containers run the HEAD code (images hpr-anchord:sig and hpr-monitor:sig) with HOMEPROV_ANCHOR_KEY provisioned to those two containers only, on fresh volumes. Same recipe as exp/out/e_d_auth_config.json; only TAG and the arm set differ. The published E-C run (e_c_write_time.json) used the unauthenticated daemon.",
+ "result_file": "exp/out/e_c_auth_other_principal_real.json",
+ "result_file_name_note": "The aggregator names every non-'e_c' tag '<tag>_other_principal_real.json'. This file holds the WRITE-TIME arms W1/W2/W2b/W3 and the control P, not the other-principal arms. The name comes from the unmodified aggregator.",
+ "per_room_reports": [
+  "exp/out/e_c_auth_report_porch.json",
+  "exp/out/e_c_auth_report_hallway.json",
+  "exp/out/e_c_auth_report_kitchen.json"
+ ],
+ "window_marks": [
+  "exp/out/e_c_auth_t_start",
+  "exp/out/e_c_auth_t_end"
+ ],
+ "configuration_log": [
+  "2026-10-02T09:26:05Z load_before:  5:26  up 31 days,  9:23, 2 users, load averages: 3.08 3.67 3.95",
+  "2026-10-02T09:26:05Z git_head: 8952cc10546abe50eee53ce48488dd78e90b0cc3",
+  "2026-10-02T09:26:05Z key_fingerprint_sha256_16: 19d519cad28b24bf (key itself not recorded)",
+  "2026-10-02T09:26:05Z stopping and renaming original anchor/monitor",
+  "2026-10-02T09:26:07Z anchor image: hpr-anchord:sig sha256:196961946d8bf9f70830065c17f1e0f84f27d4c69ac28a6ada5079f9ad59776d",
+  "2026-10-02T09:26:07Z monitor image: hpr-monitor:sig sha256:e934d45097323e422cebfa0dd680c1f5d5389e93d04078042e94bfeaf69802f7",
+  "2026-10-02T09:26:27Z probe_from_hub: {\"untagged\": 401, \"forged_tag\": 401}",
+  "2026-10-02T09:27:07Z monitor_log_head: {\"tick\": 1, \"n_nodes\": 2639, \"copy_ms\": 320.204, \"load_ms\": 253.877, \"commit_ms\": 8.327, \"sealed_new\": {\"second\": 863, \"minute\": 74, \"hour\": 1}, \"anchor\": {\"ok\": true, \"seq\": 1}} {\"tick\": 2, \"n_nodes\": 2644, \"copy_ms\": 179.038, \"load_ms\": 364.535, \"commit_ms\": 8.331, \"sealed_new\": {\"second\": 1}, \"anchor\": {\"ok\": true, \"seq\": 2}} {\"tick\": 3, \"n_nodes\": 2648, \"copy_ms\": 322.345, \"load_ms\": 246.639, \"commit_ms\": 8.044, \"sealed_new\": {\"second\": 1}, \"anchor\": {\"ok\": true, \"seq\": 3}} ",
+  "2026-10-02T09:27:07Z chain_lines_before_run: 8",
+  "2026-10-02T09:27:07Z starting runner EC with arms W1,W2,W2b,W3,P x10, tag e_c_auth",
+  "2026-10-02T10:05:42Z runner exit: 0",
+  "2026-10-02T10:05:42Z load_after:  6:05  up 31 days, 10:03, 2 users, load averages: 2.30 2.21 2.17",
+  "2026-10-02T10:05:42Z chain_lines_after_run: 417",
+  "2026-10-02T10:05:42Z monitor_log_lines:       40",
+  "2026-10-02T10:05:42Z done",
+  "2026-10-02T10:05:42Z teardown: removing auth containers, restoring originals",
+  "2026-10-02T10:05:44Z restored: hpr-monitor hpr-monitor:1 Up Less than a second;hpr-anchord hpr-anchord:1 Up Less than a second;"
+ ],
+ "anchor_chain": {
+  "file": "exp/out/e_c_auth_anchor_chain.jsonl.gz",
+  "records": 417,
+  "observers": {
+   "external-monitor": 417
+  },
+  "evidence_unobservable_records": 0,
+  "sha256_uncompressed": "a0a7e7038b476b9c2bda48cb589aa84b7c5355de7e6bad1f71a7623e8dc3a7f7"
+ },
+ "refusal_log": {
+  "file": "exp/out/e_c_auth_anchor_refusals.jsonl",
+  "records": 2,
+  "by_reason": {
+   "missing_signature": 1,
+   "bad_signature": 1
+  },
+  "note": "the two probe appends issued from inside the hub container before the run (one untagged, one forged tag), both HTTP 401"
+ },
+ "monitor_log": {
+  "lines": 40,
+  "anchor_ok_in_printed_ticks": 35,
+  "fail_closed_lines": 0,
+  "note": "the monitor prints only ticks 1-3 and every 12th tick"
+ },
+ "write_time_second_hits_checked": {
+  "what": "The aggregator scored W1 1/30 and W2b 1/30 at second granularity (0/30 each in the unauthenticated run). The two segments were recomputed directly from the verifier's own recorder snapshot and the anchor chain with the shipped monitor's load()/commit().",
+  "segments": [
+   {
+    "arm": "W1",
+    "room": "hallway",
+    "trial": 9,
+    "segment": "1790934081",
+    "anchored_n": 5,
+    "recomputed_n": 7,
+    "delta_n": 2
+   },
+   {
+    "arm": "W2b",
+    "room": "kitchen",
+    "trial": 9,
+    "segment": "1790935082",
+    "anchored_n": 3,
+    "recomputed_n": 10,
+    "delta_n": 7
+   }
+  ],
+  "reading": "Both segments GAINED rows after they were sealed (delta_n > 0), the mechanism the aggregator labels rows_arrived_after_seal and the same one behind the benign floor (3 of 779 untouched segments). Every W-arm trial issued zero recorder writes (db_writes_per_trial [0]). The raw 1/30 figures are reported as measured; they are late-arriving rows in the trial's own second, not a detection of the write-time forgery.",
+  "snapshot_not_kept": "the 160 MB recorder snapshot used for this check stayed in session scratch and was not copied into exp/out"
+ },
+ "wrapper_script_sha256": "49d086c43b2645742351fa66ecdc65fdbe1da5ef7a96f9f08d02ecbdb1edfd8d",
+ "wrapper_script": "#!/bin/bash\n# Re-run E-C (WRITE-TIME forgery arms W1/W2/W2b/W3 plus the post-commit laundering\n# control P, ten trials per configuration, three configurations) with the SHIPPED\n# authenticated anchor and the SHIPPED (fail-closed, tagging) monitor, using the\n# repository's own runner (testbed/real/run_experiments.sh EC) and aggregator\n# (exp/stages/e_c_write_time.py) UNMODIFIED. Only the anchor/monitor configuration\n# changes: images hpr-anchord:sig / hpr-monitor:sig (HEAD code), a fresh\n# HOMEPROV_ANCHOR_KEY provisioned to those two containers only, fresh volumes.\n# This mirrors exp/out/e_d_auth_config.json's wrapper exactly, differing only in\n# TAG and the arm set.\n#\n# The original hpr-anchord / hpr-monitor containers are stopped and renamed,\n# never removed, and are restored by the EXIT trap whatever happens.\nset -u\nREPO=<artifact-root>\nOUT=$REPO/exp/out\nSP=<scratch>/hp-ec-auth\nTAG=e_c_auth\nNET=homeprov-real_hp-real\nVCHAIN=hpr-auth-ec-chain; VPUB=hpr-auth-ec-pub; VSCR=hpr-auth-ec-scratch\nMETA=$SP/auth_meta.log\n: > \"$META\"\nnote() { echo \"$(date -u +%FT%TZ) $*\" | tee -a \"$META\"; }\n\nfor f in \"${TAG}_t_start\" \"${TAG}_t_end\" \"${TAG}_other_principal_real.json\" \\\n         \"${TAG}_report_porch.json\" \"${TAG}_report_hallway.json\" \"${TAG}_report_kitchen.json\"; do\n  [ -e \"$OUT/$f\" ] && { echo \"REFUSING: $OUT/$f exists\"; exit 3; }\ndone\n\nrestore() {\n  note \"teardown: removing auth containers, restoring originals\"\n  docker rm -f hpr-anchord hpr-monitor >/dev/null 2>&1\n  docker rename hpr-anchord-orig-ec hpr-anchord >/dev/null 2>&1\n  docker rename hpr-monitor-orig-ec hpr-monitor >/dev/null 2>&1\n  docker start hpr-anchord hpr-monitor >/dev/null 2>&1\n  note \"restored: $(docker ps --format '{{.Names}} {{.Image}} {{.Status}}' | grep -E '^hpr-(anchord|monitor) ' | tr '\\n' ';')\"\n}\n\nnote \"load_before: $(uptime)\"\nnote \"git_head: $(git -C $REPO rev-parse HEAD)\"\nKEY=$(openssl rand -hex 32)\nKFP=$(printf '%s' \"$KEY\" | shasum -a 256 | cut -c1-16)\nnote \"key_fingerprint_sha256_16: $KFP (key itself not recorded)\"\n\nnote \"stopping and renaming original anchor/monitor\"\ndocker stop hpr-monitor hpr-anchord >/dev/null || { echo \"stop failed\"; exit 4; }\ndocker rename hpr-anchord hpr-anchord-orig-ec || exit 4\ndocker rename hpr-monitor hpr-monitor-orig-ec || { docker rename hpr-anchord-orig-ec hpr-anchord; exit 4; }\ntrap restore EXIT\ntrap 'exit 130' INT TERM HUP\n\nfor v in $VCHAIN $VPUB $VSCR; do docker volume create $v >/dev/null; done\ndocker run -d --name hpr-anchord --network $NET --network-alias anchor \\\n  -e HOMEPROV_ANCHOR_KEY=\"$KEY\" -v $VCHAIN:/anchor -v $VPUB:/published \\\n  hpr-anchord:sig >/dev/null || exit 5\ndocker run -d --name hpr-monitor --network $NET --network-alias monitor \\\n  -e HOMEPROV_DB=/cfg/home-assistant_v2.db -e HOMEPROV_ANCHOR=http://hpr-anchord:9900/append \\\n  -e HOMEPROV_PERIOD=5 -e HOMEPROV_SCRATCH=/scratch -e HOMEPROV_ANCHOR_KEY=\"$KEY\" \\\n  -v homeprov-real_hpr-config:/cfg:ro -v $VSCR:/scratch hpr-monitor:sig >/dev/null || exit 5\nnote \"anchor image: $(docker inspect hpr-anchord --format '{{.Config.Image}} {{.Image}}')\"\nnote \"monitor image: $(docker inspect hpr-monitor --format '{{.Config.Image}} {{.Image}}')\"\nsleep 20\n\nPROBE='import urllib.request,json,sys\ndef post(h):\n    r=urllib.request.Request(\"http://hpr-anchord:9900/append\",data=b\"{\\\"sealed\\\": {}}\",method=\"POST\",headers=h)\n    try:\n        with urllib.request.urlopen(r,timeout=5) as x: return x.status\n    except urllib.error.HTTPError as e: return e.code\n    except Exception as e: return repr(e)[:80]\nprint(json.dumps({\"untagged\":post({\"Content-Type\":\"application/json\"}),\"forged_tag\":post({\"Content-Type\":\"application/json\",\"X-HP-Auth\":\"0\"*64})}))'\nnote \"probe_from_hub: $(docker exec hpr-hass python3 -c \"$PROBE\")\"\nsleep 40\nnote \"monitor_log_head: $(docker logs hpr-monitor 2>&1 | head -3 | cut -c1-400 | tr '\\n' ' ')\"\nnote \"chain_lines_before_run: $(docker exec hpr-anchord sh -c 'wc -l < /anchor/chain.jsonl')\"\n\nnote \"starting runner EC with arms W1,W2,W2b,W3,P x10, tag $TAG\"\ncd $REPO/testbed/real && HPR_EC_ARMS='\"W1\",\"W2\",\"W2b\",\"W3\",\"P\"' HPR_EC_TRIALS=10 HPR_EC_TAG=$TAG \\\n  EC_SCRATCH=$SP/ec_verify ./run_experiments.sh EC > $SP/${TAG}_run.log 2>&1\nnote \"runner exit: $?\"\nnote \"load_after: $(uptime)\"\nnote \"chain_lines_after_run: $(docker exec hpr-anchord sh -c 'wc -l < /anchor/chain.jsonl')\"\ndocker exec hpr-anchord cat /anchor/chain.jsonl > $SP/${TAG}_chain.jsonl 2>/dev/null\ndocker exec hpr-anchord sh -c 'cat /anchor/refusals.jsonl 2>/dev/null' > $SP/${TAG}_refusals.jsonl\ndocker logs hpr-monitor > $SP/${TAG}_monitor.log 2>&1\nnote \"monitor_log_lines: $(wc -l < $SP/${TAG}_monitor.log)\"\nnote \"done\"\n",
+ "key_handling": "a fresh 32-byte key from openssl rand, passed only to the anchor and monitor containers by environment; only its sha256 fingerprint prefix is recorded",
+ "output_sha256": {
+  "e_c_auth_other_principal_real.json": "7c8bf5df715c8e1aad7408048ef7b1e8530caf409276ac31930111ecae0fa3f5",
+  "e_c_auth_report_porch.json": "03f9810d7b580b13f5283ae2d3771e3c13e1fb9e6f8a85193b54d15081db1419",
+  "e_c_auth_report_hallway.json": "024ea318b9fb2fb9e3e5a6eb60a3a010c20125b323d24537c26c6aac4c4783d0",
+  "e_c_auth_report_kitchen.json": "f48459a14ce4ad7b31621f6216c193988c33b22d2d6c2118aac06994675042e6",
+  "e_c_auth_t_start": "2bb5b2ecc4e5de78a8dd09248e4d55979776c98a372265a7d974aea8b469e87e",
+  "e_c_auth_t_end": "f422f1d3914336a2f1f668b10203fbd7d553154ae3887b8979cd6317fdb2c984",
+  "e_c_auth_anchor_refusals.jsonl": "314e6d5571e0af7c345a45ddf99a4a44b6a2e96d131d6b8ecbdd456f9f3c444f"
+ }
+}

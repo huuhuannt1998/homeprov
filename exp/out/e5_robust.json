@@ -1,0 +1,97 @@
+{
+ "experiment": "E5",
+ "what": "monitor robustness against a COPY of the live recorder; the live deployment was never at risk",
+ "source_log": "/tmp/hpr_e5_robust/log (volatile; transcribed here)",
+ "transcribed": "2026-09-03",
+ "baseline_nodes": 6857,
+ "conditions": {
+  "baseline": {
+   "outcome": "COMPLETED",
+   "n_nodes": 6857,
+   "sealed_new": {
+    "second": 1280,
+    "minute": 102,
+    "hour": 1
+   },
+   "nodes_lost_vs_baseline": 0,
+   "raised": false,
+   "silent_loss": false
+  },
+  "db_missing": {
+   "outcome": "RAISED",
+   "exception": "sqlite3.OperationalError: no such table: states",
+   "raised": true,
+   "silent_loss": false,
+   "note": "the tick loop prints and swallows this; nothing is anchored to record that the evidence was unobservable"
+  },
+  "db_empty_schema": {
+   "outcome": "RAISED",
+   "exception": "sqlite3.OperationalError: no such column: s.state",
+   "raised": true,
+   "silent_loss": false,
+   "note": "the tick loop prints and swallows this; nothing is anchored to record that the evidence was unobservable"
+  },
+  "wal_truncated": {
+   "outcome": "COMPLETED",
+   "n_nodes": 6409,
+   "sealed_new": {
+    "second": 1244,
+    "minute": 100,
+    "hour": 1
+   },
+   "nodes_lost_vs_baseline": 448,
+   "raised": false,
+   "silent_loss": true
+  },
+  "shm_deleted": {
+   "outcome": "COMPLETED",
+   "n_nodes": 6857,
+   "sealed_new": {
+    "second": 1280,
+    "minute": 102,
+    "hour": 1
+   },
+   "nodes_lost_vs_baseline": 0,
+   "raised": false,
+   "silent_loss": false
+  },
+  "db_unreadable": {
+   "outcome": "RAISED",
+   "exception": "sqlite3.OperationalError: no such table: states",
+   "raised": true,
+   "silent_loss": false,
+   "note": "the tick loop prints and swallows this; nothing is anchored to record that the evidence was unobservable"
+  },
+  "page_header_corrupt": {
+   "outcome": "COMPLETED",
+   "n_nodes": 6857,
+   "sealed_new": {
+    "second": 1280,
+    "minute": 102,
+    "hour": 1
+   },
+   "nodes_lost_vs_baseline": 0,
+   "raised": false,
+   "silent_loss": false
+  },
+  "wal_header_corrupt": {
+   "outcome": "COMPLETED",
+   "n_nodes": 6409,
+   "sealed_new": {
+    "second": 1244,
+    "minute": 100,
+    "hour": 1
+   },
+   "nodes_lost_vs_baseline": 448,
+   "raised": false,
+   "silent_loss": true
+  }
+ },
+ "finding_1": "A truncated or header-corrupted WAL leaves the monitor reading 6409 of 6857 nodes and sealing over the gap with NO error: 1244 second-buckets sealed against a baseline of 1280.",
+ "finding_2": "Missing, empty-schema and unreadable databases raise, but the monitor does not fail closed: it prints and continues, anchoring nothing to record that the evidence was unobservable.",
+ "tolerated": [
+  "shm_deleted",
+  "page_header_corrupt"
+ ],
+ "anchor_note": "every condition reports ConnectionRefused: the anchor daemon was not running for this run, so anchoring behaviour is not evidenced here"
+}

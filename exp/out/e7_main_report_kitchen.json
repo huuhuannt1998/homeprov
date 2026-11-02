@@ -1,0 +1,5634 @@
+{
+  "experiment": "E7",
+  "substrate": "real (mosquitto + MQTT discovery + shipped blueprint)",
+  "room": "kitchen",
+  "target": "lock.front_door",
+  "innocent_party": "automation.kitchen_motion_light",
+  "household_member_user_id": "90b6f1f5983443c2b47f563e8f652752",
+  "household_member_name": "Alex Rivera (household)",
+  "K_requested": 9,
+  "stall_connections": 8,
+  "stall_s": 40.0,
+  "stall_seal_wait_s": 25.0,
+  "bd_lookback_s": 1800.0,
+  "bd_min_age_s": 130.0,
+  "bd_move_delay_s": 130.0,
+  "outage_seal_wait_s": 25.0,
+  "outage_trials": 10,
+  "anchor_target": "anchor-clo:9900",
+  "n_trials_requested": 10,
+  "arms": [
+    "INS-L",
+    "INS-M",
+    "BD-S",
+    "BD-M",
+    "BD-PARK",
+    "BD-JOIN",
+    "BD-GAP",
+    "STALL",
+    "OUTAGE"
+  ],
+  "t_start": 1791488934.0997264,
+  "trials": [
+    {
+      "arm": "INS-L",
+      "trial": 0,
+      "mode": "launder",
+      "K": 9,
+      "authored_by": "user:Alex Rivera (household)",
+      "strategy": "laundering of a household member's unlock (delete attribution, re-point to a genuine run, clear the user column) + K inserted rows in the edited second",
+      "row_before": {
+        "state_id": 901286,
+        "ts": 1791488934.1051958,
+        "context_id_bin": "01a11d0fc0d423083e0846ff97ccab7b",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T19:48:54.105196+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "judged_row": {
+        "state_id": 901286,
+        "ts": 1791488934.1051958,
+        "context_id_bin": "01a11d0fc0d423083e0846ff97ccab7b",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T19:48:54.105196+00:00",
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "laundered_state_ids": [
+        901286
+      ],
+      "deleted_event_ids": [
+        505234
+      ],
+      "deleted_event_seconds": [
+        1791488934
+      ],
+      "inserted_state_ids": [
+        901379,
+        901380,
+        901381,
+        901382,
+        901383,
+        901384,
+        901385,
+        901386,
+        901387
+      ],
+      "K_inserted": 9,
+      "edited_second": 1791488934,
+      "db_writes": 11,
+      "edited_after_anchoring": true,
+      "rendered": [
+        {
+          "when": "2026-10-08T19:48:54.105196+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Kitchen motion light",
+          "context_message": "triggered by state of binary_sensor.kitchen_motion",
+          "context_entity_id": "automation.kitchen_motion_light",
+          "context_entity_id_name": "Kitchen motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.kitchen_motion_light",
+      "renderer_names_automation": true,
+      "renderer_still_names_person": false,
+      "renderer_named_user_id": null,
+      "principal_moved": true,
+      "renderer_confirmed_misattribution": true
+    },
+    {
+      "arm": "INS-L",
+      "trial": 1,
+      "mode": "launder",
+      "K": 9,
+      "authored_by": "user:Alex Rivera (household)",
+      "strategy": "laundering of a household member's unlock (delete attribution, re-point to a genuine run, clear the user column) + K inserted rows in the edited second",
+      "row_before": {
+        "state_id": 901289,
+        "ts": 1791488940.1477177,
+        "context_id_bin": "01a11d0fccb75d633cf279d8fe3f4311",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T19:49:00.147718+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "judged_row": {
+        "state_id": 901289,
+        "ts": 1791488940.1477177,
+        "context_id_bin": "01a11d0fccb75d633cf279d8fe3f4311",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T19:49:00.147718+00:00",
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "laundered_state_ids": [
+        901289
+      ],
+      "deleted_event_ids": [
+        505236
+      ],
+      "deleted_event_seconds": [
+        1791488940
+      ],
+      "inserted_state_ids": [
+        901388,
+        901389,
+        901390,
+        901391,
+        901392,
+        901393,
+        901394,
+        901395,
+        901396
+      ],
+      "K_inserted": 9,
+      "edited_second": 1791488940,
+      "db_writes": 11,
+      "edited_after_anchoring": true,
+      "rendered": [
+        {
+          "when": "2026-10-08T19:49:00.147718+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Kitchen motion light",
+          "context_message": "triggered by state of binary_sensor.kitchen_motion",
+          "context_entity_id": "automation.kitchen_motion_light",
+          "context_entity_id_name": "Kitchen motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.kitchen_motion_light",
+      "renderer_names_automation": true,
+      "renderer_still_names_person": false,
+      "renderer_named_user_id": null,
+      "principal_moved": true,
+      "renderer_confirmed_misattribution": true
+    },
+    {
+      "arm": "INS-L",
+      "trial": 2,
+      "mode": "launder",
+      "K": 9,
+      "authored_by": "user:Alex Rivera (household)",
+      "strategy": "laundering of a household member's unlock (delete attribution, re-point to a genuine run, clear the user column) + K inserted rows in the edited second",
+      "row_before": {
+        "state_id": 901293,
+        "ts": 1791488946.1852322,
+        "context_id_bin": "01a11d0fe441bb4a375cc84b65351da5",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T19:49:06.185232+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "judged_row": {
+        "state_id": 901293,
+        "ts": 1791488946.1852322,
+        "context_id_bin": "01a11d0fe441bb4a375cc84b65351da5",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T19:49:06.185232+00:00",
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "laundered_state_ids": [
+        901293
+      ],
+      "deleted_event_ids": [
+        505239
+      ],
+      "deleted_event_seconds": [
+        1791488946
+      ],
+      "inserted_state_ids": [
+        901397,
+        901398,
+        901399,
+        901400,
+        901401,
+        901402,
+        901403,
+        901404,
+        901405
+      ],
+      "K_inserted": 9,
+      "edited_second": 1791488946,
+      "db_writes": 11,
+      "edited_after_anchoring": true,
+      "rendered": [
+        {
+          "when": "2026-10-08T19:49:06.185232+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Kitchen motion light",
+          "context_message": "triggered by state of binary_sensor.kitchen_motion",
+          "context_entity_id": "automation.kitchen_motion_light",
+          "context_entity_id_name": "Kitchen motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.kitchen_motion_light",
+      "renderer_names_automation": true,
+      "renderer_still_names_person": false,
+      "renderer_named_user_id": null,
+      "principal_moved": true,
+      "renderer_confirmed_misattribution": true
+    },
+    {
+      "arm": "INS-L",
+      "trial": 3,
+      "mode": "launder",
+      "K": 9,
+      "authored_by": "user:Alex Rivera (household)",
+      "strategy": "laundering of a household member's unlock (delete attribution, re-point to a genuine run, clear the user column) + K inserted rows in the edited second",
+      "row_before": {
+        "state_id": 901298,
+        "ts": 1791488952.2659838,
+        "context_id_bin": "01a11d0ffc0190a30f5da7c368c0aa92",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T19:49:12.265984+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "judged_row": {
+        "state_id": 901298,
+        "ts": 1791488952.2659838,
+        "context_id_bin": "01a11d0ffc0190a30f5da7c368c0aa92",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T19:49:12.265984+00:00",
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "laundered_state_ids": [
+        901298
+      ],
+      "deleted_event_ids": [
+        505243
+      ],
+      "deleted_event_seconds": [
+        1791488952
+      ],
+      "inserted_state_ids": [
+        901406,
+        901407,
+        901408,
+        901409,
+        901410,
+        901411,
+        901412,
+        901413,
+        901414
+      ],
+      "K_inserted": 9,
+      "edited_second": 1791488952,
+      "db_writes": 11,
+      "edited_after_anchoring": true,
+      "rendered": [
+        {
+          "when": "2026-10-08T19:49:12.265984+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Kitchen motion light",
+          "context_message": "triggered by state of binary_sensor.kitchen_motion",
+          "context_entity_id": "automation.kitchen_motion_light",
+          "context_entity_id_name": "Kitchen motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.kitchen_motion_light",
+      "renderer_names_automation": true,
+      "renderer_still_names_person": false,
+      "renderer_named_user_id": null,
+      "principal_moved": true,
+      "renderer_confirmed_misattribution": true
+    },
+    {
+      "arm": "INS-L",
+      "trial": 4,
+      "mode": "launder",
+      "K": 9,
+      "authored_by": "user:Alex Rivera (household)",
+      "strategy": "laundering of a household member's unlock (delete attribution, re-point to a genuine run, clear the user column) + K inserted rows in the edited second",
+      "row_before": {
+        "state_id": 901300,
+        "ts": 1791488958.2961528,
+        "context_id_bin": "01a11d10139aaf4aa118733c67d94087",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T19:49:18.296153+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "judged_row": {
+        "state_id": 901300,
+        "ts": 1791488958.2961528,
+        "context_id_bin": "01a11d10139aaf4aa118733c67d94087",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T19:49:18.296153+00:00",
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "laundered_state_ids": [
+        901300
+      ],
+      "deleted_event_ids": [
+        505245
+      ],
+      "deleted_event_seconds": [
+        1791488958
+      ],
+      "inserted_state_ids": [
+        901415,
+        901416,
+        901417,
+        901418,
+        901419,
+        901420,
+        901421,
+        901422,
+        901423
+      ],
+      "K_inserted": 9,
+      "edited_second": 1791488958,
+      "db_writes": 11,
+      "edited_after_anchoring": true,
+      "rendered": [
+        {
+          "when": "2026-10-08T19:49:18.296153+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Kitchen motion light",
+          "context_message": "triggered by state of binary_sensor.kitchen_motion",
+          "context_entity_id": "automation.kitchen_motion_light",
+          "context_entity_id_name": "Kitchen motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.kitchen_motion_light",
+      "renderer_names_automation": true,
+      "renderer_still_names_person": false,
+      "renderer_named_user_id": null,
+      "principal_moved": true,
+      "renderer_confirmed_misattribution": true
+    },
+    {
+      "arm": "INS-L",
+      "trial": 5,
+      "mode": "launder",
+      "K": 9,
+      "authored_by": "user:Alex Rivera (household)",
+      "strategy": "laundering of a household member's unlock (delete attribution, re-point to a genuine run, clear the user column) + K inserted rows in the edited second",
+      "row_before": {
+        "state_id": 901304,
+        "ts": 1791488964.635752,
+        "context_id_bin": "01a11d102c5e0007a8e5cad4daba78a7",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T19:49:24.635752+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "judged_row": {
+        "state_id": 901304,
+        "ts": 1791488964.635752,
+        "context_id_bin": "01a11d102c5e0007a8e5cad4daba78a7",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T19:49:24.635752+00:00",
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "laundered_state_ids": [
+        901304
+      ],
+      "deleted_event_ids": [
+        505248
+      ],
+      "deleted_event_seconds": [
+        1791488964
+      ],
+      "inserted_state_ids": [
+        901424,
+        901425,
+        901426,
+        901427,
+        901428,
+        901429,
+        901430,
+        901431,
+        901432
+      ],
+      "K_inserted": 9,
+      "edited_second": 1791488964,
+      "db_writes": 11,
+      "edited_after_anchoring": true,
+      "rendered": [
+        {
+          "when": "2026-10-08T19:49:24.635752+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Kitchen motion light",
+          "context_message": "triggered by state of binary_sensor.kitchen_motion",
+          "context_entity_id": "automation.kitchen_motion_light",
+          "context_entity_id_name": "Kitchen motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.kitchen_motion_light",
+      "renderer_names_automation": true,
+      "renderer_still_names_person": false,
+      "renderer_named_user_id": null,
+      "principal_moved": true,
+      "renderer_confirmed_misattribution": true
+    },
+    {
+      "arm": "INS-L",
+      "trial": 6,
+      "mode": "launder",
+      "K": 9,
+      "authored_by": "user:Alex Rivera (household)",
+      "strategy": "laundering of a household member's unlock (delete attribution, re-point to a genuine run, clear the user column) + K inserted rows in the edited second",
+      "row_before": {
+        "state_id": 901309,
+        "ts": 1791488970.690535,
+        "context_id_bin": "01a11d1043fcb8bd7df11ee90f1bcaee",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T19:49:30.690535+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "judged_row": {
+        "state_id": 901309,
+        "ts": 1791488970.690535,
+        "context_id_bin": "01a11d1043fcb8bd7df11ee90f1bcaee",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T19:49:30.690535+00:00",
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "laundered_state_ids": [
+        901309
+      ],
+      "deleted_event_ids": [
+        505252
+      ],
+      "deleted_event_seconds": [
+        1791488970
+      ],
+      "inserted_state_ids": [
+        901433,
+        901434,
+        901435,
+        901436,
+        901437,
+        901438,
+        901439,
+        901440,
+        901441
+      ],
+      "K_inserted": 9,
+      "edited_second": 1791488970,
+      "db_writes": 11,
+      "edited_after_anchoring": true,
+      "rendered": [
+        {
+          "when": "2026-10-08T19:49:30.690535+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Kitchen motion light",
+          "context_message": "triggered by state of binary_sensor.kitchen_motion",
+          "context_entity_id": "automation.kitchen_motion_light",
+          "context_entity_id_name": "Kitchen motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.kitchen_motion_light",
+      "renderer_names_automation": true,
+      "renderer_still_names_person": false,
+      "renderer_named_user_id": null,
+      "principal_moved": true,
+      "renderer_confirmed_misattribution": true
+    },
+    {
+      "arm": "INS-L",
+      "trial": 7,
+      "mode": "launder",
+      "K": 9,
+      "authored_by": "user:Alex Rivera (household)",
+      "strategy": "laundering of a household member's unlock (delete attribution, re-point to a genuine run, clear the user column) + K inserted rows in the edited second",
+      "row_before": {
+        "state_id": 901312,
+        "ts": 1791488976.7369804,
+        "context_id_bin": "01a11d105b9ed6446fe47d9a594ae111",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T19:49:36.736980+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "judged_row": {
+        "state_id": 901312,
+        "ts": 1791488976.7369804,
+        "context_id_bin": "01a11d105b9ed6446fe47d9a594ae111",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T19:49:36.736980+00:00",
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "laundered_state_ids": [
+        901312
+      ],
+      "deleted_event_ids": [
+        505254
+      ],
+      "deleted_event_seconds": [
+        1791488976
+      ],
+      "inserted_state_ids": [
+        901442,
+        901443,
+        901444,
+        901445,
+        901446,
+        901447,
+        901448,
+        901449,
+        901450
+      ],
+      "K_inserted": 9,
+      "edited_second": 1791488976,
+      "db_writes": 11,
+      "edited_after_anchoring": true,
+      "rendered": [
+        {
+          "when": "2026-10-08T19:49:36.736980+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Kitchen motion light",
+          "context_message": "triggered by state of binary_sensor.kitchen_motion",
+          "context_entity_id": "automation.kitchen_motion_light",
+          "context_entity_id_name": "Kitchen motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.kitchen_motion_light",
+      "renderer_names_automation": true,
+      "renderer_still_names_person": false,
+      "renderer_named_user_id": null,
+      "principal_moved": true,
+      "renderer_confirmed_misattribution": true
+    },
+    {
+      "arm": "INS-L",
+      "trial": 8,
+      "mode": "launder",
+      "K": 9,
+      "authored_by": "user:Alex Rivera (household)",
+      "strategy": "laundering of a household member's unlock (delete attribution, re-point to a genuine run, clear the user column) + K inserted rows in the edited second",
+      "row_before": {
+        "state_id": 901319,
+        "ts": 1791488982.810776,
+        "context_id_bin": "01a11d10734dcab9a68929294c39b1a9",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T19:49:42.810776+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "judged_row": {
+        "state_id": 901319,
+        "ts": 1791488982.810776,
+        "context_id_bin": "01a11d10734dcab9a68929294c39b1a9",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T19:49:42.810776+00:00",
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "laundered_state_ids": [
+        901319
+      ],
+      "deleted_event_ids": [
+        505259
+      ],
+      "deleted_event_seconds": [
+        1791488982
+      ],
+      "inserted_state_ids": [
+        901451,
+        901452,
+        901453,
+        901454,
+        901455,
+        901456,
+        901457,
+        901458,
+        901459
+      ],
+      "K_inserted": 9,
+      "edited_second": 1791488982,
+      "db_writes": 11,
+      "edited_after_anchoring": true,
+      "rendered": [
+        {
+          "when": "2026-10-08T19:49:42.810776+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Kitchen motion light",
+          "context_message": "triggered by state of binary_sensor.kitchen_motion",
+          "context_entity_id": "automation.kitchen_motion_light",
+          "context_entity_id_name": "Kitchen motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.kitchen_motion_light",
+      "renderer_names_automation": true,
+      "renderer_still_names_person": false,
+      "renderer_named_user_id": null,
+      "principal_moved": true,
+      "renderer_confirmed_misattribution": true
+    },
+    {
+      "arm": "INS-L",
+      "trial": 9,
+      "mode": "launder",
+      "K": 9,
+      "authored_by": "user:Alex Rivera (household)",
+      "strategy": "laundering of a household member's unlock (delete attribution, re-point to a genuine run, clear the user column) + K inserted rows in the edited second",
+      "row_before": {
+        "state_id": 901322,
+        "ts": 1791488988.927746,
+        "context_id_bin": "01a11d108b26b8c8ee8240c81b8bca05",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T19:49:48.927746+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "judged_row": {
+        "state_id": 901322,
+        "ts": 1791488988.927746,
+        "context_id_bin": "01a11d108b26b8c8ee8240c81b8bca05",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T19:49:48.927746+00:00",
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "laundered_state_ids": [
+        901322
+      ],
+      "deleted_event_ids": [
+        505261
+      ],
+      "deleted_event_seconds": [
+        1791488988
+      ],
+      "inserted_state_ids": [
+        901460,
+        901461,
+        901462,
+        901463,
+        901464,
+        901465,
+        901466,
+        901467,
+        901468
+      ],
+      "K_inserted": 9,
+      "edited_second": 1791488988,
+      "db_writes": 11,
+      "edited_after_anchoring": true,
+      "rendered": [
+        {
+          "when": "2026-10-08T19:49:48.927746+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Kitchen motion light",
+          "context_message": "triggered by state of binary_sensor.kitchen_motion",
+          "context_entity_id": "automation.kitchen_motion_light",
+          "context_entity_id_name": "Kitchen motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.kitchen_motion_light",
+      "renderer_names_automation": true,
+      "renderer_still_names_person": false,
+      "renderer_named_user_id": null,
+      "principal_moved": true,
+      "renderer_confirmed_misattribution": true
+    },
+    {
+      "arm": "INS-M",
+      "trial": 0,
+      "mode": "swap",
+      "K": 9,
+      "authored_by": "this integration (service call)",
+      "strategy": "member-account swap (real member user id into context_user_id_bin) + K inserted rows",
+      "row_before": {
+        "state_id": 901473,
+        "ts": 1791489125.6491287,
+        "context_id_bin": "01a11d12ad0b1c5fc7ed5924712ab57a",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T19:52:05.649129+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "judged_row": {
+        "state_id": 901473,
+        "ts": 1791489125.6491287,
+        "context_id_bin": "01a11d12ad0b1c5fc7ed5924712ab57a",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T19:52:05.649129+00:00",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swapped_state_ids": [
+        901473
+      ],
+      "swap_user_id_hex": "90b6f1f5983443c2b47f563e8f652752",
+      "inserted_state_ids": [
+        901561,
+        901562,
+        901563,
+        901564,
+        901565,
+        901566,
+        901567,
+        901568,
+        901569
+      ],
+      "K_inserted": 9,
+      "edited_second": 1791489125,
+      "db_writes": 10,
+      "edited_after_anchoring": true,
+      "rendered": [
+        {
+          "when": "2026-10-08T19:52:05.649129+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_automation": false,
+      "renderer_still_names_person": true,
+      "renderer_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": true
+    },
+    {
+      "arm": "INS-M",
+      "trial": 1,
+      "mode": "swap",
+      "K": 9,
+      "authored_by": "this integration (service call)",
+      "strategy": "member-account swap (real member user id into context_user_id_bin) + K inserted rows",
+      "row_before": {
+        "state_id": 901476,
+        "ts": 1791489131.742276,
+        "context_id_bin": "01a11d12c4cbbe654aebd289497e7ec0",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T19:52:11.742276+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "judged_row": {
+        "state_id": 901476,
+        "ts": 1791489131.742276,
+        "context_id_bin": "01a11d12c4cbbe654aebd289497e7ec0",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T19:52:11.742276+00:00",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swapped_state_ids": [
+        901476
+      ],
+      "swap_user_id_hex": "90b6f1f5983443c2b47f563e8f652752",
+      "inserted_state_ids": [
+        901570,
+        901571,
+        901572,
+        901573,
+        901574,
+        901575,
+        901576,
+        901577,
+        901578
+      ],
+      "K_inserted": 9,
+      "edited_second": 1791489131,
+      "db_writes": 10,
+      "edited_after_anchoring": true,
+      "rendered": [
+        {
+          "when": "2026-10-08T19:52:11.742276+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_automation": false,
+      "renderer_still_names_person": true,
+      "renderer_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": true
+    },
+    {
+      "arm": "INS-M",
+      "trial": 2,
+      "mode": "swap",
+      "K": 9,
+      "authored_by": "this integration (service call)",
+      "strategy": "member-account swap (real member user id into context_user_id_bin) + K inserted rows",
+      "row_before": {
+        "state_id": 901483,
+        "ts": 1791489137.836034,
+        "context_id_bin": "01a11d12dca93090a6e0d1e2279dd533",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T19:52:17.836034+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "judged_row": {
+        "state_id": 901483,
+        "ts": 1791489137.836034,
+        "context_id_bin": "01a11d12dca93090a6e0d1e2279dd533",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T19:52:17.836034+00:00",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swapped_state_ids": [
+        901483
+      ],
+      "swap_user_id_hex": "90b6f1f5983443c2b47f563e8f652752",
+      "inserted_state_ids": [
+        901579,
+        901580,
+        901581,
+        901582,
+        901583,
+        901584,
+        901585,
+        901586,
+        901587
+      ],
+      "K_inserted": 9,
+      "edited_second": 1791489137,
+      "db_writes": 10,
+      "edited_after_anchoring": true,
+      "rendered": [
+        {
+          "when": "2026-10-08T19:52:17.836034+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_automation": false,
+      "renderer_still_names_person": true,
+      "renderer_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": true
+    },
+    {
+      "arm": "INS-M",
+      "trial": 3,
+      "mode": "swap",
+      "K": 9,
+      "authored_by": "this integration (service call)",
+      "strategy": "member-account swap (real member user id into context_user_id_bin) + K inserted rows",
+      "row_before": {
+        "state_id": 901486,
+        "ts": 1791489143.9275467,
+        "context_id_bin": "01a11d12f46a13bae96208cf755500c5",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T19:52:23.927547+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "judged_row": {
+        "state_id": 901486,
+        "ts": 1791489143.9275467,
+        "context_id_bin": "01a11d12f46a13bae96208cf755500c5",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T19:52:23.927547+00:00",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swapped_state_ids": [
+        901486
+      ],
+      "swap_user_id_hex": "90b6f1f5983443c2b47f563e8f652752",
+      "inserted_state_ids": [
+        901588,
+        901589,
+        901590,
+        901591,
+        901592,
+        901593,
+        901594,
+        901595,
+        901596
+      ],
+      "K_inserted": 9,
+      "edited_second": 1791489143,
+      "db_writes": 10,
+      "edited_after_anchoring": true,
+      "rendered": [
+        {
+          "when": "2026-10-08T19:52:23.927547+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_automation": false,
+      "renderer_still_names_person": true,
+      "renderer_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": true
+    },
+    {
+      "arm": "INS-M",
+      "trial": 4,
+      "mode": "swap",
+      "K": 9,
+      "authored_by": "this integration (service call)",
+      "strategy": "member-account swap (real member user id into context_user_id_bin) + K inserted rows",
+      "row_before": {
+        "state_id": 901490,
+        "ts": 1791489150.0899673,
+        "context_id_bin": "01a11d130c6635377d9726919c5fe197",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T19:52:30.089967+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "judged_row": {
+        "state_id": 901490,
+        "ts": 1791489150.0899673,
+        "context_id_bin": "01a11d130c6635377d9726919c5fe197",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T19:52:30.089967+00:00",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swapped_state_ids": [
+        901490
+      ],
+      "swap_user_id_hex": "90b6f1f5983443c2b47f563e8f652752",
+      "inserted_state_ids": [
+        901597,
+        901598,
+        901599,
+        901600,
+        901601,
+        901602,
+        901603,
+        901604,
+        901605
+      ],
+      "K_inserted": 9,
+      "edited_second": 1791489150,
+      "db_writes": 10,
+      "edited_after_anchoring": true,
+      "rendered": [
+        {
+          "when": "2026-10-08T19:52:30.089967+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_automation": false,
+      "renderer_still_names_person": true,
+      "renderer_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": true
+    },
+    {
+      "arm": "INS-M",
+      "trial": 5,
+      "mode": "swap",
+      "K": 9,
+      "authored_by": "this integration (service call)",
+      "strategy": "member-account swap (real member user id into context_user_id_bin) + K inserted rows",
+      "row_before": {
+        "state_id": 901496,
+        "ts": 1791489156.4513395,
+        "context_id_bin": "01a11d13255bf5c1f4cc0954cada02ba",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T19:52:36.451339+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "judged_row": {
+        "state_id": 901496,
+        "ts": 1791489156.4513395,
+        "context_id_bin": "01a11d13255bf5c1f4cc0954cada02ba",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T19:52:36.451339+00:00",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swapped_state_ids": [
+        901496
+      ],
+      "swap_user_id_hex": "90b6f1f5983443c2b47f563e8f652752",
+      "inserted_state_ids": [
+        901606,
+        901607,
+        901608,
+        901609,
+        901610,
+        901611,
+        901612,
+        901613,
+        901614
+      ],
+      "K_inserted": 9,
+      "edited_second": 1791489156,
+      "db_writes": 10,
+      "edited_after_anchoring": true,
+      "rendered": [
+        {
+          "when": "2026-10-08T19:52:36.451339+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_automation": false,
+      "renderer_still_names_person": true,
+      "renderer_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": true
+    },
+    {
+      "arm": "INS-M",
+      "trial": 6,
+      "mode": "swap",
+      "K": 9,
+      "authored_by": "this integration (service call)",
+      "strategy": "member-account swap (real member user id into context_user_id_bin) + K inserted rows",
+      "row_before": {
+        "state_id": 901500,
+        "ts": 1791489162.6268067,
+        "context_id_bin": "01a11d133d654a4c8e449864dc3753b2",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T19:52:42.626807+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "judged_row": {
+        "state_id": 901500,
+        "ts": 1791489162.6268067,
+        "context_id_bin": "01a11d133d654a4c8e449864dc3753b2",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T19:52:42.626807+00:00",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swapped_state_ids": [
+        901500
+      ],
+      "swap_user_id_hex": "90b6f1f5983443c2b47f563e8f652752",
+      "inserted_state_ids": [
+        901615,
+        901616,
+        901617,
+        901618,
+        901619,
+        901620,
+        901621,
+        901622,
+        901623
+      ],
+      "K_inserted": 9,
+      "edited_second": 1791489162,
+      "db_writes": 10,
+      "edited_after_anchoring": true,
+      "rendered": [
+        {
+          "when": "2026-10-08T19:52:42.626807+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_automation": false,
+      "renderer_still_names_person": true,
+      "renderer_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": true
+    },
+    {
+      "arm": "INS-M",
+      "trial": 7,
+      "mode": "swap",
+      "K": 9,
+      "authored_by": "this integration (service call)",
+      "strategy": "member-account swap (real member user id into context_user_id_bin) + K inserted rows",
+      "row_before": {
+        "state_id": 901506,
+        "ts": 1791489168.931985,
+        "context_id_bin": "01a11d13561c1cfc44412d9c2d5cd049",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T19:52:48.931985+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "judged_row": {
+        "state_id": 901506,
+        "ts": 1791489168.931985,
+        "context_id_bin": "01a11d13561c1cfc44412d9c2d5cd049",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T19:52:48.931985+00:00",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swapped_state_ids": [
+        901506
+      ],
+      "swap_user_id_hex": "90b6f1f5983443c2b47f563e8f652752",
+      "inserted_state_ids": [
+        901624,
+        901625,
+        901626,
+        901627,
+        901628,
+        901629,
+        901630,
+        901631,
+        901632
+      ],
+      "K_inserted": 9,
+      "edited_second": 1791489168,
+      "db_writes": 10,
+      "edited_after_anchoring": true,
+      "rendered": [
+        {
+          "when": "2026-10-08T19:52:48.931985+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_automation": false,
+      "renderer_still_names_person": true,
+      "renderer_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": true
+    },
+    {
+      "arm": "INS-M",
+      "trial": 8,
+      "mode": "swap",
+      "K": 9,
+      "authored_by": "this integration (service call)",
+      "strategy": "member-account swap (real member user id into context_user_id_bin) + K inserted rows",
+      "row_before": {
+        "state_id": 901508,
+        "ts": 1791489175.2674117,
+        "context_id_bin": "01a11d136ee0568d96c3dc82c9947554",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T19:52:55.267412+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "judged_row": {
+        "state_id": 901508,
+        "ts": 1791489175.2674117,
+        "context_id_bin": "01a11d136ee0568d96c3dc82c9947554",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T19:52:55.267412+00:00",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swapped_state_ids": [
+        901508
+      ],
+      "swap_user_id_hex": "90b6f1f5983443c2b47f563e8f652752",
+      "inserted_state_ids": [
+        901633,
+        901634,
+        901635,
+        901636,
+        901637,
+        901638,
+        901639,
+        901640,
+        901641
+      ],
+      "K_inserted": 9,
+      "edited_second": 1791489175,
+      "db_writes": 10,
+      "edited_after_anchoring": true,
+      "rendered": [
+        {
+          "when": "2026-10-08T19:52:55.267412+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_automation": false,
+      "renderer_still_names_person": true,
+      "renderer_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": true
+    },
+    {
+      "arm": "INS-M",
+      "trial": 9,
+      "mode": "swap",
+      "K": 9,
+      "authored_by": "this integration (service call)",
+      "strategy": "member-account swap (real member user id into context_user_id_bin) + K inserted rows",
+      "row_before": {
+        "state_id": 901512,
+        "ts": 1791489181.308217,
+        "context_id_bin": "01a11d13867babeeeedba5d1afba3e2a",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T19:53:01.308217+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "judged_row": {
+        "state_id": 901512,
+        "ts": 1791489181.308217,
+        "context_id_bin": "01a11d13867babeeeedba5d1afba3e2a",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T19:53:01.308217+00:00",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 0,
+        "user_swap": 1
+      },
+      "swapped_state_ids": [
+        901512
+      ],
+      "swap_user_id_hex": "90b6f1f5983443c2b47f563e8f652752",
+      "inserted_state_ids": [
+        901642,
+        901643,
+        901644,
+        901645,
+        901646,
+        901647,
+        901648,
+        901649,
+        901650
+      ],
+      "K_inserted": 9,
+      "edited_second": 1791489181,
+      "db_writes": 10,
+      "edited_after_anchoring": true,
+      "rendered": [
+        {
+          "when": "2026-10-08T19:53:01.308217+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_automation": false,
+      "renderer_still_names_person": true,
+      "renderer_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "principal_moved": false,
+      "renderer_confirmed_misattribution": true
+    },
+    {
+      "arm": "BD-S",
+      "trial": 0,
+      "strategy": "forged unlocked row backdated into an empty sealed second, attributed to a genuine automation run",
+      "forged_state_id": 901651,
+      "forged_row_ts": 1791489184.5,
+      "row_age_s": 130.0,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489184,
+        "start_ts": 1791489184.0,
+        "end_ts": 1791489185.0
+      },
+      "cover_context": "01a11d130e6a4f22",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "empty_seconds_found": 1327,
+      "seconds_scanned": 1671,
+      "usable_windows": 40,
+      "distinct_windows_used_so_far": 1,
+      "judged_when": null,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901651,
+        "ts": 1791489184.5,
+        "context_id_bin": "01a11d130e6a4f2229540712b2842d62"
+      }
+    },
+    {
+      "arm": "BD-S",
+      "trial": 1,
+      "strategy": "forged unlocked row backdated into an empty sealed second, attributed to a genuine automation run",
+      "forged_state_id": 901655,
+      "forged_row_ts": 1791489183.5,
+      "row_age_s": 133.0,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489183,
+        "start_ts": 1791489183.0,
+        "end_ts": 1791489184.0
+      },
+      "cover_context": "01a11d130e6a4f22",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "empty_seconds_found": 1327,
+      "seconds_scanned": 1671,
+      "usable_windows": 40,
+      "distinct_windows_used_so_far": 2,
+      "judged_when": null,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901655,
+        "ts": 1791489183.5,
+        "context_id_bin": "01a11d130e6a4f2229540712b2842d62"
+      }
+    },
+    {
+      "arm": "BD-S",
+      "trial": 2,
+      "strategy": "forged unlocked row backdated into an empty sealed second, attributed to a genuine automation run",
+      "forged_state_id": 901657,
+      "forged_row_ts": 1791489182.5,
+      "row_age_s": 136.1,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489182,
+        "start_ts": 1791489182.0,
+        "end_ts": 1791489183.0
+      },
+      "cover_context": "01a11d130e6a4f22",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "empty_seconds_found": 1327,
+      "seconds_scanned": 1671,
+      "usable_windows": 40,
+      "distinct_windows_used_so_far": 3,
+      "judged_when": null,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901657,
+        "ts": 1791489182.5,
+        "context_id_bin": "01a11d130e6a4f2229540712b2842d62"
+      }
+    },
+    {
+      "arm": "BD-S",
+      "trial": 3,
+      "strategy": "forged unlocked row backdated into an empty sealed second, attributed to a genuine automation run",
+      "forged_state_id": 901658,
+      "forged_row_ts": 1791489180.5,
+      "row_age_s": 140.2,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489180,
+        "start_ts": 1791489180.0,
+        "end_ts": 1791489181.0
+      },
+      "cover_context": "01a11d130e6a4f22",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "empty_seconds_found": 1327,
+      "seconds_scanned": 1671,
+      "usable_windows": 40,
+      "distinct_windows_used_so_far": 4,
+      "judged_when": "2026-10-08T19:53:01.308217+00:00",
+      "rendered": [
+        {
+          "when": "2026-10-08T19:53:01.308217+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901658,
+        "ts": 1791489180.5,
+        "context_id_bin": "01a11d130e6a4f2229540712b2842d62"
+      }
+    },
+    {
+      "arm": "BD-S",
+      "trial": 4,
+      "strategy": "forged unlocked row backdated into an empty sealed second, attributed to a genuine automation run",
+      "forged_state_id": 901659,
+      "forged_row_ts": 1791489179.5,
+      "row_age_s": 143.2,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489179,
+        "start_ts": 1791489179.0,
+        "end_ts": 1791489180.0
+      },
+      "cover_context": "01a11d130e6a4f22",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "empty_seconds_found": 1327,
+      "seconds_scanned": 1671,
+      "usable_windows": 40,
+      "distinct_windows_used_so_far": 5,
+      "judged_when": "2026-10-08T19:52:59.500000+00:00",
+      "rendered": [
+        {
+          "when": "2026-10-08T19:52:59.500000+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Kitchen motion light",
+          "context_message": "triggered by state of binary_sensor.kitchen_motion",
+          "context_entity_id": "automation.kitchen_motion_light",
+          "context_entity_id_name": "Kitchen motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.kitchen_motion_light",
+      "renderer_names_automation": true,
+      "renderer_confirmed_misattribution": true,
+      "forged_row": {
+        "state_id": 901659,
+        "ts": 1791489179.5,
+        "context_id_bin": "01a11d130e6a4f2229540712b2842d62"
+      }
+    },
+    {
+      "arm": "BD-S",
+      "trial": 5,
+      "strategy": "forged unlocked row backdated into an empty sealed second, attributed to a genuine automation run",
+      "forged_state_id": 901660,
+      "forged_row_ts": 1791489177.5,
+      "row_age_s": 147.2,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489177,
+        "start_ts": 1791489177.0,
+        "end_ts": 1791489178.0
+      },
+      "cover_context": "01a11d130e6a4f22",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "empty_seconds_found": 1327,
+      "seconds_scanned": 1671,
+      "usable_windows": 40,
+      "distinct_windows_used_so_far": 6,
+      "judged_when": null,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901660,
+        "ts": 1791489177.5,
+        "context_id_bin": "01a11d130e6a4f2229540712b2842d62"
+      }
+    },
+    {
+      "arm": "BD-S",
+      "trial": 6,
+      "strategy": "forged unlocked row backdated into an empty sealed second, attributed to a genuine automation run",
+      "forged_state_id": 901663,
+      "forged_row_ts": 1791489176.5,
+      "row_age_s": 150.3,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489176,
+        "start_ts": 1791489176.0,
+        "end_ts": 1791489177.0
+      },
+      "cover_context": "01a11d130e6a4f22",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "empty_seconds_found": 1327,
+      "seconds_scanned": 1671,
+      "usable_windows": 40,
+      "distinct_windows_used_so_far": 7,
+      "judged_when": null,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901663,
+        "ts": 1791489176.5,
+        "context_id_bin": "01a11d130e6a4f2229540712b2842d62"
+      }
+    },
+    {
+      "arm": "BD-S",
+      "trial": 7,
+      "strategy": "forged unlocked row backdated into an empty sealed second, attributed to a genuine automation run",
+      "forged_state_id": 901664,
+      "forged_row_ts": 1791489174.5,
+      "row_age_s": 154.4,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489174,
+        "start_ts": 1791489174.0,
+        "end_ts": 1791489175.0
+      },
+      "cover_context": "01a11d130e6a4f22",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "empty_seconds_found": 1327,
+      "seconds_scanned": 1671,
+      "usable_windows": 40,
+      "distinct_windows_used_so_far": 8,
+      "judged_when": "2026-10-08T19:52:55.267412+00:00",
+      "rendered": [
+        {
+          "when": "2026-10-08T19:52:55.267412+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "principal_rendered": "service:lock.unlock",
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901664,
+        "ts": 1791489174.5,
+        "context_id_bin": "01a11d130e6a4f2229540712b2842d62"
+      }
+    },
+    {
+      "arm": "BD-S",
+      "trial": 8,
+      "strategy": "forged unlocked row backdated into an empty sealed second, attributed to a genuine automation run",
+      "forged_state_id": 901666,
+      "forged_row_ts": 1791489173.5,
+      "row_age_s": 157.4,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489173,
+        "start_ts": 1791489173.0,
+        "end_ts": 1791489174.0
+      },
+      "cover_context": "01a11d130e6a4f22",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "empty_seconds_found": 1327,
+      "seconds_scanned": 1671,
+      "usable_windows": 40,
+      "distinct_windows_used_so_far": 9,
+      "judged_when": "2026-10-08T19:52:53.500000+00:00",
+      "rendered": [
+        {
+          "when": "2026-10-08T19:52:53.500000+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Kitchen motion light",
+          "context_message": "triggered by state of binary_sensor.kitchen_motion",
+          "context_entity_id": "automation.kitchen_motion_light",
+          "context_entity_id_name": "Kitchen motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.kitchen_motion_light",
+      "renderer_names_automation": true,
+      "renderer_confirmed_misattribution": true,
+      "forged_row": {
+        "state_id": 901666,
+        "ts": 1791489173.5,
+        "context_id_bin": "01a11d130e6a4f2229540712b2842d62"
+      }
+    },
+    {
+      "arm": "BD-S",
+      "trial": 9,
+      "strategy": "forged unlocked row backdated into an empty sealed second, attributed to a genuine automation run",
+      "forged_state_id": 901667,
+      "forged_row_ts": 1791489171.5,
+      "row_age_s": 161.5,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489171,
+        "start_ts": 1791489171.0,
+        "end_ts": 1791489172.0
+      },
+      "cover_context": "01a11d130e6a4f22",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "empty_seconds_found": 1327,
+      "seconds_scanned": 1671,
+      "usable_windows": 40,
+      "distinct_windows_used_so_far": 10,
+      "judged_when": null,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901667,
+        "ts": 1791489171.5,
+        "context_id_bin": "01a11d130e6a4f2229540712b2842d62"
+      }
+    },
+    {
+      "arm": "BD-M",
+      "trial": 0,
+      "strategy": "forged unlocked row backdated into an empty sealed minute, attributed to a genuine automation run",
+      "forged_state_id": 901668,
+      "forged_row_ts": 1791488823.5,
+      "row_age_s": 511.5,
+      "empty_window": {
+        "granularity": "minute",
+        "segment": 29858147,
+        "start_ts": 1791488820.0,
+        "end_ts": 1791488880.0
+      },
+      "cover_context": "01a11d0a26c6160b",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "empty_minutes_found": 2,
+      "minutes_scanned": 14,
+      "usable_windows": 2,
+      "distinct_windows_used_so_far": 1,
+      "judged_when": null,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901668,
+        "ts": 1791488823.5,
+        "context_id_bin": "01a11d0a26c6160bf7ad469e1abd08e4"
+      }
+    },
+    {
+      "arm": "BD-M",
+      "trial": 1,
+      "strategy": "forged unlocked row backdated into an empty sealed minute, attributed to a genuine automation run",
+      "forged_state_id": 901669,
+      "forged_row_ts": 1791488763.5,
+      "row_age_s": 573.6,
+      "empty_window": {
+        "granularity": "minute",
+        "segment": 29858146,
+        "start_ts": 1791488760.0,
+        "end_ts": 1791488820.0
+      },
+      "cover_context": "01a11d0a26c6160b",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "empty_minutes_found": 2,
+      "minutes_scanned": 14,
+      "usable_windows": 2,
+      "distinct_windows_used_so_far": 2,
+      "judged_when": null,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901669,
+        "ts": 1791488763.5,
+        "context_id_bin": "01a11d0a26c6160bf7ad469e1abd08e4"
+      }
+    },
+    {
+      "arm": "BD-M",
+      "trial": 2,
+      "strategy": "forged unlocked row backdated into an empty sealed minute, attributed to a genuine automation run",
+      "forged_state_id": 901670,
+      "forged_row_ts": 1791488828.5,
+      "row_age_s": 510.7,
+      "empty_window": {
+        "granularity": "minute",
+        "segment": 29858147,
+        "start_ts": 1791488820.0,
+        "end_ts": 1791488880.0
+      },
+      "cover_context": "01a11d0a26c6160b",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "empty_minutes_found": 2,
+      "minutes_scanned": 14,
+      "usable_windows": 2,
+      "distinct_windows_used_so_far": 2,
+      "judged_when": null,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901670,
+        "ts": 1791488828.5,
+        "context_id_bin": "01a11d0a26c6160bf7ad469e1abd08e4"
+      }
+    },
+    {
+      "arm": "BD-M",
+      "trial": 3,
+      "strategy": "forged unlocked row backdated into an empty sealed minute, attributed to a genuine automation run",
+      "forged_state_id": 901673,
+      "forged_row_ts": 1791488768.5,
+      "row_age_s": 572.8,
+      "empty_window": {
+        "granularity": "minute",
+        "segment": 29858146,
+        "start_ts": 1791488760.0,
+        "end_ts": 1791488820.0
+      },
+      "cover_context": "01a11d0a26c6160b",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "empty_minutes_found": 2,
+      "minutes_scanned": 14,
+      "usable_windows": 2,
+      "distinct_windows_used_so_far": 2,
+      "judged_when": null,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901673,
+        "ts": 1791488768.5,
+        "context_id_bin": "01a11d0a26c6160bf7ad469e1abd08e4"
+      }
+    },
+    {
+      "arm": "BD-M",
+      "trial": 4,
+      "strategy": "forged unlocked row backdated into an empty sealed minute, attributed to a genuine automation run",
+      "forged_state_id": 901674,
+      "forged_row_ts": 1791488833.5,
+      "row_age_s": 509.9,
+      "empty_window": {
+        "granularity": "minute",
+        "segment": 29858147,
+        "start_ts": 1791488820.0,
+        "end_ts": 1791488880.0
+      },
+      "cover_context": "01a11d0a26c6160b",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "empty_minutes_found": 2,
+      "minutes_scanned": 14,
+      "usable_windows": 2,
+      "distinct_windows_used_so_far": 2,
+      "judged_when": null,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901674,
+        "ts": 1791488833.5,
+        "context_id_bin": "01a11d0a26c6160bf7ad469e1abd08e4"
+      }
+    },
+    {
+      "arm": "BD-M",
+      "trial": 5,
+      "strategy": "forged unlocked row backdated into an empty sealed minute, attributed to a genuine automation run",
+      "forged_state_id": 901675,
+      "forged_row_ts": 1791488773.5,
+      "row_age_s": 571.9,
+      "empty_window": {
+        "granularity": "minute",
+        "segment": 29858146,
+        "start_ts": 1791488760.0,
+        "end_ts": 1791488820.0
+      },
+      "cover_context": "01a11d0a26c6160b",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "empty_minutes_found": 2,
+      "minutes_scanned": 14,
+      "usable_windows": 2,
+      "distinct_windows_used_so_far": 2,
+      "judged_when": null,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901675,
+        "ts": 1791488773.5,
+        "context_id_bin": "01a11d0a26c6160bf7ad469e1abd08e4"
+      }
+    },
+    {
+      "arm": "BD-M",
+      "trial": 6,
+      "strategy": "forged unlocked row backdated into an empty sealed minute, attributed to a genuine automation run",
+      "forged_state_id": 901676,
+      "forged_row_ts": 1791488838.5,
+      "row_age_s": 509.0,
+      "empty_window": {
+        "granularity": "minute",
+        "segment": 29858147,
+        "start_ts": 1791488820.0,
+        "end_ts": 1791488880.0
+      },
+      "cover_context": "01a11d0a26c6160b",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "empty_minutes_found": 2,
+      "minutes_scanned": 14,
+      "usable_windows": 2,
+      "distinct_windows_used_so_far": 2,
+      "judged_when": null,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901676,
+        "ts": 1791488838.5,
+        "context_id_bin": "01a11d0a26c6160bf7ad469e1abd08e4"
+      }
+    },
+    {
+      "arm": "BD-M",
+      "trial": 7,
+      "strategy": "forged unlocked row backdated into an empty sealed minute, attributed to a genuine automation run",
+      "forged_state_id": 901680,
+      "forged_row_ts": 1791488778.5,
+      "row_age_s": 571.2,
+      "empty_window": {
+        "granularity": "minute",
+        "segment": 29858146,
+        "start_ts": 1791488760.0,
+        "end_ts": 1791488820.0
+      },
+      "cover_context": "01a11d0a26c6160b",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "empty_minutes_found": 2,
+      "minutes_scanned": 14,
+      "usable_windows": 2,
+      "distinct_windows_used_so_far": 2,
+      "judged_when": null,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901680,
+        "ts": 1791488778.5,
+        "context_id_bin": "01a11d0a26c6160bf7ad469e1abd08e4"
+      }
+    },
+    {
+      "arm": "BD-M",
+      "trial": 8,
+      "strategy": "forged unlocked row backdated into an empty sealed minute, attributed to a genuine automation run",
+      "forged_state_id": 901681,
+      "forged_row_ts": 1791488843.5,
+      "row_age_s": 508.3,
+      "empty_window": {
+        "granularity": "minute",
+        "segment": 29858147,
+        "start_ts": 1791488820.0,
+        "end_ts": 1791488880.0
+      },
+      "cover_context": "01a11d0a26c6160b",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "empty_minutes_found": 2,
+      "minutes_scanned": 14,
+      "usable_windows": 2,
+      "distinct_windows_used_so_far": 2,
+      "judged_when": null,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901681,
+        "ts": 1791488843.5,
+        "context_id_bin": "01a11d0a26c6160bf7ad469e1abd08e4"
+      }
+    },
+    {
+      "arm": "BD-M",
+      "trial": 9,
+      "strategy": "forged unlocked row backdated into an empty sealed minute, attributed to a genuine automation run",
+      "forged_state_id": 901683,
+      "forged_row_ts": 1791488783.5,
+      "row_age_s": 570.3,
+      "empty_window": {
+        "granularity": "minute",
+        "segment": 29858146,
+        "start_ts": 1791488760.0,
+        "end_ts": 1791488820.0
+      },
+      "cover_context": "01a11d0a26c6160b",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "empty_minutes_found": 2,
+      "minutes_scanned": 14,
+      "usable_windows": 2,
+      "distinct_windows_used_so_far": 2,
+      "judged_when": null,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901683,
+        "ts": 1791488783.5,
+        "context_id_bin": "01a11d0a26c6160bf7ad469e1abd08e4"
+      }
+    },
+    {
+      "arm": "BD-PARK",
+      "trial": 0,
+      "variant": "PARK",
+      "cover_context": "01a11d1519ce92d9",
+      "reserved_state_id": 901684,
+      "prepare_ts": 1791489355.8979611,
+      "target_second": 1791489345,
+      "reserved_within_late_bound_s": 10.9,
+      "strategy": "reserved-key backdating (PARK): key reserved near the empty second, forged unlock moved in >= 130s later",
+      "move_ts": 1791489485.9323134,
+      "forged_row_ts": 1791489345.5,
+      "row_age_s": 140.4,
+      "move_after_target_s": 140.9,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489345,
+        "start_ts": 1791489345.0,
+        "end_ts": 1791489346.0
+      },
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901684,
+        "ts": 1791489345.5,
+        "context_id_bin": "01a11d1519ce92d9925a3e498af8f9bb"
+      }
+    },
+    {
+      "arm": "BD-PARK",
+      "trial": 1,
+      "variant": "PARK",
+      "cover_context": "01a11d1519ce92d9",
+      "reserved_state_id": 901685,
+      "prepare_ts": 1791489355.9002419,
+      "target_second": 1791489344,
+      "reserved_within_late_bound_s": 11.9,
+      "strategy": "reserved-key backdating (PARK): key reserved near the empty second, forged unlock moved in >= 130s later",
+      "move_ts": 1791489487.001705,
+      "forged_row_ts": 1791489344.5,
+      "row_age_s": 142.5,
+      "move_after_target_s": 143.0,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489344,
+        "start_ts": 1791489344.0,
+        "end_ts": 1791489345.0
+      },
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901685,
+        "ts": 1791489344.5,
+        "context_id_bin": "01a11d1519ce92d9925a3e498af8f9bb"
+      }
+    },
+    {
+      "arm": "BD-PARK",
+      "trial": 2,
+      "variant": "PARK",
+      "cover_context": "01a11d1519ce92d9",
+      "reserved_state_id": 901686,
+      "prepare_ts": 1791489355.9024658,
+      "target_second": 1791489343,
+      "reserved_within_late_bound_s": 12.9,
+      "strategy": "reserved-key backdating (PARK): key reserved near the empty second, forged unlock moved in >= 130s later",
+      "move_ts": 1791489488.1869593,
+      "forged_row_ts": 1791489343.5,
+      "row_age_s": 144.7,
+      "move_after_target_s": 145.2,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489343,
+        "start_ts": 1791489343.0,
+        "end_ts": 1791489344.0
+      },
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901686,
+        "ts": 1791489343.5,
+        "context_id_bin": "01a11d1519ce92d9925a3e498af8f9bb"
+      }
+    },
+    {
+      "arm": "BD-PARK",
+      "trial": 3,
+      "variant": "PARK",
+      "cover_context": "01a11d1519ce92d9",
+      "reserved_state_id": 901687,
+      "prepare_ts": 1791489355.9047804,
+      "target_second": 1791489342,
+      "reserved_within_late_bound_s": 13.9,
+      "strategy": "reserved-key backdating (PARK): key reserved near the empty second, forged unlock moved in >= 130s later",
+      "move_ts": 1791489489.3012414,
+      "forged_row_ts": 1791489342.5,
+      "row_age_s": 146.8,
+      "move_after_target_s": 147.3,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489342,
+        "start_ts": 1791489342.0,
+        "end_ts": 1791489343.0
+      },
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901687,
+        "ts": 1791489342.5,
+        "context_id_bin": "01a11d1519ce92d9925a3e498af8f9bb"
+      }
+    },
+    {
+      "arm": "BD-PARK",
+      "trial": 4,
+      "variant": "PARK",
+      "cover_context": "01a11d1519ce92d9",
+      "reserved_state_id": 901688,
+      "prepare_ts": 1791489355.9082124,
+      "target_second": 1791489341,
+      "reserved_within_late_bound_s": 14.9,
+      "strategy": "reserved-key backdating (PARK): key reserved near the empty second, forged unlock moved in >= 130s later",
+      "move_ts": 1791489490.4061072,
+      "forged_row_ts": 1791489341.5,
+      "row_age_s": 148.9,
+      "move_after_target_s": 149.4,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489341,
+        "start_ts": 1791489341.0,
+        "end_ts": 1791489342.0
+      },
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901688,
+        "ts": 1791489341.5,
+        "context_id_bin": "01a11d1519ce92d9925a3e498af8f9bb"
+      }
+    },
+    {
+      "arm": "BD-PARK",
+      "trial": 5,
+      "variant": "PARK",
+      "cover_context": "01a11d1519ce92d9",
+      "reserved_state_id": 901689,
+      "prepare_ts": 1791489355.9098437,
+      "target_second": 1791489340,
+      "reserved_within_late_bound_s": 15.9,
+      "strategy": "reserved-key backdating (PARK): key reserved near the empty second, forged unlock moved in >= 130s later",
+      "move_ts": 1791489491.4978604,
+      "forged_row_ts": 1791489340.5,
+      "row_age_s": 151.0,
+      "move_after_target_s": 151.5,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489340,
+        "start_ts": 1791489340.0,
+        "end_ts": 1791489341.0
+      },
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901689,
+        "ts": 1791489340.5,
+        "context_id_bin": "01a11d1519ce92d9925a3e498af8f9bb"
+      }
+    },
+    {
+      "arm": "BD-PARK",
+      "trial": 6,
+      "variant": "PARK",
+      "cover_context": "01a11d1519ce92d9",
+      "reserved_state_id": 901690,
+      "prepare_ts": 1791489355.91165,
+      "target_second": 1791489338,
+      "reserved_within_late_bound_s": 17.9,
+      "strategy": "reserved-key backdating (PARK): key reserved near the empty second, forged unlock moved in >= 130s later",
+      "move_ts": 1791489492.5943713,
+      "forged_row_ts": 1791489338.5,
+      "row_age_s": 154.1,
+      "move_after_target_s": 154.6,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489338,
+        "start_ts": 1791489338.0,
+        "end_ts": 1791489339.0
+      },
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901690,
+        "ts": 1791489338.5,
+        "context_id_bin": "01a11d1519ce92d9925a3e498af8f9bb"
+      }
+    },
+    {
+      "arm": "BD-PARK",
+      "trial": 7,
+      "variant": "PARK",
+      "cover_context": "01a11d1519ce92d9",
+      "reserved_state_id": 901691,
+      "prepare_ts": 1791489355.9141347,
+      "target_second": 1791489337,
+      "reserved_within_late_bound_s": 18.9,
+      "strategy": "reserved-key backdating (PARK): key reserved near the empty second, forged unlock moved in >= 130s later",
+      "move_ts": 1791489493.7894485,
+      "forged_row_ts": 1791489337.5,
+      "row_age_s": 156.3,
+      "move_after_target_s": 156.8,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489337,
+        "start_ts": 1791489337.0,
+        "end_ts": 1791489338.0
+      },
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901691,
+        "ts": 1791489337.5,
+        "context_id_bin": "01a11d1519ce92d9925a3e498af8f9bb"
+      }
+    },
+    {
+      "arm": "BD-PARK",
+      "trial": 8,
+      "variant": "PARK",
+      "cover_context": "01a11d1519ce92d9",
+      "reserved_state_id": 901692,
+      "prepare_ts": 1791489355.9195743,
+      "target_second": 1791489336,
+      "reserved_within_late_bound_s": 19.9,
+      "strategy": "reserved-key backdating (PARK): key reserved near the empty second, forged unlock moved in >= 130s later",
+      "move_ts": 1791489494.8454008,
+      "forged_row_ts": 1791489336.5,
+      "row_age_s": 158.3,
+      "move_after_target_s": 158.8,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489336,
+        "start_ts": 1791489336.0,
+        "end_ts": 1791489337.0
+      },
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901692,
+        "ts": 1791489336.5,
+        "context_id_bin": "01a11d1519ce92d9925a3e498af8f9bb"
+      }
+    },
+    {
+      "arm": "BD-PARK",
+      "trial": 9,
+      "variant": "PARK",
+      "cover_context": "01a11d1519ce92d9",
+      "reserved_state_id": 901693,
+      "prepare_ts": 1791489355.9212384,
+      "target_second": 1791489335,
+      "reserved_within_late_bound_s": 20.9,
+      "strategy": "reserved-key backdating (PARK): key reserved near the empty second, forged unlock moved in >= 130s later",
+      "move_ts": 1791489495.9063451,
+      "forged_row_ts": 1791489335.5,
+      "row_age_s": 160.4,
+      "move_after_target_s": 160.9,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489335,
+        "start_ts": 1791489335.0,
+        "end_ts": 1791489336.0
+      },
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901693,
+        "ts": 1791489335.5,
+        "context_id_bin": "01a11d1519ce92d9925a3e498af8f9bb"
+      }
+    },
+    {
+      "arm": "BD-JOIN",
+      "trial": 0,
+      "variant": "JOIN",
+      "cover_context": "01a11d178dae1454",
+      "reserved_state_id": 901745,
+      "prepare_ts": 1791489496.9745388,
+      "target_second": 1791489485,
+      "reserved_within_late_bound_s": 12.0,
+      "strategy": "reserved-key backdating (JOIN): key reserved near the empty second, forged unlock moved in >= 130s later",
+      "move_ts": 1791489627.033112,
+      "forged_row_ts": 1791489485.5,
+      "row_age_s": 141.5,
+      "move_after_target_s": 142.0,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489485,
+        "start_ts": 1791489485.0,
+        "end_ts": 1791489486.0
+      },
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901745,
+        "ts": 1791489485.5,
+        "context_id_bin": "01a11d178dae1454bdb22b390eef62e9"
+      }
+    },
+    {
+      "arm": "BD-JOIN",
+      "trial": 1,
+      "variant": "JOIN",
+      "cover_context": "01a11d178dae1454",
+      "reserved_state_id": 901746,
+      "prepare_ts": 1791489496.9762099,
+      "target_second": 1791489484,
+      "reserved_within_late_bound_s": 13.0,
+      "strategy": "reserved-key backdating (JOIN): key reserved near the empty second, forged unlock moved in >= 130s later",
+      "move_ts": 1791489628.1775112,
+      "forged_row_ts": 1791489484.5,
+      "row_age_s": 143.7,
+      "move_after_target_s": 144.2,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489484,
+        "start_ts": 1791489484.0,
+        "end_ts": 1791489485.0
+      },
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901746,
+        "ts": 1791489484.5,
+        "context_id_bin": "01a11d178dae1454bdb22b390eef62e9"
+      }
+    },
+    {
+      "arm": "BD-JOIN",
+      "trial": 2,
+      "variant": "JOIN",
+      "cover_context": "01a11d178dae1454",
+      "reserved_state_id": 901747,
+      "prepare_ts": 1791489496.9811301,
+      "target_second": 1791489483,
+      "reserved_within_late_bound_s": 14.0,
+      "strategy": "reserved-key backdating (JOIN): key reserved near the empty second, forged unlock moved in >= 130s later",
+      "move_ts": 1791489629.4688635,
+      "forged_row_ts": 1791489483.5,
+      "row_age_s": 146.0,
+      "move_after_target_s": 146.5,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489483,
+        "start_ts": 1791489483.0,
+        "end_ts": 1791489484.0
+      },
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901747,
+        "ts": 1791489483.5,
+        "context_id_bin": "01a11d178dae1454bdb22b390eef62e9"
+      }
+    },
+    {
+      "arm": "BD-JOIN",
+      "trial": 3,
+      "variant": "JOIN",
+      "cover_context": "01a11d178dae1454",
+      "reserved_state_id": 901748,
+      "prepare_ts": 1791489496.983818,
+      "target_second": 1791489482,
+      "reserved_within_late_bound_s": 15.0,
+      "strategy": "reserved-key backdating (JOIN): key reserved near the empty second, forged unlock moved in >= 130s later",
+      "move_ts": 1791489630.5301313,
+      "forged_row_ts": 1791489482.5,
+      "row_age_s": 148.0,
+      "move_after_target_s": 148.5,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489482,
+        "start_ts": 1791489482.0,
+        "end_ts": 1791489483.0
+      },
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901748,
+        "ts": 1791489482.5,
+        "context_id_bin": "01a11d178dae1454bdb22b390eef62e9"
+      }
+    },
+    {
+      "arm": "BD-JOIN",
+      "trial": 4,
+      "variant": "JOIN",
+      "cover_context": "01a11d178dae1454",
+      "reserved_state_id": 901749,
+      "prepare_ts": 1791489496.9857981,
+      "target_second": 1791489481,
+      "reserved_within_late_bound_s": 16.0,
+      "strategy": "reserved-key backdating (JOIN): key reserved near the empty second, forged unlock moved in >= 130s later",
+      "move_ts": 1791489631.5935667,
+      "forged_row_ts": 1791489481.5,
+      "row_age_s": 150.1,
+      "move_after_target_s": 150.6,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489481,
+        "start_ts": 1791489481.0,
+        "end_ts": 1791489482.0
+      },
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901749,
+        "ts": 1791489481.5,
+        "context_id_bin": "01a11d178dae1454bdb22b390eef62e9"
+      }
+    },
+    {
+      "arm": "BD-JOIN",
+      "trial": 5,
+      "variant": "JOIN",
+      "cover_context": "01a11d178dae1454",
+      "reserved_state_id": 901750,
+      "prepare_ts": 1791489496.9878347,
+      "target_second": 1791489480,
+      "reserved_within_late_bound_s": 17.0,
+      "strategy": "reserved-key backdating (JOIN): key reserved near the empty second, forged unlock moved in >= 130s later",
+      "move_ts": 1791489632.6972828,
+      "forged_row_ts": 1791489480.5,
+      "row_age_s": 152.2,
+      "move_after_target_s": 152.7,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489480,
+        "start_ts": 1791489480.0,
+        "end_ts": 1791489481.0
+      },
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901750,
+        "ts": 1791489480.5,
+        "context_id_bin": "01a11d178dae1454bdb22b390eef62e9"
+      }
+    },
+    {
+      "arm": "BD-JOIN",
+      "trial": 6,
+      "variant": "JOIN",
+      "cover_context": "01a11d178dae1454",
+      "reserved_state_id": 901751,
+      "prepare_ts": 1791489497.0026424,
+      "target_second": 1791489479,
+      "reserved_within_late_bound_s": 18.0,
+      "strategy": "reserved-key backdating (JOIN): key reserved near the empty second, forged unlock moved in >= 130s later",
+      "move_ts": 1791489633.747367,
+      "forged_row_ts": 1791489479.5,
+      "row_age_s": 154.2,
+      "move_after_target_s": 154.7,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489479,
+        "start_ts": 1791489479.0,
+        "end_ts": 1791489480.0
+      },
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901751,
+        "ts": 1791489479.5,
+        "context_id_bin": "01a11d178dae1454bdb22b390eef62e9"
+      }
+    },
+    {
+      "arm": "BD-JOIN",
+      "trial": 7,
+      "variant": "JOIN",
+      "cover_context": "01a11d178dae1454",
+      "reserved_state_id": 901752,
+      "prepare_ts": 1791489497.008575,
+      "target_second": 1791489477,
+      "reserved_within_late_bound_s": 20.0,
+      "strategy": "reserved-key backdating (JOIN): key reserved near the empty second, forged unlock moved in >= 130s later",
+      "move_ts": 1791489634.810735,
+      "forged_row_ts": 1791489477.5,
+      "row_age_s": 157.3,
+      "move_after_target_s": 157.8,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489477,
+        "start_ts": 1791489477.0,
+        "end_ts": 1791489478.0
+      },
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901752,
+        "ts": 1791489477.5,
+        "context_id_bin": "01a11d178dae1454bdb22b390eef62e9"
+      }
+    },
+    {
+      "arm": "BD-JOIN",
+      "trial": 8,
+      "variant": "JOIN",
+      "cover_context": "01a11d178dae1454",
+      "reserved_state_id": 901753,
+      "prepare_ts": 1791489497.0110114,
+      "target_second": 1791489475,
+      "reserved_within_late_bound_s": 22.0,
+      "strategy": "reserved-key backdating (JOIN): key reserved near the empty second, forged unlock moved in >= 130s later",
+      "move_ts": 1791489635.948826,
+      "forged_row_ts": 1791489475.5,
+      "row_age_s": 160.4,
+      "move_after_target_s": 160.9,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489475,
+        "start_ts": 1791489475.0,
+        "end_ts": 1791489476.0
+      },
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901753,
+        "ts": 1791489475.5,
+        "context_id_bin": "01a11d178dae1454bdb22b390eef62e9"
+      }
+    },
+    {
+      "arm": "BD-JOIN",
+      "trial": 9,
+      "variant": "JOIN",
+      "cover_context": "01a11d178dae1454",
+      "reserved_state_id": 901754,
+      "prepare_ts": 1791489497.0167356,
+      "target_second": 1791489474,
+      "reserved_within_late_bound_s": 23.0,
+      "strategy": "reserved-key backdating (JOIN): key reserved near the empty second, forged unlock moved in >= 130s later",
+      "move_ts": 1791489637.0705597,
+      "forged_row_ts": 1791489474.5,
+      "row_age_s": 162.6,
+      "move_after_target_s": 163.1,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489474,
+        "start_ts": 1791489474.0,
+        "end_ts": 1791489475.0
+      },
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 901754,
+        "ts": 1791489474.5,
+        "context_id_bin": "01a11d178dae1454bdb22b390eef62e9"
+      }
+    },
+    {
+      "arm": "BD-GAP",
+      "trial": 0,
+      "variant": "GAP",
+      "cover_context": "01a11d19c5b3ae44",
+      "reserved_state_id": 902313,
+      "prepare_ts": 1791489638.321332,
+      "target_second": 1791489628,
+      "reserved_within_late_bound_s": 10.3,
+      "strategy": "reserved-key backdating (GAP): key reserved near the empty second, forged unlock moved in >= 130s later",
+      "move_ts": 1791489768.4223669,
+      "forged_row_ts": 1791489628.5,
+      "row_age_s": 139.9,
+      "move_after_target_s": 140.4,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489628,
+        "start_ts": 1791489628.0,
+        "end_ts": 1791489629.0
+      },
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 902313,
+        "ts": 1791489628.5,
+        "context_id_bin": "01a11d19c5b3ae443196b4ede8e51e2d"
+      }
+    },
+    {
+      "arm": "BD-GAP",
+      "trial": 1,
+      "variant": "GAP",
+      "cover_context": "01a11d19c5b3ae44",
+      "reserved_state_id": 903313,
+      "prepare_ts": 1791489638.3341928,
+      "target_second": 1791489627,
+      "reserved_within_late_bound_s": 11.3,
+      "strategy": "reserved-key backdating (GAP): key reserved near the empty second, forged unlock moved in >= 130s later",
+      "move_ts": 1791489769.5695782,
+      "forged_row_ts": 1791489627.5,
+      "row_age_s": 142.1,
+      "move_after_target_s": 142.6,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489627,
+        "start_ts": 1791489627.0,
+        "end_ts": 1791489628.0
+      },
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 903313,
+        "ts": 1791489627.5,
+        "context_id_bin": "01a11d19c5b3ae443196b4ede8e51e2d"
+      }
+    },
+    {
+      "arm": "BD-GAP",
+      "trial": 2,
+      "variant": "GAP",
+      "cover_context": "01a11d19c5b3ae44",
+      "reserved_state_id": 904313,
+      "prepare_ts": 1791489638.3441207,
+      "target_second": 1791489626,
+      "reserved_within_late_bound_s": 12.3,
+      "strategy": "reserved-key backdating (GAP): key reserved near the empty second, forged unlock moved in >= 130s later",
+      "move_ts": 1791489770.6594672,
+      "forged_row_ts": 1791489626.5,
+      "row_age_s": 144.2,
+      "move_after_target_s": 144.7,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489626,
+        "start_ts": 1791489626.0,
+        "end_ts": 1791489627.0
+      },
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 904313,
+        "ts": 1791489626.5,
+        "context_id_bin": "01a11d19c5b3ae443196b4ede8e51e2d"
+      }
+    },
+    {
+      "arm": "BD-GAP",
+      "trial": 3,
+      "variant": "GAP",
+      "cover_context": "01a11d19c5b3ae44",
+      "reserved_state_id": 905313,
+      "prepare_ts": 1791489638.35146,
+      "target_second": 1791489625,
+      "reserved_within_late_bound_s": 13.4,
+      "strategy": "reserved-key backdating (GAP): key reserved near the empty second, forged unlock moved in >= 130s later",
+      "move_ts": 1791489771.7600226,
+      "forged_row_ts": 1791489625.5,
+      "row_age_s": 146.3,
+      "move_after_target_s": 146.8,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489625,
+        "start_ts": 1791489625.0,
+        "end_ts": 1791489626.0
+      },
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 905313,
+        "ts": 1791489625.5,
+        "context_id_bin": "01a11d19c5b3ae443196b4ede8e51e2d"
+      }
+    },
+    {
+      "arm": "BD-GAP",
+      "trial": 4,
+      "variant": "GAP",
+      "cover_context": "01a11d19c5b3ae44",
+      "reserved_state_id": 906313,
+      "prepare_ts": 1791489638.3590546,
+      "target_second": 1791489624,
+      "reserved_within_late_bound_s": 14.4,
+      "strategy": "reserved-key backdating (GAP): key reserved near the empty second, forged unlock moved in >= 130s later",
+      "move_ts": 1791489773.3530283,
+      "forged_row_ts": 1791489624.5,
+      "row_age_s": 148.9,
+      "move_after_target_s": 149.4,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489624,
+        "start_ts": 1791489624.0,
+        "end_ts": 1791489625.0
+      },
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 906313,
+        "ts": 1791489624.5,
+        "context_id_bin": "01a11d19c5b3ae443196b4ede8e51e2d"
+      }
+    },
+    {
+      "arm": "BD-GAP",
+      "trial": 5,
+      "variant": "GAP",
+      "cover_context": "01a11d19c5b3ae44",
+      "reserved_state_id": 907313,
+      "prepare_ts": 1791489638.3701043,
+      "target_second": 1791489622,
+      "reserved_within_late_bound_s": 16.4,
+      "strategy": "reserved-key backdating (GAP): key reserved near the empty second, forged unlock moved in >= 130s later",
+      "move_ts": 1791489774.4149063,
+      "forged_row_ts": 1791489622.5,
+      "row_age_s": 151.9,
+      "move_after_target_s": 152.4,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489622,
+        "start_ts": 1791489622.0,
+        "end_ts": 1791489623.0
+      },
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 907313,
+        "ts": 1791489622.5,
+        "context_id_bin": "01a11d19c5b3ae443196b4ede8e51e2d"
+      }
+    },
+    {
+      "arm": "BD-GAP",
+      "trial": 6,
+      "variant": "GAP",
+      "cover_context": "01a11d19c5b3ae44",
+      "reserved_state_id": 908313,
+      "prepare_ts": 1791489638.3793283,
+      "target_second": 1791489621,
+      "reserved_within_late_bound_s": 17.4,
+      "strategy": "reserved-key backdating (GAP): key reserved near the empty second, forged unlock moved in >= 130s later",
+      "move_ts": 1791489775.4898758,
+      "forged_row_ts": 1791489621.5,
+      "row_age_s": 154.0,
+      "move_after_target_s": 154.5,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489621,
+        "start_ts": 1791489621.0,
+        "end_ts": 1791489622.0
+      },
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 908313,
+        "ts": 1791489621.5,
+        "context_id_bin": "01a11d19c5b3ae443196b4ede8e51e2d"
+      }
+    },
+    {
+      "arm": "BD-GAP",
+      "trial": 7,
+      "variant": "GAP",
+      "cover_context": "01a11d19c5b3ae44",
+      "reserved_state_id": 909313,
+      "prepare_ts": 1791489638.3921828,
+      "target_second": 1791489619,
+      "reserved_within_late_bound_s": 19.4,
+      "strategy": "reserved-key backdating (GAP): key reserved near the empty second, forged unlock moved in >= 130s later",
+      "move_ts": 1791489776.5439668,
+      "forged_row_ts": 1791489619.5,
+      "row_age_s": 157.0,
+      "move_after_target_s": 157.5,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489619,
+        "start_ts": 1791489619.0,
+        "end_ts": 1791489620.0
+      },
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 909313,
+        "ts": 1791489619.5,
+        "context_id_bin": "01a11d19c5b3ae443196b4ede8e51e2d"
+      }
+    },
+    {
+      "arm": "BD-GAP",
+      "trial": 8,
+      "variant": "GAP",
+      "cover_context": "01a11d19c5b3ae44",
+      "reserved_state_id": 910313,
+      "prepare_ts": 1791489638.408465,
+      "target_second": 1791489618,
+      "reserved_within_late_bound_s": 20.4,
+      "strategy": "reserved-key backdating (GAP): key reserved near the empty second, forged unlock moved in >= 130s later",
+      "move_ts": 1791489777.6033528,
+      "forged_row_ts": 1791489618.5,
+      "row_age_s": 159.1,
+      "move_after_target_s": 159.6,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489618,
+        "start_ts": 1791489618.0,
+        "end_ts": 1791489619.0
+      },
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 910313,
+        "ts": 1791489618.5,
+        "context_id_bin": "01a11d19c5b3ae443196b4ede8e51e2d"
+      }
+    },
+    {
+      "arm": "BD-GAP",
+      "trial": 9,
+      "variant": "GAP",
+      "cover_context": "01a11d19c5b3ae44",
+      "reserved_state_id": 911313,
+      "prepare_ts": 1791489638.414587,
+      "target_second": 1791489617,
+      "reserved_within_late_bound_s": 21.4,
+      "strategy": "reserved-key backdating (GAP): key reserved near the empty second, forged unlock moved in >= 130s later",
+      "move_ts": 1791489778.7162611,
+      "forged_row_ts": 1791489617.5,
+      "row_age_s": 161.2,
+      "move_after_target_s": 161.7,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1791489617,
+        "start_ts": 1791489617.0,
+        "end_ts": 1791489618.0
+      },
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 911313,
+        "ts": 1791489617.5,
+        "context_id_bin": "01a11d19c5b3ae443196b4ede8e51e2d"
+      }
+    },
+    {
+      "arm": "STALL",
+      "trial": 0,
+      "strategy": "N reconnecting slow connections hold the anchor under load across the seal of the edited row's second; the row is edited after its second is anchored, then released",
+      "row_before": {
+        "state_id": 911870,
+        "ts": 1791489782.846559,
+        "context_id_bin": "01a11d1cb43ae0d6c816f9d5d9bab510",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T20:03:02.846559+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "judged_row": {
+        "state_id": 911870,
+        "ts": 1791489782.846559,
+        "context_id_bin": "01a11d1c36a039ab5ec311e21cbc2dbe",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T20:03:02.846559+00:00",
+      "edited_second": 1791489782,
+      "laundered_state_ids": [
+        911870
+      ],
+      "deleted_event_ids": [
+        505443
+      ],
+      "deleted_event_seconds": [
+        1791489782
+      ],
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "db_writes": 2,
+      "cover_context": "01a11d1c36a039ab",
+      "n_connections": 8,
+      "stall_s_requested": 40.0,
+      "seal_wait_s": 25.0,
+      "anchor_target": "anchor-clo:9900",
+      "stall_window": {
+        "start_ts": 1791489783.8666687,
+        "seal_wait_s": 25.0,
+        "edit_ts": 1791489808.9130952,
+        "release_ts": 1791489812.918835,
+        "covered_s": 29.05
+      },
+      "connections": [
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        }
+      ],
+      "connections_opened_total": 24,
+      "connections_cut_by_server": 16,
+      "anchor_head_probes_during_stall": [
+        {
+          "t": 5.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 2.4
+        },
+        {
+          "t": 10.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 10.1
+        },
+        {
+          "t": 15.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 7.6
+        },
+        {
+          "t": 20.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 2.3
+        },
+        {
+          "t": 25.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 2.2
+        }
+      ],
+      "anchor_responsive_during_stall": true,
+      "edited_after_anchoring": "sealed_during_stall"
+    },
+    {
+      "arm": "STALL",
+      "trial": 1,
+      "strategy": "N reconnecting slow connections hold the anchor under load across the seal of the edited row's second; the row is edited after its second is anchored, then released",
+      "row_before": {
+        "state_id": 911886,
+        "ts": 1791489818.9404688,
+        "context_id_bin": "01a11d1d41366126f8b5929caceda11b",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T20:03:38.940469+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "judged_row": {
+        "state_id": 911886,
+        "ts": 1791489818.9404688,
+        "context_id_bin": "01a11d1c36a039ab5ec311e21cbc2dbe",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T20:03:38.940469+00:00",
+      "edited_second": 1791489818,
+      "laundered_state_ids": [
+        911886
+      ],
+      "deleted_event_ids": [
+        505453
+      ],
+      "deleted_event_seconds": [
+        1791489818
+      ],
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "db_writes": 2,
+      "cover_context": "01a11d1c36a039ab",
+      "n_connections": 8,
+      "stall_s_requested": 40.0,
+      "seal_wait_s": 25.0,
+      "anchor_target": "anchor-clo:9900",
+      "stall_window": {
+        "start_ts": 1791489820.015282,
+        "seal_wait_s": 25.0,
+        "edit_ts": 1791489845.08914,
+        "release_ts": 1791489848.2801945,
+        "covered_s": 28.26
+      },
+      "connections": [
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        }
+      ],
+      "connections_opened_total": 24,
+      "connections_cut_by_server": 16,
+      "anchor_head_probes_during_stall": [
+        {
+          "t": 5.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 2.3
+        },
+        {
+          "t": 10.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 22.5
+        },
+        {
+          "t": 15.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 3.4
+        },
+        {
+          "t": 20.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 8.0
+        },
+        {
+          "t": 25.1,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 7.7
+        }
+      ],
+      "anchor_responsive_during_stall": true,
+      "edited_after_anchoring": "sealed_during_stall"
+    },
+    {
+      "arm": "STALL",
+      "trial": 2,
+      "strategy": "N reconnecting slow connections hold the anchor under load across the seal of the edited row's second; the row is edited after its second is anchored, then released",
+      "row_before": {
+        "state_id": 911886,
+        "ts": 1791489818.9404688,
+        "context_id_bin": "01a11d1c36a039ab5ec311e21cbc2dbe",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T20:04:14.294701+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "judged_row": {
+        "state_id": 911903,
+        "ts": 1791489854.294701,
+        "context_id_bin": "01a11d1d98d577ad4370f9ade1d66553",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T20:04:14.294701+00:00",
+      "edited_second": 1791489854,
+      "laundered_state_ids": [
+        911857,
+        911858,
+        911861,
+        911870,
+        911886,
+        911903
+      ],
+      "deleted_event_ids": [
+        505435,
+        505436,
+        505437
+      ],
+      "deleted_event_seconds": [
+        1791489750,
+        1791489750,
+        1791489758
+      ],
+      "operations_used": {
+        "delete": 3,
+        "reattach": 6,
+        "inject": 0
+      },
+      "db_writes": 9,
+      "cover_context": "01a11d1d98d577ad",
+      "n_connections": 8,
+      "stall_s_requested": 40.0,
+      "seal_wait_s": 25.0,
+      "anchor_target": "anchor-clo:9900",
+      "stall_window": {
+        "start_ts": 1791489855.3181734,
+        "seal_wait_s": 25.0,
+        "edit_ts": 1791489880.3697069,
+        "release_ts": 1791489883.4685762,
+        "covered_s": 28.15
+      },
+      "connections": [
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        }
+      ],
+      "connections_opened_total": 24,
+      "connections_cut_by_server": 16,
+      "anchor_head_probes_during_stall": [
+        {
+          "t": 5.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 2.1
+        },
+        {
+          "t": 10.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 7.3
+        },
+        {
+          "t": 15.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 1.6
+        },
+        {
+          "t": 20.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 8.4
+        },
+        {
+          "t": 25.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 1.8
+        }
+      ],
+      "anchor_responsive_during_stall": true,
+      "edited_after_anchoring": "sealed_during_stall"
+    },
+    {
+      "arm": "STALL",
+      "trial": 3,
+      "strategy": "N reconnecting slow connections hold the anchor under load across the seal of the edited row's second; the row is edited after its second is anchored, then released",
+      "row_before": {
+        "state_id": 911915,
+        "ts": 1791489889.4843755,
+        "context_id_bin": "01a11d1e54cbf7acbd9f1c26fdfd7c4e",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T20:04:49.484375+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "judged_row": {
+        "state_id": 911915,
+        "ts": 1791489889.4843755,
+        "context_id_bin": "01a11d1d98d577ad4370f9ade1d66553",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T20:04:49.484375+00:00",
+      "edited_second": 1791489889,
+      "laundered_state_ids": [
+        911915
+      ],
+      "deleted_event_ids": [
+        505469
+      ],
+      "deleted_event_seconds": [
+        1791489889
+      ],
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "db_writes": 2,
+      "cover_context": "01a11d1d98d577ad",
+      "n_connections": 8,
+      "stall_s_requested": 40.0,
+      "seal_wait_s": 25.0,
+      "anchor_target": "anchor-clo:9900",
+      "stall_window": {
+        "start_ts": 1791489890.690453,
+        "seal_wait_s": 25.0,
+        "edit_ts": 1791489915.8780603,
+        "release_ts": 1791489918.9250576,
+        "covered_s": 28.23
+      },
+      "connections": [
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        }
+      ],
+      "connections_opened_total": 24,
+      "connections_cut_by_server": 16,
+      "anchor_head_probes_during_stall": [
+        {
+          "t": 5.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 4.1
+        },
+        {
+          "t": 10.2,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 5.0
+        },
+        {
+          "t": 15.2,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 4.1
+        },
+        {
+          "t": 20.2,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 2.3
+        },
+        {
+          "t": 25.2,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 6.2
+        }
+      ],
+      "anchor_responsive_during_stall": true,
+      "edited_after_anchoring": "sealed_during_stall"
+    },
+    {
+      "arm": "STALL",
+      "trial": 4,
+      "strategy": "N reconnecting slow connections hold the anchor under load across the seal of the edited row's second; the row is edited after its second is anchored, then released",
+      "row_before": {
+        "state_id": 911934,
+        "ts": 1791489924.9393,
+        "context_id_bin": "01a11d1edf48f94b540f8fe127d9e47a",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T20:05:24.939300+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "judged_row": {
+        "state_id": 911934,
+        "ts": 1791489924.9393,
+        "context_id_bin": "01a11d1d98d577ad4370f9ade1d66553",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T20:05:24.939300+00:00",
+      "edited_second": 1791489924,
+      "laundered_state_ids": [
+        911934
+      ],
+      "deleted_event_ids": [
+        505482
+      ],
+      "deleted_event_seconds": [
+        1791489924
+      ],
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "db_writes": 2,
+      "cover_context": "01a11d1d98d577ad",
+      "n_connections": 8,
+      "stall_s_requested": 40.0,
+      "seal_wait_s": 25.0,
+      "anchor_target": "anchor-clo:9900",
+      "stall_window": {
+        "start_ts": 1791489925.976672,
+        "seal_wait_s": 25.0,
+        "edit_ts": 1791489951.0360408,
+        "release_ts": 1791489955.0348704,
+        "covered_s": 29.06
+      },
+      "connections": [
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        }
+      ],
+      "connections_opened_total": 24,
+      "connections_cut_by_server": 16,
+      "anchor_head_probes_during_stall": [
+        {
+          "t": 5.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 4.2
+        },
+        {
+          "t": 10.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 10.2
+        },
+        {
+          "t": 15.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 1.9
+        },
+        {
+          "t": 20.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 8.5
+        },
+        {
+          "t": 25.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 4.4
+        }
+      ],
+      "anchor_responsive_during_stall": true,
+      "edited_after_anchoring": "sealed_during_stall"
+    },
+    {
+      "arm": "STALL",
+      "trial": 5,
+      "strategy": "N reconnecting slow connections hold the anchor under load across the seal of the edited row's second; the row is edited after its second is anchored, then released",
+      "row_before": {
+        "state_id": 911949,
+        "ts": 1791489961.054406,
+        "context_id_bin": "01a11d1f6c5b30776b6cc7b7f7806237",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T20:06:01.054406+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "judged_row": {
+        "state_id": 911949,
+        "ts": 1791489961.054406,
+        "context_id_bin": "01a11d1f269d78b151dfd33b31f0bce1",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T20:06:01.054406+00:00",
+      "edited_second": 1791489961,
+      "laundered_state_ids": [
+        911949
+      ],
+      "deleted_event_ids": [
+        505490
+      ],
+      "deleted_event_seconds": [
+        1791489961
+      ],
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "db_writes": 2,
+      "cover_context": "01a11d1f269d78b1",
+      "n_connections": 8,
+      "stall_s_requested": 40.0,
+      "seal_wait_s": 25.0,
+      "anchor_target": "anchor-clo:9900",
+      "stall_window": {
+        "start_ts": 1791489962.4781642,
+        "seal_wait_s": 25.0,
+        "edit_ts": 1791489987.533377,
+        "release_ts": 1791489991.5311275,
+        "covered_s": 29.05
+      },
+      "connections": [
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        }
+      ],
+      "connections_opened_total": 24,
+      "connections_cut_by_server": 16,
+      "anchor_head_probes_during_stall": [
+        {
+          "t": 5.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 3.8
+        },
+        {
+          "t": 10.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 2.2
+        },
+        {
+          "t": 15.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 16.3
+        },
+        {
+          "t": 20.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 10.2
+        },
+        {
+          "t": 25.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 4.5
+        }
+      ],
+      "anchor_responsive_during_stall": true,
+      "edited_after_anchoring": "sealed_during_stall"
+    },
+    {
+      "arm": "STALL",
+      "trial": 6,
+      "strategy": "N reconnecting slow connections hold the anchor under load across the seal of the edited row's second; the row is edited after its second is anchored, then released",
+      "row_before": {
+        "state_id": 911963,
+        "ts": 1791489997.5376227,
+        "context_id_bin": "01a11d1ffae0ca6657922c626f74c55c",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T20:06:37.537623+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "judged_row": {
+        "state_id": 911963,
+        "ts": 1791489997.5376227,
+        "context_id_bin": "01a11d1fe36d30cd66bfabfe96eb5060",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T20:06:37.537623+00:00",
+      "edited_second": 1791489997,
+      "laundered_state_ids": [
+        911963
+      ],
+      "deleted_event_ids": [
+        505498
+      ],
+      "deleted_event_seconds": [
+        1791489997
+      ],
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "db_writes": 2,
+      "cover_context": "01a11d1fe36d30cd",
+      "n_connections": 8,
+      "stall_s_requested": 40.0,
+      "seal_wait_s": 25.0,
+      "anchor_target": "anchor-clo:9900",
+      "stall_window": {
+        "start_ts": 1791489998.5712676,
+        "seal_wait_s": 25.0,
+        "edit_ts": 1791490023.6190398,
+        "release_ts": 1791490026.7647097,
+        "covered_s": 28.19
+      },
+      "connections": [
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        }
+      ],
+      "connections_opened_total": 24,
+      "connections_cut_by_server": 16,
+      "anchor_head_probes_during_stall": [
+        {
+          "t": 5.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 1.7
+        },
+        {
+          "t": 10.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 7.8
+        },
+        {
+          "t": 15.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 3.0
+        },
+        {
+          "t": 20.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 1.7
+        },
+        {
+          "t": 25.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 2.2
+        }
+      ],
+      "anchor_responsive_during_stall": true,
+      "edited_after_anchoring": "sealed_during_stall"
+    },
+    {
+      "arm": "STALL",
+      "trial": 7,
+      "strategy": "N reconnecting slow connections hold the anchor under load across the seal of the edited row's second; the row is edited after its second is anchored, then released",
+      "row_before": {
+        "state_id": 911977,
+        "ts": 1791490032.7729492,
+        "context_id_bin": "01a11d208483695b85c8d39186fa6560",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T20:07:12.772949+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "judged_row": {
+        "state_id": 911977,
+        "ts": 1791490032.7729492,
+        "context_id_bin": "01a11d207594f7a86d6f59545e9fe07e",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T20:07:12.772949+00:00",
+      "edited_second": 1791490032,
+      "laundered_state_ids": [
+        911977
+      ],
+      "deleted_event_ids": [
+        505506
+      ],
+      "deleted_event_seconds": [
+        1791490032
+      ],
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "db_writes": 2,
+      "cover_context": "01a11d207594f7a8",
+      "n_connections": 8,
+      "stall_s_requested": 40.0,
+      "seal_wait_s": 25.0,
+      "anchor_target": "anchor-clo:9900",
+      "stall_window": {
+        "start_ts": 1791490033.9887657,
+        "seal_wait_s": 25.0,
+        "edit_ts": 1791490059.0457923,
+        "release_ts": 1791490063.04515,
+        "covered_s": 29.06
+      },
+      "connections": [
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        }
+      ],
+      "connections_opened_total": 24,
+      "connections_cut_by_server": 16,
+      "anchor_head_probes_during_stall": [
+        {
+          "t": 5.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 2.8
+        },
+        {
+          "t": 10.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 5.7
+        },
+        {
+          "t": 15.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 2.0
+        },
+        {
+          "t": 20.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 5.2
+        },
+        {
+          "t": 25.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 1.7
+        }
+      ],
+      "anchor_responsive_during_stall": true,
+      "edited_after_anchoring": "sealed_during_stall"
+    },
+    {
+      "arm": "STALL",
+      "trial": 8,
+      "strategy": "N reconnecting slow connections hold the anchor under load across the seal of the edited row's second; the row is edited after its second is anchored, then released",
+      "row_before": {
+        "state_id": 911991,
+        "ts": 1791490069.065459,
+        "context_id_bin": "01a11d211243ef148bf839858e979f25",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T20:07:49.065459+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "judged_row": {
+        "state_id": 911991,
+        "ts": 1791490069.065459,
+        "context_id_bin": "01a11d207594f7a86d6f59545e9fe07e",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T20:07:49.065459+00:00",
+      "edited_second": 1791490069,
+      "laundered_state_ids": [
+        911991
+      ],
+      "deleted_event_ids": [
+        505514
+      ],
+      "deleted_event_seconds": [
+        1791490069
+      ],
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "db_writes": 2,
+      "cover_context": "01a11d207594f7a8",
+      "n_connections": 8,
+      "stall_s_requested": 40.0,
+      "seal_wait_s": 25.0,
+      "anchor_target": "anchor-clo:9900",
+      "stall_window": {
+        "start_ts": 1791490070.1949496,
+        "seal_wait_s": 25.0,
+        "edit_ts": 1791490095.2476802,
+        "release_ts": 1791490099.2481816,
+        "covered_s": 29.05
+      },
+      "connections": [
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        }
+      ],
+      "connections_opened_total": 24,
+      "connections_cut_by_server": 16,
+      "anchor_head_probes_during_stall": [
+        {
+          "t": 5.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 5.8
+        },
+        {
+          "t": 10.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 2.9
+        },
+        {
+          "t": 15.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 5.1
+        },
+        {
+          "t": 20.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 3.0
+        },
+        {
+          "t": 25.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 9.8
+        }
+      ],
+      "anchor_responsive_during_stall": true,
+      "edited_after_anchoring": "sealed_during_stall"
+    },
+    {
+      "arm": "STALL",
+      "trial": 9,
+      "strategy": "N reconnecting slow connections hold the anchor under load across the seal of the edited row's second; the row is edited after its second is anchored, then released",
+      "row_before": {
+        "state_id": 911991,
+        "ts": 1791490069.065459,
+        "context_id_bin": "01a11d207594f7a86d6f59545e9fe07e",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T20:08:25.275082+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "judged_row": {
+        "state_id": 912011,
+        "ts": 1791490105.2750819,
+        "context_id_bin": "01a11d21979fb92b3300974bfc2a5861",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T20:08:25.275082+00:00",
+      "edited_second": 1791490105,
+      "laundered_state_ids": [
+        911973,
+        911974,
+        911977,
+        911979,
+        911991,
+        912011
+      ],
+      "deleted_event_ids": [
+        505503,
+        505504,
+        505507
+      ],
+      "deleted_event_seconds": [
+        1791490028,
+        1791490028,
+        1791490036
+      ],
+      "operations_used": {
+        "delete": 3,
+        "reattach": 6,
+        "inject": 0
+      },
+      "db_writes": 9,
+      "cover_context": "01a11d21979fb92b",
+      "n_connections": 8,
+      "stall_s_requested": 40.0,
+      "seal_wait_s": 25.0,
+      "anchor_target": "anchor-clo:9900",
+      "stall_window": {
+        "start_ts": 1791490106.3255942,
+        "seal_wait_s": 25.0,
+        "edit_ts": 1791490131.4043977,
+        "release_ts": 1791490134.4381804,
+        "covered_s": 28.11
+      },
+      "connections": [
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        },
+        {
+          "opened": 3,
+          "cut_by_server": 2,
+          "open_errors": 0
+        }
+      ],
+      "connections_opened_total": 24,
+      "connections_cut_by_server": 16,
+      "anchor_head_probes_during_stall": [
+        {
+          "t": 5.0,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 7.0
+        },
+        {
+          "t": 10.1,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 3.9
+        },
+        {
+          "t": 15.1,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 2.5
+        },
+        {
+          "t": 20.1,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 5.0
+        },
+        {
+          "t": 25.1,
+          "ok": true,
+          "status": "HTTP/1.0 200 OK",
+          "ms": 1.8
+        }
+      ],
+      "anchor_responsive_during_stall": true,
+      "edited_after_anchoring": "sealed_during_stall"
+    },
+    {
+      "arm": "OUTAGE",
+      "trial": 0,
+      "simulated_outage": true,
+      "strategy": "run script pauses this run's e7 anchor while the monitor seals (freezes) the edited row's second; the row is edited during the outage; the frozen root is anchored on unpause",
+      "row_before": {
+        "state_id": 912011,
+        "ts": 1791490105.2750819,
+        "context_id_bin": "01a11d21979fb92b3300974bfc2a5861",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T20:09:02.467709+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "judged_row": {
+        "state_id": 912034,
+        "ts": 1791490142.4677093,
+        "context_id_bin": "01a11d21d2c96097761b44e731ebaf21",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T20:09:02.467709+00:00",
+      "edited_second": 1791490142,
+      "laundered_state_ids": [
+        911973,
+        911974,
+        911977,
+        911979,
+        911991,
+        912009,
+        912010,
+        912011,
+        912017,
+        912034
+      ],
+      "deleted_event_ids": [
+        505523,
+        505524,
+        505528
+      ],
+      "deleted_event_seconds": [
+        1791490103,
+        1791490103,
+        1791490112
+      ],
+      "operations_used": {
+        "delete": 3,
+        "reattach": 10,
+        "inject": 0
+      },
+      "db_writes": 13,
+      "cover_context": "01a11d21d2c96097",
+      "outage_window": {
+        "pause_seen_ts": 1791490142.4666758,
+        "edit_ts": 1791490168.8142257,
+        "seal_wait_s": 25.0
+      },
+      "edited_after_anchoring": "frozen_during_outage"
+    },
+    {
+      "arm": "OUTAGE",
+      "trial": 1,
+      "simulated_outage": true,
+      "strategy": "run script pauses this run's e7 anchor while the monitor seals (freezes) the edited row's second; the row is edited during the outage; the frozen root is anchored on unpause",
+      "row_before": {
+        "state_id": 912070,
+        "ts": 1791490236.003783,
+        "context_id_bin": "01a11d239e582bc62ecf94dda1a563ee",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T20:10:36.003783+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "judged_row": {
+        "state_id": 912070,
+        "ts": 1791490236.003783,
+        "context_id_bin": "01a11d22e8f78b35224bbcf3204deda4",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T20:10:36.003783+00:00",
+      "edited_second": 1791490236,
+      "laundered_state_ids": [
+        912070
+      ],
+      "deleted_event_ids": [
+        505557
+      ],
+      "deleted_event_seconds": [
+        1791490235
+      ],
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "db_writes": 2,
+      "cover_context": "01a11d22e8f78b35",
+      "outage_window": {
+        "pause_seen_ts": 1791490235.9919605,
+        "edit_ts": 1791490262.1236458,
+        "seal_wait_s": 25.0
+      },
+      "edited_after_anchoring": "frozen_during_outage"
+    },
+    {
+      "arm": "OUTAGE",
+      "trial": 2,
+      "simulated_outage": true,
+      "strategy": "run script pauses this run's e7 anchor while the monitor seals (freezes) the edited row's second; the row is edited during the outage; the frozen root is anchored on unpause",
+      "row_before": {
+        "state_id": 912107,
+        "ts": 1791490331.3582044,
+        "context_id_bin": "01a11d2512dda0c0d7df9c7e5b65b4b6",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T20:12:11.358204+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "judged_row": {
+        "state_id": 912107,
+        "ts": 1791490331.3582044,
+        "context_id_bin": "01a11d250fbfea54f9910de1116a4ff6",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T20:12:11.358204+00:00",
+      "edited_second": 1791490331,
+      "laundered_state_ids": [
+        912107
+      ],
+      "deleted_event_ids": [
+        505577
+      ],
+      "deleted_event_seconds": [
+        1791490331
+      ],
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "db_writes": 2,
+      "cover_context": "01a11d250fbfea54",
+      "outage_window": {
+        "pause_seen_ts": 1791490331.3573022,
+        "edit_ts": 1791490357.384122,
+        "seal_wait_s": 25.0
+      },
+      "edited_after_anchoring": "frozen_during_outage"
+    },
+    {
+      "arm": "OUTAGE",
+      "trial": 3,
+      "simulated_outage": true,
+      "strategy": "run script pauses this run's e7 anchor while the monitor seals (freezes) the edited row's second; the row is edited during the outage; the frozen root is anchored on unpause",
+      "row_before": {
+        "state_id": 912142,
+        "ts": 1791490428.5586317,
+        "context_id_bin": "01a11d268e8c1ab7258b6ad2a09fc86a",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T20:13:48.558632+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "judged_row": {
+        "state_id": 912142,
+        "ts": 1791490428.5586317,
+        "context_id_bin": "01a11d25c8faa40006edd6166ce34634",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T20:13:48.558632+00:00",
+      "edited_second": 1791490428,
+      "laundered_state_ids": [
+        912142
+      ],
+      "deleted_event_ids": [
+        505595
+      ],
+      "deleted_event_seconds": [
+        1791490428
+      ],
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "db_writes": 2,
+      "cover_context": "01a11d25c8faa400",
+      "outage_window": {
+        "pause_seen_ts": 1791490428.5563645,
+        "edit_ts": 1791490454.5900192,
+        "seal_wait_s": 25.0
+      },
+      "edited_after_anchoring": "frozen_during_outage"
+    },
+    {
+      "arm": "OUTAGE",
+      "trial": 4,
+      "simulated_outage": true,
+      "strategy": "run script pauses this run's e7 anchor while the monitor seals (freezes) the edited row's second; the row is edited during the outage; the frozen root is anchored on unpause",
+      "row_before": {
+        "state_id": 912180,
+        "ts": 1791490525.825338,
+        "context_id_bin": "01a11d280a8045d9d7c24d18be73cd06",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T20:15:25.825338+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "judged_row": {
+        "state_id": 912180,
+        "ts": 1791490525.825338,
+        "context_id_bin": "01a11d28002971ea65a79f64eb3dcf4c",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T20:15:25.825338+00:00",
+      "edited_second": 1791490525,
+      "laundered_state_ids": [
+        912180
+      ],
+      "deleted_event_ids": [
+        505617
+      ],
+      "deleted_event_seconds": [
+        1791490525
+      ],
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "db_writes": 2,
+      "cover_context": "01a11d28002971ea",
+      "outage_window": {
+        "pause_seen_ts": 1791490525.8240736,
+        "edit_ts": 1791490551.8733988,
+        "seal_wait_s": 25.0
+      },
+      "edited_after_anchoring": "frozen_during_outage"
+    },
+    {
+      "arm": "OUTAGE",
+      "trial": 5,
+      "simulated_outage": true,
+      "strategy": "run script pauses this run's e7 anchor while the monitor seals (freezes) the edited row's second; the row is edited during the outage; the frozen root is anchored on unpause",
+      "row_before": {
+        "state_id": 912216,
+        "ts": 1791490621.267619,
+        "context_id_bin": "01a11d297f517a4b1cf031c9382fdd8c",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T20:17:01.267619+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "judged_row": {
+        "state_id": 912216,
+        "ts": 1791490621.267619,
+        "context_id_bin": "01a11d2961822f65c0a6928823c6fdb3",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T20:17:01.267619+00:00",
+      "edited_second": 1791490621,
+      "laundered_state_ids": [
+        912216
+      ],
+      "deleted_event_ids": [
+        505636
+      ],
+      "deleted_event_seconds": [
+        1791490621
+      ],
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "db_writes": 2,
+      "cover_context": "01a11d2961822f65",
+      "outage_window": {
+        "pause_seen_ts": 1791490621.2650573,
+        "edit_ts": 1791490647.3687441,
+        "seal_wait_s": 25.0
+      },
+      "edited_after_anchoring": "frozen_during_outage"
+    },
+    {
+      "arm": "OUTAGE",
+      "trial": 6,
+      "simulated_outage": true,
+      "strategy": "run script pauses this run's e7 anchor while the monitor seals (freezes) the edited row's second; the row is edited during the outage; the frozen root is anchored on unpause",
+      "row_before": {
+        "state_id": 912260,
+        "ts": 1791490718.738748,
+        "context_id_bin": "01a11d2afc104ffe48b12144f345a19d",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T20:18:38.738748+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "judged_row": {
+        "state_id": 912260,
+        "ts": 1791490718.738748,
+        "context_id_bin": "01a11d2ae0ab3e9dd4290b99c0399458",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T20:18:38.738748+00:00",
+      "edited_second": 1791490718,
+      "laundered_state_ids": [
+        912260
+      ],
+      "deleted_event_ids": [
+        505659
+      ],
+      "deleted_event_seconds": [
+        1791490718
+      ],
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "db_writes": 2,
+      "cover_context": "01a11d2ae0ab3e9d",
+      "outage_window": {
+        "pause_seen_ts": 1791490718.736884,
+        "edit_ts": 1791490744.8011348,
+        "seal_wait_s": 25.0
+      },
+      "edited_after_anchoring": "frozen_during_outage"
+    },
+    {
+      "arm": "OUTAGE",
+      "trial": 7,
+      "simulated_outage": true,
+      "strategy": "run script pauses this run's e7 anchor while the monitor seals (freezes) the edited row's second; the row is edited during the outage; the frozen root is anchored on unpause",
+      "row_before": {
+        "state_id": 912294,
+        "ts": 1791490814.0719829,
+        "context_id_bin": "01a11d2c7077275955694c8eb3f67eff",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T20:20:14.071983+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "judged_row": {
+        "state_id": 912294,
+        "ts": 1791490814.0719829,
+        "context_id_bin": "01a11d2c45e9dc09e18d0289c7667bbd",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T20:20:14.071983+00:00",
+      "edited_second": 1791490814,
+      "laundered_state_ids": [
+        912294
+      ],
+      "deleted_event_ids": [
+        505678
+      ],
+      "deleted_event_seconds": [
+        1791490814
+      ],
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "db_writes": 2,
+      "cover_context": "01a11d2c45e9dc09",
+      "outage_window": {
+        "pause_seen_ts": 1791490814.0711389,
+        "edit_ts": 1791490840.1375394,
+        "seal_wait_s": 25.0
+      },
+      "edited_after_anchoring": "frozen_during_outage"
+    },
+    {
+      "arm": "OUTAGE",
+      "trial": 8,
+      "simulated_outage": true,
+      "strategy": "run script pauses this run's e7 anchor while the monitor seals (freezes) the edited row's second; the row is edited during the outage; the frozen root is anchored on unpause",
+      "row_before": {
+        "state_id": 912332,
+        "ts": 1791490909.3330765,
+        "context_id_bin": "01a11d2de4930a5ca79783a65607745f",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T20:21:49.333076+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "judged_row": {
+        "state_id": 912332,
+        "ts": 1791490909.3330765,
+        "context_id_bin": "01a11d2cd8869b988930db68fb1178b9",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T20:21:49.333076+00:00",
+      "edited_second": 1791490909,
+      "laundered_state_ids": [
+        912332
+      ],
+      "deleted_event_ids": [
+        505698
+      ],
+      "deleted_event_seconds": [
+        1791490909
+      ],
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "db_writes": 2,
+      "cover_context": "01a11d2cd8869b98",
+      "outage_window": {
+        "pause_seen_ts": 1791490909.3311808,
+        "edit_ts": 1791490935.384371,
+        "seal_wait_s": 25.0
+      },
+      "edited_after_anchoring": "frozen_during_outage"
+    },
+    {
+      "arm": "OUTAGE",
+      "trial": 9,
+      "simulated_outage": true,
+      "strategy": "run script pauses this run's e7 anchor while the monitor seals (freezes) the edited row's second; the row is edited during the outage; the frozen root is anchored on unpause",
+      "row_before": {
+        "state_id": 912368,
+        "ts": 1791491002.5460072,
+        "context_id_bin": "01a11d2f50ac529b52dd6bdc9cadfc78",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": false,
+      "clean_named_user_id": null,
+      "clean_rendered": [
+        {
+          "when": "2026-10-08T20:23:22.546007+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock"
+        }
+      ],
+      "judged_row": {
+        "state_id": 912368,
+        "ts": 1791491002.5460072,
+        "context_id_bin": "01a11d2eaf26e6a8b7ab67d1613f96c7",
+        "context_user_id_bin": null,
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-08T20:23:22.546007+00:00",
+      "edited_second": 1791491002,
+      "laundered_state_ids": [
+        912368
+      ],
+      "deleted_event_ids": [
+        505717
+      ],
+      "deleted_event_seconds": [
+        1791491002
+      ],
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "db_writes": 2,
+      "cover_context": "01a11d2eaf26e6a8",
+      "outage_window": {
+        "pause_seen_ts": 1791491002.540164,
+        "edit_ts": 1791491028.6015003,
+        "seal_wait_s": 25.0
+      },
+      "edited_after_anchoring": "frozen_during_outage"
+    }
+  ],
+  "t_end": 1791491092.8562937
+}

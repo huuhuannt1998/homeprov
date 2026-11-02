@@ -1,0 +1,1396 @@
+{
+ "experiment": "E10: adaptive arms on the stated boundaries of the deployed configuration (backdated insertions inside the late-commit window, deletions inside the observation window, a phase-aware deletion, a reused lower key, deletions around a declared purge, sustained unobservability of the direct-read monitor, the verifier gaps D1-D3 of the formal draft) and routine operations with the monitor live (an upgrade across a recorder schema change, an entity-id rename, a device removal, an entity-history purge, a routine upgrade), on scratch stacks, with the hardened monitor and the patched verifier; review-r5 additions: a 90-trial sham arm (S), hub restarts timed into a monitor poll (R), a benign Domoticz switch-type change (C), pairwise closure mutation with logbook branch coverage (D) and the per-poll cost under a Raspberry Pi 4-class cap (E)",
+ "status": "REGISTERED",
+ "registered_at": "2026-10-20T21:34:16.748849+00:00",
+ "registered_before": "any event of the real run (tag e10_main); smoke runs (prefix e10s/e10u, outputs under HOMEPROV-P13-exp/e10/smoke, never exp/out) precede it and are not results",
+ "approval": {
+  "pi": "2026-10-12, verbatim option label: 'Run E10 after E9 (Recommended)' (drafts/round13/TRIAGE_R4.md, PI answers, item 1: adaptive boundary arms and an upgrade across a recorder schema change, an entity-id rename and a device removal with the monitor live; pre-registered and stamped; after E9 ends)",
+  "lead_scope_2026_10_12": [
+   "SQLite hardening per drafts/round13/r4_sources.md section 9 (trusted_schema, quick_check first, cell_size_check, mmap_size, object types)",
+   "verifier gaps D1-D5 of drafts/round13/FORMAL_DRAFT.md section 6, with arms for D1, D2 (offline collusion) and D3",
+   "capture by context and attack success by the display rule (drafts/round13/R14C_ANALYSIS_NOTES.md items 4, 5)"
+  ],
+  "pi_review_r5": "2026-10-16, verbatim option label: 'Add all (Recommended)' (TDSC_PLAN.md decision log: E10 gains a 90-trial sham arm, a hub restart mid-poll, a Domoticz SwitchType change, a pairwise closure-mutation sample and the cost under a Raspberry Pi 4-class CPU/IO cap)"
+ },
+ "design": {
+  "file": "drafts/round13/E10_DESIGN.md",
+  "sha256": "137f8a5d0a8c1973db007422735fbf3a66c6cdbb79aa19d6e16991e21e271c02"
+ },
+ "addendum_review_r5": {
+  "file": "drafts/round13/E10_ADDENDUM_R5.md",
+  "sha256": "9709aa4a5db4203bc87e2457bb47655bb1e05aa0aa62713f9b19ef11737e763d"
+ },
+ "review_r5_offline_plans": {
+  "D_pairwise": {
+   "generated_by": "exp/stages/e10_pairwise_closure.py make_plan (seed 20261021)",
+   "sha256": "236a44f55239c11ff83fea9e90a1f39f7f78ba673303f0d0a31c790b8fc9fc87",
+   "population": {
+    "W": 10513,
+    "V": 26293,
+    "X": 28230
+   },
+   "units_per_stratum": {
+    "W": 10513,
+    "V": 1000,
+    "X": 1000
+   },
+   "n_v": 1000,
+   "n_x": 1000,
+   "cap_s": 10800.0,
+   "cross_window_s": 300.0,
+   "pristine_sha256": "bff6d538792abec49d57aec5a6612c266faa2863c07b37553b8d2a3865d9055e"
+  },
+  "E_pi4_cost": {
+   "matrix": [
+    "e10pi4_ref_k1_direct_qc720",
+    "e10pi4_ref_k5_direct_qc720",
+    "e10pi4_ref_k15_direct_qc720",
+    "e10pi4_pi4_k1_direct_qc720",
+    "e10pi4_pi4_k5_direct_qc720",
+    "e10pi4_pi4_k15_direct_qc720",
+    "e10pi4_ref_k1_copy_qc1",
+    "e10pi4_pi4_k1_copy_qc1",
+    "e10pi4_pi4cpu_half_k1_direct_qc720",
+    "e10pi4_pi4cpu_eighth_k1_direct_qc720"
+   ],
+   "profiles": {
+    "ref": {
+     "cpus": "1",
+     "memory": "1g",
+     "device_read_bps": "100mb",
+     "device_write_bps": "50mb",
+     "device": "/dev/vda"
+    },
+    "pi4": {
+     "cpus": "0.25",
+     "memory": "512m",
+     "memory_swap": "512m",
+     "device_read_bps": "40mb",
+     "device_write_bps": "10mb",
+     "device_read_iops": "1500",
+     "device_write_iops": "500",
+     "device": "/dev/vda"
+    },
+    "pi4cpu_half": {
+     "cpus": "0.5",
+     "memory": "512m",
+     "memory_swap": "512m",
+     "device_read_bps": "40mb",
+     "device_write_bps": "10mb",
+     "device_read_iops": "1500",
+     "device_write_iops": "500",
+     "device": "/dev/vda"
+    },
+    "pi4cpu_eighth": {
+     "cpus": "0.125",
+     "memory": "512m",
+     "memory_swap": "512m",
+     "device_read_bps": "40mb",
+     "device_write_bps": "10mb",
+     "device_read_iops": "1500",
+     "device_write_iops": "500",
+     "device": "/dev/vda"
+    }
+   },
+   "assumed_values": {
+    "pi4": [
+     "cpus",
+     "memory",
+     "memory_swap",
+     "device_read_bps",
+     "device_write_bps",
+     "device_read_iops",
+     "device_write_iops"
+    ],
+    "pi4cpu_half": "as pi4",
+    "pi4cpu_eighth": "as pi4"
+   },
+   "image": "hpr-monitor:e10"
+  }
+ },
+ "stacks": {
+  "main (e10s)": {
+   "what": "a scratch copy of the lab stack: broker, device simulator hpr-devices:1, homeassistant/home-assistant:2026.7.4 on an internal network; configuration cloned read-only from the lab volume homeprov-real_hpr-config after E9 ended (fallback e6-config); recorder = E9's final snapshot (consistent online-backup copy); scratch-only MQTT automations for Home Assistant's own purge and repack",
+   "seed_recorder": "HOMEPROV-P13-exp/e9/e9_main2/snapshots/final.db (sha256 recorded at setup in the run's stack.json)"
+  },
+  "upgrade (e10u)": {
+   "what": "a fresh homeassistant/home-assistant:2025.11.1 (recorder schema 51) with the YAML-only testbed/e10/fresh_configuration.yaml, upgraded with the monitors live to 2026.7.4 (schema 53)",
+   "why_not_a_lab_copy": "the lab recorder is at schema 53 and Home Assistant does not downgrade a recorder; no release after 2026.7.4 changes the schema (2026.7.4 through 2026.10.1 and dev on 2026-10-12: 53)"
+  }
+ },
+ "monitors": {
+  "both": "hardened monitor.py (monitor/hardening_e10.patch), stable columns, coverage, keylog, per-row binding, escrow, Ed25519 record signatures, name-map digest, full-history initial seal, keylog rewind; linked anchor each (append key, separate operator key, tagged replies), head witness outside Docker's VM; PERIOD 5 s",
+  "M-direct": "HOMEPROV_READ=direct, HOMEPROV_QUICK_CHECK_EVERY=720 (and, with hardening, the first poll of every process and every poll after a failed quick_check)",
+  "M-copy": "HOMEPROV_READ=copy, HOMEPROV_QUICK_CHECK_EVERY=1"
+ },
+ "parameters": {
+  "late_bound_s": 30.0,
+  "gap_s": 30.0,
+  "period_s": 5.0,
+  "purge_tol_s": 60.0,
+  "purge_keep_days": {
+   "e10s_forced_purges": 29,
+   "e10u": 30
+  },
+  "restore_tol_s": 30.0,
+  "ambiguous_s": 0.05,
+  "unobservable_rule": {
+   "min_duration_s": 60.0,
+   "no_hub_start_within_s": 120.0
+  },
+  "max_clock_step_s": 300.0,
+  "clock_step_seen_s": 600.0,
+  "late_break_backlog": true,
+  "inf_t_size_rule": "3 GiB if the Docker VM has at least 20 GiB free at preflight, else 1 GiB",
+  "seed": 20261020,
+  "collusion_cases_per_check": 5,
+  "start_window_utc": "main phase starts between 04:50 and 15:00 UTC (the scratch hubs' own 04:12 purge never falls inside it)"
+ },
+ "plan": {
+  "generated_by": "testbed/e10/e10ops.py plan --seed 20261020",
+  "sha256": "ea0fdc20e534a9ae97b73049cb16574d325eabee334b6d8a8ac6e82edaf9fe22",
+  "plan": {
+   "seed": 20261020,
+   "smoke": false,
+   "blocks": [
+    {
+     "block": "A1_BDT",
+     "op": "bdt",
+     "ages": [
+      45.0,
+      15.0,
+      15.0,
+      5.0,
+      30.0,
+      33.0,
+      15.0,
+      45.0,
+      30.0,
+      30.0,
+      33.0,
+      45.0,
+      45.0,
+      45.0,
+      5.0,
+      5.0,
+      33.0,
+      33.0,
+      33.0,
+      5.0,
+      5.0,
+      33.0,
+      30.0,
+      45.0,
+      15.0,
+      33.0,
+      33.0,
+      30.0,
+      15.0,
+      33.0,
+      30.0,
+      15.0,
+      30.0,
+      30.0,
+      5.0,
+      30.0,
+      15.0,
+      30.0,
+      5.0,
+      33.0,
+      15.0,
+      5.0,
+      45.0,
+      45.0,
+      15.0,
+      15.0,
+      33.0,
+      45.0,
+      33.0,
+      33.0,
+      33.0,
+      15.0,
+      33.0,
+      15.0,
+      5.0,
+      45.0,
+      15.0,
+      30.0,
+      5.0,
+      5.0,
+      30.0,
+      45.0,
+      30.0,
+      45.0,
+      45.0,
+      30.0,
+      45.0,
+      15.0,
+      30.0,
+      30.0,
+      15.0,
+      5.0,
+      15.0,
+      45.0,
+      5.0,
+      5.0,
+      45.0,
+      33.0,
+      15.0,
+      33.0,
+      5.0,
+      30.0,
+      15.0,
+      5.0,
+      15.0,
+      33.0,
+      30.0,
+      5.0,
+      5.0,
+      5.0,
+      33.0,
+      45.0,
+      5.0,
+      33.0,
+      15.0,
+      30.0,
+      45.0,
+      45.0,
+      30.0,
+      45.0
+     ],
+     "spacing_s": 15.0
+    },
+    {
+     "block": "A2_CTX",
+     "op": "ctx",
+     "delays": [
+      5.0,
+      5.0,
+      45.0,
+      5.0,
+      5.0,
+      25.0,
+      45.0,
+      25.0,
+      45.0,
+      15.0,
+      45.0,
+      5.0,
+      5.0,
+      15.0,
+      25.0,
+      15.0,
+      45.0,
+      15.0,
+      15.0,
+      45.0,
+      15.0,
+      25.0,
+      25.0,
+      15.0,
+      25.0,
+      45.0,
+      5.0,
+      45.0,
+      25.0,
+      25.0,
+      25.0,
+      5.0,
+      15.0,
+      15.0,
+      45.0,
+      45.0,
+      25.0,
+      15.0,
+      5.0,
+      5.0
+     ],
+     "spacing_s": 5.0
+    },
+    {
+     "block": "A3_DEL",
+     "op": "del",
+     "delays": [
+      2.0,
+      1.0,
+      5.0,
+      6.0,
+      10.0,
+      3.0,
+      4.0,
+      4.0,
+      8.0,
+      5.0,
+      10.0,
+      4.0,
+      10.0,
+      3.0,
+      10.0,
+      10.0,
+      4.0,
+      6.0,
+      6.0,
+      2.0,
+      1.0,
+      3.0,
+      5.0,
+      2.0,
+      4.0,
+      3.0,
+      4.0,
+      1.0,
+      2.0,
+      5.0,
+      8.0,
+      3.0,
+      3.0,
+      5.0,
+      3.0,
+      2.0,
+      1.0,
+      5.0,
+      2.0,
+      10.0,
+      2.0,
+      8.0,
+      3.0,
+      10.0,
+      6.0,
+      4.0,
+      8.0,
+      8.0,
+      4.0,
+      5.0,
+      3.0,
+      3.0,
+      6.0,
+      2.0,
+      10.0,
+      1.0,
+      5.0,
+      2.0,
+      1.0,
+      1.0,
+      10.0,
+      10.0,
+      6.0,
+      8.0,
+      8.0,
+      6.0,
+      4.0,
+      8.0,
+      1.0,
+      5.0,
+      6.0,
+      1.0,
+      5.0,
+      8.0,
+      8.0,
+      4.0,
+      6.0,
+      1.0,
+      2.0,
+      6.0
+     ],
+     "spacing_s": 8.0
+    },
+    {
+     "block": "A3_DELPH",
+     "op": "delph",
+     "trials": 20,
+     "margin_s": 0.3,
+     "warmup_s": 40.0,
+     "spacing_s": 8.0
+    },
+    {
+     "block": "SNAP_DEL"
+    },
+    {
+     "block": "S_SHAM",
+     "op": "sham",
+     "trials": [
+      {
+       "variant": "S-DEL",
+       "level": 10.0
+      },
+      {
+       "variant": "S-CTX",
+       "level": 45.0
+      },
+      {
+       "variant": "S-DEL",
+       "level": 10.0
+      },
+      {
+       "variant": "S-BDT",
+       "level": 45.0
+      },
+      {
+       "variant": "S-BDT",
+       "level": 45.0
+      },
+      {
+       "variant": "S-BDT",
+       "level": 45.0
+      },
+      {
+       "variant": "S-CTX",
+       "level": 45.0
+      },
+      {
+       "variant": "S-CTX",
+       "level": 45.0
+      },
+      {
+       "variant": "S-BDT",
+       "level": 45.0
+      },
+      {
+       "variant": "S-DEL",
+       "level": 10.0
+      },
+      {
+       "variant": "S-BDT",
+       "level": 45.0
+      },
+      {
+       "variant": "S-DEL",
+       "level": 10.0
+      },
+      {
+       "variant": "S-CTX",
+       "level": 45.0
+      },
+      {
+       "variant": "S-DEL",
+       "level": 10.0
+      },
+      {
+       "variant": "S-BDT",
+       "level": 45.0
+      },
+      {
+       "variant": "S-DEL",
+       "level": 10.0
+      },
+      {
+       "variant": "S-DEL",
+       "level": 10.0
+      },
+      {
+       "variant": "S-DEL",
+       "level": 10.0
+      },
+      {
+       "variant": "S-CTX",
+       "level": 45.0
+      },
+      {
+       "variant": "S-CTX",
+       "level": 45.0
+      },
+      {
+       "variant": "S-BDT",
+       "level": 45.0
+      },
+      {
+       "variant": "S-CTX",
+       "level": 45.0
+      },
+      {
+       "variant": "S-BDT",
+       "level": 45.0
+      },
+      {
+       "variant": "S-DEL",
+       "level": 10.0
+      },
+      {
+       "variant": "S-CTX",
+       "level": 45.0
+      },
+      {
+       "variant": "S-BDT",
+       "level": 45.0
+      },
+      {
+       "variant": "S-BDT",
+       "level": 45.0
+      },
+      {
+       "variant": "S-BDT",
+       "level": 45.0
+      },
+      {
+       "variant": "S-DEL",
+       "level": 10.0
+      },
+      {
+       "variant": "S-CTX",
+       "level": 45.0
+      },
+      {
+       "variant": "S-BDT",
+       "level": 45.0
+      },
+      {
+       "variant": "S-BDT",
+       "level": 45.0
+      },
+      {
+       "variant": "S-DEL",
+       "level": 10.0
+      },
+      {
+       "variant": "S-DEL",
+       "level": 10.0
+      },
+      {
+       "variant": "S-DEL",
+       "level": 10.0
+      },
+      {
+       "variant": "S-DEL",
+       "level": 10.0
+      },
+      {
+       "variant": "S-DEL",
+       "level": 10.0
+      },
+      {
+       "variant": "S-DEL",
+       "level": 10.0
+      },
+      {
+       "variant": "S-DEL",
+       "level": 10.0
+      },
+      {
+       "variant": "S-CTX",
+       "level": 45.0
+      },
+      {
+       "variant": "S-DEL",
+       "level": 10.0
+      },
+      {
+       "variant": "S-CTX",
+       "level": 45.0
+      },
+      {
+       "variant": "S-BDT",
+       "level": 45.0
+      },
+      {
+       "variant": "S-CTX",
+       "level": 45.0
+      },
+      {
+       "variant": "S-CTX",
+       "level": 45.0
+      },
+      {
+       "variant": "S-DEL",
+       "level": 10.0
+      },
+      {
+       "variant": "S-CTX",
+       "level": 45.0
+      },
+      {
+       "variant": "S-CTX",
+       "level": 45.0
+      },
+      {
+       "variant": "S-BDT",
+       "level": 45.0
+      },
+      {
+       "variant": "S-CTX",
+       "level": 45.0
+      },
+      {
+       "variant": "S-BDT",
+       "level": 45.0
+      },
+      {
+       "variant": "S-DEL",
+       "level": 10.0
+      },
+      {
+       "variant": "S-CTX",
+       "level": 45.0
+      },
+      {
+       "variant": "S-BDT",
+       "level": 45.0
+      },
+      {
+       "variant": "S-CTX",
+       "level": 45.0
+      },
+      {
+       "variant": "S-BDT",
+       "level": 45.0
+      },
+      {
+       "variant": "S-DEL",
+       "level": 10.0
+      },
+      {
+       "variant": "S-BDT",
+       "level": 45.0
+      },
+      {
+       "variant": "S-DEL",
+       "level": 10.0
+      },
+      {
+       "variant": "S-CTX",
+       "level": 45.0
+      },
+      {
+       "variant": "S-CTX",
+       "level": 45.0
+      },
+      {
+       "variant": "S-BDT",
+       "level": 45.0
+      },
+      {
+       "variant": "S-CTX",
+       "level": 45.0
+      },
+      {
+       "variant": "S-BDT",
+       "level": 45.0
+      },
+      {
+       "variant": "S-CTX",
+       "level": 45.0
+      },
+      {
+       "variant": "S-CTX",
+       "level": 45.0
+      },
+      {
+       "variant": "S-DEL",
+       "level": 10.0
+      },
+      {
+       "variant": "S-CTX",
+       "level": 45.0
+      },
+      {
+       "variant": "S-BDT",
+       "level": 45.0
+      },
+      {
+       "variant": "S-CTX",
+       "level": 45.0
+      },
+      {
+       "variant": "S-DEL",
+       "level": 10.0
+      },
+      {
+       "variant": "S-DEL",
+       "level": 10.0
+      },
+      {
+       "variant": "S-DEL",
+       "level": 10.0
+      },
+      {
+       "variant": "S-DEL",
+       "level": 10.0
+      },
+      {
+       "variant": "S-CTX",
+       "level": 45.0
+      },
+      {
+       "variant": "S-BDT",
+       "level": 45.0
+      },
+      {
+       "variant": "S-BDT",
+       "level": 45.0
+      },
+      {
+       "variant": "S-BDT",
+       "level": 45.0
+      },
+      {
+       "variant": "S-CTX",
+       "level": 45.0
+      },
+      {
+       "variant": "S-BDT",
+       "level": 45.0
+      },
+      {
+       "variant": "S-CTX",
+       "level": 45.0
+      },
+      {
+       "variant": "S-BDT",
+       "level": 45.0
+      },
+      {
+       "variant": "S-BDT",
+       "level": 45.0
+      },
+      {
+       "variant": "S-CTX",
+       "level": 45.0
+      },
+      {
+       "variant": "S-CTX",
+       "level": 45.0
+      },
+      {
+       "variant": "S-DEL",
+       "level": 10.0
+      },
+      {
+       "variant": "S-DEL",
+       "level": 10.0
+      },
+      {
+       "variant": "S-BDT",
+       "level": 45.0
+      },
+      {
+       "variant": "S-BDT",
+       "level": 45.0
+      },
+      {
+       "variant": "S-DEL",
+       "level": 10.0
+      }
+     ],
+     "spacing_bdt_s": 15.0,
+     "spacing_ctx_s": 5.0,
+     "spacing_del_s": 8.0
+    },
+    {
+     "block": "SNAP_SHAM"
+    },
+    {
+     "block": "A3_LOWKEY",
+     "op": "lowkey",
+     "max": 10,
+     "age_s": 90.0
+    },
+    {
+     "block": "SNAP_TIMING"
+    },
+    {
+     "block": "A7_WIPE",
+     "op": "wipe",
+     "n": 10,
+     "min_age_s": 60.0
+    },
+    {
+     "block": "SNAP_WIPE"
+    },
+    {
+     "block": "R_RESTART",
+     "trials": [
+      {
+       "kind": "graceful",
+       "target": "direct"
+      },
+      {
+       "kind": "graceful",
+       "target": "copy"
+      },
+      {
+       "kind": "graceful",
+       "target": "copy"
+      },
+      {
+       "kind": "graceful",
+       "target": "direct"
+      },
+      {
+       "kind": "graceful",
+       "target": "direct"
+      },
+      {
+       "kind": "kill",
+       "target": "direct"
+      },
+      {
+       "kind": "graceful",
+       "target": "copy"
+      },
+      {
+       "kind": "kill",
+       "target": "direct"
+      },
+      {
+       "kind": "graceful",
+       "target": "direct"
+      },
+      {
+       "kind": "kill",
+       "target": "direct"
+      }
+     ],
+     "settle_s": 150.0,
+     "lag0_s": 2.0,
+     "stop_timeout_s": 30,
+     "frac": 0.5
+    },
+    {
+     "block": "SNAP_RESTART"
+    },
+    {
+     "block": "A6_CS",
+     "steps": [
+      {
+       "step_s": 60.0,
+       "marker": true
+      },
+      {
+       "step_s": 60.0,
+       "marker": true
+      },
+      {
+       "step_s": 60.0,
+       "marker": true
+      },
+      {
+       "step_s": 60.0,
+       "marker": false
+      },
+      {
+       "step_s": 10.0,
+       "marker": false
+      }
+     ],
+     "duration_s": 60.0,
+     "spacing_s": 120.0
+    },
+    {
+     "block": "A5_PW",
+     "events": [
+      {
+       "variants": [
+        "PW-B",
+        "PW-R",
+        "PW-F-in"
+       ],
+       "i": 0
+      },
+      {
+       "variants": [
+        "PW-U",
+        "PW-X",
+        "PW-F-out"
+       ],
+       "i": 1
+      },
+      {
+       "variants": [
+        "PW-B",
+        "PW-R",
+        "PW-F-in"
+       ],
+       "i": 2
+      },
+      {
+       "variants": [
+        "PW-U",
+        "PW-X",
+        "PW-F-out"
+       ],
+       "i": 3
+      },
+      {
+       "variants": [
+        "PW-B",
+        "PW-R",
+        "PW-F-in"
+       ],
+       "i": 4
+      },
+      {
+       "variants": [
+        "PW-U",
+        "PW-X",
+        "PW-F-out"
+       ],
+       "i": 5
+      }
+     ],
+     "keep_days": 29,
+     "spacing_s": 900
+    },
+    {
+     "block": "A4_ULW",
+     "op": "lock_write",
+     "holds": [
+      60.0,
+      60.0
+     ]
+    },
+    {
+     "block": "A4_ULSHM",
+     "op": "lock_shm",
+     "holds": 5,
+     "hold_s": 60.0,
+     "mode": "posix",
+     "ranges": [
+      [
+       128,
+       1
+      ]
+     ],
+     "backdate_before_end_s": 2.0,
+     "backdate_target_before_hold_s": 12.0,
+     "blind_delete_delay_s": 8.0
+    },
+    {
+     "block": "A4_ULSHM_OFD",
+     "op": "lock_shm",
+     "holds": 1,
+     "hold_s": 60.0,
+     "mode": "ofd",
+     "ranges": [
+      [
+       123,
+       5
+      ]
+     ]
+    },
+    {
+     "block": "A4_ULJM",
+     "op": "journal_mode",
+     "mode": "DELETE"
+    },
+    {
+     "block": "A4_INFT",
+     "op": "inflate_table",
+     "target_bytes_large": 3221225472,
+     "target_bytes_small": 1073741824,
+     "free_gb_for_large": 20,
+     "hold_s": 300.0,
+     "repack_wait_s": 1200.0
+    },
+    {
+     "block": "A4_INFW",
+     "op": "inflate_window",
+     "rows": 300000,
+     "rate": 500.0,
+     "observe_s": 1200.0
+    },
+    {
+     "block": "SNAP_A_END"
+    },
+    {
+     "block": "B1_ENTITY_ID_RENAME",
+     "entity_id": "light.porch_light",
+     "new_entity_id": "light.porch_lamp_e10"
+    },
+    {
+     "block": "B2_DEVICE_REMOVE",
+     "entity_id": "binary_sensor.kitchen_motion"
+    },
+    {
+     "block": "B3_PURGE_ENTITIES",
+     "entity_ids": [
+      "sensor.homeprov_e10_junk"
+     ],
+     "optional": true
+    },
+    {
+     "block": "B4_UPGRADE",
+     "from_image": "homeassistant/home-assistant:2026.7.4",
+     "to_image": "homeassistant/home-assistant:2026.10.1",
+     "observe_s": 1800
+    }
+   ],
+   "upgrade_stack": {
+    "from_image": "homeassistant/home-assistant:2025.11.1",
+    "from_schema": 51,
+    "to_image": "homeassistant/home-assistant:2026.7.4",
+    "to_schema": 53,
+    "before_s": 3600,
+    "after_s": 3600
+   }
+  }
+ },
+ "hypotheses": {
+  "H1_backdating_boundary": "An insertion backdated by d <= 30 s into a sealed second is never attributable (the verifier reports it as a late commit, or has no evidence when the second was not sealed yet); d = 45 s is always attributable; at d = 33 s exactly when the monitor copied the recorder within the 3 s before the insertion committed.",
+  "H2_insertion_only_reattribution": "An automation_triggered event sharing a sealed actuation's context, inserted with a timestamp just before it at 5, 15 or 25 s after the actuation, moves the actuation's displayed cause (frontend display rule) to the automation and is not attributable; at 45 s it is attributable (R3 Q2).",
+  "H3_observation_window": "A deletion is detected if and only if an observable poll read the row before it was deleted; the detection rate rises with the delay as about delay / poll interval and is 1 for delays above the longest poll interval.",
+  "H4_phase_aware_deletion": "An in-hub adversary senses the direct-read monitor's reads (another process's lock on the recorder's -shm) and, deleting 0.3 s before the predicted next read, escapes M-direct at visible times at which the non-adaptive deletion is mostly detected.",
+  "H5_reused_lower_key": "A row inserted with a reused lower key into a sealed second is always detected (R1 Q1).",
+  "H6_purge_window": "Under a declared purge (tolerance 60 s): purge-shaped deletion of the tolerance band is excused (by design); deletion of a recent row, of rows just beyond the band, an out-of-order band deletion, and a forged old row first observed after scheduled + 120 s are detected; a forged old row inserted and deleted inside the 120 s window is not detected (excused as a purged row, or no evidence if no poll saw it).",
+  "H7_sustained_unobservability": "A write lock held by a second connection blinds neither monitor (WAL readers) but delays the hub's commits, and rows committed more than 30 s late are attributable; a POSIX write lock on the -shm DMS byte makes every direct read unobservable for the hold without stopping the hub, while copy mode observes; an unread table of about 3 GiB added to the recorder blinds copy mode (copy_raced) until a repack and not direct mode; window inflation slows polls without unobservability. An edit of a row sealed before a blind window is detected; a row written and deleted inside it is not detected by the blinded monitor. The pre-registered rule flags every attack-caused unobservable interval and no interval of E9's benign week.",
+  "H8_D1_live": "A row backdated across a blind window of M-direct into a second sealed before it is a late commit for the E9 verifier (escape), unknown for the patched verifier, and attributable on M-copy.",
+  "H9_D2_D1h_offline_collusion": "With the record(s) carrying an emptied second's root and keylog ranges withheld, the E9 verifier reads the second as match and the patched verifier as unknown; with the polls between a 45 s-backdated row's sealing and its insertion withheld, the E9 verifier reads match and the patched verifier unknown.",
+  "H10_D3_clock_step": "Rows the hub writes during a 60 s backward clock step are attributable without a marker and excused under an operator CLOCK_STEP marker; a 10 s step raises no violation.",
+  "H11_entity_id_rename": "Renaming an entity id fails every sealed second, minute and hour holding a row of that entity, in the numbers predicted from the recorder, and no marker excuses it; the RENAME marker excuses its name-map transition.",
+  "H12_device_removal": "Removing a device changes no recorder row (no violation); its name-map transition is excused by the declared RENAME marker.",
+  "H13_entity_history_purge": "Purging an entity's history fails every sealed segment holding its rows (predicted from the recorder); no marker excuses it.",
+  "H14_upgrades": "2025.11.1 -> 2026.7.4 (schema 51 -> 53) and 2026.7.4 -> 2026.10.1 (53) change no committed row: no violation over the whole sealed history; schema_changes gains 52 and 53 in the first.",
+  "H15_hardening": "On honest recorders the hardened monitor's records equal E9's (tests) and no E10 poll fails with schema_object_not_a_table or quick_check_failed; re-verifying E7, E8 and E9 with the patched verifier changes no flagged second and every other difference has a listed reason.",
+  "H16_benign_floor": "No flagged second of the main session is unexplained by an arm.",
+  "H17_sham_specificity": "With the attack integration's write rolled back on the code paths of A1-BDT (45 s), A2-CTX (45 s) and A3-DEL (10 s), at the same timing and in the same session, no violation is attributable to any of the 90 sham trials on either monitor: its would-be target second is not flagged, its own actuation row is not attributable and no keylog violation names it (0 of 90 per monitor); at the same levels the attack trials' target seconds are violated.",
+  "H18_restart_mid_poll": "A hub restart, graceful or killed, whose effect lands inside a monitor's read (direct) or copy (copy) window, raises no attributable row and no flagged second on either monitor and restarts no monitor; rows committed around it are benign_late under the E9 verifier and benign_late or unobserved_late under the patched verifier (unobserved_late exactly when an unobservable or missing poll or a gap above GAP_S lies in the row's bracket, D1); no unobservable interval it causes is flagged by the distinguishability rule; the recorder is never moved away.",
+  "H19_dz_switchtype": "A benign switch-type change of the Domoticz lock (19 -> 20) by its owner through the hub's own API makes every anchored second, minute and hour segment that holds a log row of the lock and was first anchored before the change a violation, and no other segment; the offline root comparison changes exactly those seconds; the platform's renderer shows the lock's earlier rows differently; no marker excuses it (a measured limit of a closure that commits a configuration field).",
+  "H20_pairwise_closure": "No pair of mutations (exhaustive same-target pairs at E8B's primary values; samples of 1,000 other-value pairs and 1,000 cross-row pairs) changes the rendered output while leaving the deployed stable-columns commitment unchanged; no pair of fields that each leave the output unchanged changes it jointly; no field outside E8B's 27-field closure changes the output once another field changed. Line and branch coverage of the logbook package is reported, with the branch sites never taken.",
+  "H21_pi4_cost": "Under the Pi 4-class profile the direct-read monitor's median poll stays below PERIOD (5 s) at 0.19 GB and 0.96 GB with no poll above GAP_S (30 s) except a due quick_check; copy mode writes about the recorder's size per poll (bytes written per hour reported); the pi4 / ref ratio of the median poll time is reported per size. Exploratory where it depends on the assumed limits (no prediction at 2.94 GB)."
+ },
+ "arms": [
+  {
+   "id": "A1-BDT",
+   "n": "20 per age; ages 5, 15, 30, 33, 45 s (100, randomised order, 15 s apart)",
+   "what": "homeprov_e10 bdt: one forged 'unlocked' lock row per trial, timestamped age seconds before its insertion, attributed to a genuine run of the room's motion-light automation (its context), old_state_id = the lock's latest genuine 'locked' row (so the logbook lists it)",
+   "expected": {
+    "5": "no detection; reported as a late commit if a poll sealed its second before the insertion (about (age - 1)/T of trials, T the monitor's poll interval), else no evidence",
+    "15": "no detection; reported as a late commit (M-direct); M-copy: a late commit, or no evidence when no copy fell between the second's end and the insertion",
+    "30": "no detection (a copy within the insertion's few-ms commit is ambiguous)",
+    "33": "detected iff an observable copy fell in the 3 s before the insertion committed (about 3/T: about 0.6 for M-direct, 0.3 for M-copy at the cost runs' poll intervals)",
+    "45": "detected, every trial, when an observable copy fell in the 15 s before the insertion (every trial for M-direct; M-copy unless a poll took more than 15 s)"
+   },
+   "scored": "per trial and monitor: verdict of the inserted row against the snapshot after DEL-PH (snap_del); prediction from that monitor's copy times; attack success = forged row listed with an automation cause (display rule, admin and non-admin)",
+   "why_n": "deterministic per-trial prediction; 0/20 bounds an unpredicted outcome at a level by 0.168 (one-sided 95% Clopper-Pearson)"
+  },
+  {
+   "id": "A2-CTX",
+   "n": "10 per delay; delays 5, 15, 25, 45 s (40)",
+   "what": "an actuation under the integration's own Context; at delay seconds after its row committed, an automation_triggered event of the innocent automation with that context id, timestamped 50 ms before the actuation's first row (insertion only; nothing edited)",
+   "expected": {
+    "5,15,25": "displayed cause moves from integration:lock to automation:<innocent> (display rule); not detected (late commit or no evidence)",
+    "45": "displayed cause moves; detected"
+   },
+   "scored": "as A1 on the inserted event; display before and after",
+   "why_n": "R3 Q2 asks whether it works at all; 10 per delay with a deterministic detection prediction"
+  },
+  {
+   "id": "A3-DEL",
+   "n": "10 per delay; delays 1, 2, 3, 4, 5, 6, 8, 10 s (80)",
+   "what": "an actuation (captured by its context id); its 'unlocked' row deleted at the delay after the adversary saw it committed (5 ms polling)",
+   "expected": "detected iff an observable poll copied in [committed, deleted); rate about min(1, delay/T), T the monitor's poll interval (PERIOD 5 s plus the poll's own time: about 5.1 s for M-direct and about 9 s for M-copy on a 0.19 GB recorder, exp/out/e9_cost_scale*.json), so 1 from 6 s for M-direct; every observed row's deletion detected",
+   "scored": "per trial and monitor: detected, observed (its key in an observable poll's keylog entry), prediction from copy times (50 ms ambiguity), agreement; attack success = the unlock no longer displayed; residue: the next lock row's old_state_id (the adversary evicts the deleted row from the recorder's cache, as Home Assistant's purge does, so it is NULL; without the eviction the recorder, which runs SQLite with foreign keys on, fails to insert that row and stops recording the lock: smokes 3 and 5, 2026-10-20) and whether the hub kept recording",
+   "why_n": "a detection-vs-delay curve over 8 delays"
+  },
+  {
+   "id": "A3-DEL-PH",
+   "n": "20",
+   "what": "phase-aware deletion: the integration samples (2 ms) whether another process locks the -shm's WAL lock bytes or DMS byte, predicts M-direct's next read, actuates after a read ends, deletes 0.3 s before the predicted next read",
+   "expected": "M-direct: detected in at most 4 of 20 (predicted near 0); M-copy: as A3 at the realised visible time",
+   "alternative": "if the smoke shows the sensor does not see M-direct's reads (POSIX locks are per process: the hub's own connections are invisible to it, another process's are not), the arm is reported as sensor-failed and the registration says so before the run",
+   "scored": "as A3; sensor error (predicted minus actual next copy)"
+  },
+  {
+   "id": "A3-LOWKEY",
+   "n": "up to 10 (keys A3 deleted)",
+   "what": "a forged row inserted with a key A3 freed, into a second sealed 90 s earlier",
+   "expected": "detected, every trial, both monitors",
+   "scored": "against snap_timing"
+  },
+  {
+   "id": "A7-WIPE",
+   "n": "10",
+   "what": "every state and event row of a sealed second holding an A2 actuation deleted",
+   "expected": "detected, every trial (honest chains); the D2 offline check uses 5",
+   "scored": "against snap_wipe"
+  },
+  {
+   "id": "A6-CS (D3)",
+   "n": "5 steps: 60 s with a CLOCK_STEP marker x3, 60 s without x1, 10 s without x1; 60 s each",
+   "what": "in the hub's process time.time() returns the wall clock minus the step for 60 s (the monitor's clock is not stepped); the operator's CLOCK_STEP marker (window [t - step, t]) is posted 120 s before",
+   "expected": {
+    "60 s, marker": "every row of the step excused_clock_step; none attributable",
+    "60 s, no marker": "rows of the step attributable (false violations)",
+    "10 s, no marker": "late commits; no violation"
+   },
+   "scored": "against cs_end"
+  },
+  {
+   "id": "A5-PW",
+   "n": "6 declared purges (forced, keep 29 days), 15 min apart; 3 per variant",
+   "what": "PW-B band rows the hub kept, deleted in purge order (to c1 - 0.5 s); PW-X purge-shaped rows in [c1, c1 + 30 s); PW-U one band row out of order; PW-R a recent sealed unlock row; PW-F-in a forged row 10.5 s before c0 inserted at S + 30 s and deleted at S + 90 s; PW-F-out inserted at S + 150 s and deleted at S + 175 s",
+   "expected": {
+    "PW-B": "excused",
+    "PW-X": "detected",
+    "PW-U": "detected (band_deletion_not_purge_shaped)",
+    "PW-R": "detected",
+    "PW-F-in": "not detected (excused as purged, or no evidence)",
+    "PW-F-out": "detected (removed_row_written_after_the_purge)"
+   },
+   "scored": "against pw<i>_post (before the next purge's marker), historical and session windows"
+  },
+  {
+   "id": "A4-UL-W",
+   "n": "2 holds of 60 s",
+   "what": "BEGIN IMMEDIATE on a second connection",
+   "expected": "no unobservable poll on either monitor; the hub's rows of the hold committed after it, those more than 30 s late attributable on both monitors (or lost: reported)",
+   "scored": "against snap_a_end"
+  },
+  {
+   "id": "A4-UL-SHM",
+   "n": "5 holds of 60 s",
+   "what": "POSIX write lock on the -shm DMS byte (128), re-asserted every 5 ms; inside each: an INS-L-shaped launder of an A2 row sealed before, an actuation deleted 8 s after it committed, and 2 s before the end a forged row backdated into a second sealed 12 s before the hold (D1)",
+   "expected": {
+    "M-direct": "every poll in the hold unobservable (direct_open_failed); launder detected; blind deletion not detected; D1 row: E9 verifier late commit, patched verifier unknown",
+    "M-copy": "no unobservable poll; launder detected; blind deletion detected; D1 row attributable",
+    "hub": "rows committed throughout"
+   },
+   "alternative": "if the smoke shows M-direct still observing under the DMS lock, the arm is reported as not blinding, D1 is covered by the offline checks only, and the registration says so before the run"
+  },
+  {
+   "id": "A4-UL-SHM-OFD",
+   "n": "1 hold of 60 s",
+   "what": "open-file-description write locks on the read-mark bytes 123-127 (they also conflict with the hub's own locks)",
+   "expected": "exploratory: no prediction"
+  },
+  {
+   "id": "A4-UL-JM",
+   "n": "1",
+   "what": "PRAGMA journal_mode=DELETE from a second connection",
+   "expected": "refused while the hub holds the recorder (exploratory)"
+  },
+  {
+   "id": "A4-INF-T",
+   "n": "1",
+   "what": "an unread junk table of the size rule's bytes (random blobs, 16 MiB per commit) added to the recorder, held 300 s, dropped, then Home Assistant's own repack",
+   "expected": {
+    "M-copy": "3 GiB added: every poll unobservable (copy_raced) once the file passes about 3 GB, until the repack shrinks it (the E8 monitor's copy at 2.94 GB: 30 of 30 copy_raced, exp/out/e9_cost_scale.json); 1 GiB added: no prediction of copy_raced (between the measured sizes); polls of at least about 30 s (0.96 GB copy runs: 30.3 s and 42.7 s median), so poll gaps above GAP_S",
+    "M-direct": "observable throughout; per poll under a second when no quick_check is due (0.633 ms median snapshot phase at 2.94 GB); a due quick_check takes about a minute at 3 GiB (58,568 ms median, exp/out/e9_cost_scale_direct_final.json)"
+   }
+  },
+  {
+   "id": "A4-INF-W",
+   "n": "1",
+   "what": "300,000 junk state rows with current timestamps at 500 rows/s",
+   "expected": "no unobservable poll; per-poll time grows with the rows in the two-hour re-read window; no poll gap above 30 s (if one occurs, late rows in it are unknown under D1)"
+  },
+  {
+   "id": "B1-ENTITY-ID-RENAME",
+   "n": "1",
+   "what": "light.porch_light -> light.porch_lamp_e10 through the entity registry, after an operator RENAME marker with the predicted part digests and the entity_id pair",
+   "expected": "unexcused violations on exactly the sealed seconds, minutes and hours holding a row of that entity (counted from b1_end, rows timestamped 10 s or more before the rename), every keylog range holding one; name-map transition excused"
+  },
+  {
+   "id": "B2-DEVICE-REMOVE",
+   "n": "1",
+   "what": "the kitchen motion sensor's device removed as the frontend does it, after a RENAME marker with the predicted digests",
+   "expected": "no recorder violation; name-map transition excused; a re-announcement by the simulator is a second, undeclared transition"
+  },
+  {
+   "id": "B3-PURGE-ENTITIES",
+   "n": "1",
+   "what": "recorder.purge_entities on the INF-W junk entity",
+   "expected": "violations on every sealed segment holding a junk row (counted from b2_end); none excused"
+  },
+  {
+   "id": "B4-UPGRADE",
+   "n": "1",
+   "what": "2026.7.4 -> 2026.10.1 on the lab copy, monitors live, no marker",
+   "expected": "no recorder violation over the whole history; schema 53 unchanged; name map: no prediction"
+  },
+  {
+   "id": "U-SCHEMA-UPGRADE",
+   "n": "1",
+   "what": "e10u: 2025.11.1 (schema 51), one hour, 2026.7.4 (schema 53), one hour",
+   "expected": "no recorder violation over the whole history; schema_changes 51 -> 51, 52, 53; statistics_meta gains unit_class; states and events columns unchanged; name map: no prediction"
+  },
+  {
+   "id": "S-SHAM",
+   "n": "90: 30 each of S-BDT (A1 code path, 45 s), S-CTX (A2, 45 s), S-DEL (A3, 10 s), seeded order",
+   "what": "homeprov_e10 op sham: each trial runs the attack arm's own code path (same reads, same BEGIN IMMEDIATE at the same moment, same spacing; CTX and DEL actuate the lock under their own Context and capture the row by context) and rolls the write transaction back instead of committing the edit; block after SNAP_DEL, scored against SNAP_SHAM",
+   "expected": {
+    "each monitor": "0 of 90 trials with a violation attributable to the trial (would-be second flagged, own actuation row attributable, or a keylog violation naming its key)",
+    "integrity": "db_writes_total 0; displayed cause unchanged (S-CTX); the unlock still listed (S-DEL)",
+    "confusion": "at the same levels the attack trials' target seconds are violated (A1 45 s, A2 45 s, A3 10 s: detected, every trial, per H1-H3)"
+   },
+   "scored": "exp/stages/e10r5_score.py S_sham: per trial, per variant and overall with exact 95% intervals; the confusion matrix at the target seconds (sensitivity from the attack arms against snap_del, specificity from the sham against snap_sham)",
+   "why_n": "R3 W3 and META item 4 ask for 90; 0 of 90 bounds the per-trial false-violation rate at the target seconds by 0.0327 (one-sided 95% Clopper-Pearson) per monitor"
+  },
+  {
+   "id": "R-RESTART",
+   "n": "10 restarts, seeded order: 4 graceful aimed at M-direct's read, 3 killed (SIGKILL, then docker start) aimed at M-direct's read, 3 graceful aimed at M-copy's copy",
+   "what": "testbed/e10/e10ops.py restart-trial: the target monitor's next read (direct: open to the end of load and commit) or copy window predicted from the last 16 lines of its cost log on the VM clock; the command is sent so that its effect (graceful: the container's exit, which follows the recorder's close; kill: the signal) lands at the window's middle (graceful lag: first 2.0 s, then the running median of the measured lags); 150 s settle after the hub writes again; block after SNAP_WIPE, scored against SNAP_RESTART",
+   "expected": {
+    "per verifier rule": "attributable rows 0 and flagged seconds 0 in every restart's window [effect - 30 s, hub start + 120 s], both monitors and both verifiers; late rows benign_late (E9 verifier), benign_late or unobserved_late (patched; unobserved_late iff a D1 break lies in the row's bracket)",
+    "observability": "unobservable polls allowed (no count predicted; each reported with its reason); none flagged by the distinguishability rule; monitor restarts 0",
+    "recorder": "never moved away (no *corrupt* file); hub log lines about the database reported",
+    "landing": "reported per trial (effect inside the target window, from the full cost log); not a condition of the predictions, which hold for any restart"
+   },
+   "scored": "exp/stages/e10r5_score.py R_restart"
+  },
+  {
+   "id": "C-DZ-SWITCHTYPE",
+   "n": "1 change (19 -> 20) in 20 min of benign lock traffic (10 min before, 10 after)",
+   "what": "testbed/e10/run_dz_switchtype.sh (copied from testbed/domoticz/run_dz.sh): the owner's Edit-Device request (param=setused, every other field unchanged) on the Domoticz test stack, closure monitor live; snapshots just before the change and at the end",
+   "expected": "violations on exactly the anchored segments holding a lock log row first anchored before the change (seconds within 10 s of the change ambiguous); none elsewhere; the offline pre/post root comparison changes exactly the predicted seconds; the renderer's text log of the lock changes; no marker excuses it",
+   "scored": "exp/stages/e10_dz_switchtype.py"
+  },
+  {
+   "id": "D-PAIRWISE",
+   "n": "W exhaustive (every same-target field pair at E8B's primary values, 40 targets); V 1,000 and X 1,000 seeded samples; registered plan sha256 under review_r5_offline_plans",
+   "what": "exp/stages/e10_pairwise_closure.py on a throwaway hub serving a working copy of E8B's pristine copy of the lab recorder; each unit applies two mutations, renders the three forms, recomputes the closure, stable and row commitments, restores and checks the restore; singles re-measured; sys.monitoring line and branch coverage of homeassistant.components.logbook",
+   "expected": {
+    "undetected_render_change": 0,
+    "joint_only": 0,
+    "conditional_noncl": 0,
+    "masking": "no prediction (descriptive)",
+    "coverage": "reported, no prediction"
+   },
+   "stopping_rule": "W in seeded order, then V, then X; no outcome-dependent stop; stop at the end of the units or at 3.0 h of measurement, whichever is first; the units done are reported",
+   "scored": "exp/stages/e10_pairwise_closure.py summarize -> exp/out/e10_pairwise_closure.json"
+  },
+  {
+   "id": "E-PI4-COST",
+   "n": "10 runs x 30 measured polls (registered matrix under review_r5_offline_plans)",
+   "what": "exp/sp2027/e10_pi4_cost.py through exp/sp2027/e9_cost_scale.py (unchanged): the same synthetic recorders, writer and harness as C1, the hardened E10 monitor image, monitor container limits per profile (ref = C1; pi4 = 0.25 CPU, 512 MiB without swap, 40/10 MB/s, 1,500/500 IOPS -- assumed values, stated in the file)",
+   "expected": "H21; exploratory where it depends on the assumed limits",
+   "scored": "exp/sp2027/e10_pi4_cost.py summarize -> exp/out/e10_pi4_cost.json"
+  }
+ ],
+ "offline_checks": [
+  {
+   "id": "D2",
+   "what": "exp/stages/e10_collusion.py on 5 A7-WIPE seconds per monitor",
+   "expected": "honest: violation; withheld: E9 verifier match, patched unknown"
+  },
+  {
+   "id": "D1h",
+   "what": "exp/stages/e10_collusion.py on 5 A1 45 s trials per monitor",
+   "expected": "honest: violation; withheld: E9 verifier match, patched unknown"
+  },
+  {
+   "id": "O-MIG",
+   "what": "exp/stages/e10_migration_offline.py on the final snapshot",
+   "expected": "m52 and a new index: no violation; a states column: every sealed segment holding a state row and every states keylog range fail"
+  },
+  {
+   "id": "REVERIFY",
+   "what": "testbed/e10/reverify_patched.py: E7 and E8 (reproduce/verify_e7e8.py --escrow with the patched verifier and hardened monitor; reproduce/verify_all.py) and every E9 verification of e9_score.py with the patched verifier",
+   "expected": "no flagged second changes; every other difference listed with its reason"
+  }
+ ],
+ "outcomes": {
+  "primary": [
+   "per-trial agreement of the verdict with the design's prediction, per arm and monitor (A1, A2, A3, A3-DEL-PH, LOWKEY, WIPE, PW, CS)",
+   "detection per level / delay / variant with exact 95% intervals",
+   "UL-SHM: unobservable polls per hold and monitor, the hub's rows during the hold, launder / blind deletion / D1 outcomes",
+   "B1, B3: violated segments against the predicted counts; B2, B4, U: violations (predicted 0)",
+   "D2, D1h, O-MIG, REVERIFY as listed"
+  ],
+  "secondary": [
+   "attack success by the display rule per trial (A1, A2, A3)",
+   "the forensic residue of A3 (the next lock row's old_state_id after the adversary's cache eviction)",
+   "the lower bounds of the late commits in A1/A2 against the largest benign late delay of E9's week",
+   "per-poll cost, poll interval and seal delay during INF-T and INF-W",
+   "the distinguishability rule on E10 and on E9's week",
+   "name-map transitions of B4 and U",
+   "untouched floor: unexplained flagged seconds (predicted 0)",
+   "review r5: S per-variant counts and the confusion matrix; R landing and unobservable polls; D coverage; E costs, overruns and bytes written"
+  ],
+  "primary_review_r5": [
+   "S: trials with a violation attributable to the trial, per monitor (predicted 0 of 90)",
+   "R: attributable rows and flagged seconds in the restart windows, per monitor and verifier (predicted 0)",
+   "C: agreement of the violated segments with the predicted set, per granularity",
+   "D: undetected render changes, joint-only and conditional_noncl units, per stratum (predicted 0)",
+   "E: per-poll median, p90 and max, overruns above PERIOD and GAP_S, bytes written, per run"
+  ]
+ },
+ "exclusions": [
+  "a trial the integration reports with err (no row, lock unavailable, no cover): listed, not scored",
+  "per-trial agreement leaves out trials whose boundary falls within 50 ms of a copy (ambiguous): counted",
+  "a block during which the host log shows a wall-clock gap above 90 s, or a hub start without a harness cause, or a monitor restart: its trials are scored and reported separately, not pooled",
+  "smoke runs are not results",
+  "review r5: S trials returned with err are listed, not scored; an R restart without an effect time (failed command or no FinishedAt) is listed, not scored; D units with an apply error or a missing single are counted per stratum, not classified; E runs with poll errors are reported as such"
+ ],
+ "analysis_plan": [
+  "No hypothesis test beyond the exact intervals; every prediction is stated per trial or per count above and is confirmed only if every non-excluded trial agrees (an unpredicted outcome is reported with its trial, not averaged away)",
+  "Both monitors are scored separately; nothing is pooled across them",
+  "Every deviation from this registration (plan, parameters, code) is written to an amendment before it is used, as for E9"
+ ],
+ "known_limits_stated_in_advance": [
+  "Scratch stacks on one Mac with virtual devices; the lab installation is not touched",
+  "The clock step is emulated inside the hub's process (time.time), not a host clock step",
+  "No release after 2026.7.4 changes the recorder schema; the schema arm crosses 51 -> 53 on a fresh install, whose SQLite steps touch statistics_meta only",
+  "The phase sensor is specific to direct read on one kernel (the hub and the monitor share Docker's VM)",
+  "Lock-based blinding depends on SQLite's unix VFS behaviour (3.40.1 in the monitor image); exploratory arms carry no prediction",
+  "review r5: the sham runs as one block, not interleaved with the attack trials; it shares their session, monitors and hub but not their minutes",
+  "review r5: a restart's landing inside a direct read (about 80 ms of every 5 s) depends on Docker's command latency; landing is measured and reported, the predictions do not depend on it",
+  "review r5: the Pi 4 profile is Docker CPU, memory and I/O quotas on this Mac with assumed values, not a Pi 4; a CPU quota throttles in 100 ms periods rather than slowing every instruction",
+  "review r5: pairwise mutation covers E8B's 40 targets and mutation values only; branches no target reaches stay unexercised (listed)"
+ ],
+ "code_sha256": {
+  "computed_at": "2026-10-20T21:34:16Z",
+  "files": {
+   "monitor/monitor.py": "4b9931cb7d1cffae6485fb2b660b68d733da9f73e5c22c22ca7265d49ceaa9b7",
+   "monitor/monitor_e9.py": "8ad9e2d77f2d098af1e81ed509445631dc3d3ba2d349fddff75bfd920a7ab8ae",
+   "monitor/hardening_e10.patch": "ff37854a95a48a5fe75ce8f04de9b306ea0fa9e5c5f2cb10288139574ad8f9aa",
+   "monitor/Dockerfile.sign": "5a6dcec0d93012a5dae13ba72b5ccf1d772623baaa54c07b38c19be701d94d18",
+   "monitor/requirements-sign.txt": "d09f4bcea9d366d767affccde58418307c974bf5c358fb6a09b057b1c8d0922c",
+   "exp/stages/e7_verify.py": "ae9d9c42bf484cbfda50f2e32f1de26ea19f3a956b659f8ad4abf245e5f03ef7",
+   "exp/stages/e7_verify_e9.py": "9c42fad983a00e43083359339bc185c11d31ab7cdec7781f0e2cdee94ebea885",
+   "exp/stages/verifier_e10.patch": "df90b1f9bcc3aadd4dce5db9d8d6922a40610b5291372f9b31c45c6870c40b95",
+   "testbed/anchord/anchord.py": "8b35448dcf86df8bd1291b6fec6ff39e045bacbc3b083b09f61d035c1f251421",
+   "testbed/anchord/anchord_linked.py": "f6252e245b0f963fbefd4c511b51187985386870c745b8321c917152486ee1e1",
+   "testbed/anchord/headwitness.py": "0d8a83c8e0c4cb09e4a5097045e3d1ae91ae7ed264d4b491712256f0602781f5",
+   "testbed/anchord/chainverify.py": "38cfa5e9d99e8ece7ee53d4401e6a97d6e16b7dac02e19088b11d13b547f9d0e",
+   "testbed/e8/anchord-e8.Dockerfile": "84191c7adf8fc8a74b75f6603d7850841d8a9428c905622af4a6dc22ca811ebe",
+   "exp/rig/marker_issuer.py": "fcf668178b1506ad8e279095c260ac9656dfca780b3c9c37f081df102f544a03",
+   "exp/rig/markers.py": "ca92f37cde74b7c5ecd921696879118057342ea9c559d9c63c7d682efbff5e33",
+   "testbed/e9/e9ops.py": "497fb46261841cdb3a297a3770d4b1576c5eaf4f578c4480366dcdb1ab2e5bd0",
+   "testbed/e10/run_e10.sh": "251497412673d0a94d0491c43565f9b3a8ff012b457fb9312ccc95a688508b28",
+   "testbed/e10/e10_stack.sh": "53eef973d875c5844b9a85dc78bdcfc3307e70abc0bce16c6c5546dbbeb9919e",
+   "testbed/e10/e10ops.py": "eda15a435dc65bf32242f5919b68e9820ab98426010bbca72965b07b6ba51e17",
+   "testbed/e10/fresh_configuration.yaml": "2d8ef1d575fd818f112b844f4efb9660cc71fb587c914894f0dda78994b89ce9",
+   "testbed/e10/e10_prereg.py": "c4adbd5b7a16193265db19f5de21b95e7c878fbc4fc667736535efd04d760e61",
+   "testbed/e10/reverify_patched.py": "a05cab869079bc0916e83fd409cfb760f3030cd11294a55ccc8ff64944b837f2",
+   "exp/stages/e10_score.py": "4ef41e6371d4ef9c397f004042a290daa4bacd7753de2f77337079a5ddb81ff9",
+   "exp/stages/e10_outcome.py": "7679c87871ad820e6f84d114cc5d9f5c060d0aba8c214a7380b398a43abde541",
+   "exp/stages/e10_collusion.py": "538a2f66c6b9d71808c56cc4e01ad4d6023474289804e0faa7a063ab79ab61f6",
+   "exp/stages/e10_migration_offline.py": "be89ed07ae5c8027377e6393f85bdc3e0803c668362e720a98b952d7644aca83",
+   "exp/sp2027/r14c_e8_attack_success.py": "fe55e5bdef2367c592d9cdb559b5ea83ebd11c718ad3949462a9d193c4d2d878",
+   "exp/stages/e9_dishonest_anchor.py": "cb52853ab38d245b8d777f6acd75021291a712b5733df3c4d2697ef1ed792224",
+   "exp/stages/e9_score.py": "c991f1675da0d0e5613cdc6896438b551dd45851e862d55c5b4e79d796461714",
+   "exp/stages/e8_score.py": "85301d2c2d0004175a19b4b6ab16654d5440ab756bb69442078e0bc5411ca692",
+   "testbed/real/ha-config/custom_components/homeprov_e10/__init__.py": "8f3f0742d63157f37bae63dd33386758ffa651c2a12a231e423f15a575e581df",
+   "testbed/real/ha-config/custom_components/homeprov_e10/manifest.json": "ad1f6786647e76864fe1c33b589f9f8eae50f4f70002cffee3adbc50bdcff99c",
+   "testbed/real/ha-config/custom_components/homeprov_ec/__init__.py": "266d27e298153ede1cc002d715461ecf96fbc211e96e76ed1d1453e762687918",
+   "testbed/real/ha-config/custom_components/homeprov_e7/__init__.py": "26d1d472e8331909cee0f69a16c4eee96ddaf383954d5bd79eba914fa847e707",
+   "testbed/real/ha-config/custom_components/homeprov_scenario/__init__.py": "5657e950b36abe89cbc68971381587eff1489640afa682f7d0fe50038910072d",
+   "monitor/test_coverage.py": "5857010438783e6f4378735685ae26615934872075759504e56d34663e2e65db",
+   "monitor/test_node_hash.py": "567ecb451c5ff604fd39dca1638f43107495dd368b4370765784ffa621d386da",
+   "monitor/test_e9.py": "e95559548b01e284918afcd8b6418c4cb58d4b4f27a79a84f92a99fc45911e05",
+   "monitor/test_e9_dishonest.py": "84ed49c5c6ce46eb02fe5b9ec541c98f0c3db1fb1e4deeb1c51fafe8401ea857",
+   "testbed/anchord/test_anchor_chain.py": "9c0477d3fdb81c3824054d819a637bb62a49311f6f2d69aac748123498f47967",
+   "testbed/anchord/test_anchor_e8.py": "614d2e994a994d080ce683351a160c664861982417af6cf16da80d3855f3093a",
+   "testbed/anchord/test_anchor_e9.py": "a9401be5925be8d8a53006e5042e4755b8bca824e911775adbfeab13eb638a72",
+   "testbed/anchord/test_anchor_cache.py": "54a3e52cbafe65b824a1074c9b6aed36ffdf5e0f2d7654e4fb628405f859526b",
+   "testbed/anchord/test_anchor_stall.py": "b2844dd38949791eba0a20e22792b7356add062c9a00c10a44901b8e23d0902e",
+   "testbed/e10/test_e10_patches.py": "10411d5ed54c182e6060631c8905198756815f455cec2a180da291a944ed262b",
+   "exp/stages/e10r5_score.py": "d06c89258e29e46ed860e09d253d5377217c9713b93d737eec96283acaf74aa7",
+   "testbed/e10/run_e10_r5.sh": "6d70e8cc834dcd6c24c41a280d20c9f867b6d38da84cde8018bc840c0f6be4b6",
+   "testbed/e10/run_dz_switchtype.sh": "b20da1c40ff2a7eb36b03995126f0aae9dee8e62422025381e3a639621287fbb",
+   "testbed/e10/dz_switchtype.py": "cd07b332c3012110c73139035d837fa4ef645096da07a6ce929752692acfef00",
+   "exp/stages/e10_dz_switchtype.py": "0b26f544ed9eb61df04c46d7d90783f73ec9f037e35f59e099bdf37f8f568466",
+   "exp/stages/dz_detection.py": "3b94b5962c6c6455574c875f33d33cc8315b8c43af84a9df4d30a0fd03aeea95",
+   "exp/stages/dz_offline_checks.py": "4b6676e057ca01da282961f1aa8133ddc0ce05c7821c90af2e075d59f6c02861",
+   "testbed/domoticz/monitor/dz_monitor.py": "969e87d3082f9f469116ea40ded323b48025df801d4cf5a2251a4e6135182b88",
+   "testbed/domoticz/harness/dz_api.py": "b63f41afa110055ffafbd42529655dc68a43107015b28a492a3ecf28394dd1f1",
+   "testbed/domoticz/run_dz.sh": "74fd346072213c8838a41e035c2fdb1f9e9d4d26c60c1b5294da69e8ca90315e",
+   "reproduce/verify_all.py": "bd979ae8866b42dd57ec420f6bcdccb8ee5f5fad55810d2763b5f8dbdccba57d",
+   "exp/stages/e10_pairwise_closure.py": "f44353dbbd872bbb7bd63dab830e1e2d1e80cb4100a7533ca4e510c26aedf4d5",
+   "exp/stages/e8_closure_real.py": "5761c203de38f6c63fadf0cae7ba90ed075af03a9f2739ee8adb5eb608cc498c",
+   "exp/out/e8_closure_real.json": "8b4899b8881b530dc07c6c03e6fe876f331da8c48de5579b56072a521f755ae5",
+   "exp/sp2027/e10_pi4_cost.py": "0cf69c9f9e7abfc408bc53fd78c14110121919e00a6adc5f91c17494868b069e",
+   "exp/sp2027/e9_cost_scale.py": "2b46cb0918ed1c3f4189da28a91d4c89421dc0c3bb72c851e9499d51d3087e8a",
+   "testbed/e10/test_e10_r5.py": "45a384f76b8d957c59d20a04b1efcaa267ac56b63d7709067cf8e60a8f489352"
+  }
+ }
+}

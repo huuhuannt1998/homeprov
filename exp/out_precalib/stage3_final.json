@@ -1,0 +1,199 @@
+{
+  "stage": 3,
+  "P1_install": {
+    "placement": "P1",
+    "ok": false,
+    "detail": ""
+  },
+  "P1_attack": {
+    "placement": "P1",
+    "APPEND": "ok",
+    "TRUNCATE": "refused",
+    "DELETE": "refused",
+    "CLEARA": "refused",
+    "EDIT": "refused",
+    "holds": true
+  },
+  "P1_sensitivity": {
+    "placement": "P1",
+    "sensitivity": {
+      "cap_linux_immutable": "DEFEATED",
+      "privileged": "DEFEATED"
+    }
+  },
+  "P2": {
+    "placement": "P2",
+    "ok": true,
+    "volume": "hp-anchor-p2",
+    "note": "isolation is the container namespace, not uid"
+  },
+  "P3": {
+    "placement": "P3",
+    "ok": true,
+    "volume": "hp-anchor-p3",
+    "scope": "local-only"
+  },
+  "P4": {
+    "placement": "P4",
+    "cap_bpf": false,
+    "cap_sys_admin": false,
+    "available": false,
+    "note": "adversary equally lacks CAP_BPF"
+  },
+  "n_nodes": 487,
+  "overhead": {
+    "period_1s": {
+      "anchors": 10,
+      "p50_ms": 0.01337495632469654,
+      "p95_ms": 0.538041815161705,
+      "max_ms": 0.538041815161705,
+      "duty_cycle_pct": 0.0538041815161705,
+      "rho_commit_path": 1.0005380418151617,
+      "phi_bytes": 1231
+    },
+    "period_2s": {
+      "anchors": 9,
+      "p50_ms": 0.006541144102811813,
+      "p95_ms": 0.8627919014543295,
+      "max_ms": 0.8627919014543295,
+      "duty_cycle_pct": 0.043139595072716475,
+      "rho_commit_path": 1.0004313959507272,
+      "phi_bytes": 1231
+    },
+    "period_5s": {
+      "anchors": 6,
+      "p50_ms": 0.012625008821487427,
+      "p95_ms": 0.8498749230057001,
+      "max_ms": 0.8498749230057001,
+      "duty_cycle_pct": 0.016997498460114002,
+      "rho_commit_path": 1.0001699749846011,
+      "phi_bytes": 1231
+    },
+    "period_15s": {
+      "anchors": 2,
+      "p50_ms": 0.8659581653773785,
+      "p95_ms": 0.8659581653773785,
+      "max_ms": 0.8659581653773785,
+      "duty_cycle_pct": 0.00577305443584919,
+      "rho_commit_path": 1.0000577305443585,
+      "phi_bytes": 1231
+    },
+    "period_60s": {
+      "anchors": 1,
+      "p50_ms": 0.887958100065589,
+      "p95_ms": 0.887958100065589,
+      "max_ms": 0.887958100065589,
+      "duty_cycle_pct": 0.0014799301667759817,
+      "rho_commit_path": 1.0000147993016677,
+      "phi_bytes": 1328
+    }
+  },
+  "detection_window": {
+    "period_1s": {
+      "mean_W_s": 0.2677391153096663,
+      "p95_W_s": 0.9730429649353027,
+      "max_W_s": 1.0,
+      "theory_half_period": 0.5
+    },
+    "period_2s": {
+      "mean_W_s": 0.8016200188004261,
+      "p95_W_s": 1.9730429649353027,
+      "max_W_s": 2.0,
+      "theory_half_period": 1.0
+    },
+    "period_5s": {
+      "mean_W_s": 3.7010040023733213,
+      "p95_W_s": 4.973042964935303,
+      "max_W_s": 5.0,
+      "theory_half_period": 2.5
+    },
+    "period_15s": {
+      "mean_W_s": 13.382728848369215,
+      "p95_W_s": 14.973042964935303,
+      "max_W_s": 15.0,
+      "theory_half_period": 7.5
+    },
+    "period_60s": {
+      "mean_W_s": 58.01311899210638,
+      "p95_W_s": 59.9730429649353,
+      "max_W_s": 60.0,
+      "theory_half_period": 30.0
+    }
+  },
+  "storage": {
+    "recorder_bytes": 249856,
+    "phi_bytes": 1231,
+    "ratio": 0.004926837858606557,
+    "laminar_90d_mb": 0.62,
+    "naive_90d_mb": 667.4
+  },
+  "GATES": [
+    {
+      "metric": "RHO",
+      "value": 1.0001699749846011,
+      "op": "<=",
+      "threshold": 1.15,
+      "pass": true,
+      "hard": false
+    },
+    {
+      "metric": "STORAGE_RATIO",
+      "value": 1.0049268378586065,
+      "op": "<=",
+      "threshold": 1.5,
+      "pass": true,
+      "hard": false
+    }
+  ],
+  "GATE_PASS": true,
+  "capability": {
+    "capability_record": {
+      "schema_version": 1,
+      "actor_id": "mal_integration_v1",
+      "actor_position": "in_process_integration",
+      "powers": {
+        "db_read": true,
+        "db_write": true,
+        "fs_read_as_ha_uid": true,
+        "fs_write_as_ha_uid": true,
+        "python_exec_in_core": true,
+        "event_bus_listen": true,
+        "event_bus_emit": true,
+        "service_call": true,
+        "network_egress": false
+      },
+      "knowledge": {
+        "deployment_topology": "full",
+        "automation_configs": "full",
+        "anchor_schedule_known": false,
+        "anchor_key_known": false,
+        "victim_routine_model": "coarse"
+      },
+      "budget": {
+        "db_writes_max": 7,
+        "wallclock_window_s": 5,
+        "cpu_seconds_max": null
+      },
+      "constraints": {
+        "host_root": false,
+        "cross_uid_write": false,
+        "anchor_key_access": false,
+        "external_anchor_retraction": false,
+        "clock_control": false,
+        "cap_linux_immutable": false,
+        "cap_bpf": false
+      },
+      "substrate": {
+        "kind": "native_aarch64_container",
+        "envelope": "Pi-shaped cgroup (cpus/memory/blkio)",
+        "note": "NOT a Raspberry Pi; absolute latency is not claimed as Pi latency"
+      },
+      "provenance": {
+        "rka_mission": null,
+        "seed": 0
+      }
+    }
+  },
+  "_elapsed_s": 5.8,
+  "_digest": "d2549e84c166e992e2a1b9ffc446bdfd50829c796327c3d116f03283ecefc73c"
+}

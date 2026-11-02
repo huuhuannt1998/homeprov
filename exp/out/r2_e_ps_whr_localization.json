@@ -1,0 +1,5897 @@
+{
+ "experiment": "R2 (S&P 2027): quarantine soundness and over-quarantine on the saved real-deployment verifier snapshots",
+ "run_id": "e_ps_whr",
+ "scheme": "wholerow",
+ "deviation": null,
+ "window": {
+  "t_start": 1791098825.0,
+  "t_end": 1791100011.0,
+  "duration_s": 1186.0,
+  "recorder_snapshot_at": 1791100122.218403
+ },
+ "published_result_kind": "e_ps_detection",
+ "granularities": {
+  "monitor_GRAN": [
+   [
+    "second",
+    1.0
+   ],
+   [
+    "minute",
+    60.0
+   ],
+   [
+    "hour",
+    3600.0
+   ]
+  ],
+  "anchored_in_window": {
+   "second": 387,
+   "minute": 21,
+   "hour": 0
+  },
+  "verified_in_window": {
+   "second": 370,
+   "minute": 21,
+   "hour": 0
+  },
+  "violated": {
+   "second": 292,
+   "minute": 20,
+   "hour": 0
+  }
+ },
+ "chain": {
+  "chain_records_total": 218,
+  "chain_records_in_window": 206,
+  "evidence_unobservable_records": [],
+  "granularities_in_chain_records": {
+   "hour": 1,
+   "minute": 23,
+   "second": 216
+  },
+  "segments_sealed_in_window_by_granularity": {
+   "second": 387,
+   "minute": 21
+  },
+  "chain_schemes": {
+   "wholerow": 218
+  }
+ },
+ "reproduction_gates": {
+  "anchored_segments_in_window": {
+   "published": {
+    "second": 387,
+    "minute": 21,
+    "hour": 0
+   },
+   "recomputed": {
+    "second": 387,
+    "minute": 21,
+    "hour": 0
+   },
+   "match": true
+  },
+  "violation_mechanisms": {
+   "published": {
+    "second": {
+     "content_changed_in_place": 291,
+     "rows_arrived_after_seal": 1
+    },
+    "minute": {
+     "content_changed_in_place": 20
+    }
+   },
+   "recomputed": {
+    "second": {
+     "content_changed_in_place": 291,
+     "rows_arrived_after_seal": 1
+    },
+    "minute": {
+     "content_changed_in_place": 20
+    }
+   },
+   "match": true
+  },
+  "floor_old_rule_vs_floor_rescore": {
+   "published": {
+    "second": [
+     203,
+     281
+    ],
+    "minute": [
+     7,
+     8
+    ]
+   },
+   "recomputed": {
+    "second": [
+     203,
+     281
+    ],
+    "minute": [
+     7,
+     8
+    ]
+   },
+   "match": true
+  },
+  "floor_new_rule_vs_floor_rescore": {
+   "published": {
+    "second": [
+     203,
+     281
+    ],
+    "minute": [
+     7,
+     8
+    ]
+   },
+   "recomputed": {
+    "second": [
+     203,
+     281
+    ],
+    "minute": [
+     7,
+     8
+    ]
+   },
+   "match": true
+  },
+  "per_trial_second_verdicts": {
+   "agree": 90,
+   "disagree": 0,
+   "match": true
+  }
+ },
+ "all_gates_pass": true,
+ "event_gap_check": {
+  "scan_range": [
+   1791097925.0,
+   1791101022.218403
+  ],
+  "events_in_scan": 2439,
+  "time_inversions_by_event_id": 0,
+  "missing_event_ids_in_scan": 0,
+  "missing_event_ids_in_[t_start,recorder_snapshot_at]": 0,
+  "missing_event_ids_outside_run": {
+   "n": 0,
+   "all_before_t_start": true,
+   "latest_bracket_end": null
+  },
+  "deletions_reported_by_trials": 0,
+  "gaps_assigned_to_exactly_one_trial": 0,
+  "gaps_assigned_to_several_trials": 0,
+  "in_run_gaps_unassigned": [],
+  "match": true
+ },
+ "deleted_event_time_bound_support": {
+  "call_service_to_state_row_lag_s": {
+   "n": 174,
+   "min": 0.0005228519439697266,
+   "max": 0.044539451599121094
+  },
+  "call_service_minus_context_ulid_s": {
+   "n": 177,
+   "min": 8.749961853027344e-05,
+   "max": 0.005077838897705078
+  },
+  "scope": "lock-domain call_service events and lock state rows sharing their context, in [t_start, t_end]",
+  "reading": "lag >= 0 supports event <= its state row; ulid delta >= 0 supports context creation <= event"
+ },
+ "universe": {
+  "definition": "surviving snapshot nodes (states + events, the monitor's load()) with ts in [span_lo, span_hi), the time span of the verified anchored segments",
+  "span_lo": 1791098820.0,
+  "span_hi": 1791100080.0,
+  "U": 3109,
+  "nodes_in_[t_start,t_end]": 3071
+ },
+ "T": {
+  "n_keys": 89,
+  "n_surviving_in_U": 89,
+  "n_deleted": 0
+ },
+ "over_quarantine": {
+  "R0_void": {
+   "Q": 3109,
+   "Q_and_T": 89,
+   "Q_minus_T": 3020,
+   "OQ": 0.9713734319716951
+  },
+  "R1_1s": {
+   "Q": 2776,
+   "Q_and_T": 89,
+   "Q_minus_T": 2687,
+   "OQ": 0.8642650369893856
+  },
+  "R1_1min": {
+   "Q": 3109,
+   "Q_and_T": 89,
+   "Q_minus_T": 3020,
+   "OQ": 0.9713734319716951
+  },
+  "R1_1h": {
+   "Q": 3109,
+   "Q_and_T": 89,
+   "Q_minus_T": 3020,
+   "OQ": 0.9713734319716951
+  },
+  "R2_segments": {
+   "Q": 2768,
+   "Q_and_T": 89,
+   "Q_minus_T": 2679,
+   "OQ": 0.861691862335156
+  },
+  "R3_ceiling": {
+   "Q": 89,
+   "Q_and_T": 89,
+   "Q_minus_T": 0,
+   "OQ": 0.0
+  },
+  "R4_component": {
+   "Q": 1766,
+   "Q_and_T": 89,
+   "Q_minus_T": 1677,
+   "OQ": 0.5394017368928916
+  },
+  "R5_homeprov": {
+   "Q": 1732,
+   "Q_and_T": 89,
+   "Q_minus_T": 1643,
+   "OQ": 0.5284657446124156
+  }
+ },
+ "R5_regions_by_width_s": {
+  "1.0": 292,
+  "60.0": 1
+ },
+ "benign_floor": {
+  "rule": "hp_d2/floor_rescore.py NEW counting rule",
+  "floor_new_rule": {
+   "second": {
+    "k": 203,
+    "n": 281,
+    "mechanisms": {
+     "content_changed_in_place": 203
+    }
+   },
+   "minute": {
+    "k": 7,
+    "n": 8,
+    "mechanisms": {
+     "content_changed_in_place": 7
+    }
+   }
+  },
+  "floor_old_rule": {
+   "second": {
+    "k": 203,
+    "n": 281,
+    "mechanisms": {
+     "content_changed_in_place": 203
+    }
+   },
+   "minute": {
+    "k": 7,
+    "n": 8,
+    "mechanisms": {
+     "content_changed_in_place": 7
+    }
+   }
+  },
+  "floor_violations": {
+   "second": [
+    {
+     "segment": "1791098828",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098829",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098834",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098837",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098843",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098851",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098854",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098859",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098860",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098862",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098866",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098872",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098873",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098877",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098879",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098889",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098893",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098903",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098909",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098913",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098915",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098921",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098923",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098927",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098932",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098953",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098957",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098962",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098963",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098968",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098969",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098970",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098975",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098980",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098981",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098997",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791098999",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099009",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099018",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099024",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099030",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099036",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099038",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099043",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099044",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099047",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099057",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099060",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099064",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099069",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099073",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099079",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099086",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099088",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099098",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099108",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099110",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099120",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099123",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099133",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099142",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099144",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099153",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099160",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099178",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099199",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099224",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099234",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099237",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099243",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099255",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099267",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099284",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099285",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099291",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099297",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099303",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099316",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099324",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099334",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099340",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099346",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099352",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099353",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099356",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099358",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099362",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099366",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099370",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099376",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099382",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099386",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099388",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099392",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099396",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099400",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099402",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099406",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099412",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099423",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099432",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099435",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099442",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099445",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099452",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099453",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099468",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099470",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099478",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099480",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099481",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099489",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099498",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099500",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099508",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099510",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099512",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099522",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099529",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099551",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099554",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099558",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099574",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099590",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099593",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099602",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099619",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099621",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099623",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099629",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099633",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099635",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099646",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099650",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099655",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099657",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099659",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099663",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099667",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099669",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099675",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099681",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099682",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099685",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099693",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099697",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099699",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099705",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099707",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099711",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099715",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099717",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099723",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099729",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099731",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099734",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099740",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099753",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099755",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099759",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099761",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099763",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099765",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099769",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099770",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099771",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099778",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099784",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099792",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099794",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099802",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099807",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099809",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099820",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099822",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099826",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099836",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099843",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099845",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099855",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099860",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099863",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099873",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099878",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099882",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099888",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099895",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099896",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099902",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099915",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099918",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099926",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099930",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099943",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099946",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099952",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099956",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099969",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099975",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099976",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791099986",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791100007",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "1791100011",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    }
+   ],
+   "minute": [
+    {
+     "segment": "29851651",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "29851652",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "29851658",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "29851664",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "29851665",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "29851666",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    },
+    {
+     "segment": "29851667",
+     "mechanism": "content_changed_in_place",
+     "delta_n": 0
+    }
+   ],
+   "hour": []
+  },
+  "contribution_by_policy": {
+   "R1_1s": {
+    "OQ_all_violations": 0.8642650369893856,
+    "OQ_trial_touched_violations_only": 0.5580572531360566,
+    "untampered_nodes_added_by_floor": 952,
+    "untampered_nodes_removed_by_floor_subsumption": 0
+   },
+   "R1_1min": {
+    "OQ_all_violations": 0.9713734319716951,
+    "OQ_trial_touched_violations_only": 0.8279189449983918,
+    "untampered_nodes_added_by_floor": 446,
+    "untampered_nodes_removed_by_floor_subsumption": 0
+   },
+   "R1_1h": {
+    "OQ_all_violations": 0.9713734319716951,
+    "OQ_trial_touched_violations_only": 0.9713734319716951,
+    "untampered_nodes_added_by_floor": 0,
+    "untampered_nodes_removed_by_floor_subsumption": 0
+   },
+   "R2_segments": {
+    "OQ_all_violations": 0.861691862335156,
+    "OQ_trial_touched_violations_only": 0.5554840784818269,
+    "untampered_nodes_added_by_floor": 952,
+    "untampered_nodes_removed_by_floor_subsumption": 0
+   },
+   "R4_component": {
+    "OQ_all_violations": 0.5394017368928916,
+    "OQ_trial_touched_violations_only": 0.06272113219684786,
+    "untampered_nodes_added_by_floor": 1482,
+    "untampered_nodes_removed_by_floor_subsumption": 0
+   },
+   "R5_homeprov": {
+    "OQ_all_violations": 0.5284657446124156,
+    "OQ_trial_touched_violations_only": 0.05339337407526536,
+    "untampered_nodes_added_by_floor": 1477,
+    "untampered_nodes_removed_by_floor_subsumption": 0
+   }
+  }
+ },
+ "arms": {
+  "PS": {
+   "n_trials": 90,
+   "n_scored": 90,
+   "n_excluded_no_edit": 0,
+   "n_ground_truth_exact": 90,
+   "n_tampered_elements": 102,
+   "n_deleted_events": 0,
+   "n_detected_own_segments": 90,
+   "R5_miss_taxonomy": {},
+   "per_room": {
+    "porch": {
+     "n": 30,
+     "sound_R5": 30
+    },
+    "hallway": {
+     "n": 30,
+     "sound_R5": 30
+    },
+    "kitchen": {
+     "n": 30,
+     "sound_R5": 30
+    }
+   },
+   "soundness_R5_homeprov": {
+    "k": 90,
+    "n": 90,
+    "prop": 1.0,
+    "ci_lo": 0.9598410803842253,
+    "ci_hi": 1.0,
+    "method": "Clopper-Pearson exact",
+    "indeterminate": 0,
+    "unsound": 0,
+    "upper_if_indeterminate_sound": {
+     "k": 90,
+     "n": 90,
+     "prop": 1.0,
+     "ci_lo": 0.9598410803842253,
+     "ci_hi": 1.0,
+     "method": "Clopper-Pearson exact"
+    }
+   },
+   "soundness_R5_homeprov_anchor_resolved": {
+    "k": 90,
+    "n": 90,
+    "prop": 1.0,
+    "ci_lo": 0.9598410803842253,
+    "ci_hi": 1.0,
+    "method": "Clopper-Pearson exact",
+    "indeterminate": 0,
+    "unsound": 0,
+    "upper_if_indeterminate_sound": {
+     "k": 90,
+     "n": 90,
+     "prop": 1.0,
+     "ci_lo": 0.9598410803842253,
+     "ci_hi": 1.0,
+     "method": "Clopper-Pearson exact"
+    }
+   },
+   "soundness_R5_homeprov_closed": {
+    "k": 90,
+    "n": 90,
+    "prop": 1.0,
+    "ci_lo": 0.9598410803842253,
+    "ci_hi": 1.0,
+    "method": "Clopper-Pearson exact",
+    "indeterminate": 0,
+    "unsound": 0,
+    "upper_if_indeterminate_sound": {
+     "k": 90,
+     "n": 90,
+     "prop": 1.0,
+     "ci_lo": 0.9598410803842253,
+     "ci_hi": 1.0,
+     "method": "Clopper-Pearson exact"
+    }
+   },
+   "soundness_R4_component": {
+    "k": 90,
+    "n": 90,
+    "prop": 1.0,
+    "ci_lo": 0.9598410803842253,
+    "ci_hi": 1.0,
+    "method": "Clopper-Pearson exact",
+    "indeterminate": 0,
+    "unsound": 0,
+    "upper_if_indeterminate_sound": {
+     "k": 90,
+     "n": 90,
+     "prop": 1.0,
+     "ci_lo": 0.9598410803842253,
+     "ci_hi": 1.0,
+     "method": "Clopper-Pearson exact"
+    }
+   },
+   "soundness_R2_segments": {
+    "k": 90,
+    "n": 90,
+    "prop": 1.0,
+    "ci_lo": 0.9598410803842253,
+    "ci_hi": 1.0,
+    "method": "Clopper-Pearson exact",
+    "indeterminate": 0,
+    "unsound": 0,
+    "upper_if_indeterminate_sound": {
+     "k": 90,
+     "n": 90,
+     "prop": 1.0,
+     "ci_lo": 0.9598410803842253,
+     "ci_hi": 1.0,
+     "method": "Clopper-Pearson exact"
+    }
+   },
+   "soundness_R1_1s": {
+    "k": 90,
+    "n": 90,
+    "prop": 1.0,
+    "ci_lo": 0.9598410803842253,
+    "ci_hi": 1.0,
+    "method": "Clopper-Pearson exact",
+    "indeterminate": 0,
+    "unsound": 0,
+    "upper_if_indeterminate_sound": {
+     "k": 90,
+     "n": 90,
+     "prop": 1.0,
+     "ci_lo": 0.9598410803842253,
+     "ci_hi": 1.0,
+     "method": "Clopper-Pearson exact"
+    }
+   },
+   "soundness_R1_1min": {
+    "k": 90,
+    "n": 90,
+    "prop": 1.0,
+    "ci_lo": 0.9598410803842253,
+    "ci_hi": 1.0,
+    "method": "Clopper-Pearson exact",
+    "indeterminate": 0,
+    "unsound": 0,
+    "upper_if_indeterminate_sound": {
+     "k": 90,
+     "n": 90,
+     "prop": 1.0,
+     "ci_lo": 0.9598410803842253,
+     "ci_hi": 1.0,
+     "method": "Clopper-Pearson exact"
+    }
+   },
+   "soundness_R1_1h": {
+    "k": 90,
+    "n": 90,
+    "prop": 1.0,
+    "ci_lo": 0.9598410803842253,
+    "ci_hi": 1.0,
+    "method": "Clopper-Pearson exact",
+    "indeterminate": 0,
+    "unsound": 0,
+    "upper_if_indeterminate_sound": {
+     "k": 90,
+     "n": 90,
+     "prop": 1.0,
+     "ci_lo": 0.9598410803842253,
+     "ci_hi": 1.0,
+     "method": "Clopper-Pearson exact"
+    }
+   },
+   "soundness_R0_void": {
+    "k": 90,
+    "n": 90,
+    "prop": 1.0,
+    "ci_lo": 0.9598410803842253,
+    "ci_hi": 1.0,
+    "method": "Clopper-Pearson exact",
+    "indeterminate": 0,
+    "unsound": 0,
+    "upper_if_indeterminate_sound": {
+     "k": 90,
+     "n": 90,
+     "prop": 1.0,
+     "ci_lo": 0.9598410803842253,
+     "ci_hi": 1.0,
+     "method": "Clopper-Pearson exact"
+    }
+   },
+   "per_trial_R5_quarantine": {
+    "what": "surviving nodes in the R5 regions that this trial's own tampered elements fall in (regions may be shared with other trials)",
+    "Q_mean": 3.2111111111111112,
+    "Q_median": 2.0,
+    "Q_max": 16,
+    "Q_minus_T_mean": 2.077777777777778,
+    "Q_minus_T_median": 1.0,
+    "Q_minus_T_max": 15,
+    "region_widths_s": {
+     "1.0": 102
+    }
+   },
+   "per_trial_OQ": {
+    "what": "each policy applied to the violated segments that contain this trial's own tampered elements; mean over trials of |Q - T| / |U|",
+    "R0_void": {
+     "mean": 0.9713734319716951,
+     "max": 0.9713734319716951,
+     "n_trials_with_own_violations": 90,
+     "Q_minus_T_mean": 3020
+    },
+    "R1_1s": {
+     "mean": 0.029698724134233943,
+     "max": 0.14409778063686074,
+     "n_trials_with_own_violations": 90,
+     "Q_minus_T_mean": 92.33333333333333
+    },
+    "R1_1min": {
+     "mean": 0.0996783531682213,
+     "max": 0.2637504020585397,
+     "n_trials_with_own_violations": 90,
+     "Q_minus_T_mean": 309.9
+    },
+    "R1_1h": {
+     "mean": 0.9713734319716951,
+     "max": 0.9713734319716951,
+     "n_trials_with_own_violations": 90,
+     "Q_minus_T_mean": 3020
+    },
+    "R2_segments": {
+     "mean": 0.029298452521353775,
+     "max": 0.14409778063686074,
+     "n_trials_with_own_violations": 90,
+     "Q_minus_T_mean": 91.08888888888889
+    },
+    "R3_ceiling": {
+     "mean": 0.0,
+     "max": 0.0,
+     "n_trials_with_own_violations": 90,
+     "Q_minus_T_mean": 0
+    },
+    "R4_component": {
+     "mean": 0.000832707908938208,
+     "max": 0.005146349308459312,
+     "n_trials_with_own_violations": 90,
+     "Q_minus_T_mean": 2.588888888888889
+    },
+    "R5_homeprov": {
+     "mean": 0.0006683106393624245,
+     "max": 0.004824702476680605,
+     "n_trials_with_own_violations": 90,
+     "Q_minus_T_mean": 2.077777777777778
+    }
+   }
+  }
+ },
+ "write_time_arms": {},
+ "trials": [
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 0,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746510",
+     "kind": "state_update",
+     "lo": 1791098830.642857,
+     "hi": 1791098830.642857,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/0",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791098830",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 1,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746526",
+     "kind": "state_update",
+     "lo": 1791098863.8044677,
+     "hi": 1791098863.8044677,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 2,
+     "last_writer": "porch/PS/2",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791098863",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 2,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746526",
+     "kind": "state_update",
+     "lo": 1791098863.8044677,
+     "hi": 1791098863.8044677,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 2,
+     "last_writer": "porch/PS/2",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791098863",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    },
+    {
+     "key": "s:746528",
+     "kind": "state_update",
+     "lo": 1791098869.846311,
+     "hi": 1791098869.846311,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/2",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791098869",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 3,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746532",
+     "kind": "state_update",
+     "lo": 1791098875.8818643,
+     "hi": 1791098875.8818643,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 2,
+     "last_writer": "porch/PS/4",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791098875",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 4,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746532",
+     "kind": "state_update",
+     "lo": 1791098875.8818643,
+     "hi": 1791098875.8818643,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 2,
+     "last_writer": "porch/PS/4",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791098875",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    },
+    {
+     "key": "s:746538",
+     "kind": "state_update",
+     "lo": 1791098881.923678,
+     "hi": 1791098881.923678,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/4",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791098881",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 5,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746540",
+     "kind": "state_update",
+     "lo": 1791098887.9527214,
+     "hi": 1791098887.9527214,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/5",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791098887",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 6,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746548",
+     "kind": "state_update",
+     "lo": 1791098894.032239,
+     "hi": 1791098894.032239,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/6",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791098894",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 7,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746550",
+     "kind": "state_update",
+     "lo": 1791098900.0606563,
+     "hi": 1791098900.0606563,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 2,
+     "last_writer": "porch/PS/8",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791098900",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 8,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746550",
+     "kind": "state_update",
+     "lo": 1791098900.0606563,
+     "hi": 1791098900.0606563,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 2,
+     "last_writer": "porch/PS/8",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791098900",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    },
+    {
+     "key": "s:746554",
+     "kind": "state_update",
+     "lo": 1791098906.0890257,
+     "hi": 1791098906.0890257,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/8",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791098906",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 9,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746559",
+     "kind": "state_update",
+     "lo": 1791098912.1074896,
+     "hi": 1791098912.1074896,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/9",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791098912",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 10,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746562",
+     "kind": "state_update",
+     "lo": 1791098918.1412191,
+     "hi": 1791098918.1412191,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/10",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791098918",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 11,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746566",
+     "kind": "state_update",
+     "lo": 1791098924.1776578,
+     "hi": 1791098924.1776578,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 2,
+     "last_writer": "porch/PS/12",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791098924",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 12,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746566",
+     "kind": "state_update",
+     "lo": 1791098924.1776578,
+     "hi": 1791098924.1776578,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 2,
+     "last_writer": "porch/PS/12",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791098924",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 13,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746574",
+     "kind": "state_update",
+     "lo": 1791098936.2660682,
+     "hi": 1791098936.2660682,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/13",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791098936",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 14,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746578",
+     "kind": "state_update",
+     "lo": 1791098942.5196729,
+     "hi": 1791098942.5196729,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/14",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791098942",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 15,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746580",
+     "kind": "state_update",
+     "lo": 1791098948.5666344,
+     "hi": 1791098948.5666344,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/15",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791098948",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 16,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746585",
+     "kind": "state_update",
+     "lo": 1791098954.6509378,
+     "hi": 1791098954.6509378,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/16",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791098954",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 17,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746587",
+     "kind": "state_update",
+     "lo": 1791098960.6906445,
+     "hi": 1791098960.6906445,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/17",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791098960",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 18,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746591",
+     "kind": "state_update",
+     "lo": 1791098966.724794,
+     "hi": 1791098966.724794,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/18",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791098966",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 19,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746597",
+     "kind": "state_update",
+     "lo": 1791098972.762002,
+     "hi": 1791098972.762002,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/19",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791098972",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 20,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746603",
+     "kind": "state_update",
+     "lo": 1791098978.8044767,
+     "hi": 1791098978.8044767,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/20",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791098978",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 21,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746609",
+     "kind": "state_update",
+     "lo": 1791098984.8360982,
+     "hi": 1791098984.8360982,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/21",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791098984",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 22,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746611",
+     "kind": "state_update",
+     "lo": 1791098990.8689647,
+     "hi": 1791098990.8689647,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/22",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791098990",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 23,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746613",
+     "kind": "state_update",
+     "lo": 1791098996.8984365,
+     "hi": 1791098996.8984365,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/23",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791098996",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 24,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746619",
+     "kind": "state_update",
+     "lo": 1791099002.9353693,
+     "hi": 1791099002.9353693,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/24",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099002",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 25,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746621",
+     "kind": "state_update",
+     "lo": 1791099008.97369,
+     "hi": 1791099008.97369,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/25",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099008",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 26,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746625",
+     "kind": "state_update",
+     "lo": 1791099015.0145106,
+     "hi": 1791099015.0145106,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/26",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099015",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 27,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746631",
+     "kind": "state_update",
+     "lo": 1791099021.067771,
+     "hi": 1791099021.067771,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/27",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099021",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 28,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746633",
+     "kind": "state_update",
+     "lo": 1791099027.0870907,
+     "hi": 1791099027.0870907,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/28",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099027",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "porch",
+   "arm": "PS",
+   "trial": 29,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746637",
+     "kind": "state_update",
+     "lo": 1791099033.1385038,
+     "hi": 1791099033.1385038,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "porch/PS/29",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099033",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 0,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746782",
+     "kind": "state_update",
+     "lo": 1791099225.4771316,
+     "hi": 1791099225.4771316,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/0",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099225",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 1,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746795",
+     "kind": "state_update",
+     "lo": 1791099258.7180665,
+     "hi": 1791099258.7180665,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 2,
+     "last_writer": "hallway/PS/2",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099258",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 2,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746795",
+     "kind": "state_update",
+     "lo": 1791099258.7180665,
+     "hi": 1791099258.7180665,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 2,
+     "last_writer": "hallway/PS/2",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099258",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    },
+    {
+     "key": "s:746799",
+     "kind": "state_update",
+     "lo": 1791099264.7390444,
+     "hi": 1791099264.7390444,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 2,
+     "last_writer": "hallway/PS/3",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099264",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 3,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746799",
+     "kind": "state_update",
+     "lo": 1791099264.7390444,
+     "hi": 1791099264.7390444,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 2,
+     "last_writer": "hallway/PS/3",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099264",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    },
+    {
+     "key": "s:746804",
+     "kind": "state_update",
+     "lo": 1791099270.7684064,
+     "hi": 1791099270.7684064,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/3",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099270",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 4,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746807",
+     "kind": "state_update",
+     "lo": 1791099276.8040504,
+     "hi": 1791099276.8040504,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/4",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099276",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 5,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746814",
+     "kind": "state_update",
+     "lo": 1791099282.8400085,
+     "hi": 1791099282.8400085,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/5",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099282",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 6,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746817",
+     "kind": "state_update",
+     "lo": 1791099288.866916,
+     "hi": 1791099288.866916,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/6",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099288",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 7,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746821",
+     "kind": "state_update",
+     "lo": 1791099294.9029212,
+     "hi": 1791099294.9029212,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 2,
+     "last_writer": "hallway/PS/8",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099294",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 8,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746821",
+     "kind": "state_update",
+     "lo": 1791099294.9029212,
+     "hi": 1791099294.9029212,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 2,
+     "last_writer": "hallway/PS/8",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099294",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    },
+    {
+     "key": "s:746823",
+     "kind": "state_update",
+     "lo": 1791099300.943103,
+     "hi": 1791099300.943103,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/8",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099300",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 9,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746829",
+     "kind": "state_update",
+     "lo": 1791099306.9850867,
+     "hi": 1791099306.9850867,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 2,
+     "last_writer": "hallway/PS/10",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099306",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 10,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746829",
+     "kind": "state_update",
+     "lo": 1791099306.9850867,
+     "hi": 1791099306.9850867,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 2,
+     "last_writer": "hallway/PS/10",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099306",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    },
+    {
+     "key": "s:746831",
+     "kind": "state_update",
+     "lo": 1791099313.0126324,
+     "hi": 1791099313.0126324,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/10",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099313",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 11,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746839",
+     "kind": "state_update",
+     "lo": 1791099319.0337138,
+     "hi": 1791099319.0337138,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 2,
+     "last_writer": "hallway/PS/12",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099319",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 12,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746839",
+     "kind": "state_update",
+     "lo": 1791099319.0337138,
+     "hi": 1791099319.0337138,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 2,
+     "last_writer": "hallway/PS/12",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099319",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    },
+    {
+     "key": "s:746843",
+     "kind": "state_update",
+     "lo": 1791099325.0784962,
+     "hi": 1791099325.0784962,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/12",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099325",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 13,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746845",
+     "kind": "state_update",
+     "lo": 1791099331.117015,
+     "hi": 1791099331.117015,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/13",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099331",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 14,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746851",
+     "kind": "state_update",
+     "lo": 1791099337.150187,
+     "hi": 1791099337.150187,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/14",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099337",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 15,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746858",
+     "kind": "state_update",
+     "lo": 1791099343.176796,
+     "hi": 1791099343.176796,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/15",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099343",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 16,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746861",
+     "kind": "state_update",
+     "lo": 1791099349.2026377,
+     "hi": 1791099349.2026377,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 2,
+     "last_writer": "hallway/PS/17",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099349",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 17,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746861",
+     "kind": "state_update",
+     "lo": 1791099349.2026377,
+     "hi": 1791099349.2026377,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 2,
+     "last_writer": "hallway/PS/17",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099349",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    },
+    {
+     "key": "s:746866",
+     "kind": "state_update",
+     "lo": 1791099355.2504005,
+     "hi": 1791099355.2504005,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/17",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099355",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 18,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746871",
+     "kind": "state_update",
+     "lo": 1791099361.2694294,
+     "hi": 1791099361.2694294,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 2,
+     "last_writer": "hallway/PS/19",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099361",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 19,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746871",
+     "kind": "state_update",
+     "lo": 1791099361.2694294,
+     "hi": 1791099361.2694294,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 2,
+     "last_writer": "hallway/PS/19",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099361",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    },
+    {
+     "key": "s:746878",
+     "kind": "state_update",
+     "lo": 1791099367.322467,
+     "hi": 1791099367.322467,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/19",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099367",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 20,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746881",
+     "kind": "state_update",
+     "lo": 1791099373.3622136,
+     "hi": 1791099373.3622136,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/20",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099373",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 21,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746885",
+     "kind": "state_update",
+     "lo": 1791099379.409274,
+     "hi": 1791099379.409274,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/21",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099379",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 22,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746890",
+     "kind": "state_update",
+     "lo": 1791099385.4436564,
+     "hi": 1791099385.4436564,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/22",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099385",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 23,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746893",
+     "kind": "state_update",
+     "lo": 1791099391.4795902,
+     "hi": 1791099391.4795902,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/23",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099391",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 24,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746901",
+     "kind": "state_update",
+     "lo": 1791099397.5005867,
+     "hi": 1791099397.5005867,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/24",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099397",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 25,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746905",
+     "kind": "state_update",
+     "lo": 1791099403.5402133,
+     "hi": 1791099403.5402133,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/25",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099403",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 26,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746907",
+     "kind": "state_update",
+     "lo": 1791099409.5802011,
+     "hi": 1791099409.5802011,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/26",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099409",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 27,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746913",
+     "kind": "state_update",
+     "lo": 1791099415.6188195,
+     "hi": 1791099415.6188195,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/27",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099415",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 28,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746915",
+     "kind": "state_update",
+     "lo": 1791099421.6490636,
+     "hi": 1791099421.6490636,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 2,
+     "last_writer": "hallway/PS/29",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099421",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "hallway",
+   "arm": "PS",
+   "trial": 29,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:746915",
+     "kind": "state_update",
+     "lo": 1791099421.6490636,
+     "hi": 1791099421.6490636,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 2,
+     "last_writer": "hallway/PS/29",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099421",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    },
+    {
+     "key": "s:746919",
+     "kind": "state_update",
+     "lo": 1791099427.6896458,
+     "hi": 1791099427.6896458,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "hallway/PS/29",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099427",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 0,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:747068",
+     "kind": "state_update",
+     "lo": 1791099620.717036,
+     "hi": 1791099620.717036,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/0",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099620",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "rows_arrived_after_seal",
+       "delta_n": 8
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 1,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:747082",
+     "kind": "state_update",
+     "lo": 1791099653.9752762,
+     "hi": 1791099653.9752762,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/1",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099653",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 2,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:747088",
+     "kind": "state_update",
+     "lo": 1791099660.0135007,
+     "hi": 1791099660.0135007,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/2",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099660",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 3,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:747090",
+     "kind": "state_update",
+     "lo": 1791099666.0454743,
+     "hi": 1791099666.0454743,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/3",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099666",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 4,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:747097",
+     "kind": "state_update",
+     "lo": 1791099672.2194483,
+     "hi": 1791099672.2194483,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/4",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099672",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 5,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:747100",
+     "kind": "state_update",
+     "lo": 1791099678.271337,
+     "hi": 1791099678.271337,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/5",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099678",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 6,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:747107",
+     "kind": "state_update",
+     "lo": 1791099684.351651,
+     "hi": 1791099684.351651,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/6",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099684",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 7,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:747110",
+     "kind": "state_update",
+     "lo": 1791099690.3973818,
+     "hi": 1791099690.3973818,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/7",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099690",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 8,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:747114",
+     "kind": "state_update",
+     "lo": 1791099696.4428704,
+     "hi": 1791099696.4428704,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/8",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099696",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 9,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:747120",
+     "kind": "state_update",
+     "lo": 1791099702.4842136,
+     "hi": 1791099702.4842136,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/9",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099702",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 10,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:747124",
+     "kind": "state_update",
+     "lo": 1791099708.5154243,
+     "hi": 1791099708.5154243,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/10",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099708",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 11,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:747126",
+     "kind": "state_update",
+     "lo": 1791099714.5452292,
+     "hi": 1791099714.5452292,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/11",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099714",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 12,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:747132",
+     "kind": "state_update",
+     "lo": 1791099720.583742,
+     "hi": 1791099720.583742,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/12",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099720",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 13,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:747136",
+     "kind": "state_update",
+     "lo": 1791099726.6157334,
+     "hi": 1791099726.6157334,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/13",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099726",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 14,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:747141",
+     "kind": "state_update",
+     "lo": 1791099732.6611748,
+     "hi": 1791099732.6611748,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/14",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099732",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 15,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:747144",
+     "kind": "state_update",
+     "lo": 1791099738.7255187,
+     "hi": 1791099738.7255187,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/15",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099738",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 16,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:747148",
+     "kind": "state_update",
+     "lo": 1791099744.7725885,
+     "hi": 1791099744.7725885,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/16",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099744",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 17,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:747150",
+     "kind": "state_update",
+     "lo": 1791099750.809874,
+     "hi": 1791099750.809874,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/17",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099750",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 18,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:747156",
+     "kind": "state_update",
+     "lo": 1791099756.8508742,
+     "hi": 1791099756.8508742,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/18",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099756",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 19,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:747160",
+     "kind": "state_update",
+     "lo": 1791099762.8996599,
+     "hi": 1791099762.8996599,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/19",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099762",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 20,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:747163",
+     "kind": "state_update",
+     "lo": 1791099768.9237201,
+     "hi": 1791099768.9237201,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/20",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099768",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 21,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:747171",
+     "kind": "state_update",
+     "lo": 1791099774.9529939,
+     "hi": 1791099774.9529939,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/21",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099774",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 22,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:747173",
+     "kind": "state_update",
+     "lo": 1791099781.014819,
+     "hi": 1791099781.014819,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 2,
+     "last_writer": "kitchen/PS/23",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099781",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 23,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:747173",
+     "kind": "state_update",
+     "lo": 1791099781.014819,
+     "hi": 1791099781.014819,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 2,
+     "last_writer": "kitchen/PS/23",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099781",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    },
+    {
+     "key": "s:747177",
+     "kind": "state_update",
+     "lo": 1791099787.050127,
+     "hi": 1791099787.050127,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/23",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099787",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 24,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:747182",
+     "kind": "state_update",
+     "lo": 1791099793.0893848,
+     "hi": 1791099793.0893848,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/24",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099793",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 25,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:747185",
+     "kind": "state_update",
+     "lo": 1791099799.1253574,
+     "hi": 1791099799.1253574,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/25",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099799",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 26,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:747189",
+     "kind": "state_update",
+     "lo": 1791099805.1667156,
+     "hi": 1791099805.1667156,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/26",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099805",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 27,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:747195",
+     "kind": "state_update",
+     "lo": 1791099811.1899714,
+     "hi": 1791099811.1899714,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/27",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099811",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 28,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:747197",
+     "kind": "state_update",
+     "lo": 1791099817.2338092,
+     "hi": 1791099817.2338092,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/28",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099817",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  },
+  {
+   "room": "kitchen",
+   "arm": "PS",
+   "trial": 29,
+   "edited_after_anchoring": true,
+   "err": null,
+   "elements": [
+    {
+     "key": "s:747204",
+     "kind": "state_update",
+     "lo": 1791099823.2713304,
+     "hi": 1791099823.2713304,
+     "edit_visible_in_snapshot": true,
+     "edited_by_n_trials": 1,
+     "last_writer": "kitchen/PS/29",
+     "R5_cover": "covered",
+     "own_second_segments": [
+      {
+       "segment": "1791099823",
+       "anchored": true,
+       "verified": true,
+       "ever_sealed_in_chain": true,
+       "mechanism": "content_changed_in_place",
+       "delta_n": 0
+      }
+     ]
+    }
+   ],
+   "ground_truth_exact": true,
+   "status": {
+    "R0_void": "sound",
+    "R1_1s": "sound",
+    "R1_1min": "sound",
+    "R1_1h": "sound",
+    "R2_segments": "sound",
+    "R5_homeprov": "sound",
+    "R5_homeprov_closed": "sound",
+    "R4_component": "sound",
+    "R3_ceiling": "sound",
+    "R5_homeprov_anchor_resolved": "sound"
+   },
+   "detected_own_segments": true,
+   "miss_R5": null
+  }
+ ],
+ "definitions": {
+  "soundness": "trial sound iff every element it tampered (updated state rows: snapshot ts; deleted events: id gap, ts interval [max(ULID(ctx), ts(prev id)), min(ts(row_before), ts(next id))]) lies inside the policy's quarantined time regions; R5 regions = localize.greedy_regions, half-open [lo,hi) as metrics.lr_regions (R5_homeprov_closed: stage24's closed-interval check); R1 = stage24 win(w) closed; R2 = stage24 innermost() (minimum-width violated segments) closed; R0 = [min ts, max ts] of U; R4 = R5 regions plus R4's node set (DEVIATION: stage24 uses one hull interval over R4's nodes, which on a multi-trial run spans the whole run and is vacuous)",
+  "indeterminate": "a deleted event whose bounding interval is only partly quarantined",
+  "over_quarantine": "metrics.oq: |Q - T| / |U|",
+  "policies": {
+   "R0_void": "stage24 pol_nodes['R0_void'] applied to U",
+   "R1_1s": "stage24 pol_nodes['R1_1s'] applied to U",
+   "R1_1min": "stage24 pol_nodes['R1_1min'] applied to U",
+   "R1_1h": "stage24 pol_nodes['R1_1h'] applied to U",
+   "R2_segments": "stage24 pol_nodes['R2_segments'] applied to U",
+   "R3_ceiling": "stage24 pol_nodes['R3_ceiling'] applied to U",
+   "R4_component": "stage24 pol_nodes['R4_component'] applied to U",
+   "R5_homeprov": "stage24 pol_nodes['R5_homeprov'] applied to U"
+  },
+  "verification": "e_c_write_time.verify_window semantics; first-write-wins roots from chain records with payload ts in [t_start, recorder_snapshot_at]; segments with start in [t_start-w, t_end+w]"
+ },
+ "provenance": {
+  "script": "<artifact-root>/exp/sp2027/r2_localize.py",
+  "script_sha256": "dc478589b9b44c4fe5d3e09600440163d21e479d295cc268bfd4871a07e7c091",
+  "python": "3.13.11 | packaged by Anaconda, Inc. | (main, Dec 10 2025, 21:21:08) [Clang 20.1.8 ]",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "git_head": "b7611992393052a568df00c9ebc805f4d15ee6f5",
+  "exp_rig_dirty": false,
+  "exp_rig_status": "",
+  "code_sha256": {
+   "exp/rig/localize.py": "a7a27433921d71e015586a63927eb382ac086c0fe7f2db0dc1fc817a5ee840c4",
+   "exp/rig/metrics.py": "657e654984ae163359fcd624df54cecfc3cc7e35245b359d40e0b0125ea51084",
+   "exp/rig/stats.py": "156075624fa11245fcd993e64925f258f6ca1e4ae69227b1eed9b7a31758baeb",
+   "exp/stages/stage24_recon_baselines.py": "a7275da3747e58ab232f292a691110fb3d542d3bc5e53455bfa99973d53c9077",
+   "exp/stages/e_c_write_time.py": "fc4c01267b3a555afdc8acbdbcceb8172f487b174fac9e4a4b6104526a9329e1"
+  },
+  "monitor_py_sha256": "903daa794d027bb97a6954ff1bfe891d5c35a1715856094e34901f097c11ed9a",
+  "monitor_wholerow_py_sha256": "93f339a87d63fbc1a24ed39caa4bcd363fa705d6efd15e8e5b43fcb6515a1d28",
+  "inputs": {
+   "snapshot_db": {
+    "path": "<snapshots>/hp-whr/e_ps_whr/ps_verify/recorder.db",
+    "sha256_listed_in_SHA256SUMS": "1a469e3c7411e272c371454cd419c60d27ded31f440c5c31633be22c08ea502a",
+    "sha256_at_run": "1a469e3c7411e272c371454cd419c60d27ded31f440c5c31633be22c08ea502a"
+   },
+   "chain": {
+    "path": "<snapshots>/hp-whr/e_ps_whr/chain.jsonl",
+    "sha256_listed_in_SHA256SUMS": "57cedb8eef4e112ab175327ba222325a3c237ae20aa5fd6acbca2018f4d38819",
+    "sha256_at_run": "57cedb8eef4e112ab175327ba222325a3c237ae20aa5fd6acbca2018f4d38819"
+   },
+   "published_result": {
+    "path": "<artifact-root>/exp/out/e_ps_whr_detection.json",
+    "sha256_at_run": "88e948fd980b7d79d4c88d3f38ff14ef8f081ea9708b5f18fc4d1405d377e94b"
+   },
+   "published_floor_rescore": {
+    "path": "<artifact-root>/exp/out/e_ps_whr_floor_rescore.json",
+    "sha256_at_run": "7a9b3ab13a6e8b466faf22dcf79b03d714cb844e1c55da7bd5a041e3b3a0e2d3"
+   }
+  },
+  "sqlite_open": "file:<path>?mode=ro&immutable=1 (uri=True) for every open, including the shipped monitor's load() via a sqlite3 shim",
+  "load_since": 1791093600.0,
+  "load_commit_seconds": 0.09,
+  "started": "2026-10-06T17:50:06.887523+00:00",
+  "finished": "2026-10-06T17:50:07.865410+00:00",
+  "loadavg_1_5_15": [
+   4.82373046875,
+   4.4619140625,
+   4.41064453125
+  ]
+ }
+}

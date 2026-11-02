@@ -1,0 +1,3047 @@
+{
+ "item": "R6/T7: rows whose v1 node hash admits a rewrite that changes stored fields but no root",
+ "generated": "2026-10-06T23:36:10.360750+00:00",
+ "script": "exp/sp2027/r6_node_hash_exposure.py",
+ "script_sha256": "acabfde22a4038860f04bdc7a8f6296b9f2f94d307700b1f840b427f067ee297",
+ "inputs_mode": "extracts",
+ "snapshot_set": "the ten per-run window extracts in reproduce/snapshots (EXTRACTS_SHA256SUMS checked)",
+ "reference_rate_random_16_bytes_contains_0x7C": 0.0607,
+ "definitions": {
+  "row_splice": "ctx or par contains 0x7C: another (ctx', par') has the same v1 Row-scheme bytes",
+  "closure_splice": "ctx, par or usr contains 0x7C: another (ctx', par', usr') has the same v1 Closure bytes",
+  "par_usr_splice": "par or usr contains 0x7C: the parent/user boundary can move (the triage's case)",
+  "ctx_par_splice": "ctx or par contains 0x7C: the context/parent boundary can move",
+  "user_erasable": "usr not NULL and par_usr_splice: the user id can be replaced by an unresolvable value",
+  "null_alias_closure": "some of ctx/par/usr is NULL: NULL <-> empty BLOB is invisible to v1",
+  "natural_alt_closure": "the row's v1 bytes also parse as a different tuple whose BLOBs are all 0 or 16 bytes",
+  "unnatural": "some context BLOB is non-NULL and not 16 bytes long",
+  "rates": "k/n with exact Clopper-Pearson 95% intervals (exp/rig/stats.py)"
+ },
+ "union_distinct_rows": {
+  "states": {
+   "rows": 27708,
+   "counts": {
+    "row_splice": 1606,
+    "closure_splice": 1614,
+    "par_usr_splice": 489,
+    "ctx_par_splice": 1606,
+    "user_erasable": 9,
+    "null_alias_row": 16844,
+    "null_alias_closure": 27708,
+    "natural_alt_row": 0,
+    "natural_alt_closure": 2,
+    "unnatural": 0,
+    "ctx_has_7c": 1212,
+    "par_has_7c": 480,
+    "usr_has_7c": 9,
+    "usr_present": 509,
+    "par_present": 10864,
+    "prev_text": 0,
+    "chg_text": 0
+   },
+   "rates": {
+    "row_splice": {
+     "k": 1606,
+     "n": 27708,
+     "rate": 0.05796,
+     "ci95": [
+      0.05524,
+      0.06078
+     ]
+    },
+    "closure_splice": {
+     "k": 1614,
+     "n": 27708,
+     "rate": 0.05825,
+     "ci95": [
+      0.05552,
+      0.06107
+     ]
+    },
+    "par_usr_splice": {
+     "k": 489,
+     "n": 27708,
+     "rate": 0.01765,
+     "ci95": [
+      0.01613,
+      0.01927
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 1606,
+     "n": 27708,
+     "rate": 0.05796,
+     "ci95": [
+      0.05524,
+      0.06078
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 2,
+     "n": 27708,
+     "rate": 7e-05,
+     "ci95": [
+      1e-05,
+      0.00026
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 27708,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00013
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 9,
+     "n": 509,
+     "rate": 0.01768
+    }
+   }
+  },
+  "events": {
+   "rows": 32282,
+   "counts": {
+    "row_splice": 1800,
+    "closure_splice": 1800,
+    "par_usr_splice": 494,
+    "ctx_par_splice": 1800,
+    "user_erasable": 0,
+    "null_alias_row": 21088,
+    "null_alias_closure": 32282,
+    "natural_alt_row": 0,
+    "natural_alt_closure": 0,
+    "unnatural": 0,
+    "ctx_has_7c": 1396,
+    "par_has_7c": 494,
+    "usr_has_7c": 0,
+    "usr_present": 67,
+    "par_present": 11194,
+    "prev_text": 0,
+    "chg_text": 0
+   },
+   "rates": {
+    "row_splice": {
+     "k": 1800,
+     "n": 32282,
+     "rate": 0.05576,
+     "ci95": [
+      0.05328,
+      0.05832
+     ]
+    },
+    "closure_splice": {
+     "k": 1800,
+     "n": 32282,
+     "rate": 0.05576,
+     "ci95": [
+      0.05328,
+      0.05832
+     ]
+    },
+    "par_usr_splice": {
+     "k": 494,
+     "n": 32282,
+     "rate": 0.0153,
+     "ci95": [
+      0.01399,
+      0.0167
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 1800,
+     "n": 32282,
+     "rate": 0.05576,
+     "ci95": [
+      0.05328,
+      0.05832
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 0,
+     "n": 32282,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00011
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 32282,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00011
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 0,
+     "n": 67,
+     "rate": 0.0
+    }
+   }
+  },
+  "both": {
+   "rows": 59990,
+   "counts": {
+    "row_splice": 3406,
+    "closure_splice": 3414,
+    "par_usr_splice": 983,
+    "ctx_par_splice": 3406,
+    "user_erasable": 9,
+    "null_alias_row": 37932,
+    "null_alias_closure": 59990,
+    "natural_alt_row": 0,
+    "natural_alt_closure": 2,
+    "unnatural": 0,
+    "ctx_has_7c": 2608,
+    "par_has_7c": 974,
+    "usr_has_7c": 9,
+    "usr_present": 576,
+    "par_present": 22058,
+    "prev_text": 0,
+    "chg_text": 0
+   },
+   "rates": {
+    "row_splice": {
+     "k": 3406,
+     "n": 59990,
+     "rate": 0.05678,
+     "ci95": [
+      0.05494,
+      0.05866
+     ]
+    },
+    "closure_splice": {
+     "k": 3414,
+     "n": 59990,
+     "rate": 0.05691,
+     "ci95": [
+      0.05507,
+      0.05879
+     ]
+    },
+    "par_usr_splice": {
+     "k": 983,
+     "n": 59990,
+     "rate": 0.01639,
+     "ci95": [
+      0.01539,
+      0.01743
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 3406,
+     "n": 59990,
+     "rate": 0.05678,
+     "ci95": [
+      0.05494,
+      0.05866
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 2,
+     "n": 59990,
+     "rate": 3e-05,
+     "ci95": [
+      0.0,
+      0.00012
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 59990,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      6e-05
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 9,
+     "n": 576,
+     "rate": 0.01562
+    }
+   }
+  }
+ },
+ "per_run_window": {
+  "e_d_clo": {
+   "db": "e_d_clo.db",
+   "rows_folded_by_verifier": [
+    1790964000.0,
+    1790970444.5623932
+   ],
+   "states": {
+    "rows": 3556,
+    "counts": {
+     "row_splice": 209,
+     "closure_splice": 212,
+     "par_usr_splice": 61,
+     "ctx_par_splice": 209,
+     "user_erasable": 3,
+     "null_alias_row": 2333,
+     "null_alias_closure": 3556,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 154,
+     "par_has_7c": 58,
+     "usr_has_7c": 3,
+     "usr_present": 90,
+     "par_present": 1223,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 692388,
+       "ts": 1790966831.7514257,
+       "ctx": "01a0fdf11a83b3958e49843cbd155b36",
+       "par": null,
+       "usr": "111c7b72d453dd7c8683f4c6149af502"
+      },
+      {
+       "id": 692654,
+       "ts": 1790967179.9283507,
+       "ctx": "01a0fdf66a9815b219132c2cb024aef9",
+       "par": null,
+       "usr": "9c2e9a34a87c96c07d282048a77652a6"
+      },
+      {
+       "id": 692976,
+       "ts": 1790967619.0817187,
+       "ctx": "01a0fdfd1e062eed62d115fd5285e0b7",
+       "par": null,
+       "usr": "702e0abc752d0e1f7c8a799de3de664c"
+      }
+     ],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 5324,
+    "counts": {
+     "row_splice": 287,
+     "closure_splice": 287,
+     "par_usr_splice": 59,
+     "ctx_par_splice": 287,
+     "user_erasable": 0,
+     "null_alias_row": 4057,
+     "null_alias_closure": 5324,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 231,
+     "par_has_7c": 59,
+     "usr_has_7c": 0,
+     "usr_present": 0,
+     "par_present": 1267,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 496,
+     "n": 8880,
+     "rate": 0.05586,
+     "ci95": [
+      0.05117,
+      0.06084
+     ]
+    },
+    "closure_splice": {
+     "k": 499,
+     "n": 8880,
+     "rate": 0.05619,
+     "ci95": [
+      0.05149,
+      0.06119
+     ]
+    },
+    "par_usr_splice": {
+     "k": 120,
+     "n": 8880,
+     "rate": 0.01351,
+     "ci95": [
+      0.01122,
+      0.01614
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 496,
+     "n": 8880,
+     "rate": 0.05586,
+     "ci95": [
+      0.05117,
+      0.06084
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 0,
+     "n": 8880,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00042
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 8880,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00042
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 3,
+     "n": 90,
+     "rate": 0.03333
+    }
+   }
+  },
+  "e_c_clo": {
+   "db": "e_c_clo.db",
+   "rows_folded_by_verifier": [
+    1790964000.0,
+    1790972837.367859
+   ],
+   "states": {
+    "rows": 5237,
+    "counts": {
+     "row_splice": 289,
+     "closure_splice": 292,
+     "par_usr_splice": 82,
+     "ctx_par_splice": 289,
+     "user_erasable": 3,
+     "null_alias_row": 3549,
+     "null_alias_closure": 5237,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 213,
+     "par_has_7c": 79,
+     "usr_has_7c": 3,
+     "usr_present": 120,
+     "par_present": 1688,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 692388,
+       "ts": 1790966831.7514257,
+       "ctx": "01a0fdf11a83b3958e49843cbd155b36",
+       "par": null,
+       "usr": "111c7b72d453dd7c8683f4c6149af502"
+      },
+      {
+       "id": 692654,
+       "ts": 1790967179.9283507,
+       "ctx": "01a0fdf66a9815b219132c2cb024aef9",
+       "par": null,
+       "usr": "9c2e9a34a87c96c07d282048a77652a6"
+      },
+      {
+       "id": 692976,
+       "ts": 1790967619.0817187,
+       "ctx": "01a0fdfd1e062eed62d115fd5285e0b7",
+       "par": null,
+       "usr": "702e0abc752d0e1f7c8a799de3de664c"
+      }
+     ],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 8191,
+    "counts": {
+     "row_splice": 442,
+     "closure_splice": 442,
+     "par_usr_splice": 80,
+     "ctx_par_splice": 442,
+     "user_erasable": 0,
+     "null_alias_row": 6442,
+     "null_alias_closure": 8191,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 365,
+     "par_has_7c": 80,
+     "usr_has_7c": 0,
+     "usr_present": 30,
+     "par_present": 1749,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 731,
+     "n": 13428,
+     "rate": 0.05444,
+     "ci95": [
+      0.05066,
+      0.05841
+     ]
+    },
+    "closure_splice": {
+     "k": 734,
+     "n": 13428,
+     "rate": 0.05466,
+     "ci95": [
+      0.05088,
+      0.05864
+     ]
+    },
+    "par_usr_splice": {
+     "k": 162,
+     "n": 13428,
+     "rate": 0.01206,
+     "ci95": [
+      0.01029,
+      0.01406
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 731,
+     "n": 13428,
+     "rate": 0.05444,
+     "ci95": [
+      0.05066,
+      0.05841
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 0,
+     "n": 13428,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00027
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 13428,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00027
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 3,
+     "n": 150,
+     "rate": 0.02
+    }
+   }
+  },
+  "e_ps_clo": {
+   "db": "e_ps_clo.db",
+   "rows_folded_by_verifier": [
+    1790960400.0,
+    1790968086.368844
+   ],
+   "states": {
+    "rows": 3449,
+    "counts": {
+     "row_splice": 213,
+     "closure_splice": 216,
+     "par_usr_splice": 62,
+     "ctx_par_splice": 213,
+     "user_erasable": 3,
+     "null_alias_row": 1988,
+     "null_alias_closure": 3449,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 170,
+     "par_has_7c": 59,
+     "usr_has_7c": 3,
+     "usr_present": 90,
+     "par_present": 1461,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 692388,
+       "ts": 1790966831.7514257,
+       "ctx": "01a0fdf11a83b3958e49843cbd155b36",
+       "par": null,
+       "usr": "111c7b72d453dd7c8683f4c6149af502"
+      },
+      {
+       "id": 692654,
+       "ts": 1790967179.9283507,
+       "ctx": "01a0fdf66a9815b219132c2cb024aef9",
+       "par": null,
+       "usr": "9c2e9a34a87c96c07d282048a77652a6"
+      },
+      {
+       "id": 692976,
+       "ts": 1790967619.0817187,
+       "ctx": "01a0fdfd1e062eed62d115fd5285e0b7",
+       "par": null,
+       "usr": "702e0abc752d0e1f7c8a799de3de664c"
+      }
+     ],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 3550,
+    "counts": {
+     "row_splice": 221,
+     "closure_splice": 221,
+     "par_usr_splice": 61,
+     "ctx_par_splice": 221,
+     "user_erasable": 0,
+     "null_alias_row": 2039,
+     "null_alias_closure": 3550,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 177,
+     "par_has_7c": 61,
+     "usr_has_7c": 0,
+     "usr_present": 0,
+     "par_present": 1511,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 434,
+     "n": 6999,
+     "rate": 0.06201,
+     "ci95": [
+      0.05647,
+      0.06792
+     ]
+    },
+    "closure_splice": {
+     "k": 437,
+     "n": 6999,
+     "rate": 0.06244,
+     "ci95": [
+      0.05688,
+      0.06836
+     ]
+    },
+    "par_usr_splice": {
+     "k": 123,
+     "n": 6999,
+     "rate": 0.01757,
+     "ci95": [
+      0.01463,
+      0.02093
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 434,
+     "n": 6999,
+     "rate": 0.06201,
+     "ci95": [
+      0.05647,
+      0.06792
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 0,
+     "n": 6999,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00053
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 6999,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00053
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 3,
+     "n": 90,
+     "rate": 0.03333
+    }
+   }
+  },
+  "e_psr_clo": {
+   "db": "e_psr_clo.db",
+   "rows_folded_by_verifier": [
+    1790982000.0,
+    1790988416.464202
+   ],
+   "states": {
+    "rows": 2918,
+    "counts": {
+     "row_splice": 168,
+     "closure_splice": 168,
+     "par_usr_splice": 54,
+     "ctx_par_splice": 168,
+     "user_erasable": 0,
+     "null_alias_row": 1693,
+     "null_alias_closure": 2918,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 120,
+     "par_has_7c": 54,
+     "usr_has_7c": 0,
+     "usr_present": 90,
+     "par_present": 1225,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 3292,
+    "counts": {
+     "row_splice": 220,
+     "closure_splice": 220,
+     "par_usr_splice": 56,
+     "ctx_par_splice": 220,
+     "user_erasable": 0,
+     "null_alias_row": 2034,
+     "null_alias_closure": 3292,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 170,
+     "par_has_7c": 56,
+     "usr_has_7c": 0,
+     "usr_present": 0,
+     "par_present": 1258,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 388,
+     "n": 6210,
+     "rate": 0.06248,
+     "ci95": [
+      0.05659,
+      0.06879
+     ]
+    },
+    "closure_splice": {
+     "k": 388,
+     "n": 6210,
+     "rate": 0.06248,
+     "ci95": [
+      0.05659,
+      0.06879
+     ]
+    },
+    "par_usr_splice": {
+     "k": 110,
+     "n": 6210,
+     "rate": 0.01771,
+     "ci95": [
+      0.01458,
+      0.02131
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 388,
+     "n": 6210,
+     "rate": 0.06248,
+     "ci95": [
+      0.05659,
+      0.06879
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 0,
+     "n": 6210,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00059
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 6210,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00059
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 0,
+     "n": 90,
+     "rate": 0.0
+    }
+   }
+  },
+  "e_d_auth": {
+   "db": "e_d_auth.db",
+   "rows_folded_by_verifier": [
+    1790406000.0,
+    1790412277.278847
+   ],
+   "states": {
+    "rows": 3047,
+    "counts": {
+     "row_splice": 139,
+     "closure_splice": 139,
+     "par_usr_splice": 31,
+     "ctx_par_splice": 139,
+     "user_erasable": 0,
+     "null_alias_row": 1860,
+     "null_alias_closure": 3047,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 118,
+     "par_has_7c": 31,
+     "usr_has_7c": 0,
+     "usr_present": 0,
+     "par_present": 1187,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 3269,
+    "counts": {
+     "row_splice": 148,
+     "closure_splice": 148,
+     "par_usr_splice": 32,
+     "ctx_par_splice": 148,
+     "user_erasable": 0,
+     "null_alias_row": 2053,
+     "null_alias_closure": 3269,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 127,
+     "par_has_7c": 32,
+     "usr_has_7c": 0,
+     "usr_present": 7,
+     "par_present": 1216,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 287,
+     "n": 6316,
+     "rate": 0.04544,
+     "ci95": [
+      0.04044,
+      0.05087
+     ]
+    },
+    "closure_splice": {
+     "k": 287,
+     "n": 6316,
+     "rate": 0.04544,
+     "ci95": [
+      0.04044,
+      0.05087
+     ]
+    },
+    "par_usr_splice": {
+     "k": 63,
+     "n": 6316,
+     "rate": 0.00997,
+     "ci95": [
+      0.00767,
+      0.01274
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 287,
+     "n": 6316,
+     "rate": 0.04544,
+     "ci95": [
+      0.04044,
+      0.05087
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 0,
+     "n": 6316,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00058
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 6316,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00058
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 0,
+     "n": 7,
+     "rate": 0.0
+    }
+   }
+  },
+  "e_c_auth": {
+   "db": "e_c_auth.db",
+   "rows_folded_by_verifier": [
+    1790928000.0,
+    1790935535.411951
+   ],
+   "states": {
+    "rows": 3440,
+    "counts": {
+     "row_splice": 201,
+     "closure_splice": 201,
+     "par_usr_splice": 74,
+     "ctx_par_splice": 201,
+     "user_erasable": 0,
+     "null_alias_row": 2109,
+     "null_alias_closure": 3440,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 141,
+     "par_has_7c": 74,
+     "usr_has_7c": 0,
+     "usr_present": 30,
+     "par_present": 1331,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 3766,
+    "counts": {
+     "row_splice": 202,
+     "closure_splice": 202,
+     "par_usr_splice": 76,
+     "ctx_par_splice": 202,
+     "user_erasable": 0,
+     "null_alias_row": 2399,
+     "null_alias_closure": 3766,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 141,
+     "par_has_7c": 76,
+     "usr_has_7c": 0,
+     "usr_present": 30,
+     "par_present": 1367,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 403,
+     "n": 7206,
+     "rate": 0.05593,
+     "ci95": [
+      0.05073,
+      0.06148
+     ]
+    },
+    "closure_splice": {
+     "k": 403,
+     "n": 7206,
+     "rate": 0.05593,
+     "ci95": [
+      0.05073,
+      0.06148
+     ]
+    },
+    "par_usr_splice": {
+     "k": 150,
+     "n": 7206,
+     "rate": 0.02082,
+     "ci95": [
+      0.01765,
+      0.02438
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 403,
+     "n": 7206,
+     "rate": 0.05593,
+     "ci95": [
+      0.05073,
+      0.06148
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 0,
+     "n": 7206,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00051
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 7206,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00051
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 0,
+     "n": 60,
+     "rate": 0.0
+    }
+   }
+  },
+  "e_ps_auth": {
+   "db": "e_ps_auth.db",
+   "rows_folded_by_verifier": [
+    1790942400.0,
+    1790950199.520383
+   ],
+   "states": {
+    "rows": 3463,
+    "counts": {
+     "row_splice": 201,
+     "closure_splice": 203,
+     "par_usr_splice": 73,
+     "ctx_par_splice": 201,
+     "user_erasable": 3,
+     "null_alias_row": 1981,
+     "null_alias_closure": 3463,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 1,
+     "unnatural": 0,
+     "ctx_has_7c": 148,
+     "par_has_7c": 70,
+     "usr_has_7c": 3,
+     "usr_present": 90,
+     "par_present": 1482,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 684943,
+       "ts": 1790949042.8551216,
+       "ctx": "01a0fce1aaa6d85535cb4c3e7e1b8f0b",
+       "par": null,
+       "usr": "83c8c76d7c86cc9837cef55c4d11b1b0"
+      },
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      },
+      {
+       "id": 685257,
+       "ts": 1790949476.759459,
+       "ctx": "01a0fce84991702abd7cf2b8887e8486",
+       "par": null,
+       "usr": "11051d9d52e8cd43eb9c7cbde9cc8506"
+      }
+     ],
+     "natural_alt_closure": [
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      }
+     ],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 3567,
+    "counts": {
+     "row_splice": 200,
+     "closure_splice": 200,
+     "par_usr_splice": 73,
+     "ctx_par_splice": 200,
+     "user_erasable": 0,
+     "null_alias_row": 2039,
+     "null_alias_closure": 3567,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 145,
+     "par_has_7c": 73,
+     "usr_has_7c": 0,
+     "usr_present": 0,
+     "par_present": 1528,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 401,
+     "n": 7030,
+     "rate": 0.05704,
+     "ci95": [
+      0.05173,
+      0.06272
+     ]
+    },
+    "closure_splice": {
+     "k": 403,
+     "n": 7030,
+     "rate": 0.05733,
+     "ci95": [
+      0.05201,
+      0.06302
+     ]
+    },
+    "par_usr_splice": {
+     "k": 146,
+     "n": 7030,
+     "rate": 0.02077,
+     "ci95": [
+      0.01756,
+      0.02438
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 401,
+     "n": 7030,
+     "rate": 0.05704,
+     "ci95": [
+      0.05173,
+      0.06272
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 1,
+     "n": 7030,
+     "rate": 0.00014,
+     "ci95": [
+      0.0,
+      0.00079
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 7030,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00052
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 3,
+     "n": 90,
+     "rate": 0.03333
+    }
+   }
+  },
+  "e_d_whr": {
+   "db": "e_d_whr.db",
+   "rows_folded_by_verifier": [
+    1791093600.0,
+    1791102450.317405
+   ],
+   "states": {
+    "rows": 4401,
+    "counts": {
+     "row_splice": 297,
+     "closure_splice": 300,
+     "par_usr_splice": 89,
+     "ctx_par_splice": 297,
+     "user_erasable": 3,
+     "null_alias_row": 2773,
+     "null_alias_closure": 4401,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 1,
+     "unnatural": 0,
+     "ctx_has_7c": 226,
+     "par_has_7c": 86,
+     "usr_has_7c": 3,
+     "usr_present": 89,
+     "par_present": 1628,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 746510,
+       "ts": 1791098830.642857,
+       "ctx": "01a105cf3f32098c0d103c4510695142",
+       "par": null,
+       "usr": "567a80fda9707c041120e4daca316025"
+      },
+      {
+       "id": 746587,
+       "ts": 1791098960.6906445,
+       "ctx": "01a105d13b3171922b9128fdd9b00627",
+       "par": null,
+       "usr": "347604ffa6ab48eab19487c4c95fe97c"
+      },
+      {
+       "id": 746913,
+       "ts": 1791099415.6188195,
+       "ctx": "01a105d82c42be84e9fef7a9fd23fd30",
+       "par": null,
+       "usr": "107c10c75b2970d9bf1c11aee4e592dd"
+      }
+     ],
+     "natural_alt_closure": [
+      {
+       "id": 746587,
+       "ts": 1791098960.6906445,
+       "ctx": "01a105d13b3171922b9128fdd9b00627",
+       "par": null,
+       "usr": "347604ffa6ab48eab19487c4c95fe97c"
+      }
+     ],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 5753,
+    "counts": {
+     "row_splice": 329,
+     "closure_splice": 329,
+     "par_usr_splice": 89,
+     "ctx_par_splice": 329,
+     "user_erasable": 0,
+     "null_alias_row": 4067,
+     "null_alias_closure": 5753,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 255,
+     "par_has_7c": 89,
+     "usr_has_7c": 0,
+     "usr_present": 0,
+     "par_present": 1686,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 626,
+     "n": 10154,
+     "rate": 0.06165,
+     "ci95": [
+      0.05705,
+      0.06651
+     ]
+    },
+    "closure_splice": {
+     "k": 629,
+     "n": 10154,
+     "rate": 0.06195,
+     "ci95": [
+      0.05733,
+      0.06681
+     ]
+    },
+    "par_usr_splice": {
+     "k": 178,
+     "n": 10154,
+     "rate": 0.01753,
+     "ci95": [
+      0.01507,
+      0.02027
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 626,
+     "n": 10154,
+     "rate": 0.06165,
+     "ci95": [
+      0.05705,
+      0.06651
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 1,
+     "n": 10154,
+     "rate": 0.0001,
+     "ci95": [
+      0.0,
+      0.00055
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 10154,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00036
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 3,
+     "n": 89,
+     "rate": 0.03371
+    }
+   }
+  },
+  "e_ps_whr": {
+   "db": "e_ps_whr.db",
+   "rows_folded_by_verifier": [
+    1791093600.0,
+    1791100122.218403
+   ],
+   "states": {
+    "rows": 2927,
+    "counts": {
+     "row_splice": 172,
+     "closure_splice": 175,
+     "par_usr_splice": 60,
+     "ctx_par_splice": 172,
+     "user_erasable": 3,
+     "null_alias_row": 1717,
+     "null_alias_closure": 2927,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 1,
+     "unnatural": 0,
+     "ctx_has_7c": 124,
+     "par_has_7c": 57,
+     "usr_has_7c": 3,
+     "usr_present": 89,
+     "par_present": 1210,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 746510,
+       "ts": 1791098830.642857,
+       "ctx": "01a105cf3f32098c0d103c4510695142",
+       "par": null,
+       "usr": "567a80fda9707c041120e4daca316025"
+      },
+      {
+       "id": 746587,
+       "ts": 1791098960.6906445,
+       "ctx": "01a105d13b3171922b9128fdd9b00627",
+       "par": null,
+       "usr": "347604ffa6ab48eab19487c4c95fe97c"
+      },
+      {
+       "id": 746913,
+       "ts": 1791099415.6188195,
+       "ctx": "01a105d82c42be84e9fef7a9fd23fd30",
+       "par": null,
+       "usr": "107c10c75b2970d9bf1c11aee4e592dd"
+      }
+     ],
+     "natural_alt_closure": [
+      {
+       "id": 746587,
+       "ts": 1791098960.6906445,
+       "ctx": "01a105d13b3171922b9128fdd9b00627",
+       "par": null,
+       "usr": "347604ffa6ab48eab19487c4c95fe97c"
+      }
+     ],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 3290,
+    "counts": {
+     "row_splice": 183,
+     "closure_splice": 183,
+     "par_usr_splice": 59,
+     "ctx_par_splice": 183,
+     "user_erasable": 0,
+     "null_alias_row": 2034,
+     "null_alias_closure": 3290,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 133,
+     "par_has_7c": 59,
+     "usr_has_7c": 0,
+     "usr_present": 0,
+     "par_present": 1256,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 355,
+     "n": 6217,
+     "rate": 0.0571,
+     "ci95": [
+      0.05146,
+      0.06316
+     ]
+    },
+    "closure_splice": {
+     "k": 358,
+     "n": 6217,
+     "rate": 0.05758,
+     "ci95": [
+      0.05192,
+      0.06367
+     ]
+    },
+    "par_usr_splice": {
+     "k": 119,
+     "n": 6217,
+     "rate": 0.01914,
+     "ci95": [
+      0.01588,
+      0.02286
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 355,
+     "n": 6217,
+     "rate": 0.0571,
+     "ci95": [
+      0.05146,
+      0.06316
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 1,
+     "n": 6217,
+     "rate": 0.00016,
+     "ci95": [
+      0.0,
+      0.0009
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 6217,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00059
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 3,
+     "n": 89,
+     "rate": 0.03371
+    }
+   }
+  },
+  "e_psr_whr": {
+   "db": "e_psr_whr.db",
+   "rows_folded_by_verifier": [
+    1791097200.0,
+    1791103829.366865
+   ],
+   "states": {
+    "rows": 3960,
+    "counts": {
+     "row_splice": 279,
+     "closure_splice": 282,
+     "par_usr_splice": 70,
+     "ctx_par_splice": 279,
+     "user_erasable": 3,
+     "null_alias_row": 2747,
+     "null_alias_closure": 3960,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 1,
+     "unnatural": 0,
+     "ctx_has_7c": 221,
+     "par_has_7c": 67,
+     "usr_has_7c": 3,
+     "usr_present": 179,
+     "par_present": 1213,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 746510,
+       "ts": 1791098830.642857,
+       "ctx": "01a105cf3f32098c0d103c4510695142",
+       "par": null,
+       "usr": "567a80fda9707c041120e4daca316025"
+      },
+      {
+       "id": 746587,
+       "ts": 1791098960.6906445,
+       "ctx": "01a105d13b3171922b9128fdd9b00627",
+       "par": null,
+       "usr": "347604ffa6ab48eab19487c4c95fe97c"
+      },
+      {
+       "id": 746913,
+       "ts": 1791099415.6188195,
+       "ctx": "01a105d82c42be84e9fef7a9fd23fd30",
+       "par": null,
+       "usr": "107c10c75b2970d9bf1c11aee4e592dd"
+      }
+     ],
+     "natural_alt_closure": [
+      {
+       "id": 746587,
+       "ts": 1791098960.6906445,
+       "ctx": "01a105d13b3171922b9128fdd9b00627",
+       "par": null,
+       "usr": "347604ffa6ab48eab19487c4c95fe97c"
+      }
+     ],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 7323,
+    "counts": {
+     "row_splice": 385,
+     "closure_splice": 385,
+     "par_usr_splice": 71,
+     "ctx_par_splice": 385,
+     "user_erasable": 0,
+     "null_alias_row": 6069,
+     "null_alias_closure": 7323,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 323,
+     "par_has_7c": 71,
+     "usr_has_7c": 0,
+     "usr_present": 0,
+     "par_present": 1254,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 664,
+     "n": 11283,
+     "rate": 0.05885,
+     "ci95": [
+      0.05458,
+      0.06335
+     ]
+    },
+    "closure_splice": {
+     "k": 667,
+     "n": 11283,
+     "rate": 0.05912,
+     "ci95": [
+      0.05483,
+      0.06363
+     ]
+    },
+    "par_usr_splice": {
+     "k": 141,
+     "n": 11283,
+     "rate": 0.0125,
+     "ci95": [
+      0.01053,
+      0.01472
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 664,
+     "n": 11283,
+     "rate": 0.05885,
+     "ci95": [
+      0.05458,
+      0.06335
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 1,
+     "n": 11283,
+     "rate": 9e-05,
+     "ci95": [
+      0.0,
+      0.00049
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 11283,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00033
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 3,
+     "n": 179,
+     "rate": 0.01676
+    }
+   }
+  }
+ },
+ "per_snapshot": {
+  "e_d_clo.db": {
+   "sha256": "289d1b8e889f83767cbb8739acab827de1f2c307b6ba6a2c3240ee72aea428cf",
+   "states": {
+    "rows": 3556,
+    "counts": {
+     "row_splice": 209,
+     "closure_splice": 212,
+     "par_usr_splice": 61,
+     "ctx_par_splice": 209,
+     "user_erasable": 3,
+     "null_alias_row": 2333,
+     "null_alias_closure": 3556,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 154,
+     "par_has_7c": 58,
+     "usr_has_7c": 3,
+     "usr_present": 90,
+     "par_present": 1223,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 692388,
+       "ts": 1790966831.7514257,
+       "ctx": "01a0fdf11a83b3958e49843cbd155b36",
+       "par": null,
+       "usr": "111c7b72d453dd7c8683f4c6149af502"
+      },
+      {
+       "id": 692654,
+       "ts": 1790967179.9283507,
+       "ctx": "01a0fdf66a9815b219132c2cb024aef9",
+       "par": null,
+       "usr": "9c2e9a34a87c96c07d282048a77652a6"
+      },
+      {
+       "id": 692976,
+       "ts": 1790967619.0817187,
+       "ctx": "01a0fdfd1e062eed62d115fd5285e0b7",
+       "par": null,
+       "usr": "702e0abc752d0e1f7c8a799de3de664c"
+      }
+     ],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 5324,
+    "counts": {
+     "row_splice": 287,
+     "closure_splice": 287,
+     "par_usr_splice": 59,
+     "ctx_par_splice": 287,
+     "user_erasable": 0,
+     "null_alias_row": 4057,
+     "null_alias_closure": 5324,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 231,
+     "par_has_7c": 59,
+     "usr_has_7c": 0,
+     "usr_present": 0,
+     "par_present": 1267,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 496,
+     "n": 8880,
+     "rate": 0.05586,
+     "ci95": [
+      0.05117,
+      0.06084
+     ]
+    },
+    "closure_splice": {
+     "k": 499,
+     "n": 8880,
+     "rate": 0.05619,
+     "ci95": [
+      0.05149,
+      0.06119
+     ]
+    },
+    "par_usr_splice": {
+     "k": 120,
+     "n": 8880,
+     "rate": 0.01351,
+     "ci95": [
+      0.01122,
+      0.01614
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 496,
+     "n": 8880,
+     "rate": 0.05586,
+     "ci95": [
+      0.05117,
+      0.06084
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 0,
+     "n": 8880,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00042
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 8880,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00042
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 3,
+     "n": 90,
+     "rate": 0.03333
+    }
+   }
+  },
+  "e_c_clo.db": {
+   "sha256": "88ae4d925e686a3bd91341568d8846c77fe0b451f293592477c91a51faf59ff3",
+   "states": {
+    "rows": 5237,
+    "counts": {
+     "row_splice": 289,
+     "closure_splice": 292,
+     "par_usr_splice": 82,
+     "ctx_par_splice": 289,
+     "user_erasable": 3,
+     "null_alias_row": 3549,
+     "null_alias_closure": 5237,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 213,
+     "par_has_7c": 79,
+     "usr_has_7c": 3,
+     "usr_present": 120,
+     "par_present": 1688,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 692388,
+       "ts": 1790966831.7514257,
+       "ctx": "01a0fdf11a83b3958e49843cbd155b36",
+       "par": null,
+       "usr": "111c7b72d453dd7c8683f4c6149af502"
+      },
+      {
+       "id": 692654,
+       "ts": 1790967179.9283507,
+       "ctx": "01a0fdf66a9815b219132c2cb024aef9",
+       "par": null,
+       "usr": "9c2e9a34a87c96c07d282048a77652a6"
+      },
+      {
+       "id": 692976,
+       "ts": 1790967619.0817187,
+       "ctx": "01a0fdfd1e062eed62d115fd5285e0b7",
+       "par": null,
+       "usr": "702e0abc752d0e1f7c8a799de3de664c"
+      }
+     ],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 8191,
+    "counts": {
+     "row_splice": 442,
+     "closure_splice": 442,
+     "par_usr_splice": 80,
+     "ctx_par_splice": 442,
+     "user_erasable": 0,
+     "null_alias_row": 6442,
+     "null_alias_closure": 8191,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 365,
+     "par_has_7c": 80,
+     "usr_has_7c": 0,
+     "usr_present": 30,
+     "par_present": 1749,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 731,
+     "n": 13428,
+     "rate": 0.05444,
+     "ci95": [
+      0.05066,
+      0.05841
+     ]
+    },
+    "closure_splice": {
+     "k": 734,
+     "n": 13428,
+     "rate": 0.05466,
+     "ci95": [
+      0.05088,
+      0.05864
+     ]
+    },
+    "par_usr_splice": {
+     "k": 162,
+     "n": 13428,
+     "rate": 0.01206,
+     "ci95": [
+      0.01029,
+      0.01406
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 731,
+     "n": 13428,
+     "rate": 0.05444,
+     "ci95": [
+      0.05066,
+      0.05841
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 0,
+     "n": 13428,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00027
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 13428,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00027
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 3,
+     "n": 150,
+     "rate": 0.02
+    }
+   }
+  },
+  "e_ps_clo.db": {
+   "sha256": "e90e060365effba1dd5915a4908ff2c45ae29b0ca76dcc072fa31718870d0402",
+   "states": {
+    "rows": 3452,
+    "counts": {
+     "row_splice": 213,
+     "closure_splice": 216,
+     "par_usr_splice": 62,
+     "ctx_par_splice": 213,
+     "user_erasable": 3,
+     "null_alias_row": 1989,
+     "null_alias_closure": 3452,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 170,
+     "par_has_7c": 59,
+     "usr_has_7c": 3,
+     "usr_present": 90,
+     "par_present": 1463,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 692388,
+       "ts": 1790966831.7514257,
+       "ctx": "01a0fdf11a83b3958e49843cbd155b36",
+       "par": null,
+       "usr": "111c7b72d453dd7c8683f4c6149af502"
+      },
+      {
+       "id": 692654,
+       "ts": 1790967179.9283507,
+       "ctx": "01a0fdf66a9815b219132c2cb024aef9",
+       "par": null,
+       "usr": "9c2e9a34a87c96c07d282048a77652a6"
+      },
+      {
+       "id": 692976,
+       "ts": 1790967619.0817187,
+       "ctx": "01a0fdfd1e062eed62d115fd5285e0b7",
+       "par": null,
+       "usr": "702e0abc752d0e1f7c8a799de3de664c"
+      }
+     ],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 3552,
+    "counts": {
+     "row_splice": 221,
+     "closure_splice": 221,
+     "par_usr_splice": 61,
+     "ctx_par_splice": 221,
+     "user_erasable": 0,
+     "null_alias_row": 2039,
+     "null_alias_closure": 3552,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 177,
+     "par_has_7c": 61,
+     "usr_has_7c": 0,
+     "usr_present": 0,
+     "par_present": 1513,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 434,
+     "n": 7004,
+     "rate": 0.06196,
+     "ci95": [
+      0.05643,
+      0.06787
+     ]
+    },
+    "closure_splice": {
+     "k": 437,
+     "n": 7004,
+     "rate": 0.06239,
+     "ci95": [
+      0.05684,
+      0.06831
+     ]
+    },
+    "par_usr_splice": {
+     "k": 123,
+     "n": 7004,
+     "rate": 0.01756,
+     "ci95": [
+      0.01462,
+      0.02092
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 434,
+     "n": 7004,
+     "rate": 0.06196,
+     "ci95": [
+      0.05643,
+      0.06787
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 0,
+     "n": 7004,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00053
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 7004,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00053
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 3,
+     "n": 90,
+     "rate": 0.03333
+    }
+   }
+  },
+  "e_psr_clo.db": {
+   "sha256": "18256b52fc5a86dca3e8f5af8fad62e29426c3ea49b6ee7f27112070edcb15c4",
+   "states": {
+    "rows": 2918,
+    "counts": {
+     "row_splice": 168,
+     "closure_splice": 168,
+     "par_usr_splice": 54,
+     "ctx_par_splice": 168,
+     "user_erasable": 0,
+     "null_alias_row": 1693,
+     "null_alias_closure": 2918,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 120,
+     "par_has_7c": 54,
+     "usr_has_7c": 0,
+     "usr_present": 90,
+     "par_present": 1225,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 3292,
+    "counts": {
+     "row_splice": 220,
+     "closure_splice": 220,
+     "par_usr_splice": 56,
+     "ctx_par_splice": 220,
+     "user_erasable": 0,
+     "null_alias_row": 2034,
+     "null_alias_closure": 3292,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 170,
+     "par_has_7c": 56,
+     "usr_has_7c": 0,
+     "usr_present": 0,
+     "par_present": 1258,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 388,
+     "n": 6210,
+     "rate": 0.06248,
+     "ci95": [
+      0.05659,
+      0.06879
+     ]
+    },
+    "closure_splice": {
+     "k": 388,
+     "n": 6210,
+     "rate": 0.06248,
+     "ci95": [
+      0.05659,
+      0.06879
+     ]
+    },
+    "par_usr_splice": {
+     "k": 110,
+     "n": 6210,
+     "rate": 0.01771,
+     "ci95": [
+      0.01458,
+      0.02131
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 388,
+     "n": 6210,
+     "rate": 0.06248,
+     "ci95": [
+      0.05659,
+      0.06879
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 0,
+     "n": 6210,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00059
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 6210,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00059
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 0,
+     "n": 90,
+     "rate": 0.0
+    }
+   }
+  },
+  "e_d_auth.db": {
+   "sha256": "7ae99036a555d476381beb1fd93a4785c57bd4ae016eec09c5e23ce045b62ba1",
+   "states": {
+    "rows": 5894,
+    "counts": {
+     "row_splice": 320,
+     "closure_splice": 320,
+     "par_usr_splice": 87,
+     "ctx_par_splice": 320,
+     "user_erasable": 0,
+     "null_alias_row": 3316,
+     "null_alias_closure": 5894,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 251,
+     "par_has_7c": 87,
+     "usr_has_7c": 0,
+     "usr_present": 0,
+     "par_present": 2578,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 4720,
+    "counts": {
+     "row_splice": 261,
+     "closure_splice": 261,
+     "par_usr_splice": 88,
+     "ctx_par_splice": 261,
+     "user_erasable": 0,
+     "null_alias_row": 2079,
+     "null_alias_closure": 4720,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 192,
+     "par_has_7c": 88,
+     "usr_has_7c": 0,
+     "usr_present": 7,
+     "par_present": 2641,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 581,
+     "n": 10614,
+     "rate": 0.05474,
+     "ci95": [
+      0.05049,
+      0.05924
+     ]
+    },
+    "closure_splice": {
+     "k": 581,
+     "n": 10614,
+     "rate": 0.05474,
+     "ci95": [
+      0.05049,
+      0.05924
+     ]
+    },
+    "par_usr_splice": {
+     "k": 175,
+     "n": 10614,
+     "rate": 0.01649,
+     "ci95": [
+      0.01415,
+      0.01909
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 581,
+     "n": 10614,
+     "rate": 0.05474,
+     "ci95": [
+      0.05049,
+      0.05924
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 0,
+     "n": 10614,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00035
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 10614,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00035
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 0,
+     "n": 7,
+     "rate": 0.0
+    }
+   }
+  },
+  "e_c_auth.db": {
+   "sha256": "3da100cd285d347a8c90a9138dd4feda73bb0ef94cf86e5a2a5637d29ac4c8f8",
+   "states": {
+    "rows": 3440,
+    "counts": {
+     "row_splice": 201,
+     "closure_splice": 201,
+     "par_usr_splice": 74,
+     "ctx_par_splice": 201,
+     "user_erasable": 0,
+     "null_alias_row": 2109,
+     "null_alias_closure": 3440,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 141,
+     "par_has_7c": 74,
+     "usr_has_7c": 0,
+     "usr_present": 30,
+     "par_present": 1331,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 3766,
+    "counts": {
+     "row_splice": 202,
+     "closure_splice": 202,
+     "par_usr_splice": 76,
+     "ctx_par_splice": 202,
+     "user_erasable": 0,
+     "null_alias_row": 2399,
+     "null_alias_closure": 3766,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 141,
+     "par_has_7c": 76,
+     "usr_has_7c": 0,
+     "usr_present": 30,
+     "par_present": 1367,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 403,
+     "n": 7206,
+     "rate": 0.05593,
+     "ci95": [
+      0.05073,
+      0.06148
+     ]
+    },
+    "closure_splice": {
+     "k": 403,
+     "n": 7206,
+     "rate": 0.05593,
+     "ci95": [
+      0.05073,
+      0.06148
+     ]
+    },
+    "par_usr_splice": {
+     "k": 150,
+     "n": 7206,
+     "rate": 0.02082,
+     "ci95": [
+      0.01765,
+      0.02438
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 403,
+     "n": 7206,
+     "rate": 0.05593,
+     "ci95": [
+      0.05073,
+      0.06148
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 0,
+     "n": 7206,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00051
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 7206,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00051
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 0,
+     "n": 60,
+     "rate": 0.0
+    }
+   }
+  },
+  "e_ps_auth.db": {
+   "sha256": "e3fdc0f531b69fd1d23ed11dcd1cd291b790c597e7630fbc56cf5851d69e583f",
+   "states": {
+    "rows": 3464,
+    "counts": {
+     "row_splice": 202,
+     "closure_splice": 204,
+     "par_usr_splice": 73,
+     "ctx_par_splice": 202,
+     "user_erasable": 3,
+     "null_alias_row": 1982,
+     "null_alias_closure": 3464,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 1,
+     "unnatural": 0,
+     "ctx_has_7c": 149,
+     "par_has_7c": 70,
+     "usr_has_7c": 3,
+     "usr_present": 90,
+     "par_present": 1482,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 684943,
+       "ts": 1790949042.8551216,
+       "ctx": "01a0fce1aaa6d85535cb4c3e7e1b8f0b",
+       "par": null,
+       "usr": "83c8c76d7c86cc9837cef55c4d11b1b0"
+      },
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      },
+      {
+       "id": 685257,
+       "ts": 1790949476.759459,
+       "ctx": "01a0fce84991702abd7cf2b8887e8486",
+       "par": null,
+       "usr": "11051d9d52e8cd43eb9c7cbde9cc8506"
+      }
+     ],
+     "natural_alt_closure": [
+      {
+       "id": 685184,
+       "ts": 1790949373.3125882,
+       "ctx": "01a0fce6b57fe5e89f7ec4f9749e9d27",
+       "par": null,
+       "usr": "9a883cb3fd984ded6dca1342a248337c"
+      }
+     ],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 3567,
+    "counts": {
+     "row_splice": 200,
+     "closure_splice": 200,
+     "par_usr_splice": 73,
+     "ctx_par_splice": 200,
+     "user_erasable": 0,
+     "null_alias_row": 2039,
+     "null_alias_closure": 3567,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 145,
+     "par_has_7c": 73,
+     "usr_has_7c": 0,
+     "usr_present": 0,
+     "par_present": 1528,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 402,
+     "n": 7031,
+     "rate": 0.05718,
+     "ci95": [
+      0.05186,
+      0.06286
+     ]
+    },
+    "closure_splice": {
+     "k": 404,
+     "n": 7031,
+     "rate": 0.05746,
+     "ci95": [
+      0.05213,
+      0.06316
+     ]
+    },
+    "par_usr_splice": {
+     "k": 146,
+     "n": 7031,
+     "rate": 0.02077,
+     "ci95": [
+      0.01756,
+      0.02438
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 402,
+     "n": 7031,
+     "rate": 0.05718,
+     "ci95": [
+      0.05186,
+      0.06286
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 1,
+     "n": 7031,
+     "rate": 0.00014,
+     "ci95": [
+      0.0,
+      0.00079
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 7031,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00052
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 3,
+     "n": 90,
+     "rate": 0.03333
+    }
+   }
+  },
+  "e_d_whr.db": {
+   "sha256": "ea6de513751e4af4e0ed418a13fa533b6f2f0319c9bcac933a8ba531a3fb4be4",
+   "states": {
+    "rows": 4404,
+    "counts": {
+     "row_splice": 297,
+     "closure_splice": 300,
+     "par_usr_splice": 89,
+     "ctx_par_splice": 297,
+     "user_erasable": 3,
+     "null_alias_row": 2774,
+     "null_alias_closure": 4404,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 1,
+     "unnatural": 0,
+     "ctx_has_7c": 226,
+     "par_has_7c": 86,
+     "usr_has_7c": 3,
+     "usr_present": 89,
+     "par_present": 1630,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 746510,
+       "ts": 1791098830.642857,
+       "ctx": "01a105cf3f32098c0d103c4510695142",
+       "par": null,
+       "usr": "567a80fda9707c041120e4daca316025"
+      },
+      {
+       "id": 746587,
+       "ts": 1791098960.6906445,
+       "ctx": "01a105d13b3171922b9128fdd9b00627",
+       "par": null,
+       "usr": "347604ffa6ab48eab19487c4c95fe97c"
+      },
+      {
+       "id": 746913,
+       "ts": 1791099415.6188195,
+       "ctx": "01a105d82c42be84e9fef7a9fd23fd30",
+       "par": null,
+       "usr": "107c10c75b2970d9bf1c11aee4e592dd"
+      }
+     ],
+     "natural_alt_closure": [
+      {
+       "id": 746587,
+       "ts": 1791098960.6906445,
+       "ctx": "01a105d13b3171922b9128fdd9b00627",
+       "par": null,
+       "usr": "347604ffa6ab48eab19487c4c95fe97c"
+      }
+     ],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 5755,
+    "counts": {
+     "row_splice": 329,
+     "closure_splice": 329,
+     "par_usr_splice": 89,
+     "ctx_par_splice": 329,
+     "user_erasable": 0,
+     "null_alias_row": 4067,
+     "null_alias_closure": 5755,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 255,
+     "par_has_7c": 89,
+     "usr_has_7c": 0,
+     "usr_present": 0,
+     "par_present": 1688,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 626,
+     "n": 10159,
+     "rate": 0.06162,
+     "ci95": [
+      0.05702,
+      0.06647
+     ]
+    },
+    "closure_splice": {
+     "k": 629,
+     "n": 10159,
+     "rate": 0.06192,
+     "ci95": [
+      0.05731,
+      0.06678
+     ]
+    },
+    "par_usr_splice": {
+     "k": 178,
+     "n": 10159,
+     "rate": 0.01752,
+     "ci95": [
+      0.01506,
+      0.02026
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 626,
+     "n": 10159,
+     "rate": 0.06162,
+     "ci95": [
+      0.05702,
+      0.06647
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 1,
+     "n": 10159,
+     "rate": 0.0001,
+     "ci95": [
+      0.0,
+      0.00055
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 10159,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00036
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 3,
+     "n": 89,
+     "rate": 0.03371
+    }
+   }
+  },
+  "e_ps_whr.db": {
+   "sha256": "8db8d7a2c6b857d03e861dd146f6ae2d7484ee6162d1285303bd20ea4670d09d",
+   "states": {
+    "rows": 2930,
+    "counts": {
+     "row_splice": 172,
+     "closure_splice": 175,
+     "par_usr_splice": 60,
+     "ctx_par_splice": 172,
+     "user_erasable": 3,
+     "null_alias_row": 1718,
+     "null_alias_closure": 2930,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 1,
+     "unnatural": 0,
+     "ctx_has_7c": 124,
+     "par_has_7c": 57,
+     "usr_has_7c": 3,
+     "usr_present": 89,
+     "par_present": 1212,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 746510,
+       "ts": 1791098830.642857,
+       "ctx": "01a105cf3f32098c0d103c4510695142",
+       "par": null,
+       "usr": "567a80fda9707c041120e4daca316025"
+      },
+      {
+       "id": 746587,
+       "ts": 1791098960.6906445,
+       "ctx": "01a105d13b3171922b9128fdd9b00627",
+       "par": null,
+       "usr": "347604ffa6ab48eab19487c4c95fe97c"
+      },
+      {
+       "id": 746913,
+       "ts": 1791099415.6188195,
+       "ctx": "01a105d82c42be84e9fef7a9fd23fd30",
+       "par": null,
+       "usr": "107c10c75b2970d9bf1c11aee4e592dd"
+      }
+     ],
+     "natural_alt_closure": [
+      {
+       "id": 746587,
+       "ts": 1791098960.6906445,
+       "ctx": "01a105d13b3171922b9128fdd9b00627",
+       "par": null,
+       "usr": "347604ffa6ab48eab19487c4c95fe97c"
+      }
+     ],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 3292,
+    "counts": {
+     "row_splice": 183,
+     "closure_splice": 183,
+     "par_usr_splice": 59,
+     "ctx_par_splice": 183,
+     "user_erasable": 0,
+     "null_alias_row": 2034,
+     "null_alias_closure": 3292,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 133,
+     "par_has_7c": 59,
+     "usr_has_7c": 0,
+     "usr_present": 0,
+     "par_present": 1258,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 355,
+     "n": 6222,
+     "rate": 0.05706,
+     "ci95": [
+      0.05142,
+      0.06311
+     ]
+    },
+    "closure_splice": {
+     "k": 358,
+     "n": 6222,
+     "rate": 0.05754,
+     "ci95": [
+      0.05188,
+      0.06361
+     ]
+    },
+    "par_usr_splice": {
+     "k": 119,
+     "n": 6222,
+     "rate": 0.01913,
+     "ci95": [
+      0.01587,
+      0.02284
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 355,
+     "n": 6222,
+     "rate": 0.05706,
+     "ci95": [
+      0.05142,
+      0.06311
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 1,
+     "n": 6222,
+     "rate": 0.00016,
+     "ci95": [
+      0.0,
+      0.0009
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 6222,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00059
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 3,
+     "n": 89,
+     "rate": 0.03371
+    }
+   }
+  },
+  "e_psr_whr.db": {
+   "sha256": "1d9076ad1e49d130d4c7b85fbb806746dcad118f69e05c0140b113c1c22327f3",
+   "states": {
+    "rows": 3963,
+    "counts": {
+     "row_splice": 279,
+     "closure_splice": 282,
+     "par_usr_splice": 70,
+     "ctx_par_splice": 279,
+     "user_erasable": 3,
+     "null_alias_row": 2749,
+     "null_alias_closure": 3963,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 1,
+     "unnatural": 0,
+     "ctx_has_7c": 221,
+     "par_has_7c": 67,
+     "usr_has_7c": 3,
+     "usr_present": 179,
+     "par_present": 1214,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [
+      {
+       "id": 746510,
+       "ts": 1791098830.642857,
+       "ctx": "01a105cf3f32098c0d103c4510695142",
+       "par": null,
+       "usr": "567a80fda9707c041120e4daca316025"
+      },
+      {
+       "id": 746587,
+       "ts": 1791098960.6906445,
+       "ctx": "01a105d13b3171922b9128fdd9b00627",
+       "par": null,
+       "usr": "347604ffa6ab48eab19487c4c95fe97c"
+      },
+      {
+       "id": 746913,
+       "ts": 1791099415.6188195,
+       "ctx": "01a105d82c42be84e9fef7a9fd23fd30",
+       "par": null,
+       "usr": "107c10c75b2970d9bf1c11aee4e592dd"
+      }
+     ],
+     "natural_alt_closure": [
+      {
+       "id": 746587,
+       "ts": 1791098960.6906445,
+       "ctx": "01a105d13b3171922b9128fdd9b00627",
+       "par": null,
+       "usr": "347604ffa6ab48eab19487c4c95fe97c"
+      }
+     ],
+     "unnatural": []
+    }
+   },
+   "events": {
+    "rows": 7324,
+    "counts": {
+     "row_splice": 385,
+     "closure_splice": 385,
+     "par_usr_splice": 71,
+     "ctx_par_splice": 385,
+     "user_erasable": 0,
+     "null_alias_row": 6069,
+     "null_alias_closure": 7324,
+     "natural_alt_row": 0,
+     "natural_alt_closure": 0,
+     "unnatural": 0,
+     "ctx_has_7c": 323,
+     "par_has_7c": 71,
+     "usr_has_7c": 0,
+     "usr_present": 0,
+     "par_present": 1255,
+     "prev_text": 0,
+     "chg_text": 0
+    },
+    "examples": {
+     "user_erasable": [],
+     "natural_alt_closure": [],
+     "unnatural": []
+    }
+   },
+   "rates_both_tables": {
+    "row_splice": {
+     "k": 664,
+     "n": 11287,
+     "rate": 0.05883,
+     "ci95": [
+      0.05456,
+      0.06333
+     ]
+    },
+    "closure_splice": {
+     "k": 667,
+     "n": 11287,
+     "rate": 0.05909,
+     "ci95": [
+      0.05481,
+      0.0636
+     ]
+    },
+    "par_usr_splice": {
+     "k": 141,
+     "n": 11287,
+     "rate": 0.01249,
+     "ci95": [
+      0.01053,
+      0.01472
+     ]
+    },
+    "ctx_par_splice": {
+     "k": 664,
+     "n": 11287,
+     "rate": 0.05883,
+     "ci95": [
+      0.05456,
+      0.06333
+     ]
+    },
+    "natural_alt_closure": {
+     "k": 1,
+     "n": 11287,
+     "rate": 9e-05,
+     "ci95": [
+      0.0,
+      0.00049
+     ]
+    },
+    "unnatural": {
+     "k": 0,
+     "n": 11287,
+     "rate": 0.0,
+     "ci95": [
+      0.0,
+      0.00033
+     ]
+    },
+    "user_erasable_among_user_rows": {
+     "k": 3,
+     "n": 179,
+     "rate": 0.01676
+    }
+   }
+  }
+ }
+}

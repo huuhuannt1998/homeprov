@@ -1,0 +1,647 @@
+{
+  "experiment": "E7",
+  "substrate": "real (mosquitto + MQTT discovery + shipped blueprint)",
+  "room": "kitchen",
+  "target": "lock.front_door",
+  "innocent_party": "automation.kitchen_motion_light",
+  "household_member_user_id": "90b6f1f5983443c2b47f563e8f652752",
+  "household_member_name": "Alex Rivera (household)",
+  "K_requested": 9,
+  "stall_connections": 8,
+  "stall_s": 40.0,
+  "stall_seal_wait_s": 25.0,
+  "bd_lookback_s": 1800.0,
+  "bd_min_age_s": 130.0,
+  "bd_move_delay_s": 130.0,
+  "outage_seal_wait_s": 25.0,
+  "outage_trials": 5,
+  "anchor_target": "anchor-direct:9900",
+  "n_trials_requested": 5,
+  "arms": [
+    "INS-L",
+    "BD-S"
+  ],
+  "t_start": 1792260397.87126,
+  "trials": [
+    {
+      "arm": "INS-L",
+      "trial": 0,
+      "mode": "launder",
+      "K": 9,
+      "authored_by": "user:Alex Rivera (household)",
+      "strategy": "laundering of a household member's unlock (delete attribution, re-point to a genuine run, clear the user column) + K inserted rows in the edited second",
+      "row_before": {
+        "state_id": 1200869,
+        "ts": 1792260397.8742204,
+        "context_id_bin": "01a14b0b5b2f40c539277db6b81bf71f",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-17T18:06:37.874220+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "judged_row": {
+        "state_id": 1200869,
+        "ts": 1792260397.8742204,
+        "context_id_bin": "01a14b0b5b2f40c539277db6b81bf71f",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-17T18:06:37.874220+00:00",
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "laundered_state_ids": [
+        1200869
+      ],
+      "deleted_event_ids": [
+        666533
+      ],
+      "deleted_event_seconds": [
+        1792260397
+      ],
+      "inserted_state_ids": [
+        1200938,
+        1200939,
+        1200940,
+        1200941,
+        1200942,
+        1200943,
+        1200944,
+        1200945,
+        1200946
+      ],
+      "K_inserted": 9,
+      "edited_second": 1792260397,
+      "db_writes": 11,
+      "edited_after_anchoring": true,
+      "rendered": [
+        {
+          "when": "2026-10-17T18:06:37.874220+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Kitchen motion light",
+          "context_message": "triggered by state of binary_sensor.kitchen_motion",
+          "context_entity_id": "automation.kitchen_motion_light",
+          "context_entity_id_name": "Kitchen motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.kitchen_motion_light",
+      "renderer_names_automation": true,
+      "renderer_still_names_person": false,
+      "renderer_named_user_id": null,
+      "principal_moved": true,
+      "renderer_confirmed_misattribution": true
+    },
+    {
+      "arm": "INS-L",
+      "trial": 1,
+      "mode": "launder",
+      "K": 9,
+      "authored_by": "user:Alex Rivera (household)",
+      "strategy": "laundering of a household member's unlock (delete attribution, re-point to a genuine run, clear the user column) + K inserted rows in the edited second",
+      "row_before": {
+        "state_id": 1200874,
+        "ts": 1792260403.9098954,
+        "context_id_bin": "01a14b0b6705bac0ee682c65d4ca06c4",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-17T18:06:43.909895+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "judged_row": {
+        "state_id": 1200874,
+        "ts": 1792260403.9098954,
+        "context_id_bin": "01a14b0b6705bac0ee682c65d4ca06c4",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-17T18:06:43.909895+00:00",
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "laundered_state_ids": [
+        1200874
+      ],
+      "deleted_event_ids": [
+        666537
+      ],
+      "deleted_event_seconds": [
+        1792260403
+      ],
+      "inserted_state_ids": [
+        1200947,
+        1200948,
+        1200949,
+        1200950,
+        1200951,
+        1200952,
+        1200953,
+        1200954,
+        1200955
+      ],
+      "K_inserted": 9,
+      "edited_second": 1792260403,
+      "db_writes": 11,
+      "edited_after_anchoring": true,
+      "rendered": [
+        {
+          "when": "2026-10-17T18:06:43.909895+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_entity_id": "light.kitchen_light",
+          "context_entity_id_name": "Kitchen Light"
+        }
+      ],
+      "principal_rendered": "automation:light.kitchen_light",
+      "renderer_names_automation": true,
+      "renderer_still_names_person": false,
+      "renderer_named_user_id": null,
+      "principal_moved": true,
+      "renderer_confirmed_misattribution": true
+    },
+    {
+      "arm": "INS-L",
+      "trial": 2,
+      "mode": "launder",
+      "K": 9,
+      "authored_by": "user:Alex Rivera (household)",
+      "strategy": "laundering of a household member's unlock (delete attribution, re-point to a genuine run, clear the user column) + K inserted rows in the edited second",
+      "row_before": {
+        "state_id": 1200879,
+        "ts": 1792260409.9796047,
+        "context_id_bin": "01a14b0b7eb30354162ffbbac1f5db7b",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-17T18:06:49.979605+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "judged_row": {
+        "state_id": 1200879,
+        "ts": 1792260409.9796047,
+        "context_id_bin": "01a14b0b7eb30354162ffbbac1f5db7b",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-17T18:06:49.979605+00:00",
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "laundered_state_ids": [
+        1200879
+      ],
+      "deleted_event_ids": [
+        666540
+      ],
+      "deleted_event_seconds": [
+        1792260409
+      ],
+      "inserted_state_ids": [
+        1200956,
+        1200957,
+        1200958,
+        1200959,
+        1200960,
+        1200961,
+        1200962,
+        1200963,
+        1200964
+      ],
+      "K_inserted": 9,
+      "edited_second": 1792260409,
+      "db_writes": 11,
+      "edited_after_anchoring": true,
+      "rendered": [
+        {
+          "when": "2026-10-17T18:06:49.979605+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_entity_id": "light.kitchen_light",
+          "context_entity_id_name": "Kitchen Light"
+        }
+      ],
+      "principal_rendered": "automation:light.kitchen_light",
+      "renderer_names_automation": true,
+      "renderer_still_names_person": false,
+      "renderer_named_user_id": null,
+      "principal_moved": true,
+      "renderer_confirmed_misattribution": true
+    },
+    {
+      "arm": "INS-L",
+      "trial": 3,
+      "mode": "launder",
+      "K": 9,
+      "authored_by": "user:Alex Rivera (household)",
+      "strategy": "laundering of a household member's unlock (delete attribution, re-point to a genuine run, clear the user column) + K inserted rows in the edited second",
+      "row_before": {
+        "state_id": 1200883,
+        "ts": 1792260416.0700006,
+        "context_id_bin": "01a14b0b96804863d2488da2362427c7",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-17T18:06:56.070001+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "judged_row": {
+        "state_id": 1200883,
+        "ts": 1792260416.0700006,
+        "context_id_bin": "01a14b0b96804863d2488da2362427c7",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-17T18:06:56.070001+00:00",
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "laundered_state_ids": [
+        1200883
+      ],
+      "deleted_event_ids": [
+        666543
+      ],
+      "deleted_event_seconds": [
+        1792260416
+      ],
+      "inserted_state_ids": [
+        1200965,
+        1200966,
+        1200967,
+        1200968,
+        1200969,
+        1200970,
+        1200971,
+        1200972,
+        1200973
+      ],
+      "K_inserted": 9,
+      "edited_second": 1792260416,
+      "db_writes": 11,
+      "edited_after_anchoring": true,
+      "rendered": [
+        {
+          "when": "2026-10-17T18:06:56.070001+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_entity_id": "light.kitchen_light",
+          "context_entity_id_name": "Kitchen Light"
+        }
+      ],
+      "principal_rendered": "automation:light.kitchen_light",
+      "renderer_names_automation": true,
+      "renderer_still_names_person": false,
+      "renderer_named_user_id": null,
+      "principal_moved": true,
+      "renderer_confirmed_misattribution": true
+    },
+    {
+      "arm": "INS-L",
+      "trial": 4,
+      "mode": "launder",
+      "K": 9,
+      "authored_by": "user:Alex Rivera (household)",
+      "strategy": "laundering of a household member's unlock (delete attribution, re-point to a genuine run, clear the user column) + K inserted rows in the edited second",
+      "row_before": {
+        "state_id": 1200883,
+        "ts": 1792260416.0700006,
+        "context_id_bin": "01a14b0b96804863d2488da2362427c7",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-10-17T18:07:02.117357+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "judged_row": {
+        "state_id": 1200885,
+        "ts": 1792260422.1173575,
+        "context_id_bin": "01a14b0bae1f87250c86473e881707da",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-10-17T18:07:02.117357+00:00",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 2,
+        "inject": 0
+      },
+      "laundered_state_ids": [
+        1200883,
+        1200885
+      ],
+      "deleted_event_ids": [],
+      "deleted_event_seconds": [],
+      "inserted_state_ids": [
+        1200974,
+        1200975,
+        1200976,
+        1200977,
+        1200978,
+        1200979,
+        1200980,
+        1200981,
+        1200982
+      ],
+      "K_inserted": 9,
+      "edited_second": 1792260422,
+      "db_writes": 11,
+      "edited_after_anchoring": true,
+      "rendered": [
+        {
+          "when": "2026-10-17T18:07:02.117357+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_entity_id": "light.kitchen_light",
+          "context_entity_id_name": "Kitchen Light"
+        }
+      ],
+      "principal_rendered": "automation:light.kitchen_light",
+      "renderer_names_automation": true,
+      "renderer_still_names_person": false,
+      "renderer_named_user_id": null,
+      "principal_moved": true,
+      "renderer_confirmed_misattribution": true
+    },
+    {
+      "arm": "BD-S",
+      "trial": 0,
+      "strategy": "forged unlocked row backdated into an empty sealed second, attributed to a genuine automation run",
+      "forged_state_id": 1200983,
+      "forged_row_ts": 1792260424.5,
+      "row_age_s": 131.0,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1792260424,
+        "start_ts": 1792260424.0,
+        "end_ts": 1792260425.0
+      },
+      "cover_context": "01a14b0b72aaaa05",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "empty_seconds_found": 1316,
+      "seconds_scanned": 1671,
+      "usable_windows": 40,
+      "distinct_windows_used_so_far": 1,
+      "judged_when": null,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 1200983,
+        "ts": 1792260424.5,
+        "context_id_bin": "01a14b0b72aaaa0512dbb210535b5c7e"
+      }
+    },
+    {
+      "arm": "BD-S",
+      "trial": 1,
+      "strategy": "forged unlocked row backdated into an empty sealed second, attributed to a genuine automation run",
+      "forged_state_id": 1200985,
+      "forged_row_ts": 1792260423.5,
+      "row_age_s": 134.0,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1792260423,
+        "start_ts": 1792260423.0,
+        "end_ts": 1792260424.0
+      },
+      "cover_context": "01a14b0b72aaaa05",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "empty_seconds_found": 1316,
+      "seconds_scanned": 1671,
+      "usable_windows": 40,
+      "distinct_windows_used_so_far": 2,
+      "judged_when": null,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 1200985,
+        "ts": 1792260423.5,
+        "context_id_bin": "01a14b0b72aaaa0512dbb210535b5c7e"
+      }
+    },
+    {
+      "arm": "BD-S",
+      "trial": 2,
+      "strategy": "forged unlocked row backdated into an empty sealed second, attributed to a genuine automation run",
+      "forged_state_id": 1200986,
+      "forged_row_ts": 1792260421.5,
+      "row_age_s": 138.1,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1792260421,
+        "start_ts": 1792260421.0,
+        "end_ts": 1792260422.0
+      },
+      "cover_context": "01a14b0b72aaaa05",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "empty_seconds_found": 1316,
+      "seconds_scanned": 1671,
+      "usable_windows": 40,
+      "distinct_windows_used_so_far": 3,
+      "judged_when": "2026-10-17T18:07:02.117357+00:00",
+      "rendered": [
+        {
+          "when": "2026-10-17T18:07:02.117357+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_entity_id": "light.kitchen_light",
+          "context_entity_id_name": "Kitchen Light"
+        }
+      ],
+      "principal_rendered": "automation:light.kitchen_light",
+      "renderer_names_automation": true,
+      "renderer_confirmed_misattribution": true,
+      "forged_row": {
+        "state_id": 1200986,
+        "ts": 1792260421.5,
+        "context_id_bin": "01a14b0b72aaaa0512dbb210535b5c7e"
+      }
+    },
+    {
+      "arm": "BD-S",
+      "trial": 3,
+      "strategy": "forged unlocked row backdated into an empty sealed second, attributed to a genuine automation run",
+      "forged_state_id": 1200987,
+      "forged_row_ts": 1792260420.5,
+      "row_age_s": 141.1,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1792260420,
+        "start_ts": 1792260420.0,
+        "end_ts": 1792260421.0
+      },
+      "cover_context": "01a14b0b72aaaa05",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "empty_seconds_found": 1316,
+      "seconds_scanned": 1671,
+      "usable_windows": 40,
+      "distinct_windows_used_so_far": 4,
+      "judged_when": "2026-10-17T18:07:00.500000+00:00",
+      "rendered": [
+        {
+          "when": "2026-10-17T18:07:00.500000+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_entity_id": "light.kitchen_light",
+          "context_entity_id_name": "Kitchen Light"
+        }
+      ],
+      "principal_rendered": "automation:light.kitchen_light",
+      "renderer_names_automation": true,
+      "renderer_confirmed_misattribution": true,
+      "forged_row": {
+        "state_id": 1200987,
+        "ts": 1792260420.5,
+        "context_id_bin": "01a14b0b72aaaa0512dbb210535b5c7e"
+      }
+    },
+    {
+      "arm": "BD-S",
+      "trial": 4,
+      "strategy": "forged unlocked row backdated into an empty sealed second, attributed to a genuine automation run",
+      "forged_state_id": 1200988,
+      "forged_row_ts": 1792260418.5,
+      "row_age_s": 145.1,
+      "empty_window": {
+        "granularity": "second",
+        "segment": 1792260418,
+        "start_ts": 1792260418.0,
+        "end_ts": 1792260419.0
+      },
+      "cover_context": "01a14b0b72aaaa05",
+      "operations_used": {
+        "delete": 0,
+        "reattach": 0,
+        "inject": 1
+      },
+      "db_writes": 1,
+      "edited_after_anchoring": true,
+      "empty_seconds_found": 1316,
+      "seconds_scanned": 1671,
+      "usable_windows": 40,
+      "distinct_windows_used_so_far": 5,
+      "judged_when": null,
+      "rendered": [],
+      "principal_rendered": null,
+      "renderer_names_automation": false,
+      "renderer_confirmed_misattribution": false,
+      "forged_row": {
+        "state_id": 1200988,
+        "ts": 1792260418.5,
+        "context_id_bin": "01a14b0b72aaaa0512dbb210535b5c7e"
+      }
+    }
+  ],
+  "t_end": 1792260565.644705
+}

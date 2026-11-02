@@ -1,0 +1,171 @@
+{
+ "what": "EXPLORATORY: polls whose observation window overlaps an E10 BDT write, and whether they held the row",
+ "script": {
+  "path": "exp/sp2027/r16_e10_copyview.py",
+  "sha256": "bdc20463c3f13cd1f55d4850e068f3335430fd024c3949d67f775b9577227955"
+ },
+ "code": {
+  "testbed/e10b/e10b_score.py": "915e611038dc210833a9b1ab5da9883f7f6d16665ad5bd6a87214697b48effcf"
+ },
+ "inputs": {
+  "bdt": {
+   "path": "/Volumes/ResearchSSD/HOMEPROV-P13-exp.noindex/e10/e10_main/e10/c001352326_bdt.json",
+   "sha256": "5bb335bd7037283d1aa38a3fbdf3e2ef17053e7cefcbefc8d59c967608d35024"
+  },
+  "events": {
+   "path": "/Volumes/ResearchSSD/HOMEPROV-P13-exp.noindex/e10/e10_main/events.jsonl",
+   "sha256": "2eee0740724e9be6a17ca54035e41fcfccdf02ce8da92b5fafc1a27fa98dda7d"
+  },
+  "direct_chain": {
+   "path": "/Volumes/ResearchSSD/HOMEPROV-P13-exp.noindex/e10/e10_main/e10s/direct_chain.jsonl",
+   "sha256": "f744d1b8559e2eeaffaed5edb9dda994d865da63c2274b5c93935c207715288d"
+  },
+  "copy_chain": {
+   "path": "/Volumes/ResearchSSD/HOMEPROV-P13-exp.noindex/e10/e10_main/e10s/copy_chain.jsonl",
+   "sha256": "1dce441d6eae5348a9906b05c457b3a49af91bf106f6031e56568b5f18ab23ce"
+  }
+ },
+ "t_snapshot": 1792571721.083932,
+ "summary": {
+  "direct": {
+   "overlapping_polls": 1,
+   "held_row": 1,
+   "window_ends_after_commit": 1,
+   "ends_after_commit_and_held": 1,
+   "ends_before_commit_and_held": 0,
+   "starts_before_insert_and_held": 0
+  },
+  "copy": {
+   "overlapping_polls": 10,
+   "held_row": 9,
+   "window_ends_after_commit": 5,
+   "ends_after_commit_and_held": 5,
+   "ends_before_commit_and_held": 4,
+   "starts_before_insert_and_held": 7
+  }
+ },
+ "rows": [
+  {
+   "monitor": "direct",
+   "trial": 98,
+   "age_s": 30.0,
+   "seq": 355,
+   "write_s": 0.017715,
+   "copy_at_minus_t_insert_s": 0.026948,
+   "window_end_minus_t_insert_s": 0.026948,
+   "window_end_minus_t_commit_s": 0.009233,
+   "held_row": true
+  },
+  {
+   "monitor": "copy",
+   "trial": 7,
+   "age_s": 45.0,
+   "seq": 47,
+   "write_s": 0.004711,
+   "copy_at_minus_t_insert_s": -0.033277,
+   "window_end_minus_t_insert_s": 0.654757,
+   "window_end_minus_t_commit_s": 0.650046,
+   "held_row": true
+  },
+  {
+   "monitor": "copy",
+   "trial": 10,
+   "age_s": 33.0,
+   "seq": 55,
+   "write_s": 0.374668,
+   "copy_at_minus_t_insert_s": -0.046497,
+   "window_end_minus_t_insert_s": 0.222123,
+   "window_end_minus_t_commit_s": -0.152544,
+   "held_row": true
+  },
+  {
+   "monitor": "copy",
+   "trial": 18,
+   "age_s": 33.0,
+   "seq": 76,
+   "write_s": 0.407337,
+   "copy_at_minus_t_insert_s": -0.120829,
+   "window_end_minus_t_insert_s": -0.034904,
+   "window_end_minus_t_commit_s": -0.442241,
+   "held_row": false
+  },
+  {
+   "monitor": "copy",
+   "trial": 26,
+   "age_s": 33.0,
+   "seq": 97,
+   "write_s": 0.004338,
+   "copy_at_minus_t_insert_s": 0.000707,
+   "window_end_minus_t_insert_s": 0.079939,
+   "window_end_minus_t_commit_s": 0.075601,
+   "held_row": true
+  },
+  {
+   "monitor": "copy",
+   "trial": 29,
+   "age_s": 33.0,
+   "seq": 105,
+   "write_s": 0.341233,
+   "copy_at_minus_t_insert_s": -0.158566,
+   "window_end_minus_t_insert_s": 0.010968,
+   "window_end_minus_t_commit_s": -0.330265,
+   "held_row": true
+  },
+  {
+   "monitor": "copy",
+   "trial": 34,
+   "age_s": 5.0,
+   "seq": 118,
+   "write_s": 0.307703,
+   "copy_at_minus_t_insert_s": -0.172384,
+   "window_end_minus_t_insert_s": 0.041521,
+   "window_end_minus_t_commit_s": -0.266182,
+   "held_row": true
+  },
+  {
+   "monitor": "copy",
+   "trial": 40,
+   "age_s": 15.0,
+   "seq": 134,
+   "write_s": 0.00471,
+   "copy_at_minus_t_insert_s": -0.128924,
+   "window_end_minus_t_insert_s": 0.122547,
+   "window_end_minus_t_commit_s": 0.117838,
+   "held_row": true
+  },
+  {
+   "monitor": "copy",
+   "trial": 46,
+   "age_s": 33.0,
+   "seq": 150,
+   "write_s": 0.001549,
+   "copy_at_minus_t_insert_s": -0.003659,
+   "window_end_minus_t_insert_s": 0.223102,
+   "window_end_minus_t_commit_s": 0.221553,
+   "held_row": true
+  },
+  {
+   "monitor": "copy",
+   "trial": 79,
+   "age_s": 33.0,
+   "seq": 237,
+   "write_s": 0.056414,
+   "copy_at_minus_t_insert_s": -0.127308,
+   "window_end_minus_t_insert_s": 0.005298,
+   "window_end_minus_t_commit_s": -0.051116,
+   "held_row": true
+  },
+  {
+   "monitor": "copy",
+   "trial": 96,
+   "age_s": 45.0,
+   "seq": 282,
+   "write_s": 0.001237,
+   "copy_at_minus_t_insert_s": 0.008009,
+   "window_end_minus_t_insert_s": 0.099253,
+   "window_end_minus_t_commit_s": 0.098016,
+   "held_row": true
+  }
+ ],
+ "generated_at": "2026-10-24T18:35:31Z"
+}

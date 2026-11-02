@@ -1,0 +1,12 @@
+# The INNOCENT automation the flagship forgery will frame.
+- id: arrive_home
+  alias: Arrive Home
+  triggers:
+    - trigger: state
+      entity_id: input_boolean.owner_present
+      to: "on"
+  actions:
+    - action: lock.unlock
+      target:
+        entity_id: lock.kitchen_door
+  mode: single

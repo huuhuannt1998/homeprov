@@ -1,0 +1,294 @@
+{
+ "source_note": "E12 H3 (exploratory), recomputed: late rows per day and monitor, and in the restart and backup windows.",
+ "delay_field": "committed_after_lower_bound_s",
+ "inputs": {
+  "window_d1": {
+   "value": [
+    1792627200.0,
+    1792713600.0
+   ],
+   "sha256": "82738cdf21771a847147237eb8ed0feaed492b846cf7734eaf12c1c2cfdab373"
+  },
+  "direct_day1": {
+   "file": "verify/direct_day1_8160733f3f8a.json",
+   "sha256": "80d27dbd3a64d6c3ce766514e50d72a4eabd7749f8852f353b1e321d7c1fb343"
+  },
+  "copy_day1": {
+   "file": "verify/copy_day1_8160733f3f8a.json",
+   "sha256": "e954af85fd02f8bde4a8845690c6e0d7c823afe5c2c8bc60f29dab6cb14e9305"
+  },
+  "window_d2": {
+   "value": [
+    1792713600.0,
+    1792800000.0
+   ],
+   "sha256": "53383feb8d9806aa70f4083a0d0d8eded0e323b923f94b720352191435965f4a"
+  },
+  "direct_day2": {
+   "file": "verify/direct_day2_25677fc3e4cc.json",
+   "sha256": "81bcca961d1a1d20109243807a850374fd6d12084f0bbb6d430839c4d9f3939e"
+  },
+  "copy_day2": {
+   "file": "verify/copy_day2_25677fc3e4cc.json",
+   "sha256": "6c2c66715a1194c1ea1e2f55491b2107a0858cc3a8039c4a060b5ccd287fe0c1"
+  }
+ },
+ "days": {
+  "1": {
+   "direct": {
+    "benign_late_rows": {
+     "n": 20511,
+     "n_without_delay": 0,
+     "median_s": 1.815307,
+     "p99_s": 4.560452,
+     "max_s": 4.968913,
+     "over_25_s": 0,
+     "over_30_s": 0
+    },
+    "unobserved_late_rows": {
+     "n": 0,
+     "n_without_delay": 0,
+     "median_s": null,
+     "p99_s": null,
+     "max_s": null,
+     "over_25_s": 0,
+     "over_30_s": 0
+    },
+    "attributable_rows": {
+     "n": 0,
+     "n_without_delay": 0,
+     "median_s": null,
+     "p99_s": null,
+     "max_s": null,
+     "over_25_s": 0,
+     "over_30_s": 0
+    },
+    "verifier_benign_late_max_lower_bound_s_whole_file": 4.968913
+   },
+   "copy": {
+    "benign_late_rows": {
+     "n": 18596,
+     "n_without_delay": 0,
+     "median_s": 1.702572,
+     "p99_s": 4.449434,
+     "max_s": 4.898205,
+     "over_25_s": 0,
+     "over_30_s": 0
+    },
+    "unobserved_late_rows": {
+     "n": 0,
+     "n_without_delay": 0,
+     "median_s": null,
+     "p99_s": null,
+     "max_s": null,
+     "over_25_s": 0,
+     "over_30_s": 0
+    },
+    "attributable_rows": {
+     "n": 0,
+     "n_without_delay": 0,
+     "median_s": null,
+     "p99_s": null,
+     "max_s": null,
+     "over_25_s": 0,
+     "over_30_s": 0
+    },
+    "verifier_benign_late_max_lower_bound_s_whole_file": 4.898205
+   }
+  },
+  "2": {
+   "direct": {
+    "benign_late_rows": {
+     "n": 20397,
+     "n_without_delay": 0,
+     "median_s": 1.815975,
+     "p99_s": 4.55059,
+     "max_s": 4.960027,
+     "over_25_s": 0,
+     "over_30_s": 0
+    },
+    "unobserved_late_rows": {
+     "n": 0,
+     "n_without_delay": 0,
+     "median_s": null,
+     "p99_s": null,
+     "max_s": null,
+     "over_25_s": 0,
+     "over_30_s": 0
+    },
+    "attributable_rows": {
+     "n": 0,
+     "n_without_delay": 0,
+     "median_s": null,
+     "p99_s": null,
+     "max_s": null,
+     "over_25_s": 0,
+     "over_30_s": 0
+    },
+    "verifier_benign_late_max_lower_bound_s_whole_file": 4.960027
+   },
+   "copy": {
+    "benign_late_rows": {
+     "n": 18126,
+     "n_without_delay": 0,
+     "median_s": 1.645329,
+     "p99_s": 4.398684,
+     "max_s": 4.846718,
+     "over_25_s": 0,
+     "over_30_s": 0
+    },
+    "unobserved_late_rows": {
+     "n": 0,
+     "n_without_delay": 0,
+     "median_s": null,
+     "p99_s": null,
+     "max_s": null,
+     "over_25_s": 0,
+     "over_30_s": 0
+    },
+    "attributable_rows": {
+     "n": 0,
+     "n_without_delay": 0,
+     "median_s": null,
+     "p99_s": null,
+     "max_s": null,
+     "over_25_s": 0,
+     "over_30_s": 0
+    },
+    "verifier_benign_late_max_lower_bound_s_whole_file": 4.846718
+   }
+  }
+ },
+ "windows": {
+  "restart": {
+   "direct": {
+    "benign_late_rows": {
+     "n": 27,
+     "n_without_delay": 0,
+     "median_s": 1.141513,
+     "p99_s": 3.672332,
+     "max_s": 3.672332,
+     "over_25_s": 0,
+     "over_30_s": 0
+    },
+    "unobserved_late_rows": {
+     "n": 0,
+     "n_without_delay": 0,
+     "median_s": null,
+     "p99_s": null,
+     "max_s": null,
+     "over_25_s": 0,
+     "over_30_s": 0
+    },
+    "attributable_rows": {
+     "n": 0,
+     "n_without_delay": 0,
+     "median_s": null,
+     "p99_s": null,
+     "max_s": null,
+     "over_25_s": 0,
+     "over_30_s": 0
+    }
+   },
+   "copy": {
+    "benign_late_rows": {
+     "n": 25,
+     "n_without_delay": 0,
+     "median_s": 1.400923,
+     "p99_s": 4.023069,
+     "max_s": 4.023069,
+     "over_25_s": 0,
+     "over_30_s": 0
+    },
+    "unobserved_late_rows": {
+     "n": 0,
+     "n_without_delay": 0,
+     "median_s": null,
+     "p99_s": null,
+     "max_s": null,
+     "over_25_s": 0,
+     "over_30_s": 0
+    },
+    "attributable_rows": {
+     "n": 0,
+     "n_without_delay": 0,
+     "median_s": null,
+     "p99_s": null,
+     "max_s": null,
+     "over_25_s": 0,
+     "over_30_s": 0
+    }
+   }
+  },
+  "backup": {
+   "direct": {
+    "benign_late_rows": {
+     "n": 52,
+     "n_without_delay": 0,
+     "median_s": 1.778384,
+     "p99_s": 4.612434,
+     "max_s": 4.612434,
+     "over_25_s": 0,
+     "over_30_s": 0
+    },
+    "unobserved_late_rows": {
+     "n": 0,
+     "n_without_delay": 0,
+     "median_s": null,
+     "p99_s": null,
+     "max_s": null,
+     "over_25_s": 0,
+     "over_30_s": 0
+    },
+    "attributable_rows": {
+     "n": 0,
+     "n_without_delay": 0,
+     "median_s": null,
+     "p99_s": null,
+     "max_s": null,
+     "over_25_s": 0,
+     "over_30_s": 0
+    }
+   },
+   "copy": {
+    "benign_late_rows": {
+     "n": 24,
+     "n_without_delay": 0,
+     "median_s": 1.049556,
+     "p99_s": 3.957989,
+     "max_s": 3.957989,
+     "over_25_s": 0,
+     "over_30_s": 0
+    },
+    "unobserved_late_rows": {
+     "n": 0,
+     "n_without_delay": 0,
+     "median_s": null,
+     "p99_s": null,
+     "max_s": null,
+     "over_25_s": 0,
+     "over_30_s": 0
+    },
+    "attributable_rows": {
+     "n": 0,
+     "n_without_delay": 0,
+     "median_s": null,
+     "p99_s": null,
+     "max_s": null,
+     "over_25_s": 0,
+     "over_30_s": 0
+    }
+   }
+  }
+ },
+ "windows_def": {
+  "restart": [
+   1792699217.0,
+   1792699367.0
+  ],
+  "backup": [
+   1792785651.39312,
+   1792785747.0
+  ]
+ }
+}

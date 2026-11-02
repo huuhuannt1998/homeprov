@@ -1,0 +1,256 @@
+{
+ "what": "R14c: the two-host benign floor (closure scheme, authenticated, no coverage; Home Assistant OS VM with a privileged core, monitor and anchor on a second VM on the same Mac) per run and pooled, with exact intervals, verified against each run's own counting-rule file",
+ "answers": [
+  "R2 W4 (r4): 'Report the two-host floor separately: the artifact's r14 file gives 4 of 821 for E1 and E5.'"
+ ],
+ "runs": {
+  "e1_psr_clo": {
+   "rule_file": "exp/out/e1_psr_clo_two_host.json",
+   "rule": "reproduce/verify_all.py: anchored_roots, verify_window, touched_segments, cp",
+   "encoding": [
+    "v2"
+   ],
+   "placement": {
+    "host_a": "Home Assistant OS 18.3 (generic-aarch64) in a QEMU/HVF VM on the evaluation Mac; Core run by the Supervisor",
+    "host_b": "Docker Desktop's Linux VM on the same Mac, standing in for another host: anchor, monitor, replicator (and the MQTT broker and device simulator)",
+    "core_container": "image=ghcr.io/home-assistant/qemuarm-64-homeassistant:2026.10.0 digest=sha256:bac198fa74d7871d19a707013e8d620929c9e2d91ddf1c847cb3df86cb379ce1 privileged=true network=host",
+    "core_privilege_on_hostA": "CapEff: 000001ffffffffff /dev/vda8",
+    "probe_from_hub": "{\"untagged\": 401, \"forged_tag\": 401}",
+    "key_fingerprint_sha256_16": "cf42b8730759158e (key itself not recorded; held only by the anchor and monitor containers on host B)",
+    "clock_skew_check": "mac=1791421130.527 hostA=1791421130.894 mac_after=1791421130.901"
+   },
+   "window": {
+    "t_start": 1791421223.0,
+    "t_end": 1791423561.0,
+    "duration_s": 2338.0,
+    "recorder_snapshot_at": 1791423651.7787368
+   },
+   "second": {
+    "k": 2,
+    "n": 530,
+    "proportion": 0.0037735849056603774,
+    "exact_interval": [
+     0.00045732579173691,
+     0.013564462414841218
+    ],
+    "method": "Clopper-Pearson exact",
+    "window_duration_s": 2338.0,
+    "per_untouched_hour": {
+     "rate": 13.584905660377359,
+     "exact_interval": [
+      1.646372850252876,
+      48.832064693428386
+     ]
+    },
+    "per_wallclock_hour": {
+     "rate": 3.0795551753635584,
+     "exact_interval": [
+      0.3732154023242191,
+      11.069715264121918
+     ]
+    },
+    "per_wallclock_day": {
+     "rate": 73.90932420872541,
+     "exact_interval": [
+      8.957169655781257,
+      265.6731663389261
+     ]
+    },
+    "mechanisms": {
+     "rows_arrived_after_seal": 2
+    },
+    "ci_as_saved": [
+     0.0,
+     0.014
+    ]
+   },
+   "minute": {
+    "k": 0,
+    "n": 23,
+    "exact_interval": [
+     0.0,
+     0.14818512891522437
+    ]
+   },
+   "detection": {
+    "flagged": 90,
+    "attributable": 90,
+    "ambiguous": 0,
+    "n_trials": 90
+   },
+   "shipped_aggregator_floor_not_the_paper_rule": {
+    "k": 4,
+    "n": 542,
+    "prop": 0.007380073800738007,
+    "ci_lo": 0.002014375841836991,
+    "ci_hi": 0.01878735658756561,
+    "method": "Clopper-Pearson exact",
+    "what": "anchored second-segments inside the run window that no PS trial touched and that fail recomputation"
+   }
+  },
+  "e5_psr_lnk": {
+   "rule_file": "exp/out/e5_psr_lnk_paper_rule.json",
+   "rule": "reproduce/verify_all.py anchored_roots, verify_window, touched_segments, cp (as E3)",
+   "encoding": [
+    "v2"
+   ],
+   "placement": {
+    "host_a": "Home Assistant OS 18.3 (generic-aarch64) in a QEMU/HVF VM on the evaluation Mac; Core run privileged by the Supervisor (as E1)",
+    "host_b": "Docker Desktop's Linux VM on the same Mac: linked anchor (hpr-anchord:linked), monitor (hpr-monitor:e1), replicator (hpr-e1-replicator:1), and E1's MQTT broker and device simulator",
+    "witness": "testbed/anchord/headwitness.py as a python3 process on the Mac itself, outside both VMs, bound to 127.0.0.1; the anchor reaches it through host.docker.internal",
+    "core_container": "image=ghcr.io/home-assistant/qemuarm-64-homeassistant:2026.10.0 digest=sha256:bac198fa74d7871d19a707013e8d620929c9e2d91ddf1c847cb3df86cb379ce1 privileged=true network=host",
+    "core_privilege_on_hostA": "CapEff: 000001ffffffffff /dev/vda8",
+    "probe_from_hub": "{\"untagged\": 401, \"forged_tag\": 401, \"witness_get_head\": 200, \"witness_push_untagged\": 401, \"witness_push_forged_tag\": 401}",
+    "witness_reachable_from_anchor_container": "200",
+    "witness_process": "pid=38147 bind=127.0.0.1:19960 python=<home>/miniconda3/bin/python3 (Python 3.13.11) log=<research-dir>/HOMEPROV-P13-exp/e5/e5_psr_lnk/witness/heads.jsonl listen=127.0.0.1:19960",
+    "key_fingerprint_sha256_16": "18041f2da21fe542 (append key; not recorded; held only by the anchor and monitor containers on host B)",
+    "witness_key_fingerprint_sha256_16": "dbbcc1e330b2abc1 (witness key; not recorded; held only by the anchor container and the witness process on the Mac)",
+    "anchor_image": "hpr-anchord:linked sha256:f3c8a97c1104fe4ed12b3c576198fba9b90f3de88c60133b82cea556826535e6 (in-image anchord.py, anchord_linked.py = repository files)",
+    "monitor_in_image_sha256_16": "f23c12707278e662",
+    "monitor_py_at_run_start_sha256_16": "2eb8f872bb9e4045",
+    "clock_skew_hostA_check": "mac=1791427910.059 hostA=1791427910.294 mac_after=1791427910.249"
+   },
+   "window": {
+    "t_start": 1791427978.0,
+    "t_end": 1791429177.0,
+    "duration_s": 1199.0,
+    "recorder_snapshot_at": 1791429278.161657
+   },
+   "second": {
+    "k": 2,
+    "n": 291,
+    "proportion": 0.006872852233676976,
+    "exact_interval": [
+     0.0008334207262318725,
+     0.024605225673387382
+    ],
+    "method": "Clopper-Pearson exact",
+    "window_duration_s": 1199.0,
+    "per_untouched_hour": {
+     "rate": 24.742268041237114,
+     "exact_interval": [
+      3.000314614434741,
+      88.57881242419458
+     ]
+    },
+    "per_wallclock_hour": {
+     "rate": 6.005004170141785,
+     "exact_interval": [
+      0.7281831132614759,
+      21.498277243903775
+     ]
+    },
+    "per_wallclock_day": {
+     "rate": 144.12010008340283,
+     "exact_interval": [
+      17.47639471827542,
+      515.9586538536904
+     ]
+    },
+    "mechanisms": {
+     "rows_arrived_after_seal": 2
+    },
+    "ci_as_saved": [
+     0.001,
+     0.025
+    ]
+   },
+   "minute": {
+    "k": 0,
+    "n": 9,
+    "exact_interval": [
+     0.0,
+     0.3362671168799428
+    ]
+   },
+   "detection": {
+    "flagged": 90,
+    "attributable": 90,
+    "ambiguous": 0,
+    "n_trials": 90
+   }
+  }
+ },
+ "pooled_E1_E5": {
+  "k": 4,
+  "n": 821,
+  "proportion": 0.0048721071863581,
+  "exact_interval": [
+   0.0013290325983312354,
+   0.012427179594862866
+  ],
+  "method": "Clopper-Pearson exact",
+  "window_duration_s": 3537.0,
+  "per_untouched_hour": {
+   "rate": 17.53958587088916,
+   "exact_interval": [
+    4.784517353992448,
+    44.737846541506315
+   ]
+  },
+  "per_wallclock_hour": {
+   "rate": 4.071246819338422,
+   "exact_interval": [
+    1.1105707513790783,
+    10.384442185630954
+   ]
+  },
+  "per_wallclock_day": {
+   "rate": 97.70992366412214,
+   "exact_interval": [
+    26.65369803309788,
+    249.22661245514288
+   ]
+  },
+  "mechanisms": {
+   "rows_arrived_after_seal": 4
+  }
+ },
+ "check_against_r14": {
+  "r14_pool": "exp/out/r14_benign_rates.json pools.closure_two_host_E1_E5",
+  "r14_k_n": [
+   4,
+   821
+  ],
+  "recomputed_k_n": [
+   4,
+   821
+  ],
+  "four_of_821_holds": true,
+  "per_run_matches_r14": true
+ },
+ "context_single_host_closure_without_coverage": {
+  "source": "exp/out/r14_benign_rates.json pools.nine_run_pool_closure_scheme",
+  "k": 4,
+  "n": 1885,
+  "exact_interval": [
+   0.0005784711171754548,
+   0.0054242140252257634
+  ]
+ },
+ "paper_sentences": {
+  "file": "sections/A6_sp_appf.tex",
+  "text": [
+   "Under the counting rule, 2 of 530 untouched one-second segments failed [0.000, 0.014], both late rows."
+  ],
+  "note": "the paper prints E1's 2 of 530 [0.000, 0.014]; E5's floor and the pooled 4 of 821 are not printed"
+ },
+ "caveats": [
+  "Both hosts are virtual machines on one Mac; the network between them is the Mac's loopback through the QEMU gateway, so replication latency is lower than between two physical hosts would be.",
+  "Host A runs Core 2026.10.0 (the release Home Assistant OS installed), the single-host runs 2026.7.4.",
+  "The replica is a full consistent copy each cycle; its cost grows with the recorder."
+ ],
+ "inputs_sha256": {
+  "exp/out/e1_psr_clo_two_host.json": "4b4a1a5f4b5ba5c5e696a5505402328231ad1a6578c9a6d1b4c0410bf23d843a",
+  "exp/out/e1_psr_clo_detection.json": "d822a788f0a3cd54179f97f6c6c478dc7368e0730c2b2a47ded50f10810abed7",
+  "exp/out/e5_psr_lnk_paper_rule.json": "553fc510bf2c975223b597d9eb354541832585817336bed0f846104e10ae2455",
+  "exp/out/e5_psr_lnk_detection.json": "b504587ffff6261d330790d3dd56e1422f0b511110f3b7f7f51a5f91b043ed76",
+  "exp/out/e5_psr_lnk_linked.json": "ce36a1da9b8eee38b7e7f6abbfeeadbe56d59796b899334ff417674ffdf1d820",
+  "exp/out/r14_benign_rates.json": "cca4855efdab982ba0cf54bc6abf53883ab4bba7d2288e21431408ccdfe134d7",
+  "[READY] (S&P 2027) HOMEPROV - P13/sections/A6_sp_appf.tex": "78c92856e1d4d64745c7934146bdf3f9e71f8d112f04eee58f8ea8936b52774a"
+ },
+ "script": "exp/sp2027/r14c_two_host_floor.py",
+ "script_sha256": "915afe1743eea5cdceeee59ffcff701eda3316c2ccd7f90b1843f7fb737c9de2",
+ "python": "3.13.11",
+ "generated_at": "2026-10-12T14:15:45Z"
+}

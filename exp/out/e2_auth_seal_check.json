@@ -1,0 +1,31 @@
+{
+ "adversary_context": "01a0fcf5febbc142193344cd63aa35a4",
+ "recorder_snapshot_valid": true,
+ "reason": "ok",
+ "recorder_snapshot_at": 1790950513.748658,
+ "adversary_rows": [
+  {
+   "kind": "event",
+   "id": 386022,
+   "type": "call_service",
+   "ts": 1790950375.0999217
+  }
+ ],
+ "adversary_seconds": [
+  1790950375
+ ],
+ "per_second": [
+  {
+   "second": 1790950375,
+   "anchored": true,
+   "anchored_n": 2,
+   "anchor_seq": 18,
+   "recomputed_n": 2,
+   "root_matches_recorder": true
+  }
+ ],
+ "adversary_second_sealed": true,
+ "sealed_root_includes_adversary_row": true,
+ "chain_records": 28,
+ "how": "Read-only check for the E2 authenticated run: did the external monitor seal\nthe second that contains the adversary's censored actuation?\n\nSame question the published exp/out/e2_real_boundary.json answers with\n'adversary_second_sealed'. Nothing here writes to the recorder or the anchor:\n  1. snapshot the live recorder with SQLite's backup API (e_c_write_time's own\n     snapshot_recorder), find every row carrying the adversary's context;\n  2. take the FIRST anchored root for each such second from the saved chain of the\n     authenticated anchor;\n  3. recompute that second's segment from the snapshot with the SHIPPED monitor's\n     load()/commit() and compare n and acc.\n"
+}

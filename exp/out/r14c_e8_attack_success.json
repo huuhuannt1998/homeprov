@@ -1,0 +1,1876 @@
+{
+ "what": "R14c: attack success per E8 arm (and E7 BD arms, E8 stress), the meaning of the harness's two success fields per arm, and the reason for the score file's BD-S 26/90 and INS-M 0/90 'principal moved'",
+ "answers": [
+  "R3 minor (r4): 'E8's score file records a harness-confirmed misattribution in only 26/90 BD-S trials and 0/90 principal moved for INS-M; report attack success per E8 arm'"
+ ],
+ "summary_E8_main": {
+  "PU": {
+   "criterion": "admin and non-admin displayed cause = the room's motion-light automation",
+   "admin": {
+    "k": 90,
+    "n": 90,
+    "interval": [
+     0.9598410803842253,
+     1.0
+    ]
+   },
+   "non_admin": {
+    "k": 90,
+    "n": 90,
+    "interval": [
+     0.9598410803842253,
+     1.0
+    ]
+   },
+   "harness_renderer_confirmed_misattribution": {
+    "true": 90,
+    "field_present": 90
+   }
+  },
+  "PI": {
+   "criterion": "as PU",
+   "admin": {
+    "k": 81,
+    "n": 90,
+    "interval": [
+     0.8186400271160681,
+     0.9532446847258357
+    ]
+   },
+   "non_admin": {
+    "k": 81,
+    "n": 90,
+    "interval": [
+     0.8186400271160681,
+     0.9532446847258357
+    ]
+   },
+   "displayed_cause_changed": {
+    "k": 90,
+    "n": 90,
+    "interval": [
+     0.9598410803842253,
+     1.0
+    ]
+   },
+   "harness_renderer_confirmed_misattribution": {
+    "true": 90,
+    "field_present": 90
+   },
+   "no_cause_after": 9,
+   "no_cause_reading": "the 9 kitchen trials 7-15 share one cover run; raced trial 7 (exp/out/r14c_swap_spillover.json) also re-pointed trial 6's unlock row, written 2.91 s BEFORE that run's trigger, into the run's context; the logbook then resolves the context to that lock row (context_entity_id lock.front_door, no event type), which the display rule shows as no cause; the harness field counts any context_entity_id as an automation (homeprov_ec 813, 820-821)"
+  },
+  "INS-L": {
+   "criterion": "as PU",
+   "admin": {
+    "k": 87,
+    "n": 90,
+    "interval": [
+     0.9056639065868638,
+     0.9930723972689899
+    ]
+   },
+   "non_admin": {
+    "k": 87,
+    "n": 90,
+    "interval": [
+     0.9056639065868638,
+     0.9930723972689899
+    ]
+   },
+   "displayed_cause_changed": {
+    "k": 90,
+    "n": 90,
+    "interval": [
+     0.9598410803842253,
+     1.0
+    ]
+   },
+   "harness_renderer_confirmed_misattribution": {
+    "true": 90,
+    "field_present": 90
+   },
+   "no_cause_after": 3,
+   "no_cause_reading": "in 3 hallway trials the cover run fired in the edited row's own second; the nine inserted light rows (homeprov_e7 150: at second + (i + 1) / 10, carrying the cover context) start 0.02 to 0.25 s before the run's trigger, so the logbook resolves the context to an inserted light row (no event type): no displayed cause; the harness field counts it as an automation"
+  },
+  "PSR": {
+   "criterion": "admin displayed cause = the household member account (Table 2's criterion)",
+   "admin": {
+    "k": 90,
+    "n": 90,
+    "interval": [
+     0.9598410803842253,
+     1.0
+    ]
+   },
+   "non_admin_changed": {
+    "k": 0,
+    "n": 90,
+    "interval": [
+     0.0,
+     0.04015891961577464
+    ]
+   },
+   "harness_field_0_because": "renderer_confirmed_misattribution = principal_moved, and _principal ranks the service call above the user, so a service-call unlock's principal string does not move (homeprov_ec 924-929, 134-143)"
+  },
+  "INS-M": {
+   "criterion": "as PSR",
+   "admin": {
+    "k": 90,
+    "n": 90,
+    "interval": [
+     0.9598410803842253,
+     1.0
+    ]
+   },
+   "non_admin_changed": {
+    "k": 0,
+    "n": 90,
+    "interval": [
+     0.0,
+     0.04015891961577464
+    ]
+   },
+   "harness_renderer_confirmed_misattribution": {
+    "true": 90,
+    "field_present": 90
+   },
+   "principal_moved_0_because": "the same service-first ranking: principal_moved compares the principal strings (homeprov_e7 358), which stay 'service:lock.unlock'; the INS-M success field is the member-named criterion (363-365)"
+  },
+  "P": {
+   "criterion": "not rendered by the harness; stored rows only",
+   "stored_rows": {
+    "captured_rows_now_on_an_automation_runs_context": 90,
+    "distinct_captured_rows": 89,
+    "trials": 90,
+    "note": "P renders nothing; one captured row per trial; a row captured twice is the previous trial's (exp/out/r14c_swap_spillover.json)"
+   },
+   "harness_fields_absent": {
+    "renderer_confirmed_misattribution": {
+     "true": 0,
+     "field_present": 0
+    },
+    "principal_moved": {
+     "true": 0,
+     "field_present": 0
+    }
+   }
+  },
+  "BD-S": {
+   "criterion": "the forged row is in the logbook with an automation as its displayed cause",
+   "rendered_with_automation_cause": {
+    "k": 26,
+    "n": 90,
+    "interval": [
+     0.19815940203097376,
+     0.39398763653232827
+    ]
+   },
+   "classes": [
+    {
+     "class": "no logbook entry matched",
+     "previous_lock_state": "unlocked",
+     "trials": 45
+    },
+    {
+     "class": "forged row rendered",
+     "previous_lock_state": "locked",
+     "trials": 26
+    },
+    {
+     "class": "harness matched another unlocked row within 1 s",
+     "previous_lock_state": "locked",
+     "trials": 12
+    },
+    {
+     "class": "harness matched another unlocked row within 1 s",
+     "previous_lock_state": "unlocked",
+     "trials": 7
+    }
+   ],
+   "reading": "BD-S inserts a new row rather than re-attributing an existing one, so success needs the logbook to list the inserted row at all. The forged row's old_state_id is the lock's previous row (homeprov_e7 126); when that row was already 'unlocked' the logbook drops the forged row as no state change (logbook state filter), and the harness finds no entry. When a genuine unlock lies within 1 s, the harness's match (homeprov_e7 528-531) can pick that row instead and records its cause (the lock integration). principal_moved is never set for BD-S, so the scorer counts it 0 (e8_score.py 186).",
+   "principal_moved": "never set for BD-S (field absent in every record)"
+  }
+ },
+ "per_set_and_arm": {
+  "E8 main": {
+   "PU": {
+    "n_records": 90,
+    "n_valid": 90,
+    "harness_fields": {
+     "renderer_confirmed_misattribution": {
+      "true": 90,
+      "field_present": 90
+     },
+     "principal_moved": {
+      "true": 90,
+      "field_present": 90
+     }
+    },
+    "display_rule_admin": {
+     "before": {
+      "user:Alex Rivera (household)": 90
+     },
+     "after": {
+      "automation:automation.porch_motion_light": 30,
+      "automation:automation.hallway_motion_light": 30,
+      "automation:automation.kitchen_motion_light": 30
+     },
+     "displayed_cause_changed": {
+      "k": 90,
+      "n": 90,
+      "interval": [
+       0.9598410803842253,
+       1.0
+      ]
+     },
+     "after_is_the_rooms_motion_light_automation": {
+      "k": 90,
+      "n": 90,
+      "interval": [
+       0.9598410803842253,
+       1.0
+      ]
+     },
+     "after_is_the_household_member_account": {
+      "k": 0,
+      "n": 90,
+      "interval": [
+       0.0,
+       0.04015891961577464
+      ]
+     }
+    },
+    "display_rule_non_admin": {
+     "before": {
+      "integration:lock": 90
+     },
+     "after": {
+      "automation:automation.porch_motion_light": 30,
+      "automation:automation.hallway_motion_light": 30,
+      "automation:automation.kitchen_motion_light": 30
+     },
+     "displayed_cause_changed": {
+      "k": 90,
+      "n": 90,
+      "interval": [
+       0.9598410803842253,
+       1.0
+      ]
+     },
+     "after_is_the_rooms_motion_light_automation": {
+      "k": 90,
+      "n": 90,
+      "interval": [
+       0.9598410803842253,
+       1.0
+      ]
+     },
+     "after_is_the_household_member_account": {
+      "k": 0,
+      "n": 90,
+      "interval": [
+       0.0,
+       0.04015891961577464
+      ]
+     }
+    },
+    "why_no_cause_after": {
+     "trials": 0,
+     "all_explained_by_an_earlier_state_row_in_the_context": true,
+     "detail": []
+    },
+    "logbook_principal_by_harness_ranking": {
+     "before": {
+      "service:lock.unlock": 90
+     },
+     "after": {
+      "automation:automation.porch_motion_light": 30,
+      "automation:automation.hallway_motion_light": 30,
+      "automation:automation.kitchen_motion_light": 30
+     }
+    }
+   },
+   "PI": {
+    "n_records": 90,
+    "n_valid": 90,
+    "harness_fields": {
+     "renderer_confirmed_misattribution": {
+      "true": 90,
+      "field_present": 90
+     },
+     "principal_moved": {
+      "true": 90,
+      "field_present": 90
+     }
+    },
+    "display_rule_admin": {
+     "before": {
+      "integration:lock": 90
+     },
+     "after": {
+      "automation:automation.porch_motion_light": 30,
+      "automation:automation.hallway_motion_light": 30,
+      "automation:automation.kitchen_motion_light": 21,
+      "none": 9
+     },
+     "displayed_cause_changed": {
+      "k": 90,
+      "n": 90,
+      "interval": [
+       0.9598410803842253,
+       1.0
+      ]
+     },
+     "after_is_the_rooms_motion_light_automation": {
+      "k": 81,
+      "n": 90,
+      "interval": [
+       0.8186400271160681,
+       0.9532446847258357
+      ]
+     },
+     "after_is_the_household_member_account": {
+      "k": 0,
+      "n": 90,
+      "interval": [
+       0.0,
+       0.04015891961577464
+      ]
+     }
+    },
+    "display_rule_non_admin": {
+     "before": {
+      "integration:lock": 90
+     },
+     "after": {
+      "automation:automation.porch_motion_light": 30,
+      "automation:automation.hallway_motion_light": 30,
+      "automation:automation.kitchen_motion_light": 21,
+      "none": 9
+     },
+     "displayed_cause_changed": {
+      "k": 90,
+      "n": 90,
+      "interval": [
+       0.9598410803842253,
+       1.0
+      ]
+     },
+     "after_is_the_rooms_motion_light_automation": {
+      "k": 81,
+      "n": 90,
+      "interval": [
+       0.8186400271160681,
+       0.9532446847258357
+      ]
+     },
+     "after_is_the_household_member_account": {
+      "k": 0,
+      "n": 90,
+      "interval": [
+       0.0,
+       0.04015891961577464
+      ]
+     }
+    },
+    "why_no_cause_after": {
+     "trials": 9,
+     "all_explained_by_an_earlier_state_row_in_the_context": true,
+     "detail": [
+      {
+       "room": "kitchen",
+       "trial": 7,
+       "context": "01a11f6a7bebc272",
+       "logbook_context_entity_id": "lock.front_door",
+       "logbook_context_event_type": null,
+       "earliest_state_row_in_context": {
+        "state_id": 928314,
+        "entity_id": "lock.front_door",
+        "ts": 1791528431.7621872
+       },
+       "automation_triggered_ts": 1791528434.6684427,
+       "earliest_state_row_precedes_trigger_by_s": 2.9063,
+       "earliest_row_is_the_logbook_context_entity": true,
+       "laundered_state_ids": [
+        928314,
+        928319
+       ],
+       "inserted_state_ids_count": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 8,
+       "context": "01a11f6a7bebc272",
+       "logbook_context_entity_id": "lock.front_door",
+       "logbook_context_event_type": null,
+       "earliest_state_row_in_context": {
+        "state_id": 928314,
+        "entity_id": "lock.front_door",
+        "ts": 1791528431.7621872
+       },
+       "automation_triggered_ts": 1791528434.6684427,
+       "earliest_state_row_precedes_trigger_by_s": 2.9063,
+       "earliest_row_is_the_logbook_context_entity": true,
+       "laundered_state_ids": [
+        928322
+       ],
+       "inserted_state_ids_count": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 9,
+       "context": "01a11f6a7bebc272",
+       "logbook_context_entity_id": "lock.front_door",
+       "logbook_context_event_type": null,
+       "earliest_state_row_in_context": {
+        "state_id": 928314,
+        "entity_id": "lock.front_door",
+        "ts": 1791528431.7621872
+       },
+       "automation_triggered_ts": 1791528434.6684427,
+       "earliest_state_row_precedes_trigger_by_s": 2.9063,
+       "earliest_row_is_the_logbook_context_entity": true,
+       "laundered_state_ids": [
+        928326
+       ],
+       "inserted_state_ids_count": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 10,
+       "context": "01a11f6a7bebc272",
+       "logbook_context_entity_id": "lock.front_door",
+       "logbook_context_event_type": null,
+       "earliest_state_row_in_context": {
+        "state_id": 928314,
+        "entity_id": "lock.front_door",
+        "ts": 1791528431.7621872
+       },
+       "automation_triggered_ts": 1791528434.6684427,
+       "earliest_state_row_precedes_trigger_by_s": 2.9063,
+       "earliest_row_is_the_logbook_context_entity": true,
+       "laundered_state_ids": [
+        928328
+       ],
+       "inserted_state_ids_count": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 11,
+       "context": "01a11f6a7bebc272",
+       "logbook_context_entity_id": "lock.front_door",
+       "logbook_context_event_type": null,
+       "earliest_state_row_in_context": {
+        "state_id": 928314,
+        "entity_id": "lock.front_door",
+        "ts": 1791528431.7621872
+       },
+       "automation_triggered_ts": 1791528434.6684427,
+       "earliest_state_row_precedes_trigger_by_s": 2.9063,
+       "earliest_row_is_the_logbook_context_entity": true,
+       "laundered_state_ids": [
+        928334
+       ],
+       "inserted_state_ids_count": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 12,
+       "context": "01a11f6a7bebc272",
+       "logbook_context_entity_id": "lock.front_door",
+       "logbook_context_event_type": null,
+       "earliest_state_row_in_context": {
+        "state_id": 928314,
+        "entity_id": "lock.front_door",
+        "ts": 1791528431.7621872
+       },
+       "automation_triggered_ts": 1791528434.6684427,
+       "earliest_state_row_precedes_trigger_by_s": 2.9063,
+       "earliest_row_is_the_logbook_context_entity": true,
+       "laundered_state_ids": [
+        928339
+       ],
+       "inserted_state_ids_count": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 13,
+       "context": "01a11f6a7bebc272",
+       "logbook_context_entity_id": "lock.front_door",
+       "logbook_context_event_type": null,
+       "earliest_state_row_in_context": {
+        "state_id": 928314,
+        "entity_id": "lock.front_door",
+        "ts": 1791528431.7621872
+       },
+       "automation_triggered_ts": 1791528434.6684427,
+       "earliest_state_row_precedes_trigger_by_s": 2.9063,
+       "earliest_row_is_the_logbook_context_entity": true,
+       "laundered_state_ids": [
+        928343
+       ],
+       "inserted_state_ids_count": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 14,
+       "context": "01a11f6a7bebc272",
+       "logbook_context_entity_id": "lock.front_door",
+       "logbook_context_event_type": null,
+       "earliest_state_row_in_context": {
+        "state_id": 928314,
+        "entity_id": "lock.front_door",
+        "ts": 1791528431.7621872
+       },
+       "automation_triggered_ts": 1791528434.6684427,
+       "earliest_state_row_precedes_trigger_by_s": 2.9063,
+       "earliest_row_is_the_logbook_context_entity": true,
+       "laundered_state_ids": [
+        928346
+       ],
+       "inserted_state_ids_count": 0
+      },
+      {
+       "room": "kitchen",
+       "trial": 15,
+       "context": "01a11f6a7bebc272",
+       "logbook_context_entity_id": "lock.front_door",
+       "logbook_context_event_type": null,
+       "earliest_state_row_in_context": {
+        "state_id": 928314,
+        "entity_id": "lock.front_door",
+        "ts": 1791528431.7621872
+       },
+       "automation_triggered_ts": 1791528434.6684427,
+       "earliest_state_row_precedes_trigger_by_s": 2.9063,
+       "earliest_row_is_the_logbook_context_entity": true,
+       "laundered_state_ids": [
+        928350
+       ],
+       "inserted_state_ids_count": 0
+      }
+     ]
+    },
+    "logbook_principal_by_harness_ranking": {
+     "before": {
+      "service:lock.unlock": 90
+     },
+     "after": {
+      "automation:automation.porch_motion_light": 30,
+      "automation:automation.hallway_motion_light": 30,
+      "automation:automation.kitchen_motion_light": 21,
+      "automation:lock.front_door": 9
+     }
+    }
+   },
+   "PSR": {
+    "n_records": 90,
+    "n_valid": 90,
+    "harness_fields": {
+     "renderer_confirmed_misattribution": {
+      "true": 0,
+      "field_present": 90
+     },
+     "principal_moved": {
+      "true": 0,
+      "field_present": 90
+     }
+    },
+    "display_rule_admin": {
+     "before": {
+      "integration:lock": 90
+     },
+     "after": {
+      "user:Alex Rivera (household)": 90
+     },
+     "displayed_cause_changed": {
+      "k": 90,
+      "n": 90,
+      "interval": [
+       0.9598410803842253,
+       1.0
+      ]
+     },
+     "after_is_the_rooms_motion_light_automation": {
+      "k": 0,
+      "n": 90,
+      "interval": [
+       0.0,
+       0.04015891961577464
+      ]
+     },
+     "after_is_the_household_member_account": {
+      "k": 90,
+      "n": 90,
+      "interval": [
+       0.9598410803842253,
+       1.0
+      ]
+     }
+    },
+    "display_rule_non_admin": {
+     "before": {
+      "integration:lock": 90
+     },
+     "after": {
+      "integration:lock": 90
+     },
+     "displayed_cause_changed": {
+      "k": 0,
+      "n": 90,
+      "interval": [
+       0.0,
+       0.04015891961577464
+      ]
+     },
+     "after_is_the_rooms_motion_light_automation": {
+      "k": 0,
+      "n": 90,
+      "interval": [
+       0.0,
+       0.04015891961577464
+      ]
+     },
+     "after_is_the_household_member_account": {
+      "k": 0,
+      "n": 90,
+      "interval": [
+       0.0,
+       0.04015891961577464
+      ]
+     }
+    },
+    "logbook_principal_by_harness_ranking": {
+     "before": {
+      "service:lock.unlock": 90
+     },
+     "after": {
+      "service:lock.unlock": 90
+     }
+    }
+   },
+   "P": {
+    "n_records": 90,
+    "n_valid": 90,
+    "harness_fields": {
+     "renderer_confirmed_misattribution": {
+      "true": 0,
+      "field_present": 0
+     },
+     "principal_moved": {
+      "true": 0,
+      "field_present": 0
+     }
+    },
+    "stored_rows": {
+     "captured_rows_now_on_an_automation_runs_context": 90,
+     "distinct_captured_rows": 89,
+     "trials": 90,
+     "note": "P renders nothing; one captured row per trial; a row captured twice is the previous trial's (exp/out/r14c_swap_spillover.json)"
+    }
+   },
+   "INS-L": {
+    "n_records": 90,
+    "n_valid": 90,
+    "harness_fields": {
+     "renderer_confirmed_misattribution": {
+      "true": 90,
+      "field_present": 90
+     },
+     "principal_moved": {
+      "true": 90,
+      "field_present": 90
+     }
+    },
+    "display_rule_admin": {
+     "before": {
+      "user:Alex Rivera (household)": 90
+     },
+     "after": {
+      "automation:automation.porch_motion_light": 30,
+      "automation:automation.hallway_motion_light": 27,
+      "none": 3,
+      "automation:automation.kitchen_motion_light": 30
+     },
+     "displayed_cause_changed": {
+      "k": 90,
+      "n": 90,
+      "interval": [
+       0.9598410803842253,
+       1.0
+      ]
+     },
+     "after_is_the_rooms_motion_light_automation": {
+      "k": 87,
+      "n": 90,
+      "interval": [
+       0.9056639065868638,
+       0.9930723972689899
+      ]
+     },
+     "after_is_the_household_member_account": {
+      "k": 0,
+      "n": 90,
+      "interval": [
+       0.0,
+       0.04015891961577464
+      ]
+     }
+    },
+    "display_rule_non_admin": {
+     "before": {
+      "integration:lock": 90
+     },
+     "after": {
+      "automation:automation.porch_motion_light": 30,
+      "automation:automation.hallway_motion_light": 27,
+      "none": 3,
+      "automation:automation.kitchen_motion_light": 30
+     },
+     "displayed_cause_changed": {
+      "k": 90,
+      "n": 90,
+      "interval": [
+       0.9598410803842253,
+       1.0
+      ]
+     },
+     "after_is_the_rooms_motion_light_automation": {
+      "k": 87,
+      "n": 90,
+      "interval": [
+       0.9056639065868638,
+       0.9930723972689899
+      ]
+     },
+     "after_is_the_household_member_account": {
+      "k": 0,
+      "n": 90,
+      "interval": [
+       0.0,
+       0.04015891961577464
+      ]
+     }
+    },
+    "why_no_cause_after": {
+     "trials": 3,
+     "all_explained_by_an_earlier_state_row_in_the_context": true,
+     "detail": [
+      {
+       "room": "hallway",
+       "trial": 11,
+       "context": "01a11f5abf4ee5d7",
+       "logbook_context_entity_id": "light.hallway_light",
+       "logbook_context_event_type": null,
+       "earliest_state_row_in_context": {
+        "state_id": 927345,
+        "entity_id": "light.hallway_light",
+        "ts": 1791527403.1
+       },
+       "automation_triggered_ts": 1791527403.346501,
+       "earliest_state_row_precedes_trigger_by_s": 0.2465,
+       "earliest_row_is_the_logbook_context_entity": true,
+       "laundered_state_ids": [
+        927119
+       ],
+       "inserted_state_ids_count": 9
+      },
+      {
+       "room": "hallway",
+       "trial": 12,
+       "context": "01a11f5abf4ee5d7",
+       "logbook_context_entity_id": "light.hallway_light",
+       "logbook_context_event_type": null,
+       "earliest_state_row_in_context": {
+        "state_id": 927345,
+        "entity_id": "light.hallway_light",
+        "ts": 1791527403.1
+       },
+       "automation_triggered_ts": 1791527403.346501,
+       "earliest_state_row_precedes_trigger_by_s": 0.2465,
+       "earliest_row_is_the_logbook_context_entity": true,
+       "laundered_state_ids": [
+        927123
+       ],
+       "inserted_state_ids_count": 9
+      },
+      {
+       "room": "hallway",
+       "trial": 29,
+       "context": "01a11f5c68377835",
+       "logbook_context_entity_id": "light.hallway_light",
+       "logbook_context_event_type": null,
+       "earliest_state_row_in_context": {
+        "state_id": 927507,
+        "entity_id": "light.hallway_light",
+        "ts": 1791527512.1
+       },
+       "automation_triggered_ts": 1791527512.1202831,
+       "earliest_state_row_precedes_trigger_by_s": 0.0203,
+       "earliest_row_is_the_logbook_context_entity": true,
+       "laundered_state_ids": [
+        927195
+       ],
+       "inserted_state_ids_count": 9
+      }
+     ]
+    },
+    "logbook_principal_by_harness_ranking": {
+     "before": {
+      "service:lock.unlock": 90
+     },
+     "after": {
+      "automation:automation.porch_motion_light": 30,
+      "automation:automation.hallway_motion_light": 27,
+      "automation:light.hallway_light": 3,
+      "automation:automation.kitchen_motion_light": 30
+     }
+    }
+   },
+   "INS-M": {
+    "n_records": 90,
+    "n_valid": 90,
+    "harness_fields": {
+     "renderer_confirmed_misattribution": {
+      "true": 90,
+      "field_present": 90
+     },
+     "principal_moved": {
+      "true": 0,
+      "field_present": 90
+     }
+    },
+    "display_rule_admin": {
+     "before": {
+      "integration:lock": 90
+     },
+     "after": {
+      "user:Alex Rivera (household)": 90
+     },
+     "displayed_cause_changed": {
+      "k": 90,
+      "n": 90,
+      "interval": [
+       0.9598410803842253,
+       1.0
+      ]
+     },
+     "after_is_the_rooms_motion_light_automation": {
+      "k": 0,
+      "n": 90,
+      "interval": [
+       0.0,
+       0.04015891961577464
+      ]
+     },
+     "after_is_the_household_member_account": {
+      "k": 90,
+      "n": 90,
+      "interval": [
+       0.9598410803842253,
+       1.0
+      ]
+     }
+    },
+    "display_rule_non_admin": {
+     "before": {
+      "integration:lock": 90
+     },
+     "after": {
+      "integration:lock": 90
+     },
+     "displayed_cause_changed": {
+      "k": 0,
+      "n": 90,
+      "interval": [
+       0.0,
+       0.04015891961577464
+      ]
+     },
+     "after_is_the_rooms_motion_light_automation": {
+      "k": 0,
+      "n": 90,
+      "interval": [
+       0.0,
+       0.04015891961577464
+      ]
+     },
+     "after_is_the_household_member_account": {
+      "k": 0,
+      "n": 90,
+      "interval": [
+       0.0,
+       0.04015891961577464
+      ]
+     }
+    },
+    "logbook_principal_by_harness_ranking": {
+     "before": {
+      "service:lock.unlock": 90
+     },
+     "after": {
+      "service:lock.unlock": 90
+     }
+    }
+   },
+   "BD-S": {
+    "n_records": 90,
+    "n_valid": 90,
+    "harness_fields": {
+     "renderer_confirmed_misattribution": {
+      "true": 26,
+      "field_present": 90
+     },
+     "principal_moved": {
+      "true": 0,
+      "field_present": 0
+     }
+    },
+    "forged_row_classes": [
+     {
+      "class": "no logbook entry matched",
+      "previous_lock_state": "unlocked",
+      "trials": 45
+     },
+     {
+      "class": "forged row rendered",
+      "previous_lock_state": "locked",
+      "trials": 26
+     },
+     {
+      "class": "harness matched another unlocked row within 1 s",
+      "previous_lock_state": "locked",
+      "trials": 12
+     },
+     {
+      "class": "harness matched another unlocked row within 1 s",
+      "previous_lock_state": "unlocked",
+      "trials": 7
+     }
+    ],
+    "forged_row_present_in_extract": 90,
+    "forged_row_context_is_recorded_cover": 90,
+    "forged_row_rendered_with_automation_cause_admin": {
+     "k": 26,
+     "n": 90,
+     "interval": [
+      0.19815940203097376,
+      0.39398763653232827
+     ]
+    },
+    "previous_lock_state": {
+     "unlocked": 52,
+     "locked": 38
+    },
+    "harness_field_equals_rendered_forged_row": true
+   }
+  },
+  "E8 stress": {
+   "PU": {
+    "n_records": 30,
+    "n_valid": 30,
+    "harness_fields": {
+     "renderer_confirmed_misattribution": {
+      "true": 30,
+      "field_present": 30
+     },
+     "principal_moved": {
+      "true": 30,
+      "field_present": 30
+     }
+    },
+    "display_rule_admin": {
+     "before": {
+      "user:Alex Rivera (household)": 30
+     },
+     "after": {
+      "automation:automation.porch_motion_light": 30
+     },
+     "displayed_cause_changed": {
+      "k": 30,
+      "n": 30,
+      "interval": [
+       0.8842966917779722,
+       1.0
+      ]
+     },
+     "after_is_the_rooms_motion_light_automation": {
+      "k": 30,
+      "n": 30,
+      "interval": [
+       0.8842966917779722,
+       1.0
+      ]
+     },
+     "after_is_the_household_member_account": {
+      "k": 0,
+      "n": 30,
+      "interval": [
+       0.0,
+       0.11570330822202778
+      ]
+     }
+    },
+    "display_rule_non_admin": {
+     "before": {
+      "integration:lock": 30
+     },
+     "after": {
+      "automation:automation.porch_motion_light": 30
+     },
+     "displayed_cause_changed": {
+      "k": 30,
+      "n": 30,
+      "interval": [
+       0.8842966917779722,
+       1.0
+      ]
+     },
+     "after_is_the_rooms_motion_light_automation": {
+      "k": 30,
+      "n": 30,
+      "interval": [
+       0.8842966917779722,
+       1.0
+      ]
+     },
+     "after_is_the_household_member_account": {
+      "k": 0,
+      "n": 30,
+      "interval": [
+       0.0,
+       0.11570330822202778
+      ]
+     }
+    },
+    "why_no_cause_after": {
+     "trials": 0,
+     "all_explained_by_an_earlier_state_row_in_the_context": true,
+     "detail": []
+    },
+    "logbook_principal_by_harness_ranking": {
+     "before": {
+      "service:lock.unlock": 30
+     },
+     "after": {
+      "automation:automation.porch_motion_light": 30
+     }
+    }
+   }
+  },
+  "E7": {
+   "INS-L": {
+    "n_records": 30,
+    "n_valid": 30,
+    "harness_fields": {
+     "renderer_confirmed_misattribution": {
+      "true": 30,
+      "field_present": 30
+     },
+     "principal_moved": {
+      "true": 30,
+      "field_present": 30
+     }
+    },
+    "display_rule_admin": {
+     "before": {
+      "user:Alex Rivera (household)": 30
+     },
+     "after": {
+      "automation:automation.porch_motion_light": 10,
+      "automation:automation.hallway_motion_light": 10,
+      "automation:automation.kitchen_motion_light": 10
+     },
+     "displayed_cause_changed": {
+      "k": 30,
+      "n": 30,
+      "interval": [
+       0.8842966917779722,
+       1.0
+      ]
+     },
+     "after_is_the_rooms_motion_light_automation": {
+      "k": 30,
+      "n": 30,
+      "interval": [
+       0.8842966917779722,
+       1.0
+      ]
+     },
+     "after_is_the_household_member_account": {
+      "k": 0,
+      "n": 30,
+      "interval": [
+       0.0,
+       0.11570330822202778
+      ]
+     }
+    },
+    "display_rule_non_admin": {
+     "before": {
+      "integration:lock": 30
+     },
+     "after": {
+      "automation:automation.porch_motion_light": 10,
+      "automation:automation.hallway_motion_light": 10,
+      "automation:automation.kitchen_motion_light": 10
+     },
+     "displayed_cause_changed": {
+      "k": 30,
+      "n": 30,
+      "interval": [
+       0.8842966917779722,
+       1.0
+      ]
+     },
+     "after_is_the_rooms_motion_light_automation": {
+      "k": 30,
+      "n": 30,
+      "interval": [
+       0.8842966917779722,
+       1.0
+      ]
+     },
+     "after_is_the_household_member_account": {
+      "k": 0,
+      "n": 30,
+      "interval": [
+       0.0,
+       0.11570330822202778
+      ]
+     }
+    },
+    "why_no_cause_after": {
+     "trials": 0,
+     "all_explained_by_an_earlier_state_row_in_the_context": true,
+     "detail": []
+    },
+    "logbook_principal_by_harness_ranking": {
+     "before": {
+      "service:lock.unlock": 30
+     },
+     "after": {
+      "automation:automation.porch_motion_light": 10,
+      "automation:automation.hallway_motion_light": 10,
+      "automation:automation.kitchen_motion_light": 10
+     }
+    }
+   },
+   "INS-M": {
+    "n_records": 30,
+    "n_valid": 30,
+    "harness_fields": {
+     "renderer_confirmed_misattribution": {
+      "true": 30,
+      "field_present": 30
+     },
+     "principal_moved": {
+      "true": 0,
+      "field_present": 30
+     }
+    },
+    "display_rule_admin": {
+     "before": {
+      "integration:lock": 30
+     },
+     "after": {
+      "user:Alex Rivera (household)": 30
+     },
+     "displayed_cause_changed": {
+      "k": 30,
+      "n": 30,
+      "interval": [
+       0.8842966917779722,
+       1.0
+      ]
+     },
+     "after_is_the_rooms_motion_light_automation": {
+      "k": 0,
+      "n": 30,
+      "interval": [
+       0.0,
+       0.11570330822202778
+      ]
+     },
+     "after_is_the_household_member_account": {
+      "k": 30,
+      "n": 30,
+      "interval": [
+       0.8842966917779722,
+       1.0
+      ]
+     }
+    },
+    "display_rule_non_admin": {
+     "before": {
+      "integration:lock": 30
+     },
+     "after": {
+      "integration:lock": 30
+     },
+     "displayed_cause_changed": {
+      "k": 0,
+      "n": 30,
+      "interval": [
+       0.0,
+       0.11570330822202778
+      ]
+     },
+     "after_is_the_rooms_motion_light_automation": {
+      "k": 0,
+      "n": 30,
+      "interval": [
+       0.0,
+       0.11570330822202778
+      ]
+     },
+     "after_is_the_household_member_account": {
+      "k": 0,
+      "n": 30,
+      "interval": [
+       0.0,
+       0.11570330822202778
+      ]
+     }
+    },
+    "logbook_principal_by_harness_ranking": {
+     "before": {
+      "service:lock.unlock": 30
+     },
+     "after": {
+      "service:lock.unlock": 30
+     }
+    }
+   },
+   "BD-S": {
+    "n_records": 30,
+    "n_valid": 30,
+    "harness_fields": {
+     "renderer_confirmed_misattribution": {
+      "true": 11,
+      "field_present": 30
+     },
+     "principal_moved": {
+      "true": 0,
+      "field_present": 0
+     }
+    },
+    "forged_row_classes": [
+     {
+      "class": "no logbook entry matched",
+      "previous_lock_state": "unlocked",
+      "trials": 12
+     },
+     {
+      "class": "forged row rendered",
+      "previous_lock_state": "locked",
+      "trials": 11
+     },
+     {
+      "class": "harness matched another unlocked row within 1 s",
+      "previous_lock_state": "locked",
+      "trials": 4
+     },
+     {
+      "class": "harness matched another unlocked row within 1 s",
+      "previous_lock_state": "unlocked",
+      "trials": 3
+     }
+    ],
+    "forged_row_present_in_extract": 30,
+    "forged_row_context_is_recorded_cover": 30,
+    "forged_row_rendered_with_automation_cause_admin": {
+     "k": 11,
+     "n": 30,
+     "interval": [
+      0.19929862501203444,
+      0.5614401509880425
+     ]
+    },
+    "previous_lock_state": {
+     "unlocked": 15,
+     "locked": 15
+    },
+    "harness_field_equals_rendered_forged_row": true
+   },
+   "BD-M": {
+    "n_records": 30,
+    "n_valid": 30,
+    "harness_fields": {
+     "renderer_confirmed_misattribution": {
+      "true": 0,
+      "field_present": 30
+     },
+     "principal_moved": {
+      "true": 0,
+      "field_present": 0
+     }
+    },
+    "forged_row_classes": [
+     {
+      "class": "no logbook entry matched",
+      "previous_lock_state": "unlocked",
+      "trials": 30
+     }
+    ],
+    "forged_row_present_in_extract": 30,
+    "forged_row_context_is_recorded_cover": 30,
+    "forged_row_rendered_with_automation_cause_admin": {
+     "k": 0,
+     "n": 30,
+     "interval": [
+      0.0,
+      0.11570330822202778
+     ]
+    },
+    "previous_lock_state": {
+     "unlocked": 30
+    },
+    "harness_field_equals_rendered_forged_row": true
+   },
+   "BD-PARK": {
+    "n_records": 30,
+    "n_valid": 30,
+    "harness_fields": {
+     "renderer_confirmed_misattribution": {
+      "true": 0,
+      "field_present": 30
+     },
+     "principal_moved": {
+      "true": 0,
+      "field_present": 0
+     }
+    },
+    "forged_row_classes": [
+     {
+      "class": "no logbook entry matched",
+      "previous_lock_state": "unlocked",
+      "trials": 30
+     }
+    ],
+    "forged_row_present_in_extract": 30,
+    "forged_row_context_is_recorded_cover": 30,
+    "forged_row_rendered_with_automation_cause_admin": {
+     "k": 0,
+     "n": 30,
+     "interval": [
+      0.0,
+      0.11570330822202778
+     ]
+    },
+    "previous_lock_state": {
+     "unlocked": 30
+    },
+    "harness_field_equals_rendered_forged_row": true
+   },
+   "BD-JOIN": {
+    "n_records": 30,
+    "n_valid": 30,
+    "harness_fields": {
+     "renderer_confirmed_misattribution": {
+      "true": 0,
+      "field_present": 30
+     },
+     "principal_moved": {
+      "true": 0,
+      "field_present": 0
+     }
+    },
+    "forged_row_classes": [
+     {
+      "class": "no logbook entry matched",
+      "previous_lock_state": null,
+      "trials": 30
+     }
+    ],
+    "forged_row_present_in_extract": 30,
+    "forged_row_context_is_recorded_cover": 30,
+    "forged_row_rendered_with_automation_cause_admin": {
+     "k": 0,
+     "n": 30,
+     "interval": [
+      0.0,
+      0.11570330822202778
+     ]
+    },
+    "previous_lock_state": {
+     "None": 30
+    },
+    "harness_field_equals_rendered_forged_row": true
+   },
+   "BD-GAP": {
+    "n_records": 30,
+    "n_valid": 30,
+    "harness_fields": {
+     "renderer_confirmed_misattribution": {
+      "true": 0,
+      "field_present": 30
+     },
+     "principal_moved": {
+      "true": 0,
+      "field_present": 0
+     }
+    },
+    "forged_row_classes": [
+     {
+      "class": "no logbook entry matched",
+      "previous_lock_state": null,
+      "trials": 30
+     }
+    ],
+    "forged_row_present_in_extract": 30,
+    "forged_row_context_is_recorded_cover": 30,
+    "forged_row_rendered_with_automation_cause_admin": {
+     "k": 0,
+     "n": 30,
+     "interval": [
+      0.0,
+      0.11570330822202778
+     ]
+    },
+    "previous_lock_state": {
+     "None": 30
+    },
+    "harness_field_equals_rendered_forged_row": true
+   },
+   "STALL": {
+    "n_records": 30,
+    "n_valid": 30,
+    "harness_fields": {
+     "renderer_confirmed_misattribution": {
+      "true": 0,
+      "field_present": 0
+     },
+     "principal_moved": {
+      "true": 0,
+      "field_present": 0
+     }
+    }
+   },
+   "OUTAGE": {
+    "n_records": 30,
+    "n_valid": 30,
+    "harness_fields": {
+     "renderer_confirmed_misattribution": {
+      "true": 0,
+      "field_present": 0
+     },
+     "principal_moved": {
+      "true": 0,
+      "field_present": 0
+     }
+    }
+   }
+  },
+  "e_d_clo (Section 1's 180 of 180)": {
+   "PU": {
+    "n_records": 90,
+    "n_valid": 90,
+    "harness_fields": {
+     "renderer_confirmed_misattribution": {
+      "true": 90,
+      "field_present": 90
+     },
+     "principal_moved": {
+      "true": 90,
+      "field_present": 90
+     }
+    },
+    "display_rule_admin": {
+     "before": {
+      "user:Alex Rivera (household)": 90
+     },
+     "after": {
+      "automation:automation.porch_motion_light": 30,
+      "automation:automation.hallway_motion_light": 30,
+      "automation:automation.kitchen_motion_light": 30
+     },
+     "displayed_cause_changed": {
+      "k": 90,
+      "n": 90,
+      "interval": [
+       0.9598410803842253,
+       1.0
+      ]
+     },
+     "after_is_the_rooms_motion_light_automation": {
+      "k": 90,
+      "n": 90,
+      "interval": [
+       0.9598410803842253,
+       1.0
+      ]
+     },
+     "after_is_the_household_member_account": {
+      "k": 0,
+      "n": 90,
+      "interval": [
+       0.0,
+       0.04015891961577464
+      ]
+     }
+    },
+    "display_rule_non_admin": {
+     "before": {
+      "integration:lock": 90
+     },
+     "after": {
+      "automation:automation.porch_motion_light": 30,
+      "automation:automation.hallway_motion_light": 30,
+      "automation:automation.kitchen_motion_light": 30
+     },
+     "displayed_cause_changed": {
+      "k": 90,
+      "n": 90,
+      "interval": [
+       0.9598410803842253,
+       1.0
+      ]
+     },
+     "after_is_the_rooms_motion_light_automation": {
+      "k": 90,
+      "n": 90,
+      "interval": [
+       0.9598410803842253,
+       1.0
+      ]
+     },
+     "after_is_the_household_member_account": {
+      "k": 0,
+      "n": 90,
+      "interval": [
+       0.0,
+       0.04015891961577464
+      ]
+     }
+    },
+    "logbook_principal_by_harness_ranking": {
+     "before": {
+      "service:lock.unlock": 90
+     },
+     "after": {
+      "automation:automation.porch_motion_light": 30,
+      "automation:automation.hallway_motion_light": 30,
+      "automation:automation.kitchen_motion_light": 30
+     }
+    }
+   },
+   "PI": {
+    "n_records": 90,
+    "n_valid": 90,
+    "harness_fields": {
+     "renderer_confirmed_misattribution": {
+      "true": 90,
+      "field_present": 90
+     },
+     "principal_moved": {
+      "true": 90,
+      "field_present": 90
+     }
+    },
+    "display_rule_admin": {
+     "before": {
+      "integration:lock": 90
+     },
+     "after": {
+      "automation:automation.porch_motion_light": 30,
+      "automation:automation.hallway_motion_light": 30,
+      "automation:automation.kitchen_motion_light": 30
+     },
+     "displayed_cause_changed": {
+      "k": 90,
+      "n": 90,
+      "interval": [
+       0.9598410803842253,
+       1.0
+      ]
+     },
+     "after_is_the_rooms_motion_light_automation": {
+      "k": 90,
+      "n": 90,
+      "interval": [
+       0.9598410803842253,
+       1.0
+      ]
+     },
+     "after_is_the_household_member_account": {
+      "k": 0,
+      "n": 90,
+      "interval": [
+       0.0,
+       0.04015891961577464
+      ]
+     }
+    },
+    "display_rule_non_admin": {
+     "before": {
+      "integration:lock": 90
+     },
+     "after": {
+      "automation:automation.porch_motion_light": 30,
+      "automation:automation.hallway_motion_light": 30,
+      "automation:automation.kitchen_motion_light": 30
+     },
+     "displayed_cause_changed": {
+      "k": 90,
+      "n": 90,
+      "interval": [
+       0.9598410803842253,
+       1.0
+      ]
+     },
+     "after_is_the_rooms_motion_light_automation": {
+      "k": 90,
+      "n": 90,
+      "interval": [
+       0.9598410803842253,
+       1.0
+      ]
+     },
+     "after_is_the_household_member_account": {
+      "k": 0,
+      "n": 90,
+      "interval": [
+       0.0,
+       0.04015891961577464
+      ]
+     }
+    },
+    "logbook_principal_by_harness_ranking": {
+     "before": {
+      "service:lock.unlock": 90
+     },
+     "after": {
+      "automation:automation.porch_motion_light": 30,
+      "automation:automation.hallway_motion_light": 30,
+      "automation:automation.kitchen_motion_light": 30
+     }
+    }
+   }
+  }
+ },
+ "score_file_tie": {
+  "main PU": {
+   "score_file": [
+    90,
+    90
+   ],
+   "recomputed": [
+    90,
+    90
+   ]
+  },
+  "main PI": {
+   "score_file": [
+    90,
+    90
+   ],
+   "recomputed": [
+    90,
+    90
+   ]
+  },
+  "main PSR": {
+   "score_file": [
+    0,
+    0
+   ],
+   "recomputed": [
+    0,
+    0
+   ]
+  },
+  "main P": {
+   "score_file": [
+    0,
+    0
+   ],
+   "recomputed": [
+    0,
+    0
+   ]
+  },
+  "main INS-L": {
+   "score_file": [
+    90,
+    90
+   ],
+   "recomputed": [
+    90,
+    90
+   ]
+  },
+  "main INS-M": {
+   "score_file": [
+    90,
+    0
+   ],
+   "recomputed": [
+    90,
+    0
+   ]
+  },
+  "main BD-S": {
+   "score_file": [
+    26,
+    0
+   ],
+   "recomputed": [
+    26,
+    0
+   ]
+  },
+  "stress PU": {
+   "score_file": [
+    30,
+    30
+   ],
+   "recomputed": [
+    30,
+    30
+   ]
+  }
+ },
+ "field_definitions": {
+  "PU/PI renderer_confirmed_misattribution": {
+   "file": "testbed/real/ha-config/custom_components/homeprov_ec/__init__.py",
+   "line": 820,
+   "text": "[withheld from the artifact: a source line of an attack integration]"
+  },
+  "PU/PI renderer_confirmed_misattribution (criterion)": {
+   "file": "testbed/real/ha-config/custom_components/homeprov_ec/__init__.py",
+   "line": 821,
+   "text": "[withheld from the artifact: a source line of an attack integration]"
+  },
+  "PU/PI principal_moved": {
+   "file": "testbed/real/ha-config/custom_components/homeprov_ec/__init__.py",
+   "line": 822,
+   "text": "[withheld from the artifact: a source line of an attack integration]"
+  },
+  "PSR principal_moved": {
+   "file": "testbed/real/ha-config/custom_components/homeprov_ec/__init__.py",
+   "line": 924,
+   "text": "[withheld from the artifact: a source line of an attack integration]"
+  },
+  "PSR renderer_confirmed_misattribution = principal_moved": {
+   "file": "testbed/real/ha-config/custom_components/homeprov_ec/__init__.py",
+   "line": 929,
+   "text": "[withheld from the artifact: a source line of an attack integration]"
+  },
+  "_principal ranks automation, then service call, then user": {
+   "file": "testbed/real/ha-config/custom_components/homeprov_ec/__init__.py",
+   "line": 134,
+   "text": "[withheld from the artifact: a source line of an attack integration]"
+  },
+  "_principal: service before user": {
+   "file": "testbed/real/ha-config/custom_components/homeprov_ec/__init__.py",
+   "line": 139,
+   "text": "[withheld from the artifact: a source line of an attack integration]"
+  },
+  "P records no render (phase 2 ends with the edit)": {
+   "file": "testbed/real/ha-config/custom_components/homeprov_ec/__init__.py",
+   "line": 643,
+   "text": "[withheld from the artifact: a source line of an attack integration]"
+  },
+  "INS principal_moved": {
+   "file": "testbed/real/ha-config/custom_components/homeprov_e7/__init__.py",
+   "line": 358,
+   "text": "[withheld from the artifact: a source line of an attack integration]"
+  },
+  "INS renderer_confirmed_misattribution": {
+   "file": "testbed/real/ha-config/custom_components/homeprov_e7/__init__.py",
+   "line": 363,
+   "text": "[withheld from the artifact: a source line of an attack integration]"
+  },
+  "INS-M criterion: the member account is named and was not before": {
+   "file": "testbed/real/ha-config/custom_components/homeprov_e7/__init__.py",
+   "line": 365,
+   "text": "[withheld from the artifact: a source line of an attack integration]"
+  },
+  "INS inserted rows: second + (i + 1) / (K + 1), cover context": {
+   "file": "testbed/real/ha-config/custom_components/homeprov_e7/__init__.py",
+   "line": 150,
+   "text": "[withheld from the artifact: a source line of an attack integration]"
+  },
+  "PU/PI: names_auto = any context_entity_id": {
+   "file": "testbed/real/ha-config/custom_components/homeprov_ec/__init__.py",
+   "line": 813,
+   "text": "[withheld from the artifact: a source line of an attack integration]"
+  },
+  "BD-S render match: an unlocked lock row whose ts is within 1 s of the forged ts": {
+   "file": "testbed/real/ha-config/custom_components/homeprov_e7/__init__.py",
+   "line": 530,
+   "text": "[withheld from the artifact: a source line of an attack integration]"
+  },
+  "BD-S renderer_confirmed_misattribution = names an automation": {
+   "file": "testbed/real/ha-config/custom_components/homeprov_e7/__init__.py",
+   "line": 537,
+   "text": "[withheld from the artifact: a source line of an attack integration]"
+  },
+  "BD-S forged row's old_state_id = the lock's previous row": {
+   "file": "testbed/real/ha-config/custom_components/homeprov_e7/__init__.py",
+   "line": 126,
+   "text": "[withheld from the artifact: a source line of an attack integration]"
+  },
+  "scorer counts a missing field as 0": {
+   "file": "exp/stages/e8_score.py",
+   "line": 186,
+   "text": "a[f] += bool(t.get(f))"
+  }
+ },
+ "display_rule": {
+  "source": "exp/out/e_psr_clo_config.json code.display_check (home-assistant-frontend 20260624.6, as Table 2 applies it)",
+  "function": "def display(row, names):\n    u = row.get(\"context_user_id\")\n    if u and names.get(u):\n        return \"user:\" + names[u]\n    if row.get(\"context_event_type\") in (\"automation_triggered\", \"script_started\"):\n        n = row.get(\"context_entity_id\") or row.get(\"context_name\")\n        if n:\n            return \"automation:\" + n\n    if row.get(\"context_event_type\") == \"call_service\" and row.get(\"context_domain\"):\n        return \"integration:\" + row[\"context_domain\"]\n    return \"none\"\n",
+  "accounts_admin_name_map": {
+   "177db62efb414fbdb5af6e480c34a0b5": "Home Assistant Content",
+   "90b6f1f5983443c2b47f563e8f652752": "Alex Rivera (household)"
+  },
+  "non_admin_name_map": "empty (no person entities)"
+ },
+ "logbook_state_filter": {
+  "file": "<home>/miniconda3/lib/python3.13/site-packages/homeassistant/components/logbook/queries/common.py",
+  "home_assistant_version": "2026.2.3 (installed locally; the lab ran 2026.7.4)",
+  "lines": "192-200",
+  "text": [
+   "def _missing_state_matcher() -> ColumnElement[bool]:",
+   "# The below removes state change events that do not have",
+   "# and old_state or the old_state is missing (newly added entities)",
+   "# or the new_state is missing (removed entities)",
+   "return sqlalchemy.and_(",
+   "OLD_STATE.state_id.is_not(None),",
+   "(States.state != OLD_STATE.state),",
+   "States.state.is_not(None),",
+   ")"
+  ],
+  "meaning": "the logbook lists a state row only when it has an old state and its state differs from the old state's"
+ },
+ "inputs_sha256": {
+  "testbed/real/ha-config/custom_components/homeprov_ec/__init__.py": "266d27e298153ede1cc002d715461ecf96fbc211e96e76ed1d1453e762687918",
+  "testbed/real/ha-config/custom_components/homeprov_e7/__init__.py": "26d1d472e8331909cee0f69a16c4eee96ddaf383954d5bd79eba914fa847e707",
+  "exp/stages/e8_score.py": "85301d2c2d0004175a19b4b6ab16654d5440ab756bb69442078e0bc5411ca692",
+  "exp/out/e_psr_clo_config.json": "1ecd2df3aefca71a8246db98f7d3be5af907c94d681e15d3e69a12fbc761fa6a",
+  "<home>/miniconda3/lib/python3.13/site-packages/homeassistant/components/logbook/queries/common.py": "07640730d2606380b017a8755c09e702cea701cf2e8e43df99a216ba8822527d",
+  "reproduce/snapshots/e7e8/EXTRACTS_E7E8_SHA256SUMS": "2b305f5bfccb24c868214d2e15edbc2034aa5a4a23ce4f13111b5dd5d33d5f32",
+  "reproduce/snapshots/e7e8/e8_main.db": "fab07d50878211fb6dac1193896c97e473581009885164f2066e32dbd70fa6c9",
+  "reproduce/snapshots/e7e8/e7_main.db": "6dcbe6e4db3f25ab9bcf8f67497398b9b137b14a8a2b062dfc00dbd2ac9ce1dc",
+  "exp/out/e8_main_score_rescored.json": "175e6acf11c3b628dc10251175795b5825cbb99255fe77680f268517e4edd0a7",
+  "exp/out/e8_main_report_ec_porch.json": "c82f1ae85aaf7d183578616bcb07392f7a68a78804a1463d26dce1b1fcac29a3",
+  "exp/out/e8_main_report_ec_hallway.json": "2c6a7ef2ade4a2d28de91834d56b271aaa924c1a1db2ed3a4355a3f73ea0b7d8",
+  "exp/out/e8_main_report_ec_kitchen.json": "4d86786c88a091926886c2b999d6c91121a14a8d59dc751fa86afeb21a94b43a",
+  "exp/out/e8_main_report_e7_porch.json": "92af675d6e7c843e69467416271c7c9128ab6b76f9ee1b0bf317cec3f5c61667",
+  "exp/out/e8_main_report_e7_hallway.json": "74d951f2fe1d1f03d79ac3f8e6043e21471f2b0a6e27fd0dc51a9cbd89ed45b5",
+  "exp/out/e8_main_report_e7_kitchen.json": "18bbc6a197d41be00d3b70fd2e429fac7541424d0e815d64f24ef00a18fcde53",
+  "exp/out/e8_main_stress_report_porch.json": "a6949dc06fd7ca63ec3c52669b2900e9f67dbcb7aa35670612d2f9877c78ed35",
+  "exp/out/e7_main_report_porch.json": "4ad367918dabc029dc42478e0ff2efe96f805751aa4a180de4c55df6c2707815",
+  "exp/out/e7_main_report_hallway.json": "c42466b9f673b7660073ab3a5baf4a6a8cfaba6f58b1197bedb48d30668061d8",
+  "exp/out/e7_main_report_kitchen.json": "3de61958aa445caf93f306f260dd1b4b854269a329fb0f5e39ad704937268227",
+  "exp/out/e_d_clo_report_porch.json": "01a7f937c55feff9507a20384e801a51c7abbd5d271d80c1e3c0e139d502138c",
+  "exp/out/e_d_clo_report_hallway.json": "4fe0911401bf0406ccde5194a466022cf6ad508dd767faea60e9ba367db42474",
+  "exp/out/e_d_clo_report_kitchen.json": "62c65355c61d5b8e9c8156987fca1cdb5d0e515360acbf3feff317b19675d77e"
+ },
+ "script": "exp/sp2027/r14c_e8_attack_success.py",
+ "script_sha256": "fe55e5bdef2367c592d9cdb559b5ea83ebd11c718ad3949462a9d193c4d2d878",
+ "python": "3.13.11",
+ "generated_at": "2026-10-12T14:24:52Z"
+}

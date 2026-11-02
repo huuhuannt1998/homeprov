@@ -1,0 +1,534 @@
+{
+  "experiment": "E-C",
+  "what": "write-time forgery of actuation attribution on the real deployment, with a post-commit positive control",
+  "substrate": "real (mosquitto + MQTT discovery + shipped motion-light blueprint), three home configurations",
+  "oracle": "the platform's own logbook EventProcessor, identical form and principal resolution to the flagship S1 harness",
+  "guarantee_boundary": "HOMEPROV commits to rows that exist. A forgery performed at write time produces no earlier version of the row, so no commitment over committed state can detect it. The write-time arms are expected to show zero detection; arm P is the control proving the detector was live in the same run.",
+  "rooms": [
+    "porch",
+    "hallway",
+    "kitchen"
+  ],
+  "per_room": [
+    {
+      "room": "porch",
+      "n_trials": 1,
+      "innocent_party": "automation.porch_motion_light",
+      "household_member_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "target": "lock.front_door"
+    },
+    {
+      "room": "hallway",
+      "n_trials": 1,
+      "innocent_party": "automation.hallway_motion_light",
+      "household_member_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "target": "lock.front_door"
+    },
+    {
+      "room": "kitchen",
+      "n_trials": 1,
+      "innocent_party": "automation.kitchen_motion_light",
+      "household_member_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "target": "lock.front_door"
+    }
+  ],
+  "window": {
+    "t_start": 1789706300.0,
+    "t_end": 1789706974.0,
+    "duration_s": 674.0,
+    "recorder_snapshot_at": 1789707065.3232892,
+    "chain_upper_bound": "the recorder snapshot time; roots anchored after it are excluded because the snapshot cannot account for them"
+  },
+  "detection_method": {
+    "how": "every anchored segment root in the run window recomputed from a transactionally consistent snapshot of the final recorder, using the SHIPPED monitor's own load()/commit()",
+    "first_write_wins": "the FIRST anchored root for a segment is the one verified against, matching the daemon's 409 rule",
+    "granularities": [
+      "second",
+      "minute",
+      "hour"
+    ],
+    "anchored_segments_in_window": {
+      "second": 170,
+      "minute": 13,
+      "hour": 0
+    },
+    "violating_segments_in_window": {
+      "second": 4,
+      "minute": 3,
+      "hour": 0
+    },
+    "n_nodes_recomputed": 548435,
+    "chain_records_total": 143593,
+    "chain_records_in_window": 116,
+    "evidence_unobservable_records": [],
+    "recorder_copy_valid": true,
+    "recorder_copy_reason": "ok",
+    "recorder_copy_detail": {}
+  },
+  "benign_violation_floor": {
+    "second": {
+      "k": 1,
+      "n": 152,
+      "prop": 0.006578947368421052,
+      "ci_lo": 0.00016655065511189234,
+      "ci_hi": 0.03610903373746595,
+      "method": "Clopper-Pearson exact",
+      "what": "anchored second-segments inside the run window that no arm touched and that fail recomputation"
+    },
+    "minute": {
+      "k": 0,
+      "n": 10,
+      "prop": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.3084971078187608,
+      "method": "Clopper-Pearson exact",
+      "what": "anchored minute-segments inside the run window that no arm touched and that fail recomputation"
+    }
+  },
+  "detection_metric": {
+    "sound_unit": "second",
+    "why": "the per-trial unit must be the segment the trial's own row occupies. A minute segment aggregates sixty seconds, so ONE violation anywhere inside it marks every trial in that minute as detected, whoever caused it. That is not a hypothetical: in this run the minute figures for W3 are entirely contamination. Hallway minute 29815314 violates because of a single untouched second (1788918899) in which five rows landed after the seal, and hallway 29815315 and kitchen 29815327 violate because arm P's deletions fall in the same minute as the last W3 trials. Every one of the ten W3 minute-granularity 'detections' is one of those two, and none is a violation of a W3 row. The minute figures are reported because they were computed, not because they measure detection of the arm they sit under.",
+    "read_this_one": "homeprov_detection_second",
+    "minute_figures_are": "unsound as a per-trial detection metric; kept for completeness and explained above"
+  },
+  "violation_mechanisms": {
+    "second": {
+      "rows_removed_after_seal": 3,
+      "untouched_rows_removed_after_seal": 0,
+      "rows_arrived_after_seal": 1,
+      "untouched_rows_arrived_after_seal": 1
+    },
+    "minute": {
+      "rows_removed_after_seal": 3,
+      "untouched_rows_removed_after_seal": 0
+    }
+  },
+  "recorder_health": {
+    "sqlalchemy_errors_in_window": 0,
+    "recorder_error_lines_in_window": 0,
+    "how": "docker logs --since <t_start> hpr-hass, counting SQLAlchemyError / ArgumentError and recorder ERROR lines",
+    "why_it_matters": "zero means the write-path hook left no operational trace: the recorder kept committing normally while the forgery was written. A hook that crashes the recorder would announce itself in the hub's own log."
+  },
+  "arms": {
+    "PU": {
+      "strategy": "POST-COMMIT: laundering a household member's app unlock",
+      "write_time": false,
+      "n_attempted": 3,
+      "n_valid": 3,
+      "failures": [],
+      "per_room": {
+        "porch": {
+          "n": 1,
+          "misattributed": 1
+        },
+        "hallway": {
+          "n": 1,
+          "misattributed": 1
+        },
+        "kitchen": {
+          "n": 1,
+          "misattributed": 1
+        }
+      },
+      "renderer_confirmed_misattribution": {
+        "k": 3,
+        "n": 3,
+        "prop": 1.0,
+        "ci_lo": 0.2924017738212866,
+        "ci_hi": 1.0,
+        "method": "Clopper-Pearson exact"
+      },
+      "misattribution_strict_s1_ordering": "not_measured_for_this_arm",
+      "principals_rendered": [
+        "automation:automation.hallway_motion_light",
+        "automation:automation.kitchen_motion_light",
+        "automation:automation.porch_motion_light"
+      ],
+      "control_principals": "not_measured_for_this_arm",
+      "renderer_named_person": "not_measured_for_this_arm",
+      "renderer_named_automation": {
+        "k": 3,
+        "n": 3,
+        "prop": 1.0,
+        "ci_lo": 0.2924017738212866,
+        "ci_hi": 1.0,
+        "method": "Clopper-Pearson exact"
+      },
+      "db_writes_per_trial": [
+        2
+      ],
+      "clean_principals": [
+        "service:lock.unlock"
+      ],
+      "clean_named_the_author": {
+        "k": 3,
+        "n": 3,
+        "prop": 1.0,
+        "ci_lo": 0.2924017738212866,
+        "ci_hi": 1.0,
+        "method": "Clopper-Pearson exact"
+      },
+      "still_names_person_after": 0,
+      "principal_moved": {
+        "k": 3,
+        "n": 3,
+        "prop": 1.0,
+        "ci_lo": 0.2924017738212866,
+        "ci_hi": 1.0,
+        "method": "Clopper-Pearson exact"
+      },
+      "homeprov_detection_second": {
+        "k": 3,
+        "n": 3,
+        "prop": 1.0,
+        "ci_lo": 0.2924017738212866,
+        "ci_hi": 1.0,
+        "method": "Clopper-Pearson exact",
+        "n_trials_whose_segment_was_anchored": 3,
+        "n_valid_trials": 3
+      },
+      "homeprov_detection_minute": {
+        "k": 3,
+        "n": 3,
+        "prop": 1.0,
+        "ci_lo": 0.2924017738212866,
+        "ci_hi": 1.0,
+        "method": "Clopper-Pearson exact",
+        "n_trials_whose_segment_was_anchored": 3,
+        "n_valid_trials": 3
+      }
+    }
+  },
+  "trials": [
+    {
+      "arm": "PU",
+      "trial": 0,
+      "strategy": "post-commit laundering of an ANCHORED row authored by user:Alex Rivera (household)",
+      "authored_by": "user:Alex Rivera (household)",
+      "author_context": "01M2SCZ0G3Q02QAPRDPSTW9WK6",
+      "row_before": {
+        "state_id": 376848,
+        "ts": 1789706338.822477,
+        "context_id_bin": "01a0b2cf8203b805755b0db675c4f266",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 376848,
+        "ts": 1789706338.822477,
+        "context_id_bin": "01a0b2cf8203b805755b0db675c4f266",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-09-18T04:38:58.822477+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-09-18T04:38:58.822477+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        376848
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a0b2cf4ec3d156",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-09-18T04:38:58.822477+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Porch motion light",
+          "context_message": "triggered by state of binary_sensor.porch_motion",
+          "context_entity_id": "automation.porch_motion_light",
+          "context_entity_id_name": "Porch motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.porch_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.porch_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true,
+      "room": "porch",
+      "household_member_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "_row_ts": 1789706338.822477,
+      "_row_state_id": 376848,
+      "_detection": {
+        "second": {
+          "segment": "1789706338",
+          "anchored": true,
+          "violation": true,
+          "why": "root_mismatch"
+        },
+        "minute": {
+          "segment": "29828438",
+          "anchored": true,
+          "violation": true,
+          "why": "root_mismatch"
+        }
+      }
+    },
+    {
+      "arm": "PU",
+      "trial": 0,
+      "strategy": "post-commit laundering of an ANCHORED row authored by user:Alex Rivera (household)",
+      "authored_by": "user:Alex Rivera (household)",
+      "author_context": "01M2SD5VT0YR72E4KR5XZ783R7",
+      "row_before": {
+        "state_id": 377020,
+        "ts": 1789706563.395118,
+        "context_id_bin": "01a0b2d2ef40f60e2712782f7e740f07",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 377020,
+        "ts": 1789706563.395118,
+        "context_id_bin": "01a0b2d2ef40f60e2712782f7e740f07",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-09-18T04:42:43.395118+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-09-18T04:42:43.395118+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        377020
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a0b2d2160dc27d",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-09-18T04:42:43.395118+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Hallway motion light",
+          "context_message": "triggered by state of binary_sensor.hallway_motion",
+          "context_entity_id": "automation.hallway_motion_light",
+          "context_entity_id_name": "Hallway motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.hallway_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.hallway_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true,
+      "room": "hallway",
+      "household_member_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "_row_ts": 1789706563.395118,
+      "_row_state_id": 377020,
+      "_detection": {
+        "second": {
+          "segment": "1789706563",
+          "anchored": true,
+          "violation": true,
+          "why": "root_mismatch"
+        },
+        "minute": {
+          "segment": "29828442",
+          "anchored": true,
+          "violation": true,
+          "why": "root_mismatch"
+        }
+      }
+    },
+    {
+      "arm": "PU",
+      "trial": 0,
+      "strategy": "post-commit laundering of an ANCHORED row authored by user:Alex Rivera (household)",
+      "authored_by": "user:Alex Rivera (household)",
+      "author_context": "01M2SDCQ1RMAZJJMS8FJEAMGZC",
+      "row_before": {
+        "state_id": 377198,
+        "ts": 1789706787.9002764,
+        "context_id_bin": "01a0b2d65c38a2bf2953287c9caa43ec",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null
+      },
+      "judged_row": {
+        "state_id": 377198,
+        "ts": 1789706787.9002764,
+        "context_id_bin": "01a0b2d65c38a2bf2953287c9caa43ec",
+        "context_user_id_bin": "90b6f1f5983443c2b47f563e8f652752",
+        "context_parent_id_bin": null,
+        "state": "unlocked"
+      },
+      "judged_when": "2026-09-18T04:46:27.900276+00:00",
+      "clean_principal": "service:lock.unlock",
+      "clean_names_person": true,
+      "clean_named_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "clean_rendered": [
+        {
+          "when": "2026-09-18T04:46:27.900276+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_event_type": "call_service",
+          "context_domain": "lock",
+          "context_service": "unlock",
+          "context_user_id": "90b6f1f5983443c2b47f563e8f652752"
+        }
+      ],
+      "cover_precedes_target": true,
+      "laundered_state_ids": [
+        377198
+      ],
+      "db_writes": 2,
+      "operations_used": {
+        "delete": 1,
+        "reattach": 1,
+        "inject": 0
+      },
+      "cover_context": "01a0b2d6331cde42",
+      "edited_after_anchoring": true,
+      "write_time_alternative": "none: the row was authored by another principal and was on disk before the adversary acted",
+      "rendered": [
+        {
+          "when": "2026-09-18T04:46:27.900276+00:00",
+          "name": "Front Door",
+          "entity_id": "lock.front_door",
+          "state": "unlocked",
+          "context_name": "Kitchen motion light",
+          "context_message": "triggered by state of binary_sensor.kitchen_motion",
+          "context_entity_id": "automation.kitchen_motion_light",
+          "context_entity_id_name": "Kitchen motion light",
+          "context_event_type": "automation_triggered",
+          "context_domain": "automation"
+        }
+      ],
+      "principal_rendered": "automation:automation.kitchen_motion_light",
+      "renderer_names_automation": true,
+      "renderer_named_automation": "automation.kitchen_motion_light",
+      "renderer_still_names_person": false,
+      "renderer_confirmed_misattribution": true,
+      "principal_moved": true,
+      "room": "kitchen",
+      "household_member_user_id": "90b6f1f5983443c2b47f563e8f652752",
+      "_row_ts": 1789706787.9002764,
+      "_row_state_id": 377198,
+      "_detection": {
+        "second": {
+          "segment": "1789706787",
+          "anchored": true,
+          "violation": true,
+          "why": "root_mismatch"
+        },
+        "minute": {
+          "segment": "29828446",
+          "anchored": true,
+          "violation": true,
+          "why": "root_mismatch"
+        }
+      }
+    }
+  ],
+  "versions": {
+    "ha_image": "homeassistant/home-assistant:2026.7.4",
+    "ha_image_digest": "sha256:5a531753cea96444200158fc2b0ac7ccd739291ec50414877b396de6e0bb29b3",
+    "monitor_image_digest": "sha256:73affe6e9e5d34a00db747b6d367cebfc3ba4dcd8cd13ce5b94819dc7782ce4d",
+    "anchor_image_digest": "sha256:f9dc80f50b5824b4e92edb80520e5763a3ca37020b295e54a33abb01382a8355",
+    "monitor_period_s": "5",
+    "anchor_authenticated": false,
+    "host_arch": "arm64",
+    "generated_at": "2026-09-18T04:51:10Z"
+  },
+  "capability": {
+    "capability_record": {
+      "schema_version": 1,
+      "actor_id": "write_time_forger",
+      "actor_position": "in_process_integration",
+      "powers": {
+        "db_read": true,
+        "db_write": "used only by arm P (the post-commit control)",
+        "fs_read_as_ha_uid": true,
+        "fs_write_as_ha_uid": true,
+        "python_exec_in_core": true,
+        "event_bus_listen": true,
+        "event_bus_emit": true,
+        "service_call": true,
+        "network_egress": false,
+        "rebind_in_process_symbols": true,
+        "mint_service_call_context": true,
+        "emit_bus_events": true
+      },
+      "knowledge": {
+        "deployment_topology": "full",
+        "automation_configs": "full",
+        "household_member_user_ids": "known (readable from the auth store the hub already holds)",
+        "anchor_schedule_known": false,
+        "anchor_key_known": false
+      },
+      "budget": {
+        "db_writes_max": 0,
+        "wallclock_window_s": null,
+        "cpu_seconds_max": null
+      },
+      "constraints": {
+        "host_root": false,
+        "cross_uid_write": false,
+        "anchor_key_access": false,
+        "external_anchor_retraction": false,
+        "clock_control": false,
+        "post_commit_row_edits_used": "NONE in arms W1/W2/W2b/W3; arm P is the post-commit control",
+        "rebind_in_process_symbols": true
+      },
+      "substrate": {
+        "kind": "real Home Assistant deployment in Docker (Container install method)",
+        "broker": "eclipse-mosquitto:2 with real MQTT discovery",
+        "monitor": "shipped external monitor, own container, config mounted read-only, live throughout the run",
+        "anchor": "shipped append-only anchor daemon, own container and own volume, live throughout the run"
+      },
+      "provenance": {
+        "rka_mission": "E-C write-time forgery (review 4b)",
+        "seed": null
+      }
+    }
+  },
+  "_digest": "ac32f846356966216439c1f7f2a15300bf51d6081b93a3fa58449d621de6e8f5"
+}

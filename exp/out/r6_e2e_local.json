@@ -1,0 +1,93 @@
+{
+ "item": "R6/T7: v1 vs v2 monitor through the authenticated append path (local anchord, no Docker)",
+ "generated": "2026-10-06T23:43:26.390889+00:00",
+ "script": "exp/sp2027/r6_e2e_local.py",
+ "script_sha256": "961f4aa7031e73a88554213c33fa634d2a2a455cb17175b09810883d2fec369d",
+ "monitor_sha256": "c499b860f089ce47461c68f543bf302edd68255b72277ef3f6739a5754d9e5bf",
+ "anchord_sha256": "7b1ef9f1e11a36584eb0fde218fc6a0bb234ff33071e80990d0d354883a0c17f",
+ "recorder": "reproduce/snapshots/e_c_clo.db, timestamps shifted to end 3 s before the run",
+ "runs": {
+  "v1": {
+   "encoding": "v1",
+   "anchor_port": "127.0.0.1:<ephemeral>",
+   "time_shift_s": 357373.247,
+   "tick": {
+    "n_nodes": 11858,
+    "sealed_new": {
+     "second": 2169,
+     "minute": 103,
+     "hour": 1
+    },
+    "anchor": {
+     "ok": true,
+     "seq": 1
+    }
+   },
+   "tick_seconds": 0.44,
+   "chain_records": 1,
+   "record_encodings": [
+    "v1"
+   ],
+   "segments_verified": 2273,
+   "violations_before_splice": [],
+   "splice": {
+    "state_id": 692260,
+    "second": "1791324000",
+    "parent_before": "01a0fdedfa3972c1876ea7671c477cc9",
+    "parent_after": "01a0fdedfa3972c1876ea7671c47",
+    "user_after": "c97c"
+   },
+   "violations_after_splice": []
+  },
+  "v2": {
+   "encoding": "v2",
+   "anchor_port": "127.0.0.1:<ephemeral>",
+   "time_shift_s": 357375.239,
+   "tick": {
+    "n_nodes": 11858,
+    "sealed_new": {
+     "second": 2169,
+     "minute": 103,
+     "hour": 1
+    },
+    "anchor": {
+     "ok": true,
+     "seq": 1
+    }
+   },
+   "tick_seconds": 0.44,
+   "chain_records": 1,
+   "record_encodings": [
+    "v2"
+   ],
+   "segments_verified": 2273,
+   "violations_before_splice": [],
+   "splice": {
+    "state_id": 692260,
+    "second": "1791324002",
+    "parent_before": "01a0fdedfa3972c1876ea7671c477cc9",
+    "parent_after": "01a0fdedfa3972c1876ea7671c47",
+    "user_after": "c97c"
+   },
+   "violations_after_splice": [
+    [
+     "hour",
+     "497590"
+    ],
+    [
+     "minute",
+     "29855400"
+    ],
+    [
+     "second",
+     "1791324002"
+    ]
+   ]
+  }
+ },
+ "verdict": {
+  "v1_detects_splice": false,
+  "v2_detects_splice": true,
+  "clean_before_splice": true
+ }
+}

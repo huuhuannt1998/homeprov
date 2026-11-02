@@ -1,0 +1,331 @@
+{
+ "item": "R6: observation-window latencies on the real deployment (5 s interval), from saved chains and snapshots",
+ "generated": "2026-10-06T23:36:17.549744+00:00",
+ "script": "exp/sp2027/r6_window_latency_real.py",
+ "script_sha256": "651411a63a710451b4f7bbeff51b5252c3e9362b0516019cc10655596615f83b",
+ "inputs_mode": "snapshots",
+ "substrate": "real deployment, Home Assistant 2026.7.4, recorder commit_interval 1 s, monitor period 5 s",
+ "pooled": {
+  "close_to_anchor_s": {
+   "n": 4185,
+   "median": 3.336,
+   "p90": 5.474,
+   "p99": 6.455,
+   "max": 17.396,
+   "min": 0.245
+  },
+  "write_to_anchor_s": {
+   "n": 28821,
+   "median": 3.811,
+   "p90": 5.991,
+   "p99": 14.689,
+   "max": 17.75,
+   "min": 0.433
+  }
+ },
+ "escape_if_deleted_d_seconds_after_write": {
+  "0.5": {
+   "rows_escaping": 28816,
+   "rows": 28821,
+   "rate": 0.9998,
+   "ci95_rows": [
+    0.9996,
+    0.9999
+   ],
+   "segments_whose_earliest_row_escapes": 4182,
+   "segments": 4185
+  },
+  "1.0": {
+   "rows_escaping": 28127,
+   "rows": 28821,
+   "rate": 0.9759,
+   "ci95_rows": [
+    0.9741,
+    0.9777
+   ],
+   "segments_whose_earliest_row_escapes": 4098,
+   "segments": 4185
+  },
+  "2.0": {
+   "rows_escaping": 24209,
+   "rows": 28821,
+   "rate": 0.84,
+   "ci95_rows": [
+    0.8357,
+    0.8442
+   ],
+   "segments_whose_earliest_row_escapes": 3467,
+   "segments": 4185
+  },
+  "5.0": {
+   "rows_escaping": 7838,
+   "rows": 28821,
+   "rate": 0.272,
+   "ci95_rows": [
+    0.2668,
+    0.2771
+   ],
+   "segments_whose_earliest_row_escapes": 1183,
+   "segments": 4185
+  },
+  "10.0": {
+   "rows_escaping": 354,
+   "rows": 28821,
+   "rate": 0.0123,
+   "ci95_rows": [
+    0.011,
+    0.0136
+   ],
+   "segments_whose_earliest_row_escapes": 8,
+   "segments": 4185
+  },
+  "15.0": {
+   "rows_escaping": 209,
+   "rows": 28821,
+   "rate": 0.0073,
+   "ci95_rows": [
+    0.0063,
+    0.0083
+   ],
+   "segments_whose_earliest_row_escapes": 3,
+   "segments": 4185
+  }
+ },
+ "per_run": {
+  "e_d_clo": {
+   "scheme": "closure",
+   "segments_used": 562,
+   "segments_skipped": {
+    "root_differs_now": 182
+   },
+   "close_to_anchor_s": {
+    "n": 562,
+    "median": 3.446,
+    "p90": 5.782,
+    "p99": 6.752,
+    "max": 11.122,
+    "min": 0.428
+   },
+   "write_to_anchor_s": {
+    "n": 3594,
+    "median": 3.278,
+    "p90": 5.695,
+    "p99": 6.859,
+    "max": 11.477,
+    "min": 0.556
+   }
+  },
+  "e_c_clo": {
+   "scheme": "closure",
+   "segments_used": 894,
+   "segments_skipped": {
+    "root_differs_now": 28
+   },
+   "close_to_anchor_s": {
+    "n": 894,
+    "median": 3.291,
+    "p90": 5.4,
+    "p99": 6.312,
+    "max": 6.92,
+    "min": 0.335
+   },
+   "write_to_anchor_s": {
+    "n": 4403,
+    "median": 3.7,
+    "p90": 5.733,
+    "p99": 6.539,
+    "max": 7.276,
+    "min": 0.679
+   }
+  },
+  "e_ps_clo": {
+   "scheme": "closure",
+   "segments_used": 311,
+   "segments_skipped": {
+    "root_differs_now": 91
+   },
+   "close_to_anchor_s": {
+    "n": 311,
+    "median": 3.48,
+    "p90": 5.636,
+    "p99": 6.342,
+    "max": 6.886,
+    "min": 0.529
+   },
+   "write_to_anchor_s": {
+    "n": 2888,
+    "median": 3.868,
+    "p90": 6.605,
+    "p99": 7.02,
+    "max": 7.045,
+    "min": 0.87
+   }
+  },
+  "e_psr_clo": {
+   "scheme": "closure",
+   "segments_used": 305,
+   "segments_skipped": {
+    "root_differs_now": 91
+   },
+   "close_to_anchor_s": {
+    "n": 305,
+    "median": 2.983,
+    "p90": 5.413,
+    "p99": 6.668,
+    "max": 7.594,
+    "min": 0.299
+   },
+   "write_to_anchor_s": {
+    "n": 2865,
+    "median": 4.504,
+    "p90": 6.28,
+    "p99": 6.482,
+    "max": 7.663,
+    "min": 0.563
+   }
+  },
+  "e_d_auth": {
+   "scheme": "row",
+   "segments_used": 541,
+   "segments_skipped": {
+    "root_differs_now": 182
+   },
+   "close_to_anchor_s": {
+    "n": 541,
+    "median": 3.01,
+    "p90": 5.12,
+    "p99": 5.837,
+    "max": 6.346,
+    "min": 0.246
+   },
+   "write_to_anchor_s": {
+    "n": 3584,
+    "median": 3.498,
+    "p90": 5.234,
+    "p99": 6.234,
+    "max": 6.535,
+    "min": 0.556
+   }
+  },
+  "e_c_auth": {
+   "scheme": "row",
+   "segments_used": 894,
+   "segments_skipped": {
+    "root_differs_now": 35
+   },
+   "close_to_anchor_s": {
+    "n": 894,
+    "median": 3.108,
+    "p90": 5.216,
+    "p99": 5.898,
+    "max": 6.243,
+    "min": 0.245
+   },
+   "write_to_anchor_s": {
+    "n": 4404,
+    "median": 3.803,
+    "p90": 5.44,
+    "p99": 6.265,
+    "max": 6.63,
+    "min": 0.433
+   }
+  },
+  "e_ps_auth": {
+   "scheme": "row",
+   "segments_used": 397,
+   "segments_skipped": {
+    "root_differs_now": 2
+   },
+   "close_to_anchor_s": {
+    "n": 397,
+    "median": 3.543,
+    "p90": 5.871,
+    "p99": 13.436,
+    "max": 17.396,
+    "min": 0.401
+   },
+   "write_to_anchor_s": {
+    "n": 3103,
+    "median": 4.725,
+    "p90": 14.371,
+    "p99": 16.669,
+    "max": 17.75,
+    "min": 0.722
+   }
+  },
+  "e_d_whr": {
+   "scheme": "wholerow",
+   "segments_used": 121,
+   "segments_skipped": {
+    "root_differs_now": 614
+   },
+   "close_to_anchor_s": {
+    "n": 121,
+    "median": 4.361,
+    "p90": 5.689,
+    "p99": 5.913,
+    "max": 5.963,
+    "min": 0.401
+   },
+   "write_to_anchor_s": {
+    "n": 1333,
+    "median": 3.809,
+    "p90": 5.46,
+    "p99": 6.37,
+    "max": 6.683,
+    "min": 0.526
+   }
+  },
+  "e_ps_whr": {
+   "scheme": "wholerow",
+   "segments_used": 78,
+   "segments_skipped": {
+    "root_differs_now": 292
+   },
+   "close_to_anchor_s": {
+    "n": 78,
+    "median": 4.264,
+    "p90": 5.829,
+    "p99": 6.413,
+    "max": 6.417,
+    "min": 0.475
+   },
+   "write_to_anchor_s": {
+    "n": 1368,
+    "median": 5.026,
+    "p90": 5.821,
+    "p99": 6.501,
+    "max": 6.746,
+    "min": 1.245
+   }
+  },
+  "e_psr_whr": {
+   "scheme": "wholerow",
+   "segments_used": 82,
+   "segments_skipped": {
+    "root_differs_now": 308
+   },
+   "close_to_anchor_s": {
+    "n": 82,
+    "median": 4.272,
+    "p90": 5.768,
+    "p99": 6.39,
+    "max": 6.601,
+    "min": 0.422
+   },
+   "write_to_anchor_s": {
+    "n": 1279,
+    "median": 3.455,
+    "p90": 6.115,
+    "p99": 6.492,
+    "max": 6.698,
+    "min": 0.673
+   }
+  }
+ },
+ "caveats": [
+  "The ten runs share one deployment and overlapping hours (e_ps_clo, e_d_clo, e_c_clo windows are distinct; rows are not double-counted because each run's segments are its own window).",
+  "Latency is measured from the platform's row timestamp, not from the commit to disk (commit_interval 1 s).",
+  "Rows within a segment share one anchoring time."
+ ]
+}

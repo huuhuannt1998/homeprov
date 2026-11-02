@@ -1,0 +1,3056 @@
+{
+ "anchor": {
+  "container": "e6-anchord",
+  "image": "hpr-anchord:sig",
+  "key": "fresh, anchor.env (not recorded)"
+ },
+ "benign": {
+  "B1_no_marker": {
+   "op": "config/auth/update Household Viewer -> Sam Rivera (owner, websocket)",
+   "verify": {
+    "chain_records": 359,
+    "first_record_differing_from_current": {
+     "digest": "935bbed945a14f4f3de5707676a62fe87fe7085c28c52982b4a14f98eb9ca487",
+     "parts_differing": [
+      "auth"
+     ],
+     "seq": 1,
+     "ts": 1791426297.2506893
+    },
+    "last_transition": {
+     "affected_committed_rows": null,
+     "entries": {
+      "auth": {
+       "added": [],
+       "changed": [
+        {
+         "key": "897ddaf2311343af94263a2077d60286",
+         "new": [
+          "897ddaf2311343af94263a2077d60286",
+          "Sam Rivera",
+          1,
+          0
+         ],
+         "old": [
+          "897ddaf2311343af94263a2077d60286",
+          "Household Viewer",
+          1,
+          0
+         ]
+        }
+       ],
+       "removed": []
+      }
+     },
+     "excused_by_marker": false,
+     "marker_seq": {
+      "auth": null
+     },
+     "parts_changed": [
+      "auth"
+     ],
+     "prev_seq": 355,
+     "seq": 356,
+     "ts": 1791428413.1747234
+    },
+    "pending": null,
+    "records_with_namemap": 359,
+    "segment_check": null,
+    "transitions": 26,
+    "unexcused_changes": 26,
+    "verdict": "display_input_changed_after_seal"
+   }
+  },
+  "B2_with_marker": {
+   "marker": {
+    "declared_by": "operator tool holding the append key",
+    "issued_ts": 1791428434.552866,
+    "marker": "NAMEMAP_CHANGE",
+    "note": "owner renames person home_owner to Jordan Lee",
+    "parts": {
+     "entity": "d0691d0ed2de988d45d75eaf53b52687dc1510fbb4c9d106880a84477040ee95",
+     "person": "c9fa54f5c8b1e3da6067881cd005c654340792cadf2c95b7bc6d55a23941be1e"
+    }
+   },
+   "marker_append": {
+    "ok": true,
+    "seq": 360
+   },
+   "op": "person/update home_owner name -> Jordan Lee (owner, websocket)",
+   "verify": {
+    "chain_records": 364,
+    "first_record_differing_from_current": {
+     "digest": "935bbed945a14f4f3de5707676a62fe87fe7085c28c52982b4a14f98eb9ca487",
+     "parts_differing": [
+      "auth",
+      "person",
+      "entity"
+     ],
+     "seq": 1,
+     "ts": 1791426297.2506893
+    },
+    "last_transition": {
+     "affected_committed_rows": null,
+     "entries": {
+      "entity": {
+       "added": [],
+       "changed": [
+        {
+         "key": "person.home_owner",
+         "new": [
+          "person.home_owner",
+          null,
+          "Jordan Lee",
+          null
+         ],
+         "old": [
+          "person.home_owner",
+          null,
+          "Home Owner",
+          null
+         ]
+        }
+       ],
+       "removed": []
+      },
+      "person": {
+       "added": [],
+       "changed": [
+        {
+         "key": "home_owner",
+         "new": [
+          "home_owner",
+          "Jordan Lee",
+          "d99171b0c9de45d291aa9e6a4258f323"
+         ],
+         "old": [
+          "home_owner",
+          "Home Owner",
+          "d99171b0c9de45d291aa9e6a4258f323"
+         ]
+        }
+       ],
+       "removed": []
+      }
+     },
+     "excused_by_marker": true,
+     "marker_seq": {
+      "entity": 360,
+      "person": 360
+     },
+     "parts_changed": [
+      "entity",
+      "person"
+     ],
+     "prev_seq": 361,
+     "seq": 362,
+     "ts": 1791428453.6876738
+    },
+    "pending": null,
+    "records_with_namemap": 363,
+    "segment_check": null,
+    "transitions": 27,
+    "unexcused_changes": 26,
+    "verdict": "display_input_changed_after_seal"
+   }
+  }
+ },
+ "chain": {
+  "records": 391,
+  "records_with_namemap": 390,
+  "refusals": 2
+ },
+ "code_sha256": {
+  "<research-dir>/HOMEPROV-P13-exp/e6/code/e6_finalize.py": "b48720df3aa6d61dfc602cde417963913e495368fbcb6cb2bc9cc30da343f486",
+  "<research-dir>/HOMEPROV-P13-exp/e6/code/e6_run.py": "7dbbe77f2efde68805ab2223885a01e10e186b117bca018de9cbaca915f68384",
+  "<research-dir>/HOMEPROV-P13-exp/e6/code/e6lib.py": "6895f89ba72ae50664627e6f53d506fd5b3dadb4d0d7b6430b10b6a9c30d2508",
+  "<research-dir>/HOMEPROV-P13-exp/e6/code/homeprov_e6/__init__.py": "850dce4b06106e237464b1d869e5b0ba1cd876eaa4a0d8f70b394d8d6cceb9b2",
+  "<research-dir>/HOMEPROV-P13-exp/e6/code/monitor_pre_e6.py": "f23c12707278e66266bd02ee7c3fcd24fae231c39182319d705b2cce66215532",
+  "<research-dir>/HOMEPROV-P13-exp/e6/stack/docker-compose.yml": "453b6961ab4a78fdcdce6b68c64591e08946a805bc31ba25c833050f2d9ba2df",
+  "<research-dir>/HOMEPROV-P13-exp/e6/stack/seed/configuration.yaml": "b9326ce88c45347ddb621ecc8d3e39b35e6d7170826fca17e1a377411e94cbf1",
+  "<artifact-root>/exp/sp2027/r1_render.py": "cd4ecf13d3f3164d4236be970f164faa1e93928542e4ef382b21b178f6a7d647",
+  "<artifact-root>/exp/stages/e6_namemap.py": "57d267195207c55746e37b39b07f1d8ecb339dbb41116a3f0bfb54d0f39b4df2",
+  "<artifact-root>/monitor/monitor.py": "2eb8f872bb9e40452b353a507229e1502fff1ed81e2d772f5de4fe4bb30fc48b"
+ },
+ "configB_setup_person_create": {
+  "chain_records": 131,
+  "first_record_differing_from_current": {
+   "digest": "935bbed945a14f4f3de5707676a62fe87fe7085c28c52982b4a14f98eb9ca487",
+   "parts_differing": [
+    "person",
+    "entity"
+   ],
+   "seq": 1,
+   "ts": 1791426297.2506893
+  },
+  "last_transition": {
+   "affected_committed_rows": {
+    "entity_ids": [
+     "person.alex_rivera_household"
+    ],
+    "events_rows_by_user": {
+     "533597b621f04fed979bf09cac87f879": 31
+    },
+    "states_rows_by_user": {
+     "533597b621f04fed979bf09cac87f879": 31
+    },
+    "states_rows_caused_by_entity": {
+     "person.alex_rivera_household": {
+      "rows_in_those_contexts": 0,
+      "runs": 0
+     }
+    },
+    "user_ids": [
+     "533597b621f04fed979bf09cac87f879"
+    ]
+   },
+   "entries": {
+    "entity": {
+     "added": [
+      [
+       "person.alex_rivera_household",
+       null,
+       "Alex Rivera (household)",
+       null
+      ]
+     ],
+     "changed": [],
+     "removed": []
+    },
+    "person": {
+     "added": [
+      [
+       "alex_rivera_household",
+       "Alex Rivera (household)",
+       "533597b621f04fed979bf09cac87f879"
+      ]
+     ],
+     "changed": [],
+     "removed": []
+    }
+   },
+   "excused_by_marker": false,
+   "marker_seq": {
+    "entity": null,
+    "person": null
+   },
+   "parts_changed": [
+    "entity",
+    "person"
+   ],
+   "prev_seq": 127,
+   "seq": 128,
+   "ts": 1791427093.4270103
+  },
+  "pending": null,
+  "records_with_namemap": 131,
+  "segment_check": null,
+  "transitions": 8,
+  "unexcused_changes": 8,
+  "verdict": "display_input_changed_after_seal"
+ },
+ "date_utc": "2026-10-08T03:04:08.720375+00:00",
+ "experiment": "E6 Part B: optional name-map commitment in the monitor and its verifier check",
+ "feature": {
+  "encoding": "per entry SHA-256(encode_node_v2('namemap.'+part, fields)); per part SHA-256(tag, part, present, count, sorted entry hashes); digest over the four part digests",
+  "env": "HOMEPROV_NAMEMAP_DIR=/cfg/.storage (unset by default)",
+  "fields": {
+   "auth": [
+    "id",
+    "name",
+    "is_active",
+    "system_generated"
+   ],
+   "device (core.device_registry)": [
+    "id",
+    "name",
+    "name_by_user"
+   ],
+   "entity (core.entity_registry)": [
+    "entity_id",
+    "name",
+    "original_name",
+    "device_id"
+   ],
+   "person": [
+    "id",
+    "name",
+    "user_id"
+   ]
+  },
+  "monitor_diff": "<research-dir>/HOMEPROV-P13-exp/e6/work/monitor_e6.diff",
+  "monitor_diff_sha256": "032eaa8609f08925fc7b9fcb602e93507ab4350e8b048c42464ccb0e39b2929d",
+  "record_field": "namemap: {v, digest, n, parts: {auth, person, entity, device: {digest, n}}}"
+ },
+ "final": {
+  "batch1_window": {
+   "chain_records": 367,
+   "first_record_differing_from_current": {
+    "digest": "935bbed945a14f4f3de5707676a62fe87fe7085c28c52982b4a14f98eb9ca487",
+    "parts_differing": [
+     "auth",
+     "person",
+     "entity"
+    ],
+    "seq": 1,
+    "ts": 1791426297.2506893
+   },
+   "last_transition": {
+    "affected_committed_rows": null,
+    "entries": {
+     "entity": {
+      "added": [],
+      "changed": [
+       {
+        "key": "person.home_owner",
+        "new": [
+         "person.home_owner",
+         null,
+         "Jordan Lee",
+         null
+        ],
+        "old": [
+         "person.home_owner",
+         null,
+         "Home Owner",
+         null
+        ]
+       }
+      ],
+      "removed": []
+     },
+     "person": {
+      "added": [],
+      "changed": [
+       {
+        "key": "home_owner",
+        "new": [
+         "home_owner",
+         "Jordan Lee",
+         "d99171b0c9de45d291aa9e6a4258f323"
+        ],
+        "old": [
+         "home_owner",
+         "Home Owner",
+         "d99171b0c9de45d291aa9e6a4258f323"
+        ]
+       }
+      ],
+      "removed": []
+     }
+    },
+    "excused_by_marker": true,
+    "marker_seq": {
+     "entity": 360,
+     "person": 360
+    },
+    "parts_changed": [
+     "entity",
+     "person"
+    ],
+    "prev_seq": 361,
+    "seq": 362,
+    "ts": 1791428453.6876738
+   },
+   "pending": null,
+   "records_with_namemap": 366,
+   "segment_check": {
+    "segments_checked": 104,
+    "violated_seconds": [
+     1791426736
+    ],
+    "violations": 2,
+    "window": [
+     1791426581.0,
+     1791426867.0
+    ]
+   },
+   "transitions": 27,
+   "unexcused_changes": 26,
+   "verdict": "display_input_changed_after_seal"
+  },
+  "batch2_window": {
+   "chain_records": 367,
+   "first_record_differing_from_current": {
+    "digest": "935bbed945a14f4f3de5707676a62fe87fe7085c28c52982b4a14f98eb9ca487",
+    "parts_differing": [
+     "auth",
+     "person",
+     "entity"
+    ],
+    "seq": 1,
+    "ts": 1791426297.2506893
+   },
+   "last_transition": {
+    "affected_committed_rows": null,
+    "entries": {
+     "entity": {
+      "added": [],
+      "changed": [
+       {
+        "key": "person.home_owner",
+        "new": [
+         "person.home_owner",
+         null,
+         "Jordan Lee",
+         null
+        ],
+        "old": [
+         "person.home_owner",
+         null,
+         "Home Owner",
+         null
+        ]
+       }
+      ],
+      "removed": []
+     },
+     "person": {
+      "added": [],
+      "changed": [
+       {
+        "key": "home_owner",
+        "new": [
+         "home_owner",
+         "Jordan Lee",
+         "d99171b0c9de45d291aa9e6a4258f323"
+        ],
+        "old": [
+         "home_owner",
+         "Home Owner",
+         "d99171b0c9de45d291aa9e6a4258f323"
+        ]
+       }
+      ],
+      "removed": []
+     }
+    },
+    "excused_by_marker": true,
+    "marker_seq": {
+     "entity": 360,
+     "person": 360
+    },
+    "parts_changed": [
+     "entity",
+     "person"
+    ],
+    "prev_seq": 361,
+    "seq": 362,
+    "ts": 1791428453.6876738
+   },
+   "pending": null,
+   "records_with_namemap": 366,
+   "segment_check": {
+    "segments_checked": 211,
+    "violated_seconds": [
+     1791427744,
+     1791427757,
+     1791427770,
+     1791427784,
+     1791427797,
+     1791427810,
+     1791427825,
+     1791427838,
+     1791427851,
+     1791427865,
+     1791427878,
+     1791427891,
+     1791427905,
+     1791427918,
+     1791427931,
+     1791427945,
+     1791427960,
+     1791427973,
+     1791427986,
+     1791427999,
+     1791428012,
+     1791428025,
+     1791428039,
+     1791428052,
+     1791428065,
+     1791428080,
+     1791428093,
+     1791428106,
+     1791428120,
+     1791428134
+    ],
+    "violations": 37,
+    "window": [
+     1791427730.0,
+     1791428277.0
+    ]
+   },
+   "transitions": 27,
+   "unexcused_changes": 26,
+   "verdict": "display_input_changed_after_seal"
+  }
+ },
+ "final_full_per_transition": [
+  {
+   "displayed_name_changed": {
+    "admin": {
+     "states_rows": 30,
+     "user_ids": [
+      "533597b621f04fed979bf09cac87f879"
+     ]
+    },
+    "non_admin": {
+     "states_rows": 0,
+     "user_ids": []
+    }
+   },
+   "entries_changed": {
+    "auth": [
+     {
+      "key": "533597b621f04fed979bf09cac87f879",
+      "new": [
+       "Home Owner",
+       1,
+       0
+      ],
+      "old": [
+       "Alex Rivera (household)",
+       1,
+       0
+      ]
+     }
+    ]
+   },
+   "excused_by_marker": false,
+   "parts_changed": [
+    "auth"
+   ],
+   "rows_in_contexts_of_changed_entities": {},
+   "seq": 94,
+   "ts": 1791426886.7049901
+  },
+  {
+   "displayed_name_changed": {
+    "admin": {
+     "states_rows": 30,
+     "user_ids": [
+      "533597b621f04fed979bf09cac87f879"
+     ]
+    },
+    "non_admin": {
+     "states_rows": 0,
+     "user_ids": []
+    }
+   },
+   "entries_changed": {
+    "auth": [
+     {
+      "key": "533597b621f04fed979bf09cac87f879",
+      "new": [
+       "Alex Rivera (household)",
+       1,
+       0
+      ],
+      "old": [
+       "Home Owner",
+       1,
+       0
+      ]
+     }
+    ]
+   },
+   "excused_by_marker": false,
+   "parts_changed": [
+    "auth"
+   ],
+   "rows_in_contexts_of_changed_entities": {},
+   "seq": 101,
+   "ts": 1791426926.9762168
+  },
+  {
+   "displayed_name_changed": {
+    "admin": {
+     "states_rows": 30,
+     "user_ids": [
+      "533597b621f04fed979bf09cac87f879"
+     ]
+    },
+    "non_admin": {
+     "states_rows": 0,
+     "user_ids": []
+    }
+   },
+   "entries_changed": {
+    "auth": [
+     {
+      "key": "533597b621f04fed979bf09cac87f879",
+      "new": [
+       "Household Viewer",
+       1,
+       0
+      ],
+      "old": [
+       "Alex Rivera (household)",
+       1,
+       0
+      ]
+     }
+    ]
+   },
+   "excused_by_marker": false,
+   "parts_changed": [
+    "auth"
+   ],
+   "rows_in_contexts_of_changed_entities": {},
+   "seq": 105,
+   "ts": 1791426952.1587803
+  },
+  {
+   "displayed_name_changed": {
+    "admin": {
+     "states_rows": 0,
+     "user_ids": [
+      "897ddaf2311343af94263a2077d60286"
+     ]
+    },
+    "non_admin": {
+     "states_rows": 0,
+     "user_ids": []
+    }
+   },
+   "entries_changed": {
+    "auth": [
+     {
+      "key": "897ddaf2311343af94263a2077d60286",
+      "new": [
+       "Alex Rivera (household)",
+       1,
+       0
+      ],
+      "old": [
+       "Household Viewer",
+       1,
+       0
+      ]
+     }
+    ]
+   },
+   "excused_by_marker": false,
+   "parts_changed": [
+    "auth"
+   ],
+   "rows_in_contexts_of_changed_entities": {},
+   "seq": 106,
+   "ts": 1791426962.222365
+  },
+  {
+   "displayed_name_changed": {
+    "admin": {
+     "states_rows": 30,
+     "user_ids": [
+      "533597b621f04fed979bf09cac87f879",
+      "897ddaf2311343af94263a2077d60286"
+     ]
+    },
+    "non_admin": {
+     "states_rows": 0,
+     "user_ids": []
+    }
+   },
+   "entries_changed": {
+    "auth": [
+     {
+      "key": "533597b621f04fed979bf09cac87f879",
+      "new": [
+       "Alex Rivera (household)",
+       1,
+       0
+      ],
+      "old": [
+       "Household Viewer",
+       1,
+       0
+      ]
+     },
+     {
+      "key": "897ddaf2311343af94263a2077d60286",
+      "new": [
+       "Household Viewer",
+       1,
+       0
+      ],
+      "old": [
+       "Alex Rivera (household)",
+       1,
+       0
+      ]
+     }
+    ]
+   },
+   "excused_by_marker": false,
+   "parts_changed": [
+    "auth"
+   ],
+   "rows_in_contexts_of_changed_entities": {},
+   "seq": 110,
+   "ts": 1791426992.535157
+  },
+  {
+   "displayed_name_changed": {
+    "admin": {
+     "states_rows": 30,
+     "user_ids": [
+      "533597b621f04fed979bf09cac87f879"
+     ]
+    },
+    "non_admin": {
+     "states_rows": 30,
+     "user_ids": [
+      "533597b621f04fed979bf09cac87f879",
+      "d99171b0c9de45d291aa9e6a4258f323"
+     ]
+    }
+   },
+   "entries_changed": {
+    "person": [
+     {
+      "key": "home_owner",
+      "new": [
+       "Home Owner",
+       "533597b621f04fed979bf09cac87f879"
+      ],
+      "old": [
+       "Home Owner",
+       "d99171b0c9de45d291aa9e6a4258f323"
+      ]
+     }
+    ]
+   },
+   "excused_by_marker": false,
+   "parts_changed": [
+    "person"
+   ],
+   "rows_in_contexts_of_changed_entities": {},
+   "seq": 117,
+   "ts": 1791427032.858289
+  },
+  {
+   "displayed_name_changed": {
+    "admin": {
+     "states_rows": 30,
+     "user_ids": [
+      "533597b621f04fed979bf09cac87f879"
+     ]
+    },
+    "non_admin": {
+     "states_rows": 30,
+     "user_ids": [
+      "533597b621f04fed979bf09cac87f879",
+      "d99171b0c9de45d291aa9e6a4258f323"
+     ]
+    }
+   },
+   "entries_changed": {
+    "person": [
+     {
+      "key": "home_owner",
+      "new": [
+       "Home Owner",
+       "d99171b0c9de45d291aa9e6a4258f323"
+      ],
+      "old": [
+       "Home Owner",
+       "533597b621f04fed979bf09cac87f879"
+      ]
+     }
+    ]
+   },
+   "excused_by_marker": false,
+   "parts_changed": [
+    "person"
+   ],
+   "rows_in_contexts_of_changed_entities": {},
+   "seq": 124,
+   "ts": 1791427068.1870406
+  },
+  {
+   "displayed_name_changed": {
+    "admin": {
+     "states_rows": 0,
+     "user_ids": []
+    },
+    "non_admin": {
+     "states_rows": 30,
+     "user_ids": [
+      "533597b621f04fed979bf09cac87f879"
+     ]
+    }
+   },
+   "entries_changed": {
+    "entity": [
+     {
+      "added": [
+       "person.alex_rivera_household",
+       null,
+       "Alex Rivera (household)",
+       null
+      ]
+     }
+    ],
+    "person": [
+     {
+      "added": [
+       "alex_rivera_household",
+       "Alex Rivera (household)",
+       "533597b621f04fed979bf09cac87f879"
+      ]
+     }
+    ]
+   },
+   "excused_by_marker": false,
+   "parts_changed": [
+    "entity",
+    "person"
+   ],
+   "rows_in_contexts_of_changed_entities": {
+    "person.alex_rivera_household": 0
+   },
+   "seq": 128,
+   "ts": 1791427093.4270103
+  },
+  {
+   "displayed_name_changed": {
+    "admin": {
+     "states_rows": 0,
+     "user_ids": []
+    },
+    "non_admin": {
+     "states_rows": 0,
+     "user_ids": []
+    }
+   },
+   "entries_changed": {
+    "auth": [
+     {
+      "key": "533597b621f04fed979bf09cac87f879",
+      "new": [
+       "Home Owner",
+       1,
+       0
+      ],
+      "old": [
+       "Alex Rivera (household)",
+       1,
+       0
+      ]
+     }
+    ]
+   },
+   "excused_by_marker": false,
+   "parts_changed": [
+    "auth"
+   ],
+   "rows_in_contexts_of_changed_entities": {},
+   "seq": 132,
+   "ts": 1791427123.6979487
+  },
+  {
+   "displayed_name_changed": {
+    "admin": {
+     "states_rows": 0,
+     "user_ids": []
+    },
+    "non_admin": {
+     "states_rows": 0,
+     "user_ids": []
+    }
+   },
+   "entries_changed": {
+    "auth": [
+     {
+      "key": "533597b621f04fed979bf09cac87f879",
+      "new": [
+       "Alex Rivera (household)",
+       1,
+       0
+      ],
+      "old": [
+       "Home Owner",
+       1,
+       0
+      ]
+     }
+    ]
+   },
+   "excused_by_marker": false,
+   "parts_changed": [
+    "auth"
+   ],
+   "rows_in_contexts_of_changed_entities": {},
+   "seq": 138,
+   "ts": 1791427159.0362298
+  },
+  {
+   "displayed_name_changed": {
+    "admin": {
+     "states_rows": 30,
+     "user_ids": [
+      "533597b621f04fed979bf09cac87f879"
+     ]
+    },
+    "non_admin": {
+     "states_rows": 30,
+     "user_ids": [
+      "533597b621f04fed979bf09cac87f879"
+     ]
+    }
+   },
+   "entries_changed": {
+    "entity": [
+     {
+      "key": "person.alex_rivera_household",
+      "new": [
+       null,
+       "Home Owner",
+       null
+      ],
+      "old": [
+       null,
+       "Alex Rivera (household)",
+       null
+      ]
+     }
+    ],
+    "person": [
+     {
+      "key": "alex_rivera_household",
+      "new": [
+       "Home Owner",
+       "533597b621f04fed979bf09cac87f879"
+      ],
+      "old": [
+       "Alex Rivera (household)",
+       "533597b621f04fed979bf09cac87f879"
+      ]
+     }
+    ]
+   },
+   "excused_by_marker": false,
+   "parts_changed": [
+    "entity",
+    "person"
+   ],
+   "rows_in_contexts_of_changed_entities": {
+    "person.alex_rivera_household": 0
+   },
+   "seq": 145,
+   "ts": 1791427199.4361994
+  },
+  {
+   "displayed_name_changed": {
+    "admin": {
+     "states_rows": 30,
+     "user_ids": [
+      "533597b621f04fed979bf09cac87f879"
+     ]
+    },
+    "non_admin": {
+     "states_rows": 30,
+     "user_ids": [
+      "533597b621f04fed979bf09cac87f879"
+     ]
+    }
+   },
+   "entries_changed": {
+    "entity": [
+     {
+      "key": "person.alex_rivera_household",
+      "new": [
+       null,
+       "Alex Rivera (household)",
+       null
+      ],
+      "old": [
+       null,
+       "Home Owner",
+       null
+      ]
+     }
+    ],
+    "person": [
+     {
+      "key": "alex_rivera_household",
+      "new": [
+       "Alex Rivera (household)",
+       "533597b621f04fed979bf09cac87f879"
+      ],
+      "old": [
+       "Home Owner",
+       "533597b621f04fed979bf09cac87f879"
+      ]
+     }
+    ]
+   },
+   "excused_by_marker": false,
+   "parts_changed": [
+    "entity",
+    "person"
+   ],
+   "rows_in_contexts_of_changed_entities": {
+    "person.alex_rivera_household": 0
+   },
+   "seq": 151,
+   "ts": 1791427234.776614
+  },
+  {
+   "displayed_name_changed": {
+    "admin": {
+     "states_rows": 0,
+     "user_ids": []
+    },
+    "non_admin": {
+     "states_rows": 0,
+     "user_ids": []
+    }
+   },
+   "entries_changed": {
+    "auth": [
+     {
+      "key": "533597b621f04fed979bf09cac87f879",
+      "new": [
+       "Home Owner",
+       1,
+       0
+      ],
+      "old": [
+       "Alex Rivera (household)",
+       1,
+       0
+      ]
+     }
+    ]
+   },
+   "excused_by_marker": false,
+   "parts_changed": [
+    "auth"
+   ],
+   "rows_in_contexts_of_changed_entities": {},
+   "seq": 169,
+   "ts": 1791427345.6537688
+  },
+  {
+   "displayed_name_changed": {
+    "admin": {
+     "states_rows": 0,
+     "user_ids": []
+    },
+    "non_admin": {
+     "states_rows": 0,
+     "user_ids": []
+    }
+   },
+   "entries_changed": {
+    "auth": [
+     {
+      "key": "533597b621f04fed979bf09cac87f879",
+      "new": [
+       "Alex Rivera (household)",
+       1,
+       0
+      ],
+      "old": [
+       "Home Owner",
+       1,
+       0
+      ]
+     }
+    ]
+   },
+   "excused_by_marker": false,
+   "parts_changed": [
+    "auth"
+   ],
+   "rows_in_contexts_of_changed_entities": {},
+   "seq": 175,
+   "ts": 1791427380.9574695
+  },
+  {
+   "displayed_name_changed": {
+    "admin": {
+     "states_rows": 30,
+     "user_ids": [
+      "533597b621f04fed979bf09cac87f879"
+     ]
+    },
+    "non_admin": {
+     "states_rows": 30,
+     "user_ids": [
+      "533597b621f04fed979bf09cac87f879"
+     ]
+    }
+   },
+   "entries_changed": {
+    "entity": [
+     {
+      "key": "person.alex_rivera_household",
+      "new": [
+       null,
+       "Home Owner",
+       null
+      ],
+      "old": [
+       null,
+       "Alex Rivera (household)",
+       null
+      ]
+     }
+    ],
+    "person": [
+     {
+      "key": "alex_rivera_household",
+      "new": [
+       "Home Owner",
+       "533597b621f04fed979bf09cac87f879"
+      ],
+      "old": [
+       "Alex Rivera (household)",
+       "533597b621f04fed979bf09cac87f879"
+      ]
+     }
+    ]
+   },
+   "excused_by_marker": false,
+   "parts_changed": [
+    "entity",
+    "person"
+   ],
+   "rows_in_contexts_of_changed_entities": {
+    "person.alex_rivera_household": 0
+   },
+   "seq": 183,
+   "ts": 1791427436.4361343
+  },
+  {
+   "displayed_name_changed": {
+    "admin": {
+     "states_rows": 30,
+     "user_ids": [
+      "533597b621f04fed979bf09cac87f879"
+     ]
+    },
+    "non_admin": {
+     "states_rows": 30,
+     "user_ids": [
+      "533597b621f04fed979bf09cac87f879"
+     ]
+    }
+   },
+   "entries_changed": {
+    "entity": [
+     {
+      "key": "person.alex_rivera_household",
+      "new": [
+       null,
+       "Alex Rivera (household)",
+       null
+      ],
+      "old": [
+       null,
+       "Home Owner",
+       null
+      ]
+     }
+    ],
+    "person": [
+     {
+      "key": "alex_rivera_household",
+      "new": [
+       "Alex Rivera (household)",
+       "533597b621f04fed979bf09cac87f879"
+      ],
+      "old": [
+       "Home Owner",
+       "533597b621f04fed979bf09cac87f879"
+      ]
+     }
+    ]
+   },
+   "excused_by_marker": false,
+   "parts_changed": [
+    "entity",
+    "person"
+   ],
+   "rows_in_contexts_of_changed_entities": {
+    "person.alex_rivera_household": 0
+   },
+   "seq": 189,
+   "ts": 1791427471.756047
+  },
+  {
+   "displayed_name_changed": {
+    "admin": {
+     "states_rows": 0,
+     "user_ids": []
+    },
+    "non_admin": {
+     "states_rows": 30,
+     "user_ids": [
+      "533597b621f04fed979bf09cac87f879"
+     ]
+    }
+   },
+   "entries_changed": {
+    "entity": [
+     {
+      "removed": [
+       "person.alex_rivera_household",
+       null,
+       "Alex Rivera (household)",
+       null
+      ]
+     }
+    ],
+    "person": [
+     {
+      "removed": [
+       "alex_rivera_household",
+       "Alex Rivera (household)",
+       "533597b621f04fed979bf09cac87f879"
+      ]
+     }
+    ]
+   },
+   "excused_by_marker": false,
+   "parts_changed": [
+    "entity",
+    "person"
+   ],
+   "rows_in_contexts_of_changed_entities": {
+    "person.alex_rivera_household": 0
+   },
+   "seq": 192,
+   "ts": 1791427492.0187728
+  },
+  {
+   "displayed_name_changed": {
+    "admin": {
+     "states_rows": 30,
+     "user_ids": [
+      "533597b621f04fed979bf09cac87f879"
+     ]
+    },
+    "non_admin": {
+     "states_rows": 0,
+     "user_ids": []
+    }
+   },
+   "entries_changed": {
+    "auth": [
+     {
+      "key": "533597b621f04fed979bf09cac87f879",
+      "new": [
+       "Home Owner",
+       1,
+       0
+      ],
+      "old": [
+       "Alex Rivera (household)",
+       1,
+       0
+      ]
+     }
+    ]
+   },
+   "excused_by_marker": false,
+   "parts_changed": [
+    "auth"
+   ],
+   "rows_in_contexts_of_changed_entities": {},
+   "seq": 198,
+   "ts": 1791427522.2924206
+  },
+  {
+   "displayed_name_changed": {
+    "admin": {
+     "states_rows": 30,
+     "user_ids": [
+      "533597b621f04fed979bf09cac87f879"
+     ]
+    },
+    "non_admin": {
+     "states_rows": 0,
+     "user_ids": []
+    }
+   },
+   "entries_changed": {
+    "auth": [
+     {
+      "key": "533597b621f04fed979bf09cac87f879",
+      "new": [
+       "Alex Rivera (household)",
+       1,
+       0
+      ],
+      "old": [
+       "Home Owner",
+       1,
+       0
+      ]
+     }
+    ]
+   },
+   "excused_by_marker": false,
+   "parts_changed": [
+    "auth"
+   ],
+   "rows_in_contexts_of_changed_entities": {},
+   "seq": 204,
+   "ts": 1791427557.7636056
+  },
+  {
+   "displayed_name_changed": {
+    "admin": {
+     "states_rows": 30,
+     "user_ids": [
+      "533597b621f04fed979bf09cac87f879",
+      "897ddaf2311343af94263a2077d60286"
+     ]
+    },
+    "non_admin": {
+     "states_rows": 0,
+     "user_ids": []
+    }
+   },
+   "entries_changed": {
+    "auth": [
+     {
+      "key": "533597b621f04fed979bf09cac87f879",
+      "new": [
+       "Household Viewer",
+       1,
+       0
+      ],
+      "old": [
+       "Alex Rivera (household)",
+       1,
+       0
+      ]
+     },
+     {
+      "key": "897ddaf2311343af94263a2077d60286",
+      "new": [
+       "Alex Rivera (household)",
+       1,
+       0
+      ],
+      "old": [
+       "Household Viewer",
+       1,
+       0
+      ]
+     }
+    ]
+   },
+   "excused_by_marker": false,
+   "parts_changed": [
+    "auth"
+   ],
+   "rows_in_contexts_of_changed_entities": {},
+   "seq": 209,
+   "ts": 1791427593.180952
+  },
+  {
+   "displayed_name_changed": {
+    "admin": {
+     "states_rows": 30,
+     "user_ids": [
+      "533597b621f04fed979bf09cac87f879",
+      "897ddaf2311343af94263a2077d60286"
+     ]
+    },
+    "non_admin": {
+     "states_rows": 0,
+     "user_ids": []
+    }
+   },
+   "entries_changed": {
+    "auth": [
+     {
+      "key": "533597b621f04fed979bf09cac87f879",
+      "new": [
+       "Alex Rivera (household)",
+       1,
+       0
+      ],
+      "old": [
+       "Household Viewer",
+       1,
+       0
+      ]
+     },
+     {
+      "key": "897ddaf2311343af94263a2077d60286",
+      "new": [
+       "Household Viewer",
+       1,
+       0
+      ],
+      "old": [
+       "Alex Rivera (household)",
+       1,
+       0
+      ]
+     }
+    ]
+   },
+   "excused_by_marker": false,
+   "parts_changed": [
+    "auth"
+   ],
+   "rows_in_contexts_of_changed_entities": {},
+   "seq": 217,
+   "ts": 1791427633.7089314
+  },
+  {
+   "displayed_name_changed": {
+    "admin": {
+     "states_rows": 30,
+     "user_ids": [
+      "533597b621f04fed979bf09cac87f879"
+     ]
+    },
+    "non_admin": {
+     "states_rows": 30,
+     "user_ids": [
+      "533597b621f04fed979bf09cac87f879",
+      "d99171b0c9de45d291aa9e6a4258f323"
+     ]
+    }
+   },
+   "entries_changed": {
+    "person": [
+     {
+      "key": "home_owner",
+      "new": [
+       "Home Owner",
+       "533597b621f04fed979bf09cac87f879"
+      ],
+      "old": [
+       "Home Owner",
+       "d99171b0c9de45d291aa9e6a4258f323"
+      ]
+     }
+    ]
+   },
+   "excused_by_marker": false,
+   "parts_changed": [
+    "person"
+   ],
+   "rows_in_contexts_of_changed_entities": {},
+   "seq": 224,
+   "ts": 1791427679.0622869
+  },
+  {
+   "displayed_name_changed": {
+    "admin": {
+     "states_rows": 30,
+     "user_ids": [
+      "533597b621f04fed979bf09cac87f879"
+     ]
+    },
+    "non_admin": {
+     "states_rows": 30,
+     "user_ids": [
+      "533597b621f04fed979bf09cac87f879",
+      "d99171b0c9de45d291aa9e6a4258f323"
+     ]
+    }
+   },
+   "entries_changed": {
+    "person": [
+     {
+      "key": "home_owner",
+      "new": [
+       "Home Owner",
+       "d99171b0c9de45d291aa9e6a4258f323"
+      ],
+      "old": [
+       "Home Owner",
+       "533597b621f04fed979bf09cac87f879"
+      ]
+     }
+    ]
+   },
+   "excused_by_marker": false,
+   "parts_changed": [
+    "person"
+   ],
+   "rows_in_contexts_of_changed_entities": {},
+   "seq": 230,
+   "ts": 1791427714.371732
+  },
+  {
+   "displayed_name_changed": {
+    "admin": {
+     "states_rows": 0,
+     "user_ids": []
+    },
+    "non_admin": {
+     "states_rows": 0,
+     "user_ids": []
+    }
+   },
+   "entries_changed": {
+    "entity": [
+     {
+      "key": "automation.porch_motion_light",
+      "new": [
+       "Front door auto-unlock",
+       "Porch motion light",
+       null
+      ],
+      "old": [
+       null,
+       "Porch motion light",
+       null
+      ]
+     }
+    ]
+   },
+   "excused_by_marker": false,
+   "parts_changed": [
+    "entity"
+   ],
+   "rows_in_contexts_of_changed_entities": {
+    "automation.porch_motion_light": 99
+   },
+   "seq": 340,
+   "ts": 1791428301.6714709
+  },
+  {
+   "displayed_name_changed": {
+    "admin": {
+     "states_rows": 0,
+     "user_ids": []
+    },
+    "non_admin": {
+     "states_rows": 0,
+     "user_ids": []
+    }
+   },
+   "entries_changed": {
+    "entity": [
+     {
+      "key": "automation.porch_motion_light",
+      "new": [
+       null,
+       "Porch motion light",
+       null
+      ],
+      "old": [
+       "Front door auto-unlock",
+       "Porch motion light",
+       null
+      ]
+     }
+    ]
+   },
+   "excused_by_marker": false,
+   "parts_changed": [
+    "entity"
+   ],
+   "rows_in_contexts_of_changed_entities": {
+    "automation.porch_motion_light": 102
+   },
+   "seq": 346,
+   "ts": 1791428342.2585275
+  },
+  {
+   "displayed_name_changed": {
+    "admin": {
+     "states_rows": 0,
+     "user_ids": [
+      "897ddaf2311343af94263a2077d60286"
+     ]
+    },
+    "non_admin": {
+     "states_rows": 0,
+     "user_ids": []
+    }
+   },
+   "entries_changed": {
+    "auth": [
+     {
+      "key": "897ddaf2311343af94263a2077d60286",
+      "new": [
+       "Sam Rivera",
+       1,
+       0
+      ],
+      "old": [
+       "Household Viewer",
+       1,
+       0
+      ]
+     }
+    ]
+   },
+   "excused_by_marker": false,
+   "parts_changed": [
+    "auth"
+   ],
+   "rows_in_contexts_of_changed_entities": {},
+   "seq": 356,
+   "ts": 1791428413.1747234
+  },
+  {
+   "displayed_name_changed": {
+    "admin": {
+     "states_rows": 0,
+     "user_ids": [
+      "d99171b0c9de45d291aa9e6a4258f323"
+     ]
+    },
+    "non_admin": {
+     "states_rows": 0,
+     "user_ids": [
+      "d99171b0c9de45d291aa9e6a4258f323"
+     ]
+    }
+   },
+   "entries_changed": {
+    "entity": [
+     {
+      "key": "person.home_owner",
+      "new": [
+       null,
+       "Jordan Lee",
+       null
+      ],
+      "old": [
+       null,
+       "Home Owner",
+       null
+      ]
+     }
+    ],
+    "person": [
+     {
+      "key": "home_owner",
+      "new": [
+       "Jordan Lee",
+       "d99171b0c9de45d291aa9e6a4258f323"
+      ],
+      "old": [
+       "Home Owner",
+       "d99171b0c9de45d291aa9e6a4258f323"
+      ]
+     }
+    ]
+   },
+   "excused_by_marker": true,
+   "parts_changed": [
+    "entity",
+    "person"
+   ],
+   "rows_in_contexts_of_changed_entities": {
+    "person.home_owner": 0
+   },
+   "seq": 362,
+   "ts": 1791428453.6876738
+  }
+ ],
+ "final_full_verdict": {
+  "chain_records": 384,
+  "first_record_differing_from_current": {
+   "digest": "935bbed945a14f4f3de5707676a62fe87fe7085c28c52982b4a14f98eb9ca487",
+   "parts_differing": [
+    "auth",
+    "person",
+    "entity"
+   ],
+   "seq": 1,
+   "ts": 1791426297.2506893
+  },
+  "pending": null,
+  "records_with_namemap": 383,
+  "unexcused_changes": 26,
+  "verdict": "display_input_changed_after_seal"
+ },
+ "final_transitions": [
+  {
+   "excused_by_marker": false,
+   "marker_seq": {
+    "auth": null
+   },
+   "parts_changed": [
+    "auth"
+   ],
+   "seq": 94
+  },
+  {
+   "excused_by_marker": false,
+   "marker_seq": {
+    "auth": null
+   },
+   "parts_changed": [
+    "auth"
+   ],
+   "seq": 101
+  },
+  {
+   "excused_by_marker": false,
+   "marker_seq": {
+    "auth": null
+   },
+   "parts_changed": [
+    "auth"
+   ],
+   "seq": 105
+  },
+  {
+   "excused_by_marker": false,
+   "marker_seq": {
+    "auth": null
+   },
+   "parts_changed": [
+    "auth"
+   ],
+   "seq": 106
+  },
+  {
+   "excused_by_marker": false,
+   "marker_seq": {
+    "auth": null
+   },
+   "parts_changed": [
+    "auth"
+   ],
+   "seq": 110
+  },
+  {
+   "excused_by_marker": false,
+   "marker_seq": {
+    "person": null
+   },
+   "parts_changed": [
+    "person"
+   ],
+   "seq": 117
+  },
+  {
+   "excused_by_marker": false,
+   "marker_seq": {
+    "person": null
+   },
+   "parts_changed": [
+    "person"
+   ],
+   "seq": 124
+  },
+  {
+   "excused_by_marker": false,
+   "marker_seq": {
+    "entity": null,
+    "person": null
+   },
+   "parts_changed": [
+    "entity",
+    "person"
+   ],
+   "seq": 128
+  },
+  {
+   "excused_by_marker": false,
+   "marker_seq": {
+    "auth": null
+   },
+   "parts_changed": [
+    "auth"
+   ],
+   "seq": 132
+  },
+  {
+   "excused_by_marker": false,
+   "marker_seq": {
+    "auth": null
+   },
+   "parts_changed": [
+    "auth"
+   ],
+   "seq": 138
+  },
+  {
+   "excused_by_marker": false,
+   "marker_seq": {
+    "entity": null,
+    "person": null
+   },
+   "parts_changed": [
+    "entity",
+    "person"
+   ],
+   "seq": 145
+  },
+  {
+   "excused_by_marker": false,
+   "marker_seq": {
+    "entity": null,
+    "person": null
+   },
+   "parts_changed": [
+    "entity",
+    "person"
+   ],
+   "seq": 151
+  },
+  {
+   "excused_by_marker": false,
+   "marker_seq": {
+    "auth": null
+   },
+   "parts_changed": [
+    "auth"
+   ],
+   "seq": 169
+  },
+  {
+   "excused_by_marker": false,
+   "marker_seq": {
+    "auth": null
+   },
+   "parts_changed": [
+    "auth"
+   ],
+   "seq": 175
+  },
+  {
+   "excused_by_marker": false,
+   "marker_seq": {
+    "entity": null,
+    "person": null
+   },
+   "parts_changed": [
+    "entity",
+    "person"
+   ],
+   "seq": 183
+  },
+  {
+   "excused_by_marker": false,
+   "marker_seq": {
+    "entity": null,
+    "person": null
+   },
+   "parts_changed": [
+    "entity",
+    "person"
+   ],
+   "seq": 189
+  },
+  {
+   "excused_by_marker": false,
+   "marker_seq": {
+    "entity": null,
+    "person": null
+   },
+   "parts_changed": [
+    "entity",
+    "person"
+   ],
+   "seq": 192
+  },
+  {
+   "excused_by_marker": false,
+   "marker_seq": {
+    "auth": null
+   },
+   "parts_changed": [
+    "auth"
+   ],
+   "seq": 198
+  },
+  {
+   "excused_by_marker": false,
+   "marker_seq": {
+    "auth": null
+   },
+   "parts_changed": [
+    "auth"
+   ],
+   "seq": 204
+  },
+  {
+   "excused_by_marker": false,
+   "marker_seq": {
+    "auth": null
+   },
+   "parts_changed": [
+    "auth"
+   ],
+   "seq": 209
+  },
+  {
+   "excused_by_marker": false,
+   "marker_seq": {
+    "auth": null
+   },
+   "parts_changed": [
+    "auth"
+   ],
+   "seq": 217
+  },
+  {
+   "excused_by_marker": false,
+   "marker_seq": {
+    "person": null
+   },
+   "parts_changed": [
+    "person"
+   ],
+   "seq": 224
+  },
+  {
+   "excused_by_marker": false,
+   "marker_seq": {
+    "person": null
+   },
+   "parts_changed": [
+    "person"
+   ],
+   "seq": 230
+  },
+  {
+   "excused_by_marker": false,
+   "marker_seq": {
+    "entity": null
+   },
+   "parts_changed": [
+    "entity"
+   ],
+   "seq": 340
+  },
+  {
+   "excused_by_marker": false,
+   "marker_seq": {
+    "entity": null
+   },
+   "parts_changed": [
+    "entity"
+   ],
+   "seq": 346
+  },
+  {
+   "excused_by_marker": false,
+   "marker_seq": {
+    "auth": null
+   },
+   "parts_changed": [
+    "auth"
+   ],
+   "seq": 356
+  },
+  {
+   "excused_by_marker": true,
+   "marker_seq": {
+    "entity": 360,
+    "person": 360
+   },
+   "parts_changed": [
+    "entity",
+    "person"
+   ],
+   "seq": 362
+  }
+ ],
+ "harness_note": "batch-2 trial 0's actuation capture returned the previous unlocked row (batch-1 trial 29, state 365) because the new row was not yet written; arm PU's laundering, copied unchanged, therefore also deleted that row's call_service event and re-attached state 365 when batch 2 was laundered. This happened after every batch-1 measurement (variants1 and render1 ended before batch 2 started) and is the one segment violation in the batch-1 window of the final check (second 1791426736 and its minute).",
+ "in_hub_marker_probe": {
+  "http": {
+   "forged_tag": 401,
+   "untagged": 401
+  },
+  "what": "the integration POSTs a NAMEMAP_CHANGE marker to e6-anchord from e6-hass"
+ },
+ "inputs_sha256": {
+  "data/anchor_chain.jsonl": "7151a7f5a6e9373558e4aaa1aa5ef8884122c0bc832b83bd3e79c84a176ac7a8",
+  "data/anchor_head.json": "feca69f151c8a1df8c9bb5eade33b506d75159ecfcd7b540be2e5487900fc7aa",
+  "data/anchor_refusals.jsonl": "771478a19a15db8c17482d0d12b2c050e16b2e3caaa2b7d33f23a1c0cfc3c293",
+  "data/anchord.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "data/hass_container.log": "fa300be7740b15e84d01c968c9c1bac3bc4a8eacf7689361abd8ea67e3e0d9bb",
+  "data/marker_probe_from_hub.json": "0cc3ee14a745d25b18cca151771f87c359de2fd8c3407da6673828bb8acc1ec7",
+  "data/monitor.log": "3c9eeaf96618fc4df32b2ba8e2409c140fd9f6b0918d1b3676ee56698812a780",
+  "data/recorder_final.db": "9e14e0d889042a934e4951dda7c1e804b65be0df6ecdf20ab9875c5493ca4693",
+  "data/recorder_final.db-shm": "fd4c9fda9cd3f9ae7c962b0ddf37232294d55580e1aa165aa06129b8549389eb",
+  "data/recorder_final.db-wal": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "data/volume_e6-anchor-chain.tgz": "9701f404aaafdc4b6d21e2da648cbd0a941bc59ff2a27ed6589f03ccb9b1c090",
+  "data/volume_e6-config.tgz": "ec5de4d241ade5660132a4bbfd01b76294deca38413d906603921f2d8243e4bf",
+  "data/volume_e6-monitor-scratch.tgz": "7f2283df84eb741a11e562ef67d663e1a0b879d230d68e274cb49eb3f2e5fac3",
+  "work/benign.json": "c235ca1d70b6f1db3bd4f62a6ed0b6d5cb02824b4051ce237f32cfb6cbeb6961",
+  "work/final.json": "379e64e2ab0e374ddfe53b852730ea67c06b732f9088e733b8ed4241dbae4f08",
+  "work/marker_probe_from_hub.json": "0cc3ee14a745d25b18cca151771f87c359de2fd8c3407da6673828bb8acc1ec7",
+  "work/render1.json": "8bbea48fd183a9a7c81cbb012d0bc67911641da0393c9418e5786cc4c66a88fe",
+  "work/rowhash_b2_pre_launder_1791428265.json": "2c5d57ee0b530c9d405da0c03681940fd00b168ef53723236bd784f21cfd1c15",
+  "work/rowhash_i_account_rename_after_1791426920.json": "1c45996fba0393289a41f5846dd3f31f1a5415129b3f03b912cf36198c824b37",
+  "work/rowhash_i_account_rename_pre_1791426883.json": "db478965a0d887bdb1641128225fc704de0e6904c920e085876757cb48fd2808",
+  "work/rowhash_i_b_person_rename_B_after_1791427222.json": "814bc5400c0cd2a59ff1f92e2d4e40cc7b6e93a178fb1dc98ca4929f351c684d",
+  "work/rowhash_i_b_person_rename_B_pre_1791427184.json": "1d71e6468bbcb4bca35061262a809f70c64d842b68000bb9426ed5a9e91d04f0",
+  "work/rowhash_i_ctrl_account_rename_B_after_1791427156.json": "81b4e8996088818687e649d9c0002c3f59bfd497127f6456f27798f81257a20f",
+  "work/rowhash_i_ctrl_account_rename_B_pre_1791427120.json": "48ff5679396682832f60fdfd1e72a81b48556cb4ab2faa834560b41727589655",
+  "work/rowhash_ii_account_swap_after_1791426987.json": "228daff3b9a0c7517b83bfd52534b0a2f9c3149b71297e6563dbc0fc0ad3f003",
+  "work/rowhash_ii_account_swap_pre_1791426949.json": "70fdf9a58e833517301e2e9e58a33a3e1405b514ea57b0caed459fca54f93a8b",
+  "work/rowhash_iii_person_relink_after_1791427054.json": "4e85037dfc2bf92ce716f1bcc79ee8976ce2a0b930e51104baf8f3541d98c633",
+  "work/rowhash_iii_person_relink_pre_1791427017.json": "75917ab8d1dd9a36f4c84dd2f0dc86a1d62c26df9ac46bd39f44b858215e239b",
+  "work/rowhash_iv_automation_rename_after_1791428327.json": "9de16a7cc78ea912c0fb8597765f22536f15185a4b8f7d677237471eee05d9a6",
+  "work/rowhash_iv_automation_rename_pre_1791428291.json": "ab56c3d11e2c35ff4f980893db162424005bbe24b44d41d8c222bc9fc1411604",
+  "work/rowhash_v1B_baseline_1791427119.json": "4c18b5f55b8caf401c30ece22cd75ac4e010c62e9b15caaaeee83f72bcb696d2",
+  "work/rowhash_v1B_baseline_pre_1791427108.json": "6b0c88232704b2b8c883654d8c5084c8c04316adad7b597449f0e6a07e7569c7",
+  "work/rowhash_v1_baseline_1791426882.json": "db478965a0d887bdb1641128225fc704de0e6904c920e085876757cb48fd2808",
+  "work/rowhash_v1_baseline_pre_1791426871.json": "b6376ce6cff87e8045941a46c4f0f54da6c51f69c79654ff127ad3ce513b6988",
+  "work/rowhash_v4_baseline_pre_1791428277.json": "e2423db47f936ab95d8144b0ef37ae5d5c6d84f2c16d617dc67b76ba06181423",
+  "work/rowhash_v4_laundered_baseline_1791428289.json": "1b5491796ff35c4e6e8feabeb9f06315a9bec15e2ece5e41479264b9c86364ff",
+  "work/selftest_1.json": "bcd723a20ea4d24f5b0e5d2bfa5e6b0711f490f643a316fcfe0122e9588ab4d6",
+  "work/selftest_final.json": "b99f2a0ca34c5fe47288061f8bd50ab6bfff13c31461c1ba5f58283f91c06d01",
+  "work/state.json": "56c39de7ad61598286cf7cfec09aa4f07c2763f780eef311c2af915329187d85",
+  "work/variant4.json": "28a80c45c965d74d387a25334b71de1a2e218ba1b2db8b64d8691ec57867da23",
+  "work/variants1.json": "d94fbd9b6e4644428f1487e45d73f93f04a42579a3f19bf9a838e9c4b34adf04",
+  "work/verify_benign_B1_no_marker_1791428434.json": "11aa571cbf2234843bfe6e95a626e3c6ad636a4c5538d9feca3636dd98476e69",
+  "work/verify_benign_B2_marker_1791428464.json": "9e2809aed5a27f1a5b3b87452e9748e4f8ceefb28bde90428a870acf98cba6bb",
+  "work/verify_benign_pre_1791428408.json": "6f2aaf8ebf804af63da2aee05438aa68120be0fcedeba0764265d626e269a7e6",
+  "work/verify_final_b1_1791428481.json": "e90542369abc056a341053394800bd38f8e2fbe3f7483b2a8cc5b613753405de",
+  "work/verify_final_b2_1791428482.json": "02d46ee9a9601dba3f1b8c064a52a3032246b4c45bd3ac8565de1fb53c17c77a",
+  "work/verify_final_full_1791428603.json": "918484f318bda6ce92c680e7fe8bad3177ae4ecd76c53ffe12224ad7ae43234c",
+  "work/verify_i_account_rename_after_1791426921.json": "014b0d30e81656f62a5f0f64899905fd4e6a265c9be80418766f5a6cf99432f1",
+  "work/verify_i_account_rename_reverted_1791426949.json": "02a41e8640caf03c5b585cebcd519c2c93e798eb4aa3e65ee1076eb99b8924b7",
+  "work/verify_i_b_person_rename_B_after_1791427223.json": "c727aee21ad7274d90561a14f44f9bad351fe16c7e5076e57d9d0e7da2361aab",
+  "work/verify_i_b_person_rename_B_reverted_1791427250.json": "7e9202774317541937da192e32cfc2f44061e0d17a0327d531b420feef7a4a69",
+  "work/verify_i_ctrl_account_rename_B_after_1791427157.json": "125bce7847eb5809c1a15e47a6ed15c08f354ee1dceb0359a8fbc216e9f01fba",
+  "work/verify_i_ctrl_account_rename_B_reverted_1791427184.json": "8c6d1395080bd3dc8baf70adc24b42691e29c3c71f960c38bd9bcea93f70c654",
+  "work/verify_ii_account_swap_after_1791426988.json": "9c55e76cff6bc4e661fab67a7c56ca21935a00f37a69d36a68c5b96ac08ca0fd",
+  "work/verify_ii_account_swap_reverted_1791427017.json": "f7e049f6aa1b57ebe4dc768903f3193d1d41268ccf4a8fc2b29bc8301f6ee90e",
+  "work/verify_iii_person_relink_after_1791427055.json": "cf73e85eab75826be81df68b3a34d4a3d5719794e6f5f9e44d33a27afc8face9",
+  "work/verify_iii_person_relink_reverted_1791427083.json": "6f3c5135c693ce34cb011bb88e375b0d9e600681bfaa43e5a93bd93a3ca57867",
+  "work/verify_iv_automation_rename_after_1791428328.json": "8d58b122a97bc45fc2cddfde604cbbd46ab0ee6c3fd9da13275142431658bb1b",
+  "work/verify_iv_automation_rename_reverted_1791428356.json": "0c1b4dec483a5a693f562cdadac11c31f5cc38841f06b11f69508c7e52ad2b27",
+  "work/verify_smoke_1791426424.json": "5bd155298049d93fd0e177c69c04fe76e7f51a0d714ac24395fdbb97ec92c648",
+  "work/verify_v1B_baseline_1791427120.json": "b348c8911ab8a243b254aa67375d1fa63bee5ebf69a2673eb83537da8ebc7903",
+  "work/verify_v1_baseline_1791426883.json": "66b1ddcaa0bf52d159ad9ef209bf2cf3008e68bfbc1d5d3c880878cb2e0f735e",
+  "work/verify_v4_laundered_baseline_1791428290.json": "5ca2beb318a5ed782cdee83692b09be4c0b56a59d4d1269a287bcafada15f742"
+ },
+ "per_variant": {
+  "i_account_rename": {
+   "after_attack": {
+    "chain_records": 99,
+    "first_record_differing_from_current": {
+     "digest": "935bbed945a14f4f3de5707676a62fe87fe7085c28c52982b4a14f98eb9ca487",
+     "parts_differing": [
+      "auth"
+     ],
+     "seq": 1,
+     "ts": 1791426297.2506893
+    },
+    "last_transition": {
+     "affected_committed_rows": {
+      "entity_ids": [],
+      "events_rows_by_user": {
+       "533597b621f04fed979bf09cac87f879": 31
+      },
+      "states_rows_by_user": {
+       "533597b621f04fed979bf09cac87f879": 31
+      },
+      "states_rows_caused_by_entity": {},
+      "user_ids": [
+       "533597b621f04fed979bf09cac87f879"
+      ]
+     },
+     "entries": {
+      "auth": {
+       "added": [],
+       "changed": [
+        {
+         "key": "533597b621f04fed979bf09cac87f879",
+         "new": [
+          "533597b621f04fed979bf09cac87f879",
+          "Home Owner",
+          1,
+          0
+         ],
+         "old": [
+          "533597b621f04fed979bf09cac87f879",
+          "Alex Rivera (household)",
+          1,
+          0
+         ]
+        }
+       ],
+       "removed": []
+      }
+     },
+     "excused_by_marker": false,
+     "marker_seq": {
+      "auth": null
+     },
+     "parts_changed": [
+      "auth"
+     ],
+     "prev_seq": 93,
+     "seq": 94,
+     "ts": 1791426886.7049901
+    },
+    "pending": null,
+    "records_with_namemap": 99,
+    "segment_check": {
+     "segments_checked": 75,
+     "violated_seconds": [],
+     "violations": 0,
+     "window": [
+      1791426585.0,
+      1791426738.0
+     ]
+    },
+    "transitions": 1,
+    "unexcused_changes": 1,
+    "verdict": "display_input_changed_after_seal"
+   },
+   "after_revert": {
+    "chain_records": 104,
+    "first_record_differing_from_current": {
+     "digest": "ca1b4ba0d949bcc729a7d6061d07e5660b6aff7f75ae248cbb70f575111131d1",
+     "parts_differing": [
+      "auth"
+     ],
+     "seq": 94,
+     "ts": 1791426886.7049901
+    },
+    "last_transition": {
+     "affected_committed_rows": null,
+     "entries": {
+      "auth": {
+       "added": [],
+       "changed": [
+        {
+         "key": "533597b621f04fed979bf09cac87f879",
+         "new": [
+          "533597b621f04fed979bf09cac87f879",
+          "Alex Rivera (household)",
+          1,
+          0
+         ],
+         "old": [
+          "533597b621f04fed979bf09cac87f879",
+          "Home Owner",
+          1,
+          0
+         ]
+        }
+       ],
+       "removed": []
+      }
+     },
+     "excused_by_marker": false,
+     "marker_seq": {
+      "auth": null
+     },
+     "parts_changed": [
+      "auth"
+     ],
+     "prev_seq": 100,
+     "seq": 101,
+     "ts": 1791426926.9762168
+    },
+    "pending": null,
+    "records_with_namemap": 104,
+    "segment_check": null,
+    "transitions": 2,
+    "unexcused_changes": 2,
+    "verdict": "display_input_changed_after_seal"
+   }
+  },
+  "i_account_rename_with_member_person": {
+   "after_attack": {
+    "chain_records": 137,
+    "first_record_differing_from_current": {
+     "digest": "935bbed945a14f4f3de5707676a62fe87fe7085c28c52982b4a14f98eb9ca487",
+     "parts_differing": [
+      "auth",
+      "person",
+      "entity"
+     ],
+     "seq": 1,
+     "ts": 1791426297.2506893
+    },
+    "last_transition": {
+     "affected_committed_rows": {
+      "entity_ids": [],
+      "events_rows_by_user": {
+       "533597b621f04fed979bf09cac87f879": 31
+      },
+      "states_rows_by_user": {
+       "533597b621f04fed979bf09cac87f879": 31
+      },
+      "states_rows_caused_by_entity": {},
+      "user_ids": [
+       "533597b621f04fed979bf09cac87f879"
+      ]
+     },
+     "entries": {
+      "auth": {
+       "added": [],
+       "changed": [
+        {
+         "key": "533597b621f04fed979bf09cac87f879",
+         "new": [
+          "533597b621f04fed979bf09cac87f879",
+          "Home Owner",
+          1,
+          0
+         ],
+         "old": [
+          "533597b621f04fed979bf09cac87f879",
+          "Alex Rivera (household)",
+          1,
+          0
+         ]
+        }
+       ],
+       "removed": []
+      }
+     },
+     "excused_by_marker": false,
+     "marker_seq": {
+      "auth": null
+     },
+     "parts_changed": [
+      "auth"
+     ],
+     "prev_seq": 131,
+     "seq": 132,
+     "ts": 1791427123.6979487
+    },
+    "pending": null,
+    "records_with_namemap": 137,
+    "segment_check": {
+     "segments_checked": 75,
+     "violated_seconds": [],
+     "violations": 0,
+     "window": [
+      1791426585.0,
+      1791426738.0
+     ]
+    },
+    "transitions": 9,
+    "unexcused_changes": 9,
+    "verdict": "display_input_changed_after_seal"
+   },
+   "after_revert": {
+    "chain_records": 142,
+    "first_record_differing_from_current": {
+     "digest": "935bbed945a14f4f3de5707676a62fe87fe7085c28c52982b4a14f98eb9ca487",
+     "parts_differing": [
+      "person",
+      "entity"
+     ],
+     "seq": 1,
+     "ts": 1791426297.2506893
+    },
+    "last_transition": {
+     "affected_committed_rows": null,
+     "entries": {
+      "auth": {
+       "added": [],
+       "changed": [
+        {
+         "key": "533597b621f04fed979bf09cac87f879",
+         "new": [
+          "533597b621f04fed979bf09cac87f879",
+          "Alex Rivera (household)",
+          1,
+          0
+         ],
+         "old": [
+          "533597b621f04fed979bf09cac87f879",
+          "Home Owner",
+          1,
+          0
+         ]
+        }
+       ],
+       "removed": []
+      }
+     },
+     "excused_by_marker": false,
+     "marker_seq": {
+      "auth": null
+     },
+     "parts_changed": [
+      "auth"
+     ],
+     "prev_seq": 137,
+     "seq": 138,
+     "ts": 1791427159.0362298
+    },
+    "pending": null,
+    "records_with_namemap": 142,
+    "segment_check": null,
+    "transitions": 10,
+    "unexcused_changes": 10,
+    "verdict": "display_input_changed_after_seal"
+   }
+  },
+  "i_b_person_rename": {
+   "after_attack": {
+    "chain_records": 148,
+    "first_record_differing_from_current": {
+     "digest": "935bbed945a14f4f3de5707676a62fe87fe7085c28c52982b4a14f98eb9ca487",
+     "parts_differing": [
+      "person",
+      "entity"
+     ],
+     "seq": 1,
+     "ts": 1791426297.2506893
+    },
+    "last_transition": {
+     "affected_committed_rows": {
+      "entity_ids": [
+       "person.alex_rivera_household"
+      ],
+      "events_rows_by_user": {
+       "533597b621f04fed979bf09cac87f879": 31
+      },
+      "states_rows_by_user": {
+       "533597b621f04fed979bf09cac87f879": 31
+      },
+      "states_rows_caused_by_entity": {
+       "person.alex_rivera_household": {
+        "rows_in_those_contexts": 0,
+        "runs": 0
+       }
+      },
+      "user_ids": [
+       "533597b621f04fed979bf09cac87f879"
+      ]
+     },
+     "entries": {
+      "entity": {
+       "added": [],
+       "changed": [
+        {
+         "key": "person.alex_rivera_household",
+         "new": [
+          "person.alex_rivera_household",
+          null,
+          "Home Owner",
+          null
+         ],
+         "old": [
+          "person.alex_rivera_household",
+          null,
+          "Alex Rivera (household)",
+          null
+         ]
+        }
+       ],
+       "removed": []
+      },
+      "person": {
+       "added": [],
+       "changed": [
+        {
+         "key": "alex_rivera_household",
+         "new": [
+          "alex_rivera_household",
+          "Home Owner",
+          "533597b621f04fed979bf09cac87f879"
+         ],
+         "old": [
+          "alex_rivera_household",
+          "Alex Rivera (household)",
+          "533597b621f04fed979bf09cac87f879"
+         ]
+        }
+       ],
+       "removed": []
+      }
+     },
+     "excused_by_marker": false,
+     "marker_seq": {
+      "entity": null,
+      "person": null
+     },
+     "parts_changed": [
+      "entity",
+      "person"
+     ],
+     "prev_seq": 144,
+     "seq": 145,
+     "ts": 1791427199.4361994
+    },
+    "pending": null,
+    "records_with_namemap": 148,
+    "segment_check": {
+     "segments_checked": 75,
+     "violated_seconds": [],
+     "violations": 0,
+     "window": [
+      1791426585.0,
+      1791426738.0
+     ]
+    },
+    "transitions": 11,
+    "unexcused_changes": 11,
+    "verdict": "display_input_changed_after_seal"
+   },
+   "after_revert": {
+    "chain_records": 153,
+    "first_record_differing_from_current": {
+     "digest": "935bbed945a14f4f3de5707676a62fe87fe7085c28c52982b4a14f98eb9ca487",
+     "parts_differing": [
+      "person",
+      "entity"
+     ],
+     "seq": 1,
+     "ts": 1791426297.2506893
+    },
+    "last_transition": {
+     "affected_committed_rows": null,
+     "entries": {
+      "entity": {
+       "added": [],
+       "changed": [
+        {
+         "key": "person.alex_rivera_household",
+         "new": [
+          "person.alex_rivera_household",
+          null,
+          "Alex Rivera (household)",
+          null
+         ],
+         "old": [
+          "person.alex_rivera_household",
+          null,
+          "Home Owner",
+          null
+         ]
+        }
+       ],
+       "removed": []
+      },
+      "person": {
+       "added": [],
+       "changed": [
+        {
+         "key": "alex_rivera_household",
+         "new": [
+          "alex_rivera_household",
+          "Alex Rivera (household)",
+          "533597b621f04fed979bf09cac87f879"
+         ],
+         "old": [
+          "alex_rivera_household",
+          "Home Owner",
+          "533597b621f04fed979bf09cac87f879"
+         ]
+        }
+       ],
+       "removed": []
+      }
+     },
+     "excused_by_marker": false,
+     "marker_seq": {
+      "entity": null,
+      "person": null
+     },
+     "parts_changed": [
+      "entity",
+      "person"
+     ],
+     "prev_seq": 150,
+     "seq": 151,
+     "ts": 1791427234.776614
+    },
+    "pending": null,
+    "records_with_namemap": 153,
+    "segment_check": null,
+    "transitions": 12,
+    "unexcused_changes": 12,
+    "verdict": "display_input_changed_after_seal"
+   }
+  },
+  "ii_account_swap": {
+   "after_attack": {
+    "chain_records": 109,
+    "first_record_differing_from_current": {
+     "digest": "935bbed945a14f4f3de5707676a62fe87fe7085c28c52982b4a14f98eb9ca487",
+     "parts_differing": [
+      "auth"
+     ],
+     "seq": 1,
+     "ts": 1791426297.2506893
+    },
+    "last_transition": {
+     "affected_committed_rows": {
+      "entity_ids": [],
+      "events_rows_by_user": {
+       "897ddaf2311343af94263a2077d60286": 0
+      },
+      "states_rows_by_user": {
+       "897ddaf2311343af94263a2077d60286": 0
+      },
+      "states_rows_caused_by_entity": {},
+      "user_ids": [
+       "897ddaf2311343af94263a2077d60286"
+      ]
+     },
+     "entries": {
+      "auth": {
+       "added": [],
+       "changed": [
+        {
+         "key": "897ddaf2311343af94263a2077d60286",
+         "new": [
+          "897ddaf2311343af94263a2077d60286",
+          "Alex Rivera (household)",
+          1,
+          0
+         ],
+         "old": [
+          "897ddaf2311343af94263a2077d60286",
+          "Household Viewer",
+          1,
+          0
+         ]
+        }
+       ],
+       "removed": []
+      }
+     },
+     "excused_by_marker": false,
+     "marker_seq": {
+      "auth": null
+     },
+     "parts_changed": [
+      "auth"
+     ],
+     "prev_seq": 105,
+     "seq": 106,
+     "ts": 1791426962.222365
+    },
+    "pending": null,
+    "records_with_namemap": 109,
+    "segment_check": {
+     "segments_checked": 75,
+     "violated_seconds": [],
+     "violations": 0,
+     "window": [
+      1791426585.0,
+      1791426738.0
+     ]
+    },
+    "transitions": 4,
+    "unexcused_changes": 4,
+    "verdict": "display_input_changed_after_seal"
+   },
+   "after_revert": {
+    "chain_records": 114,
+    "first_record_differing_from_current": {
+     "digest": "ca1b4ba0d949bcc729a7d6061d07e5660b6aff7f75ae248cbb70f575111131d1",
+     "parts_differing": [
+      "auth"
+     ],
+     "seq": 94,
+     "ts": 1791426886.7049901
+    },
+    "last_transition": {
+     "affected_committed_rows": null,
+     "entries": {
+      "auth": {
+       "added": [],
+       "changed": [
+        {
+         "key": "533597b621f04fed979bf09cac87f879",
+         "new": [
+          "533597b621f04fed979bf09cac87f879",
+          "Alex Rivera (household)",
+          1,
+          0
+         ],
+         "old": [
+          "533597b621f04fed979bf09cac87f879",
+          "Household Viewer",
+          1,
+          0
+         ]
+        },
+        {
+         "key": "897ddaf2311343af94263a2077d60286",
+         "new": [
+          "897ddaf2311343af94263a2077d60286",
+          "Household Viewer",
+          1,
+          0
+         ],
+         "old": [
+          "897ddaf2311343af94263a2077d60286",
+          "Alex Rivera (household)",
+          1,
+          0
+         ]
+        }
+       ],
+       "removed": []
+      }
+     },
+     "excused_by_marker": false,
+     "marker_seq": {
+      "auth": null
+     },
+     "parts_changed": [
+      "auth"
+     ],
+     "prev_seq": 109,
+     "seq": 110,
+     "ts": 1791426992.535157
+    },
+    "pending": null,
+    "records_with_namemap": 114,
+    "segment_check": null,
+    "transitions": 5,
+    "unexcused_changes": 5,
+    "verdict": "display_input_changed_after_seal"
+   }
+  },
+  "iii_person_relink": {
+   "after_attack": {
+    "chain_records": 121,
+    "first_record_differing_from_current": {
+     "digest": "935bbed945a14f4f3de5707676a62fe87fe7085c28c52982b4a14f98eb9ca487",
+     "parts_differing": [
+      "person"
+     ],
+     "seq": 1,
+     "ts": 1791426297.2506893
+    },
+    "last_transition": {
+     "affected_committed_rows": {
+      "entity_ids": [],
+      "events_rows_by_user": {
+       "533597b621f04fed979bf09cac87f879": 31,
+       "d99171b0c9de45d291aa9e6a4258f323": 0
+      },
+      "states_rows_by_user": {
+       "533597b621f04fed979bf09cac87f879": 31,
+       "d99171b0c9de45d291aa9e6a4258f323": 0
+      },
+      "states_rows_caused_by_entity": {},
+      "user_ids": [
+       "533597b621f04fed979bf09cac87f879",
+       "d99171b0c9de45d291aa9e6a4258f323"
+      ]
+     },
+     "entries": {
+      "person": {
+       "added": [],
+       "changed": [
+        {
+         "key": "home_owner",
+         "new": [
+          "home_owner",
+          "Home Owner",
+          "533597b621f04fed979bf09cac87f879"
+         ],
+         "old": [
+          "home_owner",
+          "Home Owner",
+          "d99171b0c9de45d291aa9e6a4258f323"
+         ]
+        }
+       ],
+       "removed": []
+      }
+     },
+     "excused_by_marker": false,
+     "marker_seq": {
+      "person": null
+     },
+     "parts_changed": [
+      "person"
+     ],
+     "prev_seq": 116,
+     "seq": 117,
+     "ts": 1791427032.858289
+    },
+    "pending": null,
+    "records_with_namemap": 121,
+    "segment_check": {
+     "segments_checked": 75,
+     "violated_seconds": [],
+     "violations": 0,
+     "window": [
+      1791426585.0,
+      1791426738.0
+     ]
+    },
+    "transitions": 6,
+    "unexcused_changes": 6,
+    "verdict": "display_input_changed_after_seal"
+   },
+   "after_revert": {
+    "chain_records": 125,
+    "first_record_differing_from_current": {
+     "digest": "ca1b4ba0d949bcc729a7d6061d07e5660b6aff7f75ae248cbb70f575111131d1",
+     "parts_differing": [
+      "auth"
+     ],
+     "seq": 94,
+     "ts": 1791426886.7049901
+    },
+    "last_transition": {
+     "affected_committed_rows": null,
+     "entries": {
+      "person": {
+       "added": [],
+       "changed": [
+        {
+         "key": "home_owner",
+         "new": [
+          "home_owner",
+          "Home Owner",
+          "d99171b0c9de45d291aa9e6a4258f323"
+         ],
+         "old": [
+          "home_owner",
+          "Home Owner",
+          "533597b621f04fed979bf09cac87f879"
+         ]
+        }
+       ],
+       "removed": []
+      }
+     },
+     "excused_by_marker": false,
+     "marker_seq": {
+      "person": null
+     },
+     "parts_changed": [
+      "person"
+     ],
+     "prev_seq": 123,
+     "seq": 124,
+     "ts": 1791427068.1870406
+    },
+    "pending": null,
+    "records_with_namemap": 125,
+    "segment_check": null,
+    "transitions": 7,
+    "unexcused_changes": 7,
+    "verdict": "display_input_changed_after_seal"
+   }
+  }
+ },
+ "tests": {
+  "e6_namemap.py selftest": {
+   "default_record_byte_identical": true,
+   "digest_properties": true,
+   "feature_on_adds_only_namemap": true,
+   "no_credential_retained": true
+  },
+  "monitor/test_node_hash.py": "12 passed in 5.78s",
+  "selftest_byte_identity_cases": [
+   {
+    "bytes": [
+     66840
+    ],
+    "identical": true,
+    "now": 1791428528.6747634,
+    "records_post": 1,
+    "records_pre": 1
+   },
+   {
+    "bytes": [
+     66148
+    ],
+    "identical": true,
+    "now": 1791428496.6747634,
+    "records_post": 1,
+    "records_pre": 1
+   },
+   {
+    "bytes": [
+     60400
+    ],
+    "identical": true,
+    "now": 1791428226.1747634,
+    "records_post": 1,
+    "records_pre": 1
+   },
+   {
+    "bytes": [
+     3008
+    ],
+    "identical": true,
+    "now": 1791432126.6747634,
+    "records_post": 1,
+    "records_pre": 1
+   }
+  ]
+ },
+ "variant_iv": {
+  "after_attack": {
+   "chain_records": 343,
+   "first_record_differing_from_current": {
+    "digest": "935bbed945a14f4f3de5707676a62fe87fe7085c28c52982b4a14f98eb9ca487",
+    "parts_differing": [
+     "entity"
+    ],
+    "seq": 1,
+    "ts": 1791426297.2506893
+   },
+   "last_transition": {
+    "affected_committed_rows": {
+     "entity_ids": [
+      "automation.porch_motion_light"
+     ],
+     "events_rows_by_user": {},
+     "states_rows_by_user": {},
+     "states_rows_caused_by_entity": {
+      "automation.porch_motion_light": {
+       "rows_in_those_contexts": 99,
+       "runs": 66
+      }
+     },
+     "user_ids": []
+    },
+    "entries": {
+     "entity": {
+      "added": [],
+      "changed": [
+       {
+        "key": "automation.porch_motion_light",
+        "new": [
+         "automation.porch_motion_light",
+         "Front door auto-unlock",
+         "Porch motion light",
+         null
+        ],
+        "old": [
+         "automation.porch_motion_light",
+         null,
+         "Porch motion light",
+         null
+        ]
+       }
+      ],
+      "removed": []
+     }
+    },
+    "excused_by_marker": false,
+    "marker_seq": {
+     "entity": null
+    },
+    "parts_changed": [
+     "entity"
+    ],
+    "prev_seq": 339,
+    "seq": 340,
+    "ts": 1791428301.6714709
+   },
+   "pending": null,
+   "records_with_namemap": 343,
+   "segment_check": {
+    "segments_checked": 174,
+    "violated_seconds": [
+     1791427744,
+     1791427757,
+     1791427770,
+     1791427784,
+     1791427797,
+     1791427810,
+     1791427825,
+     1791427838,
+     1791427851,
+     1791427865,
+     1791427878,
+     1791427891,
+     1791427905,
+     1791427918,
+     1791427931,
+     1791427945,
+     1791427960,
+     1791427973,
+     1791427986,
+     1791427999,
+     1791428012,
+     1791428025,
+     1791428039,
+     1791428052,
+     1791428065,
+     1791428080,
+     1791428093,
+     1791428106,
+     1791428120,
+     1791428134
+    ],
+    "violations": 35,
+    "window": [
+     1791427742.0,
+     1791428136.0
+    ]
+   },
+   "transitions": 24,
+   "unexcused_changes": 24,
+   "verdict": "display_input_changed_after_seal"
+  },
+  "after_revert": {
+   "chain_records": 347,
+   "first_record_differing_from_current": {
+    "digest": "ca1b4ba0d949bcc729a7d6061d07e5660b6aff7f75ae248cbb70f575111131d1",
+    "parts_differing": [
+     "auth"
+    ],
+    "seq": 94,
+    "ts": 1791426886.7049901
+   },
+   "last_transition": {
+    "affected_committed_rows": null,
+    "entries": {
+     "entity": {
+      "added": [],
+      "changed": [
+       {
+        "key": "automation.porch_motion_light",
+        "new": [
+         "automation.porch_motion_light",
+         null,
+         "Porch motion light",
+         null
+        ],
+        "old": [
+         "automation.porch_motion_light",
+         "Front door auto-unlock",
+         "Porch motion light",
+         null
+        ]
+       }
+      ],
+      "removed": []
+     }
+    },
+    "excused_by_marker": false,
+    "marker_seq": {
+     "entity": null
+    },
+    "parts_changed": [
+     "entity"
+    ],
+    "prev_seq": 345,
+    "seq": 346,
+    "ts": 1791428342.2585275
+   },
+   "pending": null,
+   "records_with_namemap": 347,
+   "segment_check": null,
+   "transitions": 25,
+   "unexcused_changes": 25,
+   "verdict": "display_input_changed_after_seal"
+  },
+  "laundered_baseline": {
+   "chain_records": 337,
+   "first_record_differing_from_current": {
+    "digest": "ca1b4ba0d949bcc729a7d6061d07e5660b6aff7f75ae248cbb70f575111131d1",
+    "parts_differing": [
+     "auth"
+    ],
+    "seq": 94,
+    "ts": 1791426886.7049901
+   },
+   "last_transition": {
+    "affected_committed_rows": {
+     "entity_ids": [],
+     "events_rows_by_user": {
+      "533597b621f04fed979bf09cac87f879": 30,
+      "d99171b0c9de45d291aa9e6a4258f323": 0
+     },
+     "states_rows_by_user": {
+      "533597b621f04fed979bf09cac87f879": 30,
+      "d99171b0c9de45d291aa9e6a4258f323": 0
+     },
+     "states_rows_caused_by_entity": {},
+     "user_ids": [
+      "533597b621f04fed979bf09cac87f879",
+      "d99171b0c9de45d291aa9e6a4258f323"
+     ]
+    },
+    "entries": {
+     "person": {
+      "added": [],
+      "changed": [
+       {
+        "key": "home_owner",
+        "new": [
+         "home_owner",
+         "Home Owner",
+         "d99171b0c9de45d291aa9e6a4258f323"
+        ],
+        "old": [
+         "home_owner",
+         "Home Owner",
+         "533597b621f04fed979bf09cac87f879"
+        ]
+       }
+      ],
+      "removed": []
+     }
+    },
+    "excused_by_marker": false,
+    "marker_seq": {
+     "person": null
+    },
+    "parts_changed": [
+     "person"
+    ],
+    "prev_seq": 229,
+    "seq": 230,
+    "ts": 1791427714.371732
+   },
+   "pending": null,
+   "records_with_namemap": 337,
+   "segment_check": {
+    "segments_checked": 174,
+    "violated_seconds": [
+     1791427744,
+     1791427757,
+     1791427770,
+     1791427784,
+     1791427797,
+     1791427810,
+     1791427825,
+     1791427838,
+     1791427851,
+     1791427865,
+     1791427878,
+     1791427891,
+     1791427905,
+     1791427918,
+     1791427931,
+     1791427945,
+     1791427960,
+     1791427973,
+     1791427986,
+     1791427999,
+     1791428012,
+     1791428025,
+     1791428039,
+     1791428052,
+     1791428065,
+     1791428080,
+     1791428093,
+     1791428106,
+     1791428120,
+     1791428134
+    ],
+    "violations": 35,
+    "window": [
+     1791427742.0,
+     1791428136.0
+    ]
+   },
+   "transitions": 23,
+   "unexcused_changes": 23,
+   "verdict": "display_input_changed_after_seal"
+  }
+ }
+}

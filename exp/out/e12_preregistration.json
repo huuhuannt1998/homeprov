@@ -1,0 +1,251 @@
+{
+ "experiment": "E12: the recommended configuration (direct read primary, copy secondary; stable columns, coverage, keylog, per-row binding, escrow, signatures, name-map digest, linked anchors, head witnesses) for 48 h on the lab installation at Home Assistant's DEFAULT recorder commit interval (5 s; E9 ran at 1 s), with routine operations (two nightly purges under PURGE markers, one planned restart, one Home Assistant backup) and no attacks",
+ "status": "REGISTERED",
+ "registered_at": "2026-10-21T21:52:27.295647+00:00",
+ "registered_before": "START (2026-10-22T00:00:00Z) and any event of the real run (tag e12_main); smoke runs precede it and are not results",
+ "approval": {
+  "pi": "2026-10-16, verbatim option label: '48-hour run at 5 s (Recommended)' (TDSC_PLAN.md decision log, after review r5: a 48 h benign run at Home Assistant's default commit interval after E10, called E12)"
+ },
+ "design": {
+  "file": "drafts/round13/E12_DESIGN.md",
+  "sha256": "3ef17eb0c7d290d604bddbeaa38c0fad991c32cf59874209156862617d09ee44"
+ },
+ "parameters": {
+  "start": "2026-10-22T00:00:00Z",
+  "days": 2,
+  "late_bound_s": 30.0,
+  "gap_s": 30.0,
+  "period_s": 5.0,
+  "purge_tol_s": 60.0,
+  "keep_days": 30,
+  "restore_tol_s": 30.0,
+  "quick_check_every": {
+   "direct": 720,
+   "copy": 1
+  },
+  "default_commit_interval_s_required": 5,
+  "backup_topic": "hpr/e12/ops/backup",
+  "cadence_probe_s": {
+   "setup": 120,
+   "backup": 660,
+   "day_end": 120
+  },
+  "unobservable_rule": {
+   "min_duration_s": 60.0,
+   "no_hub_start_within_s": 120.0
+  },
+  "witness_ports": [
+   19986,
+   19987
+  ],
+  "prefix": "e12",
+  "images": [
+   "hpr-monitor:e12",
+   "hpr-anchord:e12"
+  ]
+ },
+ "schedule": {
+  "generated_by": "testbed/e12/e12ops.py e12_schedule(2026-10-22T00:00:00Z, 2)",
+  "sha256": "0ba96592bae3e8e601e9a2ce4d7a66315c19609b9e9edb4d11cef64fe1efac79",
+  "events": [
+   {
+    "t": 1792627200.0,
+    "type": "start",
+    "id": 0,
+    "utc": "2026-10-22T00:00:00Z"
+   },
+   {
+    "t": 1792640400.0,
+    "type": "sleep_guard",
+    "day": 1,
+    "purge_ts": 1792642320.0,
+    "id": 1,
+    "utc": "2026-10-22T03:40:00Z"
+   },
+   {
+    "t": 1792641300.0,
+    "type": "snapshot",
+    "label": "night1_pre",
+    "day": 1,
+    "id": 2,
+    "utc": "2026-10-22T03:55:00Z"
+   },
+   {
+    "t": 1792642020.0,
+    "type": "purge_marker",
+    "day": 1,
+    "scheduled_ts": 1792642320.0,
+    "post_at": 1792642200.0,
+    "keep_days": 30,
+    "id": 3,
+    "utc": "2026-10-22T04:07:00Z"
+   },
+   {
+    "t": 1792644300.0,
+    "type": "snapshot",
+    "label": "night1_post",
+    "day": 1,
+    "id": 4,
+    "utc": "2026-10-22T04:45:00Z"
+   },
+   {
+    "t": 1792699200.0,
+    "type": "planned_restart",
+    "day": 1,
+    "id": 5,
+    "utc": "2026-10-22T20:00:00Z"
+   },
+   {
+    "t": 1792713630.0,
+    "type": "day_end",
+    "day": 1,
+    "label": "day1_end",
+    "window": [
+     1792627200.0,
+     1792713600.0
+    ],
+    "id": 6,
+    "utc": "2026-10-23T00:00:30Z"
+   },
+   {
+    "t": 1792726800.0,
+    "type": "sleep_guard",
+    "day": 2,
+    "purge_ts": 1792728720.0,
+    "id": 7,
+    "utc": "2026-10-23T03:40:00Z"
+   },
+   {
+    "t": 1792727700.0,
+    "type": "snapshot",
+    "label": "night2_pre",
+    "day": 2,
+    "id": 8,
+    "utc": "2026-10-23T03:55:00Z"
+   },
+   {
+    "t": 1792728420.0,
+    "type": "purge_marker",
+    "day": 2,
+    "scheduled_ts": 1792728720.0,
+    "post_at": 1792728600.0,
+    "keep_days": 30,
+    "id": 9,
+    "utc": "2026-10-23T04:07:00Z"
+   },
+   {
+    "t": 1792730700.0,
+    "type": "snapshot",
+    "label": "night2_post",
+    "day": 2,
+    "id": 10,
+    "utc": "2026-10-23T04:45:00Z"
+   },
+   {
+    "t": 1792785600.0,
+    "type": "backup",
+    "day": 2,
+    "id": 11,
+    "utc": "2026-10-23T20:00:00Z"
+   },
+   {
+    "t": 1792800030.0,
+    "type": "day_end",
+    "day": 2,
+    "label": "day2_end",
+    "window": [
+     1792713600.0,
+     1792800000.0
+    ],
+    "id": 12,
+    "utc": "2026-10-24T00:00:30Z"
+   },
+   {
+    "t": 1792800060.0,
+    "type": "end",
+    "id": 13,
+    "utc": "2026-10-24T00:01:00Z"
+   }
+  ]
+ },
+ "hypotheses": {
+  "H1_floor": "CONFIRMATORY. Over both days, neither monitor reports an unexcused violation (second, minute, hour or keylog); every anchored segment is untouched, so the run's false-violation count is 0 per monitor. Reported with minute-block and poll-block exact intervals and their per-day upper bounds.",
+  "H2_commit_cadence": "CONFIRMATORY (manipulation check). The recorder commits at the default interval: the median interval between commit bursts seen on the -wal file outside the hub is between 4.0 and 6.5 s at setup and at each day's end (E9's 1 s setting would give about 1 s).",
+  "H3_late_rows": "EXPLORATORY. Outside the backup window no row is attributable; late rows (benign_late, or unobserved_late under D1) have delays below 30 s; their count and largest delay per day are reported and compared with E9's week (larger delays expected at 5 s commits; no number predicted).",
+  "H4_nightly_purges": "CONFIRMATORY. Each night's 04:12 purge under its operator PURGE marker adds no unexcused violation on either monitor; its disconnects are excused (as E9).",
+  "H5_planned_restart": "CONFIRMATORY. The planned restart (day 1, 20:00) raises no attributable row and no flagged second on either monitor in [restart - 30 s, restart + 120 s]; no unobservable interval is flagged by the distinguishability rule.",
+  "H6_backup": "CONDITIONAL on the measured commit pause p (the largest interval between commit bursts in the backup probe): if p + 5 s < 25 s, no attributable row in the backup window; if p > 35 s, rows written early in the pause are attributable (false violations: no marker declares a backup); in between, either. The pause itself, the window's row verdicts, flagged seconds and unobservable polls are reported.",
+  "H7_cost": "EXPLORATORY. Per-poll cost, bytes read and written, and quick_check timing per monitor at the default commit interval (e9_score.py's cost and io sections), compared with E9's week; no prediction.",
+  "H8_distinguishability": "CONFIRMATORY. No unobservable interval of the two days is flagged by the rule (>= 60 s and no hub start within 120 s)."
+ },
+ "outcomes": {
+  "primary": [
+   "per day and per run, per monitor (M-direct primary): unexcused violations by granularity and keylog; minute-block and poll-block k/n with exact 95% intervals and per-day upper bounds",
+   "commit cadence (H2)",
+   "nightly purges (H4)",
+   "planned restart window (H5)",
+   "suspicious unobservable intervals (H8)"
+  ],
+  "secondary": [
+   "late-row delays (H3)",
+   "backup window and its rule consistency (H6)",
+   "cost (H7)",
+   "every e9_score.py section (days, nights, monitors, host, events)"
+  ]
+ },
+ "exclusions": [
+  "none of the run's seconds is excluded from the floor (no trial touches any); a day whose verification fails is reported as failed, not dropped",
+  "a host sleep (host log gap above 90 s) or an unexplained hub start is reported with its interval; the seconds it affects stay in the floor, flagged as such",
+  "smoke runs are not results"
+ ],
+ "analysis_plan": [
+  "No hypothesis test beyond exact intervals; per-day and per-run counts are reported as counts",
+  "Block intervals (per minute, per poll) are the reviewers' requested reporting unit; blocks are not independent and the intervals are not a model of the failure process",
+  "Both monitors are scored separately; M-direct (the recommended direct read) is primary; nothing is pooled across monitors",
+  "Every deviation from this registration is written to an amendment before it is used, as for E9 and E10"
+ ],
+ "known_limits_stated_in_advance": [
+  "48 hours, not a week: with no failure the per-day upper bound is about 1.8 (minute blocks, 2,880 minutes); the week-scale rate comes from E9 (commit interval 1 s) and E12 together, and the paper says so",
+  "One lab installation with virtual devices; its write rate is the lab's",
+  "The backup is Home Assistant's own (backup.create) through a harness automation, once; its pause depends on the configuration directory's size at that moment",
+  "The configuration is changed for the run (commit_interval line removed, automation e12 added) and restored byte for byte afterwards; one extra hub restart at setup precedes START"
+ ],
+ "code_sha256": {
+  "computed_at": "2026-10-21T21:52:27Z",
+  "files": {
+   "monitor/monitor.py": "4b9931cb7d1cffae6485fb2b660b68d733da9f73e5c22c22ca7265d49ceaa9b7",
+   "monitor/Dockerfile.sign": "5a6dcec0d93012a5dae13ba72b5ccf1d772623baaa54c07b38c19be701d94d18",
+   "monitor/requirements-sign.txt": "d09f4bcea9d366d767affccde58418307c974bf5c358fb6a09b057b1c8d0922c",
+   "exp/stages/e7_verify.py": "ae9d9c42bf484cbfda50f2e32f1de26ea19f3a956b659f8ad4abf245e5f03ef7",
+   "testbed/anchord/anchord.py": "8b35448dcf86df8bd1291b6fec6ff39e045bacbc3b083b09f61d035c1f251421",
+   "testbed/anchord/anchord_linked.py": "f6252e245b0f963fbefd4c511b51187985386870c745b8321c917152486ee1e1",
+   "testbed/anchord/headwitness.py": "0d8a83c8e0c4cb09e4a5097045e3d1ae91ae7ed264d4b491712256f0602781f5",
+   "testbed/anchord/chainverify.py": "38cfa5e9d99e8ece7ee53d4401e6a97d6e16b7dac02e19088b11d13b547f9d0e",
+   "testbed/e8/anchord-e8.Dockerfile": "84191c7adf8fc8a74b75f6603d7850841d8a9428c905622af4a6dc22ca811ebe",
+   "exp/rig/marker_issuer.py": "fcf668178b1506ad8e279095c260ac9656dfca780b3c9c37f081df102f544a03",
+   "exp/rig/markers.py": "ca92f37cde74b7c5ecd921696879118057342ea9c559d9c63c7d682efbff5e33",
+   "exp/rig/stats.py": "156075624fa11245fcd993e64925f258f6ca1e4ae69227b1eed9b7a31758baeb",
+   "testbed/e12/run_e12.sh": "bc7189c3caa3f49bf584f365f19fd8e0ceaa1fdb06e2155a8ed66b2e6c122e9c",
+   "testbed/e12/e12ops.py": "23f4eb82c3c3ef12053a2f99ea9341f495f47128d38a144990877733ea023627",
+   "testbed/e12/e12_prereg.py": "d44c873c3bd720c26eaa1dfb10645245f9b1f6603df6e3bd642ea9abd4a3b526",
+   "exp/stages/e12_summary.py": "9b7e05faa0f36a1af6951f3b9ef53d88d4fe6f1ead3ca0dea0fc76442db9ef8a",
+   "testbed/e12/test_e12.py": "178945eb50ac145265355240be81bb5a85dd9a059d212ec09eb9f7453dd592ad",
+   "exp/stages/e9_score.py": "c991f1675da0d0e5613cdc6896438b551dd45851e862d55c5b4e79d796461714",
+   "exp/stages/e8_score.py": "85301d2c2d0004175a19b4b6ab16654d5440ab756bb69442078e0bc5411ca692",
+   "exp/stages/e10_score.py": "4ef41e6371d4ef9c397f004042a290daa4bacd7753de2f77337079a5ddb81ff9",
+   "testbed/e10/e10ops.py": "eda15a435dc65bf32242f5919b68e9820ab98426010bbca72965b07b6ba51e17",
+   "testbed/e9/smoke_stack.sh": "efbf741e46acb1ec1ec1a4174897c2de9cba5e5868d63ab2e093d2c739967a55",
+   "testbed/e9/run_e9.sh": "0f3f23a3201e8ec39c1abc04e3ec13034778ef528303d78263d3c63e23c4eb7d",
+   "testbed/e9/e9ops.py": "497fb46261841cdb3a297a3770d4b1576c5eaf4f578c4480366dcdb1ab2e5bd0",
+   "monitor/test_coverage.py": "5857010438783e6f4378735685ae26615934872075759504e56d34663e2e65db",
+   "monitor/test_node_hash.py": "567ecb451c5ff604fd39dca1638f43107495dd368b4370765784ffa621d386da",
+   "monitor/test_e9.py": "e95559548b01e284918afcd8b6418c4cb58d4b4f27a79a84f92a99fc45911e05",
+   "monitor/test_e9_dishonest.py": "84ed49c5c6ce46eb02fe5b9ec541c98f0c3db1fb1e4deeb1c51fafe8401ea857",
+   "testbed/anchord/test_anchor_chain.py": "9c0477d3fdb81c3824054d819a637bb62a49311f6f2d69aac748123498f47967",
+   "testbed/anchord/test_anchor_e8.py": "614d2e994a994d080ce683351a160c664861982417af6cf16da80d3855f3093a",
+   "testbed/anchord/test_anchor_e9.py": "a9401be5925be8d8a53006e5042e4755b8bca824e911775adbfeab13eb638a72",
+   "testbed/anchord/test_anchor_cache.py": "54a3e52cbafe65b824a1074c9b6aed36ffdf5e0f2d7654e4fb628405f859526b",
+   "testbed/anchord/test_anchor_stall.py": "b2844dd38949791eba0a20e22792b7356add062c9a00c10a44901b8e23d0902e"
+  }
+ }
+}

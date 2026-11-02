@@ -1,0 +1,52 @@
+# HomeProv testbed configuration -- released components only.
+#
+# The working configuration in this checkout also enables the adversary
+# integrations, which are deliberately not part of this repository (see README).
+# Everything below is sufficient to run the defender, the renderer
+# dependency-closure measurement (E4), the renderer-backed attack evaluation
+# (E5), and the benign-workload driver used for false-alarm measurement.
+homeassistant:
+  name: HomeProv testbed
+  latitude: 0
+  longitude: 0
+  elevation: 0
+  unit_system: metric
+  time_zone: UTC
+
+default_config:
+
+logger:
+  default: warning
+  logs:
+    custom_components.homeprov: debug
+    custom_components.homeprov_e4: debug
+    custom_components.homeprov_e5: debug
+
+demo:
+
+input_boolean:
+  owner_present:
+    name: Owner Present
+  trigger_00:
+    name: Trigger 00
+
+recorder:
+  db_url: sqlite:////config/home-assistant_v2.db
+  commit_interval: 1
+  purge_keep_days: 30
+
+automation: !include automations.yaml
+
+# The defender integration.
+homeprov:
+
+# Benign-workload driver: generates the lifecycle operations the
+# false-alarm measurement is bounded by.
+homeprov_bench:
+
+# E4 -- renderer dependency closure. Commands: `closure`, `roles`, `parentrole`,
+# written to /config/homeprov_e4.cmd; results land in /config/homeprov_out/.
+homeprov_e4:
+
+# E5 -- renderer-backed attack evaluation. Commands: `run`, `probe`.
+homeprov_e5:

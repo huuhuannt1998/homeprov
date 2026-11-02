@@ -1,0 +1,899 @@
+{
+ "item": "R13: recorder write rate on the real deployment during each evaluated run's window",
+ "generated": "2026-10-08T02:36:53.727480+00:00",
+ "script": "exp/sp2027/r13_write_rate.py",
+ "script_sha256": "4824c7bbc7187672044e9b2a3c27d2242573cf1e9f15d491f6cf8b95666b24df",
+ "code_sha256": {
+  "monitor/monitor.py": "2eb8f872bb9e40452b353a507229e1502fff1ed81e2d772f5de4fe4bb30fc48b",
+  "monitor/monitor_wholerow.py": "6bd82630cdbae42de4c977cbab70c2c22c1489907384b8fdd299f4016b9c062c",
+  "reproduce/verify_all.py": "131c70c0e3e9c82bd21fa27643da91150cdd307ee7808bf1ae026c3320ddba13",
+  "exp/sp2027/r13_subset_test.py": "de03045220838d184bc3ef4b4e710f66f335ff6b8de7c27e6c58543da39937b4"
+ },
+ "result_files_sha256": {
+  "exp/out/e1_psr_clo_detection.json": "d822a788f0a3cd54179f97f6c6c478dc7368e0730c2b2a47ded50f10810abed7",
+  "exp/out/e1_psr_clo_two_host.json": "4b4a1a5f4b5ba5c5e696a5505402328231ad1a6578c9a6d1b4c0410bf23d843a",
+  "exp/out/e3_g0_clo_other_principal_real.json": "c021b12c7a41a90d150cdb3edab4d25817ea5898bc60d5f6fdb700f213c11adc",
+  "exp/out/e3_g2_clo_other_principal_real.json": "82f255fdeaba8f5eb62ef3099b81c98f63043e3d2c61d5fc96dcdfeec19b77cf",
+  "exp/out/e3_grace_sealing.json": "d41b0329f53d007a68f73ce33ca2cad955610712a5fde0b685e4be024f9dcb0e",
+  "exp/out/e_c_auth_other_principal_real.json": "7c8bf5df715c8e1aad7408048ef7b1e8530caf409276ac31930111ecae0fa3f5",
+  "exp/out/e_c_clo_other_principal_real.json": "8239953b65a9268f516422de37bc76b6b1923375833b9209d829b9056e4bc86a",
+  "exp/out/e_d_auth_other_principal_real.json": "a3b42023dd7f9035b9cd3fc7fc3bfa7e571bfbd21fa3462bf910d2b58fecb1dc",
+  "exp/out/e_d_clo_other_principal_real.json": "5f09fb1900268a067b111d853f5d4163397fcb76302064c2c7863e5d47ebf9c6",
+  "exp/out/e_d_whr_other_principal_real.json": "9b5d81446ed33b00abd3bed04ad7d6eead44e9065e65b1f8ceb4dc1f419995a5",
+  "exp/out/e_ps_auth_detection.json": "df2e535ffee172615e9d9c7ebd14fee69dfb617a6117e0c1067db9cb46458fac",
+  "exp/out/e_ps_clo_detection.json": "bf8dc6895a33e88a82e27e4175c0b01bef796f2d69026beff6534c219173bbf9",
+  "exp/out/e_ps_whr_detection.json": "88e948fd980b7d79d4c88d3f38ff14ef8f081ea9708b5f18fc4d1405d377e94b",
+  "exp/out/e_psr_clo_detection.json": "220d8e24248c2ca9fe009ebc17582194c4a6904cf9e8f219c39b3fe9270d4d71",
+  "exp/out/e_psr_whr_detection.json": "d048c791aeae911b1fa10c6179676cace886c80360c5de62ee19de0295c98ae2"
+ },
+ "inputs_mode": "snapshots",
+ "definitions": {
+  "row": "a node of monitor.load(): a states row joined to states_meta or an events row joined to event_types, timestamped by last_updated_ts / time_fired_ts",
+  "window": "[t_start, t_end) of the run's result file, whole seconds",
+  "one_second_segment": "a second of the window holding at least one row (an empty second has no segment)",
+  "percentiles": "linear interpolation between order statistics"
+ },
+ "pooled_single_host_real_deployment": {
+  "runs": 12,
+  "minutes": 358.467,
+  "state_rows": 14841,
+  "event_rows": 29066,
+  "state_rows_per_minute": 41.4,
+  "event_rows_per_minute": 81.08,
+  "rows_per_minute": 122.49,
+  "rows_per_one_second_segment": {
+   "n": 7500,
+   "mean": 5.854,
+   "median": 2.0,
+   "p90": 5.0,
+   "max": 331
+  },
+  "rows_per_second_including_empty": {
+   "n": 21508,
+   "mean": 2.041,
+   "median": 0.0,
+   "p90": 3.0,
+   "max": 331
+  },
+  "seconds_with_at_least_one_row": {
+   "k": 7500,
+   "n": 21508,
+   "share": 0.3487
+  }
+ },
+ "pooled_single_host_runs": [
+  "e_d_clo",
+  "e_c_clo",
+  "e_ps_clo",
+  "e_psr_clo",
+  "e_d_auth",
+  "e_c_auth",
+  "e_ps_auth",
+  "e_d_whr",
+  "e_ps_whr",
+  "e_psr_whr",
+  "e3_g0_clo",
+  "e3_g2_clo"
+ ],
+ "e1_two_host": "reported per run only (another hub: Home Assistant OS VM, Core 2026.10.0)",
+ "runs": {
+  "e_d_clo": {
+   "scheme": "closure",
+   "window": [
+    1790968169.0,
+    1790970350.0
+   ],
+   "seconds_in_window": 2181,
+   "minutes": 36.35,
+   "state_rows": 1460,
+   "event_rows": 2459,
+   "rows": 3919,
+   "state_rows_per_minute": 40.17,
+   "event_rows_per_minute": 67.65,
+   "rows_per_minute": 107.81,
+   "rows_per_one_second_segment": {
+    "n": 742,
+    "mean": 5.282,
+    "median": 2.0,
+    "p90": 5.0,
+    "max": 253
+   },
+   "rows_per_second_including_empty": {
+    "n": 2181,
+    "mean": 1.797,
+    "median": 0,
+    "p90": 3.0,
+    "max": 253
+   },
+   "seconds_with_at_least_one_row": {
+    "k": 742,
+    "n": 2181,
+    "share": 0.3402
+   },
+   "busiest_seconds": [
+    {
+     "second": 1790968172,
+     "rows": 253,
+     "state_rows": 1,
+     "event_rows": 252
+    },
+    {
+     "second": 1790968847,
+     "rows": 220,
+     "state_rows": 8,
+     "event_rows": 212
+    },
+    {
+     "second": 1790970306,
+     "rows": 218,
+     "state_rows": 1,
+     "event_rows": 217
+    }
+   ],
+   "inputs": {
+    "snapshot_db": {
+     "path": "HOMEPROV-P13-snapshots/verifier-recorder-snapshots-2026-10/hp-clo/e_d_clo/ec_verify/recorder.db",
+     "sha256": "3db4f0d354973eda689dad5b241689aa18474b641eac951a9af730d82934d192",
+     "listed": true
+    },
+    "vouched_by": "snapshots checksum list"
+   }
+  },
+  "e_c_clo": {
+   "scheme": "closure",
+   "window": [
+    1790970526.0,
+    1790972744.0
+   ],
+   "seconds_in_window": 2218,
+   "minutes": 36.967,
+   "state_rows": 1618,
+   "event_rows": 2835,
+   "rows": 4453,
+   "state_rows_per_minute": 43.77,
+   "event_rows_per_minute": 76.69,
+   "rows_per_minute": 120.46,
+   "rows_per_one_second_segment": {
+    "n": 921,
+    "mean": 4.835,
+    "median": 2,
+    "p90": 5.0,
+    "max": 331
+   },
+   "rows_per_second_including_empty": {
+    "n": 2218,
+    "mean": 2.008,
+    "median": 0.0,
+    "p90": 3.0,
+    "max": 331
+   },
+   "seconds_with_at_least_one_row": {
+    "k": 921,
+    "n": 2218,
+    "share": 0.4152
+   },
+   "busiest_seconds": [
+    {
+     "second": 1790971269,
+     "rows": 331,
+     "state_rows": 26,
+     "event_rows": 305
+    },
+    {
+     "second": 1790972006,
+     "rows": 331,
+     "state_rows": 26,
+     "event_rows": 305
+    },
+    {
+     "second": 1790972701,
+     "rows": 297,
+     "state_rows": 12,
+     "event_rows": 285
+    }
+   ],
+   "inputs": {
+    "snapshot_db": {
+     "path": "HOMEPROV-P13-snapshots/verifier-recorder-snapshots-2026-10/hp-clo/e_c_clo/ec_verify/recorder.db",
+     "sha256": "334004f6a9db8d90dbf9a6bdf5ac908f4654d7c67c878cb034cc7f98e8bcaada",
+     "listed": true
+    },
+    "vouched_by": "snapshots checksum list"
+   }
+  },
+  "e_ps_clo": {
+   "scheme": "closure",
+   "window": [
+    1790966773.0,
+    1790967973.0
+   ],
+   "seconds_in_window": 1200,
+   "minutes": 20.0,
+   "state_rows": 901,
+   "event_rows": 2256,
+   "rows": 3157,
+   "state_rows_per_minute": 45.05,
+   "event_rows_per_minute": 112.8,
+   "rows_per_minute": 157.85,
+   "rows_per_one_second_segment": {
+    "n": 401,
+    "mean": 7.873,
+    "median": 2,
+    "p90": 5.0,
+    "max": 272
+   },
+   "rows_per_second_including_empty": {
+    "n": 1200,
+    "mean": 2.631,
+    "median": 0.0,
+    "p90": 3.0,
+    "max": 272
+   },
+   "seconds_with_at_least_one_row": {
+    "k": 401,
+    "n": 1200,
+    "share": 0.3342
+   },
+   "busiest_seconds": [
+    {
+     "second": 1790967930,
+     "rows": 272,
+     "state_rows": 8,
+     "event_rows": 264
+    },
+    {
+     "second": 1790966777,
+     "rows": 261,
+     "state_rows": 8,
+     "event_rows": 253
+    },
+    {
+     "second": 1790967577,
+     "rows": 239,
+     "state_rows": 1,
+     "event_rows": 238
+    }
+   ],
+   "inputs": {
+    "snapshot_db": {
+     "path": "HOMEPROV-P13-snapshots/verifier-recorder-snapshots-2026-10/hp-clo/e_ps_clo/ps_verify/recorder.db",
+     "sha256": "2e73df08f5d0933fdef0e865794c0fe293e7bc4ce9e9f09d64f542b4cf1b3677",
+     "listed": true
+    },
+    "vouched_by": "snapshots checksum list"
+   }
+  },
+  "e_psr_clo": {
+   "scheme": "closure",
+   "window": [
+    1790987124.0,
+    1790988313.0
+   ],
+   "seconds_in_window": 1189,
+   "minutes": 19.817,
+   "state_rows": 879,
+   "event_rows": 2243,
+   "rows": 3122,
+   "state_rows_per_minute": 44.36,
+   "event_rows_per_minute": 113.19,
+   "rows_per_minute": 157.54,
+   "rows_per_one_second_segment": {
+    "n": 396,
+    "mean": 7.884,
+    "median": 2.0,
+    "p90": 5.0,
+    "max": 293
+   },
+   "rows_per_second_including_empty": {
+    "n": 1189,
+    "mean": 2.626,
+    "median": 0,
+    "p90": 3.0,
+    "max": 293
+   },
+   "seconds_with_at_least_one_row": {
+    "k": 396,
+    "n": 1189,
+    "share": 0.3331
+   },
+   "busiest_seconds": [
+    {
+     "second": 1790987522,
+     "rows": 293,
+     "state_rows": 12,
+     "event_rows": 281
+    },
+    {
+     "second": 1790987126,
+     "rows": 254,
+     "state_rows": 1,
+     "event_rows": 253
+    },
+    {
+     "second": 1790988269,
+     "rows": 218,
+     "state_rows": 1,
+     "event_rows": 217
+    }
+   ],
+   "inputs": {
+    "snapshot_db": {
+     "path": "HOMEPROV-P13-snapshots/verifier-recorder-snapshots-2026-10/hp-clo/e_psr_clo/ps_verify/recorder.db",
+     "sha256": "dbbb9f40fb816324b2c8f7de7932508baa34cc8c102e2e862839168acc7df78c",
+     "listed": true
+    },
+    "vouched_by": "snapshots checksum list"
+   }
+  },
+  "e_d_auth": {
+   "scheme": "row",
+   "window": [
+    1790410030.0,
+    1790412186.0
+   ],
+   "seconds_in_window": 2156,
+   "minutes": 35.933,
+   "state_rows": 1443,
+   "event_rows": 2451,
+   "rows": 3894,
+   "state_rows_per_minute": 40.16,
+   "event_rows_per_minute": 68.21,
+   "rows_per_minute": 108.37,
+   "rows_per_one_second_segment": {
+    "n": 721,
+    "mean": 5.401,
+    "median": 2,
+    "p90": 5.0,
+    "max": 330
+   },
+   "rows_per_second_including_empty": {
+    "n": 2156,
+    "mean": 1.806,
+    "median": 0.0,
+    "p90": 3.0,
+    "max": 330
+   },
+   "seconds_with_at_least_one_row": {
+    "k": 721,
+    "n": 2156,
+    "share": 0.3344
+   },
+   "busiest_seconds": [
+    {
+     "second": 1790410705,
+     "rows": 330,
+     "state_rows": 26,
+     "event_rows": 304
+    },
+    {
+     "second": 1790411423,
+     "rows": 330,
+     "state_rows": 26,
+     "event_rows": 304
+    },
+    {
+     "second": 1790410751,
+     "rows": 219,
+     "state_rows": 1,
+     "event_rows": 218
+    }
+   ],
+   "inputs": {
+    "snapshot_db": {
+     "path": "HOMEPROV-P13-snapshots/verifier-recorder-snapshots-2026-10/hp_d2/live/recorder.db",
+     "sha256": "f98d18e43e916bb161aa8c932ea08c292f881373c11a73a8bd607d5300c78349",
+     "listed": true
+    },
+    "vouched_by": "snapshot-set SHA256SUMS where listed (verify_all.Inputs.checked)"
+   }
+  },
+  "e_c_auth": {
+   "scheme": "row",
+   "window": [
+    1790933227.0,
+    1790935444.0
+   ],
+   "seconds_in_window": 2217,
+   "minutes": 36.95,
+   "state_rows": 1639,
+   "event_rows": 2837,
+   "rows": 4476,
+   "state_rows_per_minute": 44.36,
+   "event_rows_per_minute": 76.78,
+   "rows_per_minute": 121.14,
+   "rows_per_one_second_segment": {
+    "n": 928,
+    "mean": 4.823,
+    "median": 2.0,
+    "p90": 5.0,
+    "max": 331
+   },
+   "rows_per_second_including_empty": {
+    "n": 2217,
+    "mean": 2.019,
+    "median": 0,
+    "p90": 3.0,
+    "max": 331
+   },
+   "seconds_with_at_least_one_row": {
+    "k": 928,
+    "n": 2217,
+    "share": 0.4186
+   },
+   "busiest_seconds": [
+    {
+     "second": 1790933969,
+     "rows": 331,
+     "state_rows": 26,
+     "event_rows": 305
+    },
+    {
+     "second": 1790934661,
+     "rows": 330,
+     "state_rows": 26,
+     "event_rows": 304
+    },
+    {
+     "second": 1790935400,
+     "rows": 330,
+     "state_rows": 26,
+     "event_rows": 304
+    }
+   ],
+   "inputs": {
+    "snapshot_db": {
+     "path": "HOMEPROV-P13-snapshots/verifier-recorder-snapshots-2026-10/hp-ec-auth/ec_verify/recorder.db",
+     "sha256": "28483c797e44ad0780148dcbc3b65a85b9636f155ac6e34e7a1d8212cebcb725",
+     "listed": true
+    },
+    "vouched_by": "snapshots checksum list"
+   }
+  },
+  "e_ps_auth": {
+   "scheme": "row",
+   "window": [
+    1790948889.0,
+    1790950091.0
+   ],
+   "seconds_in_window": 1202,
+   "minutes": 20.033,
+   "state_rows": 869,
+   "event_rows": 2240,
+   "rows": 3109,
+   "state_rows_per_minute": 43.38,
+   "event_rows_per_minute": 111.81,
+   "rows_per_minute": 155.19,
+   "rows_per_one_second_segment": {
+    "n": 399,
+    "mean": 7.792,
+    "median": 2,
+    "p90": 5.0,
+    "max": 285
+   },
+   "rows_per_second_including_empty": {
+    "n": 1202,
+    "mean": 2.587,
+    "median": 0.0,
+    "p90": 3.0,
+    "max": 285
+   },
+   "seconds_with_at_least_one_row": {
+    "k": 399,
+    "n": 1202,
+    "share": 0.3319
+   },
+   "busiest_seconds": [
+    {
+     "second": 1790949242,
+     "rows": 285,
+     "state_rows": 11,
+     "event_rows": 274
+    },
+    {
+     "second": 1790949695,
+     "rows": 255,
+     "state_rows": 8,
+     "event_rows": 247
+    },
+    {
+     "second": 1790949289,
+     "rows": 244,
+     "state_rows": 8,
+     "event_rows": 236
+    }
+   ],
+   "inputs": {
+    "snapshot_db": {
+     "path": "HOMEPROV-P13-snapshots/verifier-recorder-snapshots-2026-10/hp-ps-auth/ps_verify/recorder.db",
+     "sha256": "01070609b0851bc93c7296186ed1b4a5ec440bbe5baf1dcd0d0d56480fe78aea",
+     "listed": true
+    },
+    "vouched_by": "snapshots checksum list"
+   }
+  },
+  "e_d_whr": {
+   "scheme": "wholerow",
+   "window": [
+    1791100203.0,
+    1791102358.0
+   ],
+   "seconds_in_window": 2155,
+   "minutes": 35.917,
+   "state_rows": 1401,
+   "event_rows": 2427,
+   "rows": 3828,
+   "state_rows_per_minute": 39.01,
+   "event_rows_per_minute": 67.57,
+   "rows_per_minute": 106.58,
+   "rows_per_one_second_segment": {
+    "n": 735,
+    "mean": 5.208,
+    "median": 2,
+    "p90": 5.0,
+    "max": 330
+   },
+   "rows_per_second_including_empty": {
+    "n": 2155,
+    "mean": 1.776,
+    "median": 0,
+    "p90": 3.0,
+    "max": 330
+   },
+   "seconds_with_at_least_one_row": {
+    "k": 735,
+    "n": 2155,
+    "share": 0.3411
+   },
+   "busiest_seconds": [
+    {
+     "second": 1791100877,
+     "rows": 330,
+     "state_rows": 26,
+     "event_rows": 304
+    },
+    {
+     "second": 1791101596,
+     "rows": 330,
+     "state_rows": 26,
+     "event_rows": 304
+    },
+    {
+     "second": 1791102314,
+     "rows": 300,
+     "state_rows": 12,
+     "event_rows": 288
+    }
+   ],
+   "inputs": {
+    "snapshot_db": {
+     "path": "HOMEPROV-P13-snapshots/verifier-recorder-snapshots-2026-10/hp-whr/e_d_whr/ec_verify/recorder.db",
+     "sha256": "035483d497217d468d69115431ad51442b8a11bcdceef768e51fa4c4263bd500",
+     "listed": true
+    },
+    "vouched_by": "snapshots checksum list"
+   }
+  },
+  "e_ps_whr": {
+   "scheme": "wholerow",
+   "window": [
+    1791098825.0,
+    1791100011.0
+   ],
+   "seconds_in_window": 1186,
+   "minutes": 19.767,
+   "state_rows": 845,
+   "event_rows": 2226,
+   "rows": 3071,
+   "state_rows_per_minute": 42.75,
+   "event_rows_per_minute": 112.61,
+   "rows_per_minute": 155.36,
+   "rows_per_one_second_segment": {
+    "n": 369,
+    "mean": 8.322,
+    "median": 2,
+    "p90": 5.0,
+    "max": 331
+   },
+   "rows_per_second_including_empty": {
+    "n": 1186,
+    "mean": 2.589,
+    "median": 0.0,
+    "p90": 3.0,
+    "max": 331
+   },
+   "seconds_with_at_least_one_row": {
+    "k": 369,
+    "n": 1186,
+    "share": 0.3111
+   },
+   "busiest_seconds": [
+    {
+     "second": 1791099619,
+     "rows": 331,
+     "state_rows": 26,
+     "event_rows": 305
+    },
+    {
+     "second": 1791099177,
+     "rows": 330,
+     "state_rows": 26,
+     "event_rows": 304
+    },
+    {
+     "second": 1791099572,
+     "rows": 330,
+     "state_rows": 26,
+     "event_rows": 304
+    }
+   ],
+   "inputs": {
+    "snapshot_db": {
+     "path": "HOMEPROV-P13-snapshots/verifier-recorder-snapshots-2026-10/hp-whr/e_ps_whr/ps_verify/recorder.db",
+     "sha256": "1a469e3c7411e272c371454cd419c60d27ded31f440c5c31633be22c08ea502a",
+     "listed": true
+    },
+    "vouched_by": "snapshots checksum list"
+   }
+  },
+  "e_psr_whr": {
+   "scheme": "wholerow",
+   "window": [
+    1791102531.0,
+    1791103718.0
+   ],
+   "seconds_in_window": 1187,
+   "minutes": 19.783,
+   "state_rows": 864,
+   "event_rows": 2236,
+   "rows": 3100,
+   "state_rows_per_minute": 43.67,
+   "event_rows_per_minute": 113.02,
+   "rows_per_minute": 156.7,
+   "rows_per_one_second_segment": {
+    "n": 388,
+    "mean": 7.99,
+    "median": 2.0,
+    "p90": 5.0,
+    "max": 331
+   },
+   "rows_per_second_including_empty": {
+    "n": 1187,
+    "mean": 2.612,
+    "median": 0,
+    "p90": 3.0,
+    "max": 331
+   },
+   "seconds_with_at_least_one_row": {
+    "k": 388,
+    "n": 1187,
+    "share": 0.3269
+   },
+   "busiest_seconds": [
+    {
+     "second": 1791103325,
+     "rows": 331,
+     "state_rows": 26,
+     "event_rows": 305
+    },
+    {
+     "second": 1791102883,
+     "rows": 330,
+     "state_rows": 26,
+     "event_rows": 304
+    },
+    {
+     "second": 1791102929,
+     "rows": 269,
+     "state_rows": 8,
+     "event_rows": 261
+    }
+   ],
+   "inputs": {
+    "snapshot_db": {
+     "path": "HOMEPROV-P13-snapshots/verifier-recorder-snapshots-2026-10/hp-whr/e_psr_whr/ps_verify/recorder.db",
+     "sha256": "87a5eaa557a6d20ebeba6275e3e4588daabbd0c19c2d07e0ea21c2cd71ff25d0",
+     "listed": true
+    },
+    "vouched_by": "snapshots checksum list"
+   }
+  },
+  "e3_g0_clo": {
+   "scheme": "closure",
+   "window": [
+    1791410164.0,
+    1791412625.0
+   ],
+   "seconds_in_window": 2461,
+   "minutes": 41.017,
+   "state_rows": 1452,
+   "event_rows": 2393,
+   "rows": 3845,
+   "state_rows_per_minute": 35.4,
+   "event_rows_per_minute": 58.34,
+   "rows_per_minute": 93.74,
+   "rows_per_one_second_segment": {
+    "n": 759,
+    "mean": 5.066,
+    "median": 2,
+    "p90": 5.2,
+    "max": 330
+   },
+   "rows_per_second_including_empty": {
+    "n": 2461,
+    "mean": 1.562,
+    "median": 0,
+    "p90": 3.0,
+    "max": 330
+   },
+   "seconds_with_at_least_one_row": {
+    "k": 759,
+    "n": 2461,
+    "share": 0.3084
+   },
+   "busiest_seconds": [
+    {
+     "second": 1791411730,
+     "rows": 330,
+     "state_rows": 26,
+     "event_rows": 304
+    },
+    {
+     "second": 1791410171,
+     "rows": 286,
+     "state_rows": 11,
+     "event_rows": 275
+    },
+    {
+     "second": 1791411776,
+     "rows": 222,
+     "state_rows": 1,
+     "event_rows": 221
+    }
+   ],
+   "inputs": {
+    "snapshot_db": {
+     "path": "HOMEPROV-P13-exp/e3/e3_g0_clo/ec_verify/recorder.db",
+     "sha256": "6206b95cdce1c6a6f3cdc7306fd19c73ad9336f8eec2b0d6c5c3d2b3fdaf01f5",
+     "matches_recorded": true
+    },
+    "vouched_by": "exp/out/e3_grace_sealing.json runs[].inputs"
+   }
+  },
+  "e3_g2_clo": {
+   "scheme": "closure",
+   "window": [
+    1791412909.0,
+    1791415065.0
+   ],
+   "seconds_in_window": 2156,
+   "minutes": 35.933,
+   "state_rows": 1470,
+   "event_rows": 2463,
+   "rows": 3933,
+   "state_rows_per_minute": 40.91,
+   "event_rows_per_minute": 68.54,
+   "rows_per_minute": 109.45,
+   "rows_per_one_second_segment": {
+    "n": 741,
+    "mean": 5.308,
+    "median": 2,
+    "p90": 5.0,
+    "max": 331
+   },
+   "rows_per_second_including_empty": {
+    "n": 2156,
+    "mean": 1.824,
+    "median": 0.0,
+    "p90": 3.0,
+    "max": 331
+   },
+   "seconds_with_at_least_one_row": {
+    "k": 741,
+    "n": 2156,
+    "share": 0.3437
+   },
+   "busiest_seconds": [
+    {
+     "second": 1791414303,
+     "rows": 331,
+     "state_rows": 26,
+     "event_rows": 305
+    },
+    {
+     "second": 1791415021,
+     "rows": 330,
+     "state_rows": 26,
+     "event_rows": 304
+    },
+    {
+     "second": 1791413630,
+     "rows": 301,
+     "state_rows": 12,
+     "event_rows": 289
+    }
+   ],
+   "inputs": {
+    "snapshot_db": {
+     "path": "HOMEPROV-P13-exp/e3/e3_g2_clo/ec_verify/recorder.db",
+     "sha256": "8bc33524ea5e3f7bca9cd05a3307800bb2dd8dc1002119393c513f55b60b6c57",
+     "matches_recorded": true
+    },
+    "vouched_by": "exp/out/e3_grace_sealing.json runs[].inputs"
+   }
+  },
+  "e1_psr_clo": {
+   "scheme": "closure",
+   "window": [
+    1791421223.0,
+    1791423561.0
+   ],
+   "seconds_in_window": 2338,
+   "minutes": 38.967,
+   "state_rows": 1195,
+   "event_rows": 2733,
+   "rows": 3928,
+   "state_rows_per_minute": 30.67,
+   "event_rows_per_minute": 70.14,
+   "rows_per_minute": 100.8,
+   "rows_per_one_second_segment": {
+    "n": 630,
+    "mean": 6.235,
+    "median": 2.0,
+    "p90": 5.0,
+    "max": 339
+   },
+   "rows_per_second_including_empty": {
+    "n": 2338,
+    "mean": 1.68,
+    "median": 0.0,
+    "p90": 3.0,
+    "max": 339
+   },
+   "seconds_with_at_least_one_row": {
+    "k": 630,
+    "n": 2338,
+    "share": 0.2695
+   },
+   "busiest_seconds": [
+    {
+     "second": 1791423520,
+     "rows": 339,
+     "state_rows": 18,
+     "event_rows": 321
+    },
+    {
+     "second": 1791423128,
+     "rows": 320,
+     "state_rows": 23,
+     "event_rows": 297
+    },
+    {
+     "second": 1791423174,
+     "rows": 316,
+     "state_rows": 34,
+     "event_rows": 282
+    }
+   ],
+   "inputs": {
+    "snapshot_db": {
+     "path": "HOMEPROV-P13-exp/e1/e1_psr_clo/ps_verify/recorder.db",
+     "sha256": "fe1150ed0d84d549a5b550b91ddfa9dfb1cbd1ed0c28cb7a1ce4f3c862b92604",
+     "matches_recorded": true
+    },
+    "vouched_by": "exp/out/e1_psr_clo_two_host.json inputs"
+   }
+  }
+ },
+ "not_measured": {
+  "e_c_write_time": "no saved verifier snapshot",
+  "e_d_other_principal_real": "no saved verifier snapshot",
+  "e2_auth": "no run window in its result file (exp/out/e2_auth_real_external.json)"
+ },
+ "caveats": [
+  "e_d_auth: the verifier's own snapshot is not in the set; the later recorder copy hp_d2/live is used, as verify_all.py does.",
+  "The windows include the trial traffic of each run (actuations and the adversary's edits); rows a trial deleted are absent from the saved copy.",
+  "The single-host runs share one deployment; overlapping run windows (listed in window_overlaps, empty when none) would count a row twice in the pooled figures."
+ ],
+ "window_overlaps": [],
+ "runtime_s": 2.6
+}

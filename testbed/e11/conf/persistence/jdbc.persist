@@ -1,0 +1,15 @@
+// HOMEPROV E11 persistence configuration (drafts/round13/E11_DESIGN.md, section 2). openHAB 5.1 and later have no
+// default strategies, so every item names its own.
+Strategies {
+    everyMinute : "0 * * * * ?"
+}
+
+Items {
+    FrontDoor_Lock, Porch_Light, Hallway_Light, Kitchen_Light, Porch_Motion, Hallway_Motion,
+        Kitchen_Motion, Label_Probe : strategy = everyChange, restoreOnStartup
+    Kitchen_Temp, Hallway_Temp, Retention_Probe : strategy = everyUpdate, restoreOnStartup
+    Power_Meter : strategy = everyMinute, restoreOnStartup
+    Energy_Backfill : strategy = everyUpdate
+    Price_Forecast : strategy = forecast
+    Fx_Switch, Fx_Contact, Fx_Number, Fx_Temperature, Fx_Dimmer, Fx_String, Fx_DateTime, Fx_Switch2 : strategy = everyChange
+}

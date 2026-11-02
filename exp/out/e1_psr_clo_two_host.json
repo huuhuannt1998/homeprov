@@ -1,0 +1,312 @@
+{
+ "experiment": "E1: two-host placement (round 12, 2026-10-08)",
+ "tag": "e1_psr_clo",
+ "run_date": "2026-10-08",
+ "placement": {
+  "host_a": "Home Assistant OS 18.3 (generic-aarch64) in a QEMU/HVF VM on the evaluation Mac; Core run by the Supervisor",
+  "host_b": "Docker Desktop's Linux VM on the same Mac, standing in for another host: anchor, monitor, replicator (and the MQTT broker and device simulator)",
+  "core_container": "image=ghcr.io/home-assistant/qemuarm-64-homeassistant:2026.10.0 digest=sha256:bac198fa74d7871d19a707013e8d620929c9e2d91ddf1c847cb3df86cb379ce1 privileged=true network=host",
+  "core_privilege_on_hostA": "CapEff: 000001ffffffffff /dev/vda8",
+  "probe_from_hub": "{\"untagged\": 401, \"forged_tag\": 401}",
+  "key_fingerprint_sha256_16": "cf42b8730759158e (key itself not recorded; held only by the anchor and monitor containers on host B)",
+  "clock_skew_check": "mac=1791421130.527 hostA=1791421130.894 mac_after=1791421130.901"
+ },
+ "detection_file": {
+  "path": "exp/out/e1_psr_clo_detection.json",
+  "sha256": "d822a788f0a3cd54179f97f6c6c478dc7368e0730c2b2a47ded50f10810abed7"
+ },
+ "detection": {
+  "homeprov_detection_second": {
+   "k": 90,
+   "n": 90,
+   "prop": 1.0,
+   "ci_lo": 0.9598410803842253,
+   "ci_hi": 1.0,
+   "method": "Clopper-Pearson exact",
+   "n_trials_whose_segment_was_anchored": 90,
+   "raw_violation_hits": 90,
+   "hits_explained_by_late_rows": 0,
+   "hits_consistent_with_detection": 90
+  },
+  "homeprov_detection_minute": {
+   "k": 90,
+   "n": 90,
+   "prop": 1.0,
+   "ci_lo": 0.9598410803842253,
+   "ci_hi": 1.0,
+   "method": "Clopper-Pearson exact",
+   "n_trials_whose_segment_was_anchored": 90,
+   "raw_violation_hits": 90,
+   "hits_explained_by_late_rows": 0,
+   "hits_consistent_with_detection": 90
+  }
+ },
+ "renderer_confirmed_misattribution": {
+  "k": 3,
+  "n": 90,
+  "prop": 0.03333333333333333,
+  "ci_lo": 0.006927602731010163,
+  "ci_hi": 0.0943360934131362,
+  "method": "Clopper-Pearson exact"
+ },
+ "benign_violation_floor_shipped_aggregator": {
+  "second": {
+   "k": 4,
+   "n": 542,
+   "prop": 0.007380073800738007,
+   "ci_lo": 0.002014375841836991,
+   "ci_hi": 0.01878735658756561,
+   "method": "Clopper-Pearson exact",
+   "what": "anchored second-segments inside the run window that no PS trial touched and that fail recomputation"
+  },
+  "minute": {
+   "k": 0,
+   "n": 23,
+   "prop": 0.0,
+   "ci_lo": 0.0,
+   "ci_hi": 0.14818512891522437,
+   "method": "Clopper-Pearson exact",
+   "what": "anchored minute-segments inside the run window that no PS trial touched and that fail recomputation"
+  }
+ },
+ "paper_counting_rule": {
+  "rule": "reproduce/verify_all.py: anchored_roots, verify_window, touched_segments, cp",
+  "encoding": [
+   "v2"
+  ],
+  "n_trials": 90,
+  "flagged": 90,
+  "attributable": 90,
+  "ambiguous": 0,
+  "attributable_ci": [
+   0.96,
+   1.0
+  ],
+  "benign_floor": {
+   "second": {
+    "k": 2,
+    "n": 530,
+    "ci": [
+     0.0,
+     0.014
+    ],
+    "mechanisms": {
+     "rows_arrived_after_seal": 2
+    }
+   },
+   "minute": {
+    "k": 0,
+    "n": 23,
+    "ci": [
+     0.0,
+     0.148
+    ],
+    "mechanisms": {}
+   }
+  },
+  "verify_all_py_sha256": "131c70c0e3e9c82bd21fa27643da91150cdd307ee7808bf1ae026c3320ddba13"
+ },
+ "n_trials": 90,
+ "n_valid": 90,
+ "replication": {
+  "period_target_s": 2.0,
+  "cycles_in_run": 1024,
+  "cycles_ok": 1022,
+  "cycles_failed": 2,
+  "failure_reasons": {
+   "rc=128": 1,
+   "rc=143": 1
+  },
+  "interval_between_installed_replicas_s": {
+   "n": 1021,
+   "median": 2.002,
+   "p90": 2.012,
+   "p99": 8.184,
+   "max": 33.759,
+   "min": 1.951
+  },
+  "longest_interval_s": 33.759,
+  "replica_age_at_install_s": {
+   "n": 1022,
+   "median": 0.344,
+   "p90": 1.564,
+   "p99": 8.179,
+   "max": 33.545,
+   "min": 0.055
+  },
+  "request_to_backup_start_on_hub_clock_s": {
+   "n": 1022,
+   "median": 0.268,
+   "p90": 1.105,
+   "p99": 5.341,
+   "max": 18.556,
+   "min": 0.047
+  },
+  "replica_bytes_last": 1396736
+ },
+ "observation_window": {
+  "definitions": "exp/sp2027/r6_window_latency_real.py (Section 7's window): close-to-anchor = anchor receipt minus segment end; write-to-anchor = anchor receipt minus row timestamp; only one-second segments whose recomputed root equals the anchored root",
+  "segments_used": 538,
+  "segments_skipped": {
+   "root_differs_now": 92
+  },
+  "close_to_anchor_s": {
+   "n": 538,
+   "median": 4.973,
+   "p90": 12.565,
+   "p99": 51.007,
+   "max": 61.487,
+   "min": 0.545
+  },
+  "write_to_anchor_s": {
+   "n": 3682,
+   "median": 5.51,
+   "p90": 38.708,
+   "p99": 61.205,
+   "max": 62.018,
+   "min": 1.073
+  },
+  "monitor_seal_minus_replica_request_s": {
+   "n": 538,
+   "median": 1.6,
+   "p90": 3.834,
+   "p99": 20.541,
+   "max": 38.704,
+   "min": 0.161
+  },
+  "by_configuration": {
+   "porch": {
+    "from_utc": "01:00:23",
+    "to_utc": "01:11:28",
+    "close_to_anchor_s": {
+     "n": 152,
+     "median": 6.02,
+     "p90": 40.404,
+     "p99": 59.977,
+     "max": 61.487,
+     "min": 0.792
+    },
+    "write_to_anchor_s": {
+     "n": 1067,
+     "median": 7.146,
+     "p90": 45.468,
+     "p99": 61.493,
+     "max": 62.018,
+     "min": 1.181
+    }
+   },
+   "hallway": {
+    "from_utc": "01:11:28",
+    "to_utc": "01:32:48",
+    "close_to_anchor_s": {
+     "n": 289,
+     "median": 5.131,
+     "p90": 10.488,
+     "p99": 18.581,
+     "max": 34.487,
+     "min": 1.053
+    },
+    "write_to_anchor_s": {
+     "n": 1552,
+     "median": 5.611,
+     "p90": 10.523,
+     "p99": 18.325,
+     "max": 35.136,
+     "min": 1.073
+    }
+   },
+   "kitchen": {
+    "from_utc": "01:32:48",
+    "to_utc": "01:39:21",
+    "close_to_anchor_s": {
+     "n": 97,
+     "median": 3.959,
+     "p90": 6.035,
+     "p99": 6.901,
+     "max": 7.159,
+     "min": 0.545
+    },
+    "write_to_anchor_s": {
+     "n": 1063,
+     "median": 5.047,
+     "p90": 5.689,
+     "p99": 7.01,
+     "max": 7.804,
+     "min": 1.254
+    }
+   }
+  },
+  "host_load": {
+   "before": "20:58  up 37 days, 56 mins, 2 users, load averages: 6.92 8.24 8.86",
+   "after": "21:40  up 37 days,  1:38, 2 users, load averages: 2.28 3.53 5.43",
+   "note": "An unrelated workload ran on the evaluation host from before the run until about 01:25 UTC, when the PI stopped it; the monitor's per-poll load of the replica took up to 4.6 s during it and 23-50 ms after it (monitor.log, every twelfth poll). The configuration phases include the hub restarts between configurations, during which no replica is taken."
+  },
+  "single_host_reference": {
+   "file": "exp/out/r6_window_latency_real.json",
+   "sha256": "2b46f283368eaef662eb8188c5a385fb75a66cef63cdf2ee3d6710acb79a85fc",
+   "pooled": {
+    "close_to_anchor_s": {
+     "n": 4185,
+     "median": 3.336,
+     "p90": 5.474,
+     "p99": 6.455,
+     "max": 17.396,
+     "min": 0.245
+    },
+    "write_to_anchor_s": {
+     "n": 28821,
+     "median": 3.811,
+     "p90": 5.991,
+     "p99": 14.689,
+     "max": 17.75,
+     "min": 0.433
+    }
+   },
+   "e_psr_clo": {
+    "scheme": "closure",
+    "segments_used": 305,
+    "segments_skipped": {
+     "root_differs_now": 91
+    },
+    "close_to_anchor_s": {
+     "n": 305,
+     "median": 2.983,
+     "p90": 5.413,
+     "p99": 6.668,
+     "max": 7.594,
+     "min": 0.299
+    },
+    "write_to_anchor_s": {
+     "n": 2865,
+     "median": 4.504,
+     "p90": 6.28,
+     "p99": 6.482,
+     "max": 7.663,
+     "min": 0.563
+    }
+   }
+  }
+ },
+ "inputs": {
+  "chain": {
+   "file": "exp/out/e1_psr_clo_anchor_chain.jsonl.gz",
+   "sha256_uncompressed": "f98a4d1cb3160333b088ee349e13a76d7332c955f5792ad6841109d5af4f0925"
+  },
+  "recorder_snapshot_sha256": "fe1150ed0d84d549a5b550b91ddfa9dfb1cbd1ed0c28cb7a1ce4f3c862b92604",
+  "replication_log_sha256": "a41401ba8a2bac1891f7dc50d6a068ce20b6106b047090fc693817e383192d25"
+ },
+ "code": {
+  "exp/stages/e1_two_host.py": "1218849442e4b1973ef4635c727424d74dee55d07f5a41657c9a082703b823bc",
+  "exp/stages/e_ps_detection.py": "22d0681dd9a2e68e689d256dcb98cab1e3163f9fc05fd3754cd6b8d141aa2196",
+  "exp/stages/e_c_write_time.py": "6b052d8a303a29789d5c523b2c7a512c14ef40fd253799d8ac447d907520cc83",
+  "monitor/monitor.py": "f23c12707278e66266bd02ee7c3fcd24fae231c39182319d705b2cce66215532",
+  "testbed/e1/replicator/replicator.py": "b45d2f202923965fc8ef3818ba725b7809902b9021981a2589d25539bd049ecb",
+  "testbed/e1/replicator/hub_backup.py": "16ac3f0d88ad391f7d35bfdd36a40bccdd916deee9e71e04be48ee4ec0433711",
+  "testbed/e1/run_e1.sh": "7fb6fe111b02c8a34d15e3fc911ffb301f1f91dd49e0d482c37f5bbe7be3d009"
+ },
+ "caveats": [
+  "Both hosts are virtual machines on one Mac; the network between them is the Mac's loopback through the QEMU gateway, so replication latency is lower than between two physical hosts would be.",
+  "Host A runs Core 2026.10.0 (the release Home Assistant OS installed), the single-host runs 2026.7.4.",
+  "The replica is a full consistent copy each cycle; its cost grows with the recorder."
+ ]
+}

@@ -1,0 +1,32 @@
+{
+ "experiment": "e3_g2_clo: E3 grace-period sealing (2 s) under the AUTHENTICATED anchor with the CLOSURE monitor",
+ "monitor": {
+  "image": "hpr-monitor:closure-grace",
+  "grace_s": 2.0,
+  "monitor_py_sha256": "d1ed61cfa0a0d101c42e7bf0441f089352cca189bf7b57c8662a901482dacbb9"
+ },
+ "configuration_log": [
+  "2026-10-07T22:40:40Z tag=e3_g2_clo arms=\"PU\",\"PI\" trials=30 grace_s=2 scheme=closure",
+  "2026-10-07T22:40:40Z load_before: 18:40  up 36 days, 22:38, 2 users, load averages: 7.38 7.67 7.43",
+  "2026-10-07T22:40:40Z git_head: b7611992393052a568df00c9ebc805f4d15ee6f5 (monitor.py modified in the working tree: encoding v2, closure, GRACE_S)",
+  "2026-10-07T22:40:40Z monitor_py_sha256: d1ed61cfa0a0d101",
+  "2026-10-07T22:40:40Z key_fingerprint_sha256_16: 52fc5126cc276104 (key itself not recorded)",
+  "2026-10-07T22:40:47Z anchor image: hpr-anchord:sig sha256:196961946d8bf9f70830065c17f1e0f84f27d4c69ac28a6ada5079f9ad59776d",
+  "2026-10-07T22:40:48Z monitor image: hpr-monitor:closure-grace sha256:8b03ad6c31e0445fef415f66b91a1e22bcd1d94041364dfd6250d2be00055e75",
+  "2026-10-07T22:41:09Z probe_from_hub: {\"untagged\": 401, \"forged_tag\": 401}",
+  "2026-10-07T22:41:49Z monitor_log_head: {\"tick\": 1, \"n_nodes\": 5941, \"copy_ms\": 6905.24, \"load_ms\": 1410.778, \"commit_ms\": 60.951, \"sealed_new\": {\"second\": 1472, \"minute\": 100, \"hour\": 1}, \"anchor\": {\"ok\": true, \"seq\": 1}} {\"tick\": 2, \"n_nodes\": 5947, \"copy_ms\": 2363.77, \"load_ms\": 978.602, \"commit_ms\": 78.456, \"sealed_new\": {\"second\": 2, \"minute\": 1}, \"anchor\": {\"ok\": true, \"seq\": 2}} {\"tick\": 3, \"n_nodes\": 5956, \"copy_ms\": 1909.147, \"load_ms\": 692.636, \"commit_ms\": 103.233, \"sealed_new\": {\"second\": 3}, \"anchor\": {\"ok\": true, \"seq\": 3}} ",
+  "2026-10-07T22:41:49Z chain_lines_before_run: 7",
+  "2026-10-07T22:41:49Z starting runner EC arms=\"PU\",\"PI\" x30 tag=e3_g2_clo",
+  "2026-10-07T23:19:33Z runner exit: 0",
+  "2026-10-07T23:19:33Z load_after: 19:19  up 36 days, 23:17, 2 users, load averages: 4.40 3.89 4.18",
+  "2026-10-07T23:19:33Z chain_lines final:      377",
+  "2026-10-07T23:19:33Z chain_schemes: {'closure': 377}",
+  "2026-10-07T23:19:33Z done"
+ ],
+ "anchor_chain": {
+  "file": "exp/out/e3_g2_clo_anchor_chain.jsonl.gz",
+  "records": 377,
+  "sha256_uncompressed": "28cacfb4b07a8cd51bb2689252a2fbd62a5dd996f740cd9bb747fea9ddf3d8e3"
+ },
+ "wrapper_script_sha256": "fbdab7b97be280cd4992fb05b20b2ef3138b29523d3a15fe8b317630df6fd74a"
+}

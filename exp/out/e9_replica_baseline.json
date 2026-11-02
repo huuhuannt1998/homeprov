@@ -1,0 +1,476 @@
+{
+ "item": "E9 C3: off-hub replica baseline (R2 W3) from the E8 files: storage of the anchor chain vs the escrow (a full off-hub replica of the committed fields), what each lets a third party verify, and what the anchor host receives",
+ "generated": "2026-10-09T21:20:43.841900+00:00",
+ "script": "exp/sp2027/e9_replica_baseline.py",
+ "script_sha256": "0217d794659bee2ae12eac3c520660bb002b8336d65c04aafac6bc0d39ec5243",
+ "verifier": {
+  "file": "exp/stages/e7_verify.py",
+  "sha256": "7e036386baacea9d05808a50a709489bd554d5a4b0a3d568583d07afbb0ae1f8",
+  "e8_run_used": "7e036386baacea9d05808a50a709489bd554d5a4b0a3d568583d07afbb0ae1f8"
+ },
+ "monitor_code": {
+  "file": "monitor/monitor.py",
+  "sha256": "91e5e8e898bd775525ed22b7dd46ffd8ff01f8b1eeb1aaef91e9a5465d31c966",
+  "e8_run_used": "3e479ae01caf299e697b0274a22ddddbaa6b57b9bf4b730a8774b2d7c5b5282b"
+ },
+ "windows": {
+  "main": {
+   "t_start": 1791523970.0,
+   "t_end": 1791530123.0,
+   "duration_s": 6153.0
+  },
+  "base": {
+   "t_start": 1791530213.0,
+   "t_end": 1791530813.0,
+   "duration_s": 600.0
+  },
+  "stress": {
+   "t_start": 1791530814.0,
+   "t_end": 1791532617.0,
+   "duration_s": 1803.0
+  }
+ },
+ "recorder_rows_written": {
+  "main": {
+   "rows": 9593,
+   "rows_per_minute": 93.54,
+   "seconds_with_a_row": {
+    "k": 2208,
+    "n": 6153,
+    "share": 0.3588
+   }
+  },
+  "base": {
+   "rows": 381,
+   "rows_per_minute": 38.1,
+   "seconds_with_a_row": {
+    "k": 123,
+    "n": 600,
+    "share": 0.205
+   }
+  },
+  "stress": {
+   "rows": 5313,
+   "rows_per_minute": 176.81,
+   "seconds_with_a_row": {
+    "k": 1230,
+    "n": 1803,
+    "share": 0.6822
+   }
+  }
+ },
+ "definitions": {
+  "chain_bytes": "bytes of the anchor's chain lines (JSON plus newline, as anchord stores them) whose recv_ts is in the window",
+  "escrow_bytes": "bytes of the monitor's escrow lines (JSON plus newline, as written) whose sealed_at (sealed-second lines) or poll_ts (keylog lines) is in the window",
+  "per_day_at_window_rate": "bytes in the window / window seconds * 86400: the window's measured rate expressed per day, NOT a measurement over a day",
+  "gzip": "one gzip stream (level 6) of the window's lines; an archival option, not what the run stored"
+ },
+ "monitors": {
+  "stable": {
+   "evaluated": true,
+   "files": {
+    "chain": "exp/out/e8_main_stable_chain.jsonl.gz",
+    "escrow": "exp/out/e8_main_stable_escrow.jsonl.gz",
+    "sign_pubkey": "exp/out/e8_main_stb_sign_pub.pem"
+   },
+   "storage_by_window": {
+    "main": {
+     "chain": {
+      "lines": 1048,
+      "bytes": 1605158,
+      "bytes_gzip": 472053,
+      "bytes_per_s": 260.874,
+      "bytes_per_day_at_window_rate": 22539518,
+      "bytes_gzip_per_day_at_window_rate": 6628536,
+      "bytes_per_recorder_row": 167.33
+     },
+     "escrow": {
+      "lines": 4084,
+      "bytes": 19034864,
+      "bytes_gzip": 1172987,
+      "bytes_per_s": 3093.591,
+      "bytes_per_day_at_window_rate": 267286242,
+      "bytes_gzip_per_day_at_window_rate": 16471002,
+      "bytes_per_recorder_row": 1984.25,
+      "sealed_second_lines": 2208,
+      "keylog_lines": 1876,
+      "sealed_second_bytes": 10410856,
+      "keylog_bytes": 8624008
+     },
+     "escrow_over_chain_bytes": 11.859,
+     "escrow_over_chain_gzip": 2.485
+    },
+    "base": {
+     "chain": {
+      "lines": 103,
+      "bytes": 128536,
+      "bytes_gzip": 35841,
+      "bytes_per_s": 214.227,
+      "bytes_per_day_at_window_rate": 18509184,
+      "bytes_gzip_per_day_at_window_rate": 5161104,
+      "bytes_per_recorder_row": 337.36
+     },
+     "escrow": {
+      "lines": 282,
+      "bytes": 882676,
+      "bytes_gzip": 58492,
+      "bytes_per_s": 1471.127,
+      "bytes_per_day_at_window_rate": 127105344,
+      "bytes_gzip_per_day_at_window_rate": 8422848,
+      "bytes_per_recorder_row": 2316.73,
+      "sealed_second_lines": 123,
+      "keylog_lines": 159,
+      "sealed_second_bytes": 511153,
+      "keylog_bytes": 371523
+     },
+     "escrow_over_chain_bytes": 6.867,
+     "escrow_over_chain_gzip": 1.632
+    },
+    "stress": {
+     "chain": {
+      "lines": 300,
+      "bytes": 597020,
+      "bytes_gzip": 189105,
+      "bytes_per_s": 331.126,
+      "bytes_per_day_at_window_rate": 28609278,
+      "bytes_gzip_per_day_at_window_rate": 9061937,
+      "bytes_per_recorder_row": 112.37
+     },
+     "escrow": {
+      "lines": 1832,
+      "bytes": 11748712,
+      "bytes_gzip": 664360,
+      "bytes_per_s": 6516.202,
+      "bytes_per_day_at_window_rate": 562999843,
+      "bytes_gzip_per_day_at_window_rate": 31836220,
+      "bytes_per_recorder_row": 2211.31,
+      "sealed_second_lines": 1230,
+      "keylog_lines": 602,
+      "sealed_second_bytes": 6978622,
+      "keylog_bytes": 4770090
+     },
+     "escrow_over_chain_bytes": 19.679,
+     "escrow_over_chain_gzip": 3.513
+    }
+   },
+   "whole_files": {
+    "chain_lines": 1509,
+    "chain_bytes": 2545379,
+    "escrow_lines": 7609,
+    "escrow_bytes": 39927650,
+    "first_recv_ts": 1791523898.8316162,
+    "last_recv_ts": 1791532784.2456286,
+    "note": "whole files, including the first poll's seal of the re-read window (history before the monitor started) and the set-up and teardown minutes outside the three windows"
+   },
+   "third_party_checks": {
+    "signatures": {
+     "monitor_records": 1508,
+     "signed_ok": 1508,
+     "unsigned": 0,
+     "bad_signature": [],
+     "wrong_key": [],
+     "pubkey_fp": "e96b6e5305ef13b7f38610674434a29ac56211c09bb631015def6a6a31a25f80"
+    },
+    "escrow_sealed_second_lines": {
+     "lines": 4892,
+     "self_consistent": 4892,
+     "reproduce_the_anchored_root": 4892,
+     "no_anchored_root_for_the_second": 0,
+     "mismatches_first_20": []
+    },
+    "escrow_keylog_lines": {
+     "lines": 2717,
+     "keylog_lines_verified": 2717,
+     "keylog_lines_rejected": 0
+    },
+    "doctored_escrow_line_control": {
+     "seg": "1791518405",
+     "field_changed": "context_id_bin",
+     "doctored_line_self_consistent": true,
+     "recomputed_acc_equals_doctored_line_acc": true,
+     "doctored_acc_equals_anchored_root": false,
+     "original_acc_equals_anchored_root": true,
+     "what": "one committed value of the line's first node extended by one byte (field_changed), the line's acc recomputed from the doctored tuples (as a replica host could)"
+    }
+   },
+   "anchor_host_receives": {
+    "payload_fields_by_record_count": {
+     "copy_at": 1508,
+     "coverage": 1508,
+     "encoding": 1508,
+     "keylog": 1508,
+     "marker": 1,
+     "marker_tag": 1,
+     "n_sealed": 1508,
+     "observer": 1509,
+     "scheme": 1508,
+     "sealed": 1508,
+     "seq_local": 1508,
+     "sig": 1508,
+     "sig_alg": 1508,
+     "sig_fp": 1508,
+     "since": 1508,
+     "stable_exclude": 1508,
+     "through": 1508,
+     "ts": 1508,
+     "wm": 1508
+    },
+    "sealed_and_keylog_subfields": {
+     "keylog.<table>[].acc": 2717,
+     "keylog.<table>[].from": 3046,
+     "keylog.<table>[].n": 3046,
+     "keylog.<table>[].rows": 2717,
+     "keylog.<table>[].start": 2,
+     "keylog.<table>[].to": 3046,
+     "sealed.<gran>.<seg>.acc": 5134,
+     "sealed.<gran>.<seg>.n": 5134
+    },
+    "committed_values_searched": {
+     "text_values_min_chars": 8,
+     "n_text": 386,
+     "blob_values_min_bytes": 8,
+     "n_blob": 32691,
+     "text_found_in_chain": 0,
+     "text_found_first_20": [],
+     "blob_found_in_chain": 0,
+     "blob_found_first_20": []
+    },
+    "activity_timeline": {
+     "main": {
+      "seconds_with_a_nonempty_anchored_root": 2210,
+      "recorder_seconds_with_a_row_e8_score": 2208,
+      "window_seconds": 6153
+     },
+     "base": {
+      "seconds_with_a_nonempty_anchored_root": 123,
+      "recorder_seconds_with_a_row_e8_score": 123,
+      "window_seconds": 600
+     },
+     "stress": {
+      "seconds_with_a_nonempty_anchored_root": 1231,
+      "recorder_seconds_with_a_row_e8_score": 1230,
+      "window_seconds": 1803
+     }
+    }
+   }
+  },
+  "closure": {
+   "evaluated": false,
+   "files": {
+    "chain": "exp/out/e8_main_closure_chain.jsonl.gz",
+    "escrow": "exp/out/e8_main_closure_escrow.jsonl.gz",
+    "sign_pubkey": "exp/out/e8_main_clo_sign_pub.pem"
+   },
+   "storage_by_window": {
+    "main": {
+     "chain": {
+      "lines": 1066,
+      "bytes": 1574168,
+      "bytes_gzip": 475769,
+      "bytes_per_s": 255.837,
+      "bytes_per_day_at_window_rate": 22104358,
+      "bytes_gzip_per_day_at_window_rate": 6680715,
+      "bytes_per_recorder_row": 164.1
+     },
+     "escrow": {
+      "lines": 4111,
+      "bytes": 8947512,
+      "bytes_gzip": 874193,
+      "bytes_per_s": 1454.171,
+      "bytes_per_day_at_window_rate": 125640344,
+      "bytes_gzip_per_day_at_window_rate": 12275358,
+      "bytes_per_recorder_row": 932.71,
+      "sealed_second_lines": 2208,
+      "keylog_lines": 1903,
+      "sealed_second_bytes": 3930314,
+      "keylog_bytes": 5017198
+     },
+     "escrow_over_chain_bytes": 5.684,
+     "escrow_over_chain_gzip": 1.837
+    },
+    "base": {
+     "chain": {
+      "lines": 103,
+      "bytes": 123733,
+      "bytes_gzip": 35713,
+      "bytes_per_s": 206.222,
+      "bytes_per_day_at_window_rate": 17817552,
+      "bytes_gzip_per_day_at_window_rate": 5142672,
+      "bytes_per_recorder_row": 324.76
+     },
+     "escrow": {
+      "lines": 281,
+      "bytes": 417838,
+      "bytes_gzip": 44538,
+      "bytes_per_s": 696.397,
+      "bytes_per_day_at_window_rate": 60168672,
+      "bytes_gzip_per_day_at_window_rate": 6413472,
+      "bytes_per_recorder_row": 1096.69,
+      "sealed_second_lines": 124,
+      "keylog_lines": 157,
+      "sealed_second_bytes": 195209,
+      "keylog_bytes": 222629
+     },
+     "escrow_over_chain_bytes": 3.377,
+     "escrow_over_chain_gzip": 1.247
+    },
+    "stress": {
+     "chain": {
+      "lines": 311,
+      "bytes": 594429,
+      "bytes_gzip": 191830,
+      "bytes_per_s": 329.689,
+      "bytes_per_day_at_window_rate": 28485117,
+      "bytes_gzip_per_day_at_window_rate": 9192519,
+      "bytes_per_recorder_row": 111.88
+     },
+     "escrow": {
+      "lines": 1855,
+      "bytes": 5343396,
+      "bytes_gzip": 480194,
+      "bytes_per_s": 2963.614,
+      "bytes_per_day_at_window_rate": 256056248,
+      "bytes_gzip_per_day_at_window_rate": 23010960,
+      "bytes_per_recorder_row": 1005.72,
+      "sealed_second_lines": 1231,
+      "keylog_lines": 624,
+      "sealed_second_bytes": 2608568,
+      "keylog_bytes": 2734828
+     },
+     "escrow_over_chain_bytes": 8.989,
+     "escrow_over_chain_gzip": 2.503
+    }
+   },
+   "whole_files": {
+    "chain_lines": 1539,
+    "chain_bytes": 2505191,
+    "escrow_lines": 7660,
+    "escrow_bytes": 17854787,
+    "first_recv_ts": 1791523899.335238,
+    "last_recv_ts": 1791532784.5052757,
+    "note": "whole files, including the first poll's seal of the re-read window (history before the monitor started) and the set-up and teardown minutes outside the three windows"
+   },
+   "third_party_checks": {
+    "signatures": {
+     "monitor_records": 1538,
+     "signed_ok": 1538,
+     "unsigned": 0,
+     "bad_signature": [],
+     "wrong_key": [],
+     "pubkey_fp": "1272d204e82098a69fc7269a8ddde36ceec8fde2fd7732f8976cd2ce5bfc989d"
+    },
+    "escrow_sealed_second_lines": {
+     "lines": 4892,
+     "self_consistent": 4892,
+     "reproduce_the_anchored_root": 4892,
+     "no_anchored_root_for_the_second": 0,
+     "mismatches_first_20": []
+    },
+    "escrow_keylog_lines": {
+     "lines": 2768,
+     "keylog_lines_verified": 2768,
+     "keylog_lines_rejected": 0
+    },
+    "doctored_escrow_line_control": {
+     "seg": "1791518405",
+     "field_changed": "content (node column 3)",
+     "doctored_line_self_consistent": true,
+     "recomputed_acc_equals_doctored_line_acc": true,
+     "doctored_acc_equals_anchored_root": false,
+     "original_acc_equals_anchored_root": true,
+     "what": "one committed value of the line's first node extended by one byte (field_changed), the line's acc recomputed from the doctored tuples (as a replica host could)"
+    }
+   },
+   "anchor_host_receives": {
+    "payload_fields_by_record_count": {
+     "copy_at": 1538,
+     "coverage": 1538,
+     "encoding": 1538,
+     "keylog": 1538,
+     "marker": 1,
+     "marker_tag": 1,
+     "n_sealed": 1538,
+     "observer": 1539,
+     "scheme": 1538,
+     "sealed": 1538,
+     "seq_local": 1538,
+     "sig": 1538,
+     "sig_alg": 1538,
+     "sig_fp": 1538,
+     "since": 1538,
+     "through": 1538,
+     "ts": 1538,
+     "wm": 1538
+    },
+    "sealed_and_keylog_subfields": {
+     "keylog.<table>[].acc": 2768,
+     "keylog.<table>[].from": 3105,
+     "keylog.<table>[].n": 3105,
+     "keylog.<table>[].rows": 2768,
+     "keylog.<table>[].start": 2,
+     "keylog.<table>[].to": 3105,
+     "sealed.<gran>.<seg>.acc": 5134,
+     "sealed.<gran>.<seg>.n": 5134
+    },
+    "committed_values_searched": {
+     "text_values_min_chars": 8,
+     "n_text": 362,
+     "blob_values_min_bytes": 8,
+     "n_blob": 32684,
+     "text_found_in_chain": 0,
+     "text_found_first_20": [],
+     "blob_found_in_chain": 0,
+     "blob_found_first_20": []
+    },
+    "activity_timeline": {
+     "main": {
+      "seconds_with_a_nonempty_anchored_root": 2210,
+      "recorder_seconds_with_a_row_e8_score": 2208,
+      "window_seconds": 6153
+     },
+     "base": {
+      "seconds_with_a_nonempty_anchored_root": 123,
+      "recorder_seconds_with_a_row_e8_score": 123,
+      "window_seconds": 600
+     },
+     "stress": {
+      "seconds_with_a_nonempty_anchored_root": 1231,
+      "recorder_seconds_with_a_row_e8_score": 1230,
+      "window_seconds": 1803
+     }
+    }
+   }
+  }
+ },
+ "inputs": {
+  "exp/out/e8_main_stable_chain.jsonl.gz": {
+   "sha256_gz": "f4a3a0c86b1a522c91b9c5e73eb317dd8438d1b21785c83484e20f33a9dc9145",
+   "sha256_uncompressed": "7ac24d8985f11f9035395669051c74c8d2bfea56cdd4a6dc9cb6f51265744f5b"
+  },
+  "exp/out/e8_main_stable_escrow.jsonl.gz": {
+   "sha256_gz": "dae24f8789938933e912fb66ffd26a45e57e804af93f1df6606e7e2b4d114105",
+   "sha256_uncompressed": "b25a08772378d4605b9ae35558305232399f6ccc3f499ca0a44559a5e2855047"
+  },
+  "exp/out/e8_main_stb_sign_pub.pem": {
+   "sha256": "16de074e2469f31d2525733f25483ded7a18b408406fb1b91caf777e9aa001b1"
+  },
+  "exp/out/e8_main_closure_chain.jsonl.gz": {
+   "sha256_gz": "177f21623f280470d4f8fefd50ea5c567f58b948f66da4bd6e37f71a4cbb55f1",
+   "sha256_uncompressed": "1d35e0614463fb27b8880a302cf0b27eac91ca091edbd5ef1ffd0a68afcd01c6"
+  },
+  "exp/out/e8_main_closure_escrow.jsonl.gz": {
+   "sha256_gz": "09731a68f5d7d9ee6fe7bfed5ce8e1afac063632c952c803b3548eac2b2aee6d",
+   "sha256_uncompressed": "5c3a1c6c51345d5471f014de7d85079f5f519cc235be7bc34ba528993713cfb6"
+  },
+  "exp/out/e8_main_clo_sign_pub.pem": {
+   "sha256": "0e610317af1593b0a25e4ca3ea49d15a9b614f2d55788e0e65c32e0329878a00"
+  }
+ },
+ "what_each_lets_a_third_party_verify": {
+  "anchor_chain_alone": "the monitor's records are authentic (Ed25519 under the published key) and linked; it holds no row content, so alone it shows neither what a row said nor whether a recorder is unchanged",
+  "anchor_chain_plus_recorder_or_extract": "whether each sealed segment of the presented rows reproduces the anchored root (match, violation, or unknown); a changed row is detected, its original content is not recovered",
+  "anchor_chain_plus_escrow": "each escrow line is authenticated by reproducing an anchored root or keylog sub-range (counts above), after which the original committed fields of every sealed second are recoverable",
+  "escrow_or_replica_alone": "self-consistency only: the replica's host (or anyone who can write it) can change a line and recompute its fold, as the doctored-line control shows; a third party must trust that host for integrity"
+ },
+ "what_the_anchor_host_learns": "Roots (32-byte hashes), row counts per segment, the poll's times and watermarks (row keys), and per first-observed row its key offset, a 32-bit prefix of its row hash and the second it was in (field lists above); so it learns WHEN rows were written and how many (the activity timeline, counted above), and no committed value (search above). The escrow's host holds every committed value of every sealed row."
+}

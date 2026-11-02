@@ -1,0 +1,801 @@
+{
+ "item": "E9 C1 supplement: consistency of a readonly_shm reader (the direct-read mode's connection) vs an ordinary read-only reader, each running quick_check in one read transaction while a writer checkpoints aggressively; on the Mac and in the C1 deployment pattern (reader container with the volume mounted read-only)",
+ "generated": "2026-10-10T01:49:37.083081+00:00",
+ "script": "exp/sp2027/e9_readonly_shm_probe.py",
+ "script_sha256": "653a174d99baea5febf5e9ddcf2cba1ab55a57b550be59243c24f76296a61625",
+ "writer_load": {
+  "wal_autocheckpoint_pages": 8,
+  "rows_per_txn": 20,
+  "sleep_s": 0.005
+ },
+ "conditions": {
+  "host_k1": {
+   "sqlite": "3.51.0",
+   "python": "3.13.11",
+   "trials": {
+    "readonly_shm": [
+     {
+      "i": 0,
+      "outcome": "ok",
+      "seconds": 0.228
+     },
+     {
+      "i": 1,
+      "outcome": "ok",
+      "seconds": 0.23
+     },
+     {
+      "i": 2,
+      "outcome": "ok",
+      "seconds": 0.377
+     },
+     {
+      "i": 3,
+      "outcome": "ok",
+      "seconds": 0.23
+     },
+     {
+      "i": 4,
+      "outcome": "ok",
+      "seconds": 0.227
+     },
+     {
+      "i": 5,
+      "outcome": "ok",
+      "seconds": 0.226
+     },
+     {
+      "i": 6,
+      "outcome": "ok",
+      "seconds": 0.229
+     },
+     {
+      "i": 7,
+      "outcome": "ok",
+      "seconds": 0.226
+     },
+     {
+      "i": 8,
+      "outcome": "ok",
+      "seconds": 0.23
+     },
+     {
+      "i": 9,
+      "outcome": "ok",
+      "seconds": 0.226
+     },
+     {
+      "i": 10,
+      "outcome": "ok",
+      "seconds": 0.263
+     },
+     {
+      "i": 11,
+      "outcome": "ok",
+      "seconds": 0.226
+     },
+     {
+      "i": 12,
+      "outcome": "ok",
+      "seconds": 0.224
+     },
+     {
+      "i": 13,
+      "outcome": "ok",
+      "seconds": 0.228
+     },
+     {
+      "i": 14,
+      "outcome": "ok",
+      "seconds": 0.274
+     },
+     {
+      "i": 15,
+      "outcome": "ok",
+      "seconds": 0.283
+     },
+     {
+      "i": 16,
+      "outcome": "ok",
+      "seconds": 0.236
+     },
+     {
+      "i": 17,
+      "outcome": "ok",
+      "seconds": 0.235
+     },
+     {
+      "i": 18,
+      "outcome": "ok",
+      "seconds": 0.235
+     },
+     {
+      "i": 19,
+      "outcome": "ok",
+      "seconds": 0.233
+     }
+    ],
+    "ro": [
+     {
+      "i": 0,
+      "outcome": "ok",
+      "seconds": 0.223
+     },
+     {
+      "i": 1,
+      "outcome": "ok",
+      "seconds": 0.274
+     },
+     {
+      "i": 2,
+      "outcome": "ok",
+      "seconds": 0.254
+     },
+     {
+      "i": 3,
+      "outcome": "ok",
+      "seconds": 0.234
+     },
+     {
+      "i": 4,
+      "outcome": "ok",
+      "seconds": 0.225
+     },
+     {
+      "i": 5,
+      "outcome": "ok",
+      "seconds": 0.234
+     },
+     {
+      "i": 6,
+      "outcome": "ok",
+      "seconds": 0.236
+     },
+     {
+      "i": 7,
+      "outcome": "ok",
+      "seconds": 0.237
+     },
+     {
+      "i": 8,
+      "outcome": "ok",
+      "seconds": 0.243
+     },
+     {
+      "i": 9,
+      "outcome": "ok",
+      "seconds": 0.226
+     },
+     {
+      "i": 10,
+      "outcome": "ok",
+      "seconds": 0.241
+     },
+     {
+      "i": 11,
+      "outcome": "ok",
+      "seconds": 0.233
+     },
+     {
+      "i": 12,
+      "outcome": "ok",
+      "seconds": 0.225
+     },
+     {
+      "i": 13,
+      "outcome": "ok",
+      "seconds": 0.228
+     },
+     {
+      "i": 14,
+      "outcome": "ok",
+      "seconds": 0.245
+     },
+     {
+      "i": 15,
+      "outcome": "ok",
+      "seconds": 0.225
+     },
+     {
+      "i": 16,
+      "outcome": "ok",
+      "seconds": 0.258
+     },
+     {
+      "i": 17,
+      "outcome": "ok",
+      "seconds": 0.24
+     },
+     {
+      "i": 18,
+      "outcome": "ok",
+      "seconds": 0.258
+     },
+     {
+      "i": 19,
+      "outcome": "ok",
+      "seconds": 0.25
+     }
+    ]
+   },
+   "writer": {
+    "rows_inserted": 31000,
+    "sqlite": "3.51.0"
+   },
+   "source": {
+    "path": "<research-dir>/HOMEPROV-P13-exp/e9pre/c1/master_k1.db",
+    "sha256": "6030e982bf938a6fbc04ab93ee4c388873cd7d07dad04e26c279d45d443ac4cf",
+    "bytes": 191459328
+   },
+   "summary": {
+    "readonly_shm": {
+     "n": 20,
+     "ok": 20,
+     "failed": 0,
+     "failure_kinds": [],
+     "seconds_median": 0.23
+    },
+    "ro": {
+     "n": 20,
+     "ok": 20,
+     "failed": 0,
+     "failure_kinds": [],
+     "seconds_median": 0.237
+    }
+   }
+  },
+  "host_k15": {
+   "sqlite": "3.51.0",
+   "python": "3.13.11",
+   "trials": {
+    "readonly_shm": [
+     {
+      "i": 0,
+      "outcome": "ok",
+      "seconds": 61.084
+     },
+     {
+      "i": 1,
+      "outcome": "ok",
+      "seconds": 29.838
+     },
+     {
+      "i": 2,
+      "outcome": "ok",
+      "seconds": 30.149
+     },
+     {
+      "i": 3,
+      "outcome": "ok",
+      "seconds": 27.74
+     },
+     {
+      "i": 4,
+      "outcome": "ok",
+      "seconds": 3.733
+     },
+     {
+      "i": 5,
+      "outcome": "ok",
+      "seconds": 3.797
+     }
+    ],
+    "ro": [
+     {
+      "i": 0,
+      "outcome": "ok",
+      "seconds": 40.518
+     },
+     {
+      "i": 1,
+      "outcome": "ok",
+      "seconds": 31.453
+     },
+     {
+      "i": 2,
+      "outcome": "ok",
+      "seconds": 30.803
+     },
+     {
+      "i": 3,
+      "outcome": "ok",
+      "seconds": 4.522
+     },
+     {
+      "i": 4,
+      "outcome": "ok",
+      "seconds": 3.755
+     },
+     {
+      "i": 5,
+      "outcome": "ok",
+      "seconds": 3.723
+     }
+    ]
+   },
+   "writer": {
+    "rows_inserted": 713700,
+    "sqlite": "3.51.0"
+   },
+   "source": {
+    "path": "<research-dir>/HOMEPROV-P13-exp/e9pre/c1/master_k15.db",
+    "sha256": "e2045254242a2f042d402a93103e40863d87e3adc4bd82f8be180a92bb5e7a74",
+    "bytes": 2935984128
+   },
+   "summary": {
+    "readonly_shm": {
+     "n": 6,
+     "ok": 6,
+     "failed": 0,
+     "failure_kinds": [],
+     "seconds_median": 29.838
+    },
+    "ro": {
+     "n": 6,
+     "ok": 6,
+     "failed": 0,
+     "failure_kinds": [],
+     "seconds_median": 30.803
+    }
+   }
+  },
+  "docker_k1": {
+   "sqlite": "3.46.1",
+   "python": "3.12.13",
+   "trials": {
+    "readonly_shm": [
+     {
+      "i": 0,
+      "outcome": "ok",
+      "seconds": 0.254
+     },
+     {
+      "i": 1,
+      "outcome": "ok",
+      "seconds": 0.234
+     },
+     {
+      "i": 2,
+      "outcome": "ok",
+      "seconds": 0.22
+     },
+     {
+      "i": 3,
+      "outcome": "ok",
+      "seconds": 0.219
+     },
+     {
+      "i": 4,
+      "outcome": "ok",
+      "seconds": 0.219
+     },
+     {
+      "i": 5,
+      "outcome": "ok",
+      "seconds": 0.232
+     },
+     {
+      "i": 6,
+      "outcome": "ok",
+      "seconds": 0.218
+     },
+     {
+      "i": 7,
+      "outcome": "ok",
+      "seconds": 0.232
+     },
+     {
+      "i": 8,
+      "outcome": "ok",
+      "seconds": 0.22
+     },
+     {
+      "i": 9,
+      "outcome": "ok",
+      "seconds": 0.22
+     },
+     {
+      "i": 10,
+      "outcome": "ok",
+      "seconds": 0.238
+     },
+     {
+      "i": 11,
+      "outcome": "ok",
+      "seconds": 0.221
+     },
+     {
+      "i": 12,
+      "outcome": "ok",
+      "seconds": 0.238
+     },
+     {
+      "i": 13,
+      "outcome": "ok",
+      "seconds": 0.259
+     },
+     {
+      "i": 14,
+      "outcome": "ok",
+      "seconds": 0.246
+     },
+     {
+      "i": 15,
+      "outcome": "ok",
+      "seconds": 0.227
+     },
+     {
+      "i": 16,
+      "outcome": "ok",
+      "seconds": 0.222
+     },
+     {
+      "i": 17,
+      "outcome": "ok",
+      "seconds": 0.219
+     },
+     {
+      "i": 18,
+      "outcome": "ok",
+      "seconds": 0.222
+     },
+     {
+      "i": 19,
+      "outcome": "ok",
+      "seconds": 0.245
+     }
+    ],
+    "ro": [
+     {
+      "i": 0,
+      "outcome": "ok",
+      "seconds": 0.228
+     },
+     {
+      "i": 1,
+      "outcome": "ok",
+      "seconds": 0.22
+     },
+     {
+      "i": 2,
+      "outcome": "ok",
+      "seconds": 0.218
+     },
+     {
+      "i": 3,
+      "outcome": "ok",
+      "seconds": 0.222
+     },
+     {
+      "i": 4,
+      "outcome": "ok",
+      "seconds": 0.22
+     },
+     {
+      "i": 5,
+      "outcome": "ok",
+      "seconds": 0.222
+     },
+     {
+      "i": 6,
+      "outcome": "ok",
+      "seconds": 0.22
+     },
+     {
+      "i": 7,
+      "outcome": "ok",
+      "seconds": 0.221
+     },
+     {
+      "i": 8,
+      "outcome": "ok",
+      "seconds": 0.22
+     },
+     {
+      "i": 9,
+      "outcome": "ok",
+      "seconds": 0.268
+     },
+     {
+      "i": 10,
+      "outcome": "ok",
+      "seconds": 0.22
+     },
+     {
+      "i": 11,
+      "outcome": "ok",
+      "seconds": 0.22
+     },
+     {
+      "i": 12,
+      "outcome": "ok",
+      "seconds": 0.225
+     },
+     {
+      "i": 13,
+      "outcome": "ok",
+      "seconds": 0.242
+     },
+     {
+      "i": 14,
+      "outcome": "ok",
+      "seconds": 0.227
+     },
+     {
+      "i": 15,
+      "outcome": "ok",
+      "seconds": 0.222
+     },
+     {
+      "i": 16,
+      "outcome": "ok",
+      "seconds": 0.219
+     },
+     {
+      "i": 17,
+      "outcome": "ok",
+      "seconds": 0.225
+     },
+     {
+      "i": 18,
+      "outcome": "ok",
+      "seconds": 0.23
+     },
+     {
+      "i": 19,
+      "outcome": "ok",
+      "seconds": 0.223
+     }
+    ]
+   },
+   "writer": {
+    "rows_inserted": 32260,
+    "sqlite": "3.46.1"
+   },
+   "reader_mount": "read-only (-v vol:/d:ro)",
+   "reader_limits": null,
+   "source": {
+    "path": "<research-dir>/HOMEPROV-P13-exp/e9pre/c1/master_k1.db",
+    "sha256": "6030e982bf938a6fbc04ab93ee4c388873cd7d07dad04e26c279d45d443ac4cf",
+    "bytes": 191459328
+   },
+   "summary": {
+    "readonly_shm": {
+     "n": 20,
+     "ok": 20,
+     "failed": 0,
+     "failure_kinds": [],
+     "seconds_median": 0.227
+    },
+    "ro": {
+     "n": 20,
+     "ok": 20,
+     "failed": 0,
+     "failure_kinds": [],
+     "seconds_median": 0.222
+    }
+   }
+  },
+  "docker_k5": {
+   "sqlite": "3.46.1",
+   "python": "3.12.13",
+   "trials": {
+    "readonly_shm": [
+     {
+      "i": 0,
+      "outcome": "ok",
+      "seconds": 1.24
+     },
+     {
+      "i": 1,
+      "outcome": "ok",
+      "seconds": 1.12
+     },
+     {
+      "i": 2,
+      "outcome": "ok",
+      "seconds": 1.102
+     },
+     {
+      "i": 3,
+      "outcome": "ok",
+      "seconds": 1.111
+     },
+     {
+      "i": 4,
+      "outcome": "ok",
+      "seconds": 1.393
+     },
+     {
+      "i": 5,
+      "outcome": "ok",
+      "seconds": 1.114
+     },
+     {
+      "i": 6,
+      "outcome": "ok",
+      "seconds": 1.283
+     },
+     {
+      "i": 7,
+      "outcome": "ok",
+      "seconds": 1.187
+     },
+     {
+      "i": 8,
+      "outcome": "ok",
+      "seconds": 1.243
+     },
+     {
+      "i": 9,
+      "outcome": "ok",
+      "seconds": 1.195
+     }
+    ],
+    "ro": [
+     {
+      "i": 0,
+      "outcome": "ok",
+      "seconds": 1.111
+     },
+     {
+      "i": 1,
+      "outcome": "ok",
+      "seconds": 1.116
+     },
+     {
+      "i": 2,
+      "outcome": "ok",
+      "seconds": 1.106
+     },
+     {
+      "i": 3,
+      "outcome": "ok",
+      "seconds": 1.158
+     },
+     {
+      "i": 4,
+      "outcome": "ok",
+      "seconds": 1.2
+     },
+     {
+      "i": 5,
+      "outcome": "ok",
+      "seconds": 1.122
+     },
+     {
+      "i": 6,
+      "outcome": "ok",
+      "seconds": 1.135
+     },
+     {
+      "i": 7,
+      "outcome": "ok",
+      "seconds": 1.209
+     },
+     {
+      "i": 8,
+      "outcome": "ok",
+      "seconds": 1.138
+     },
+     {
+      "i": 9,
+      "outcome": "ok",
+      "seconds": 1.118
+     }
+    ]
+   },
+   "writer": {
+    "rows_inserted": 67180,
+    "sqlite": "3.46.1"
+   },
+   "reader_mount": "read-only (-v vol:/d:ro)",
+   "reader_limits": null,
+   "source": {
+    "path": "<research-dir>/HOMEPROV-P13-exp/e9pre/c1/master_k5.db",
+    "sha256": "d0c0bf057cd76209460b74d6945f7ee91a3bd47533e3095bf835aa4e6269c426",
+    "bytes": 961363968
+   },
+   "summary": {
+    "readonly_shm": {
+     "n": 10,
+     "ok": 10,
+     "failed": 0,
+     "failure_kinds": [],
+     "seconds_median": 1.195
+    },
+    "ro": {
+     "n": 10,
+     "ok": 10,
+     "failed": 0,
+     "failure_kinds": [],
+     "seconds_median": 1.135
+    }
+   }
+  },
+  "docker_limited_k15": {
+   "sqlite": "3.46.1",
+   "python": "3.12.13",
+   "trials": {
+    "readonly_shm": [
+     {
+      "i": 0,
+      "outcome": "ok",
+      "seconds": 24.134
+     },
+     {
+      "i": 1,
+      "outcome": "ok",
+      "seconds": 4.818
+     },
+     {
+      "i": 2,
+      "outcome": "ok",
+      "seconds": 7.011
+     },
+     {
+      "i": 3,
+      "outcome": "ok",
+      "seconds": 20.662
+     }
+    ],
+    "ro": [
+     {
+      "i": 0,
+      "outcome": "ok",
+      "seconds": 6.892
+     },
+     {
+      "i": 1,
+      "outcome": "ok",
+      "seconds": 4.548
+     },
+     {
+      "i": 2,
+      "outcome": "ok",
+      "seconds": 8.437
+     },
+     {
+      "i": 3,
+      "outcome": "ok",
+      "seconds": 33.922
+     }
+    ]
+   },
+   "writer": {
+    "rows_inserted": 287860,
+    "sqlite": "3.46.1"
+   },
+   "reader_mount": "read-only (-v vol:/d:ro)",
+   "reader_limits": {
+    "cpus": "1",
+    "memory": "1g",
+    "device_read_bps": "100mb",
+    "device_write_bps": "50mb",
+    "device": "/dev/vda"
+   },
+   "source": {
+    "path": "<research-dir>/HOMEPROV-P13-exp/e9pre/c1/master_k15.db",
+    "sha256": "e2045254242a2f042d402a93103e40863d87e3adc4bd82f8be180a92bb5e7a74",
+    "bytes": 2935984128
+   },
+   "summary": {
+    "readonly_shm": {
+     "n": 4,
+     "ok": 4,
+     "failed": 0,
+     "failure_kinds": [],
+     "seconds_median": 20.662
+    },
+    "ro": {
+     "n": 4,
+     "ok": 4,
+     "failed": 0,
+     "failure_kinds": [],
+     "seconds_median": 8.437
+    }
+   }
+  }
+ },
+ "note": "A deliberately aggressive checkpoint rate: the question is whether the reader's snapshot is protected, not how often a hub's default checkpointing would hit it."
+}

@@ -1,0 +1,1481 @@
+{
+ "item": "E9 C2: deferred-choice attack on an in-process committer vs the external monitor (R1 W2). The resident blinds the in-process committer (controls its read path) from installation so it never commits the honest row, picks its target later, and the committer anchors the rewritten root to a first-write-wins anchor; the external monitor on the same hub had sealed the honest row and detects the rewrite. Controlled harness on a real-schema scratch recorder; monitor.py and the anchor unchanged; placement is the only variable.",
+ "generated": "2026-10-09T21:46:33.680366+00:00",
+ "script": "exp/stages/e9_deferred_choice.py",
+ "script_sha256": "5ce1733d524701ebcf889dda7e186565e8f502c304cf06fb53fb836ba443f33c",
+ "monitor_py": "monitor/monitor.py",
+ "monitor_sha256": "38370b2a51ea47b5ad30ab99670a3799a1958c559c4f83ecc02a2bee3a70ac9c",
+ "verifier": {
+  "file": "exp/stages/e7_verify.py",
+  "sha256": "d7fb73ccff560b213003832558c743e7c2d45d7d8e2d2f99226e2fa516076db7"
+ },
+ "anchor": {
+  "image": "hpr-anchord:e8",
+  "entry": "anchord.py (first-write-wins, HMAC append key, tagged replies)",
+  "image_id": "sha256:7f23dcb163785fb36f1ff633fb8bb217fd9430e3cd4a1dd4e22e09a500be58b3"
+ },
+ "forge_primitive": {
+  "what": "member-account swap (PSR): UPDATE context_user_id_bin A->B on the target context's state and event rows",
+  "also_in": [
+   "exp/rig/forge.py",
+   "testbed/real/ha-config/custom_components/homeprov_ec arm PSR"
+  ]
+ },
+ "source_recorder": {
+  "path": "<research-dir>/HOMEPROV-P13-exp/e9pre/c1/master_k1.db",
+  "sha256": "6030e982bf938a6fbc04ab93ee4c388873cd7d07dad04e26c279d45d443ac4cf",
+  "read_only": true,
+  "note": "a synthetic master built from the lab recorder's 2026.7.4 schema and value distributions (exp/sp2027/e9_cost_scale.py generate); copied, never written"
+ },
+ "method": {
+  "placement_is_the_only_variable": true,
+  "M_ext": "external monitor: monitor.py, real virtual clock, reads the recorder itself (read path not reachable from the hub process)",
+  "C_inproc": "in-process committer: the SAME monitor.py, run in the resident's interpreter; the resident releases the target second to its read path only after rewriting it, which is the module-level read-path rebinding R1 W2 names",
+  "trials": 30,
+  "second_spacing_s": 6,
+  "clock": "virtual; no wall-clock waits"
+ },
+ "results_summary": {
+  "n_trials": 30,
+  "external_monitor_sealed_honest_second": {
+   "k": 30,
+   "n": 30,
+   "ci": [
+    0.884,
+    1.0
+   ]
+  },
+  "external_monitor_detected_rewrite": {
+   "k": 30,
+   "n": 30,
+   "ci": [
+    0.884,
+    1.0
+   ]
+  },
+  "stolen_key_reanchor_on_external_anchor_409": {
+   "k": 30,
+   "n": 30,
+   "ci": [
+    0.884,
+    1.0
+   ],
+   "meaning": "the external anchor refuses a different root for a second it already holds: a holder of the append key can withhold, not forge"
+  },
+  "in_process_committer_anchored_rewritten_second": {
+   "k": 30,
+   "n": 30,
+   "ci": [
+    0.884,
+    1.0
+   ]
+  },
+  "in_process_committer_detected_rewrite": {
+   "k": 0,
+   "n": 30,
+   "ci": [
+    0.0,
+    0.116
+   ],
+   "meaning": "0 expected: the in-process committer certified the rewrite, so its own chain does not contradict the rewritten recorder"
+  }
+ },
+ "scored": {
+  "ext": {
+   "sign_pubkey": "ext/sign_pub.pem",
+   "signatures": {
+    "checked": true,
+    "monitor_records": 34,
+    "signed_ok": 34,
+    "bad_signature": [],
+    "wrong_key": []
+   },
+   "monitor_records": {
+    "second": {
+     "anchored_in_window": 1395,
+     "violated": 30,
+     "violated_existing_rule": 30
+    },
+    "minute": {
+     "anchored_in_window": 118,
+     "violated": 0,
+     "violated_existing_rule": 0
+    },
+    "hour": {
+     "anchored_in_window": 1,
+     "violated": 0,
+     "violated_existing_rule": 0
+    }
+   },
+   "n_detected": 30,
+   "n_anchored": 30,
+   "per_trial": [
+    {
+     "second": 1791518130,
+     "anchored": true,
+     "flagged": true,
+     "second_violation": true,
+     "attributable": true
+    },
+    {
+     "second": 1791518136,
+     "anchored": true,
+     "flagged": true,
+     "second_violation": true,
+     "attributable": true
+    },
+    {
+     "second": 1791518142,
+     "anchored": true,
+     "flagged": true,
+     "second_violation": true,
+     "attributable": true
+    },
+    {
+     "second": 1791518148,
+     "anchored": true,
+     "flagged": true,
+     "second_violation": true,
+     "attributable": true
+    },
+    {
+     "second": 1791518154,
+     "anchored": true,
+     "flagged": true,
+     "second_violation": true,
+     "attributable": true
+    },
+    {
+     "second": 1791518160,
+     "anchored": true,
+     "flagged": true,
+     "second_violation": true,
+     "attributable": true
+    },
+    {
+     "second": 1791518166,
+     "anchored": true,
+     "flagged": true,
+     "second_violation": true,
+     "attributable": true
+    },
+    {
+     "second": 1791518172,
+     "anchored": true,
+     "flagged": true,
+     "second_violation": true,
+     "attributable": true
+    },
+    {
+     "second": 1791518178,
+     "anchored": true,
+     "flagged": true,
+     "second_violation": true,
+     "attributable": true
+    },
+    {
+     "second": 1791518184,
+     "anchored": true,
+     "flagged": true,
+     "second_violation": true,
+     "attributable": true
+    },
+    {
+     "second": 1791518190,
+     "anchored": true,
+     "flagged": true,
+     "second_violation": true,
+     "attributable": true
+    },
+    {
+     "second": 1791518196,
+     "anchored": true,
+     "flagged": true,
+     "second_violation": true,
+     "attributable": true
+    },
+    {
+     "second": 1791518202,
+     "anchored": true,
+     "flagged": true,
+     "second_violation": true,
+     "attributable": true
+    },
+    {
+     "second": 1791518208,
+     "anchored": true,
+     "flagged": true,
+     "second_violation": true,
+     "attributable": true
+    },
+    {
+     "second": 1791518214,
+     "anchored": true,
+     "flagged": true,
+     "second_violation": true,
+     "attributable": true
+    },
+    {
+     "second": 1791518220,
+     "anchored": true,
+     "flagged": true,
+     "second_violation": true,
+     "attributable": true
+    },
+    {
+     "second": 1791518226,
+     "anchored": true,
+     "flagged": true,
+     "second_violation": true,
+     "attributable": true
+    },
+    {
+     "second": 1791518232,
+     "anchored": true,
+     "flagged": true,
+     "second_violation": true,
+     "attributable": true
+    },
+    {
+     "second": 1791518238,
+     "anchored": true,
+     "flagged": true,
+     "second_violation": true,
+     "attributable": true
+    },
+    {
+     "second": 1791518244,
+     "anchored": true,
+     "flagged": true,
+     "second_violation": true,
+     "attributable": true
+    },
+    {
+     "second": 1791518250,
+     "anchored": true,
+     "flagged": true,
+     "second_violation": true,
+     "attributable": true
+    },
+    {
+     "second": 1791518256,
+     "anchored": true,
+     "flagged": true,
+     "second_violation": true,
+     "attributable": true
+    },
+    {
+     "second": 1791518262,
+     "anchored": true,
+     "flagged": true,
+     "second_violation": true,
+     "attributable": true
+    },
+    {
+     "second": 1791518268,
+     "anchored": true,
+     "flagged": true,
+     "second_violation": true,
+     "attributable": true
+    },
+    {
+     "second": 1791518274,
+     "anchored": true,
+     "flagged": true,
+     "second_violation": true,
+     "attributable": true
+    },
+    {
+     "second": 1791518280,
+     "anchored": true,
+     "flagged": true,
+     "second_violation": true,
+     "attributable": true
+    },
+    {
+     "second": 1791518286,
+     "anchored": true,
+     "flagged": true,
+     "second_violation": true,
+     "attributable": true
+    },
+    {
+     "second": 1791518292,
+     "anchored": true,
+     "flagged": true,
+     "second_violation": true,
+     "attributable": true
+    },
+    {
+     "second": 1791518298,
+     "anchored": true,
+     "flagged": true,
+     "second_violation": true,
+     "attributable": true
+    },
+    {
+     "second": 1791518304,
+     "anchored": true,
+     "flagged": true,
+     "second_violation": true,
+     "attributable": true
+    }
+   ]
+  },
+  "ip": {
+   "sign_pubkey": "ip/sign_pub.pem",
+   "signatures": {
+    "checked": true,
+    "monitor_records": 34,
+    "signed_ok": 34,
+    "bad_signature": [],
+    "wrong_key": []
+   },
+   "monitor_records": {
+    "second": {
+     "anchored_in_window": 1395,
+     "violated": 0,
+     "violated_existing_rule": 0
+    },
+    "minute": {
+     "anchored_in_window": 118,
+     "violated": 0,
+     "violated_existing_rule": 0
+    },
+    "hour": {
+     "anchored_in_window": 1,
+     "violated": 0,
+     "violated_existing_rule": 0
+    }
+   },
+   "n_detected": 0,
+   "n_anchored": 30,
+   "per_trial": [
+    {
+     "second": 1791518130,
+     "anchored": true,
+     "flagged": false,
+     "second_violation": false,
+     "attributable": false
+    },
+    {
+     "second": 1791518136,
+     "anchored": true,
+     "flagged": false,
+     "second_violation": false,
+     "attributable": false
+    },
+    {
+     "second": 1791518142,
+     "anchored": true,
+     "flagged": false,
+     "second_violation": false,
+     "attributable": false
+    },
+    {
+     "second": 1791518148,
+     "anchored": true,
+     "flagged": false,
+     "second_violation": false,
+     "attributable": false
+    },
+    {
+     "second": 1791518154,
+     "anchored": true,
+     "flagged": false,
+     "second_violation": false,
+     "attributable": false
+    },
+    {
+     "second": 1791518160,
+     "anchored": true,
+     "flagged": false,
+     "second_violation": false,
+     "attributable": false
+    },
+    {
+     "second": 1791518166,
+     "anchored": true,
+     "flagged": false,
+     "second_violation": false,
+     "attributable": false
+    },
+    {
+     "second": 1791518172,
+     "anchored": true,
+     "flagged": false,
+     "second_violation": false,
+     "attributable": false
+    },
+    {
+     "second": 1791518178,
+     "anchored": true,
+     "flagged": false,
+     "second_violation": false,
+     "attributable": false
+    },
+    {
+     "second": 1791518184,
+     "anchored": true,
+     "flagged": false,
+     "second_violation": false,
+     "attributable": false
+    },
+    {
+     "second": 1791518190,
+     "anchored": true,
+     "flagged": false,
+     "second_violation": false,
+     "attributable": false
+    },
+    {
+     "second": 1791518196,
+     "anchored": true,
+     "flagged": false,
+     "second_violation": false,
+     "attributable": false
+    },
+    {
+     "second": 1791518202,
+     "anchored": true,
+     "flagged": false,
+     "second_violation": false,
+     "attributable": false
+    },
+    {
+     "second": 1791518208,
+     "anchored": true,
+     "flagged": false,
+     "second_violation": false,
+     "attributable": false
+    },
+    {
+     "second": 1791518214,
+     "anchored": true,
+     "flagged": false,
+     "second_violation": false,
+     "attributable": false
+    },
+    {
+     "second": 1791518220,
+     "anchored": true,
+     "flagged": false,
+     "second_violation": false,
+     "attributable": false
+    },
+    {
+     "second": 1791518226,
+     "anchored": true,
+     "flagged": false,
+     "second_violation": false,
+     "attributable": false
+    },
+    {
+     "second": 1791518232,
+     "anchored": true,
+     "flagged": false,
+     "second_violation": false,
+     "attributable": false
+    },
+    {
+     "second": 1791518238,
+     "anchored": true,
+     "flagged": false,
+     "second_violation": false,
+     "attributable": false
+    },
+    {
+     "second": 1791518244,
+     "anchored": true,
+     "flagged": false,
+     "second_violation": false,
+     "attributable": false
+    },
+    {
+     "second": 1791518250,
+     "anchored": true,
+     "flagged": false,
+     "second_violation": false,
+     "attributable": false
+    },
+    {
+     "second": 1791518256,
+     "anchored": true,
+     "flagged": false,
+     "second_violation": false,
+     "attributable": false
+    },
+    {
+     "second": 1791518262,
+     "anchored": true,
+     "flagged": false,
+     "second_violation": false,
+     "attributable": false
+    },
+    {
+     "second": 1791518268,
+     "anchored": true,
+     "flagged": false,
+     "second_violation": false,
+     "attributable": false
+    },
+    {
+     "second": 1791518274,
+     "anchored": true,
+     "flagged": false,
+     "second_violation": false,
+     "attributable": false
+    },
+    {
+     "second": 1791518280,
+     "anchored": true,
+     "flagged": false,
+     "second_violation": false,
+     "attributable": false
+    },
+    {
+     "second": 1791518286,
+     "anchored": true,
+     "flagged": false,
+     "second_violation": false,
+     "attributable": false
+    },
+    {
+     "second": 1791518292,
+     "anchored": true,
+     "flagged": false,
+     "second_violation": false,
+     "attributable": false
+    },
+    {
+     "second": 1791518298,
+     "anchored": true,
+     "flagged": false,
+     "second_violation": false,
+     "attributable": false
+    },
+    {
+     "second": 1791518304,
+     "anchored": true,
+     "flagged": false,
+     "second_violation": false,
+     "attributable": false
+    }
+   ]
+  }
+ },
+ "trials": [
+  {
+   "trial": 0,
+   "second": 1791518130,
+   "context": "01a11ecd3f501e973cb279e286ae7a72",
+   "ext_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 2
+    },
+    "parts": 1
+   },
+   "ext_anchored_second": true,
+   "swap_states": 1,
+   "swap_events": 1,
+   "stolen_key_reanchor_status": 409,
+   "stolen_key_reanchor_reason": "first-write-wins: conflicting root",
+   "ip_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 2
+    },
+    "parts": 1
+   },
+   "ip_anchored_second": true
+  },
+  {
+   "trial": 1,
+   "second": 1791518136,
+   "context": "01a11ecd56c0fc4960c7bc053ad64d52",
+   "ext_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ext_anchored_second": true,
+   "swap_states": 1,
+   "swap_events": 1,
+   "stolen_key_reanchor_status": 409,
+   "stolen_key_reanchor_reason": "first-write-wins: conflicting root",
+   "ip_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ip_anchored_second": true
+  },
+  {
+   "trial": 2,
+   "second": 1791518142,
+   "context": "01a11ecd6e304f6cddc496fac2ad5434",
+   "ext_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ext_anchored_second": true,
+   "swap_states": 1,
+   "swap_events": 1,
+   "stolen_key_reanchor_status": 409,
+   "stolen_key_reanchor_reason": "first-write-wins: conflicting root",
+   "ip_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ip_anchored_second": true
+  },
+  {
+   "trial": 3,
+   "second": 1791518148,
+   "context": "01a11ecd85a03b18b6097fcae3624627",
+   "ext_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ext_anchored_second": true,
+   "swap_states": 1,
+   "swap_events": 1,
+   "stolen_key_reanchor_status": 409,
+   "stolen_key_reanchor_reason": "first-write-wins: conflicting root",
+   "ip_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ip_anchored_second": true
+  },
+  {
+   "trial": 4,
+   "second": 1791518154,
+   "context": "01a11ecd9d102d26688171995eb4009b",
+   "ext_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ext_anchored_second": true,
+   "swap_states": 1,
+   "swap_events": 1,
+   "stolen_key_reanchor_status": 409,
+   "stolen_key_reanchor_reason": "first-write-wins: conflicting root",
+   "ip_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ip_anchored_second": true
+  },
+  {
+   "trial": 5,
+   "second": 1791518160,
+   "context": "01a11ecdb4802a402a3f079fcd71d783",
+   "ext_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1,
+     "minute": 1
+    },
+    "parts": 1
+   },
+   "ext_anchored_second": true,
+   "swap_states": 1,
+   "swap_events": 1,
+   "stolen_key_reanchor_status": 409,
+   "stolen_key_reanchor_reason": "first-write-wins: conflicting root",
+   "ip_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1,
+     "minute": 1
+    },
+    "parts": 1
+   },
+   "ip_anchored_second": true
+  },
+  {
+   "trial": 6,
+   "second": 1791518166,
+   "context": "01a11ecdcbf04259220678bbc39fbc52",
+   "ext_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ext_anchored_second": true,
+   "swap_states": 1,
+   "swap_events": 1,
+   "stolen_key_reanchor_status": 409,
+   "stolen_key_reanchor_reason": "first-write-wins: conflicting root",
+   "ip_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ip_anchored_second": true
+  },
+  {
+   "trial": 7,
+   "second": 1791518172,
+   "context": "01a11ecde3609258154c53e1a22420f5",
+   "ext_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ext_anchored_second": true,
+   "swap_states": 1,
+   "swap_events": 1,
+   "stolen_key_reanchor_status": 409,
+   "stolen_key_reanchor_reason": "first-write-wins: conflicting root",
+   "ip_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ip_anchored_second": true
+  },
+  {
+   "trial": 8,
+   "second": 1791518178,
+   "context": "01a11ecdfad09a4e26b9a1b4687dc0b4",
+   "ext_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ext_anchored_second": true,
+   "swap_states": 1,
+   "swap_events": 1,
+   "stolen_key_reanchor_status": 409,
+   "stolen_key_reanchor_reason": "first-write-wins: conflicting root",
+   "ip_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ip_anchored_second": true
+  },
+  {
+   "trial": 9,
+   "second": 1791518184,
+   "context": "01a11ece12402f2b2e21a38c6a758664",
+   "ext_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ext_anchored_second": true,
+   "swap_states": 1,
+   "swap_events": 1,
+   "stolen_key_reanchor_status": 409,
+   "stolen_key_reanchor_reason": "first-write-wins: conflicting root",
+   "ip_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ip_anchored_second": true
+  },
+  {
+   "trial": 10,
+   "second": 1791518190,
+   "context": "01a11ece29b0e697cb4d6db5123b45a1",
+   "ext_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ext_anchored_second": true,
+   "swap_states": 1,
+   "swap_events": 1,
+   "stolen_key_reanchor_status": 409,
+   "stolen_key_reanchor_reason": "first-write-wins: conflicting root",
+   "ip_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ip_anchored_second": true
+  },
+  {
+   "trial": 11,
+   "second": 1791518196,
+   "context": "01a11ece4120de2027fb43097e8d9677",
+   "ext_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ext_anchored_second": true,
+   "swap_states": 1,
+   "swap_events": 1,
+   "stolen_key_reanchor_status": 409,
+   "stolen_key_reanchor_reason": "first-write-wins: conflicting root",
+   "ip_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ip_anchored_second": true
+  },
+  {
+   "trial": 12,
+   "second": 1791518202,
+   "context": "01a11ece58909f7107ca9d441ccbfbdb",
+   "ext_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ext_anchored_second": true,
+   "swap_states": 1,
+   "swap_events": 1,
+   "stolen_key_reanchor_status": 409,
+   "stolen_key_reanchor_reason": "first-write-wins: conflicting root",
+   "ip_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ip_anchored_second": true
+  },
+  {
+   "trial": 13,
+   "second": 1791518208,
+   "context": "01a11ece700066a689f8177640833c20",
+   "ext_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ext_anchored_second": true,
+   "swap_states": 1,
+   "swap_events": 1,
+   "stolen_key_reanchor_status": 409,
+   "stolen_key_reanchor_reason": "first-write-wins: conflicting root",
+   "ip_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ip_anchored_second": true
+  },
+  {
+   "trial": 14,
+   "second": 1791518214,
+   "context": "01a11ece87706e03db30c5ceb62924f5",
+   "ext_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ext_anchored_second": true,
+   "swap_states": 1,
+   "swap_events": 1,
+   "stolen_key_reanchor_status": 409,
+   "stolen_key_reanchor_reason": "first-write-wins: conflicting root",
+   "ip_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ip_anchored_second": true
+  },
+  {
+   "trial": 15,
+   "second": 1791518220,
+   "context": "01a11ece9ee0207474c30f2364afafa7",
+   "ext_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1,
+     "minute": 1
+    },
+    "parts": 1
+   },
+   "ext_anchored_second": true,
+   "swap_states": 1,
+   "swap_events": 1,
+   "stolen_key_reanchor_status": 409,
+   "stolen_key_reanchor_reason": "first-write-wins: conflicting root",
+   "ip_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1,
+     "minute": 1
+    },
+    "parts": 1
+   },
+   "ip_anchored_second": true
+  },
+  {
+   "trial": 16,
+   "second": 1791518226,
+   "context": "01a11eceb65089c477f11a540988b31f",
+   "ext_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ext_anchored_second": true,
+   "swap_states": 1,
+   "swap_events": 1,
+   "stolen_key_reanchor_status": 409,
+   "stolen_key_reanchor_reason": "first-write-wins: conflicting root",
+   "ip_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ip_anchored_second": true
+  },
+  {
+   "trial": 17,
+   "second": 1791518232,
+   "context": "01a11ececdc0cb8ecce7877694a98e92",
+   "ext_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ext_anchored_second": true,
+   "swap_states": 1,
+   "swap_events": 1,
+   "stolen_key_reanchor_status": 409,
+   "stolen_key_reanchor_reason": "first-write-wins: conflicting root",
+   "ip_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ip_anchored_second": true
+  },
+  {
+   "trial": 18,
+   "second": 1791518238,
+   "context": "01a11ecee5309decf1d966b42a4db481",
+   "ext_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ext_anchored_second": true,
+   "swap_states": 1,
+   "swap_events": 1,
+   "stolen_key_reanchor_status": 409,
+   "stolen_key_reanchor_reason": "first-write-wins: conflicting root",
+   "ip_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ip_anchored_second": true
+  },
+  {
+   "trial": 19,
+   "second": 1791518244,
+   "context": "01a11ecefca039696b1c57c2791f8aa5",
+   "ext_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ext_anchored_second": true,
+   "swap_states": 1,
+   "swap_events": 1,
+   "stolen_key_reanchor_status": 409,
+   "stolen_key_reanchor_reason": "first-write-wins: conflicting root",
+   "ip_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ip_anchored_second": true
+  },
+  {
+   "trial": 20,
+   "second": 1791518250,
+   "context": "01a11ecf1410977aa5cba859c75dcb09",
+   "ext_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ext_anchored_second": true,
+   "swap_states": 1,
+   "swap_events": 1,
+   "stolen_key_reanchor_status": 409,
+   "stolen_key_reanchor_reason": "first-write-wins: conflicting root",
+   "ip_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ip_anchored_second": true
+  },
+  {
+   "trial": 21,
+   "second": 1791518256,
+   "context": "01a11ecf2b80a5c0623655a3f2ecd236",
+   "ext_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ext_anchored_second": true,
+   "swap_states": 1,
+   "swap_events": 1,
+   "stolen_key_reanchor_status": 409,
+   "stolen_key_reanchor_reason": "first-write-wins: conflicting root",
+   "ip_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ip_anchored_second": true
+  },
+  {
+   "trial": 22,
+   "second": 1791518262,
+   "context": "01a11ecf42f0b88979a37a0f4abe7cb0",
+   "ext_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ext_anchored_second": true,
+   "swap_states": 1,
+   "swap_events": 1,
+   "stolen_key_reanchor_status": 409,
+   "stolen_key_reanchor_reason": "first-write-wins: conflicting root",
+   "ip_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ip_anchored_second": true
+  },
+  {
+   "trial": 23,
+   "second": 1791518268,
+   "context": "01a11ecf5a604f77da8fb08e8961ef18",
+   "ext_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ext_anchored_second": true,
+   "swap_states": 1,
+   "swap_events": 1,
+   "stolen_key_reanchor_status": 409,
+   "stolen_key_reanchor_reason": "first-write-wins: conflicting root",
+   "ip_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ip_anchored_second": true
+  },
+  {
+   "trial": 24,
+   "second": 1791518274,
+   "context": "01a11ecf71d03f29d27936c09847f1cb",
+   "ext_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ext_anchored_second": true,
+   "swap_states": 1,
+   "swap_events": 1,
+   "stolen_key_reanchor_status": 409,
+   "stolen_key_reanchor_reason": "first-write-wins: conflicting root",
+   "ip_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ip_anchored_second": true
+  },
+  {
+   "trial": 25,
+   "second": 1791518280,
+   "context": "01a11ecf89400d4ea332f686543d7efd",
+   "ext_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1,
+     "minute": 1
+    },
+    "parts": 1
+   },
+   "ext_anchored_second": true,
+   "swap_states": 1,
+   "swap_events": 1,
+   "stolen_key_reanchor_status": 409,
+   "stolen_key_reanchor_reason": "first-write-wins: conflicting root",
+   "ip_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1,
+     "minute": 1
+    },
+    "parts": 1
+   },
+   "ip_anchored_second": true
+  },
+  {
+   "trial": 26,
+   "second": 1791518286,
+   "context": "01a11ecfa0b017c43d7e4cb9729f166f",
+   "ext_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ext_anchored_second": true,
+   "swap_states": 1,
+   "swap_events": 1,
+   "stolen_key_reanchor_status": 409,
+   "stolen_key_reanchor_reason": "first-write-wins: conflicting root",
+   "ip_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ip_anchored_second": true
+  },
+  {
+   "trial": 27,
+   "second": 1791518292,
+   "context": "01a11ecfb8209c3bb8a0ecaa3e9c4ed4",
+   "ext_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ext_anchored_second": true,
+   "swap_states": 1,
+   "swap_events": 1,
+   "stolen_key_reanchor_status": 409,
+   "stolen_key_reanchor_reason": "first-write-wins: conflicting root",
+   "ip_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ip_anchored_second": true
+  },
+  {
+   "trial": 28,
+   "second": 1791518298,
+   "context": "01a11ecfcf90b7adb0ff61b18bcd503f",
+   "ext_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ext_anchored_second": true,
+   "swap_states": 1,
+   "swap_events": 1,
+   "stolen_key_reanchor_status": 409,
+   "stolen_key_reanchor_reason": "first-write-wins: conflicting root",
+   "ip_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ip_anchored_second": true
+  },
+  {
+   "trial": 29,
+   "second": 1791518304,
+   "context": "01a11ecfe70086f9d401b2b62b84703f",
+   "ext_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ext_anchored_second": true,
+   "swap_states": 1,
+   "swap_events": 1,
+   "stolen_key_reanchor_status": 409,
+   "stolen_key_reanchor_reason": "first-write-wins: conflicting root",
+   "ip_sealed": {
+    "tick": 0,
+    "anchor_ok": true,
+    "sealed_new": {
+     "second": 1
+    },
+    "parts": 1
+   },
+   "ip_anchored_second": true
+  }
+ ],
+ "run_log": [
+  {
+   "step": "ready",
+   "monitor_sha256": "38370b2a51ea47b5ad30ab99670a3799a1958c559c4f83ecc02a2bee3a70ac9c",
+   "scheme": "stable",
+   "trials": 30,
+   "src": "<research-dir>/HOMEPROV-P13-exp/e9pre/c1/master_k1.db",
+   "src_sha256": "6030e982bf938a6fbc04ab93ee4c388873cd7d07dad04e26c279d45d443ac4cf",
+   "recorder_base_ts": 1791518120.073026,
+   "members": {
+    "A": "90b6f1f5983443c2b47f563e8f652752",
+    "B": "a1c2e3f4051627384950617283940516"
+   },
+   "anchor_image": "hpr-anchord:e8",
+   "anchor_image_id": "sha256:7f23dcb163785fb36f1ff633fb8bb217fd9430e3cd4a1dd4e22e09a500be58b3",
+   "at": "2026-10-09T21:45:28Z"
+  },
+  {
+   "step": "trial",
+   "i": 0,
+   "second": 1791518130,
+   "ext_anchored": true,
+   "swap": [
+    1,
+    1
+   ],
+   "stolen_key_status": 409,
+   "ip_anchored": true,
+   "at": "2026-10-09T21:45:30Z"
+  },
+  {
+   "step": "trial",
+   "i": 1,
+   "second": 1791518136,
+   "ext_anchored": true,
+   "swap": [
+    1,
+    1
+   ],
+   "stolen_key_status": 409,
+   "ip_anchored": true,
+   "at": "2026-10-09T21:45:31Z"
+  },
+  {
+   "step": "trial",
+   "i": 9,
+   "second": 1791518184,
+   "ext_anchored": true,
+   "swap": [
+    1,
+    1
+   ],
+   "stolen_key_status": 409,
+   "ip_anchored": true,
+   "at": "2026-10-09T21:45:38Z"
+  },
+  {
+   "step": "trial",
+   "i": 19,
+   "second": 1791518244,
+   "ext_anchored": true,
+   "swap": [
+    1,
+    1
+   ],
+   "stolen_key_status": 409,
+   "ip_anchored": true,
+   "at": "2026-10-09T21:45:47Z"
+  },
+  {
+   "step": "trial",
+   "i": 29,
+   "second": 1791518304,
+   "ext_anchored": true,
+   "swap": [
+    1,
+    1
+   ],
+   "stolen_key_status": 409,
+   "ip_anchored": true,
+   "at": "2026-10-09T21:45:56Z"
+  },
+  {
+   "step": "runs_done",
+   "ext_chain_lines": 34,
+   "ip_chain_lines": 34,
+   "at": "2026-10-09T21:45:59Z"
+  },
+  {
+   "step": "scored",
+   "ext_detected": 30,
+   "ip_detected": 0,
+   "at": "2026-10-09T21:46:33Z"
+  }
+ ],
+ "conclusion": "Against a resident that chooses its target later, an in-process committer feeding a first-write-wins anchor can be blinded from installation and made to certify the rewritten history; only the external monitor, whose read path the hub process cannot reach, sealed the honest row and detects the rewrite. A stolen append key lets the resident withhold or stall the external anchor, not forge a sealed root (409)."
+}

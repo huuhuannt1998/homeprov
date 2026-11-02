@@ -1,0 +1,357 @@
+{
+  "item": "R9(c) anchor append throughput cost of HMAC signing, 5 repetitions",
+  "PROTOCOL_DEVIATION": "LOCAL PROCESS, NOT CONTAINERIZED. The original e7b measurement ran anchord in a Docker container (python:3.12-slim, Docker volume, port published to the host). Here the unmodified anchord.py runs as a host Python 3.13.11 process on 127.0.0.1:9971 with chain files on the host disk (APFS, fsync per append) in a fresh scratch directory per phase. Absolute rates are therefore not comparable with the original; the signed/unsigned ratio is the quantity of interest. The original number in e7b_anchor_signed.json is left untouched.",
+  "original_single_measurement": {
+    "file": "exp/out/e7b_anchor_signed.json",
+    "unsigned_appends_per_s": 795.7,
+    "signed_appends_per_s": 779.7,
+    "ratio_signed_over_unsigned": 0.98,
+    "overhead_pct": 2.0
+  },
+  "n_append_trials_per_phase": 300,
+  "repetitions": 5,
+  "reps": [
+    {
+      "rep": 1,
+      "load_start": {
+        "label": "rep 1 start",
+        "ts": "2026-10-06T17:41:33.857837+00:00",
+        "uptime": "13:41  up 35 days, 17:39, 2 users, load averages: 7.92 5.95 4.74",
+        "loadavg_1_5_15": [
+          7.91650390625,
+          5.9453125,
+          4.7353515625
+        ]
+      },
+      "unsigned": {
+        "n": 300,
+        "accepted": 300,
+        "seconds": 0.09183001518249512,
+        "appends_per_s": 3266.9056996648173,
+        "chain_lines": 300
+      },
+      "signed": {
+        "n": 300,
+        "accepted": 300,
+        "seconds": 0.09151196479797363,
+        "appends_per_s": 3278.259850089493,
+        "chain_lines": 300
+      },
+      "adversary_unsigned": {
+        "n": 300,
+        "accepted": 0,
+        "refused_401": 300
+      },
+      "adversary_forged": {
+        "n": 300,
+        "accepted": 0,
+        "refused_401": 300
+      },
+      "refusals_recorded": 600,
+      "ratio_signed_over_unsigned": 1.0034755060196077,
+      "overhead_pct": -0.3475506019607666,
+      "load_end": {
+        "label": "rep 1 end",
+        "ts": "2026-10-06T17:41:35.349708+00:00",
+        "uptime": "13:41  up 35 days, 17:39, 2 users, load averages: 7.84 5.96 4.75",
+        "loadavg_1_5_15": [
+          7.8427734375,
+          5.96240234375,
+          4.74853515625
+        ]
+      }
+    },
+    {
+      "rep": 2,
+      "load_start": {
+        "label": "rep 2 start",
+        "ts": "2026-10-06T17:41:35.353535+00:00",
+        "uptime": "13:41  up 35 days, 17:39, 2 users, load averages: 7.84 5.96 4.75",
+        "loadavg_1_5_15": [
+          7.8427734375,
+          5.96240234375,
+          4.74853515625
+        ]
+      },
+      "unsigned": {
+        "n": 300,
+        "accepted": 300,
+        "seconds": 0.10721921920776367,
+        "appends_per_s": 2798.0058259767407,
+        "chain_lines": 300
+      },
+      "signed": {
+        "n": 300,
+        "accepted": 300,
+        "seconds": 0.09617114067077637,
+        "appends_per_s": 3119.438928430651,
+        "chain_lines": 300
+      },
+      "adversary_unsigned": {
+        "n": 300,
+        "accepted": 0,
+        "refused_401": 300
+      },
+      "adversary_forged": {
+        "n": 300,
+        "accepted": 0,
+        "refused_401": 300
+      },
+      "refusals_recorded": 600,
+      "ratio_signed_over_unsigned": 1.1148793542421245,
+      "overhead_pct": -11.487935424212449,
+      "load_end": {
+        "label": "rep 2 end",
+        "ts": "2026-10-06T17:41:36.838277+00:00",
+        "uptime": "13:41  up 35 days, 17:39, 2 users, load averages: 7.84 5.96 4.75",
+        "loadavg_1_5_15": [
+          7.8427734375,
+          5.96240234375,
+          4.74853515625
+        ]
+      }
+    },
+    {
+      "rep": 3,
+      "load_start": {
+        "label": "rep 3 start",
+        "ts": "2026-10-06T17:41:36.842054+00:00",
+        "uptime": "13:41  up 35 days, 17:39, 2 users, load averages: 7.84 5.96 4.75",
+        "loadavg_1_5_15": [
+          7.8427734375,
+          5.96240234375,
+          4.74853515625
+        ]
+      },
+      "unsigned": {
+        "n": 300,
+        "accepted": 300,
+        "seconds": 0.10701203346252441,
+        "appends_per_s": 2803.4230384479138,
+        "chain_lines": 300
+      },
+      "signed": {
+        "n": 300,
+        "accepted": 300,
+        "seconds": 0.07680392265319824,
+        "appends_per_s": 3906.050493730967,
+        "chain_lines": 300
+      },
+      "adversary_unsigned": {
+        "n": 300,
+        "accepted": 0,
+        "refused_401": 300
+      },
+      "adversary_forged": {
+        "n": 300,
+        "accepted": 0,
+        "refused_401": 300
+      },
+      "refusals_recorded": 600,
+      "ratio_signed_over_unsigned": 1.3933146871381608,
+      "overhead_pct": -39.33146871381608,
+      "load_end": {
+        "label": "rep 3 end",
+        "ts": "2026-10-06T17:41:38.290206+00:00",
+        "uptime": "13:41  up 35 days, 17:39, 2 users, load averages: 7.84 5.96 4.75",
+        "loadavg_1_5_15": [
+          7.8427734375,
+          5.96240234375,
+          4.74853515625
+        ]
+      }
+    },
+    {
+      "rep": 4,
+      "load_start": {
+        "label": "rep 4 start",
+        "ts": "2026-10-06T17:41:38.293394+00:00",
+        "uptime": "13:41  up 35 days, 17:39, 2 users, load averages: 7.84 5.96 4.75",
+        "loadavg_1_5_15": [
+          7.8427734375,
+          5.96240234375,
+          4.74853515625
+        ]
+      },
+      "unsigned": {
+        "n": 300,
+        "accepted": 300,
+        "seconds": 0.11117386817932129,
+        "appends_per_s": 2698.475864095201,
+        "chain_lines": 300
+      },
+      "signed": {
+        "n": 300,
+        "accepted": 300,
+        "seconds": 0.08328104019165039,
+        "appends_per_s": 3602.260482213303,
+        "chain_lines": 300
+      },
+      "adversary_unsigned": {
+        "n": 300,
+        "accepted": 0,
+        "refused_401": 300
+      },
+      "adversary_forged": {
+        "n": 300,
+        "accepted": 0,
+        "refused_401": 300
+      },
+      "refusals_recorded": 600,
+      "ratio_signed_over_unsigned": 1.3349241066572004,
+      "overhead_pct": -33.492410665720044,
+      "load_end": {
+        "label": "rep 4 end",
+        "ts": "2026-10-06T17:41:39.747802+00:00",
+        "uptime": "13:41  up 35 days, 17:39, 2 users, load averages: 7.84 5.96 4.75",
+        "loadavg_1_5_15": [
+          7.8427734375,
+          5.96240234375,
+          4.74853515625
+        ]
+      }
+    },
+    {
+      "rep": 5,
+      "load_start": {
+        "label": "rep 5 start",
+        "ts": "2026-10-06T17:41:39.751274+00:00",
+        "uptime": "13:41  up 35 days, 17:39, 2 users, load averages: 7.84 5.96 4.75",
+        "loadavg_1_5_15": [
+          7.8427734375,
+          5.96240234375,
+          4.74853515625
+        ]
+      },
+      "unsigned": {
+        "n": 300,
+        "accepted": 300,
+        "seconds": 0.11358213424682617,
+        "appends_per_s": 2641.260458692102,
+        "chain_lines": 300
+      },
+      "signed": {
+        "n": 300,
+        "accepted": 300,
+        "seconds": 0.08695411682128906,
+        "appends_per_s": 3450.0954177542826,
+        "chain_lines": 300
+      },
+      "adversary_unsigned": {
+        "n": 300,
+        "accepted": 0,
+        "refused_401": 300
+      },
+      "adversary_forged": {
+        "n": 300,
+        "accepted": 0,
+        "refused_401": 300
+      },
+      "refusals_recorded": 600,
+      "ratio_signed_over_unsigned": 1.306230669679089,
+      "overhead_pct": -30.62306696790891,
+      "load_end": {
+        "label": "rep 5 end",
+        "ts": "2026-10-06T17:41:41.287899+00:00",
+        "uptime": "13:41  up 35 days, 17:39, 2 users, load averages: 7.53 5.93 4.74",
+        "loadavg_1_5_15": [
+          7.53466796875,
+          5.9296875,
+          4.744140625
+        ]
+      }
+    }
+  ],
+  "summary": {
+    "overhead_pct": {
+      "n": 5,
+      "mean": -23.05648647472365,
+      "sd": 16.435965463309344,
+      "t_crit": 2.7764451051977934,
+      "ci_lo": -43.464433066235316,
+      "ci_hi": -2.648539883211985,
+      "method": "Student t, df=n-1"
+    },
+    "ratio_signed_over_unsigned": {
+      "n": 5,
+      "mean": 1.2305648647472365,
+      "sd": 0.16435965463309343,
+      "t_crit": 2.7764451051977934,
+      "ci_lo": 1.0264853988321199,
+      "ci_hi": 1.434644330662353,
+      "method": "Student t, df=n-1"
+    },
+    "unsigned_appends_per_s": {
+      "n": 5,
+      "mean": 2841.6141773753548,
+      "sd": 247.41832978503433,
+      "t_crit": 2.7764451051977934,
+      "ci_lo": 2534.4037447855717,
+      "ci_hi": 3148.824609965138,
+      "method": "Student t, df=n-1"
+    },
+    "signed_appends_per_s": {
+      "n": 5,
+      "mean": 3471.2210344437394,
+      "sd": 303.1826825507528,
+      "t_crit": 2.7764451051977934,
+      "ci_lo": 3094.7700126416294,
+      "ci_hi": 3847.6720562458495,
+      "method": "Student t, df=n-1"
+    },
+    "all_appends_accepted": true,
+    "all_adversary_refused": true
+  },
+  "load": [
+    {
+      "label": "overall start",
+      "ts": "2026-10-06T17:41:33.853757+00:00",
+      "uptime": "13:41  up 35 days, 17:39, 2 users, load averages: 7.92 5.95 4.74",
+      "loadavg_1_5_15": [
+        7.91650390625,
+        5.9453125,
+        4.7353515625
+      ]
+    },
+    {
+      "label": "overall end",
+      "ts": "2026-10-06T17:41:41.291441+00:00",
+      "uptime": "13:41  up 35 days, 17:39, 2 users, load averages: 7.53 5.93 4.74",
+      "loadavg_1_5_15": [
+        7.53466796875,
+        5.9296875,
+        4.744140625
+      ]
+    }
+  ],
+  "provenance": {
+    "script": "<artifact-root>/exp/sp2027/r9_c_signed_anchor_overhead.py",
+    "script_sha256": "6410f0efedecafbb221f0af8a4a8f048e5db8b0e75b7882916b0fe9aa60ebab3",
+    "helper": "<artifact-root>/exp/sp2027/r9_common.py",
+    "helper_sha256": "07566d8b2e76ef06cea180fefca0fa5f17bd27a7f0097292d5b0557d8e040ed7",
+    "python": "3.13.11 | packaged by Anaconda, Inc. | (main, Dec 10 2025, 21:21:08) [Clang 20.1.8 ]",
+    "python_executable": "python3",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "git_head": "b7611992393052a568df00c9ebc805f4d15ee6f5",
+    "git_branch": "<branch>",
+    "exp_rig_dirty": false,
+    "exp_rig_status_porcelain": "",
+    "inputs": {
+      "exp/sp2027/r9_c_anchord_local.py": "880baaa28a70529b11c5be8e8bdf29d1602595ad9dc18cfdb2f12151ddd6626f",
+      "testbed/anchord/anchord.py": "7b1ef9f1e11a36584eb0fde218fc6a0bb234ff33071e80990d0d354883a0c17f",
+      "exp/stages/e_a_signed_anchor.py": "755100627259f51fc29abf83f479860eed03772cba94aa1b7dfb467c2cb8dfb2",
+      "exp/out/e7b_anchor_signed.json": "a49a31dba0915b6f93287f4cfadd09cee4599638d0762bbe4794743976ab91aa"
+    },
+    "seeds": null,
+    "started": "2026-10-06T17:41:33.846174+00:00",
+    "finished": "2026-10-06T17:41:41.934560+00:00",
+    "port": 9971,
+    "daemon_python": "python3",
+    "client_functions": "stages.e_a_signed_anchor._post/_flood/_head (unmodified)"
+  },
+  "deviations": [
+    "anchord run as a local process (no Docker), see PROTOCOL_DEVIATION.",
+    "Pre-emption probes of the original run() not replicated (post-timing, require docker exec); they do not enter the throughput numbers.",
+    "Each phase uses a fresh temporary data directory, deleted after the phase."
+  ]
+}

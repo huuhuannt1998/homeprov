@@ -1,0 +1,2016 @@
+{
+ "item": "E10 arm E: monitor per-poll cost, profile pi4",
+ "monitor_sha256_runs": [
+  "4b9931cb7d1cffae6485fb2b660b68d733da9f73e5c22c22ca7265d49ceaa9b7"
+ ],
+ "generated": "2026-10-21T19:57:38.337484+00:00",
+ "script": "exp/sp2027/e9_cost_scale.py",
+ "script_sha256": "2b46cb0918ed1c3f4189da28a91d4c89421dc0c3bb72c851e9499d51d3087e8a",
+ "limits_monitor_container": {
+  "cpus": "0.25",
+  "memory": "512m",
+  "device_read_bps": "40mb",
+  "device_write_bps": "10mb",
+  "device": "/dev/vda"
+ },
+ "polls_measured_per_run": 30,
+ "warmup_polls": 3,
+ "period_s": 5.0,
+ "host": "Darwin Huans-MacBook-Pro.local 25.6.0 Darwin Kernel Version 25.6.0: Fri Jul 31 19:11:03 PDT 2026; root:xnu-12377.161.14~5/RELEASE_ARM64_T8132 arm64",
+ "docker": "29.1.3 10 8322101248",
+ "masters": {
+  "k1": {
+   "k": 1,
+   "bytes": 191459328,
+   "sha256": "6030e982bf938a6fbc04ab93ee4c388873cd7d07dad04e26c279d45d443ac4cf",
+   "states": 755041,
+   "events": 421958,
+   "states_meta": 25,
+   "src_sha256": "07b21122ff2577f4f2638cabc8617b71573d0c740ba6863f9041773105603010",
+   "seed": 20261009,
+   "generator_sha256": "a1a55a14bb36cc4db507a75d30e1bab6f6c5cb304fc902a85ce4f1a4d971d03c",
+   "span_s": 2601445.0644803774
+  },
+  "k5": {
+   "k": 5,
+   "bytes": 961363968,
+   "sha256": "d0c0bf057cd76209460b74d6945f7ee91a3bd47533e3095bf835aa4e6269c426",
+   "states": 3775205,
+   "events": 2109790,
+   "states_meta": 125,
+   "src_sha256": "07b21122ff2577f4f2638cabc8617b71573d0c740ba6863f9041773105603010",
+   "seed": 20261009,
+   "generator_sha256": "a1a55a14bb36cc4db507a75d30e1bab6f6c5cb304fc902a85ce4f1a4d971d03c",
+   "span_s": 2601445.0644803774
+  },
+  "k15": {
+   "k": 15,
+   "bytes": 2935984128,
+   "sha256": "e2045254242a2f042d402a93103e40863d87e3adc4bd82f8be180a92bb5e7a74",
+   "states": 11325615,
+   "events": 6329370,
+   "states_meta": 375,
+   "src_sha256": "07b21122ff2577f4f2638cabc8617b71573d0c740ba6863f9041773105603010",
+   "seed": 20261009,
+   "generator_sha256": "a1a55a14bb36cc4db507a75d30e1bab6f6c5cb304fc902a85ce4f1a4d971d03c",
+   "span_s": 2601445.0644803774
+  }
+ },
+ "runs": {
+  "e10pi4_pi4_k1_direct_qc720": {
+   "k": 1,
+   "mode": "direct",
+   "image": "hpr-monitor:e10",
+   "limits": {
+    "cpus": "0.25",
+    "memory": "512m",
+    "device_read_bps": "40mb",
+    "device_write_bps": "10mb",
+    "device": "/dev/vda"
+   },
+   "master_bytes": 191459328,
+   "master_sha256": "6030e982bf938a6fbc04ab93ee4c388873cd7d07dad04e26c279d45d443ac4cf",
+   "monitor_sha256": "4b9931cb7d1cffae6485fb2b660b68d733da9f73e5c22c22ca7265d49ceaa9b7",
+   "read_mode": "direct",
+   "wrapped_functions": [
+    "snapshot",
+    "validate_copy",
+    "watermark",
+    "keylog_poll",
+    "load",
+    "commit",
+    "escrow_write",
+    "escrow_keylog",
+    "append",
+    "save_state",
+    "namemap_seal",
+    "direct_close",
+    "direct_finish",
+    "direct_snapshot",
+    "quick_check_due",
+    "check_connection"
+   ],
+   "polls_measured": 30,
+   "warmup_polls": 3,
+   "poll_errors": [],
+   "unobservable_polls": 0,
+   "unobservable_reasons": {},
+   "unobservable_detail_examples": [],
+   "read_path_counts": {
+    "direct": 30
+   },
+   "read_attempts_counts": {
+    "1": 30
+   },
+   "read_attempts_note": "direct reads per measured poll (monitor.py logs read_attempts only when a raced read was retried; absent = 1)",
+   "quick_check_outcomes": {
+    "polls_with_quick_check": 0,
+    "passed": 0,
+    "failed": 0,
+    "check_connection_without_quick_check": 30,
+    "check_connection_failed_reasons": {},
+    "warmup_polls": [
+     {
+      "poll": 1,
+      "checks": [
+       {
+        "quick_check_ran": false,
+        "ok": true,
+        "reason": null,
+        "ms": 0.342
+       }
+      ]
+     },
+     {
+      "poll": 2,
+      "checks": [
+       {
+        "quick_check_ran": false,
+        "ok": true,
+        "reason": null,
+        "ms": 0.067
+       }
+      ]
+     },
+     {
+      "poll": 3,
+      "checks": [
+       {
+        "quick_check_ran": false,
+        "ok": true,
+        "reason": null,
+        "ms": 0.077
+       }
+      ]
+     }
+    ]
+   },
+   "env_extra": {
+    "HOMEPROV_DB": "/cfg/home-assistant_v2.db",
+    "HOMEPROV_ANCHOR": "http://anchor:9900/append",
+    "HOMEPROV_PERIOD": "5.0",
+    "HOMEPROV_SCRATCH": "/scratch",
+    "HOMEPROV_ANCHOR_KEY": "<key>",
+    "HOMEPROV_SCHEME": "stable",
+    "HOMEPROV_COVERAGE": "1",
+    "HOMEPROV_KEYLOG": "1",
+    "HOMEPROV_ESCROW_DIR": "/escrow",
+    "HOMEPROV_SIGN_KEY": "/sign/monitor.pem",
+    "HOMEPROV_REPLY_TAGS": "1",
+    "HOMEPROV_READ": "direct",
+    "HOMEPROV_QUICK_CHECK_EVERY": "720"
+   },
+   "failed_appends": 0,
+   "per_poll_ms": {
+    "total": {
+     "n": 30,
+     "median": 282.012,
+     "p90": 517.485,
+     "max": 752.886,
+     "min": 174.851
+    },
+    "tick_copy_ms": {
+     "n": 30,
+     "median": 1.067,
+     "p90": 2.014,
+     "max": 5.499,
+     "min": 0.413
+    },
+    "tick_load_ms": {
+     "n": 30,
+     "median": 73.235,
+     "p90": 180.227,
+     "max": 212.842,
+     "min": 45.827
+    },
+    "tick_commit_ms": {
+     "n": 30,
+     "median": 156.974,
+     "p90": 210.786,
+     "max": 305.867,
+     "min": 110.099
+    },
+    "tick_append_ms": {
+     "n": 30,
+     "median": 4.747,
+     "p90": 79.057,
+     "max": 369.132,
+     "min": 1.817
+    },
+    "phase_append": {
+     "n": 30,
+     "median": 4.476,
+     "p90": 15.588,
+     "max": 368.986,
+     "min": 1.73
+    },
+    "phase_commit": {
+     "n": 30,
+     "median": 156.969,
+     "p90": 210.78,
+     "max": 305.859,
+     "min": 110.094
+    },
+    "phase_direct_close": {
+     "n": 30,
+     "median": 0.172,
+     "p90": 0.285,
+     "max": 0.365,
+     "min": 0.135
+    },
+    "phase_direct_finish": {
+     "n": 30,
+     "median": 0.249,
+     "p90": 0.365,
+     "max": 0.516,
+     "min": 0.2
+    },
+    "phase_direct_snapshot": {
+     "n": 30,
+     "median": 1.05,
+     "p90": 1.989,
+     "max": 5.305,
+     "min": 0.406
+    },
+    "phase_escrow_keylog": {
+     "n": 30,
+     "median": 2.849,
+     "p90": 6.673,
+     "max": 24.373,
+     "min": 0.004
+    },
+    "phase_escrow_write": {
+     "n": 30,
+     "median": 10.978,
+     "p90": 16.821,
+     "max": 166.921,
+     "min": 0.0
+    },
+    "phase_keylog_poll": {
+     "n": 30,
+     "median": 0.424,
+     "p90": 1.03,
+     "max": 1.553,
+     "min": 0.004
+    },
+    "phase_load": {
+     "n": 30,
+     "median": 73.231,
+     "p90": 180.222,
+     "max": 212.832,
+     "min": 45.821
+    },
+    "phase_quick_check_due": {
+     "n": 30,
+     "median": 0.004,
+     "p90": 0.008,
+     "max": 0.048,
+     "min": 0.001
+    },
+    "phase_save_state": {
+     "n": 30,
+     "median": 0.669,
+     "p90": 1.044,
+     "max": 1.452,
+     "min": 0.523
+    },
+    "phase_watermark": {
+     "n": 30,
+     "median": 0.066,
+     "p90": 0.111,
+     "max": 0.146,
+     "min": 0.025
+    }
+   },
+   "per_poll_bytes": {
+    "proc_rchar": {
+     "n": 30,
+     "median": 688636.0,
+     "p90": 688637,
+     "max": 688637,
+     "min": 680443
+    },
+    "proc_wchar": {
+     "n": 30,
+     "median": 50090.0,
+     "p90": 60823,
+     "max": 63587,
+     "min": 42100
+    },
+    "proc_read_bytes": {
+     "n": 30,
+     "median": 0.0,
+     "p90": 0,
+     "max": 0,
+     "min": 0
+    },
+    "proc_write_bytes": {
+     "n": 30,
+     "median": 65536.0,
+     "p90": 73728,
+     "max": 77824,
+     "min": 49152
+    },
+    "cgroup_rbytes": {
+     "n": 30,
+     "median": 0.0,
+     "p90": 0,
+     "max": 0,
+     "min": 0
+    },
+    "cgroup_wbytes": {
+     "n": 30,
+     "median": 65536.0,
+     "p90": 73728,
+     "max": 77824,
+     "min": 49152
+    }
+   },
+   "measured_window": {
+    "clock_first": 1791518184.567739,
+    "clock_last": 1791518338.927382,
+    "seconds": 154.4,
+    "sum_read_bytes": 0,
+    "sum_write_bytes": 1904640,
+    "sum_rchar": 20564883,
+    "sum_wchar": 1521735,
+    "sum_cgroup_rbytes": 0,
+    "sum_cgroup_wbytes": 1904640,
+    "bytes_written_per_hour_proc": 44408705,
+    "bytes_written_per_hour_cgroup": 44408705
+   },
+   "rows_in_open_window": {
+    "n": 30,
+    "median": 4200.5,
+    "p90": 4240,
+    "max": 4249,
+    "min": 4152
+   },
+   "wal_bytes": {
+    "after_poll": {
+     "n": 30,
+     "median": 1538852.0,
+     "p90": 2311352,
+     "max": 2504992,
+     "min": 576832
+    },
+    "before_poll": {
+     "n": 30,
+     "median": 1538852.0,
+     "p90": 2311352,
+     "max": 2504992,
+     "min": 576832
+    },
+    "first_after_poll": 576832,
+    "last_after_poll": 2504992,
+    "series_after_poll": [
+     576832,
+     655112,
+     819912,
+     819912,
+     898192,
+     1001192,
+     1025912,
+     1153632,
+     1178352,
+     1178352,
+     1256632,
+     1376112,
+     1376112,
+     1450272,
+     1520312,
+     1557392,
+     1610952,
+     1730432,
+     1730432,
+     1899352,
+     1952912,
+     2022952,
+     2072392,
+     2072392,
+     2138312,
+     2233072,
+     2311352,
+     2406112,
+     2430832,
+     2504992
+    ]
+   },
+   "writer": {
+    "start": {
+     "writer": "start",
+     "replay_rows": 8203,
+     "offset": -1091189.8251039982,
+     "clock": 1791518122.522628,
+     "history_end": 1791518120.073026
+    },
+    "stop": {
+     "writer": "stop",
+     "clock": 1791518352.0060287,
+     "states": 90,
+     "events": 45,
+     "commits": 42,
+     "commit_s_median": 0.0004780292510986328,
+     "commit_s_max": 0.003231048583984375
+    },
+    "rows_per_minute": 35.3
+   },
+   "steps": [
+    {
+     "step": "start",
+     "context": {
+      "uptime": "15:01  up 9 days, 16:03, 2 users, load averages: 4.57 5.16 5.01",
+      "containers_cpu": [
+       "delaysteer-ha 0.00%",
+       "hpr-broker 0.02%",
+       "rka-server 0.10%",
+       "rka-worker 0.05%",
+       "hpr-monitor 10.26%",
+       "hpr-hass 100.29%",
+       "hpr-devices 0.01%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "k": 1,
+     "mode": "direct",
+     "image": "hpr-monitor:e10",
+     "limits": {
+      "cpus": "0.25",
+      "memory": "512m",
+      "device_read_bps": "40mb",
+      "device_write_bps": "10mb",
+      "device": "/dev/vda"
+     },
+     "polls": 30,
+     "warmup": 3,
+     "period": 5.0,
+     "master": "<research-dir>/HOMEPROV-P13-exp/e9pre/c1/master_k1.db",
+     "master_sha256": "6030e982bf938a6fbc04ab93ee4c388873cd7d07dad04e26c279d45d443ac4cf",
+     "master_bytes": 191459328,
+     "load": "15:01  up 9 days, 16:03, 2 users, load averages: 4.69 5.17 5.02",
+     "at": "2026-10-21T19:01:49Z"
+    },
+    {
+     "step": "live_copy",
+     "seconds": 1.1,
+     "at": "2026-10-21T19:01:50Z"
+    },
+    {
+     "step": "monitor_start",
+     "env": {
+      "HOMEPROV_DB": "/cfg/home-assistant_v2.db",
+      "HOMEPROV_ANCHOR": "http://anchor:9900/append",
+      "HOMEPROV_PERIOD": "5.0",
+      "HOMEPROV_SCRATCH": "/scratch",
+      "HOMEPROV_ANCHOR_KEY": "<key>",
+      "HOMEPROV_SCHEME": "stable",
+      "HOMEPROV_COVERAGE": "1",
+      "HOMEPROV_KEYLOG": "1",
+      "HOMEPROV_ESCROW_DIR": "/escrow",
+      "HOMEPROV_SIGN_KEY": "/sign/monitor.pem",
+      "HOMEPROV_REPLY_TAGS": "1",
+      "HOMEPROV_READ": "direct",
+      "HOMEPROV_QUICK_CHECK_EVERY": "720"
+     },
+     "mount_ro": true,
+     "offset": -1091189.8251039982,
+     "at": "2026-10-21T19:02:08Z"
+    },
+    {
+     "step": "monitor_done",
+     "exit": "0",
+     "context": {
+      "uptime": "15:05  up 9 days, 16:07, 2 users, load averages: 4.38 4.77 4.87",
+      "containers_cpu": [
+       "e10e-writer 0.00%",
+       "e10e-anchord 0.00%",
+       "delaysteer-ha 0.02%",
+       "hpr-broker 0.01%",
+       "rka-server 0.07%",
+       "rka-worker 0.04%",
+       "hpr-monitor 10.63%",
+       "hpr-hass 100.33%",
+       "hpr-devices 0.00%",
+       "hpr-anchord 4.81%"
+      ]
+     },
+     "at": "2026-10-21T19:05:41Z"
+    },
+    {
+     "step": "sizes",
+     "sizes": [
+      "/cfg/home-assistant_v2.db 191475712",
+      "/scratch/monitor_state.json 21267",
+      "/escrow/escrow.jsonl 5822908",
+      "/anchor/chain.jsonl 187130",
+      "33"
+     ],
+     "load": "15:05  up 9 days, 16:07, 2 users, load averages: 4.38 4.77 4.87",
+     "at": "2026-10-21T19:05:42Z"
+    },
+    {
+     "step": "teardown",
+     "left": "",
+     "at": "2026-10-21T19:05:43Z"
+    }
+   ]
+  },
+  "e10pi4_pi4_k5_direct_qc720": {
+   "k": 5,
+   "mode": "direct",
+   "image": "hpr-monitor:e10",
+   "limits": {
+    "cpus": "0.25",
+    "memory": "512m",
+    "device_read_bps": "40mb",
+    "device_write_bps": "10mb",
+    "device": "/dev/vda"
+   },
+   "master_bytes": 961363968,
+   "master_sha256": "d0c0bf057cd76209460b74d6945f7ee91a3bd47533e3095bf835aa4e6269c426",
+   "monitor_sha256": "4b9931cb7d1cffae6485fb2b660b68d733da9f73e5c22c22ca7265d49ceaa9b7",
+   "read_mode": "direct",
+   "wrapped_functions": [
+    "snapshot",
+    "validate_copy",
+    "watermark",
+    "keylog_poll",
+    "load",
+    "commit",
+    "escrow_write",
+    "escrow_keylog",
+    "append",
+    "save_state",
+    "namemap_seal",
+    "direct_close",
+    "direct_finish",
+    "direct_snapshot",
+    "quick_check_due",
+    "check_connection"
+   ],
+   "polls_measured": 30,
+   "warmup_polls": 3,
+   "poll_errors": [],
+   "unobservable_polls": 0,
+   "unobservable_reasons": {},
+   "unobservable_detail_examples": [],
+   "read_path_counts": {
+    "direct": 30
+   },
+   "read_attempts_counts": {
+    "1": 30
+   },
+   "read_attempts_note": "direct reads per measured poll (monitor.py logs read_attempts only when a raced read was retried; absent = 1)",
+   "quick_check_outcomes": {
+    "polls_with_quick_check": 0,
+    "passed": 0,
+    "failed": 0,
+    "check_connection_without_quick_check": 30,
+    "check_connection_failed_reasons": {},
+    "warmup_polls": [
+     {
+      "poll": 1,
+      "checks": [
+       {
+        "quick_check_ran": false,
+        "ok": true,
+        "reason": null,
+        "ms": 1.416
+       }
+      ]
+     },
+     {
+      "poll": 2,
+      "checks": [
+       {
+        "quick_check_ran": false,
+        "ok": true,
+        "reason": null,
+        "ms": 0.334
+       }
+      ]
+     },
+     {
+      "poll": 3,
+      "checks": [
+       {
+        "quick_check_ran": false,
+        "ok": true,
+        "reason": null,
+        "ms": 0.065
+       }
+      ]
+     }
+    ]
+   },
+   "env_extra": {
+    "HOMEPROV_DB": "/cfg/home-assistant_v2.db",
+    "HOMEPROV_ANCHOR": "http://anchor:9900/append",
+    "HOMEPROV_PERIOD": "5.0",
+    "HOMEPROV_SCRATCH": "/scratch",
+    "HOMEPROV_ANCHOR_KEY": "<key>",
+    "HOMEPROV_SCHEME": "stable",
+    "HOMEPROV_COVERAGE": "1",
+    "HOMEPROV_KEYLOG": "1",
+    "HOMEPROV_ESCROW_DIR": "/escrow",
+    "HOMEPROV_SIGN_KEY": "/sign/monitor.pem",
+    "HOMEPROV_REPLY_TAGS": "1",
+    "HOMEPROV_READ": "direct",
+    "HOMEPROV_QUICK_CHECK_EVERY": "720"
+   },
+   "failed_appends": 0,
+   "per_poll_ms": {
+    "total": {
+     "n": 30,
+     "median": 781.471,
+     "p90": 1898.761,
+     "max": 2033.69,
+     "min": 497.779
+    },
+    "tick_copy_ms": {
+     "n": 30,
+     "median": 1.438,
+     "p90": 7.118,
+     "max": 74.447,
+     "min": 0.432
+    },
+    "tick_load_ms": {
+     "n": 30,
+     "median": 279.144,
+     "p90": 573.693,
+     "max": 1158.012,
+     "min": 162.477
+    },
+    "tick_commit_ms": {
+     "n": 30,
+     "median": 407.053,
+     "p90": 689.527,
+     "max": 1304.599,
+     "min": 307.955
+    },
+    "tick_append_ms": {
+     "n": 30,
+     "median": 5.861,
+     "p90": 20.174,
+     "max": 321.637,
+     "min": 1.868
+    },
+    "phase_append": {
+     "n": 30,
+     "median": 5.499,
+     "p90": 19.563,
+     "max": 321.361,
+     "min": 1.753
+    },
+    "phase_commit": {
+     "n": 30,
+     "median": 407.045,
+     "p90": 689.521,
+     "max": 1304.574,
+     "min": 307.949
+    },
+    "phase_direct_close": {
+     "n": 30,
+     "median": 0.251,
+     "p90": 2.113,
+     "max": 78.063,
+     "min": 0.179
+    },
+    "phase_direct_finish": {
+     "n": 30,
+     "median": 0.34,
+     "p90": 74.373,
+     "max": 78.282,
+     "min": 0.247
+    },
+    "phase_direct_snapshot": {
+     "n": 30,
+     "median": 1.401,
+     "p90": 6.986,
+     "max": 74.046,
+     "min": 0.424
+    },
+    "phase_escrow_keylog": {
+     "n": 30,
+     "median": 3.353,
+     "p90": 6.727,
+     "max": 11.059,
+     "min": 1.85
+    },
+    "phase_escrow_write": {
+     "n": 30,
+     "median": 10.898,
+     "p90": 13.658,
+     "max": 100.393,
+     "min": 2.241
+    },
+    "phase_keylog_poll": {
+     "n": 30,
+     "median": 0.884,
+     "p90": 2.701,
+     "max": 4.734,
+     "min": 0.323
+    },
+    "phase_load": {
+     "n": 30,
+     "median": 279.134,
+     "p90": 573.677,
+     "max": 1157.924,
+     "min": 162.472
+    },
+    "phase_quick_check_due": {
+     "n": 30,
+     "median": 0.006,
+     "p90": 0.04,
+     "max": 0.8,
+     "min": 0.002
+    },
+    "phase_save_state": {
+     "n": 30,
+     "median": 0.995,
+     "p90": 3.222,
+     "max": 64.559,
+     "min": 0.702
+    },
+    "phase_watermark": {
+     "n": 30,
+     "median": 0.072,
+     "p90": 0.239,
+     "max": 2.389,
+     "min": 0.025
+    }
+   },
+   "per_poll_bytes": {
+    "proc_rchar": {
+     "n": 30,
+     "median": 1714693.0,
+     "p90": 2503172,
+     "max": 2503172,
+     "min": 1692164
+    },
+    "proc_wchar": {
+     "n": 30,
+     "median": 99571.5,
+     "p90": 141967,
+     "max": 171277,
+     "min": 68653
+    },
+    "proc_read_bytes": {
+     "n": 30,
+     "median": 0.0,
+     "p90": 0,
+     "max": 0,
+     "min": 0
+    },
+    "proc_write_bytes": {
+     "n": 30,
+     "median": 110592.0,
+     "p90": 151552,
+     "max": 184320,
+     "min": 77824
+    },
+    "cgroup_rbytes": {
+     "n": 30,
+     "median": 0.0,
+     "p90": 0,
+     "max": 0,
+     "min": 0
+    },
+    "cgroup_wbytes": {
+     "n": 30,
+     "median": 110592.0,
+     "p90": 151552,
+     "max": 184320,
+     "min": 77824
+    }
+   },
+   "measured_window": {
+    "clock_first": 1791518376.063598,
+    "clock_last": 1791518548.3789613,
+    "seconds": 172.3,
+    "sum_read_bytes": 0,
+    "sum_write_bytes": 3510272,
+    "sum_rchar": 54447246,
+    "sum_wchar": 3162930,
+    "sum_cgroup_rbytes": 0,
+    "sum_cgroup_wbytes": 3510272,
+    "bytes_written_per_hour_proc": 73342886,
+    "bytes_written_per_hour_cgroup": 73342886
+   },
+   "rows_in_open_window": {
+    "n": 30,
+    "median": 8833.5,
+    "p90": 17061,
+    "max": 17120,
+    "min": 8595
+   },
+   "wal_bytes": {
+    "after_poll": {
+     "n": 30,
+     "median": 9307112.0,
+     "p90": 9307112,
+     "max": 9307112,
+     "min": 9307112
+    },
+    "before_poll": {
+     "n": 30,
+     "median": 9307112.0,
+     "p90": 9307112,
+     "max": 9307112,
+     "min": 9307112
+    },
+    "first_after_poll": 9307112,
+    "last_after_poll": 9307112,
+    "series_after_poll": [
+     9307112,
+     9307112,
+     9307112,
+     9307112,
+     9307112,
+     9307112,
+     9307112,
+     9307112,
+     9307112,
+     9307112,
+     9307112,
+     9307112,
+     9307112,
+     9307112,
+     9307112,
+     9307112,
+     9307112,
+     9307112,
+     9307112,
+     9307112,
+     9307112,
+     9307112,
+     9307112,
+     9307112,
+     9307112,
+     9307112,
+     9307112,
+     9307112,
+     9307112,
+     9307112
+    ]
+   },
+   "writer": {
+    "start": {
+     "writer": "start",
+     "replay_rows": 43411,
+     "offset": -1091426.3633129597,
+     "clock": 1791518122.6562216,
+     "history_end": 1791518120.073026
+    },
+    "stop": {
+     "writer": "stop",
+     "clock": 1791518564.0029328,
+     "states": 721,
+     "events": 372,
+     "commits": 254,
+     "commit_s_median": 0.0004856586456298828,
+     "commit_s_max": 0.21167349815368652
+    },
+    "rows_per_minute": 148.59
+   },
+   "steps": [
+    {
+     "step": "start",
+     "context": {
+      "uptime": "15:05  up 9 days, 16:07, 2 users, load averages: 4.38 4.77 4.87",
+      "containers_cpu": [
+       "delaysteer-ha 0.01%",
+       "hpr-broker 0.02%",
+       "rka-server 0.09%",
+       "rka-worker 0.05%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 0.03%",
+       "hpr-devices 0.00%",
+       "hpr-anchord 2.88%"
+      ]
+     },
+     "k": 5,
+     "mode": "direct",
+     "image": "hpr-monitor:e10",
+     "limits": {
+      "cpus": "0.25",
+      "memory": "512m",
+      "device_read_bps": "40mb",
+      "device_write_bps": "10mb",
+      "device": "/dev/vda"
+     },
+     "polls": 30,
+     "warmup": 3,
+     "period": 5.0,
+     "master": "<research-dir>/HOMEPROV-P13-exp/e9pre/c1/master_k5.db",
+     "master_sha256": "d0c0bf057cd76209460b74d6945f7ee91a3bd47533e3095bf835aa4e6269c426",
+     "master_bytes": 961363968,
+     "load": "15:05  up 9 days, 16:07, 2 users, load averages: 4.35 4.76 4.87",
+     "at": "2026-10-21T19:05:44Z"
+    },
+    {
+     "step": "live_copy",
+     "seconds": 2.1,
+     "at": "2026-10-21T19:05:47Z"
+    },
+    {
+     "step": "monitor_start",
+     "env": {
+      "HOMEPROV_DB": "/cfg/home-assistant_v2.db",
+      "HOMEPROV_ANCHOR": "http://anchor:9900/append",
+      "HOMEPROV_PERIOD": "5.0",
+      "HOMEPROV_SCRATCH": "/scratch",
+      "HOMEPROV_ANCHOR_KEY": "<key>",
+      "HOMEPROV_SCHEME": "stable",
+      "HOMEPROV_COVERAGE": "1",
+      "HOMEPROV_KEYLOG": "1",
+      "HOMEPROV_ESCROW_DIR": "/escrow",
+      "HOMEPROV_SIGN_KEY": "/sign/monitor.pem",
+      "HOMEPROV_REPLY_TAGS": "1",
+      "HOMEPROV_READ": "direct",
+      "HOMEPROV_QUICK_CHECK_EVERY": "720"
+     },
+     "mount_ro": true,
+     "offset": -1091426.3633129597,
+     "at": "2026-10-21T19:06:04Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "15:11  up 9 days, 16:12, 2 users, load averages: 4.67 4.69 4.79",
+      "containers_cpu": [
+       "e10e-monitor 18.59%",
+       "e10e-writer 0.15%",
+       "e10e-anchord 0.43%",
+       "delaysteer-ha 2.28%",
+       "hpr-broker 0.06%",
+       "rka-server 0.63%",
+       "rka-worker 0.98%",
+       "hpr-monitor 73.42%",
+       "hpr-hass 104.09%",
+       "hpr-devices 0.02%",
+       "hpr-anchord 36.19%"
+      ]
+     },
+     "at": "2026-10-21T19:11:08Z"
+    },
+    {
+     "step": "monitor_done",
+     "exit": "0",
+     "context": {
+      "uptime": "15:13  up 9 days, 16:14, 2 users, load averages: 5.53 5.28 5.03",
+      "containers_cpu": [
+       "e10e-writer 0.04%",
+       "e10e-anchord 0.01%",
+       "delaysteer-ha 0.02%",
+       "hpr-broker 0.04%",
+       "rka-server 0.12%",
+       "rka-worker 0.10%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 0.04%",
+       "hpr-devices 0.01%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "at": "2026-10-21T19:13:10Z"
+    },
+    {
+     "step": "sizes",
+     "sizes": [
+      "/cfg/home-assistant_v2.db 961523712",
+      "/scratch/monitor_state.json 31489",
+      "/escrow/escrow.jsonl 24163763",
+      "/anchor/chain.jsonl 500132",
+      "33"
+     ],
+     "load": "15:13  up 9 days, 16:15, 2 users, load averages: 5.25 5.22 5.01",
+     "at": "2026-10-21T19:13:10Z"
+    },
+    {
+     "step": "teardown",
+     "left": "",
+     "at": "2026-10-21T19:13:11Z"
+    }
+   ]
+  },
+  "e10pi4_pi4_k15_direct_qc720": {
+   "k": 15,
+   "mode": "direct",
+   "image": "hpr-monitor:e10",
+   "limits": {
+    "cpus": "0.25",
+    "memory": "512m",
+    "device_read_bps": "40mb",
+    "device_write_bps": "10mb",
+    "device": "/dev/vda"
+   },
+   "master_bytes": 2935984128,
+   "master_sha256": "e2045254242a2f042d402a93103e40863d87e3adc4bd82f8be180a92bb5e7a74",
+   "monitor_sha256": "4b9931cb7d1cffae6485fb2b660b68d733da9f73e5c22c22ca7265d49ceaa9b7",
+   "read_mode": "direct",
+   "wrapped_functions": [
+    "snapshot",
+    "validate_copy",
+    "watermark",
+    "keylog_poll",
+    "load",
+    "commit",
+    "escrow_write",
+    "escrow_keylog",
+    "append",
+    "save_state",
+    "namemap_seal",
+    "direct_close",
+    "direct_finish",
+    "direct_snapshot",
+    "quick_check_due",
+    "check_connection"
+   ],
+   "polls_measured": 30,
+   "warmup_polls": 3,
+   "poll_errors": [],
+   "unobservable_polls": 0,
+   "unobservable_reasons": {},
+   "unobservable_detail_examples": [],
+   "read_path_counts": {
+    "direct": 30
+   },
+   "read_attempts_counts": {
+    "1": 29,
+    "2": 1
+   },
+   "read_attempts_note": "direct reads per measured poll (monitor.py logs read_attempts only when a raced read was retried; absent = 1)",
+   "quick_check_outcomes": {
+    "polls_with_quick_check": 0,
+    "passed": 0,
+    "failed": 0,
+    "check_connection_without_quick_check": 31,
+    "check_connection_failed_reasons": {},
+    "warmup_polls": [
+     {
+      "poll": 1,
+      "checks": [
+       {
+        "quick_check_ran": false,
+        "ok": true,
+        "reason": null,
+        "ms": 3.95
+       }
+      ]
+     },
+     {
+      "poll": 2,
+      "checks": [
+       {
+        "quick_check_ran": false,
+        "ok": true,
+        "reason": null,
+        "ms": 0.82
+       }
+      ]
+     },
+     {
+      "poll": 3,
+      "checks": [
+       {
+        "quick_check_ran": false,
+        "ok": true,
+        "reason": null,
+        "ms": 0.242
+       }
+      ]
+     }
+    ]
+   },
+   "env_extra": {
+    "HOMEPROV_DB": "/cfg/home-assistant_v2.db",
+    "HOMEPROV_ANCHOR": "http://anchor:9900/append",
+    "HOMEPROV_PERIOD": "5.0",
+    "HOMEPROV_SCRATCH": "/scratch",
+    "HOMEPROV_ANCHOR_KEY": "<key>",
+    "HOMEPROV_SCHEME": "stable",
+    "HOMEPROV_COVERAGE": "1",
+    "HOMEPROV_KEYLOG": "1",
+    "HOMEPROV_ESCROW_DIR": "/escrow",
+    "HOMEPROV_SIGN_KEY": "/sign/monitor.pem",
+    "HOMEPROV_REPLY_TAGS": "1",
+    "HOMEPROV_READ": "direct",
+    "HOMEPROV_QUICK_CHECK_EVERY": "720"
+   },
+   "failed_appends": 0,
+   "per_poll_ms": {
+    "total": {
+     "n": 30,
+     "median": 2107.651,
+     "p90": 2634.739,
+     "max": 5371.601,
+     "min": 1771.144
+    },
+    "tick_copy_ms": {
+     "n": 30,
+     "median": 1.023,
+     "p90": 3.474,
+     "max": 7.148,
+     "min": 0.42
+    },
+    "tick_load_ms": {
+     "n": 30,
+     "median": 794.454,
+     "p90": 1171.236,
+     "max": 1302.392,
+     "min": 666.862
+    },
+    "tick_commit_ms": {
+     "n": 30,
+     "median": 1182.897,
+     "p90": 1496.104,
+     "max": 1898.676,
+     "min": 1010.436
+    },
+    "tick_append_ms": {
+     "n": 30,
+     "median": 3.976,
+     "p90": 8.084,
+     "max": 71.285,
+     "min": 2.161
+    },
+    "phase_append": {
+     "n": 30,
+     "median": 3.783,
+     "p90": 7.681,
+     "max": 70.984,
+     "min": 2.043
+    },
+    "phase_commit": {
+     "n": 30,
+     "median": 1182.887,
+     "p90": 1712.559,
+     "max": 2690.317,
+     "min": 1010.43
+    },
+    "phase_direct_close": {
+     "n": 30,
+     "median": 0.263,
+     "p90": 0.61,
+     "max": 3.334,
+     "min": 0.19
+    },
+    "phase_direct_finish": {
+     "n": 30,
+     "median": 0.349,
+     "p90": 0.888,
+     "max": 4.065,
+     "min": 0.26
+    },
+    "phase_direct_snapshot": {
+     "n": 30,
+     "median": 1.002,
+     "p90": 3.239,
+     "max": 6.929,
+     "min": 0.412
+    },
+    "phase_escrow_keylog": {
+     "n": 30,
+     "median": 2.772,
+     "p90": 7.67,
+     "max": 68.941,
+     "min": 1.013
+    },
+    "phase_escrow_write": {
+     "n": 30,
+     "median": 11.549,
+     "p90": 90.266,
+     "max": 103.249,
+     "min": 4.825
+    },
+    "phase_keylog_poll": {
+     "n": 30,
+     "median": 1.598,
+     "p90": 5.505,
+     "max": 6.982,
+     "min": 0.685
+    },
+    "phase_load": {
+     "n": 30,
+     "median": 794.444,
+     "p90": 1189.136,
+     "max": 2569.299,
+     "min": 666.854
+    },
+    "phase_quick_check_due": {
+     "n": 30,
+     "median": 0.004,
+     "p90": 0.024,
+     "max": 0.072,
+     "min": 0.002
+    },
+    "phase_save_state": {
+     "n": 30,
+     "median": 1.261,
+     "p90": 1.61,
+     "max": 4.009,
+     "min": 1.073
+    },
+    "phase_watermark": {
+     "n": 30,
+     "median": 0.065,
+     "p90": 0.259,
+     "max": 0.527,
+     "min": 0.028
+    }
+   },
+   "per_poll_bytes": {
+    "proc_rchar": {
+     "n": 30,
+     "median": 4866566.0,
+     "p90": 4919814,
+     "max": 9749130,
+     "min": 4801029
+    },
+    "proc_wchar": {
+     "n": 30,
+     "median": 197527.5,
+     "p90": 225774,
+     "max": 860136,
+     "min": 166903
+    },
+    "proc_read_bytes": {
+     "n": 30,
+     "median": 0.0,
+     "p90": 0,
+     "max": 0,
+     "min": 0
+    },
+    "proc_write_bytes": {
+     "n": 30,
+     "median": 210944.0,
+     "p90": 237568,
+     "max": 872448,
+     "min": 176128
+    },
+    "cgroup_rbytes": {
+     "n": 30,
+     "median": 0.0,
+     "p90": 0,
+     "max": 0,
+     "min": 0
+    },
+    "cgroup_wbytes": {
+     "n": 30,
+     "median": 210944.0,
+     "p90": 237568,
+     "max": 872448,
+     "min": 176128
+    }
+   },
+   "measured_window": {
+    "clock_first": 1791518829.8579605,
+    "clock_last": 1791519041.1518354,
+    "seconds": 211.3,
+    "sum_read_bytes": 0,
+    "sum_write_bytes": 6975488,
+    "sum_rchar": 150969650,
+    "sum_wchar": 6629104,
+    "sum_cgroup_rbytes": 0,
+    "sum_cgroup_wbytes": 6975488,
+    "bytes_written_per_hour_proc": 118844093,
+    "bytes_written_per_hour_cgroup": 118844093
+   },
+   "rows_in_open_window": {
+    "n": 30,
+    "median": 26068.0,
+    "p90": 26559,
+    "max": 27011,
+    "min": 25470
+   },
+   "wal_bytes": {
+    "after_poll": {
+     "n": 30,
+     "median": 62986592.0,
+     "p90": 62986592,
+     "max": 62986592,
+     "min": 62986592
+    },
+    "before_poll": {
+     "n": 30,
+     "median": 62986592.0,
+     "p90": 62986592,
+     "max": 62986592,
+     "min": 62986592
+    },
+    "first_after_poll": 62986592,
+    "last_after_poll": 62986592,
+    "series_after_poll": [
+     62986592,
+     62986592,
+     62986592,
+     62986592,
+     62986592,
+     62986592,
+     62986592,
+     62986592,
+     62986592,
+     62986592,
+     62986592,
+     62986592,
+     62986592,
+     62986592,
+     62986592,
+     62986592,
+     62986592,
+     62986592,
+     62986592,
+     62986592,
+     62986592,
+     62986592,
+     62986592,
+     62986592,
+     62986592,
+     62986592,
+     62986592,
+     62986592,
+     62986592,
+     62986592
+    ]
+   },
+   "writer": {
+    "start": {
+     "writer": "start",
+     "replay_rows": 98967,
+     "offset": -1091878.5120739937,
+     "clock": 1791518123.123136,
+     "history_end": 1791518120.073026
+    },
+    "stop": {
+     "writer": "stop",
+     "clock": 1791519049.0010965,
+     "states": 3740,
+     "events": 3060,
+     "commits": 816,
+     "commit_s_median": 0.0005199909210205078,
+     "commit_s_max": 1.7275116443634033
+    },
+    "rows_per_minute": 440.66
+   },
+   "steps": [
+    {
+     "step": "start",
+     "context": {
+      "uptime": "15:13  up 9 days, 16:15, 2 users, load averages: 5.25 5.22 5.01",
+      "containers_cpu": [
+       "delaysteer-ha 0.01%",
+       "hpr-broker 0.04%",
+       "rka-server 0.08%",
+       "rka-worker 0.06%",
+       "hpr-monitor 31.22%",
+       "hpr-hass 0.31%",
+       "hpr-devices 0.06%",
+       "hpr-anchord 5.64%"
+      ]
+     },
+     "k": 15,
+     "mode": "direct",
+     "image": "hpr-monitor:e10",
+     "limits": {
+      "cpus": "0.25",
+      "memory": "512m",
+      "device_read_bps": "40mb",
+      "device_write_bps": "10mb",
+      "device": "/dev/vda"
+     },
+     "polls": 30,
+     "warmup": 3,
+     "period": 5.0,
+     "master": "<research-dir>/HOMEPROV-P13-exp/e9pre/c1/master_k15.db",
+     "master_sha256": "e2045254242a2f042d402a93103e40863d87e3adc4bd82f8be180a92bb5e7a74",
+     "master_bytes": 2935984128,
+     "load": "15:13  up 9 days, 16:15, 2 users, load averages: 5.25 5.22 5.01",
+     "at": "2026-10-21T19:13:13Z"
+    },
+    {
+     "step": "live_copy",
+     "seconds": 4.8,
+     "at": "2026-10-21T19:13:18Z"
+    },
+    {
+     "step": "monitor_start",
+     "env": {
+      "HOMEPROV_DB": "/cfg/home-assistant_v2.db",
+      "HOMEPROV_ANCHOR": "http://anchor:9900/append",
+      "HOMEPROV_PERIOD": "5.0",
+      "HOMEPROV_SCRATCH": "/scratch",
+      "HOMEPROV_ANCHOR_KEY": "<key>",
+      "HOMEPROV_SCHEME": "stable",
+      "HOMEPROV_COVERAGE": "1",
+      "HOMEPROV_KEYLOG": "1",
+      "HOMEPROV_ESCROW_DIR": "/escrow",
+      "HOMEPROV_SIGN_KEY": "/sign/monitor.pem",
+      "HOMEPROV_REPLY_TAGS": "1",
+      "HOMEPROV_READ": "direct",
+      "HOMEPROV_QUICK_CHECK_EVERY": "720"
+     },
+     "mount_ro": true,
+     "offset": -1091878.5120739937,
+     "at": "2026-10-21T19:13:36Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "15:18  up 9 days, 16:20, 2 users, load averages: 4.41 4.93 4.98",
+      "containers_cpu": [
+       "e10e-monitor 2.18%",
+       "e10e-writer 0.08%",
+       "e10e-anchord 0.02%",
+       "delaysteer-ha 0.01%",
+       "hpr-broker 0.02%",
+       "rka-server 0.09%",
+       "rka-worker 0.04%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 0.05%",
+       "hpr-devices 0.01%",
+       "hpr-anchord 5.65%"
+      ]
+     },
+     "at": "2026-10-21T19:18:40Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "15:23  up 9 days, 16:25, 2 users, load averages: 4.21 4.38 4.69",
+      "containers_cpu": [
+       "e10e-monitor 3.60%",
+       "e10e-writer 0.06%",
+       "e10e-anchord 0.02%",
+       "delaysteer-ha 0.00%",
+       "hpr-broker 0.03%",
+       "rka-server 0.10%",
+       "rka-worker 0.10%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 0.46%",
+       "hpr-devices 0.01%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "at": "2026-10-21T19:23:43Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "15:28  up 9 days, 16:30, 2 users, load averages: 4.47 4.86 4.86",
+      "containers_cpu": [
+       "e10e-writer 0.14%",
+       "e10e-anchord 0.11%",
+       "delaysteer-ha 0.04%",
+       "hpr-broker 0.03%",
+       "rka-server 0.15%",
+       "rka-worker 0.07%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 0.12%",
+       "hpr-devices 0.01%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "at": "2026-10-21T19:28:45Z"
+    },
+    {
+     "step": "monitor_done",
+     "exit": "0",
+     "context": {
+      "uptime": "15:28  up 9 days, 16:30, 2 users, load averages: 4.67 4.90 4.87",
+      "containers_cpu": [
+       "e10e-writer 0.04%",
+       "e10e-anchord 0.02%",
+       "delaysteer-ha 0.07%",
+       "hpr-broker 0.03%",
+       "rka-server 0.17%",
+       "rka-worker 0.13%",
+       "hpr-monitor 20.25%",
+       "hpr-hass 100.24%",
+       "hpr-devices 0.02%",
+       "hpr-anchord 5.07%"
+      ]
+     },
+     "at": "2026-10-21T19:28:47Z"
+    },
+    {
+     "step": "sizes",
+     "sizes": [
+      "/cfg/home-assistant_v2.db 2937102336",
+      "/scratch/monitor_state.json 54154",
+      "/escrow/escrow.jsonl 40701812",
+      "/anchor/chain.jsonl 623289",
+      "33"
+     ],
+     "load": "15:28  up 9 days, 16:30, 2 users, load averages: 4.67 4.90 4.87",
+     "at": "2026-10-21T19:28:48Z"
+    },
+    {
+     "step": "teardown",
+     "left": "",
+     "at": "2026-10-21T19:28:48Z"
+    }
+   ]
+  },
+  "e10pi4_pi4_k1_copy_qc1": {
+   "k": 1,
+   "mode": "copy",
+   "image": "hpr-monitor:e10",
+   "limits": {
+    "cpus": "0.25",
+    "memory": "512m",
+    "device_read_bps": "40mb",
+    "device_write_bps": "10mb",
+    "device": "/dev/vda"
+   },
+   "master_bytes": 191459328,
+   "master_sha256": "6030e982bf938a6fbc04ab93ee4c388873cd7d07dad04e26c279d45d443ac4cf",
+   "monitor_sha256": "4b9931cb7d1cffae6485fb2b660b68d733da9f73e5c22c22ca7265d49ceaa9b7",
+   "read_mode": "copy",
+   "wrapped_functions": [
+    "snapshot",
+    "validate_copy",
+    "watermark",
+    "keylog_poll",
+    "load",
+    "commit",
+    "escrow_write",
+    "escrow_keylog",
+    "append",
+    "save_state",
+    "namemap_seal",
+    "direct_close",
+    "direct_finish",
+    "direct_snapshot",
+    "quick_check_due",
+    "check_connection"
+   ],
+   "polls_measured": 30,
+   "warmup_polls": 3,
+   "poll_errors": [],
+   "unobservable_polls": 0,
+   "unobservable_reasons": {},
+   "unobservable_detail_examples": [],
+   "read_path_counts": {
+    "copy": 30
+   },
+   "read_attempts_counts": {},
+   "read_attempts_note": "direct reads per measured poll (monitor.py logs read_attempts only when a raced read was retried; absent = 1)",
+   "quick_check_outcomes": {
+    "polls_with_quick_check": 30,
+    "passed": 30,
+    "failed": 0,
+    "check_connection_without_quick_check": 0,
+    "check_connection_failed_reasons": {},
+    "warmup_polls": [
+     {
+      "poll": 1,
+      "checks": [
+       {
+        "quick_check_ran": true,
+        "ok": true,
+        "reason": null,
+        "ms": 1246.792
+       }
+      ]
+     },
+     {
+      "poll": 2,
+      "checks": [
+       {
+        "quick_check_ran": true,
+        "ok": true,
+        "reason": null,
+        "ms": 980.593
+       }
+      ]
+     },
+     {
+      "poll": 3,
+      "checks": [
+       {
+        "quick_check_ran": true,
+        "ok": true,
+        "reason": null,
+        "ms": 1096.235
+       }
+      ]
+     }
+    ]
+   },
+   "env_extra": {
+    "HOMEPROV_DB": "/cfg/home-assistant_v2.db",
+    "HOMEPROV_ANCHOR": "http://anchor:9900/append",
+    "HOMEPROV_PERIOD": "5.0",
+    "HOMEPROV_SCRATCH": "/scratch",
+    "HOMEPROV_ANCHOR_KEY": "<key>",
+    "HOMEPROV_SCHEME": "stable",
+    "HOMEPROV_COVERAGE": "1",
+    "HOMEPROV_KEYLOG": "1",
+    "HOMEPROV_ESCROW_DIR": "/escrow",
+    "HOMEPROV_SIGN_KEY": "/sign/monitor.pem",
+    "HOMEPROV_REPLY_TAGS": "1",
+    "HOMEPROV_QUICK_CHECK_EVERY": "1"
+   },
+   "failed_appends": 0,
+   "per_poll_ms": {
+    "total": {
+     "n": 30,
+     "median": 20467.936,
+     "p90": 21625.489,
+     "max": 41958.893,
+     "min": 19592.33
+    },
+    "tick_copy_ms": {
+     "n": 30,
+     "median": 761.038,
+     "p90": 13186.156,
+     "max": 21866.927,
+     "min": 211.206
+    },
+    "tick_load_ms": {
+     "n": 30,
+     "median": 74.676,
+     "p90": 202.177,
+     "max": 664.093,
+     "min": 17.669
+    },
+    "tick_commit_ms": {
+     "n": 30,
+     "median": 103.922,
+     "p90": 206.421,
+     "max": 296.106,
+     "min": 26.492
+    },
+    "tick_append_ms": {
+     "n": 30,
+     "median": 6.434,
+     "p90": 70.952,
+     "max": 92.912,
+     "min": 2.194
+    },
+    "phase_append": {
+     "n": 30,
+     "median": 6.104,
+     "p90": 70.521,
+     "max": 91.402,
+     "min": 2.083
+    },
+    "phase_commit": {
+     "n": 30,
+     "median": 103.916,
+     "p90": 206.413,
+     "max": 296.088,
+     "min": 26.489
+    },
+    "phase_escrow_keylog": {
+     "n": 30,
+     "median": 11.114,
+     "p90": 70.439,
+     "max": 100.744,
+     "min": 1.735
+    },
+    "phase_escrow_write": {
+     "n": 30,
+     "median": 8.596,
+     "p90": 56.474,
+     "max": 143.06,
+     "min": 1.201
+    },
+    "phase_keylog_poll": {
+     "n": 30,
+     "median": 2.777,
+     "p90": 91.178,
+     "max": 433.334,
+     "min": 0.647
+    },
+    "phase_load": {
+     "n": 30,
+     "median": 74.66,
+     "p90": 202.164,
+     "max": 664.073,
+     "min": 17.664
+    },
+    "phase_quick_check_due": {
+     "n": 30,
+     "median": 0.007,
+     "p90": 0.03,
+     "max": 0.044,
+     "min": 0.001
+    },
+    "phase_save_state": {
+     "n": 30,
+     "median": 1.432,
+     "p90": 64.134,
+     "max": 934.563,
+     "min": 0.472
+    },
+    "phase_snapshot": {
+     "n": 30,
+     "median": 760.927,
+     "p90": 13185.88,
+     "max": 21859.508,
+     "min": 211.164
+    },
+    "phase_validate_copy": {
+     "n": 30,
+     "median": 19004.912,
+     "p90": 19277.089,
+     "max": 20156.997,
+     "min": 2896.097
+    },
+    "phase_watermark": {
+     "n": 30,
+     "median": 1.414,
+     "p90": 40.823,
+     "max": 45.762,
+     "min": 0.309
+    }
+   },
+   "per_poll_bytes": {
+    "proc_rchar": {
+     "n": 30,
+     "median": 475770800.5,
+     "p90": 478054813,
+     "max": 669882506,
+     "min": 472242517
+    },
+    "proc_wchar": {
+     "n": 30,
+     "median": 196063880.0,
+     "p90": 196182253,
+     "max": 391590647,
+     "min": 192994790
+    },
+    "proc_read_bytes": {
+     "n": 30,
+     "median": 0.0,
+     "p90": 0,
+     "max": 0,
+     "min": 0
+    },
+    "proc_write_bytes": {
+     "n": 30,
+     "median": 196237312.0,
+     "p90": 196354048,
+     "max": 391770112,
+     "min": 193171456
+    },
+    "cgroup_rbytes": {
+     "n": 30,
+     "median": 0.0,
+     "p90": 0,
+     "max": 0,
+     "min": 0
+    },
+    "cgroup_wbytes": {
+     "n": 30,
+     "median": 196044800.0,
+     "p90": 196161536,
+     "max": 387399680,
+     "min": 192978944
+    }
+   },
+   "measured_window": {
+    "clock_first": 1791518239.529344,
+    "clock_last": 1791519000.6778338,
+    "seconds": 761.1,
+    "sum_read_bytes": 0,
+    "sum_write_bytes": 6065782784,
+    "sum_rchar": 14466850623,
+    "sum_wchar": 6060587515,
+    "sum_cgroup_rbytes": 0,
+    "sum_cgroup_wbytes": 6055829504,
+    "bytes_written_per_hour_proc": 28691128659,
+    "bytes_written_per_hour_cgroup": 28644049684
+   },
+   "rows_in_open_window": {
+    "n": 30,
+    "median": 2407.0,
+    "p90": 4237,
+    "max": 4281,
+    "min": 2179
+   },
+   "wal_bytes": {
+    "after_poll": {
+     "n": 30,
+     "median": 4169472.0,
+     "p90": 4190072,
+     "max": 4190072,
+     "min": 1256632
+    },
+    "before_poll": {
+     "n": 30,
+     "median": 4169472.0,
+     "p90": 4190072,
+     "max": 4190072,
+     "min": 1025912
+    },
+    "first_after_poll": 1256632,
+    "last_after_poll": 4190072,
+    "series_after_poll": [
+     1256632,
+     1557392,
+     1899352,
+     2208352,
+     2504992,
+     2743952,
+     2991152,
+     3308392,
+     3563832,
+     3905792,
+     4115912,
+     4169472,
+     4169472,
+     4169472,
+     4169472,
+     4169472,
+     4169472,
+     4169472,
+     4169472,
+     4169472,
+     4169472,
+     4169472,
+     4169472,
+     4169472,
+     4190072,
+     4190072,
+     4190072,
+     4190072,
+     4190072,
+     4190072
+    ]
+   },
+   "writer": {
+    "start": {
+     "writer": "start",
+     "replay_rows": 8203,
+     "offset": -1093140.7249491215,
+     "clock": 1791518122.5383344,
+     "history_end": 1791518120.073026
+    },
+    "stop": {
+     "writer": "stop",
+     "clock": 1791519017.0009544,
+     "states": 339,
+     "events": 177,
+     "commits": 172,
+     "commit_s_median": 0.0006620883941650391,
+     "commit_s_max": 0.04514455795288086
+    },
+    "rows_per_minute": 34.61
+   },
+   "steps": [
+    {
+     "step": "start",
+     "context": {
+      "uptime": "15:34  up 9 days, 16:36, 2 users, load averages: 5.90 5.50 5.17",
+      "containers_cpu": [
+       "delaysteer-ha 0.06%",
+       "hpr-broker 0.02%",
+       "rka-server 0.11%",
+       "rka-worker 0.05%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 100.40%",
+       "hpr-devices 0.02%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "k": 1,
+     "mode": "copy",
+     "image": "hpr-monitor:e10",
+     "limits": {
+      "cpus": "0.25",
+      "memory": "512m",
+      "device_read_bps": "40mb",
+      "device_write_bps": "10mb",
+      "device": "/dev/vda"
+     },
+     "polls": 30,
+     "warmup": 3,
+     "period": 5.0,
+     "master": "<research-dir>/HOMEPROV-P13-exp/e9pre/c1/master_k1.db",
+     "master_sha256": "6030e982bf938a6fbc04ab93ee4c388873cd7d07dad04e26c279d45d443ac4cf",
+     "master_bytes": 191459328,
+     "load": "15:34  up 9 days, 16:36, 2 users, load averages: 7.27 5.79 5.27",
+     "at": "2026-10-21T19:34:19Z"
+    },
+    {
+     "step": "live_copy",
+     "seconds": 1.3,
+     "at": "2026-10-21T19:34:21Z"
+    },
+    {
+     "step": "monitor_start",
+     "env": {
+      "HOMEPROV_DB": "/cfg/home-assistant_v2.db",
+      "HOMEPROV_ANCHOR": "http://anchor:9900/append",
+      "HOMEPROV_PERIOD": "5.0",
+      "HOMEPROV_SCRATCH": "/scratch",
+      "HOMEPROV_ANCHOR_KEY": "<key>",
+      "HOMEPROV_SCHEME": "stable",
+      "HOMEPROV_COVERAGE": "1",
+      "HOMEPROV_KEYLOG": "1",
+      "HOMEPROV_ESCROW_DIR": "/escrow",
+      "HOMEPROV_SIGN_KEY": "/sign/monitor.pem",
+      "HOMEPROV_REPLY_TAGS": "1",
+      "HOMEPROV_QUICK_CHECK_EVERY": "1"
+     },
+     "mount_ro": true,
+     "offset": -1093140.7249491215,
+     "at": "2026-10-21T19:34:39Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "15:39  up 9 days, 16:41, 2 users, load averages: 5.65 5.63 5.35",
+      "containers_cpu": [
+       "e10e-monitor 0.41%",
+       "e10e-writer 0.33%",
+       "e10e-anchord 0.31%",
+       "delaysteer-ha 0.00%",
+       "hpr-broker 0.03%",
+       "rka-server 0.11%",
+       "rka-worker 0.14%",
+       "hpr-monitor 35.44%",
+       "hpr-hass 94.30%",
+       "hpr-devices 0.01%",
+       "hpr-anchord 16.73%"
+      ]
+     },
+     "at": "2026-10-21T19:39:43Z"
+    },
+    {
+     "step": "during",
+     "context": {
+      "uptime": "15:44  up 9 days, 16:46, 2 users, load averages: 6.53 5.80 5.48",
+      "containers_cpu": [
+       "e10e-monitor 0.00%",
+       "e10e-writer 0.04%",
+       "e10e-anchord 0.01%",
+       "delaysteer-ha 0.12%",
+       "hpr-broker 0.03%",
+       "rka-server 0.12%",
+       "rka-worker 0.12%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 0.12%",
+       "hpr-devices 0.04%",
+       "hpr-anchord 0.01%"
+      ]
+     },
+     "at": "2026-10-21T19:44:45Z"
+    },
+    {
+     "step": "monitor_done",
+     "exit": "0",
+     "context": {
+      "uptime": "15:49  up 9 days, 16:51, 2 users, load averages: 5.51 5.64 5.50",
+      "containers_cpu": [
+       "e10e-writer 0.41%",
+       "e10e-anchord 0.03%",
+       "delaysteer-ha 0.52%",
+       "hpr-broker 0.03%",
+       "rka-server 0.19%",
+       "rka-worker 2.15%",
+       "hpr-monitor 0.00%",
+       "hpr-hass 99.90%",
+       "hpr-devices 0.16%",
+       "hpr-anchord 0.03%"
+      ]
+     },
+     "at": "2026-10-21T19:49:17Z"
+    },
+    {
+     "step": "sizes",
+     "sizes": [
+      "/cfg/home-assistant_v2.db 191545344",
+      "/scratch/monitor_state.json 12573",
+      "/scratch/recorder.db 191537152",
+      "/escrow/escrow.jsonl 6635372",
+      "/anchor/chain.jsonl 212919",
+      "33"
+     ],
+     "load": "15:49  up 9 days, 16:51, 2 users, load averages: 5.51 5.64 5.50",
+     "at": "2026-10-21T19:49:19Z"
+    },
+    {
+     "step": "teardown",
+     "left": "",
+     "at": "2026-10-21T19:49:20Z"
+    }
+   ]
+  }
+ },
+ "caveats": [
+  "E10 arm E (review r5): profile pi4; limits {'cpus': '0.25', 'memory': '512m', 'device_read_bps': '40mb', 'device_write_bps': '10mb', 'device': '/dev/vda'} plus ['--memory-swap', '512m', '--device-read-iops', '/dev/vda:1500', '--device-write-iops', '/dev/vda:500']; assumed values: ['cpus', 'memory', 'memory_swap', 'device_read_bps', 'device_write_bps', 'device_read_iops', 'device_write_iops']",
+  "Docker's CPU quota throttles in 100 ms CFS periods; a quota is not a uniformly slower core.",
+  "Monitor image hpr-monitor:e10 (the hardened E10 monitor); writer, recorders and harness as C1."
+ ],
+ "definitions": {
+  "total": "wall time of monitor.tick() for one poll (everything the poll does)",
+  "phase_*": "time inside that monitor function during the poll (timers only; nested calls counted in both, e.g. watermark inside keylog_poll is not nested, validate_copy holds quick_check)",
+  "proc_read_bytes/write_bytes": "from /proc/self/io: bytes the monitor process caused to be fetched from / sent to storage in the poll (page-cache hits are not reads)",
+  "proc_rchar/wchar": "bytes passed through read/write-type system calls (includes page-cache hits)",
+  "cgroup_rbytes/wbytes": "the container's cgroup io.stat on the VM disk (includes writeback)",
+  "bytes_written_per_hour": "sum over the measured polls / the measured window's seconds * 3600: the run's measured rate, expressed per hour"
+ }
+}

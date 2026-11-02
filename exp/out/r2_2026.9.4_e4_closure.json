@@ -1,0 +1,703 @@
+{
+ "ack": {
+  "control_ok": true,
+  "fields_tested": 17,
+  "ok": true,
+  "out": "e4_closure.json",
+  "relevant": 12
+ },
+ "baseline_2026_7_4": {
+  "all_tested": [
+   "event_data.shared_data",
+   "events.context_id_bin",
+   "events.context_parent_id_bin",
+   "events.context_user_id_bin",
+   "events.data_id",
+   "events.event_type_id",
+   "events.time_fired_ts",
+   "states.attributes_id",
+   "states.context_id_bin",
+   "states.context_parent_id_bin",
+   "states.context_user_id_bin",
+   "states.last_changed_ts",
+   "states.last_updated_ts",
+   "states.metadata_id",
+   "states.old_state_id",
+   "states.state",
+   "states.state_id(row identity)"
+  ],
+  "n_relevant": 12,
+  "relevant": [
+   "events.context_id_bin",
+   "events.context_parent_id_bin",
+   "events.context_user_id_bin",
+   "events.data_id",
+   "events.event_type_id",
+   "events.time_fired_ts",
+   "states.context_id_bin",
+   "states.context_user_id_bin",
+   "states.last_updated_ts",
+   "states.metadata_id",
+   "states.old_state_id",
+   "states.state"
+  ]
+ },
+ "comparison_vs_2026_7_4": {
+  "all_tested_set_identical": true,
+  "only_in_other": [
+   "states.context_id_bin"
+  ],
+  "only_in_this": [
+   "states.last_changed_ts"
+  ],
+  "relevant_set_identical": false
+ },
+ "comparison_vs_2026_9_4": {
+  "all_tested_set_identical": true,
+  "only_in_other": [
+   "states.context_id_bin"
+  ],
+  "only_in_this": [],
+  "relevant_set_identical": false
+ },
+ "experiment": "R1-item4-dynamic",
+ "ha_version": "2026.9.4",
+ "integrity": {
+  "post_pass": true,
+  "post_path": "<artifact-root>/exp/out/r2_integrity/994_closure_post_20261006T231439Z.json",
+  "pre_pass": true,
+  "pre_path": "<artifact-root>/exp/out/r2_integrity/994_closure_pre_20261006T231433Z.json",
+  "valid": true
+ },
+ "last_changed_ts_attribution_relevant": true,
+ "new_release": {
+  "all_tested": [
+   "event_data.shared_data",
+   "events.context_id_bin",
+   "events.context_parent_id_bin",
+   "events.context_user_id_bin",
+   "events.data_id",
+   "events.event_type_id",
+   "events.time_fired_ts",
+   "states.attributes_id",
+   "states.context_id_bin",
+   "states.context_parent_id_bin",
+   "states.context_user_id_bin",
+   "states.last_changed_ts",
+   "states.last_updated_ts",
+   "states.metadata_id",
+   "states.old_state_id",
+   "states.state",
+   "states.state_id(row identity)"
+  ],
+  "n_relevant": 12,
+  "relevant": [
+   "events.context_id_bin",
+   "events.context_parent_id_bin",
+   "events.context_user_id_bin",
+   "events.data_id",
+   "events.event_type_id",
+   "events.time_fired_ts",
+   "states.context_user_id_bin",
+   "states.last_changed_ts",
+   "states.last_updated_ts",
+   "states.metadata_id",
+   "states.old_state_id",
+   "states.state"
+  ]
+ },
+ "positive_control": {
+  "attribution_relevant": true,
+  "effect": {
+   "appeared": 1,
+   "attribution_changed": 0,
+   "examples": [],
+   "rows_after": 139,
+   "rows_before": 139,
+   "vanished": 1
+  },
+  "field": "states.state",
+  "method": "mutation",
+  "restore_verified": true
+ },
+ "provenance": {
+  "frontend_version": "20260826.7",
+  "git_head": "b7611992393052a568df00c9ebc805f4d15ee6f5",
+  "ha_version": "2026.9.4",
+  "image_digest": "sha256:3e6710a7ab2a61311d9d899b719f6c3657791c63e8f4942cec4ebc42401d6b76",
+  "script_sha256": {
+   "r1_common.py": "c4327d9dda0170645fa91ef4d7a6e70e86dbb4a40c36a92200a60d7f70cc0375",
+   "r2_e4_closure.py": "073b3cadb02fef6a98033e224f6ec51e5d822da0a670294c074722542163b38d",
+   "r2_gate.py": "ccfdcb94a15f85a96f58358f6287408256773a543bd4ac4873db4f2208077fc2"
+  },
+  "timestamp_utc": "2026-10-06T23:14:39.005311+00:00"
+ },
+ "raw_component_output": {
+  "baseline_rows": 139,
+  "entities_scoped": [
+   "light.porch_light",
+   "light.kitchen_light",
+   "binary_sensor.porch_motion",
+   "binary_sensor.kitchen_motion",
+   "binary_sensor.hallway_motion",
+   "automation.porch_motion_light",
+   "automation.kitchen_motion_light",
+   "light.hallway_light",
+   "automation.hallway_motion_light",
+   "sensor.backup_backup_manager_state",
+   "lock.front_door",
+   "lock.back_door",
+   "zone.home",
+   "tts.google_translate_en_com",
+   "todo.shopping_list",
+   "sensor.backup_next_scheduled_automatic_backup",
+   "sensor.backup_last_successful_automatic_backup",
+   "sensor.backup_last_attempted_automatic_backup",
+   "person.home_owner",
+   "event.backup_automatic_backup",
+   "conversation.home_assistant"
+  ],
+  "ha_version": "2026.9.4",
+  "mutations": [
+   {
+    "attribution_relevant": false,
+    "effect": {
+     "appeared": 0,
+     "attribution_changed": 0,
+     "examples": [],
+     "rows_after": 139,
+     "rows_before": 139,
+     "vanished": 0
+    },
+    "field": "states.context_id_bin",
+    "method": "mutation",
+    "restore_verified": true
+   },
+   {
+    "attribution_relevant": false,
+    "effect": {
+     "appeared": 0,
+     "attribution_changed": 0,
+     "examples": [],
+     "rows_after": 139,
+     "rows_before": 139,
+     "vanished": 0
+    },
+    "field": "states.context_parent_id_bin",
+    "method": "mutation",
+    "restore_verified": true
+   },
+   {
+    "attribution_relevant": true,
+    "effect": {
+     "appeared": 0,
+     "attribution_changed": 1,
+     "examples": [
+      {
+       "now": {
+        "context_user_id": "ef47107ecce90af245d0f6dcb39c6a2f"
+       },
+       "row": {
+        "entity_id": "binary_sensor.hallway_motion",
+        "message": null,
+        "name": "Hallway Motion",
+        "state": "off",
+        "when": "2026-10-06T23:14:30.903826+00:00"
+       },
+       "was": {}
+      }
+     ],
+     "rows_after": 139,
+     "rows_before": 139,
+     "vanished": 0
+    },
+    "field": "states.context_user_id_bin",
+    "method": "mutation",
+    "restore_verified": true
+   },
+   {
+    "attribution_relevant": true,
+    "effect": {
+     "appeared": 1,
+     "attribution_changed": 0,
+     "examples": [],
+     "rows_after": 139,
+     "rows_before": 139,
+     "vanished": 1
+    },
+    "field": "states.state",
+    "method": "mutation",
+    "restore_verified": true
+   },
+   {
+    "attribution_relevant": true,
+    "effect": {
+     "appeared": 1,
+     "attribution_changed": 0,
+     "examples": [],
+     "rows_after": 139,
+     "rows_before": 139,
+     "vanished": 1
+    },
+    "field": "states.metadata_id",
+    "method": "mutation",
+    "restore_verified": true
+   },
+   {
+    "attribution_relevant": false,
+    "effect": {
+     "appeared": 0,
+     "attribution_changed": 0,
+     "examples": [],
+     "rows_after": 139,
+     "rows_before": 139,
+     "vanished": 0
+    },
+    "field": "states.attributes_id",
+    "method": "mutation",
+    "restore_verified": true
+   },
+   {
+    "attribution_relevant": true,
+    "effect": {
+     "appeared": 0,
+     "attribution_changed": 0,
+     "examples": [],
+     "rows_after": 138,
+     "rows_before": 139,
+     "vanished": 1
+    },
+    "field": "states.old_state_id",
+    "method": "mutation",
+    "restore_verified": true
+   },
+   {
+    "attribution_relevant": true,
+    "effect": {
+     "appeared": 1,
+     "attribution_changed": 0,
+     "examples": [],
+     "rows_after": 139,
+     "rows_before": 139,
+     "vanished": 1
+    },
+    "field": "states.last_updated_ts",
+    "method": "mutation",
+    "restore_verified": true
+   },
+   {
+    "attribution_relevant": true,
+    "effect": {
+     "appeared": 0,
+     "attribution_changed": 0,
+     "examples": [],
+     "rows_after": 138,
+     "rows_before": 139,
+     "vanished": 1
+    },
+    "field": "states.last_changed_ts",
+    "method": "mutation",
+    "restore_verified": true
+   },
+   {
+    "attribution_relevant": null,
+    "field": "states.state_id(row identity)",
+    "method": "static-only"
+   },
+   {
+    "attribution_relevant": true,
+    "effect": {
+     "appeared": 0,
+     "attribution_changed": 1,
+     "examples": [
+      {
+       "now": {
+        "context_entity_id": "automation.hallway_motion_light",
+        "context_entity_id_name": "Hallway motion light",
+        "context_state": "on"
+       },
+       "row": {
+        "entity_id": "light.hallway_light",
+        "message": null,
+        "name": "Hallway Light",
+        "state": "on",
+        "when": "2026-10-06T23:14:28.566389+00:00"
+       },
+       "was": {
+        "context_domain": "automation",
+        "context_entity_id": "automation.hallway_motion_light",
+        "context_entity_id_name": "Hallway motion light",
+        "context_event_type": "automation_triggered",
+        "context_message": "triggered by state of binary_sensor.hallway_motion",
+        "context_name": "Hallway motion light"
+       }
+      }
+     ],
+     "rows_after": 139,
+     "rows_before": 139,
+     "vanished": 0
+    },
+    "field": "events.context_id_bin",
+    "method": "mutation",
+    "restore_verified": true
+   },
+   {
+    "attribution_relevant": true,
+    "effect": {
+     "appeared": 0,
+     "attribution_changed": 1,
+     "examples": [
+      {
+       "now": {
+        "source": "state of binary_sensor.hallway_motion"
+       },
+       "row": {
+        "entity_id": "automation.hallway_motion_light",
+        "message": "triggered by state of binary_sensor.hallway_motion",
+        "name": "Hallway motion light",
+        "state": null,
+        "when": "2026-10-06T23:14:28.562408+00:00"
+       },
+       "was": {
+        "context_entity_id": "binary_sensor.hallway_motion",
+        "context_entity_id_name": "Hallway Motion",
+        "context_state": "on",
+        "source": "state of binary_sensor.hallway_motion"
+       }
+      }
+     ],
+     "rows_after": 139,
+     "rows_before": 139,
+     "vanished": 0
+    },
+    "field": "events.context_parent_id_bin",
+    "method": "mutation",
+    "restore_verified": true
+   },
+   {
+    "attribution_relevant": true,
+    "effect": {
+     "appeared": 0,
+     "attribution_changed": 1,
+     "examples": [
+      {
+       "now": {
+        "context_entity_id": "binary_sensor.hallway_motion",
+        "context_entity_id_name": "Hallway Motion",
+        "context_state": "on",
+        "context_user_id": "345252e1672b6a36b912c5583e73d145",
+        "source": "state of binary_sensor.hallway_motion"
+       },
+       "row": {
+        "entity_id": "automation.hallway_motion_light",
+        "message": "triggered by state of binary_sensor.hallway_motion",
+        "name": "Hallway motion light",
+        "state": null,
+        "when": "2026-10-06T23:14:28.562408+00:00"
+       },
+       "was": {
+        "context_entity_id": "binary_sensor.hallway_motion",
+        "context_entity_id_name": "Hallway Motion",
+        "context_state": "on",
+        "source": "state of binary_sensor.hallway_motion"
+       }
+      }
+     ],
+     "rows_after": 139,
+     "rows_before": 139,
+     "vanished": 0
+    },
+    "field": "events.context_user_id_bin",
+    "method": "mutation",
+    "restore_verified": true
+   },
+   {
+    "attribution_relevant": true,
+    "effect": {
+     "appeared": 0,
+     "attribution_changed": 1,
+     "examples": [
+      {
+       "now": {},
+       "row": {
+        "entity_id": "light.hallway_light",
+        "message": null,
+        "name": "Hallway Light",
+        "state": "on",
+        "when": "2026-10-06T23:14:28.566389+00:00"
+       },
+       "was": {
+        "context_domain": "automation",
+        "context_entity_id": "automation.hallway_motion_light",
+        "context_entity_id_name": "Hallway motion light",
+        "context_event_type": "automation_triggered",
+        "context_message": "triggered by state of binary_sensor.hallway_motion",
+        "context_name": "Hallway motion light"
+       }
+      }
+     ],
+     "rows_after": 138,
+     "rows_before": 139,
+     "vanished": 1
+    },
+    "field": "events.event_type_id",
+    "method": "mutation",
+    "restore_verified": true
+   },
+   {
+    "attribution_relevant": true,
+    "effect": {
+     "appeared": 0,
+     "attribution_changed": 1,
+     "examples": [
+      {
+       "now": {
+        "context_domain": "automation",
+        "context_event_type": "automation_triggered",
+        "context_message": "triggered"
+       },
+       "row": {
+        "entity_id": "light.hallway_light",
+        "message": null,
+        "name": "Hallway Light",
+        "state": "on",
+        "when": "2026-10-06T23:14:28.566389+00:00"
+       },
+       "was": {
+        "context_domain": "automation",
+        "context_entity_id": "automation.hallway_motion_light",
+        "context_entity_id_name": "Hallway motion light",
+        "context_event_type": "automation_triggered",
+        "context_message": "triggered by state of binary_sensor.hallway_motion",
+        "context_name": "Hallway motion light"
+       }
+      }
+     ],
+     "rows_after": 138,
+     "rows_before": 139,
+     "vanished": 1
+    },
+    "field": "events.data_id",
+    "method": "mutation",
+    "restore_verified": true
+   },
+   {
+    "attribution_relevant": true,
+    "effect": {
+     "appeared": 1,
+     "attribution_changed": 0,
+     "examples": [],
+     "rows_after": 139,
+     "rows_before": 139,
+     "vanished": 1
+    },
+    "field": "events.time_fired_ts",
+    "method": "mutation",
+    "restore_verified": true
+   },
+   {
+    "attribution_relevant": null,
+    "field": "event_data.shared_data",
+    "method": "static-only"
+   }
+  ],
+  "picked": {
+   "event_id": 399,
+   "state_id": 185
+  },
+  "positive_control": {
+   "attribution_relevant": true,
+   "effect": {
+    "appeared": 1,
+    "attribution_changed": 0,
+    "examples": [],
+    "rows_after": 139,
+    "rows_before": 139,
+    "vanished": 1
+   },
+   "field": "states.state",
+   "method": "mutation",
+   "restore_verified": true
+  },
+  "processor_form": "entity_ids",
+  "relaxed_pick": null,
+  "static": {
+   "EVENT_COLUMNS": [
+    {
+     "columns": [
+      "events.event_id"
+     ],
+     "label": "row_id"
+    },
+    {
+     "columns": [
+      "event_types.event_type"
+     ],
+     "label": "event_type"
+    },
+    {
+     "columns": [
+      "event_data.shared_data",
+      "events.event_data"
+     ],
+     "label": "event_data"
+    },
+    {
+     "columns": [
+      "events.time_fired_ts"
+     ],
+     "label": "time_fired_ts"
+    },
+    {
+     "columns": [
+      "events.context_id_bin"
+     ],
+     "label": "context_id_bin"
+    },
+    {
+     "columns": [
+      "events.context_user_id_bin"
+     ],
+     "label": "context_user_id_bin"
+    },
+    {
+     "columns": [
+      "events.context_parent_id_bin"
+     ],
+     "label": "context_parent_id_bin"
+    }
+   ],
+   "EVENT_COLUMNS_FOR_STATE_SELECT": [
+    {
+     "columns": [
+      "states.state_id"
+     ],
+     "label": "row_id"
+    },
+    {
+     "columns": [],
+     "label": "event_type"
+    },
+    {
+     "columns": [],
+     "label": "event_data"
+    },
+    {
+     "columns": [
+      "states.last_updated_ts"
+     ],
+     "label": "time_fired_ts"
+    },
+    {
+     "columns": [
+      "states.context_id_bin"
+     ],
+     "label": "context_id_bin"
+    },
+    {
+     "columns": [
+      "states.context_user_id_bin"
+     ],
+     "label": "context_user_id_bin"
+    },
+    {
+     "columns": [
+      "states.context_parent_id_bin"
+     ],
+     "label": "context_parent_id_bin"
+    }
+   ],
+   "STATE_COLUMNS": [
+    {
+     "columns": [
+      "states.state"
+     ],
+     "label": "state"
+    },
+    {
+     "columns": [
+      "states_meta.entity_id"
+     ],
+     "label": "entity_id"
+    },
+    {
+     "columns": [
+      "state_attributes.shared_attrs",
+      "states.attributes"
+     ],
+     "label": "icon"
+    },
+    {
+     "columns": [
+      "state_attributes.shared_attrs",
+      "states.attributes"
+     ],
+     "label": "attributes"
+    }
+   ],
+   "STATE_CONTEXT_ONLY_COLUMNS": [
+    {
+     "columns": [
+      "states.state"
+     ],
+     "label": "state"
+    },
+    {
+     "columns": [
+      "states_meta.entity_id"
+     ],
+     "label": "entity_id"
+    },
+    {
+     "columns": [],
+     "label": "icon"
+    },
+    {
+     "columns": [],
+     "label": "attributes"
+    }
+   ]
+  },
+  "ts": 1791328474.3599188,
+  "window_hours": 6
+ },
+ "result_2026_9_4": {
+  "all_tested": [
+   "event_data.shared_data",
+   "events.context_id_bin",
+   "events.context_parent_id_bin",
+   "events.context_user_id_bin",
+   "events.data_id",
+   "events.event_type_id",
+   "events.time_fired_ts",
+   "states.attributes_id",
+   "states.context_id_bin",
+   "states.context_parent_id_bin",
+   "states.context_user_id_bin",
+   "states.last_changed_ts",
+   "states.last_updated_ts",
+   "states.metadata_id",
+   "states.old_state_id",
+   "states.state",
+   "states.state_id(row identity)"
+  ],
+  "n_relevant": 13,
+  "relevant": [
+   "events.context_id_bin",
+   "events.context_parent_id_bin",
+   "events.context_user_id_bin",
+   "events.data_id",
+   "events.event_type_id",
+   "events.time_fired_ts",
+   "states.context_id_bin",
+   "states.context_user_id_bin",
+   "states.last_changed_ts",
+   "states.last_updated_ts",
+   "states.metadata_id",
+   "states.old_state_id",
+   "states.state"
+  ]
+ },
+ "verdict": "on 2026.9.4: relevant set != the 2026.9.4(hpr1) set (12 fields); states.last_changed_ts IS attribution-relevant by mutation; all_tested=17.",
+ "what": "renderer dependency-closure MUTATION re-run (homeprov_e4 'closure') on 2026.9.4: each DB column mutated, rendered cause re-read, field flagged attribution-relevant if the render changed; positive control validates the harness. Compared to the 2026.7.4 baseline and the 2026.9.4 result."
+}

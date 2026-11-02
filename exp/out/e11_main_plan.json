@@ -1,0 +1,169 @@
+{
+ "arms": [
+  {
+   "arm": "A-BD",
+   "mark_ms_offsets": [
+    594,
+    872,
+    994,
+    11,
+    390,
+    414,
+    321,
+    653,
+    658,
+    238,
+    493,
+    408,
+    415,
+    0,
+    930,
+    224,
+    18,
+    55,
+    697,
+    639,
+    600,
+    644,
+    63,
+    123,
+    472,
+    418,
+    92,
+    111,
+    315,
+    770
+   ],
+   "n": 30,
+   "seal_wait_s": 130.0,
+   "spacing_s": 3.0
+  },
+  {
+   "arm": "A-RM",
+   "mark_ms_offsets": null,
+   "n": 30,
+   "seal_wait_s": 130.0,
+   "spacing_s": 3.0
+  },
+  {
+   "arm": "A-CHG",
+   "mark_ms_offsets": null,
+   "n": 30,
+   "seal_wait_s": 130.0,
+   "spacing_s": 3.0
+  }
+ ],
+ "backfill": {
+  "item": "Energy_Backfill",
+  "offset_s": 30.25,
+  "points": 10,
+  "span_s": 600
+ },
+ "benign": [
+  "B-REPLACE-SAME",
+  "B-BACKFILL",
+  "B-LABEL",
+  "B-RESTART",
+  "B-REPLACE-NEW",
+  "B-BACKFILL",
+  "B-CLEAN",
+  "B-RESTART",
+  "B-BACKFILL",
+  "B-RETAIN"
+ ],
+ "benign_gap_s": 120,
+ "label": {
+  "item": "Label_Probe",
+  "new_label": "Label probe (renamed by the owner)"
+ },
+ "late_bound_s": 30.0,
+ "replace": {
+  "future_points": 12,
+  "item": "Price_Forecast",
+  "new_delta": 1.0,
+  "past_window_s": 1800,
+  "step_s": 300
+ },
+ "retain": {
+  "item": "Retention_Probe",
+  "older_than_s": 1200
+ },
+ "schedule": {
+  "Energy_Backfill": {
+   "kind": "counter",
+   "lo": 1000.0,
+   "period_s": 60,
+   "step": 0.05,
+   "unit": "kWh"
+  },
+  "Hallway_Motion": {
+   "kind": "choice",
+   "period_s": 60,
+   "values": [
+    "OPEN",
+    "CLOSED",
+    "CLOSED"
+   ]
+  },
+  "Hallway_Temp": {
+   "hi": 22.0,
+   "kind": "walk",
+   "lo": 18.0,
+   "period_s": 10,
+   "unit": "\u00b0C"
+  },
+  "Kitchen_Motion": {
+   "kind": "choice",
+   "period_s": 90,
+   "values": [
+    "OPEN",
+    "CLOSED",
+    "CLOSED"
+   ]
+  },
+  "Kitchen_Temp": {
+   "hi": 24.0,
+   "kind": "walk",
+   "lo": 19.0,
+   "period_s": 10,
+   "unit": "\u00b0C"
+  },
+  "Label_Probe": {
+   "kind": "toggle",
+   "period_s": 420,
+   "values": [
+    "ON",
+    "OFF"
+   ]
+  },
+  "Porch_Motion": {
+   "kind": "choice",
+   "period_s": 75,
+   "values": [
+    "OPEN",
+    "CLOSED",
+    "CLOSED"
+   ]
+  },
+  "Power_Meter": {
+   "hi": 900.0,
+   "kind": "walk",
+   "lo": 80.0,
+   "period_s": 3,
+   "unit": "W"
+  },
+  "Retention_Probe": {
+   "kind": "counter",
+   "lo": 0.0,
+   "period_s": 30,
+   "step": 1.0
+  }
+ },
+ "schedule_seed": 20261021,
+ "seed": 20261021,
+ "settle_s": 90,
+ "smoke": false,
+ "warmup_s": 600,
+ "window1_s": 1500,
+ "window2_s": 1800
+}

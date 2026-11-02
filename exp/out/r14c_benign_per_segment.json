@@ -1,0 +1,645 @@
+{
+ "what": "R14c: the deployed configuration's benign bound per untouched sealed one-second segment (0 of 3,972, E7 and E8), each E7/E8 window's occupancy, and the per-hour and per-day bound implied at those and at a stated range of occupancies; R3's arithmetic checked; the minute-granularity analogue",
+ "answers": [
+  "R3 W2 (r4): 'Report the bound per sealed segment, then scale it at stated deployment occupancies.'"
+ ],
+ "paper_sentence": {
+  "file": "sections/07_sp_eval.tex",
+  "text": "In the 3,972 untouched seconds of E7 and E8 the deployed stable-columns monitor had no failure, at most 0.83 per wall-clock hour or 19.95 per day by the exact bound."
+ },
+ "per_segment_bound": {
+  "k": 0,
+  "n_untouched_anchored_one_second_segments": 3972,
+  "k_closure_monitor": 0,
+  "exact_interval_two_sided_95": [
+   0.0,
+   0.0009282897821096535
+  ],
+  "one_sided_95_upper": 0.0007539282094829458,
+  "method": "Clopper-Pearson (exp/rig/stats.py), alpha = 0.05; one-sided 1 - 0.05^(1/n)",
+  "total_window_duration_s": 15968.0,
+  "printed_per_wallclock_hour_reproduced": 0.8312751285284543,
+  "printed_per_wallclock_day_reproduced": 19.950603084682903,
+  "per_untouched_hour_at_full_occupancy": 3.3418432155947526,
+  "per_untouched_day_at_full_occupancy": 80.20423717427407
+ },
+ "windows": [
+  {
+   "experiment": "E7",
+   "window": "main",
+   "t_start": 1791483728.0,
+   "t_end": 1791491140.0,
+   "duration_s": 7412.0,
+   "monitors": {
+    "stable": {
+     "verify_file": "exp/out/e7_main_stable_verify.json",
+     "k_second": 0,
+     "n_second_untouched": 1212,
+     "anchored_seconds_in_window": 1697,
+     "k_minute": 0,
+     "n_minute_untouched": 42,
+     "anchored_minutes_in_window": 125
+    },
+    "closure": {
+     "verify_file": "exp/out/e7_main_closure_verify.json",
+     "k_second": 0,
+     "n_second_untouched": 1212,
+     "anchored_seconds_in_window": 1697,
+     "k_minute": 0,
+     "n_minute_untouched": 42,
+     "anchored_minutes_in_window": 125
+    }
+   },
+   "n_untouched_seconds": 1212,
+   "k_untouched_seconds": 0,
+   "anchored_seconds_in_window": 1697,
+   "sealed_occupancy": 0.22895304910955208,
+   "row_seconds_in_extract": 1695,
+   "row_occupancy_extract": 0.2286832164058284,
+   "untouched_occupancy": 0.16351861845655694,
+   "touched_share_of_anchored_seconds": 0.285798467884502,
+   "n_untouched_minutes": 42,
+   "k_untouched_minutes": 0,
+   "anchored_minutes_in_window": 125,
+   "minutes_overlapping_window": 124,
+   "row_minutes_in_extract": 123,
+   "minute_row_occupancy_extract": 0.9919354838709677
+  },
+  {
+   "experiment": "E8",
+   "window": "main",
+   "t_start": 1791523970.0,
+   "t_end": 1791530123.0,
+   "duration_s": 6153.0,
+   "monitors": {
+    "stable": {
+     "verify_file": "exp/out/e8_main_stable_verify_main.json",
+     "k_second": 0,
+     "n_second_untouched": 1435,
+     "anchored_seconds_in_window": 2210,
+     "k_minute": 0,
+     "n_minute_untouched": 35,
+     "anchored_minutes_in_window": 105
+    },
+    "closure": {
+     "verify_file": "exp/out/e8_main_closure_verify_main.json",
+     "k_second": 0,
+     "n_second_untouched": 1435,
+     "anchored_seconds_in_window": 2210,
+     "k_minute": 0,
+     "n_minute_untouched": 35,
+     "anchored_minutes_in_window": 105
+    }
+   },
+   "n_untouched_seconds": 1435,
+   "k_untouched_seconds": 0,
+   "anchored_seconds_in_window": 2210,
+   "sealed_occupancy": 0.35917438647814076,
+   "row_seconds_in_extract": 2208,
+   "row_occupancy_extract": 0.35884934178449535,
+   "untouched_occupancy": 0.23321956769055746,
+   "touched_share_of_anchored_seconds": 0.3506787330316742,
+   "n_untouched_minutes": 35,
+   "k_untouched_minutes": 0,
+   "anchored_minutes_in_window": 105,
+   "minutes_overlapping_window": 104,
+   "row_minutes_in_extract": 104,
+   "minute_row_occupancy_extract": 1.0,
+   "row_occupancy_scorer": 0.3588,
+   "row_seconds_scorer": 2208,
+   "row_occupancy_scorer_source": "exp/out/e8_main_score_rescored.json write_rate.main.seconds_with_a_row (rows of monitor.load() on the full recorder)"
+  },
+  {
+   "experiment": "E8",
+   "window": "base",
+   "t_start": 1791530213.0,
+   "t_end": 1791530813.0,
+   "duration_s": 600.0,
+   "monitors": {
+    "stable": {
+     "verify_file": "exp/out/e8_main_stable_verify_base.json",
+     "k_second": 0,
+     "n_second_untouched": 124,
+     "anchored_seconds_in_window": 124,
+     "k_minute": 0,
+     "n_minute_untouched": 12,
+     "anchored_minutes_in_window": 12
+    },
+    "closure": {
+     "verify_file": "exp/out/e8_main_closure_verify_base.json",
+     "k_second": 0,
+     "n_second_untouched": 124,
+     "anchored_seconds_in_window": 124,
+     "k_minute": 0,
+     "n_minute_untouched": 12,
+     "anchored_minutes_in_window": 12
+    }
+   },
+   "n_untouched_seconds": 124,
+   "k_untouched_seconds": 0,
+   "anchored_seconds_in_window": 124,
+   "sealed_occupancy": 0.20666666666666667,
+   "row_seconds_in_extract": 123,
+   "row_occupancy_extract": 0.205,
+   "untouched_occupancy": 0.20666666666666667,
+   "touched_share_of_anchored_seconds": 0.0,
+   "n_untouched_minutes": 12,
+   "k_untouched_minutes": 0,
+   "anchored_minutes_in_window": 12,
+   "minutes_overlapping_window": 11,
+   "row_minutes_in_extract": 11,
+   "minute_row_occupancy_extract": 1.0,
+   "row_occupancy_scorer": 0.205,
+   "row_seconds_scorer": 123,
+   "row_occupancy_scorer_source": "exp/out/e8_main_score_rescored.json write_rate.base.seconds_with_a_row (rows of monitor.load() on the full recorder)"
+  },
+  {
+   "experiment": "E8",
+   "window": "stress",
+   "t_start": 1791530814.0,
+   "t_end": 1791532617.0,
+   "duration_s": 1803.0,
+   "monitors": {
+    "stable": {
+     "verify_file": "exp/out/e8_main_stable_verify_stress.json",
+     "k_second": 0,
+     "n_second_untouched": 1201,
+     "anchored_seconds_in_window": 1232,
+     "k_minute": 0,
+     "n_minute_untouched": 28,
+     "anchored_minutes_in_window": 32
+    },
+    "closure": {
+     "verify_file": "exp/out/e8_main_closure_verify_stress.json",
+     "k_second": 0,
+     "n_second_untouched": 1201,
+     "anchored_seconds_in_window": 1232,
+     "k_minute": 0,
+     "n_minute_untouched": 28,
+     "anchored_minutes_in_window": 32
+    }
+   },
+   "n_untouched_seconds": 1201,
+   "k_untouched_seconds": 0,
+   "anchored_seconds_in_window": 1232,
+   "sealed_occupancy": 0.6833056017748197,
+   "row_seconds_in_extract": 1230,
+   "row_occupancy_extract": 0.6821963394342762,
+   "untouched_occupancy": 0.6661120354963949,
+   "touched_share_of_anchored_seconds": 0.025162337662337664,
+   "n_untouched_minutes": 28,
+   "k_untouched_minutes": 0,
+   "anchored_minutes_in_window": 32,
+   "minutes_overlapping_window": 31,
+   "row_minutes_in_extract": 31,
+   "minute_row_occupancy_extract": 1.0,
+   "row_occupancy_scorer": 0.6822,
+   "row_seconds_scorer": 1230,
+   "row_occupancy_scorer_source": "exp/out/e8_main_score_rescored.json write_rate.stress.seconds_with_a_row (rows of monitor.load() on the full recorder)"
+  }
+ ],
+ "implied_bound_at_measured_occupancies": [
+  {
+   "label": "untouched occupancy of E7 + E8 (what the printed 0.83 per hour assumes)",
+   "source": "n / total window duration = 3972 / 15968",
+   "occupancy": 0.24874749498997997,
+   "per_hour": 0.8312751285284543,
+   "per_day": 19.950603084682903,
+   "one_sided_95": {
+    "occupancy": 0.24874749498997997,
+    "per_hour": 0.6751359126401891,
+    "per_day": 16.203261903364538
+   }
+  },
+  {
+   "label": "sealed occupancy of E7 + E8 pooled",
+   "source": "anchored seconds / total duration = 5263 / 15968",
+   "occupancy": 0.32959669338677355,
+   "per_hour": 1.1014604736770532,
+   "per_day": 26.435051368249276,
+   "one_sided_95": {
+    "occupancy": 0.32959669338677355,
+    "per_hour": 0.8945720816277228,
+    "per_day": 21.469729959065347
+   }
+  },
+  {
+   "label": "row occupancy of E7 + E8 pooled (extracts)",
+   "source": "row seconds / total duration = 5256 / 15968",
+   "occupancy": 0.32915831663326656,
+   "per_hour": 1.0999954872974713,
+   "per_day": 26.399891695139313,
+   "one_sided_95": {
+    "occupancy": 0.32915831663326656,
+    "per_hour": 0.8933822650646611,
+    "per_day": 21.441174361551866
+   }
+  },
+  {
+   "label": "E7 main: sealed occupancy",
+   "source": "anchored seconds in window / duration = 1697 / 7412",
+   "occupancy": 0.22895304910955208,
+   "per_hour": 0.7651251938564889,
+   "per_day": 18.363004652555734,
+   "one_sided_95": {
+    "occupancy": 0.22895304910955208,
+    "per_hour": 0.621410984534972,
+    "per_day": 14.913863628839328
+   }
+  },
+  {
+   "label": "E7 main: row occupancy (extract)",
+   "source": "row seconds / duration = 1695 / 7412",
+   "occupancy": 0.2286832164058284,
+   "per_hour": 0.7642234552662042,
+   "per_day": 18.3413629263889,
+   "one_sided_95": {
+    "occupancy": 0.2286832164058284,
+    "per_hour": 0.62067862038113,
+    "per_day": 14.89628688914712
+   }
+  },
+  {
+   "label": "E8 main: sealed occupancy",
+   "source": "anchored seconds in window / duration = 2210 / 6153",
+   "occupancy": 0.35917438647814076,
+   "per_hour": 1.2003044866673822,
+   "per_day": 28.807307680017175,
+   "one_sided_95": {
+    "occupancy": 0.35917438647814076,
+    "per_hour": 0.974850127522561,
+    "per_day": 23.396403060541463
+   }
+  },
+  {
+   "label": "E8 main: row occupancy (extract)",
+   "source": "row seconds / duration = 2208 / 6153",
+   "occupancy": 0.35884934178449535,
+   "per_hour": 1.1992182382631584,
+   "per_day": 28.7812377183158,
+   "one_sided_95": {
+    "occupancy": 0.35884934178449535,
+    "per_hour": 0.9739679102125857,
+    "per_day": 23.375229845102055
+   }
+  },
+  {
+   "label": "E8 main: row occupancy (scorer, full recorder)",
+   "source": "exp/out/e8_main_score_rescored.json write_rate.main.seconds_with_a_row (rows of monitor.load() on the full recorder)",
+   "occupancy": 0.3588,
+   "per_hour": 1.1990533457553973,
+   "per_day": 28.777280298129536,
+   "one_sided_95": {
+    "occupancy": 0.3588,
+    "per_hour": 0.9738339896249315,
+    "per_day": 23.372015750998354
+   }
+  },
+  {
+   "label": "E8 base: sealed occupancy",
+   "source": "anchored seconds in window / duration = 124 / 600",
+   "occupancy": 0.20666666666666667,
+   "per_hour": 0.6906475978895823,
+   "per_day": 16.575542349349973,
+   "one_sided_95": {
+    "occupancy": 0.20666666666666667,
+    "per_hour": 0.5609225878553117,
+    "per_day": 13.46214210852748
+   }
+  },
+  {
+   "label": "E8 base: row occupancy (extract)",
+   "source": "row seconds / duration = 123 / 600",
+   "occupancy": 0.205,
+   "per_hour": 0.6850778591969242,
+   "per_day": 16.441868620726183,
+   "one_sided_95": {
+    "occupancy": 0.205,
+    "per_hour": 0.556399018598414,
+    "per_day": 13.353576446361934
+   }
+  },
+  {
+   "label": "E8 base: row occupancy (scorer, full recorder)",
+   "source": "exp/out/e8_main_score_rescored.json write_rate.base.seconds_with_a_row (rows of monitor.load() on the full recorder)",
+   "occupancy": 0.205,
+   "per_hour": 0.6850778591969242,
+   "per_day": 16.441868620726183,
+   "one_sided_95": {
+    "occupancy": 0.205,
+    "per_hour": 0.556399018598414,
+    "per_day": 13.353576446361934
+   }
+  },
+  {
+   "label": "E8 stress: sealed occupancy",
+   "source": "anchored seconds in window / duration = 1232 / 1803",
+   "occupancy": 0.6833056017748197,
+   "per_hour": 2.283500189469071,
+   "per_day": 54.804004547257705,
+   "one_sided_95": {
+    "occupancy": 0.6833056017748197,
+    "per_hour": 1.8545881279527237,
+    "per_day": 44.51011507086537
+   }
+  },
+  {
+   "label": "E8 stress: row occupancy (extract)",
+   "source": "row seconds / duration = 1230 / 1803",
+   "occupancy": 0.6821963394342762,
+   "per_hour": 2.2797932086420105,
+   "per_day": 54.715037007408256,
+   "one_sided_95": {
+    "occupancy": 0.6821963394342762,
+    "per_hour": 1.8515774329398134,
+    "per_day": 44.43785839055552
+   }
+  },
+  {
+   "label": "E8 stress: row occupancy (scorer, full recorder)",
+   "source": "exp/out/e8_main_score_rescored.json write_rate.stress.seconds_with_a_row (rows of monitor.load() on the full recorder)",
+   "occupancy": 0.6822,
+   "per_hour": 2.2798054416787403,
+   "per_day": 54.71533060028977,
+   "one_sided_95": {
+    "occupancy": 0.6822,
+    "per_hour": 1.8515873682333563,
+    "per_day": 44.438096837600554
+   }
+  },
+  {
+   "label": "twelve earlier single-host runs (Section 7.1's 34.9%)",
+   "source": "exp/out/r13_write_rate.json pooled_single_host_real_deployment.seconds_with_at_least_one_row = 7500 / 21508",
+   "occupancy": 0.3487,
+   "per_hour": 1.1653007292778903,
+   "per_day": 27.967217502669367,
+   "one_sided_95": {
+    "occupancy": 0.3487,
+    "per_hour": 0.9464211599281316,
+    "per_day": 22.714107838275158
+   }
+  }
+ ],
+ "implied_bound_on_occupancy_grid": [
+  {
+   "occupancy": 0.05,
+   "per_hour": 0.16709216077973763,
+   "per_day": 4.010211858713704,
+   "one_sided_95": {
+    "occupancy": 0.05,
+    "per_hour": 0.13570707770693025,
+    "per_day": 3.2569698649663263
+   }
+  },
+  {
+   "occupancy": 0.1,
+   "per_hour": 0.33418432155947525,
+   "per_day": 8.020423717427407,
+   "one_sided_95": {
+    "occupancy": 0.1,
+    "per_hour": 0.2714141554138605,
+    "per_day": 6.513939729932653
+   }
+  },
+  {
+   "occupancy": 0.15,
+   "per_hour": 0.5012764823392128,
+   "per_day": 12.030635576141108,
+   "one_sided_95": {
+    "occupancy": 0.15,
+    "per_hour": 0.40712123312079074,
+    "per_day": 9.770909594898978
+   }
+  },
+  {
+   "occupancy": 0.2,
+   "per_hour": 0.6683686431189505,
+   "per_day": 16.040847434854815,
+   "one_sided_95": {
+    "occupancy": 0.2,
+    "per_hour": 0.542828310827721,
+    "per_day": 13.027879459865305
+   }
+  },
+  {
+   "occupancy": 0.25,
+   "per_hour": 0.8354608038986882,
+   "per_day": 20.051059293568517,
+   "one_sided_95": {
+    "occupancy": 0.25,
+    "per_hour": 0.6785353885346512,
+    "per_day": 16.28484932483163
+   }
+  },
+  {
+   "occupancy": 0.3,
+   "per_hour": 1.0025529646784257,
+   "per_day": 24.061271152282217,
+   "one_sided_95": {
+    "occupancy": 0.3,
+    "per_hour": 0.8142424662415815,
+    "per_day": 19.541819189797955
+   }
+  },
+  {
+   "occupancy": 0.35,
+   "per_hour": 1.1696451254581632,
+   "per_day": 28.07148301099592,
+   "one_sided_95": {
+    "occupancy": 0.35,
+    "per_hour": 0.9499495439485116,
+    "per_day": 22.798789054764278
+   }
+  },
+  {
+   "occupancy": 0.4,
+   "per_hour": 1.336737286237901,
+   "per_day": 32.08169486970963,
+   "one_sided_95": {
+    "occupancy": 0.4,
+    "per_hour": 1.085656621655442,
+    "per_day": 26.05575891973061
+   }
+  },
+  {
+   "occupancy": 0.5,
+   "per_hour": 1.6709216077973763,
+   "per_day": 40.102118587137035,
+   "one_sided_95": {
+    "occupancy": 0.5,
+    "per_hour": 1.3570707770693025,
+    "per_day": 32.56969864966326
+   }
+  },
+  {
+   "occupancy": 0.6,
+   "per_hour": 2.0051059293568514,
+   "per_day": 48.12254230456443,
+   "one_sided_95": {
+    "occupancy": 0.6,
+    "per_hour": 1.628484932483163,
+    "per_day": 39.08363837959591
+   }
+  },
+  {
+   "occupancy": 0.7,
+   "per_hour": 2.3392902509163265,
+   "per_day": 56.14296602199184,
+   "one_sided_95": {
+    "occupancy": 0.7,
+    "per_hour": 1.8998990878970232,
+    "per_day": 45.597578109528556
+   }
+  },
+  {
+   "occupancy": 0.8,
+   "per_hour": 2.673474572475802,
+   "per_day": 64.16338973941926,
+   "one_sided_95": {
+    "occupancy": 0.8,
+    "per_hour": 2.171313243310884,
+    "per_day": 52.11151783946122
+   }
+  },
+  {
+   "occupancy": 0.9,
+   "per_hour": 3.0076588940352775,
+   "per_day": 72.18381345684666,
+   "one_sided_95": {
+    "occupancy": 0.9,
+    "per_hour": 2.4427273987247444,
+    "per_day": 58.625457569393866
+   }
+  },
+  {
+   "occupancy": 1.0,
+   "per_hour": 3.3418432155947526,
+   "per_day": 80.20423717427407,
+   "one_sided_95": {
+    "occupancy": 1.0,
+    "per_hour": 2.714141554138605,
+    "per_day": 65.13939729932652
+   }
+  }
+ ],
+ "r3_arithmetic": {
+  "claim_per_segment": "9.3x10^-4 per segment",
+  "computed_per_segment": 0.0009282897821096535,
+  "per_segment_holds": true,
+  "claim_34.9pct": "about 1.2 per hour, roughly 28 per day",
+  "computed_at_34.9pct_printed": {
+   "occupancy": 0.349,
+   "per_hour": 1.1663032822425685,
+   "per_day": 27.991278773821648
+  },
+  "computed_at_lab_share_r13": {
+   "occupancy": 0.3487,
+   "per_hour": 1.1653007292778903,
+   "per_day": 27.967217502669367
+  },
+  "holds_34.9pct": true,
+  "claim_stress": "about 2.2 per hour at stress occupancy",
+  "computed_at_stress_row_occupancy_scorer": {
+   "occupancy": 0.6822,
+   "per_hour": 2.2798054416787403,
+   "per_day": 54.71533060028977
+  },
+  "computed_at_stress_row_occupancy_extract": {
+   "occupancy": 0.6821963394342762,
+   "per_hour": 2.2797932086420105,
+   "per_day": 54.715037007408256
+  },
+  "computed_at_stress_sealed_occupancy": {
+   "occupancy": 0.6833056017748197,
+   "per_hour": 2.283500189469071,
+   "per_day": 54.804004547257705
+  },
+  "stress_reading": "the stress window's occupancy (0.6822 by the scorer, 0.6833 sealed) gives 2.28 and 2.28 per hour: 2.3 to one decimal, so R3's 'about 2.2' is slightly low; the direction of the point holds",
+  "why_the_printed_figure_is_lower": "the printed 0.83 per hour equals the per-segment bound x n / wall-clock duration x 3600, i.e. an occupancy of 0.2487 (untouched seconds per wall-clock second); the windows' sealed occupancy was 0.3296, because trials touched 1291 of 5263 anchored seconds and the counting rule removed them from n"
+ },
+ "minute_analogue": {
+  "k": 0,
+  "n_untouched_anchored_minutes": 117,
+  "per_minute_segment_exact_interval": [
+   0.0,
+   0.031037031693111575
+  ],
+  "one_sided_95": 0.025279532749551303,
+  "minute_row_occupancy_pooled_extract": 0.9962962962962963,
+  "implied_per_hour_at_pooled_minute_occupancy": 1.8553247834326698,
+  "implied_per_day_at_pooled_minute_occupancy": 44.52779480238408,
+  "implied_per_hour_at_full_minute_occupancy": 1.8622219015866945,
+  "implied_per_day_at_full_minute_occupancy": 44.693325638080665,
+  "untouched_minute_occupancy": 0.4396292585170341,
+  "per_window": [
+   {
+    "experiment": "E7",
+    "window": "main",
+    "k": 0,
+    "n": 42,
+    "anchored_minutes": 125,
+    "minutes_overlapping_window": 124,
+    "minute_row_occupancy_extract": 0.9919354838709677
+   },
+   {
+    "experiment": "E8",
+    "window": "main",
+    "k": 0,
+    "n": 35,
+    "anchored_minutes": 105,
+    "minutes_overlapping_window": 104,
+    "minute_row_occupancy_extract": 1.0
+   },
+   {
+    "experiment": "E8",
+    "window": "base",
+    "k": 0,
+    "n": 12,
+    "anchored_minutes": 12,
+    "minutes_overlapping_window": 11,
+    "minute_row_occupancy_extract": 1.0
+   },
+   {
+    "experiment": "E8",
+    "window": "stress",
+    "k": 0,
+    "n": 28,
+    "anchored_minutes": 32,
+    "minutes_overlapping_window": 31,
+    "minute_row_occupancy_extract": 1.0
+   }
+  ],
+  "reading": "an untouched minute holds no touched second; trial density left 117 untouched anchored minutes in 4.44 h of windows, so the minute bound per hour (1.86 at the windows' minute occupancy) is wider than the second bound scaled to the windows' sealed occupancy (1.10)"
+ },
+ "definitions": {
+  "per_segment_bound": "95% exact upper bound on the probability that an untouched sealed one-second segment fails verification",
+  "sealed_occupancy": "anchored one-second segments in the window (e7_verify window rule, t_start - 1 to t_end + 1) / window duration",
+  "row_occupancy": "seconds of [t_start, t_end) holding >= 1 surviving states/events row / duration",
+  "untouched_occupancy": "untouched anchored seconds / duration (the printed figure's implicit occupancy)",
+  "implied_bound": "per-segment bound x occupancy x 3600 (hour) or x 86400 (day)",
+  "caveat": "the trial windows' occupancy includes rows the trials wrote (insertions, forged rows, the harness's lock/unlock churn); the trial-free baseline window is the cleanest estimate of a quiet home on this installation, the stress window of a busy one"
+ },
+ "not_read": "E9 files (E9 runs until 2026-10-19)",
+ "inputs_sha256": {
+  "exp/out/r14_benign_rates.json": "cca4855efdab982ba0cf54bc6abf53883ab4bba7d2288e21431408ccdfe134d7",
+  "exp/out/e7_main_score.json": "3a4a356007a614910e5e91d711ee6d3d4faa786835e2c306529278ed30dc4b13",
+  "exp/out/e8_main_score_rescored.json": "175e6acf11c3b628dc10251175795b5825cbb99255fe77680f268517e4edd0a7",
+  "exp/out/r13_write_rate.json": "c4417a26af3ea37d1f66817eba9c998675f4e9d7338196cd6058995f9af2cd41",
+  "reproduce/snapshots/e7e8/EXTRACTS_E7E8_SHA256SUMS": "2b305f5bfccb24c868214d2e15edbc2034aa5a4a23ce4f13111b5dd5d33d5f32",
+  "reproduce/snapshots/e7e8/e7_main.db": "6dcbe6e4db3f25ab9bcf8f67497398b9b137b14a8a2b062dfc00dbd2ac9ce1dc",
+  "exp/out/e7_main_stable_verify.json": "5502f25e203402fcccc47c33900c2ff9e2740d3b62598fc5123760c6e81a075d",
+  "exp/out/e7_main_closure_verify.json": "d2e1319c5242d9b20a6471cf3b1b20119ba6f87509e9df759cc16bf1c1ff5f6d",
+  "reproduce/snapshots/e7e8/e8_main.db": "fab07d50878211fb6dac1193896c97e473581009885164f2066e32dbd70fa6c9",
+  "exp/out/e8_main_stable_verify_main.json": "bdb297898ae1ff9360f84b6638a169e18342b518f75561be1e5292f6a1b4b679",
+  "exp/out/e8_main_closure_verify_main.json": "94fddbc47f179429c779309852ec88a20d3cdb73adeb22bc5301939ab907f9dc",
+  "exp/out/e8_main_stable_verify_base.json": "b8f19dd231963b791618850f023afa01631658ed2b8f34f29745607ce54e550e",
+  "exp/out/e8_main_closure_verify_base.json": "e912e04e09a5657ddbef92a296692e75055b1c946d5dd4f15be36146ac19408a",
+  "exp/out/e8_main_stable_verify_stress.json": "94f286afd101867e2258064f0b73a471380894c9c72ca269f7469b3cf556e3d5",
+  "exp/out/e8_main_closure_verify_stress.json": "b684c606a5b2a3f94639886fda96f8ca10c383dfea7812d16c52612ac3153966",
+  "[READY] (S&P 2027) HOMEPROV - P13/sections/07_sp_eval.tex": "216995c77a06475ef2d23c6b2d73e637110b439dfb9707c50d0936b0d03adab5"
+ },
+ "script": "exp/sp2027/r14c_benign_per_segment.py",
+ "script_sha256": "a07cb26af543c45a05150d7baabb7661371311ff9ccbe7f8260e5792bfb69002",
+ "python": "3.13.11",
+ "generated_at": "2026-10-12T14:15:04Z"
+}
