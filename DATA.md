@@ -1,6 +1,6 @@
 # DATA.md: files held out of this repository
 
-This repository leaves out every file of the artifact at or above 50 MB (GitHub refuses files over 100 MB and warns above 50 MB). The 10 files below, 3,478,624,754 bytes in all, go into a data bundle on Zenodo (**DOI to be added**). Each belongs at the path given, relative to the repository root. Nothing else was left out for size; the code, the documents and every other result file are here.
+This repository leaves out every file of the artifact at or above 50 MB (GitHub refuses files over 100 MB and warns above 50 MB). The 10 files below, 3,478,624,754 bytes in all, go into a data bundle on Zenodo (https://doi.org/10.5281/zenodo.23874619). Each belongs at the path given, relative to the repository root. Nothing else was left out for size; the code, the documents and every other result file are here.
 
 To check a downloaded file, place it at its path and run, from the repository root:
 

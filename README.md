@@ -78,7 +78,7 @@ physical device is actuated and no real household is involved.
 
 ## Large files on Zenodo
 
-Ten result files of 50 MB or more are not in this repository; they are on Zenodo (DOI to be added). `DATA.md` gives each file's size, sha256 and role, and which steps need it. Put each at its path below to restore the full tree.
+Ten result files of 50 MB or more are not in this repository; they are on Zenodo (https://doi.org/10.5281/zenodo.23874619). `DATA.md` gives each file's size, sha256 and role, and which steps need it. Put each at its path below to restore the full tree.
 
 | Path | Bytes | sha256 |
 |---|---:|---|
